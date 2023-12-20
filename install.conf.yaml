@@ -8,7 +8,7 @@
     - ~/.config
 
 - link:
-    ~/.zshrc: .zshrc
+    ~/.zshrc: zsh/.zshrc
     ~/.config/nvim: nvim
 
 - shell:
