@@ -1,16 +1,26 @@
 - defaults:
     link:
       relink: true
+    shell:
+      stdout: true
+      stderr: true
 
 - clean: ["~"]
 
 - create:
     - ~/.config
 
+- shell:
+    - [sh pre-install.sh, Running pre installation script]
+
 - link:
     ~/.zshrc: zsh/.zshrc
     ~/.config/nvim: nvim
     ~/.config/ranger: ranger
+    ~/.config/brewfile/Brewfile:
+      create: true
+      path: homebrew/Brewfile
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [sh post-install.sh, Running post installation script]
