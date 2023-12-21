@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 if [ $(uname) = "Darwin" ]; then
 	eval "$(/usr/local/bin/brew shellenv)"
@@ -7,3 +7,10 @@ else
 fi
 
 brew bundle --file=$HOME/.config/brewfile/Brewfile
+
+if [ ! "$(basename "$SHELL")" = "zsh" ]; then
+	echo 'Changing default shell to zsh'
+	chsh -s "$(which zsh)"
+else
+	echo 'Already using zsh as default shell'
+fi
