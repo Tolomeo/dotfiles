@@ -10,3 +10,20 @@ else
 	echo 'Updating homebrew'
 	brew update
 fi
+
+# Making zsh the default shell on Linux
+if [[ $(uname) == 'Linux' ]]; then
+	if [ ! -f "$(which zsh)" ]; then
+		echo 'Installing zsh'
+		apt install zsh
+	else
+		echo "Zsh is installed"
+	fi
+
+	if [ ! "$(basename "$SHELL")" = "zsh" ]; then
+		echo 'Changing default shell to zsh'
+		chsh -s "$(which zsh)"
+	else
+		echo 'Already using zsh as default shell'
+	fi
+fi
