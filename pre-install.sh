@@ -25,7 +25,7 @@ if [ $(uname) = "Linux" ]; then
 
 	if [ ! "$(basename "$SHELL")" = "zsh" ]; then
 		echo 'Changing default shell to zsh'
-		chsh -s "$(which zsh)"
+		sudo chsh -s "$(which zsh)"
 	else
 		echo 'Already using zsh as default shell'
 	fi
