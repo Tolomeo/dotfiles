@@ -12,7 +12,7 @@ else
 fi
 
 # Making zsh the default shell on Linux
-if [[ $(uname) == 'Linux' ]]; then
+if [ $(uname) == 'Linux' ]; then
 	if [ ! -f "$(which zsh)" ]; then
 		echo 'Installing zsh'
 		apt install zsh
