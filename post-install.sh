@@ -19,7 +19,7 @@ zsh_path="$(brew --prefix)/bin/zsh"
 
 if [[ "$SHELL" != "$zsh_path" ]]; then
 	if ! grep -qx "$zsh_path" "/etc/shells"; then
-		sudo tee -a "/etc/shells" <<<"$zsh_path" >/dev/null
+		echo "$zsh_path" | sudo tee -a "/etc/shells" >/dev/null
 		echo "Zsh path added to the shells file"
 	fi
 
