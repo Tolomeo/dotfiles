@@ -16,7 +16,7 @@ nvm install --lts
 
 if [ ! "$(basename "$SHELL")" = "zsh" ]; then
 	echo 'Changing default shell to zsh. You will probably have to logout and log back in'
-	chsh -s "$(which zsh)"
+	chsh -s "$(which zsh)" "$(whoami)"
 else
 	echo 'Using zsh as default shell'
 fi
