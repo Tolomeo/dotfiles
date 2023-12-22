@@ -6,8 +6,7 @@ else
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
+source "$(brew --prefix)/opt/nvm/nvm.sh"
 
 echo 'Installing system packages'
 brew bundle --file=~/.config/brewfile/Brewfile
@@ -15,17 +14,15 @@ brew bundle --file=~/.config/brewfile/Brewfile
 echo 'Installing node lts'
 nvm install --lts
 
-if [ ! "$(basename "$SHELL")" = "zsh" ]; then
-	echo 'Changing default shell to Zsh. You will probably have to logout and log back in'
-	chsh -s "$(which zsh)" "$(whoami)"
+echo 'Using Zsh as default shell'
+zsh_path="$(brew --prefix)/bin/zsh"
 
-	# Append the zsh path to the shells file
-	if grep -qx "$(which zsh)" "/etc/shells"; then
-		echo "Zsh is in the shells file"
-	else
-		echo "$(which zsh)" | tee -a "/etc/shells" >/dev/null
+if [[ "$SHELL" != "$zsh_path" ]]; then
+	if ! grep -qx "$zsh_path" "/etc/shells"; then
+		sudo tee -a "/etc/shells" <<<"$zsh_path" >/dev/null
 		echo "Zsh path added to the shells file"
 	fi
-else
-	echo 'Using zsh as default shell'
+
+	echo 'You will have to logout and log back in'
+	chsh -s "$zsh_path" "$(whoami)"
 fi
