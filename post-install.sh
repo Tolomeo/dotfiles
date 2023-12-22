@@ -6,18 +6,17 @@ else
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-source "$(brew --prefix)/opt/nvm/nvm.sh"
-
 echo 'Installing system packages'
 brew bundle --file=~/.config/brewfile/Brewfile
 
 echo 'Installing node lts'
+source "$(brew --prefix)/opt/nvm/nvm.sh"
 nvm install --lts
 
 echo 'Using Zsh as default shell'
 zsh_path="$(brew --prefix)/bin/zsh"
 
-if [[ "$SHELL" != "$zsh_path" ]]; then
+if [ "$SHELL" != "$zsh_path" ]; then
 	if ! grep -qx "$zsh_path" "/etc/shells"; then
 		echo "$zsh_path" | sudo tee -a "/etc/shells" >/dev/null
 		echo "Zsh path added to the shells file"
