@@ -10,7 +10,8 @@ echo 'Installing system packages'
 brew bundle --file=~/.config/brewfile/Brewfile
 
 echo 'Installing node lts'
-source "$(brew --prefix)/opt/nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && source "$(brew --prefix)/opt/nvm/nvm.sh"
 nvm install --lts
 
 echo 'Using Zsh as default shell'
