@@ -15,6 +15,7 @@
     - ~/.config
 
 - link:
+    ~/.dotfiles: ""
     ~/.zshrc: zsh/.zshrc
     ~/.zshenv: zsh/.zshenv
     ~/.config/nvim: nvim
