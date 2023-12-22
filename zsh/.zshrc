@@ -8,3 +8,6 @@ alias la='ls -la'
 fpath+=($HOME/.dotfiles/zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
+
+# Zsh syntax highlighting
+source $HOME/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
