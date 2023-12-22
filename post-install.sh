@@ -11,10 +11,10 @@ brew bundle --file=~/.config/brewfile/Brewfile
 
 echo 'Installing node lts'
 export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && source "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
 nvm install --lts
 
-echo 'Using Zsh as default shell'
+echo 'Using Zsh as default shell'https://github.com/Tolomeo/dotfiles.git
 zsh_path="$(brew --prefix)/bin/zsh"
 
 if [ "$SHELL" != "$zsh_path" ]; then
