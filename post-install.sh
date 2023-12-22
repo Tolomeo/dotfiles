@@ -6,13 +6,15 @@ else
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+echo 'Installing system packages'
 brew bundle --file=~/.config/brewfile/Brewfile
 
+echo 'Installing node lts'
 nvm install --lts
 
 if [ ! "$(basename "$SHELL")" = "zsh" ]; then
-	echo 'Changing default shell to zsh. You will probably have to logout and log back in. You will probably have to logout and log back in'
+	echo 'Changing default shell to zsh. You will probably have to logout and log back in'
 	chsh -s "$(which zsh)"
 else
-	echo 'Already using zsh as default shell'
+	echo 'Using zsh as default shell'
 fi
