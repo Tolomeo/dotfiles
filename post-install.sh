@@ -1,25 +1,9 @@
 #!/bin/bash
 
-if [ ! -f "$(which brew)" ]; then
-	echo 'Installing homebrew'
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-	echo 'Updating homebrew'
-	brew update
-fi
-
-if [ $(uname) = "Darwin" ]; then
-	eval "$(/usr/local/bin/brew shellenv)"
-else
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-echo 'Installing system packages'
-brew bundle --file=~/.config/brewfile/Brewfile
+sh ~/.dotfiles/scripts/homebrew_install.sh
 
 echo 'Installing node lts'
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
+source ~/.dotfiles/scripts/homebrew_env.sh
 nvm install --lts
 
 echo 'Using Zsh as default shell'
