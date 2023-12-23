@@ -9,4 +9,4 @@ fi
 . ~/.dotfiles/homebrew/env.sh
 
 echo 'Installing homebrew packages'
-brew bundle --file=~/.config/brewfile/Brewfile
+brew bundle

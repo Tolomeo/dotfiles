@@ -13,13 +13,11 @@
 
 - link:
     ~/.dotfiles: ""
+    ~/Brewfile: homebrew/Brewfile
     ~/.zshrc: zsh/.zshrc
     ~/.zshenv: zsh/.zshenv
     ~/.config/nvim: nvim
     ~/.config/ranger: ranger
-    ~/.config/brewfile/Brewfile:
-      create: true
-      path: homebrew/Brewfile
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
