@@ -28,9 +28,7 @@ if [ "$SHELL" != "$zsh_path" ]; then
 fi
 
 echo 'Installing patched fonts'
-declare -a fonts=(
-	SourceCodePro
-)
+fonts=("SourceCodePro")
 
 case $(uname) in
 Darwin)
