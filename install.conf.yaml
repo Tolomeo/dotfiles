@@ -6,9 +6,6 @@
       stdout: true
       stderr: true
 
-- shell:
-    - [sh pre-install.sh, Running pre installation script]
-
 - clean: ["~"]
 
 - create:
