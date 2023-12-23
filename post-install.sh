@@ -28,7 +28,7 @@ if [ "$SHELL" != "$zsh_path" ]; then
 fi
 
 echo 'Installing patched fonts'
-fonts=("SourceCodePro")
+fonts="SourceCodePro"
 
 case $(uname) in
 Darwin)
@@ -47,7 +47,7 @@ fi
 git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
 cd nerd-fonts
 
-for font in "${fonts[@]}"; do
+for font in $fonts; do
 	git sparse-checkout add "patched-fonts/${font}"
 	./install.sh "${font}"
 done
