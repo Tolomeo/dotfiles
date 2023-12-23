@@ -10,7 +10,7 @@ Darwin)
 esac
 
 # Check if the fonts directory exists, and create it if not
-if [[ ! -d "$fonts_dir" ]]; then
+if [ ! -d "$fonts_dir" ]; then
 	mkdir -p "$fonts_dir"
 fi
 
