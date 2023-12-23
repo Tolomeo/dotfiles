@@ -1,4 +1,4 @@
-. ~/.dotfiles/scripts/homebrew_env.sh
+. ~/.dotfiles/homebrew/env.sh
 
 echo 'Using Zsh as default shell'
 zsh_path="$(brew --prefix)/bin/zsh"
