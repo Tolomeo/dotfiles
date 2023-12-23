@@ -1,15 +1,6 @@
+fonts_dir="$(if [ "$(uname)" = "Darwin" ]; then echo "/Library/Fonts"; else echo "$HOME/.local/share/fonts"; fi)"
 fonts="SourceCodePro"
 
-case $(uname) in
-Darwin)
-	fonts_dir="/Library/Fonts"
-	;;
-*)
-	fonts_dir="$HOME/.local/share/fonts"
-	;;
-esac
-
-# Check if the fonts directory exists, and create it if not
 if [ ! -d "$fonts_dir" ]; then
 	mkdir -p "$fonts_dir"
 fi
