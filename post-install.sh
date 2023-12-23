@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
 nvm install --lts
 
-echo 'Using Zsh as default shell'https://github.com/Tolomeo/dotfiles.git
+echo 'Using Zsh as default shell'
 zsh_path="$(brew --prefix)/bin/zsh"
 
 if [ "$SHELL" != "$zsh_path" ]; then
@@ -23,6 +23,36 @@ if [ "$SHELL" != "$zsh_path" ]; then
 		echo "Zsh path added to the shells file"
 	fi
 
-	echo 'You will have to logout and log back in'
+	echo 'Changing the default shell, you will have to logout and log back in'
 	chsh -s "$zsh_path" "$(whoami)"
 fi
+
+echo 'Installing patched fonts'
+declare -a fonts=(
+	SourceCodePro
+)
+
+case $(uname) in
+Darwin)
+	fonts_dir="/Library/Fonts"
+	;;
+*)
+	fonts_dir="$HOME/.local/share/fonts"
+	;;
+esac
+
+# Check if the fonts directory exists, and create it if not
+if [[ ! -d "$fonts_dir" ]]; then
+	mkdir -p "$fonts_dir"
+fi
+
+git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+
+for font in "${fonts[@]}"; do
+	git sparse-checkout add "patched-fonts/${font}"
+	./install.sh "${font}"
+done
+
+cd ../
+rm -rf nerd-fonts
