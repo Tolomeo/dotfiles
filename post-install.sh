@@ -28,29 +28,4 @@ if [ "$SHELL" != "$zsh_path" ]; then
 fi
 
 echo 'Installing patched fonts'
-fonts="SourceCodePro"
-
-case $(uname) in
-Darwin)
-	fonts_dir="/Library/Fonts"
-	;;
-*)
-	fonts_dir="$HOME/.local/share/fonts"
-	;;
-esac
-
-# Check if the fonts directory exists, and create it if not
-if [[ ! -d "$fonts_dir" ]]; then
-	mkdir -p "$fonts_dir"
-fi
-
-git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts
-
-for font in $fonts; do
-	git sparse-checkout add "patched-fonts/${font}"
-	./install.sh "${font}"
-done
-
-cd ../
-rm -rf nerd-fonts
+sh ~/.dotfiles/scripts/fonts_install.sh
