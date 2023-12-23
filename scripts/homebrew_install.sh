@@ -6,7 +6,7 @@ else
 	brew update
 fi
 
-source ~/.dotfiles/scripts/homebrew_env.sh
+. ~/.dotfiles/scripts/homebrew_env.sh
 
 echo 'Installing system packages'
 brew bundle --file=~/.config/brewfile/Brewfile

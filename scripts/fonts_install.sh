@@ -1,3 +1,4 @@
+echo 'Installing patched fonts'
 fonts_dir="$(if [ "$(uname)" = "Darwin" ]; then echo "/Library/Fonts"; else echo "$HOME/.local/share/fonts"; fi)"
 fonts="SourceCodePro"
 
