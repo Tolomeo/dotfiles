@@ -23,4 +23,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [sh post-install.sh, Running post installation script]
+    - [sh scripts/homebrew_install.sh, Installing Homebrew]
+    - [sh scripts/node_install.sh, Installing Node]
+    - [sh scripts/zsh_install.sh, Installing Zsh]
+    - [sh scripts/fonts_install.sh, Installing patched fonts]
