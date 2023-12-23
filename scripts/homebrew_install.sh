@@ -1,12 +1,12 @@
 if [ ! -f "$(which brew)" ]; then
-	echo 'Installing homebrew'
+	echo 'Homebrew was not found, installing from repo'
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-	echo 'Updating homebrew'
+	echo 'Homebrew was found, updating'
 	brew update
 fi
 
 . ~/.dotfiles/homebrew/env.sh
 
-echo 'Installing system packages'
+echo 'Installing homebrew packages'
 brew bundle --file=~/.config/brewfile/Brewfile

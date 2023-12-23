@@ -1,6 +1,7 @@
-echo 'Installing patched fonts'
 fonts_dir="$(if [ "$(uname)" = "Darwin" ]; then echo "/Library/Fonts"; else echo "$HOME/.local/share/fonts"; fi)"
 fonts="SourceCodePro"
+
+echo "$fonts will be installed in $fonts_dir"
 
 if [ ! -d "$fonts_dir" ]; then
 	mkdir -p "$fonts_dir"
