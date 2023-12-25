@@ -21,6 +21,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [sh scripts/deps_install.sh, Installing system dependencies]
     - [sh scripts/homebrew_install.sh, Installing Homebrew]
     - [sh scripts/node_install.sh, Installing Node]
     - [sh scripts/zsh_install.sh, Installing Zsh]
