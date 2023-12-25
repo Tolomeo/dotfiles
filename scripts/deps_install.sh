@@ -19,7 +19,7 @@ Linux)
 
 	deps="build-essential procps curl file"
 
-	apt update
+	sudo apt update
 	for dep in $deps; do
 		sudo apt install -y $dep
 	done
