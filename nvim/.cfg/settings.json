@@ -16,7 +16,7 @@
         "command": "glow"
       },
       {
-        "command": "ranger",
+        "command": "lf",
         "keymap": "<leader>e"
       }
     ],
