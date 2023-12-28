@@ -1,5 +1,8 @@
 # https://github.com/gokcehan/lf/blob/master/etc/lfrc.example
 
+# Showing icons
+set icons true
+
 # Showing hidden files by default
 set hidden true
 
