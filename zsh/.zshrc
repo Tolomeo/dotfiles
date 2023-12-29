@@ -1,11 +1,10 @@
 # aliases are placed on top to be picked up by autocompletion
 alias reload='source ~/.zshrc'
-alias ls='eza --long --smart-group --git --git-repos-no-status'
-alias lsa='eza --long --smart-group --git --git-repos-no-status --all'
-alias lsf='eza --long --smart-group --git --git-repos-no-status --only-files'
-alias lsd='eza --long --smart-group --git --git-repos-no-status --only-dirs'
-alias lsl='eza --long --header --git --git-repos-no-status --group-directories-first --octal-permissions --group --modified --mounts --total-size --accessed --created --changed'
-alias tree='eza --long --smart-group --git --git-repos-no-status --tree --color=always | less -R'
+alias ls='eza --long --all --smart-group --git --git-repos-no-status --color=always | less -RF'
+alias lsf='eza --long --all --smart-group --git --git-repos-no-status --color=always --only-files | less -RF'
+alias lsd='eza --long --all --smart-group --git --git-repos-no-status --color=always --only-dirs | less -RF'
+alias lsa='eza --long --all --smart-group --git --git-repos-no-status --color=always  --tree | less -RF'
+alias lsl='eza --long --all --smart-group --git --git-repos-no-status --color=always --header --group-directories-first --octal-permissions --modified --mounts --total-size --accessed --created --changed | less -RF'
 
 # Pure prompt
 # https://github.com/sindresorhus/pure
