@@ -5,7 +5,7 @@ alias lsf='eza --long --all --smart-group --git --git-repos-no-status --color=al
 alias lsd='eza --long --all --smart-group --git --git-repos-no-status --color=always --only-dirs | less -RF'
 alias lsa='eza --long --all --smart-group --git --git-repos-no-status --color=always  --tree | less -RF'
 alias lsl='eza --long --all --smart-group --git --git-repos-no-status --color=always --header --group-directories-first --octal-permissions --modified --mounts --total-size --accessed --created --changed | less -RF'
-
+alias cat='bat --paging=never'
 # Pure prompt
 # https://github.com/sindresorhus/pure
 fpath+=($HOME/.dotfiles/zsh/pure)
