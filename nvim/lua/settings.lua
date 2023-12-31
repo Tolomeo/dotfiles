@@ -1,3 +1,4 @@
+local los = require("_shared.los")
 local fs = require("_shared.fs")
 local tbl = require("_shared.table")
 
@@ -106,6 +107,19 @@ local defaults = {
 		loaded_vimballPlugin = 1,
 		loaded_zip = 1,
 		loaded_zipPlugin = 1,
+		-- Clipboard provider supporting wsl
+		clipboard = los.is_wsl() and {
+			["name"] = "WslClipboard",
+			["copy"] = {
+				["+"] = "clip.exe",
+				["*"] = "clip.exe",
+			},
+			["paste"] = {
+				["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+				["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			},
+			["cache_enabled"] = 0,
+		} or nil,
 	},
 	keymap = {
 		leader = " ",
