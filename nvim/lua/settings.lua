@@ -87,6 +87,8 @@ local defaults = {
 		completeopt = { "menu", "menuone", "noselect" },
 		-- Winbar displaying current file path
 		winbar = "%=%f",
+		-- Disabling swap files
+		swapfile = false,
 	},
 	g = {
 		loaded_2html_plugin = 1,
