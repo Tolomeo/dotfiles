@@ -102,8 +102,10 @@ function Workspace:on_vim_enter()
 		})
 	end)
 
-	tb.go_to(1)
+	local initial_buffer = bf.get({ initial_buffers[1].handle, vars = { "workspaces" } })
+	tb.go_to(tb.number(initial_buffer.vars.workspaces[1]))
 	self:on_tab_enter()
+	vim.fn.execute(string.format("edit %s", initial_buffer.name ))
 end
 
 function Workspace:on_tab_new_entered(evt)
@@ -218,6 +220,7 @@ function Workspace:on_file_buf_new(buffer)
 
 	tb.go_to(tb.number(closest_parent.handle))
 	self:on_tab_enter()
+	vim.schedule(fn.bind(vim.fn.execute, string.format("edit %s", buffer.name)))
 end
 
 function Workspace:on_term_open(evt)
