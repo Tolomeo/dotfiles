@@ -36,6 +36,8 @@ function nvims ()
 	NVIM_APPNAME=$nvim_config nvim $@
 }
 
+source $HOME/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Pure prompt
 # https://github.com/sindresorhus/pure
 fpath+=($HOME/.dotfiles/zsh/pure)
