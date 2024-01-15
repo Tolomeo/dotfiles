@@ -2,6 +2,7 @@
 alias reload='source ~/.zshrc'
 alias cat='bat --paging=never'
 
+# better ls
 function ls {
   eza --long --all --smart-group --git --git-repos-no-status --color=always --icons=always "$@" | less -RF
 }
@@ -20,6 +21,19 @@ function lsa {
 
 function lsl {
 	eza --long --all --smart-group --git --git-repos-no-status --color=always --icons=always --header --group-directories-first --octal-permissions --modified --mounts --total-size --accessed --created --changed "$@" | less -RF
+}
+
+# handling multiple nvim configurations
+function nvims ()
+{
+	nvim_configs=("nvim")
+	nvim_config=$(printf "%s\n" "${nvim_configs[@]}" | fzf --prompt "Neovim config > " --height=~50% --layout=reverse --exit-0)
+
+	if [[ -z $nvim_config ]]; then
+		return 0
+	fi
+
+	NVIM_APPNAME=$nvim_config nvim $@
 }
 
 # Pure prompt
