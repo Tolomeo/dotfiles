@@ -36,6 +36,14 @@ function nvims ()
 	NVIM_APPNAME=$nvim_config nvim $@
 }
 
+# Enables tab-completion in all npm commands
+# https://docs.npmjs.com/cli/v10/commands/npm-completion
+# https://github.com/nvm-sh/nvm/issues/427#issuecomment-632085191
+# TODO: re-source when the user switches to a different version of node
+source $NVM_BIN/../lib/node_modules/npm/lib/utils/completion.sh
+
+# Fish-like autosuggestions for zsh
+# https://github.com/zsh-users/zsh-autosuggestions
 source $HOME/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Pure prompt
