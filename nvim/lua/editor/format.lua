@@ -36,7 +36,13 @@ function Format.get_defaults()
 		},
 	}, {
 		__index = function(_, filetype)
-			return require(string.format("formatter.filetypes.%s", filetype))
+			local ok, filetype_formatter = pcall(require, string.format("formatter.filetypes.%s", filetype))
+
+			if ok then
+				return filetype_formatter
+			end
+
+			return nil
 		end,
 	})
 end
@@ -55,7 +61,7 @@ function Format:setup_formatter()
 			filetype = str.trim(filetype)
 
 			_language_formatters[filetype] = arr.map(filetypes_config.format, function(formatter_name)
-				if not formatter_defaults[filetype] and not formatter_defaults[filetype][formatter_name] then
+				if not formatter_defaults[filetype] or not formatter_defaults[filetype][formatter_name] then
 					return nil
 				end
 
