@@ -13,3 +13,6 @@
 [submodule "haxe/haxe-language-server"]
 	path = haxe/haxe-language-server
 	url = https://github.com/vshaxe/haxe-language-server
+[submodule "haxe/tree-sitter-haxe"]
+	path = haxe/tree-sitter-haxe
+	url = https://github.com/vantreeseba/tree-sitter-haxe.git

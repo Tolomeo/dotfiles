@@ -96,4 +96,16 @@ function Map.filter(tbl, func)
 	end, {})
 end
 
+function Map.destructure(tbl, ...)
+	local destructured = {}
+	local rest = vim.tbl_extend("error", {}, tbl)
+
+	for _, key in ipairs({ ... }) do
+		table.insert(destructured, tbl[key])
+		rest[key] = nil
+	end
+
+	return unpack(destructured), rest
+end
+
 return Map

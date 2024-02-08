@@ -1,5 +1,5 @@
 local Module = require("_shared.module")
-local fn = require("_shared.fn")
+local fs = require("_shared.fs")
 local arr = require("_shared.array")
 local tbl = require("_shared.table")
 local str = require("_shared.str")
@@ -119,6 +119,50 @@ function Syntax:setup()
 	require("ts_context_commentstring").setup({})
 
 	require("neogen").setup({})
+
+	local language_configs = config.language
+
+	for language_filetypes, language_config in map.pairs(language_configs) do
+		local filetypes_parsers = language_config.parser
+
+		if not filetypes_parsers then
+			goto continue
+		end
+
+		arr.each(str.split(language_filetypes, ","), function(language_filetype)
+			local filetype_parser = filetypes_parsers[language_filetype]
+
+			if not filetype_parser then
+				return
+			end
+
+			local filetype_queries_dir = string.format("%s/queries/%s", vim.fn.stdpath("config"), language_filetype)
+
+			-- TODO: error handling
+			os.execute(string.format("mkdir -p %s", filetype_queries_dir))
+
+			local parser_queries_dirs, parser_install_info = map.destructure(filetype_parser, "queries")
+
+			for _, parser_queries_dir in ipairs(parser_queries_dirs) do
+				-- TODO: error handling
+				os.execute(
+					string.format(
+						"cp -n %s %s",
+						string.format("%s/%s", parser_install_info.url, parser_queries_dir),
+						filetype_queries_dir
+					)
+				)
+			end
+
+			local ts_parsers = require("nvim-treesitter.parsers").get_parser_configs()
+			ts_parsers[language_filetype] = {
+				install_info = parser_install_info,
+				filetype = language_filetype,
+			}
+		end)
+
+		::continue::
+	end
 end
 
 return Syntax:new()
