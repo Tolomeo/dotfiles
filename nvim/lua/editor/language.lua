@@ -5,6 +5,7 @@ local fn = require("_shared.fn")
 local map = require("_shared.map")
 local tbl = require("_shared.table")
 local str = require("_shared.str")
+local arr = require("_shared.array")
 local settings = require("settings")
 
 local Language = Module:extend({
@@ -84,26 +85,18 @@ function Language:on_server_attach(client, buffer)
 	end
 end
 
-function Language:get_language_server_default_setup()
-	return {
+function Language:get_language_servers_setup()
+	local config = settings.config
+	local language_configs = config.language
+	local language_server_default_setup = {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = fn.bind(self.on_server_attach, self),
 	}
-end
 
-function Language:setup_servers()
-	vim.o.winbar = string.format("%s%s%s", "%{%v:lua.require('nvim-navic').get_location()%}", "%=", vim.o.winbar)
-
-	local config = settings.config
-	local language_configs = config.language
-	local language_server_default_setup = self:get_language_server_default_setup()
-	local float_win_config = require("interface.window"):float_config()
-
-	require("mason-lspconfig").setup({
-		automatic_installation = true,
-	})
-
-	require("neodev").setup()
+	local setups = {}
+	local install = {
+		automatic_installation = { exclude = {} },
+	}
 
 	for filetypes, language_config in map.pairs(language_configs) do
 		local language_servers = language_config.server
@@ -118,13 +111,63 @@ function Language:setup_servers()
 			})
 
 			if type(language_server) == "string" then
-				require("lspconfig")[language_server].setup(language_server_setup)
+				arr.push(setups, tbl.merge({ name = language_server }, language_server_setup))
 			elseif type(language_server) == "table" then
-				require("lspconfig")[language_server.name].setup(tbl.merge_deep(language_server_setup, language_server))
+				arr.push(setups, tbl.merge_deep(language_server_setup, language_server))
+				if not language_server.install then
+					arr.push(install.automatic_installation.exclude, language_server.name)
+				end
 			end
 		end
 
 		::continue::
+	end
+
+	return setups, install
+end
+
+function Language:setup_filetypes()
+	local config = settings.config
+	local language_configs = config.language
+
+	for language_filetypes, language_config in map.pairs(language_configs) do
+		local filetypes_patterns = language_config.filetype
+
+		if not filetypes_patterns then
+			goto continue
+		end
+
+		arr.each(str.split(language_filetypes, ","), function(language_filetype)
+			local filetype_pattern = filetypes_patterns[language_filetype]
+
+			if not filetypes_patterns then
+				return
+			end
+
+			au.group({ "LanguageFiletype" }, {
+				{ "BufRead", "BufNewFile" },
+				filetype_pattern,
+				string.format("setfiletype %s", language_filetype),
+			})
+		end)
+
+		::continue::
+	end
+end
+
+function Language:setup_servers()
+	vim.o.winbar = string.format("%s%s%s", "%{%v:lua.require('nvim-navic').get_location()%}", "%=", vim.o.winbar)
+
+	local config = settings.config
+	local language_server_setups, language_servers_install_setup = self:get_language_servers_setup()
+	local float_win_config = require("interface.window"):float_config()
+
+	require("mason-lspconfig").setup(language_servers_install_setup)
+
+	require("neodev").setup()
+
+	for _, language_server_setup in ipairs(language_server_setups) do
+		require("lspconfig")[language_server_setup.name].setup(language_server_setup)
 	end
 
 	-- Diagnostic signs
@@ -254,6 +297,7 @@ function Language:setup_completion()
 end
 
 function Language:setup()
+	self:setup_filetypes()
 	self:setup_servers()
 	self:setup_snippets()
 	self:setup_completion()

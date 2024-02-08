@@ -34,11 +34,18 @@ function Syntax:setup()
 	local config = settings.config
 
 	local syntaxes = tbl.reduce(map.keys(config.language), function(_syntaxes, filetypes)
+		local ts_parsers = require("nvim-treesitter.parsers")
+
 		arr.push(
 			_syntaxes,
-			unpack(arr.map(str.split(filetypes, ","), function(filetype)
-				return require("nvim-treesitter.parsers").ft_to_lang(str.trim(filetype))
-			end))
+			unpack(arr.filter(
+				arr.map(str.split(filetypes, ","), function(filetype)
+					return ts_parsers.ft_to_lang(str.trim(filetype))
+				end),
+				function(parser)
+					return ts_parsers.list[parser] ~= nil
+				end
+			))
 		)
 
 		return _syntaxes
