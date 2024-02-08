@@ -10,3 +10,6 @@
 [submodule "zsh/zsh-autosuggestions"]
 	path = zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "haxe/haxe-language-server"]
+	path = haxe/haxe-language-server
+	url = https://github.com/vshaxe/haxe-language-server

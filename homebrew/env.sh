@@ -14,3 +14,4 @@ fi
 # if [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ]; then
 # 	. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 # fi
+export HAXE_STD_PATH="$(brew --prefix)/lib/haxe/std"
