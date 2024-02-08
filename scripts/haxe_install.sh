@@ -1,3 +1,5 @@
+. ~/.dotfiles/homebrew/env.sh
+
 haxe_ls_server_root="$HOME/.dotfiles/haxe/haxe-language-server"
 
 cd $haxe_ls_server_root
@@ -11,4 +13,5 @@ if [ $? -eq 0 ]; then
 	echo "Haxe-language-server compiled in $haxe_ls_server_root/bin/server.js"
 fi
 
-cd - >/dev/null
+echo "Setting up haxelib"
+haxelib setup "$HOME/haxelib"
