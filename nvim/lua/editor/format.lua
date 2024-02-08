@@ -55,6 +55,10 @@ function Format:setup_formatter()
 			filetype = str.trim(filetype)
 
 			_language_formatters[filetype] = arr.map(filetypes_config.format, function(formatter_name)
+				if not formatter_defaults[filetype] and not formatter_defaults[filetype][formatter_name] then
+					return nil
+				end
+
 				return formatter_defaults[filetype][formatter_name]
 			end)
 		end

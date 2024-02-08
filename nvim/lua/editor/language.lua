@@ -86,9 +86,10 @@ function Language:on_server_attach(client, buffer)
 end
 
 function Language:get_language_servers_setup()
+	local keymap = settings.keymap
 	local config = settings.config
 	local language_configs = config.language
-	local language_server_default_setup = {
+	local language_server_base_setup = {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = fn.bind(self.on_server_attach, self),
 	}
@@ -106,19 +107,46 @@ function Language:get_language_servers_setup()
 		end
 
 		for _, language_server in ipairs(language_servers) do
-			local language_server_setup = tbl.merge(language_server_default_setup, {
+			local server_default_setup = tbl.merge(language_server_base_setup, {
 				filetypes = str.split(filetypes, ","),
 			})
 
 			if type(language_server) == "string" then
-				arr.push(setups, tbl.merge({ name = language_server }, language_server_setup))
+				local server_name, server_setup = language_server, server_default_setup
+				setups[server_name] = server_setup
 			elseif type(language_server) == "table" then
-				arr.push(setups, tbl.merge_deep(language_server_setup, language_server))
-				if not language_server.install then
-					arr.push(install.automatic_installation.exclude, language_server.name)
+				local server_setup, server_install, server_name = map.destructure(language_server, "install", "name")
+				setups[server_name] = tbl.merge(server_default_setup, server_setup)
+				if not server_install then
+					arr.push(install.automatic_installation.exclude, server_name)
 				end
 			end
 		end
+
+		local language_formatters = language_config.format
+
+		if not language_formatters then
+			goto continue
+		end
+
+		arr.each(language_formatters, function(language_formatter)
+			if setups[language_formatter] == nil then
+				return
+			end
+
+			local on_attach = setups[language_formatter].on_attach
+
+			setups[language_formatter].on_attach = function(client, buffer)
+				key.nmap({
+					keymap["language.format"],
+					function()
+						vim.lsp.buf.format()
+					end,
+					buffer = buffer,
+				})
+				on_attach(client, buffer)
+			end
+		end)
 
 		::continue::
 	end
@@ -166,8 +194,8 @@ function Language:setup_servers()
 
 	require("neodev").setup()
 
-	for _, language_server_setup in ipairs(language_server_setups) do
-		require("lspconfig")[language_server_setup.name].setup(language_server_setup)
+	for language_server_name, language_server_setup in pairs(language_server_setups) do
+		require("lspconfig")[language_server_name].setup(language_server_setup)
 	end
 
 	-- Diagnostic signs

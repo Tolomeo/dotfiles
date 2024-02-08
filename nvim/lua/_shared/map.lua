@@ -100,12 +100,12 @@ function Map.destructure(tbl, ...)
 	local destructured = {}
 	local rest = vim.tbl_extend("error", {}, tbl)
 
-	for _, key in ipairs({ ... }) do
-		table.insert(destructured, tbl[key])
+	for index, key in ipairs({ ... }) do
+		table.insert(destructured, index, tbl[key])
 		rest[key] = nil
 	end
 
-	return unpack(destructured), rest
+	return rest, unpack(destructured)
 end
 
 return Map

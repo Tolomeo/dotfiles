@@ -65,10 +65,18 @@ function Config:setup_packages()
 				goto continue
 			end
 
-			local is_installed = vim.fn.executable(string.format("%s/bin/%s", packages_install_path, formatter_name))
-				== 1
+			local lsp = require("mason-lspconfig.mappings.server").lspconfig_to_package[formatter_name]
 
-			if not is_installed then
+			if lsp then
+				goto continue
+			end
+
+			local is_installed_locally = vim.fn.executable(
+				string.format("%s/bin/%s", packages_install_path, formatter_name)
+			) == 1
+			local is_installed_globally = vim.fn.executable(formatter_name) == 1
+
+			if not is_installed_locally and not is_installed_globally then
 				_install_formatters[formatter_name] = true
 			end
 

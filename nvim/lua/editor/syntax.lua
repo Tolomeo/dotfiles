@@ -141,7 +141,7 @@ function Syntax:setup()
 			-- TODO: error handling
 			os.execute(string.format("mkdir -p %s", filetype_queries_dir))
 
-			local parser_queries_dirs, parser_install_info = map.destructure(filetype_parser, "queries")
+			local parser_install_info, parser_queries_dirs = map.destructure(filetype_parser, "queries")
 
 			for _, parser_queries_dir in ipairs(parser_queries_dirs) do
 				-- TODO: error handling
