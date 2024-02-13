@@ -180,8 +180,8 @@ local defaults = {
 		["tab.prev"] = "{<Tab>",
 		-- Dropdowns and context menus
 		["dropdown.open"] = "<C-Space>",
-		["dropdown.item.next"] = "<Tab>",
-		["dropdown.item.prev"] = "<S-Tab>",
+		["dropdown.item.next"] = "<C-j>",
+		["dropdown.item.prev"] = "<C-k>",
 		["dropdown.item.confirm"] = "<CR>",
 		["dropdown.scroll.up"] = "<C-u>",
 		["dropdown.scroll.down"] = "<C-f>",
