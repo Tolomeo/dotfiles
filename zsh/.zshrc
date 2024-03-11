@@ -55,3 +55,7 @@ prompt pure
 # Zsh syntax highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $HOME/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [ -s "$HOME/.zshrc_local" ]; then
+	source "$HOME/.zshrc_local"
+fi
