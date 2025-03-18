@@ -47,7 +47,7 @@
       },
       "javascript,typescript,typescriptreact": {
         "format": ["prettier"],
-        "server": ["tsserver", "eslint"]
+        "server": ["ts_ls", "eslint"]
       },
       "css,scss": {
         "format": ["prettier"],
