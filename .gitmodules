@@ -16,3 +16,6 @@
 [submodule "haxe/tree-sitter-haxe"]
 	path = haxe/tree-sitter-haxe
 	url = https://github.com/vantreeseba/tree-sitter-haxe.git
+[submodule "kitty/kitty-themes"]
+	path = kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
