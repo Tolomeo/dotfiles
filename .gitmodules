@@ -19,3 +19,6 @@
 [submodule "kitty/kitty-themes"]
 	path = kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes.git
+[submodule "kitty/kitty-icon"]
+	path = kitty/kitty-icon
+	url = https://github.com/k0nserv/kitty-icon.git
