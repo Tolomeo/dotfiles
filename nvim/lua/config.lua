@@ -65,7 +65,7 @@ function Config:setup_packages()
 				goto continue
 			end
 
-			local lsp = require("mason-lspconfig.mappings.server").lspconfig_to_package[formatter_name]
+			local lsp = require('mason-lspconfig.mappings').get_mason_map().lspconfig_to_package[formatter_name]
 
 			if lsp then
 				goto continue
