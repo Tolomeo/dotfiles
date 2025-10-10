@@ -195,7 +195,8 @@ function Language:setup_servers()
 	require("neodev").setup()
 
 	for language_server_name, language_server_setup in pairs(language_server_setups) do
-		vim.lsp.config(language_server_name, language_server_setup)
+		require('lspconfig')[language_server_name].setup(language_server_setup)
+		-- vim.lsp.config(language_server_name, language_server_setup)
 	end
 
 	-- Diagnostic signs
