@@ -37,10 +37,10 @@
         "filetype": {
           "haxe": ["*.hx"]
         },
-        "format": ["haxe_language_server"],
+        "format": ["haxe-language-server"],
         "server": [
           {
-            "name": "haxe_language_server",
+            "name": "haxe-language-server",
             "install": false
           }
         ]
