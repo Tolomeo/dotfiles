@@ -56,6 +56,7 @@ function Syntax:setup()
 		sync_install = true,
 		highlight = {
 			enable = true, -- false will disable the whole extension
+			additional_vim_regex_highlighting = true
 		},
 		incremental_selection = {
 			enable = true,

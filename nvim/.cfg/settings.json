@@ -26,21 +26,13 @@
         "server": ["lua_ls"]
       },
       "haxe": {
-        "parser": {
-          "haxe": {
-            "url": "~/.dotfiles/haxe/tree-sitter-haxe",
-            "files": ["src/parser.c"],
-            "queries": ["queries/*"],
-            "branch": "main"
-          }
-        },
         "filetype": {
           "haxe": ["*.hx"]
         },
-        "format": ["haxe-language-server"],
+        "format": ["haxe_language_server"],
         "server": [
           {
-            "name": "haxe-language-server",
+            "name": "haxe_language_server",
             "install": false
           }
         ]
