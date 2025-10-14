@@ -12,7 +12,17 @@ local Language = Module:extend({
 	plugins = {
 		{ "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 		-- Nvim config development
-		{ "folke/neodev.nvim" },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 		-- Lsp
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason-lspconfig.nvim" },
@@ -192,11 +202,11 @@ function Language:setup_servers()
 
 	require("mason-lspconfig").setup(language_servers_install_setup)
 
-	require("neodev").setup()
+	require("lazydev").setup()
 
 	for language_server_name, language_server_setup in pairs(language_server_setups) do
-			vim.lsp.config(language_server_name, language_server_setup)
-			vim.lsp.enable(language_server_name)
+		vim.lsp.config(language_server_name, language_server_setup)
+		vim.lsp.enable(language_server_name)
 	end
 
 	-- Diagnostic signs
