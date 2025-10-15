@@ -72,6 +72,10 @@
       "dockerfile": {
         "server": ["dockerls"]
       },
+      "go": {
+        "format": ["gopls"],
+        "server": ["gopls"]
+      },
       "yaml": {
         "format": ["prettier"],
         "server": [
