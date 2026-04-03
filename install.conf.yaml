@@ -21,10 +21,39 @@
     ~/.config/kitty: kitty
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [sh scripts/deps_install.sh, Installing system dependencies]
-    - [sh scripts/homebrew_install.sh, Installing Homebrew]
-    - [sh scripts/node_install.sh, Installing Node env]
-    - [sh scripts/haxe_install.sh, Installing Haxe env]
-    - [sh scripts/zsh_install.sh, Installing Zsh]
-    - [sh scripts/fonts_install.sh, Installing patched fonts]
+    - description: Installing submodules
+      command: git submodule update --init --recursive
+
+- ifmacos:
+  - shell:
+        - description: Installing Xcode command line tools
+          command: setup/macos.sh
+          stdin: true
+          stdout: true
+          stderr: true
+- ifubuntu:
+    - shell:
+        - description: Installing apt dependencies
+          command: setup/ubuntu.sh
+          stdin: true
+          stdout: true
+          stderr: true
+- iffedora:
+    - shell:
+        - description: Installing dnf dependencies
+          command: setup/fedora.sh
+          stdin: true
+          stdout: true
+          stderr: true
+
+- shell:
+    - description: Setting up homebrew
+      command: setup/homebrew.sh
+    - description: Setting up zsh
+      command: setup/zsh.sh
+    - description: Setting up Node
+      command: setup/node.sh
+    - description: Setting up Haxe
+      command: setup/haxe.sh
+    - description: Downloading fonts
+      command: setup/fonts.sh
