@@ -13,7 +13,6 @@
 
 - link:
     ~/.dotfiles: ""
-    ~/Brewfile: resources/homebrew/Brewfile
     ~/.zshrc: resources/zsh/.zshrc
     ~/.zshenv: resources/zsh/.zshenv
     ~/.config/nvim: resources/nvim

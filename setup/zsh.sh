@@ -1,4 +1,4 @@
-. ~/.dotfiles/homebrew/env.sh
+. ~/.dotfiles/env/homebrew.sh
 
 zsh_path="$(brew --prefix)/bin/zsh"
 
