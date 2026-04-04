@@ -44,17 +44,17 @@ source $NVM_BIN/../lib/node_modules/npm/lib/utils/completion.sh
 
 # Fish-like autosuggestions for zsh
 # https://github.com/zsh-users/zsh-autosuggestions
-source $HOME/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.dotfiles/resources/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Pure prompt
 # https://github.com/sindresorhus/pure
-fpath+=($HOME/.dotfiles/zsh/pure)
+fpath+=($HOME/.dotfiles/resources/zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
 # Zsh syntax highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting
-source $HOME/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.dotfiles/resources/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -s "$HOME/.zshrc_local" ]; then
 	source "$HOME/.zshrc_local"

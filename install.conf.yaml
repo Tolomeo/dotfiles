@@ -13,12 +13,12 @@
 
 - link:
     ~/.dotfiles: ""
-    ~/Brewfile: homebrew/Brewfile
-    ~/.zshrc: zsh/.zshrc
-    ~/.zshenv: zsh/.zshenv
-    ~/.config/nvim: nvim
-    ~/.config/lf: lf
-    ~/.config/kitty: kitty
+    ~/Brewfile: resources/homebrew/Brewfile
+    ~/.zshrc: resources/zsh/.zshrc
+    ~/.zshenv: resources/zsh/.zshenv
+    ~/.config/nvim: resources/nvim
+    ~/.config/lf: resources/lf
+    ~/.config/kitty: resources/kitty
 
 - shell:
     - description: Installing submodules
