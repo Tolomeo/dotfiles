@@ -16,10 +16,10 @@ local Syntax = Module:extend({
 			dependencies = { "nvim-treesitter/nvim-treesitter" },
 		},
 		-- Setting commentstrings based on treesitter
-		{
+		--[[ {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			dependencies = { "nvim-treesitter/nvim-treesitter" },
-		},
+		}, ]]
 		-- Auto closing tags
 		{
 			"windwp/nvim-ts-autotag",
@@ -117,7 +117,7 @@ function Syntax:setup()
 	require("nvim-ts-autotag").setup()
 
 	-- commentstrings
-	require("ts_context_commentstring").setup({})
+	--	require("ts_context_commentstring").setup({})
 
 	require("neogen").setup({})
 
