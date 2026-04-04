@@ -27,21 +27,21 @@
 - ifmacos:
   - shell:
         - description: Installing Xcode command line tools
-          command: setup/macos.sh
+          command: setup/xcode-select.sh
           stdin: true
           stdout: true
           stderr: true
 - ifubuntu:
     - shell:
         - description: Installing apt dependencies
-          command: setup/ubuntu.sh
+          command: setup/apt.sh
           stdin: true
           stdout: true
           stderr: true
 - iffedora:
     - shell:
         - description: Installing dnf dependencies
-          command: setup/fedora.sh
+          command: setup/dnf.sh
           stdin: true
           stdout: true
           stderr: true

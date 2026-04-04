@@ -1,4 +1,3 @@
-
 echo "Updating dnf"
 sudo dnf update -y
 
