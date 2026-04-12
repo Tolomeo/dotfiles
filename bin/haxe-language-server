@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node ~/.dotfiles/haxe/haxe-language-server/bin/server.js "$@"
+node ~/.dotfiles/resources/haxe/haxe-language-server/bin/server.js "$@"

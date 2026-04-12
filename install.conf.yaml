@@ -13,18 +13,46 @@
 
 - link:
     ~/.dotfiles: ""
-    ~/Brewfile: homebrew/Brewfile
-    ~/.zshrc: zsh/.zshrc
-    ~/.zshenv: zsh/.zshenv
-    ~/.config/nvim: nvim
-    ~/.config/lf: lf
-    ~/.config/kitty: kitty
+    ~/.zshrc: resources/zsh/.zshrc
+    ~/.zshenv: resources/zsh/.zshenv
+    ~/.config/nvim: resources/nvim
+    ~/.config/lf: resources/lf
+    ~/.config/kitty: resources/kitty
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [sh scripts/deps_install.sh, Installing system dependencies]
-    - [sh scripts/homebrew_install.sh, Installing Homebrew]
-    - [sh scripts/node_install.sh, Installing Node env]
-    - [sh scripts/haxe_install.sh, Installing Haxe env]
-    - [sh scripts/zsh_install.sh, Installing Zsh]
-    - [sh scripts/fonts_install.sh, Installing patched fonts]
+    - description: Installing submodules
+      command: git submodule update --init --recursive
+
+- ifmacos:
+  - shell:
+        - description: Installing Xcode command line tools
+          command: setup/xcode-select.sh
+          stdin: true
+          stdout: true
+          stderr: true
+- ifubuntu:
+    - shell:
+        - description: Installing apt dependencies
+          command: setup/apt.sh
+          stdin: true
+          stdout: true
+          stderr: true
+- iffedora:
+    - shell:
+        - description: Installing dnf dependencies
+          command: setup/dnf.sh
+          stdin: true
+          stdout: true
+          stderr: true
+
+- shell:
+    - description: Setting up homebrew
+      command: setup/homebrew.sh
+    - description: Setting up zsh
+      command: setup/zsh.sh
+    - description: Setting up Node
+      command: setup/node.sh
+    - description: Setting up Haxe
+      command: setup/haxe.sh
+    - description: Downloading fonts
+      command: setup/fonts.sh

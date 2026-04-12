@@ -2,23 +2,27 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 [submodule "zsh/pure"]
-	path = zsh/pure
+	path = resources/zsh/pure
 	url = https://github.com/sindresorhus/pure.git
 [submodule "zsh/zsh-syntax-highlighting"]
-	path = zsh/zsh-syntax-highlighting
+	path = resources/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh/zsh-autosuggestions"]
-	path = zsh/zsh-autosuggestions
+	path = resources/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "haxe/haxe-language-server"]
-	path = haxe/haxe-language-server
+	path = resources/haxe/haxe-language-server
 	url = https://github.com/vshaxe/haxe-language-server
 [submodule "haxe/tree-sitter-haxe"]
-	path = haxe/tree-sitter-haxe
+	path = resources/haxe/tree-sitter-haxe
 	url = https://github.com/vantreeseba/tree-sitter-haxe.git
 [submodule "kitty/kitty-themes"]
-	path = kitty/kitty-themes
+	path = resources/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes.git
 [submodule "kitty/kitty-icon"]
-	path = kitty/kitty-icon
+	path = resources/kitty/kitty-icon
 	url = https://github.com/k0nserv/kitty-icon.git
+[submodule "dotbot-ifplatform"]
+	path = dotbot-ifplatform
+	url = https://github.com/klaustopher/dotbot-ifplatform.git
+	branch = fix/plugin-paths-mutation

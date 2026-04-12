@@ -21,18 +21,18 @@ return {
 	-- otherwise will take the first hxml file found in the root dir
 	before_init = function(params, config)
 		if params.initializationOptions.displayArguments then
-			vim.notify("Using user defined HXML: " .. params.initializationOptions.displayArguments)
+			vim.notify("Using user defined HXML")
 			return
 		end
 
-		local hxml = find_hxml(config.root_dir)[1]
+		local hxmls = find_hxml(config.root_dir)
 
-		if not hxml then
+		if not hxmls then
 			vim.notify("No HXML file found")
 			return
 		end
 
-		vim.notify("Using HXML: " .. hxml)
-		params.initializationOptions.displayArguments = hxml
+		-- vim.notify("Using HXML: " .. hxml)
+		params.initializationOptions.displayArguments = hxmls
 	end,
 }

@@ -1,6 +1,6 @@
-. ~/.dotfiles/homebrew/env.sh
+. ~/.dotfiles/env/homebrew.sh
 
-haxe_ls_server_root="$HOME/.dotfiles/haxe/haxe-language-server"
+haxe_ls_server_root="$HOME/.dotfiles/resources/haxe/haxe-language-server"
 
 cd $haxe_ls_server_root
 
