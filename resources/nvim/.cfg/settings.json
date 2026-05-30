@@ -29,7 +29,7 @@
         "filetype": {
           "haxe": ["*.hx"]
         },
-        "format": ["haxe_language_server"],
+        "format": ["haxe-formatter"],
         "server": [
           {
             "name": "haxe_language_server",

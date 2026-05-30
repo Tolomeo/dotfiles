@@ -28,6 +28,21 @@ function Format.get_defaults()
 	local prettier_defaults = require("formatter.defaults.prettier")
 
 	return setmetatable({
+		haxe = {
+			["haxe-formatter"] = function()
+				return {
+					exe = "haxelib",
+					args = {
+						"run",
+						"formatter",
+						"--stdin",
+						"-s",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
 		less = {
 			prettier = util.withl(prettier_defaults, "less"),
 		},
