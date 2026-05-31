@@ -1,21 +1,22 @@
+TARGET_DIR := $(shell realpath .)
+SRC_DIR := $(shell realpath src)
+SRC_RAW_DIR := $(SRC_DIR)/raw
+
 all: install
 
-SRC_DIR := $(shell realpath src)
-CONFIG_DIR := $(shell realpath .)
+RAW_SOURCES := $(shell find $(SRC_RAW_DIR) -type f \( -name "*.lua" -o -name "*.vim" \))
+RAW_TARGETS := $(patsubst $(SRC_RAW_DIR)/%, $(TARGET_DIR)/%, $(RAW_SOURCES))
 
-RAW_SOURCES := $(shell find $(SRC_DIR) -type f \( -name "*.lua" -o -name "*.vim" \))
-RAW := $(patsubst $(SRC_DIR)/%, $(CONFIG_DIR)/%, $(RAW_SOURCES))
-
-$(CONFIG_DIR)/%.lua: $(SRC_DIR)/%.lua
+$(TARGET_DIR)/%.lua: $(SRC_RAW_DIR)/%.lua
 	@mkdir -p $(dir $@)
 	cp $< $@
 
-$(CONFIG_DIR)/%.vim: $(SRC_DIR)/%.vim
+$(TARGET_DIR)/%.vim: $(SRC_RAW_DIR)/%.vim
 	@mkdir -p $(dir $@)
 	cp $< $@
 
 .PHONY=copy-raw
-copy-raw: $(RAW)
+copy-raw: $(RAW_TARGETS)
 
 .PHONY=build
 build:
@@ -23,3 +24,7 @@ build:
 
 .PHONY=install
 install:
+	@echo "Installing dependencies"
+	haxelib newrepo
+	haxelib install --always build.hxml
+	@$(MAKE) sources
