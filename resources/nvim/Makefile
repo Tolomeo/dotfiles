@@ -16,3 +16,10 @@ $(CONFIG_DIR)/%.vim: $(SRC_DIR)/%.vim
 
 .PHONY=copy-raw
 copy-raw: $(RAW)
+
+.PHONY=build
+build:
+	@$(MAKE) copy-raw
+
+.PHONY=install
+install:
