@@ -2,7 +2,9 @@ TARGET_DIR := $(shell realpath .)
 SRC_DIR := $(shell realpath src)
 SRC_RAW_DIR := $(SRC_DIR)/raw
 
-all: install
+all: 
+	@$(MAKE) install
+	@$(MAKE) build
 
 RAW_SOURCES := $(shell find $(SRC_RAW_DIR) -type f \( -name "*.lua" -o -name "*.vim" \))
 RAW_TARGETS := $(patsubst $(SRC_RAW_DIR)/%, $(TARGET_DIR)/%, $(RAW_SOURCES))
@@ -19,8 +21,9 @@ $(TARGET_DIR)/%.vim: $(SRC_RAW_DIR)/%.vim
 copy-raw: $(RAW_TARGETS)
 
 .PHONY=build
-build:
+build: copy-raw
 	@$(MAKE) copy-raw
+	haxe build.hxml
 
 .PHONY=install
 install:
