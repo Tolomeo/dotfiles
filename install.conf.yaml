@@ -54,5 +54,7 @@
       command: setup/node.sh
     - description: Setting up Haxe
       command: setup/haxe.sh
+    - description: Setting up Nvim
+      command: setup/nvim.sh
     - description: Downloading fonts
       command: setup/fonts.sh
