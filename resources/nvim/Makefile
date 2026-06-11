@@ -2,7 +2,14 @@ TARGET_DIR := $(shell realpath .)
 SRC_DIR := $(shell realpath src)
 SRC_RAW_DIR := $(SRC_DIR)/raw
 
-all: 
+define HAXE
+	docker run --rm \
+		--volume "$(shell pwd)":/src \
+		--workdir /src \
+		haxe:4.2-alpine sh -c "$(strip $(1))"
+endef
+
+all:
 	@$(MAKE) install
 	@$(MAKE) build
 
@@ -23,11 +30,10 @@ copy-raw: $(RAW_TARGETS)
 .PHONY=build
 build: copy-raw
 	@$(MAKE) copy-raw
-	haxe build.hxml
+	@$(call HAXE, haxe build.hxml)
 
 .PHONY=install
 install:
 	@echo "Installing dependencies"
-	haxelib newrepo
-	haxelib install --always build.hxml
-	@$(MAKE) sources
+	@$(call HAXE, haxelib newrepo || true && haxelib install --always build.hxml)
+	@$(MAKE) copy-raw
