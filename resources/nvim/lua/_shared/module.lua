@@ -1,25 +1,35 @@
 local Object = require("_shared.object")
 local logger = require("_shared.logger")
 
+---@alias ModuleSpec string | { [1]: string, [2]: string }
+
 ---@class Modules
 local Modules = {}
 
-function Modules:require(module_name)
-	local loaded = self[module_name]
+function Modules:require(module_path, module_name)
+	local module_id = module_name and string.format("%s['%s']", module_path, module_name) or module_path
 
-	if loaded then
-		return require(module_name)
+	if self[module_id] then
+		return self[module_id]
 	end
 
 	return nil
 end
 
----@param module_name string
-function Modules:load(module_name)
-	local loaded, load_result = pcall(require, module_name)
-	self[module_name] = loaded
+---@param module_path string
+---@param module_name string | nil
+function Modules:load(module_path, module_name)
+	local module_id = module_name and string.format("%s['%s']", module_path, module_name) or module_path
 
-	return loaded, load_result
+	local ok, module = pcall(require, module_path)
+
+	if not ok then
+		return false, nil
+	end
+
+	self[module_id] = module_name and module[module_name].new() or module
+
+	return true, self[module_id]
 end
 
 ---Represents a configuration module
@@ -31,34 +41,46 @@ local Module = Object:extend({
 
 ---@diagnostic disable-next-line
 function Module:constructor()
-	for _, child_module_name in ipairs(self.modules) do
-		local loaded, load_result = Modules:load(child_module_name)
+	for _, child_module in ipairs(self.modules) do
+		local success, loaded = Modules:load(self.to_spec(child_module))
 
-		if not loaded then
+		if not success then
 			logger.error(
 				string.format(
 					"Failed to load configuration module '%s' with the error: %s",
-					child_module_name,
-					load_result
+					child_module,
+					loaded
 				)
 			)
 		end
 	end
 end
 
+---@param spec string | Array<string>
+---@return string
+---@return string | nil
+function Module.to_spec(spec)
+	if type(spec) == "string" then
+		return spec, nil
+	end
+
+	if type(spec) == "table" then
+		return spec[1], spec[2]
+	end
+
+	error(string.format("Invalid module spec %s", vim.inspect(spec)))
+end
+
 --- Initializes the module
 function Module:init()
 	self:setup()
 
-	for _, child_module_name in ipairs(self.modules) do
-		local child_module = Modules:require(child_module_name)
+	for _, child in ipairs(self.modules) do
+		local child_module = Modules:require(self.to_spec(child))
 
 		if not child_module then
 			logger.error(
-				string.format(
-					"Cannot initialize module '%s' with the error: the module was not loaded",
-					child_module_name
-				)
+				string.format("Cannot initialize module '%s' with the error: the module was not loaded", child)
 			)
 			goto continue
 		end
@@ -70,9 +92,9 @@ function Module:init()
 	end
 end
 
-function Module:require(module_name)
+--[[ function Module:require(module_name)
 	return Modules:require(module_name)
-end
+end ]]
 
 --- Returns a list of all the plugins used by the module and by its children
 ---@return table
@@ -80,12 +102,12 @@ function Module:list_plugins()
 	local plugins = vim.deepcopy(self.plugins)
 	local child_modules = self.modules
 
-	for _, child_module_name in ipairs(child_modules) do
-		local child_module = Modules:require(child_module_name)
+	for _, child in ipairs(child_modules) do
+		local child_module = Modules:require(self.to_spec(child))
 
 		if not child_module then
 			logger.error(
-				string.format("Failed to list plugins for '%s' module: the module was not found", child_module_name)
+				string.format("Failed to list plugins for '%s' module: the module was not found", child)
 			)
 			goto continue
 		end

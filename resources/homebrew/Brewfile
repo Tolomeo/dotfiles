@@ -18,7 +18,7 @@ brew "yarn"
 # Docker
 brew "docker"
 cask "docker-desktop"
-# brew "haxe"
+brew "haxe"
 cask "kitty"
 cask "bfxr"
 cask "iterm2"

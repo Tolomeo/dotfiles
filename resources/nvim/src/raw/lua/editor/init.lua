@@ -8,6 +8,7 @@ local Editor = Module:extend({
 		"editor.syntax",
 		"editor.language",
 		"editor.format",
+		-- { "editor.macro", "Macro" },
 	},
 	plugins = {
 		{ "romainl/vim-cool" },

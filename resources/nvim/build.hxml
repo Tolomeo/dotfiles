@@ -15,6 +15,6 @@
 
 --each
 
---main Macro
 --lua lua/editor/macro.lua
+Macro
 

@@ -9,7 +9,7 @@ local settings = require("settings")
 local Syntax = Module:extend({
 	plugins = {
 		-- Highlight, edit, and code navigation parsing library
-		{ "nvim-treesitter/nvim-treesitter" },
+		{ "nvim-treesitter/nvim-treesitter", branch = "master" },
 		-- Syntax aware text-objects based on treesitter
 		{
 			"nvim-treesitter/nvim-treesitter-textobjects",

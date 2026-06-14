@@ -196,11 +196,11 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 local Array = _hx_e()
+local Module = _hx_e()
 local Macro = _hx_e()
 local Math = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-__haxe_Log = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 
@@ -518,11 +518,39 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
-Macro.new = {}
-_hx_exports["macro"] = Macro
-Macro.main = function() 
-  __haxe_Log.trace("test", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Macro.hx",lineNumber=5,className="Macro",methodName="main"}));
+Module.new = function(modules,plugins) 
+  local self = _hx_new(Module.prototype)
+  Module.super(self,modules,plugins)
+  return self
 end
+Module.super = function(self,modules,plugins) 
+  self.modules = modules;
+  self.plugins = plugins;
+end
+Module.prototype = _hx_e();
+Module.prototype.init = function(self) 
+  self:setup();
+end
+Module.prototype.setup = function(self) 
+end
+Module.prototype.list_plugins = function(self) 
+  do return self.plugins end
+end
+
+Macro.new = function() 
+  local self = _hx_new(Macro.prototype)
+  Macro.super(self)
+  return self
+end
+Macro.super = function(self) 
+  Module.super(self,_hx_tab_array({}, 0),_hx_tab_array({}, 0));
+end
+_hx_exports["Macro"] = Macro
+Macro.prototype = _hx_e();
+Macro.prototype.setup = function(self) 
+end
+Macro.__super__ = Module
+setmetatable(Macro.prototype,{__index=Module.prototype})
 
 Math.new = {}
 Math.isNaN = function(f) 
@@ -732,29 +760,6 @@ Std.int = function(x)
   end;
 end
 
-__haxe_Log.new = {}
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
-  end;
-  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v))));
-    end;
-  end;
-  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
-end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
-end
-
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -819,8 +824,5 @@ local _hx_static_init = function()
   
 end
 
-_hx_print = print or (function() end)
-
 _hx_static_init();
-_G.xpcall(Macro.main, _hx_error)
 return _hx_exports
