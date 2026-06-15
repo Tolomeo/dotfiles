@@ -1,0 +1,30 @@
+package nvim.module.vim;
+
+extern class Glob {
+	/**
+		```lua
+		function M.to_lpeg(pattern: string)
+		  -> pattern: vim.lpeg.Pattern
+		```
+		
+		---
+		
+		 Parses a raw glob into an |lua-lpeg| pattern.
+		
+		 This uses glob semantics from LSP 3.17.0: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#pattern
+		
+		 Glob patterns can have the following syntax:
+		 - `*` to match one or more characters in a path segment
+		 - `?` to match on one character in a path segment
+		 - `**` to match any number of path segments, including none
+		 - `{}` to group conditions (e.g. `*.{ts,js}` matches TypeScript and JavaScript files)
+		 - `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
+		 - `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
+		
+		@*param* `pattern` — The raw glob pattern
+		
+		@*return* `pattern` — An |lua-lpeg| representation of the pattern
+	**/
+	@:luaDotMethod
+	function to_lpeg(pattern:String):nvim.type.vim.lpeg.Pattern;
+}

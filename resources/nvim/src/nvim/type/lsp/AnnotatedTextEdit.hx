@@ -1,0 +1,67 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.AnnotatedTextEdit
+	```
+	
+	---
+	
+	A special text edit with an additional change annotation.
+	
+**/
+@:structInit extern class AnnotatedTextEdit {
+	/**
+		```lua
+		(field) lsp.AnnotatedTextEdit.annotationId: string
+		```
+		
+		---
+		
+		An identifier to refer to a change annotation stored with a workspace edit.
+		
+		---
+		
+		
+		The actual identifier of the change annotation
+	**/
+	var annotationId : nvim.type.lsp.ChangeAnnotationIdentifier;
+	/**
+		```lua
+		(field) lsp.AnnotatedTextEdit.newText: string
+		```
+		
+		---
+		
+		
+		The string to be inserted. For delete operations use an
+		empty string.
+	**/
+	var newText : String;
+	/**
+		```lua
+		(field) lsp.AnnotatedTextEdit.range: lsp.Range
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		The range of the text document to be manipulated. To insert
+		text into a document create a range where start === end.
+	**/
+	var range : nvim.type.lsp.Range;
+}

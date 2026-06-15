@@ -1,0 +1,106 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.LocationLink
+	```
+	
+	---
+	
+	Represents the connection of two locations. Provides additional metadata over normal {@link Location locations},
+	including an origin range.
+**/
+@:structInit extern class LocationLink {
+	/**
+		```lua
+		(field) lsp.LocationLink.originSelectionRange: (lsp.Range)?
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		Span of the origin of this link.
+		
+		Used as the underlined span for mouse interaction. Defaults to the word range at
+		the definition position.
+	**/
+	var originSelectionRange : Null<nvim.type.lsp.Range>;
+	/**
+		```lua
+		(field) lsp.LocationLink.targetRange: lsp.Range
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		The full target range of this link. If the target for example is a symbol then target range is the
+		range enclosing this symbol not including leading/trailing whitespace but everything else
+		like comments. This information is typically used to highlight the range in the editor.
+	**/
+	var targetRange : nvim.type.lsp.Range;
+	/**
+		```lua
+		(field) lsp.LocationLink.targetSelectionRange: lsp.Range
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		The range that should be selected and revealed when this link is being followed, e.g the name of a function.
+		Must be contained by the `targetRange`. See also `DocumentSymbol#range`
+	**/
+	var targetSelectionRange : nvim.type.lsp.Range;
+	/**
+		```lua
+		(field) lsp.LocationLink.targetUri: string
+		```
+		
+		---
+		
+		
+		The target resource identifier of this link.
+	**/
+	var targetUri : nvim.type.lsp.DocumentUri;
+}

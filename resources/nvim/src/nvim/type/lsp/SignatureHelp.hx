@@ -1,0 +1,71 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.SignatureHelp
+	```
+	
+	---
+	
+	Signature help represents the signature of something
+	callable. There can be multiple signature but only one
+	active and only one active parameter.
+**/
+@:structInit extern class SignatureHelp {
+	/**
+		```lua
+		(field) lsp.SignatureHelp.activeParameter: (integer|nil)?
+		```
+		
+		---
+		
+		
+		The active parameter of the active signature.
+		
+		If `null`, no parameter of the signature is active (for example a named
+		argument that does not match any declared parameters). This is only valid
+		if the client specifies the client capability
+		`textDocument.signatureHelp.noActiveParameterSupport === true`
+		
+		If omitted or the value lies outside the range of
+		`signatures[activeSignature].parameters` defaults to 0 if the active
+		signature has parameters.
+		
+		If the active signature has no parameters it is ignored.
+		
+		In future version of the protocol this property might become
+		mandatory (but still nullable) to better express the active parameter if
+		the active signature does have any.
+	**/
+	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+	/**
+		```lua
+		(field) lsp.SignatureHelp.activeSignature: integer?
+		```
+		
+		---
+		
+		
+		The active signature. If omitted or the value lies outside the
+		range of `signatures` the value defaults to zero or is ignored if
+		the `SignatureHelp` has no signatures.
+		
+		Whenever possible implementors should make an active decision about
+		the active signature and shouldn't rely on a default value.
+		
+		In future version of the protocol this property might become
+		mandatory to better express this.
+	**/
+	var activeSignature : Null<nvim.type.Uinteger>;
+	/**
+		```lua
+		(field) lsp.SignatureHelp.signatures: lsp.SignatureInformation[]
+		```
+		
+		---
+		
+		
+		One or more signatures.
+	**/
+	var signatures : Array<nvim.type.lsp.SignatureInformation>;
+}

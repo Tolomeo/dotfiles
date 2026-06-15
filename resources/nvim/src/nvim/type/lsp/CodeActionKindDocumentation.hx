@@ -1,0 +1,71 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.CodeActionKindDocumentation
+	```
+	
+	---
+	
+	Documentation for a class of code actions.
+	
+**/
+@:structInit extern class CodeActionKindDocumentation {
+	/**
+		```lua
+		(field) lsp.CodeActionKindDocumentation.command: lsp.Command
+		```
+		
+		---
+		
+		Represents a reference to a command. Provides a title which
+		will be used to represent a command in the UI and, optionally,
+		an array of arguments which will be passed to the command handler
+		function when invoked.
+		
+		---
+		
+		
+		Command that is ued to display the documentation to the user.
+		
+		The title of this documentation code action is taken from {@linkcode Command.title}
+	**/
+	var command : nvim.type.lsp.Command;
+	/**
+		```lua
+		(field) lsp.CodeActionKindDocumentation.kind: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"
+		```
+		
+		---
+		
+		A set of predefined code action kinds
+		
+		---
+		
+		
+		The kind of the code action being documented.
+		
+		If the kind is generic, such as `CodeActionKind.Refactor`, the documentation will be shown whenever any
+		refactorings are returned. If the kind if more specific, such as `CodeActionKind.RefactorExtract`, the
+		documentation will only be shown when extract refactoring code actions are returned.
+		
+		---
+		
+		```lua
+		-- A set of predefined code action kinds
+		lsp.CodeActionKind:
+		    | "" -- Empty
+		    | "quickfix" -- QuickFix
+		    | "refactor" -- Refactor
+		    | "refactor.extract" -- RefactorExtract
+		    | "refactor.inline" -- RefactorInline
+		    | "refactor.move" -- RefactorMove
+		    | "refactor.rewrite" -- RefactorRewrite
+		    | "source" -- Source
+		    | "source.organizeImports" -- SourceOrganizeImports
+		    | "source.fixAll" -- SourceFixAll
+		    | "notebook" -- Notebook
+		```
+	**/
+	var kind : nvim.type.lsp.CodeActionKind;
+}

@@ -24,11 +24,14 @@ class Module {
 
 }
 
-@:expose()
+@:keep
+@:expose
 class Macro extends Module {
 	public function new(){
 		super([], []);
 	}
 
-	override public function setup() {}
+	override public function setup() {
+		Vim.print({});
+	}
 }

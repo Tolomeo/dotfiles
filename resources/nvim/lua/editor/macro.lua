@@ -548,6 +548,7 @@ end
 _hx_exports["Macro"] = Macro
 Macro.prototype = _hx_e();
 Macro.prototype.setup = function(self) 
+  vim.print(_hx_e());
 end
 Macro.__super__ = Module
 setmetatable(Macro.prototype,{__index=Module.prototype})

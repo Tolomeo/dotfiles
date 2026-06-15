@@ -1,0 +1,108 @@
+package nvim.type.vim.api.keyset;
+
+/**
+	```lua
+	(class) vim.api.keyset.set_decoration_provider
+	```
+**/
+@:structInit extern class SetDecorationProvider {
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider._on_conceal_line: fun(_: "conceal_line")?
+		```
+		
+		---
+		
+		```lua
+		function (_: "conceal_line")
+		```
+	**/
+	var _on_conceal_line : Null<(_:String) -> Dynamic>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider._on_hl_def: fun(_: "hl_def")?
+		```
+		
+		---
+		
+		```lua
+		function (_: "hl_def")
+		```
+	**/
+	var _on_hl_def : Null<(_:String) -> Dynamic>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider._on_spell_nav: fun(_: "spell_nav")?
+		```
+		
+		---
+		
+		```lua
+		function (_: "spell_nav")
+		```
+	**/
+	var _on_spell_nav : Null<(_:String) -> Dynamic>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider.on_buf: fun(_: "buf", bufnr: integer, tick: integer)?
+		```
+		
+		---
+		
+		```lua
+		function (_: "buf", bufnr: integer, tick: integer)
+		```
+	**/
+	var on_buf : Null<(_:String, bufnr:Int, tick:Int) -> Dynamic>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider.on_end: fun(_: "end", tick: integer)?
+		```
+		
+		---
+		
+		```lua
+		function (_: "end", tick: integer)
+		```
+	**/
+	var on_end : Null<(_:String, tick:Int) -> Dynamic>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider.on_line: fun(_: "line", winid: integer, bufnr: integer, row: integer):boolean??
+		```
+		
+		---
+		
+		```lua
+		function (_: "line", winid: integer, bufnr: integer, row: integer)
+		  -> boolean?
+		```
+	**/
+	var on_line : Null<(_:String, winid:Int, bufnr:Int, row:Int) -> Null<Bool>>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider.on_start: fun(_: "start", tick: integer):boolean??
+		```
+		
+		---
+		
+		```lua
+		function (_: "start", tick: integer)
+		  -> boolean?
+		```
+	**/
+	var on_start : Null<(_:String, tick:Int) -> Null<Bool>>;
+	/**
+		```lua
+		(field) vim.api.keyset.set_decoration_provider.on_win: fun(_: "win", winid: integer, bufnr: integer, toprow: integer, botrow: integer):boolean??
+		```
+		
+		---
+		
+		```lua
+		function (_: "win", winid: integer, bufnr: integer, toprow: integer, botrow: integer)
+		  -> boolean?
+		```
+	**/
+	var on_win : Null<(_:String, winid:Int, bufnr:Int, toprow:Int, botrow:Int) -> Null<Bool>>;
+}

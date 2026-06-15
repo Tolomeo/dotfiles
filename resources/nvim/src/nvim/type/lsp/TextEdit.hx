@@ -1,0 +1,51 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.TextEdit
+	```
+	
+	---
+	
+	A text edit applicable to a text document.
+**/
+@:structInit extern class TextEdit {
+	/**
+		```lua
+		(field) lsp.TextEdit.newText: string
+		```
+		
+		---
+		
+		
+		The string to be inserted. For delete operations use an
+		empty string.
+	**/
+	var newText : String;
+	/**
+		```lua
+		(field) lsp.TextEdit.range: lsp.Range
+		```
+		
+		---
+		
+		A range in a text document expressed as (zero-based) start and end positions.
+		
+		If you want to specify a range that contains a line including the line ending
+		character(s) then use an end position denoting the start of the next line.
+		For example:
+		```ts
+		{
+		    start: { line: 5, character: 23 }
+		    end : { line 6, character : 0 }
+		}
+		```
+		
+		---
+		
+		
+		The range of the text document to be manipulated. To insert
+		text into a document create a range where start === end.
+	**/
+	var range : nvim.type.lsp.Range;
+}

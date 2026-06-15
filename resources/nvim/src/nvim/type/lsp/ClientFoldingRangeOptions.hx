@@ -1,0 +1,22 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.ClientFoldingRangeOptions
+	```
+**/
+@:structInit extern class ClientFoldingRangeOptions {
+	/**
+		```lua
+		(field) lsp.ClientFoldingRangeOptions.collapsedText: boolean?
+		```
+		
+		---
+		
+		
+		If set, the client signals that it supports setting collapsedText on
+		folding ranges to display custom labels instead of the default text.
+		
+	**/
+	var collapsedText : Null<Bool>;
+}

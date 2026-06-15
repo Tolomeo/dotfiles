@@ -1,0 +1,4601 @@
+package nvim.type.vim;
+
+/**
+	```lua
+	(class) vim.bo
+	```
+**/
+@:structInit extern class Bo {
+	/**
+		```lua
+		(field) vim.bo.ai: boolean
+		```
+		
+		---
+		
+		 Copy indent from current line when starting a new line (typing <CR>
+		 in Insert mode or when using the "o" or "O" command).  If you do not
+		 type anything on the new line except <BS> or CTRL-D and then type
+		 <Esc>, CTRL-O or <CR>, the indent is deleted again.  Moving the cursor
+		 to another line has the same effect, unless the 'I' flag is included
+		 in 'cpoptions'.
+		 When autoindent is on, formatting (with the "gq" command or when you
+		 reach 'textwidth' in Insert mode) uses the indentation of the first
+		 line.
+		 When 'smartindent' or 'cindent' is on the indent is changed in
+		 a different way.
+		
+	**/
+	var ai : Bool;
+	/**
+		```lua
+		(field) vim.bo.ar: boolean
+		```
+		
+		---
+		
+		 When a file has been detected to have been changed outside of Vim and
+		 it has not been changed inside of Vim, automatically read it again.
+		 When the file has been deleted this is not done, so you have the text
+		 from before it was deleted.  When it appears again then it is read.
+		 `timestamp`
+		 If this option has a local value, use this command to switch back to
+		 using the global value:
+		
+		 ```vim
+		 	set autoread<
+		 ```
+		
+		
+	**/
+	var ar : Bool;
+	/**
+		```lua
+		(field) vim.bo.autoindent: boolean
+		```
+		
+		---
+		
+		 Copy indent from current line when starting a new line (typing <CR>
+		 in Insert mode or when using the "o" or "O" command).  If you do not
+		 type anything on the new line except <BS> or CTRL-D and then type
+		 <Esc>, CTRL-O or <CR>, the indent is deleted again.  Moving the cursor
+		 to another line has the same effect, unless the 'I' flag is included
+		 in 'cpoptions'.
+		 When autoindent is on, formatting (with the "gq" command or when you
+		 reach 'textwidth' in Insert mode) uses the indentation of the first
+		 line.
+		 When 'smartindent' or 'cindent' is on the indent is changed in
+		 a different way.
+		
+	**/
+	var autoindent : Bool;
+	/**
+		```lua
+		(field) vim.bo.autoread: boolean
+		```
+		
+		---
+		
+		 When a file has been detected to have been changed outside of Vim and
+		 it has not been changed inside of Vim, automatically read it again.
+		 When the file has been deleted this is not done, so you have the text
+		 from before it was deleted.  When it appears again then it is read.
+		 `timestamp`
+		 If this option has a local value, use this command to switch back to
+		 using the global value:
+		
+		 ```vim
+		 	set autoread<
+		 ```
+		
+		
+	**/
+	var autoread : Bool;
+	/**
+		```lua
+		(field) vim.bo.backupcopy: string
+		```
+		
+		---
+		
+		 When writing a file and a backup is made, this option tells how it's
+		 done.  This is a comma-separated list of words.
+		
+		 The main values are:
+		 "yes"	make a copy of the file and overwrite the original one
+		 "no"	rename the file and write a new one
+		 "auto"	one of the previous, what works best
+		
+		 Extra values that can be combined with the ones above are:
+		 "breaksymlink"	always break symlinks when writing
+		 "breakhardlink"	always break hardlinks when writing
+		
+		 Making a copy and overwriting the original file:
+		 - Takes extra time to copy the file.
+		 + When the file has special attributes, is a (hard/symbolic) link or
+		   has a resource fork, all this is preserved.
+		 - When the file is a link the backup will have the name of the link,
+		   not of the real file.
+		
+		 Renaming the file and writing a new one:
+		 + It's fast.
+		 - Sometimes not all attributes of the file can be copied to the new
+		   file.
+		 - When the file is a link the new file will not be a link.
+		
+		 The "auto" value is the middle way: When Vim sees that renaming the
+		 file is possible without side effects (the attributes can be passed on
+		 and the file is not a link) that is used.  When problems are expected,
+		 a copy will be made.
+		
+		 The "breaksymlink" and "breakhardlink" values can be used in
+		 combination with any of "yes", "no" and "auto".  When included, they
+		 force Vim to always break either symbolic or hard links by doing
+		 exactly what the "no" option does, renaming the original file to
+		 become the backup and writing a new file in its place.  This can be
+		 useful for example in source trees where all the files are symbolic or
+		 hard links and any changes should stay in the local source tree, not
+		 be propagated back to the original source.
+		 							*crontab*
+		 One situation where "no" and "auto" will cause problems: A program
+		 that opens a file, invokes Vim to edit that file, and then tests if
+		 the open file was changed (through the file descriptor) will check the
+		 backup file instead of the newly created file.  "crontab -e" is an
+		 example, as are several `file-watcher` daemons like inotify.  In that
+		 case you probably want to switch this option.
+		
+		 When a copy is made, the original file is truncated and then filled
+		 with the new text.  This means that protection bits, owner and
+		 symbolic links of the original file are unmodified.  The backup file,
+		 however, is a new file, owned by the user who edited the file.  The
+		 group of the backup is set to the group of the original file.  If this
+		 fails, the protection bits for the group are made the same as for
+		 others.
+		
+		 When the file is renamed, this is the other way around: The backup has
+		 the same attributes of the original file, and the newly written file
+		 is owned by the current user.  When the file was a (hard/symbolic)
+		 link, the new file will not!  That's why the "auto" value doesn't
+		 rename when the file is a link.  The owner and group of the newly
+		 written file will be set to the same ones as the original file, but
+		 the system may refuse to do this.  In that case the "auto" value will
+		 again not rename the file.
+		
+	**/
+	var backupcopy : String;
+	/**
+		```lua
+		(field) vim.bo.bh: string|''|'delete'|'hide'|'unload'|'wipe' = 'unload'
+		```
+		
+		---
+		
+		 This option specifies what happens when a buffer is no longer
+		 displayed in a window:
+		   <empty>	follow the global 'hidden' option
+		   hide		hide the buffer (don't unload it), even if 'hidden' is
+		 		not set
+		   unload	unload the buffer, even if 'hidden' is set; the
+		 		`:hide` command will also unload the buffer
+		   delete	delete the buffer from the buffer list, even if
+		 		'hidden' is set; the `:hide` command will also delete
+		 		the buffer, making it behave like `:bdelete`
+		   wipe		wipe the buffer from the buffer list, even if
+		 		'hidden' is set; the `:hide` command will also wipe
+		 		out the buffer, making it behave like `:bwipeout`
+		
+		 CAREFUL: when "unload", "delete" or "wipe" is used changes in a buffer
+		 are lost without a warning.  Also, these values may break autocommands
+		 that switch between buffers temporarily.
+		 This option is used together with 'buftype' and 'swapfile' to specify
+		 special kinds of buffers.   See `special-buffers`.
+		
+	**/
+	var bh : String;
+	/**
+		```lua
+		(field) vim.bo.bin: boolean
+		```
+		
+		---
+		
+		 This option should be set before editing a binary file.  You can also
+		 use the `-b` Vim argument.  When this option is switched on a few
+		 options will be changed (also when it already was on):
+		 	'textwidth'  will be set to 0
+		 	'wrapmargin' will be set to 0
+		 	'modeline'   will be off
+		 	'expandtab'  will be off
+		 Also, 'fileformat' and 'fileformats' options will not be used, the
+		 file is read and written like 'fileformat' was "unix" (a single <NL>
+		 separates lines).
+		 The 'fileencoding' and 'fileencodings' options will not be used, the
+		 file is read without conversion.
+		 NOTE: When you start editing a(nother) file while the 'bin' option is
+		 on, settings from autocommands may change the settings again (e.g.,
+		 'textwidth'), causing trouble when editing.  You might want to set
+		 'bin' again when the file has been loaded.
+		 The previous values of these options are remembered and restored when
+		 'bin' is switched from on to off.  Each buffer has its own set of
+		 saved option values.
+		 To edit a file with 'binary' set you can use the `++bin` argument.
+		 This avoids you have to do ":set bin", which would have effect for all
+		 files you edit.
+		 When writing a file the <EOL> for the last line is only written if
+		 there was one in the original file (normally Vim appends an <EOL> to
+		 the last line if there is none; this would make the file longer).  See
+		 the 'endofline' option.
+		
+	**/
+	var bin : Bool;
+	/**
+		```lua
+		(field) vim.bo.binary: boolean
+		```
+		
+		---
+		
+		 This option should be set before editing a binary file.  You can also
+		 use the `-b` Vim argument.  When this option is switched on a few
+		 options will be changed (also when it already was on):
+		 	'textwidth'  will be set to 0
+		 	'wrapmargin' will be set to 0
+		 	'modeline'   will be off
+		 	'expandtab'  will be off
+		 Also, 'fileformat' and 'fileformats' options will not be used, the
+		 file is read and written like 'fileformat' was "unix" (a single <NL>
+		 separates lines).
+		 The 'fileencoding' and 'fileencodings' options will not be used, the
+		 file is read without conversion.
+		 NOTE: When you start editing a(nother) file while the 'bin' option is
+		 on, settings from autocommands may change the settings again (e.g.,
+		 'textwidth'), causing trouble when editing.  You might want to set
+		 'bin' again when the file has been loaded.
+		 The previous values of these options are remembered and restored when
+		 'bin' is switched from on to off.  Each buffer has its own set of
+		 saved option values.
+		 To edit a file with 'binary' set you can use the `++bin` argument.
+		 This avoids you have to do ":set bin", which would have effect for all
+		 files you edit.
+		 When writing a file the <EOL> for the last line is only written if
+		 there was one in the original file (normally Vim appends an <EOL> to
+		 the last line if there is none; this would make the file longer).  See
+		 the 'endofline' option.
+		
+	**/
+	var binary : Bool;
+	/**
+		```lua
+		(field) vim.bo.bkc: string
+		```
+		
+		---
+		
+		 When writing a file and a backup is made, this option tells how it's
+		 done.  This is a comma-separated list of words.
+		
+		 The main values are:
+		 "yes"	make a copy of the file and overwrite the original one
+		 "no"	rename the file and write a new one
+		 "auto"	one of the previous, what works best
+		
+		 Extra values that can be combined with the ones above are:
+		 "breaksymlink"	always break symlinks when writing
+		 "breakhardlink"	always break hardlinks when writing
+		
+		 Making a copy and overwriting the original file:
+		 - Takes extra time to copy the file.
+		 + When the file has special attributes, is a (hard/symbolic) link or
+		   has a resource fork, all this is preserved.
+		 - When the file is a link the backup will have the name of the link,
+		   not of the real file.
+		
+		 Renaming the file and writing a new one:
+		 + It's fast.
+		 - Sometimes not all attributes of the file can be copied to the new
+		   file.
+		 - When the file is a link the new file will not be a link.
+		
+		 The "auto" value is the middle way: When Vim sees that renaming the
+		 file is possible without side effects (the attributes can be passed on
+		 and the file is not a link) that is used.  When problems are expected,
+		 a copy will be made.
+		
+		 The "breaksymlink" and "breakhardlink" values can be used in
+		 combination with any of "yes", "no" and "auto".  When included, they
+		 force Vim to always break either symbolic or hard links by doing
+		 exactly what the "no" option does, renaming the original file to
+		 become the backup and writing a new file in its place.  This can be
+		 useful for example in source trees where all the files are symbolic or
+		 hard links and any changes should stay in the local source tree, not
+		 be propagated back to the original source.
+		 							*crontab*
+		 One situation where "no" and "auto" will cause problems: A program
+		 that opens a file, invokes Vim to edit that file, and then tests if
+		 the open file was changed (through the file descriptor) will check the
+		 backup file instead of the newly created file.  "crontab -e" is an
+		 example, as are several `file-watcher` daemons like inotify.  In that
+		 case you probably want to switch this option.
+		
+		 When a copy is made, the original file is truncated and then filled
+		 with the new text.  This means that protection bits, owner and
+		 symbolic links of the original file are unmodified.  The backup file,
+		 however, is a new file, owned by the user who edited the file.  The
+		 group of the backup is set to the group of the original file.  If this
+		 fails, the protection bits for the group are made the same as for
+		 others.
+		
+		 When the file is renamed, this is the other way around: The backup has
+		 the same attributes of the original file, and the newly written file
+		 is owned by the current user.  When the file was a (hard/symbolic)
+		 link, the new file will not!  That's why the "auto" value doesn't
+		 rename when the file is a link.  The owner and group of the newly
+		 written file will be set to the same ones as the original file, but
+		 the system may refuse to do this.  In that case the "auto" value will
+		 again not rename the file.
+		
+	**/
+	var bkc : String;
+	/**
+		```lua
+		(field) vim.bo.bl: boolean
+		```
+		
+		---
+		
+		 When this option is set, the buffer shows up in the buffer list.  If
+		 it is reset it is not used for ":bnext", "ls", the Buffers menu, etc.
+		 This option is reset by Vim for buffers that are only used to remember
+		 a file name or marks.  Vim sets it when starting to edit a buffer.
+		 But not when moving to a buffer with ":buffer".
+		
+	**/
+	var bl : Bool;
+	/**
+		```lua
+		(field) vim.bo.bomb: boolean
+		```
+		
+		---
+		
+		 When writing a file and the following conditions are met, a BOM (Byte
+		 Order Mark) is prepended to the file:
+		 - this option is on
+		 - the 'binary' option is off
+		 - 'fileencoding' is "utf-8", "ucs-2", "ucs-4" or one of the little/big
+		   endian variants.
+		 Some applications use the BOM to recognize the encoding of the file.
+		 Often used for UCS-2 files on MS-Windows.  For other applications it
+		 causes trouble, for example: "cat file1 file2" makes the BOM of file2
+		 appear halfway through the resulting file.  Gcc doesn't accept a BOM.
+		 When Vim reads a file and 'fileencodings' starts with "ucs-bom", a
+		 check for the presence of the BOM is done and 'bomb' set accordingly.
+		 Unless 'binary' is set, it is removed from the first line, so that you
+		 don't see it when editing.  When you don't change the options, the BOM
+		 will be restored when writing the file.
+		
+	**/
+	var bomb : Bool;
+	/**
+		```lua
+		(field) vim.bo.bt: string|''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal' = 'nofile'
+		```
+		
+		---
+		
+		 The value of this option specifies the type of a buffer:
+		   <empty>	normal buffer
+		   acwrite	buffer will always be written with `BufWriteCmd`s
+		   help		help buffer (do not set this manually)
+		   nofile	buffer is not related to a file, will not be written
+		   nowrite	buffer will not be written
+		   quickfix	list of errors `:cwindow` or locations `:lwindow`
+		   terminal	`terminal-emulator` buffer
+		   prompt	buffer where only the last line can be edited, meant
+		 		to be used by a plugin, see `prompt-buffer`
+		
+		 This option is used together with 'bufhidden' and 'swapfile' to
+		 specify special kinds of buffers.   See `special-buffers`.
+		 Also see `win_gettype()`, which returns the type of the window.
+		
+		 Be careful with changing this option, it can have many side effects!
+		 One such effect is that Vim will not check the timestamp of the file,
+		 if the file is changed by another program this will not be noticed.
+		
+		 A "quickfix" buffer is only used for the error list and the location
+		 list.  This value is set by the `:cwindow` and `:lwindow` commands and
+		 you are not supposed to change it.
+		
+		 "nofile" and "nowrite" buffers are similar:
+		 both:		The buffer is not to be written to disk, ":w" doesn't
+		 		work (":w filename" does work though).
+		 both:		The buffer is never considered to be `'modified'`.
+		 		There is no warning when the changes will be lost, for
+		 		example when you quit Vim.
+		 both:		A swap file is only created when using too much memory
+		 		(when 'swapfile' has been reset there is never a swap
+		 		file).
+		 nofile only:	The buffer name is fixed, it is not handled like a
+		 		file name.  It is not modified in response to a `:cd`
+		 		command.
+		 both:		When using ":e bufname" and already editing "bufname"
+		 		the buffer is made empty and autocommands are
+		 		triggered as usual for `:edit`.
+		 						*E676*
+		 "acwrite" implies that the buffer name is not related to a file, like
+		 "nofile", but it will be written.  Thus, in contrast to "nofile" and
+		 "nowrite", ":w" does work and a modified buffer can't be abandoned
+		 without saving.  For writing there must be matching `BufWriteCmd`,
+		 `FileWriteCmd` or `FileAppendCmd` autocommands.
+		
+	**/
+	var bt : String;
+	/**
+		```lua
+		(field) vim.bo.bufhidden: string|''|'delete'|'hide'|'unload'|'wipe' = 'unload'
+		```
+		
+		---
+		
+		 This option specifies what happens when a buffer is no longer
+		 displayed in a window:
+		   <empty>	follow the global 'hidden' option
+		   hide		hide the buffer (don't unload it), even if 'hidden' is
+		 		not set
+		   unload	unload the buffer, even if 'hidden' is set; the
+		 		`:hide` command will also unload the buffer
+		   delete	delete the buffer from the buffer list, even if
+		 		'hidden' is set; the `:hide` command will also delete
+		 		the buffer, making it behave like `:bdelete`
+		   wipe		wipe the buffer from the buffer list, even if
+		 		'hidden' is set; the `:hide` command will also wipe
+		 		out the buffer, making it behave like `:bwipeout`
+		
+		 CAREFUL: when "unload", "delete" or "wipe" is used changes in a buffer
+		 are lost without a warning.  Also, these values may break autocommands
+		 that switch between buffers temporarily.
+		 This option is used together with 'buftype' and 'swapfile' to specify
+		 special kinds of buffers.   See `special-buffers`.
+		
+	**/
+	var bufhidden : String;
+	/**
+		```lua
+		(field) vim.bo.buflisted: boolean
+		```
+		
+		---
+		
+		 When this option is set, the buffer shows up in the buffer list.  If
+		 it is reset it is not used for ":bnext", "ls", the Buffers menu, etc.
+		 This option is reset by Vim for buffers that are only used to remember
+		 a file name or marks.  Vim sets it when starting to edit a buffer.
+		 But not when moving to a buffer with ":buffer".
+		
+	**/
+	var buflisted : Bool;
+	/**
+		```lua
+		(field) vim.bo.buftype: string|''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal' = 'nofile'
+		```
+		
+		---
+		
+		 The value of this option specifies the type of a buffer:
+		   <empty>	normal buffer
+		   acwrite	buffer will always be written with `BufWriteCmd`s
+		   help		help buffer (do not set this manually)
+		   nofile	buffer is not related to a file, will not be written
+		   nowrite	buffer will not be written
+		   quickfix	list of errors `:cwindow` or locations `:lwindow`
+		   terminal	`terminal-emulator` buffer
+		   prompt	buffer where only the last line can be edited, meant
+		 		to be used by a plugin, see `prompt-buffer`
+		
+		 This option is used together with 'bufhidden' and 'swapfile' to
+		 specify special kinds of buffers.   See `special-buffers`.
+		 Also see `win_gettype()`, which returns the type of the window.
+		
+		 Be careful with changing this option, it can have many side effects!
+		 One such effect is that Vim will not check the timestamp of the file,
+		 if the file is changed by another program this will not be noticed.
+		
+		 A "quickfix" buffer is only used for the error list and the location
+		 list.  This value is set by the `:cwindow` and `:lwindow` commands and
+		 you are not supposed to change it.
+		
+		 "nofile" and "nowrite" buffers are similar:
+		 both:		The buffer is not to be written to disk, ":w" doesn't
+		 		work (":w filename" does work though).
+		 both:		The buffer is never considered to be `'modified'`.
+		 		There is no warning when the changes will be lost, for
+		 		example when you quit Vim.
+		 both:		A swap file is only created when using too much memory
+		 		(when 'swapfile' has been reset there is never a swap
+		 		file).
+		 nofile only:	The buffer name is fixed, it is not handled like a
+		 		file name.  It is not modified in response to a `:cd`
+		 		command.
+		 both:		When using ":e bufname" and already editing "bufname"
+		 		the buffer is made empty and autocommands are
+		 		triggered as usual for `:edit`.
+		 						*E676*
+		 "acwrite" implies that the buffer name is not related to a file, like
+		 "nofile", but it will be written.  Thus, in contrast to "nofile" and
+		 "nowrite", ":w" does work and a modified buffer can't be abandoned
+		 without saving.  For writing there must be matching `BufWriteCmd`,
+		 `FileWriteCmd` or `FileAppendCmd` autocommands.
+		
+	**/
+	var buftype : String;
+	/**
+		```lua
+		(field) vim.bo.cfu: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used for Insert mode completion
+		 with CTRL-X CTRL-U. `i_CTRL-X_CTRL-U`
+		 See `complete-functions` for an explanation of how the function is
+		 invoked and what it should return.  The value can be the name of a
+		 function, a `lambda` or a `Funcref`. See `option-value-function` for
+		 more information.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var cfu : String;
+	/**
+		```lua
+		(field) vim.bo.channel: integer
+		```
+		
+		---
+		
+		 `channel` connected to the buffer, or 0 if no channel is connected.
+		 In a `:terminal` buffer this is the terminal channel.
+		 Read-only.
+		
+	**/
+	var channel : Int;
+	/**
+		```lua
+		(field) vim.bo.ci: boolean
+		```
+		
+		---
+		
+		 Copy the structure of the existing lines indent when autoindenting a
+		 new line.  Normally the new indent is reconstructed by a series of
+		 tabs followed by spaces as required (unless `'expandtab'` is enabled,
+		 in which case only spaces are used).  Enabling this option makes the
+		 new line copy whatever characters were used for indenting on the
+		 existing line.  'expandtab' has no effect on these characters, a Tab
+		 remains a Tab.  If the new indent is greater than on the existing
+		 line, the remaining space is filled in the normal manner.
+		 See 'preserveindent'.
+		
+	**/
+	var ci : Bool;
+	/**
+		```lua
+		(field) vim.bo.cin: boolean
+		```
+		
+		---
+		
+		 Enables automatic C program indenting.  See 'cinkeys' to set the keys
+		 that trigger reindenting in insert mode and 'cinoptions' to set your
+		 preferred indent style.
+		 If 'indentexpr' is not empty, it overrules 'cindent'.
+		 If 'lisp' is not on and both 'indentexpr' and 'equalprg' are empty,
+		 the "=" operator indents using this algorithm rather than calling an
+		 external program.
+		 See `C-indenting`.
+		 When you don't like the way 'cindent' works, try the 'smartindent'
+		 option or 'indentexpr'.
+		
+	**/
+	var cin : Bool;
+	/**
+		```lua
+		(field) vim.bo.cindent: boolean
+		```
+		
+		---
+		
+		 Enables automatic C program indenting.  See 'cinkeys' to set the keys
+		 that trigger reindenting in insert mode and 'cinoptions' to set your
+		 preferred indent style.
+		 If 'indentexpr' is not empty, it overrules 'cindent'.
+		 If 'lisp' is not on and both 'indentexpr' and 'equalprg' are empty,
+		 the "=" operator indents using this algorithm rather than calling an
+		 external program.
+		 See `C-indenting`.
+		 When you don't like the way 'cindent' works, try the 'smartindent'
+		 option or 'indentexpr'.
+		
+	**/
+	var cindent : Bool;
+	/**
+		```lua
+		(field) vim.bo.cink: string
+		```
+		
+		---
+		
+		 A list of keys that, when typed in Insert mode, cause reindenting of
+		 the current line.  Only used if 'cindent' is on and 'indentexpr' is
+		 empty.
+		 For the format of this option see `cinkeys-format`.
+		 See `C-indenting`.
+		
+	**/
+	var cink : String;
+	/**
+		```lua
+		(field) vim.bo.cinkeys: string
+		```
+		
+		---
+		
+		 A list of keys that, when typed in Insert mode, cause reindenting of
+		 the current line.  Only used if 'cindent' is on and 'indentexpr' is
+		 empty.
+		 For the format of this option see `cinkeys-format`.
+		 See `C-indenting`.
+		
+	**/
+	var cinkeys : String;
+	/**
+		```lua
+		(field) vim.bo.cino: string
+		```
+		
+		---
+		
+		 The 'cinoptions' affect the way 'cindent' reindents lines in a C
+		 program.  See `cinoptions-values` for the values of this option, and
+		 `C-indenting` for info on C indenting in general.
+		
+	**/
+	var cino : String;
+	/**
+		```lua
+		(field) vim.bo.cinoptions: string
+		```
+		
+		---
+		
+		 The 'cinoptions' affect the way 'cindent' reindents lines in a C
+		 program.  See `cinoptions-values` for the values of this option, and
+		 `C-indenting` for info on C indenting in general.
+		
+	**/
+	var cinoptions : String;
+	/**
+		```lua
+		(field) vim.bo.cinscopedecls: string
+		```
+		
+		---
+		
+		 Keywords that are interpreted as a C++ scope declaration by `cino-g`.
+		 Useful e.g. for working with the Qt framework that defines additional
+		 scope declarations "signals", "public slots" and "private slots":
+		
+		 ```vim
+		 	set cinscopedecls+=signals,public\ slots,private\ slots
+		 ```
+		
+		
+	**/
+	var cinscopedecls : String;
+	/**
+		```lua
+		(field) vim.bo.cinsd: string
+		```
+		
+		---
+		
+		 Keywords that are interpreted as a C++ scope declaration by `cino-g`.
+		 Useful e.g. for working with the Qt framework that defines additional
+		 scope declarations "signals", "public slots" and "private slots":
+		
+		 ```vim
+		 	set cinscopedecls+=signals,public\ slots,private\ slots
+		 ```
+		
+		
+	**/
+	var cinsd : String;
+	/**
+		```lua
+		(field) vim.bo.cinw: string
+		```
+		
+		---
+		
+		 These keywords start an extra indent in the next line when
+		 'smartindent' or 'cindent' is set.  For 'cindent' this is only done at
+		 an appropriate place (inside {}).
+		 Note that 'ignorecase' isn't used for 'cinwords'.  If case doesn't
+		 matter, include the keyword both the uppercase and lowercase:
+		 "if,If,IF".
+		
+	**/
+	var cinw : String;
+	/**
+		```lua
+		(field) vim.bo.cinwords: string
+		```
+		
+		---
+		
+		 These keywords start an extra indent in the next line when
+		 'smartindent' or 'cindent' is set.  For 'cindent' this is only done at
+		 an appropriate place (inside {}).
+		 Note that 'ignorecase' isn't used for 'cinwords'.  If case doesn't
+		 matter, include the keyword both the uppercase and lowercase:
+		 "if,If,IF".
+		
+	**/
+	var cinwords : String;
+	/**
+		```lua
+		(field) vim.bo.cms: string = '// %s'
+		```
+		
+		---
+		
+		 These are the default option values in Vim, but not in Nvim, so must be set explicitly.
+		
+		---
+		
+		 A template for a comment.  The "%s" in the value is replaced with the
+		 comment text, and should be padded with a space when possible.
+		 Used for `commenting` and to add markers for folding, see `fold-marker`.
+		
+	**/
+	var cms : String;
+	/**
+		```lua
+		(field) vim.bo.com: string
+		```
+		
+		---
+		
+		 A comma-separated list of strings that can start a comment line.  See
+		 `format-comments`.  See `option-backslash` about using backslashes to
+		 insert a space.
+		
+	**/
+	var com : String;
+	/**
+		```lua
+		(field) vim.bo.comments: string
+		```
+		
+		---
+		
+		 A comma-separated list of strings that can start a comment line.  See
+		 `format-comments`.  See `option-backslash` about using backslashes to
+		 insert a space.
+		
+	**/
+	var comments : String;
+	/**
+		```lua
+		(field) vim.bo.commentstring: string = '// %s'
+		```
+		
+		---
+		
+		 These are the default option values in Vim, but not in Nvim, so must be set explicitly.
+		
+		---
+		
+		 A template for a comment.  The "%s" in the value is replaced with the
+		 comment text, and should be padded with a space when possible.
+		 Used for `commenting` and to add markers for folding, see `fold-marker`.
+		
+	**/
+	var commentstring : String;
+	/**
+		```lua
+		(field) vim.bo.complete: string
+		```
+		
+		---
+		
+		 This option specifies how keyword completion `ins-completion` works
+		 when CTRL-P or CTRL-N are used.  It is also used for whole-line
+		 completion `i_CTRL-X_CTRL-L`.  It indicates the type of completion
+		 and the places to scan.  It is a comma-separated list of flags:
+		 .	scan the current buffer ('wrapscan' is ignored)
+		 w	scan buffers from other windows
+		 b	scan other loaded buffers that are in the buffer list
+		 u	scan the unloaded buffers that are in the buffer list
+		 U	scan the buffers that are not in the buffer list
+		 k	scan the files given with the 'dictionary' option
+		 kspell  use the currently active spell checking `spell`
+		 k{dict}	scan the file {dict}.  Several "k" flags can be given,
+		 	patterns are valid too.  For example:
+		
+		 ```vim
+		 		set cpt=k/usr/dict/*,k~/spanish
+		 ```
+		 s	scan the files given with the 'thesaurus' option
+		 s{tsr}	scan the file {tsr}.  Several "s" flags can be given, patterns
+		 	are valid too.
+		 i	scan current and included files
+		 d	scan current and included files for defined name or macro
+		 	`i_CTRL-X_CTRL-D`
+		 ]	tag completion
+		 t	same as "]"
+		 f	scan the buffer names (as opposed to buffer contents)
+		
+		 Unloaded buffers are not loaded, thus their autocmds `:autocmd` are
+		 not executed, this may lead to unexpected completions from some files
+		 (gzipped files for example).  Unloaded buffers are not scanned for
+		 whole-line completion.
+		
+		 As you can see, CTRL-N and CTRL-P can be used to do any 'iskeyword'-
+		 based expansion (e.g., dictionary `i_CTRL-X_CTRL-K`, included patterns
+		 `i_CTRL-X_CTRL-I`, tags `i_CTRL-X_CTRL-]` and normal expansions).
+		
+	**/
+	var complete : String;
+	/**
+		```lua
+		(field) vim.bo.completefunc: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used for Insert mode completion
+		 with CTRL-X CTRL-U. `i_CTRL-X_CTRL-U`
+		 See `complete-functions` for an explanation of how the function is
+		 invoked and what it should return.  The value can be the name of a
+		 function, a `lambda` or a `Funcref`. See `option-value-function` for
+		 more information.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var completefunc : String;
+	/**
+		```lua
+		(field) vim.bo.completeopt: string
+		```
+		
+		---
+		
+		 A comma-separated list of options for Insert mode completion
+		 `ins-completion`.  The supported values are:
+		
+		    fuzzy    Enable `fuzzy-matching` for completion candidates. This
+		 	    allows for more flexible and intuitive matching, where
+		 	    characters can be skipped and matches can be found even
+		 	    if the exact sequence is not typed.  Only makes a
+		 	    difference how completion candidates are reduced from the
+		 	    list of alternatives, but not how the candidates are
+		 	    collected (using different completion types).
+		
+		    longest  Only insert the longest common text of the matches.  If
+		 	    the menu is displayed you can use CTRL-L to add more
+		 	    characters.  Whether case is ignored depends on the kind
+		 	    of completion.  For buffer text the 'ignorecase' option is
+		 	    used.
+		
+		    menu	    Use a popup menu to show the possible completions.  The
+		 	    menu is only shown when there is more than one match and
+		 	    sufficient colors are available.  `ins-completion-menu`
+		
+		    menuone  Use the popup menu also when there is only one match.
+		 	    Useful when there is additional information about the
+		 	    match, e.g., what file it comes from.
+		
+		    noinsert Do not insert any text for a match until the user selects
+		 	    a match from the menu.  Only works in combination with
+		 	    "menu" or "menuone". No effect if "longest" is present.
+		
+		    noselect Same as "noinsert", except that no menu item is
+		 	    pre-selected.  If both "noinsert" and "noselect" are
+		 	    present, "noselect" has precedence.
+		
+		    nosort   Disable sorting of completion candidates based on fuzzy
+		 	    scores when "fuzzy" is enabled.  Candidates will appear
+		 	    in their original order.
+		
+		    popup    Show extra information about the currently selected
+		 	    completion in a popup window.  Only works in combination
+		 	    with "menu" or "menuone".  Overrides "preview".
+		
+		    preinsert
+		 	    Preinsert the portion of the first candidate word that is
+		 	    not part of the current completion leader and using the
+		 	    `hl-ComplMatchIns` highlight group.  In order for it to
+		 	    work, "fuzzy" must not be set and "menuone" must be set.
+		
+		    preview  Show extra information about the currently selected
+		 	    completion in the preview window.  Only works in
+		 	    combination with "menu" or "menuone".
+		
+	**/
+	var completeopt : String;
+	/**
+		```lua
+		(field) vim.bo.completeslash: ''|'backslash'|'slash'
+		```
+		
+		---
+		
+		 		only modifiable in MS-Windows
+		 When this option is set it overrules 'shellslash' for completion:
+		 - When this option is set to "slash", a forward slash is used for path
+		   completion in insert mode. This is useful when editing HTML tag, or
+		   Makefile with 'noshellslash' on MS-Windows.
+		 - When this option is set to "backslash", backslash is used. This is
+		   useful when editing a batch file with 'shellslash' set on MS-Windows.
+		 - When this option is empty, same character is used as for
+		   'shellslash'.
+		 For Insert mode completion the buffer-local value is used.  For
+		 command line completion the global value is used.
+		
+	**/
+	var completeslash : String;
+	/**
+		```lua
+		(field) vim.bo.copyindent: boolean
+		```
+		
+		---
+		
+		 Copy the structure of the existing lines indent when autoindenting a
+		 new line.  Normally the new indent is reconstructed by a series of
+		 tabs followed by spaces as required (unless `'expandtab'` is enabled,
+		 in which case only spaces are used).  Enabling this option makes the
+		 new line copy whatever characters were used for indenting on the
+		 existing line.  'expandtab' has no effect on these characters, a Tab
+		 remains a Tab.  If the new indent is greater than on the existing
+		 line, the remaining space is filled in the normal manner.
+		 See 'preserveindent'.
+		
+	**/
+	var copyindent : Bool;
+	/**
+		```lua
+		(field) vim.bo.cot: string
+		```
+		
+		---
+		
+		 A comma-separated list of options for Insert mode completion
+		 `ins-completion`.  The supported values are:
+		
+		    fuzzy    Enable `fuzzy-matching` for completion candidates. This
+		 	    allows for more flexible and intuitive matching, where
+		 	    characters can be skipped and matches can be found even
+		 	    if the exact sequence is not typed.  Only makes a
+		 	    difference how completion candidates are reduced from the
+		 	    list of alternatives, but not how the candidates are
+		 	    collected (using different completion types).
+		
+		    longest  Only insert the longest common text of the matches.  If
+		 	    the menu is displayed you can use CTRL-L to add more
+		 	    characters.  Whether case is ignored depends on the kind
+		 	    of completion.  For buffer text the 'ignorecase' option is
+		 	    used.
+		
+		    menu	    Use a popup menu to show the possible completions.  The
+		 	    menu is only shown when there is more than one match and
+		 	    sufficient colors are available.  `ins-completion-menu`
+		
+		    menuone  Use the popup menu also when there is only one match.
+		 	    Useful when there is additional information about the
+		 	    match, e.g., what file it comes from.
+		
+		    noinsert Do not insert any text for a match until the user selects
+		 	    a match from the menu.  Only works in combination with
+		 	    "menu" or "menuone". No effect if "longest" is present.
+		
+		    noselect Same as "noinsert", except that no menu item is
+		 	    pre-selected.  If both "noinsert" and "noselect" are
+		 	    present, "noselect" has precedence.
+		
+		    nosort   Disable sorting of completion candidates based on fuzzy
+		 	    scores when "fuzzy" is enabled.  Candidates will appear
+		 	    in their original order.
+		
+		    popup    Show extra information about the currently selected
+		 	    completion in a popup window.  Only works in combination
+		 	    with "menu" or "menuone".  Overrides "preview".
+		
+		    preinsert
+		 	    Preinsert the portion of the first candidate word that is
+		 	    not part of the current completion leader and using the
+		 	    `hl-ComplMatchIns` highlight group.  In order for it to
+		 	    work, "fuzzy" must not be set and "menuone" must be set.
+		
+		    preview  Show extra information about the currently selected
+		 	    completion in the preview window.  Only works in
+		 	    combination with "menu" or "menuone".
+		
+	**/
+	var cot : String;
+	/**
+		```lua
+		(field) vim.bo.cpt: string
+		```
+		
+		---
+		
+		 This option specifies how keyword completion `ins-completion` works
+		 when CTRL-P or CTRL-N are used.  It is also used for whole-line
+		 completion `i_CTRL-X_CTRL-L`.  It indicates the type of completion
+		 and the places to scan.  It is a comma-separated list of flags:
+		 .	scan the current buffer ('wrapscan' is ignored)
+		 w	scan buffers from other windows
+		 b	scan other loaded buffers that are in the buffer list
+		 u	scan the unloaded buffers that are in the buffer list
+		 U	scan the buffers that are not in the buffer list
+		 k	scan the files given with the 'dictionary' option
+		 kspell  use the currently active spell checking `spell`
+		 k{dict}	scan the file {dict}.  Several "k" flags can be given,
+		 	patterns are valid too.  For example:
+		
+		 ```vim
+		 		set cpt=k/usr/dict/*,k~/spanish
+		 ```
+		 s	scan the files given with the 'thesaurus' option
+		 s{tsr}	scan the file {tsr}.  Several "s" flags can be given, patterns
+		 	are valid too.
+		 i	scan current and included files
+		 d	scan current and included files for defined name or macro
+		 	`i_CTRL-X_CTRL-D`
+		 ]	tag completion
+		 t	same as "]"
+		 f	scan the buffer names (as opposed to buffer contents)
+		
+		 Unloaded buffers are not loaded, thus their autocmds `:autocmd` are
+		 not executed, this may lead to unexpected completions from some files
+		 (gzipped files for example).  Unloaded buffers are not scanned for
+		 whole-line completion.
+		
+		 As you can see, CTRL-N and CTRL-P can be used to do any 'iskeyword'-
+		 based expansion (e.g., dictionary `i_CTRL-X_CTRL-K`, included patterns
+		 `i_CTRL-X_CTRL-I`, tags `i_CTRL-X_CTRL-]` and normal expansions).
+		
+	**/
+	var cpt : String;
+	/**
+		```lua
+		(field) vim.bo.csl: ''|'backslash'|'slash'
+		```
+		
+		---
+		
+		 		only modifiable in MS-Windows
+		 When this option is set it overrules 'shellslash' for completion:
+		 - When this option is set to "slash", a forward slash is used for path
+		   completion in insert mode. This is useful when editing HTML tag, or
+		   Makefile with 'noshellslash' on MS-Windows.
+		 - When this option is set to "backslash", backslash is used. This is
+		   useful when editing a batch file with 'shellslash' set on MS-Windows.
+		 - When this option is empty, same character is used as for
+		   'shellslash'.
+		 For Insert mode completion the buffer-local value is used.  For
+		 command line completion the global value is used.
+		
+	**/
+	var csl : String;
+	/**
+		```lua
+		(field) vim.bo.def: string = '^\s*#\s*define'
+		```
+		
+		---
+		
+		 Pattern to be used to find a macro definition.  It is a search
+		 pattern, just like for the "/" command.  This option is used for the
+		 commands like "[i" and "[d" `include-search`.  The 'isident' option is
+		 used to recognize the defined name after the match:
+		 ```
+		 	{match with 'define'}{non-ID chars}{defined name}{non-ID char}
+		 ```
+		 See `option-backslash` about inserting backslashes to include a space
+		 or backslash.
+		 For C++ this value would be useful, to include const type declarations:
+		 ```
+		 	^\(#\s*define\|[a-z]*\s*const\s*[a-z]*\)
+		 ```
+		 You can also use "\ze" just before the name and continue the pattern
+		 to check what is following.  E.g. for Javascript, if a function is
+		 defined with `func_name = function(args)`:
+		 ```
+		 	^\s*\ze\i\+\s*=\s*function(
+		 ```
+		 If the function is defined with `func_name : function() {...`:
+		 ```
+		         ^\s*\ze\i\+\s*[:]\s*(*function\s*(
+		 ```
+		 When using the ":set" command, you need to double the backslashes!
+		 To avoid that use `:let` with a single quote string:
+		
+		 ```vim
+		 	let &l:define = '^\s*\ze\k\+\s*=\s*function('
+		 ```
+		
+		
+		
+		---
+		
+		```txt
+		^\s*#\s*define
+		```
+	**/
+	var def : String;
+	/**
+		```lua
+		(field) vim.bo.define: string = '^\s*#\s*define'
+		```
+		
+		---
+		
+		```txt
+		^\s*#\s*define
+		```
+		
+		---
+		
+		 Pattern to be used to find a macro definition.  It is a search
+		 pattern, just like for the "/" command.  This option is used for the
+		 commands like "[i" and "[d" `include-search`.  The 'isident' option is
+		 used to recognize the defined name after the match:
+		 ```
+		 	{match with 'define'}{non-ID chars}{defined name}{non-ID char}
+		 ```
+		 See `option-backslash` about inserting backslashes to include a space
+		 or backslash.
+		 For C++ this value would be useful, to include const type declarations:
+		 ```
+		 	^\(#\s*define\|[a-z]*\s*const\s*[a-z]*\)
+		 ```
+		 You can also use "\ze" just before the name and continue the pattern
+		 to check what is following.  E.g. for Javascript, if a function is
+		 defined with `func_name = function(args)`:
+		 ```
+		 	^\s*\ze\i\+\s*=\s*function(
+		 ```
+		 If the function is defined with `func_name : function() {...`:
+		 ```
+		         ^\s*\ze\i\+\s*[:]\s*(*function\s*(
+		 ```
+		 When using the ":set" command, you need to double the backslashes!
+		 To avoid that use `:let` with a single quote string:
+		
+		 ```vim
+		 	let &l:define = '^\s*\ze\k\+\s*=\s*function('
+		 ```
+		
+		
+	**/
+	var define : String;
+	/**
+		```lua
+		(field) vim.bo.dict: string
+		```
+		
+		---
+		
+		 List of file names, separated by commas, that are used to lookup words
+		 for keyword completion commands `i_CTRL-X_CTRL-K`.  Each file should
+		 contain a list of words.  This can be one word per line, or several
+		 words per line, separated by non-keyword characters (white space is
+		 preferred).  Maximum line length is 510 bytes.
+		
+		 When this option is empty or an entry "spell" is present, and spell
+		 checking is enabled, words in the word lists for the currently active
+		 'spelllang' are used. See `spell`.
+		
+		 To include a comma in a file name precede it with a backslash.  Spaces
+		 after a comma are ignored, otherwise spaces are included in the file
+		 name.  See `option-backslash` about using backslashes.
+		 This has nothing to do with the `Dictionary` variable type.
+		 Where to find a list of words?
+		 - BSD/macOS include the "/usr/share/dict/words" file.
+		 - Try "apt install spell" to get the "/usr/share/dict/words" file on
+		   apt-managed systems (Debian/Ubuntu).
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 directories from the list.  This avoids problems when a future version
+		 uses another default.
+		 Backticks cannot be used in this option for security reasons.
+		
+	**/
+	var dict : String;
+	/**
+		```lua
+		(field) vim.bo.dictionary: string
+		```
+		
+		---
+		
+		 List of file names, separated by commas, that are used to lookup words
+		 for keyword completion commands `i_CTRL-X_CTRL-K`.  Each file should
+		 contain a list of words.  This can be one word per line, or several
+		 words per line, separated by non-keyword characters (white space is
+		 preferred).  Maximum line length is 510 bytes.
+		
+		 When this option is empty or an entry "spell" is present, and spell
+		 checking is enabled, words in the word lists for the currently active
+		 'spelllang' are used. See `spell`.
+		
+		 To include a comma in a file name precede it with a backslash.  Spaces
+		 after a comma are ignored, otherwise spaces are included in the file
+		 name.  See `option-backslash` about using backslashes.
+		 This has nothing to do with the `Dictionary` variable type.
+		 Where to find a list of words?
+		 - BSD/macOS include the "/usr/share/dict/words" file.
+		 - Try "apt install spell" to get the "/usr/share/dict/words" file on
+		   apt-managed systems (Debian/Ubuntu).
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 directories from the list.  This avoids problems when a future version
+		 uses another default.
+		 Backticks cannot be used in this option for security reasons.
+		
+	**/
+	var dictionary : String;
+	/**
+		```lua
+		(field) vim.bo.efm: string
+		```
+		
+		---
+		
+		 Scanf-like description of the format for the lines in the error file
+		 (see `errorformat`).
+		
+	**/
+	var efm : String;
+	/**
+		```lua
+		(field) vim.bo.endoffile: boolean
+		```
+		
+		---
+		
+		 Indicates that a CTRL-Z character was found at the end of the file
+		 when reading it.  Normally only happens when 'fileformat' is "dos".
+		 When writing a file and this option is off and the 'binary' option
+		 is on, or 'fixeol' option is off, no CTRL-Z will be written at the
+		 end of the file.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var endoffile : Bool;
+	/**
+		```lua
+		(field) vim.bo.endofline: boolean
+		```
+		
+		---
+		
+		 When writing a file and this option is off and the 'binary' option
+		 is on, or 'fixeol' option is off, no <EOL> will be written for the
+		 last line in the file.  This option is automatically set or reset when
+		 starting to edit a new file, depending on whether file has an <EOL>
+		 for the last line in the file.  Normally you don't have to set or
+		 reset this option.
+		 When 'binary' is off and 'fixeol' is on the value is not used when
+		 writing the file.  When 'binary' is on or 'fixeol' is off it is used
+		 to remember the presence of a <EOL> for the last line in the file, so
+		 that when you write the file the situation from the original file can
+		 be kept.  But you can change it if you want to.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var endofline : Bool;
+	/**
+		```lua
+		(field) vim.bo.eof: boolean
+		```
+		
+		---
+		
+		 Indicates that a CTRL-Z character was found at the end of the file
+		 when reading it.  Normally only happens when 'fileformat' is "dos".
+		 When writing a file and this option is off and the 'binary' option
+		 is on, or 'fixeol' option is off, no CTRL-Z will be written at the
+		 end of the file.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var eof : Bool;
+	/**
+		```lua
+		(field) vim.bo.eol: boolean
+		```
+		
+		---
+		
+		 When writing a file and this option is off and the 'binary' option
+		 is on, or 'fixeol' option is off, no <EOL> will be written for the
+		 last line in the file.  This option is automatically set or reset when
+		 starting to edit a new file, depending on whether file has an <EOL>
+		 for the last line in the file.  Normally you don't have to set or
+		 reset this option.
+		 When 'binary' is off and 'fixeol' is on the value is not used when
+		 writing the file.  When 'binary' is on or 'fixeol' is off it is used
+		 to remember the presence of a <EOL> for the last line in the file, so
+		 that when you write the file the situation from the original file can
+		 be kept.  But you can change it if you want to.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var eol : Bool;
+	/**
+		```lua
+		(field) vim.bo.ep: string
+		```
+		
+		---
+		
+		 External program to use for "=" command.  When this option is empty
+		 the internal formatting functions are used; either 'lisp', 'cindent'
+		 or 'indentexpr'.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var ep : String;
+	/**
+		```lua
+		(field) vim.bo.equalprg: string
+		```
+		
+		---
+		
+		 External program to use for "=" command.  When this option is empty
+		 the internal formatting functions are used; either 'lisp', 'cindent'
+		 or 'indentexpr'.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var equalprg : String;
+	/**
+		```lua
+		(field) vim.bo.errorformat: string
+		```
+		
+		---
+		
+		 Scanf-like description of the format for the lines in the error file
+		 (see `errorformat`).
+		
+	**/
+	var errorformat : String;
+	/**
+		```lua
+		(field) vim.bo.et: boolean
+		```
+		
+		---
+		
+		 In Insert mode: Use the appropriate number of spaces to insert a
+		 <Tab>.  Spaces are used in indents with the '>' and '<' commands and
+		 when 'autoindent' is on.  To insert a real tab when 'expandtab' is
+		 on, use CTRL-V<Tab>.  See also `:retab` and `ins-expandtab`.
+		
+	**/
+	var et : Bool;
+	/**
+		```lua
+		(field) vim.bo.expandtab: boolean
+		```
+		
+		---
+		
+		 In Insert mode: Use the appropriate number of spaces to insert a
+		 <Tab>.  Spaces are used in indents with the '>' and '<' commands and
+		 when 'autoindent' is on.  To insert a real tab when 'expandtab' is
+		 on, use CTRL-V<Tab>.  See also `:retab` and `ins-expandtab`.
+		
+	**/
+	var expandtab : Bool;
+	/**
+		```lua
+		(field) vim.bo.fenc: string
+		```
+		
+		---
+		
+		 File-content encoding for the current buffer. Conversion is done with
+		 iconv() or as specified with 'charconvert'.
+		
+		 When 'fileencoding' is not UTF-8, conversion will be done when
+		 writing the file.  For reading see below.
+		 When 'fileencoding' is empty, the file will be saved with UTF-8
+		 encoding (no conversion when reading or writing a file).
+		
+		 WARNING: Conversion to a non-Unicode encoding can cause loss of
+		 information!
+		
+		 See `encoding-names` for the possible values.  Additionally, values may be
+		 specified that can be handled by the converter, see
+		 `mbyte-conversion`.
+		
+		 When reading a file 'fileencoding' will be set from 'fileencodings'.
+		 To read a file in a certain encoding it won't work by setting
+		 'fileencoding', use the `++enc` argument.  One exception: when
+		 'fileencodings' is empty the value of 'fileencoding' is used.
+		 For a new file the global value of 'fileencoding' is used.
+		
+		 Prepending "8bit-" and "2byte-" has no meaning here, they are ignored.
+		 When the option is set, the value is converted to lowercase.  Thus
+		 you can set it with uppercase values too.  '_' characters are
+		 replaced with '-'.  If a name is recognized from the list at
+		 `encoding-names`, it is replaced by the standard name.  For example
+		 "ISO8859-2" becomes "iso-8859-2".
+		
+		 When this option is set, after starting to edit a file, the 'modified'
+		 option is set, because the file would be different when written.
+		
+		 Keep in mind that changing 'fenc' from a modeline happens
+		 AFTER the text has been read, thus it applies to when the file will be
+		 written.  If you do set 'fenc' in a modeline, you might want to set
+		 'nomodified' to avoid not being able to ":q".
+		
+		 This option cannot be changed when 'modifiable' is off.
+		
+	**/
+	var fenc : String;
+	/**
+		```lua
+		(field) vim.bo.fex: string
+		```
+		
+		---
+		
+		 Expression which is evaluated to format a range of lines for the `gq`
+		 operator or automatic formatting (see 'formatoptions').  When this
+		 option is empty 'formatprg' is used.
+		
+		 The `v:lnum`  variable holds the first line to be formatted.
+		 The `v:count` variable holds the number of lines to be formatted.
+		 The `v:char`  variable holds the character that is going to be
+		 	      inserted if the expression is being evaluated due to
+		 	      automatic formatting.  This can be empty.  Don't insert
+		 	      it yet!
+		
+		 Example:
+		
+		 ```vim
+		 	set formatexpr=mylang#Format()
+		 ```
+		 This will invoke the mylang#Format() function in the
+		 autoload/mylang.vim file in 'runtimepath'. `autoload`
+		
+		 The advantage of using a function call without arguments is that it is
+		 faster, see `expr-option-function`.
+		
+		 The expression is also evaluated when 'textwidth' is set and adding
+		 text beyond that limit.  This happens under the same conditions as
+		 when internal formatting is used.  Make sure the cursor is kept in the
+		 same spot relative to the text then!  The `mode()` function will
+		 return "i" or "R" in this situation.
+		
+		 When the expression evaluates to non-zero Vim will fall back to using
+		 the internal format mechanism.
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	set formatexpr=s:MyFormatExpr()
+		 	set formatexpr=<SID>SomeFormatExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.  That stops the option from working,
+		 since changing the buffer text is not allowed.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		 NOTE: This option is set to "" when 'compatible' is set.
+		
+	**/
+	var fex : String;
+	/**
+		```lua
+		(field) vim.bo.ff: 'dos'|'mac'|'unix'
+		```
+		
+		---
+		
+		 This gives the <EOL> of the current buffer, which is used for
+		 reading/writing the buffer from/to a file:
+		     dos	    <CR><NL>
+		     unix    <NL>
+		     mac	    <CR>
+		 When "dos" is used, CTRL-Z at the end of a file is ignored.
+		 See `file-formats` and `file-read`.
+		 For the character encoding of the file see 'fileencoding'.
+		 When 'binary' is set, the value of 'fileformat' is ignored, file I/O
+		 works like it was set to "unix".
+		 This option is set automatically when starting to edit a file and
+		 'fileformats' is not empty and 'binary' is off.
+		 When this option is set, after starting to edit a file, the 'modified'
+		 option is set, because the file would be different when written.
+		 This option cannot be changed when 'modifiable' is off.
+		
+	**/
+	var ff : String;
+	/**
+		```lua
+		(field) vim.bo.ffu: string
+		```
+		
+		---
+		
+		 Function that is called to obtain the filename(s) for the `:find`
+		 command.  When this option is empty, the internal `file-searching`
+		 mechanism is used.
+		
+		 The value can be the name of a function, a `lambda` or a `Funcref`.
+		 See `option-value-function` for more information.
+		
+		 The function is called with two arguments.  The first argument is a
+		 `String` and is the `:find` command argument.  The second argument is
+		 a `Boolean` and is set to `v:true` when the function is called to get
+		 a List of command-line completion matches for the `:find` command.
+		 The function should return a List of strings.
+		
+		 The function is called only once per `:find` command invocation.
+		 The function can process all the directories specified in 'path'.
+		
+		 If a match is found, the function should return a `List` containing
+		 one or more file names.  If a match is not found, the function
+		 should return an empty List.
+		
+		 If any errors are encountered during the function invocation, an
+		 empty List is used as the return value.
+		
+		 It is not allowed to change text or jump to another window while
+		 executing the 'findfunc' `textlock`.
+		
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+		 Examples:
+		
+		 ```vim
+		     " Use glob()
+		     func FindFuncGlob(cmdarg, cmdcomplete)
+		 	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
+		 	return glob(pat, v:false, v:true)
+		     endfunc
+		     set findfunc=FindFuncGlob
+		
+		     " Use the 'git ls-files' output
+		     func FindGitFiles(cmdarg, cmdcomplete)
+		 	let fnames = systemlist('git ls-files')
+		 	return fnames->filter('v:val =~? a:cmdarg')
+		     endfunc
+		     set findfunc=FindGitFiles
+		 ```
+		
+		
+	**/
+	var ffu : String;
+	/**
+		```lua
+		(field) vim.bo.fileencoding: string
+		```
+		
+		---
+		
+		 File-content encoding for the current buffer. Conversion is done with
+		 iconv() or as specified with 'charconvert'.
+		
+		 When 'fileencoding' is not UTF-8, conversion will be done when
+		 writing the file.  For reading see below.
+		 When 'fileencoding' is empty, the file will be saved with UTF-8
+		 encoding (no conversion when reading or writing a file).
+		
+		 WARNING: Conversion to a non-Unicode encoding can cause loss of
+		 information!
+		
+		 See `encoding-names` for the possible values.  Additionally, values may be
+		 specified that can be handled by the converter, see
+		 `mbyte-conversion`.
+		
+		 When reading a file 'fileencoding' will be set from 'fileencodings'.
+		 To read a file in a certain encoding it won't work by setting
+		 'fileencoding', use the `++enc` argument.  One exception: when
+		 'fileencodings' is empty the value of 'fileencoding' is used.
+		 For a new file the global value of 'fileencoding' is used.
+		
+		 Prepending "8bit-" and "2byte-" has no meaning here, they are ignored.
+		 When the option is set, the value is converted to lowercase.  Thus
+		 you can set it with uppercase values too.  '_' characters are
+		 replaced with '-'.  If a name is recognized from the list at
+		 `encoding-names`, it is replaced by the standard name.  For example
+		 "ISO8859-2" becomes "iso-8859-2".
+		
+		 When this option is set, after starting to edit a file, the 'modified'
+		 option is set, because the file would be different when written.
+		
+		 Keep in mind that changing 'fenc' from a modeline happens
+		 AFTER the text has been read, thus it applies to when the file will be
+		 written.  If you do set 'fenc' in a modeline, you might want to set
+		 'nomodified' to avoid not being able to ":q".
+		
+		 This option cannot be changed when 'modifiable' is off.
+		
+	**/
+	var fileencoding : String;
+	/**
+		```lua
+		(field) vim.bo.fileformat: 'dos'|'mac'|'unix'
+		```
+		
+		---
+		
+		 This gives the <EOL> of the current buffer, which is used for
+		 reading/writing the buffer from/to a file:
+		     dos	    <CR><NL>
+		     unix    <NL>
+		     mac	    <CR>
+		 When "dos" is used, CTRL-Z at the end of a file is ignored.
+		 See `file-formats` and `file-read`.
+		 For the character encoding of the file see 'fileencoding'.
+		 When 'binary' is set, the value of 'fileformat' is ignored, file I/O
+		 works like it was set to "unix".
+		 This option is set automatically when starting to edit a file and
+		 'fileformats' is not empty and 'binary' is off.
+		 When this option is set, after starting to edit a file, the 'modified'
+		 option is set, because the file would be different when written.
+		 This option cannot be changed when 'modifiable' is off.
+		
+	**/
+	var fileformat : String;
+	/**
+		```lua
+		(field) vim.bo.filetype: string = 'html'|'man'|'qf'
+		```
+		
+		---
+		
+		 reload syntax file after setting qf_toc variable
+		
+		---
+		
+		 When this option is set, the FileType autocommand event is triggered.
+		 All autocommands that match with the value of this option will be
+		 executed.  Thus the value of 'filetype' is used in place of the file
+		 name.
+		 Otherwise this option does not always reflect the current file type.
+		 This option is normally set when the file type is detected.  To enable
+		 this use the ":filetype on" command. `:filetype`
+		 Setting this option to a different value is most useful in a modeline,
+		 for a file for which the file type is not automatically recognized.
+		 Example, for in an IDL file: >c
+		 	/* vim: set filetype=idl : *\/
+		 ```
+		 `FileType` `filetypes`
+		 When a dot appears in the value then this separates two filetype
+		 names, it should therefore not be used for a filetype.  Example: >c
+		 	/* vim: set filetype=c.doxygen : *\/
+		 ```
+		 This will use the "c" filetype first, then the "doxygen" filetype.
+		 This works both for filetype plugins and for syntax files.  More than
+		 one dot may appear.
+		 This option is not copied to another buffer, independent of the 's' or
+		 'S' flag in 'cpoptions'.
+		 Only alphanumeric characters, '-' and '_' can be used.
+		
+	**/
+	var filetype : String;
+	/**
+		```lua
+		(field) vim.bo.findfunc: string
+		```
+		
+		---
+		
+		 Function that is called to obtain the filename(s) for the `:find`
+		 command.  When this option is empty, the internal `file-searching`
+		 mechanism is used.
+		
+		 The value can be the name of a function, a `lambda` or a `Funcref`.
+		 See `option-value-function` for more information.
+		
+		 The function is called with two arguments.  The first argument is a
+		 `String` and is the `:find` command argument.  The second argument is
+		 a `Boolean` and is set to `v:true` when the function is called to get
+		 a List of command-line completion matches for the `:find` command.
+		 The function should return a List of strings.
+		
+		 The function is called only once per `:find` command invocation.
+		 The function can process all the directories specified in 'path'.
+		
+		 If a match is found, the function should return a `List` containing
+		 one or more file names.  If a match is not found, the function
+		 should return an empty List.
+		
+		 If any errors are encountered during the function invocation, an
+		 empty List is used as the return value.
+		
+		 It is not allowed to change text or jump to another window while
+		 executing the 'findfunc' `textlock`.
+		
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+		 Examples:
+		
+		 ```vim
+		     " Use glob()
+		     func FindFuncGlob(cmdarg, cmdcomplete)
+		 	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
+		 	return glob(pat, v:false, v:true)
+		     endfunc
+		     set findfunc=FindFuncGlob
+		
+		     " Use the 'git ls-files' output
+		     func FindGitFiles(cmdarg, cmdcomplete)
+		 	let fnames = systemlist('git ls-files')
+		 	return fnames->filter('v:val =~? a:cmdarg')
+		     endfunc
+		     set findfunc=FindGitFiles
+		 ```
+		
+		
+	**/
+	var findfunc : String;
+	/**
+		```lua
+		(field) vim.bo.fixendofline: boolean
+		```
+		
+		---
+		
+		 When writing a file and this option is on, <EOL> at the end of file
+		 will be restored if missing.  Turn this option off if you want to
+		 preserve the situation from the original file.
+		 When the 'binary' option is set the value of this option doesn't
+		 matter.
+		 See the 'endofline' option.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var fixendofline : Bool;
+	/**
+		```lua
+		(field) vim.bo.fixeol: boolean
+		```
+		
+		---
+		
+		 When writing a file and this option is on, <EOL> at the end of file
+		 will be restored if missing.  Turn this option off if you want to
+		 preserve the situation from the original file.
+		 When the 'binary' option is set the value of this option doesn't
+		 matter.
+		 See the 'endofline' option.
+		 See `eol-and-eof` for example settings.
+		
+	**/
+	var fixeol : Bool;
+	/**
+		```lua
+		(field) vim.bo.flp: string
+		```
+		
+		---
+		
+		 A pattern that is used to recognize a list header.  This is used for
+		 the "n" flag in 'formatoptions'.
+		 The pattern must match exactly the text that will be the indent for
+		 the line below it.  You can use `/\ze` to mark the end of the match
+		 while still checking more characters.  There must be a character
+		 following the pattern, when it matches the whole line it is handled
+		 like there is no match.
+		 The default recognizes a number, followed by an optional punctuation
+		 character and white space.
+		
+	**/
+	var flp : String;
+	/**
+		```lua
+		(field) vim.bo.fo: string
+		```
+		
+		---
+		
+		 This is a sequence of letters which describes how automatic
+		 formatting is to be done.
+		 See `fo-table` for possible values and `gq` for how to format text.
+		 Commas can be inserted for readability.
+		 To avoid problems with flags that are added in the future, use the
+		 "+=" and "-=" feature of ":set" `add-option-flags`.
+		
+	**/
+	var fo : String;
+	/**
+		```lua
+		(field) vim.bo.formatexpr: string
+		```
+		
+		---
+		
+		 Expression which is evaluated to format a range of lines for the `gq`
+		 operator or automatic formatting (see 'formatoptions').  When this
+		 option is empty 'formatprg' is used.
+		
+		 The `v:lnum`  variable holds the first line to be formatted.
+		 The `v:count` variable holds the number of lines to be formatted.
+		 The `v:char`  variable holds the character that is going to be
+		 	      inserted if the expression is being evaluated due to
+		 	      automatic formatting.  This can be empty.  Don't insert
+		 	      it yet!
+		
+		 Example:
+		
+		 ```vim
+		 	set formatexpr=mylang#Format()
+		 ```
+		 This will invoke the mylang#Format() function in the
+		 autoload/mylang.vim file in 'runtimepath'. `autoload`
+		
+		 The advantage of using a function call without arguments is that it is
+		 faster, see `expr-option-function`.
+		
+		 The expression is also evaluated when 'textwidth' is set and adding
+		 text beyond that limit.  This happens under the same conditions as
+		 when internal formatting is used.  Make sure the cursor is kept in the
+		 same spot relative to the text then!  The `mode()` function will
+		 return "i" or "R" in this situation.
+		
+		 When the expression evaluates to non-zero Vim will fall back to using
+		 the internal format mechanism.
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	set formatexpr=s:MyFormatExpr()
+		 	set formatexpr=<SID>SomeFormatExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.  That stops the option from working,
+		 since changing the buffer text is not allowed.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		 NOTE: This option is set to "" when 'compatible' is set.
+		
+	**/
+	var formatexpr : String;
+	/**
+		```lua
+		(field) vim.bo.formatlistpat: string
+		```
+		
+		---
+		
+		 A pattern that is used to recognize a list header.  This is used for
+		 the "n" flag in 'formatoptions'.
+		 The pattern must match exactly the text that will be the indent for
+		 the line below it.  You can use `/\ze` to mark the end of the match
+		 while still checking more characters.  There must be a character
+		 following the pattern, when it matches the whole line it is handled
+		 like there is no match.
+		 The default recognizes a number, followed by an optional punctuation
+		 character and white space.
+		
+	**/
+	var formatlistpat : String;
+	/**
+		```lua
+		(field) vim.bo.formatoptions: string
+		```
+		
+		---
+		
+		 This is a sequence of letters which describes how automatic
+		 formatting is to be done.
+		 See `fo-table` for possible values and `gq` for how to format text.
+		 Commas can be inserted for readability.
+		 To avoid problems with flags that are added in the future, use the
+		 "+=" and "-=" feature of ":set" `add-option-flags`.
+		
+	**/
+	var formatoptions : String;
+	/**
+		```lua
+		(field) vim.bo.formatprg: string
+		```
+		
+		---
+		
+		 The name of an external program that will be used to format the lines
+		 selected with the `gq` operator.  The program must take the input on
+		 stdin and produce the output on stdout.  The Unix program "fmt" is
+		 such a program.
+		 If the 'formatexpr' option is not empty it will be used instead.
+		 Otherwise, if 'formatprg' option is an empty string, the internal
+		 format function will be used `C-indenting`.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var formatprg : String;
+	/**
+		```lua
+		(field) vim.bo.fp: string
+		```
+		
+		---
+		
+		 The name of an external program that will be used to format the lines
+		 selected with the `gq` operator.  The program must take the input on
+		 stdin and produce the output on stdout.  The Unix program "fmt" is
+		 such a program.
+		 If the 'formatexpr' option is not empty it will be used instead.
+		 Otherwise, if 'formatprg' option is an empty string, the internal
+		 format function will be used `C-indenting`.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var fp : String;
+	/**
+		```lua
+		(field) vim.bo.ft: string = 'html'|'man'|'qf'
+		```
+		
+		---
+		
+		 reload syntax file after setting qf_toc variable
+		
+		---
+		
+		 When this option is set, the FileType autocommand event is triggered.
+		 All autocommands that match with the value of this option will be
+		 executed.  Thus the value of 'filetype' is used in place of the file
+		 name.
+		 Otherwise this option does not always reflect the current file type.
+		 This option is normally set when the file type is detected.  To enable
+		 this use the ":filetype on" command. `:filetype`
+		 Setting this option to a different value is most useful in a modeline,
+		 for a file for which the file type is not automatically recognized.
+		 Example, for in an IDL file: >c
+		 	/* vim: set filetype=idl : *\/
+		 ```
+		 `FileType` `filetypes`
+		 When a dot appears in the value then this separates two filetype
+		 names, it should therefore not be used for a filetype.  Example: >c
+		 	/* vim: set filetype=c.doxygen : *\/
+		 ```
+		 This will use the "c" filetype first, then the "doxygen" filetype.
+		 This works both for filetype plugins and for syntax files.  More than
+		 one dot may appear.
+		 This option is not copied to another buffer, independent of the 's' or
+		 'S' flag in 'cpoptions'.
+		 Only alphanumeric characters, '-' and '_' can be used.
+		
+	**/
+	var ft : String;
+	/**
+		```lua
+		(field) vim.bo.gp: string = 'rg --vimgrep -uu '
+		```
+		
+		---
+		
+		 Use -uu to make ripgrep not check ignore files/skip dot-files
+		
+		---
+		
+		 Program to use for the `:grep` command.  This option may contain '%'
+		 and '#' characters, which are expanded like when used in a command-
+		 line.  The placeholder "$*" is allowed to specify where the arguments
+		 will be included.  Environment variables are expanded `:set_env`.  See
+		 `option-backslash` about including spaces and backslashes.
+		 Special value: When 'grepprg' is set to "internal" the `:grep` command
+		 works like `:vimgrep`, `:lgrep` like `:lvimgrep`, `:grepadd` like
+		 `:vimgrepadd` and `:lgrepadd` like `:lvimgrepadd`.
+		 See also the section `:make_makeprg`, since most of the comments there
+		 apply equally to 'grepprg'.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		 This option defaults to:
+		 - `rg --vimgrep -uu ` if ripgrep is available (`:checkhealth`),
+		 - `grep -HIn $* /dev/null` on Unix,
+		 - `findstr /n $* nul` on Windows.
+		 Ripgrep can perform additional filtering such as using .gitignore rules
+		 and skipping hidden files. This is disabled by default (see the -u option)
+		 to more closely match the behaviour of standard grep.
+		 You can make ripgrep match Vim's case handling using the
+		 -i/--ignore-case and -S/--smart-case options.
+		 An `OptionSet` autocmd can be used to set it up to match automatically.
+		
+	**/
+	var gp : String;
+	/**
+		```lua
+		(field) vim.bo.grepprg: string = 'rg --vimgrep -uu '
+		```
+		
+		---
+		
+		 Use -uu to make ripgrep not check ignore files/skip dot-files
+		
+		---
+		
+		 Program to use for the `:grep` command.  This option may contain '%'
+		 and '#' characters, which are expanded like when used in a command-
+		 line.  The placeholder "$*" is allowed to specify where the arguments
+		 will be included.  Environment variables are expanded `:set_env`.  See
+		 `option-backslash` about including spaces and backslashes.
+		 Special value: When 'grepprg' is set to "internal" the `:grep` command
+		 works like `:vimgrep`, `:lgrep` like `:lvimgrep`, `:grepadd` like
+		 `:vimgrepadd` and `:lgrepadd` like `:lvimgrepadd`.
+		 See also the section `:make_makeprg`, since most of the comments there
+		 apply equally to 'grepprg'.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		 This option defaults to:
+		 - `rg --vimgrep -uu ` if ripgrep is available (`:checkhealth`),
+		 - `grep -HIn $* /dev/null` on Unix,
+		 - `findstr /n $* nul` on Windows.
+		 Ripgrep can perform additional filtering such as using .gitignore rules
+		 and skipping hidden files. This is disabled by default (see the -u option)
+		 to more closely match the behaviour of standard grep.
+		 You can make ripgrep match Vim's case handling using the
+		 -i/--ignore-case and -S/--smart-case options.
+		 An `OptionSet` autocmd can be used to set it up to match automatically.
+		
+	**/
+	var grepprg : String;
+	/**
+		```lua
+		(field) vim.bo.imi: integer
+		```
+		
+		---
+		
+		 Specifies whether :lmap or an Input Method (IM) is to be used in
+		 Insert mode.  Valid values:
+		 	0	:lmap is off and IM is off
+		 	1	:lmap is ON and IM is off
+		 	2	:lmap is off and IM is ON
+		 To always reset the option to zero when leaving Insert mode with <Esc>
+		 this can be used:
+		
+		 ```vim
+		 	inoremap <ESC> <ESC>:set iminsert=0<CR>
+		 ```
+		 This makes :lmap and IM turn off automatically when leaving Insert
+		 mode.
+		 Note that this option changes when using CTRL-^ in Insert mode
+		 `i_CTRL-^`.
+		 The value is set to 1 when setting 'keymap' to a valid keymap name.
+		 It is also used for the argument of commands like "r" and "f".
+		
+	**/
+	var imi : Int;
+	/**
+		```lua
+		(field) vim.bo.iminsert: integer
+		```
+		
+		---
+		
+		 Specifies whether :lmap or an Input Method (IM) is to be used in
+		 Insert mode.  Valid values:
+		 	0	:lmap is off and IM is off
+		 	1	:lmap is ON and IM is off
+		 	2	:lmap is off and IM is ON
+		 To always reset the option to zero when leaving Insert mode with <Esc>
+		 this can be used:
+		
+		 ```vim
+		 	inoremap <ESC> <ESC>:set iminsert=0<CR>
+		 ```
+		 This makes :lmap and IM turn off automatically when leaving Insert
+		 mode.
+		 Note that this option changes when using CTRL-^ in Insert mode
+		 `i_CTRL-^`.
+		 The value is set to 1 when setting 'keymap' to a valid keymap name.
+		 It is also used for the argument of commands like "r" and "f".
+		
+	**/
+	var iminsert : Int;
+	/**
+		```lua
+		(field) vim.bo.ims: integer
+		```
+		
+		---
+		
+		 Specifies whether :lmap or an Input Method (IM) is to be used when
+		 entering a search pattern.  Valid values:
+		 	-1	the value of 'iminsert' is used, makes it look like
+		 		'iminsert' is also used when typing a search pattern
+		 	0	:lmap is off and IM is off
+		 	1	:lmap is ON and IM is off
+		 	2	:lmap is off and IM is ON
+		 Note that this option changes when using CTRL-^ in Command-line mode
+		 `c_CTRL-^`.
+		 The value is set to 1 when it is not -1 and setting the 'keymap'
+		 option to a valid keymap name.
+		
+	**/
+	var ims : Int;
+	/**
+		```lua
+		(field) vim.bo.imsearch: integer
+		```
+		
+		---
+		
+		 Specifies whether :lmap or an Input Method (IM) is to be used when
+		 entering a search pattern.  Valid values:
+		 	-1	the value of 'iminsert' is used, makes it look like
+		 		'iminsert' is also used when typing a search pattern
+		 	0	:lmap is off and IM is off
+		 	1	:lmap is ON and IM is off
+		 	2	:lmap is off and IM is ON
+		 Note that this option changes when using CTRL-^ in Command-line mode
+		 `c_CTRL-^`.
+		 The value is set to 1 when it is not -1 and setting the 'keymap'
+		 option to a valid keymap name.
+		
+	**/
+	var imsearch : Int;
+	/**
+		```lua
+		(field) vim.bo.inc: string = '^\s*#\s*include'
+		```
+		
+		---
+		
+		 Pattern to be used to find an include command.  It is a search
+		 pattern, just like for the "/" command (See `pattern`).  This option
+		 is used for the commands "[i", "]I", "[d", etc.
+		 Normally the 'isfname' option is used to recognize the file name that
+		 comes after the matched pattern.  But if "\zs" appears in the pattern
+		 then the text matched from "\zs" to the end, or until "\ze" if it
+		 appears, is used as the file name.  Use this to include characters
+		 that are not in 'isfname', such as a space.  You can then use
+		 'includeexpr' to process the matched text.
+		 See `option-backslash` about including spaces and backslashes.
+		
+		
+		---
+		
+		```txt
+		^\s*#\s*include
+		```
+	**/
+	var inc : String;
+	/**
+		```lua
+		(field) vim.bo.include: string = '^\s*#\s*include'
+		```
+		
+		---
+		
+		```txt
+		^\s*#\s*include
+		```
+		
+		---
+		
+		 Pattern to be used to find an include command.  It is a search
+		 pattern, just like for the "/" command (See `pattern`).  This option
+		 is used for the commands "[i", "]I", "[d", etc.
+		 Normally the 'isfname' option is used to recognize the file name that
+		 comes after the matched pattern.  But if "\zs" appears in the pattern
+		 then the text matched from "\zs" to the end, or until "\ze" if it
+		 appears, is used as the file name.  Use this to include characters
+		 that are not in 'isfname', such as a space.  You can then use
+		 'includeexpr' to process the matched text.
+		 See `option-backslash` about including spaces and backslashes.
+		
+	**/
+	var include : String;
+	/**
+		```lua
+		(field) vim.bo.includeexpr: string = [[v:lua.require'vim._ftplugin.lua'.includeexpr(v:fname)]]
+		```
+		
+		---
+		
+		 Expression to be used to transform the string found with the 'include'
+		 option to a file name.  Mostly useful to change "." to "/" for Java:
+		
+		 ```vim
+		 	setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+		 ```
+		 The "v:fname" variable will be set to the file name that was detected.
+		 Note the double backslash: the `:set` command first halves them, then
+		 one remains in the value, where "\." matches a dot literally.  For
+		 simple character replacements `tr()` avoids the need for escaping:
+		
+		 ```vim
+		 	setlocal includeexpr=tr(v:fname,'.','/')
+		 ```
+		
+		 Also used for the `gf` command if an unmodified file name can't be
+		 found.  Allows doing "gf" on the name after an 'include' statement.
+		 Also used for `<cfile>`.
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	setlocal includeexpr=s:MyIncludeExpr()
+		 	setlocal includeexpr=<SID>SomeIncludeExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 It is more efficient if the value is just a function call without
+		 arguments, see `expr-option-function`.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		
+		 It is not allowed to change text or jump to another window while
+		 evaluating 'includeexpr' `textlock`.
+		
+	**/
+	var includeexpr : String;
+	/**
+		```lua
+		(field) vim.bo.inde: string
+		```
+		
+		---
+		
+		 Expression which is evaluated to obtain the proper indent for a line.
+		 It is used when a new line is created, for the `=` operator and
+		 in Insert mode as specified with the 'indentkeys' option.
+		 When this option is not empty, it overrules the 'cindent' and
+		 'smartindent' indenting.  When 'lisp' is set, this option is
+		 only used when 'lispoptions' contains "expr:1".
+		 The expression is evaluated with `v:lnum` set to the line number for
+		 which the indent is to be computed.  The cursor is also in this line
+		 when the expression is evaluated (but it may be moved around).
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	set indentexpr=s:MyIndentExpr()
+		 	set indentexpr=<SID>SomeIndentExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 The advantage of using a function call without arguments is that it is
+		 faster, see `expr-option-function`.
+		
+		 The expression must return the number of spaces worth of indent.  It
+		 can return "-1" to keep the current indent (this means 'autoindent' is
+		 used for the indent).
+		 Functions useful for computing the indent are `indent()`, `cindent()`
+		 and `lispindent()`.
+		 The evaluation of the expression must not have side effects!  It must
+		 not change the text, jump to another window, etc.  Afterwards the
+		 cursor position is always restored, thus the cursor may be moved.
+		 Normally this option would be set to call a function:
+		
+		 ```vim
+		 	set indentexpr=GetMyIndent()
+		 ```
+		 Error messages will be suppressed, unless the 'debug' option contains
+		 "msg".
+		 See `indent-expression`.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		
+		 It is not allowed to change text or jump to another window while
+		 evaluating 'indentexpr' `textlock`.
+		
+	**/
+	var inde : String;
+	/**
+		```lua
+		(field) vim.bo.indentexpr: string
+		```
+		
+		---
+		
+		 Expression which is evaluated to obtain the proper indent for a line.
+		 It is used when a new line is created, for the `=` operator and
+		 in Insert mode as specified with the 'indentkeys' option.
+		 When this option is not empty, it overrules the 'cindent' and
+		 'smartindent' indenting.  When 'lisp' is set, this option is
+		 only used when 'lispoptions' contains "expr:1".
+		 The expression is evaluated with `v:lnum` set to the line number for
+		 which the indent is to be computed.  The cursor is also in this line
+		 when the expression is evaluated (but it may be moved around).
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	set indentexpr=s:MyIndentExpr()
+		 	set indentexpr=<SID>SomeIndentExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 The advantage of using a function call without arguments is that it is
+		 faster, see `expr-option-function`.
+		
+		 The expression must return the number of spaces worth of indent.  It
+		 can return "-1" to keep the current indent (this means 'autoindent' is
+		 used for the indent).
+		 Functions useful for computing the indent are `indent()`, `cindent()`
+		 and `lispindent()`.
+		 The evaluation of the expression must not have side effects!  It must
+		 not change the text, jump to another window, etc.  Afterwards the
+		 cursor position is always restored, thus the cursor may be moved.
+		 Normally this option would be set to call a function:
+		
+		 ```vim
+		 	set indentexpr=GetMyIndent()
+		 ```
+		 Error messages will be suppressed, unless the 'debug' option contains
+		 "msg".
+		 See `indent-expression`.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		
+		 It is not allowed to change text or jump to another window while
+		 evaluating 'indentexpr' `textlock`.
+		
+	**/
+	var indentexpr : String;
+	/**
+		```lua
+		(field) vim.bo.indentkeys: string
+		```
+		
+		---
+		
+		 A list of keys that, when typed in Insert mode, cause reindenting of
+		 the current line.  Only happens if 'indentexpr' isn't empty.
+		 The format is identical to 'cinkeys', see `indentkeys-format`.
+		 See `C-indenting` and `indent-expression`.
+		
+	**/
+	var indentkeys : String;
+	/**
+		```lua
+		(field) vim.bo.indk: string
+		```
+		
+		---
+		
+		 A list of keys that, when typed in Insert mode, cause reindenting of
+		 the current line.  Only happens if 'indentexpr' isn't empty.
+		 The format is identical to 'cinkeys', see `indentkeys-format`.
+		 See `C-indenting` and `indent-expression`.
+		
+	**/
+	var indk : String;
+	/**
+		```lua
+		(field) vim.bo.inex: string = [[v:lua.require'vim._ftplugin.lua'.includeexpr(v:fname)]]
+		```
+		
+		---
+		
+		 Expression to be used to transform the string found with the 'include'
+		 option to a file name.  Mostly useful to change "." to "/" for Java:
+		
+		 ```vim
+		 	setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+		 ```
+		 The "v:fname" variable will be set to the file name that was detected.
+		 Note the double backslash: the `:set` command first halves them, then
+		 one remains in the value, where "\." matches a dot literally.  For
+		 simple character replacements `tr()` avoids the need for escaping:
+		
+		 ```vim
+		 	setlocal includeexpr=tr(v:fname,'.','/')
+		 ```
+		
+		 Also used for the `gf` command if an unmodified file name can't be
+		 found.  Allows doing "gf" on the name after an 'include' statement.
+		 Also used for `<cfile>`.
+		
+		 If the expression starts with s: or `<SID>`, then it is replaced with
+		 the script ID (`local-function`). Example:
+		
+		 ```vim
+		 	setlocal includeexpr=s:MyIncludeExpr()
+		 	setlocal includeexpr=<SID>SomeIncludeExpr()
+		 ```
+		 Otherwise, the expression is evaluated in the context of the script
+		 where the option was set, thus script-local items are available.
+		
+		 It is more efficient if the value is just a function call without
+		 arguments, see `expr-option-function`.
+		
+		 The expression will be evaluated in the `sandbox` when set from a
+		 modeline, see `sandbox-option`.
+		 This option cannot be set in a modeline when 'modelineexpr' is off.
+		
+		 It is not allowed to change text or jump to another window while
+		 evaluating 'includeexpr' `textlock`.
+		
+	**/
+	var inex : String;
+	/**
+		```lua
+		(field) vim.bo.inf: boolean
+		```
+		
+		---
+		
+		 When doing keyword completion in insert mode `ins-completion`, and
+		 'ignorecase' is also on, the case of the match is adjusted depending
+		 on the typed text.  If the typed text contains a lowercase letter
+		 where the match has an upper case letter, the completed part is made
+		 lowercase.  If the typed text has no lowercase letters and the match
+		 has a lowercase letter where the typed text has an uppercase letter,
+		 and there is a letter before it, the completed part is made uppercase.
+		 With 'noinfercase' the match is used as-is.
+		
+	**/
+	var inf : Bool;
+	/**
+		```lua
+		(field) vim.bo.infercase: boolean
+		```
+		
+		---
+		
+		 When doing keyword completion in insert mode `ins-completion`, and
+		 'ignorecase' is also on, the case of the match is adjusted depending
+		 on the typed text.  If the typed text contains a lowercase letter
+		 where the match has an upper case letter, the completed part is made
+		 lowercase.  If the typed text has no lowercase letters and the match
+		 has a lowercase letter where the typed text has an uppercase letter,
+		 and there is a letter before it, the completed part is made uppercase.
+		 With 'noinfercase' the match is used as-is.
+		
+	**/
+	var infercase : Bool;
+	/**
+		```lua
+		(field) vim.bo.integer: unknown
+		```
+	**/
+	var integer : Dynamic;
+	/**
+		```lua
+		(field) vim.bo.isk: string
+		```
+		
+		---
+		
+		 Keywords are used in searching and recognizing with many commands:
+		 "w", "*", "[i", etc.  It is also used for "\k" in a `pattern`.  See
+		 'isfname' for a description of the format of this option.  For '@'
+		 characters above 255 check the "word" character class (any character
+		 that is not white space or punctuation).
+		 For C programs you could use "a-z,A-Z,48-57,_,.,-,>".
+		 For a help file it is set to all non-blank printable characters except
+		 "*", '"' and '|' (so that CTRL-] on a command finds the help for that
+		 command).
+		 When the 'lisp' option is on the '-' character is always included.
+		 This option also influences syntax highlighting, unless the syntax
+		 uses `:syn-iskeyword`.
+		
+	**/
+	var isk : String;
+	/**
+		```lua
+		(field) vim.bo.iskeyword: string
+		```
+		
+		---
+		
+		 Keywords are used in searching and recognizing with many commands:
+		 "w", "*", "[i", etc.  It is also used for "\k" in a `pattern`.  See
+		 'isfname' for a description of the format of this option.  For '@'
+		 characters above 255 check the "word" character class (any character
+		 that is not white space or punctuation).
+		 For C programs you could use "a-z,A-Z,48-57,_,.,-,>".
+		 For a help file it is set to all non-blank printable characters except
+		 "*", '"' and '|' (so that CTRL-] on a command finds the help for that
+		 command).
+		 When the 'lisp' option is on the '-' character is always included.
+		 This option also influences syntax highlighting, unless the syntax
+		 uses `:syn-iskeyword`.
+		
+	**/
+	var iskeyword : String;
+	/**
+		```lua
+		(field) vim.bo.keymap: string
+		```
+		
+		---
+		
+		 Name of a keyboard mapping.  See `mbyte-keymap`.
+		 Setting this option to a valid keymap name has the side effect of
+		 setting 'iminsert' to one, so that the keymap becomes effective.
+		 'imsearch' is also set to one, unless it was -1
+		 Only alphanumeric characters, '.', '-' and '_' can be used.
+		
+	**/
+	var keymap : String;
+	/**
+		```lua
+		(field) vim.bo.keywordprg: string
+		```
+		
+		---
+		
+		 Program to use for the `K` command.  Environment variables are
+		 expanded `:set_env`.  ":help" may be used to access the Vim internal
+		 help.  (Note that previously setting the global option to the empty
+		 value did this, which is now deprecated.)
+		 When the first character is ":", the command is invoked as a Vim
+		 Ex command prefixed with [count].
+		 When "man" or "man -s" is used, Vim will automatically translate
+		 a [count] for the "K" command to a section number.
+		 See `option-backslash` about including spaces and backslashes.
+		 Example:
+		
+		 ```vim
+		 	set keywordprg=man\ -s
+		 	set keywordprg=:Man
+		 ```
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var keywordprg : String;
+	/**
+		```lua
+		(field) vim.bo.kmp: string
+		```
+		
+		---
+		
+		 Name of a keyboard mapping.  See `mbyte-keymap`.
+		 Setting this option to a valid keymap name has the side effect of
+		 setting 'iminsert' to one, so that the keymap becomes effective.
+		 'imsearch' is also set to one, unless it was -1
+		 Only alphanumeric characters, '.', '-' and '_' can be used.
+		
+	**/
+	var kmp : String;
+	/**
+		```lua
+		(field) vim.bo.kp: string
+		```
+		
+		---
+		
+		 Program to use for the `K` command.  Environment variables are
+		 expanded `:set_env`.  ":help" may be used to access the Vim internal
+		 help.  (Note that previously setting the global option to the empty
+		 value did this, which is now deprecated.)
+		 When the first character is ":", the command is invoked as a Vim
+		 Ex command prefixed with [count].
+		 When "man" or "man -s" is used, Vim will automatically translate
+		 a [count] for the "K" command to a section number.
+		 See `option-backslash` about including spaces and backslashes.
+		 Example:
+		
+		 ```vim
+		 	set keywordprg=man\ -s
+		 	set keywordprg=:Man
+		 ```
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var kp : String;
+	/**
+		```lua
+		(field) vim.bo.lisp: boolean
+		```
+		
+		---
+		
+		 Lisp mode: When <Enter> is typed in insert mode set the indent for
+		 the next line to Lisp standards (well, sort of).  Also happens with
+		 "cc" or "S".  'autoindent' must also be on for this to work.  The 'p'
+		 flag in 'cpoptions' changes the method of indenting: Vi compatible or
+		 better.  Also see 'lispwords'.
+		 The '-' character is included in keyword characters.  Redefines the
+		 "=" operator to use this same indentation algorithm rather than
+		 calling an external program if 'equalprg' is empty.
+		
+	**/
+	var lisp : Bool;
+	/**
+		```lua
+		(field) vim.bo.lispoptions: string
+		```
+		
+		---
+		
+		 Comma-separated list of items that influence the Lisp indenting when
+		 enabled with the `'lisp'` option.  Currently only one item is
+		 supported:
+		 	expr:1	use 'indentexpr' for Lisp indenting when it is set
+		 	expr:0	do not use 'indentexpr' for Lisp indenting (default)
+		 Note that when using 'indentexpr' the `=` operator indents all the
+		 lines, otherwise the first line is not indented (Vi-compatible).
+		
+	**/
+	var lispoptions : String;
+	/**
+		```lua
+		(field) vim.bo.lispwords: string
+		```
+		
+		---
+		
+		 Comma-separated list of words that influence the Lisp indenting when
+		 enabled with the `'lisp'` option.
+		
+	**/
+	var lispwords : String;
+	/**
+		```lua
+		(field) vim.bo.lop: string
+		```
+		
+		---
+		
+		 Comma-separated list of items that influence the Lisp indenting when
+		 enabled with the `'lisp'` option.  Currently only one item is
+		 supported:
+		 	expr:1	use 'indentexpr' for Lisp indenting when it is set
+		 	expr:0	do not use 'indentexpr' for Lisp indenting (default)
+		 Note that when using 'indentexpr' the `=` operator indents all the
+		 lines, otherwise the first line is not indented (Vi-compatible).
+		
+	**/
+	var lop : String;
+	/**
+		```lua
+		(field) vim.bo.lw: string
+		```
+		
+		---
+		
+		 Comma-separated list of words that influence the Lisp indenting when
+		 enabled with the `'lisp'` option.
+		
+	**/
+	var lw : String;
+	/**
+		```lua
+		(field) vim.bo.ma: boolean = true|false
+		```
+		
+		---
+		
+		 When off the buffer contents cannot be changed.  The 'fileformat' and
+		 'fileencoding' options also can't be changed.
+		 Can be reset on startup with the `-M` command line argument.
+		
+	**/
+	var ma : Bool;
+	/**
+		```lua
+		(field) vim.bo.makeencoding: string
+		```
+		
+		---
+		
+		 Encoding used for reading the output of external commands.  When empty,
+		 encoding is not converted.
+		 This is used for `:make`, `:lmake`, `:grep`, `:lgrep`, `:grepadd`,
+		 `:lgrepadd`, `:cfile`, `:cgetfile`, `:caddfile`, `:lfile`, `:lgetfile`,
+		 and `:laddfile`.
+		
+		 This would be mostly useful when you use MS-Windows.  If iconv is
+		 enabled, setting 'makeencoding' to "char" has the same effect as
+		 setting to the system locale encoding.  Example:
+		
+		 ```vim
+		 	set makeencoding=char	" system locale is used
+		 ```
+		
+		
+	**/
+	var makeencoding : String;
+	/**
+		```lua
+		(field) vim.bo.makeprg: string
+		```
+		
+		---
+		
+		 Program to use for the ":make" command.  See `:make_makeprg`.
+		 This option may contain '%' and '#' characters (see  `:_%` and `:_#`),
+		 which are expanded to the current and alternate file name.  Use `::S`
+		 to escape file names in case they contain special characters.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 Note that a '|' must be escaped twice: once for ":set" and once for
+		 the interpretation of a command.  When you use a filter called
+		 "myfilter" do it like this:
+		
+		 ```vim
+		     set makeprg=gmake\ \\\|\ myfilter
+		 ```
+		 The placeholder "$*" can be given (even multiple times) to specify
+		 where the arguments will be included, for example:
+		
+		 ```vim
+		     set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}
+		 ```
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var makeprg : String;
+	/**
+		```lua
+		(field) vim.bo.matchpairs: string
+		```
+		
+		---
+		
+		 Characters that form pairs.  The `%` command jumps from one to the
+		 other.
+		 Only character pairs are allowed that are different, thus you cannot
+		 jump between two double quotes.
+		 The characters must be separated by a colon.
+		 The pairs must be separated by a comma.  Example for including '<' and
+		 '>' (for HTML):
+		
+		 ```vim
+		 	set mps+=<:>
+		 ```
+		 A more exotic example, to jump between the '=' and ';' in an
+		 assignment, useful for languages like C and Java:
+		
+		 ```vim
+		 	au FileType c,cpp,java set mps+==:;
+		 ```
+		 For a more advanced way of using "%", see the matchit.vim plugin in
+		 the $VIMRUNTIME/plugin directory. `add-local-help`
+		
+	**/
+	var matchpairs : String;
+	/**
+		```lua
+		(field) vim.bo.menc: string
+		```
+		
+		---
+		
+		 Encoding used for reading the output of external commands.  When empty,
+		 encoding is not converted.
+		 This is used for `:make`, `:lmake`, `:grep`, `:lgrep`, `:grepadd`,
+		 `:lgrepadd`, `:cfile`, `:cgetfile`, `:caddfile`, `:lfile`, `:lgetfile`,
+		 and `:laddfile`.
+		
+		 This would be mostly useful when you use MS-Windows.  If iconv is
+		 enabled, setting 'makeencoding' to "char" has the same effect as
+		 setting to the system locale encoding.  Example:
+		
+		 ```vim
+		 	set makeencoding=char	" system locale is used
+		 ```
+		
+		
+	**/
+	var menc : String;
+	/**
+		```lua
+		(field) vim.bo.ml: boolean
+		```
+		
+		---
+		
+		 If 'modeline' is on 'modelines' gives the number of lines that is
+		 checked for set commands.  If 'modeline' is off or 'modelines' is zero
+		 no lines are checked.  See `modeline`.
+		
+	**/
+	var ml : Bool;
+	/**
+		```lua
+		(field) vim.bo.mod: boolean = false
+		```
+		
+		---
+		
+		 When on, the buffer is considered to be modified.  This option is set
+		 when:
+		 1. A change was made to the text since it was last written.  Using the
+		    `undo` command to go back to the original text will reset the
+		    option.  But undoing changes that were made before writing the
+		    buffer will set the option again, since the text is different from
+		    when it was written.
+		 2. 'fileformat' or 'fileencoding' is different from its original
+		    value.  The original value is set when the buffer is read or
+		    written.  A ":set nomodified" command also resets the original
+		    values to the current values and the 'modified' option will be
+		    reset.
+		    Similarly for 'eol' and 'bomb'.
+		 This option is not set when a change is made to the buffer as the
+		 result of a BufNewFile, BufRead/BufReadPost, BufWritePost,
+		 FileAppendPost or VimLeave autocommand event.  See `gzip-example` for
+		 an explanation.
+		 When 'buftype' is "nowrite" or "nofile" this option may be set, but
+		 will be ignored.
+		 Note that the text may actually be the same, e.g. 'modified' is set
+		 when using "rA" on an "A".
+		
+	**/
+	var mod : Bool;
+	/**
+		```lua
+		(field) vim.bo.modeline: boolean
+		```
+		
+		---
+		
+		 If 'modeline' is on 'modelines' gives the number of lines that is
+		 checked for set commands.  If 'modeline' is off or 'modelines' is zero
+		 no lines are checked.  See `modeline`.
+		
+	**/
+	var modeline : Bool;
+	/**
+		```lua
+		(field) vim.bo.modifiable: boolean = true|false
+		```
+		
+		---
+		
+		 When off the buffer contents cannot be changed.  The 'fileformat' and
+		 'fileencoding' options also can't be changed.
+		 Can be reset on startup with the `-M` command line argument.
+		
+	**/
+	var modifiable : Bool;
+	/**
+		```lua
+		(field) vim.bo.modified: boolean = false
+		```
+		
+		---
+		
+		 When on, the buffer is considered to be modified.  This option is set
+		 when:
+		 1. A change was made to the text since it was last written.  Using the
+		    `undo` command to go back to the original text will reset the
+		    option.  But undoing changes that were made before writing the
+		    buffer will set the option again, since the text is different from
+		    when it was written.
+		 2. 'fileformat' or 'fileencoding' is different from its original
+		    value.  The original value is set when the buffer is read or
+		    written.  A ":set nomodified" command also resets the original
+		    values to the current values and the 'modified' option will be
+		    reset.
+		    Similarly for 'eol' and 'bomb'.
+		 This option is not set when a change is made to the buffer as the
+		 result of a BufNewFile, BufRead/BufReadPost, BufWritePost,
+		 FileAppendPost or VimLeave autocommand event.  See `gzip-example` for
+		 an explanation.
+		 When 'buftype' is "nowrite" or "nofile" this option may be set, but
+		 will be ignored.
+		 Note that the text may actually be the same, e.g. 'modified' is set
+		 when using "rA" on an "A".
+		
+	**/
+	var modified : Bool;
+	/**
+		```lua
+		(field) vim.bo.mp: string
+		```
+		
+		---
+		
+		 Program to use for the ":make" command.  See `:make_makeprg`.
+		 This option may contain '%' and '#' characters (see  `:_%` and `:_#`),
+		 which are expanded to the current and alternate file name.  Use `::S`
+		 to escape file names in case they contain special characters.
+		 Environment variables are expanded `:set_env`.  See `option-backslash`
+		 about including spaces and backslashes.
+		 Note that a '|' must be escaped twice: once for ":set" and once for
+		 the interpretation of a command.  When you use a filter called
+		 "myfilter" do it like this:
+		
+		 ```vim
+		     set makeprg=gmake\ \\\|\ myfilter
+		 ```
+		 The placeholder "$*" can be given (even multiple times) to specify
+		 where the arguments will be included, for example:
+		
+		 ```vim
+		     set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}
+		 ```
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var mp : String;
+	/**
+		```lua
+		(field) vim.bo.mps: string
+		```
+		
+		---
+		
+		 Characters that form pairs.  The `%` command jumps from one to the
+		 other.
+		 Only character pairs are allowed that are different, thus you cannot
+		 jump between two double quotes.
+		 The characters must be separated by a colon.
+		 The pairs must be separated by a comma.  Example for including '<' and
+		 '>' (for HTML):
+		
+		 ```vim
+		 	set mps+=<:>
+		 ```
+		 A more exotic example, to jump between the '=' and ';' in an
+		 assignment, useful for languages like C and Java:
+		
+		 ```vim
+		 	au FileType c,cpp,java set mps+==:;
+		 ```
+		 For a more advanced way of using "%", see the matchit.vim plugin in
+		 the $VIMRUNTIME/plugin directory. `add-local-help`
+		
+	**/
+	var mps : String;
+	/**
+		```lua
+		(field) vim.bo.nf: string
+		```
+		
+		---
+		
+		 This defines what bases Vim will consider for numbers when using the
+		 CTRL-A and CTRL-X commands for adding to and subtracting from a number
+		 respectively; see `CTRL-A` for more info on these commands.
+		 alpha	If included, single alphabetical characters will be
+		 	incremented or decremented.  This is useful for a list with a
+		 	letter index a), b), etc.		*octal-nrformats*
+		 octal	If included, numbers that start with a zero will be considered
+		 	to be octal.  Example: Using CTRL-A on "007" results in "010".
+		 hex	If included, numbers starting with "0x" or "0X" will be
+		 	considered to be hexadecimal.  Example: Using CTRL-X on
+		 	"0x100" results in "0x0ff".
+		 bin	If included, numbers starting with "0b" or "0B" will be
+		 	considered to be binary.  Example: Using CTRL-X on
+		 	"0b1000" subtracts one, resulting in "0b0111".
+		 unsigned    If included, numbers are recognized as unsigned. Thus a
+		 	leading dash or negative sign won't be considered as part of
+		 	the number.  Examples:
+		 	    Using CTRL-X on "2020" in "9-2020" results in "9-2019"
+		 	    (without "unsigned" it would become "9-2021").
+		 	    Using CTRL-A on "2020" in "9-2020" results in "9-2021"
+		 	    (without "unsigned" it would become "9-2019").
+		 	    Using CTRL-X on "0" or CTRL-A on "18446744073709551615"
+		 	    (2^64 - 1) has no effect, overflow is prevented.
+		 blank	If included, treat numbers as signed or unsigned based on
+		 	preceding whitespace.  If a number with a leading dash has its
+		 	dash immediately preceded by a non-whitespace character (i.e.,
+		 	not a tab or a " "), the negative sign won't be considered as
+		 	part of the number.  For example:
+		 	    Using CTRL-A on "14" in "Carbon-14" results in "Carbon-15"
+		 	    (without "blank" it would become "Carbon-13").
+		 	    Using CTRL-X on "8" in "Carbon -8" results in "Carbon -9"
+		 	    (because -8 is preceded by whitespace.  If "unsigned" was
+		 	    set, it would result in "Carbon -7").
+		 	If this format is included, overflow is prevented as if
+		 	"unsigned" were set.  If both this format and "unsigned" are
+		 	included, "unsigned" will take precedence.
+		
+		 Numbers which simply begin with a digit in the range 1-9 are always
+		 considered decimal.  This also happens for numbers that are not
+		 recognized as octal or hex.
+		
+	**/
+	var nf : String;
+	/**
+		```lua
+		(field) vim.bo.nrformats: string
+		```
+		
+		---
+		
+		 This defines what bases Vim will consider for numbers when using the
+		 CTRL-A and CTRL-X commands for adding to and subtracting from a number
+		 respectively; see `CTRL-A` for more info on these commands.
+		 alpha	If included, single alphabetical characters will be
+		 	incremented or decremented.  This is useful for a list with a
+		 	letter index a), b), etc.		*octal-nrformats*
+		 octal	If included, numbers that start with a zero will be considered
+		 	to be octal.  Example: Using CTRL-A on "007" results in "010".
+		 hex	If included, numbers starting with "0x" or "0X" will be
+		 	considered to be hexadecimal.  Example: Using CTRL-X on
+		 	"0x100" results in "0x0ff".
+		 bin	If included, numbers starting with "0b" or "0B" will be
+		 	considered to be binary.  Example: Using CTRL-X on
+		 	"0b1000" subtracts one, resulting in "0b0111".
+		 unsigned    If included, numbers are recognized as unsigned. Thus a
+		 	leading dash or negative sign won't be considered as part of
+		 	the number.  Examples:
+		 	    Using CTRL-X on "2020" in "9-2020" results in "9-2019"
+		 	    (without "unsigned" it would become "9-2021").
+		 	    Using CTRL-A on "2020" in "9-2020" results in "9-2021"
+		 	    (without "unsigned" it would become "9-2019").
+		 	    Using CTRL-X on "0" or CTRL-A on "18446744073709551615"
+		 	    (2^64 - 1) has no effect, overflow is prevented.
+		 blank	If included, treat numbers as signed or unsigned based on
+		 	preceding whitespace.  If a number with a leading dash has its
+		 	dash immediately preceded by a non-whitespace character (i.e.,
+		 	not a tab or a " "), the negative sign won't be considered as
+		 	part of the number.  For example:
+		 	    Using CTRL-A on "14" in "Carbon-14" results in "Carbon-15"
+		 	    (without "blank" it would become "Carbon-13").
+		 	    Using CTRL-X on "8" in "Carbon -8" results in "Carbon -9"
+		 	    (because -8 is preceded by whitespace.  If "unsigned" was
+		 	    set, it would result in "Carbon -7").
+		 	If this format is included, overflow is prevented as if
+		 	"unsigned" were set.  If both this format and "unsigned" are
+		 	included, "unsigned" will take precedence.
+		
+		 Numbers which simply begin with a digit in the range 1-9 are always
+		 considered decimal.  This also happens for numbers that are not
+		 recognized as octal or hex.
+		
+	**/
+	var nrformats : String;
+	/**
+		```lua
+		(field) vim.bo.ofu: string = 'v:lua.vim.lua_omnifunc'|'v:lua.vim.treesitter.query.omnifunc'
+		```
+		
+		---
+		
+		 set omnifunc
+		
+		---
+		
+		 This option specifies a function to be used for Insert mode omni
+		 completion with CTRL-X CTRL-O. `i_CTRL-X_CTRL-O`
+		 See `complete-functions` for an explanation of how the function is
+		 invoked and what it should return.  The value can be the name of a
+		 function, a `lambda` or a `Funcref`. See `option-value-function` for
+		 more information.
+		 This option is usually set by a filetype plugin:
+		 `:filetype-plugin-on`
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var ofu : String;
+	/**
+		```lua
+		(field) vim.bo.omnifunc: string = 'v:lua.vim.lua_omnifunc'|'v:lua.vim.treesitter.query.omnifunc'
+		```
+		
+		---
+		
+		 set omnifunc
+		
+		---
+		
+		 This option specifies a function to be used for Insert mode omni
+		 completion with CTRL-X CTRL-O. `i_CTRL-X_CTRL-O`
+		 See `complete-functions` for an explanation of how the function is
+		 invoked and what it should return.  The value can be the name of a
+		 function, a `lambda` or a `Funcref`. See `option-value-function` for
+		 more information.
+		 This option is usually set by a filetype plugin:
+		 `:filetype-plugin-on`
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var omnifunc : String;
+	/**
+		```lua
+		(field) vim.bo.pa: string
+		```
+		
+		---
+		
+		 This is a list of directories which will be searched when using the
+		 `gf`, [f, ]f, ^Wf, `:find`, `:sfind`, `:tabfind` and other commands,
+		 provided that the file being searched for has a relative path (not
+		 starting with "/", "./" or "../").  The directories in the 'path'
+		 option may be relative or absolute.
+		 - Use commas to separate directory names:
+		
+		 ```vim
+		 	set path=.,/usr/local/include,/usr/include
+		 ```
+		 - Spaces can also be used to separate directory names.  To have a
+		   space in a directory name, precede it with an extra backslash, and
+		   escape the space:
+		
+		 ```vim
+		 	set path=.,/dir/with\\\ space
+		 ```
+		 - To include a comma in a directory name precede it with an extra
+		   backslash:
+		
+		 ```vim
+		 	set path=.,/dir/with\\,comma
+		 ```
+		 - To search relative to the directory of the current file, use:
+		
+		 ```vim
+		 	set path=.
+		 ```
+		 - To search in the current directory use an empty string between two
+		   commas:
+		
+		 ```vim
+		 	set path=,,
+		 ```
+		 - A directory name may end in a ':' or '/'.
+		 - Environment variables are expanded `:set_env`.
+		 - When using `netrw` URLs can be used.  For example, adding
+		   "https://www.vim.org" will make ":find index.html" work.
+		 - Search upwards and downwards in a directory tree using "*", "**" and
+		   ";".  See `file-searching` for info and syntax.
+		 - Careful with '\' characters, type two to get one in the option:
+		
+		 ```vim
+		 	set path=.,c:\\include
+		 ```
+		 Or just use '/' instead:
+		
+		 ```vim
+		 	set path=.,c:/include
+		 ```
+		 Don't forget "." or files won't even be found in the same directory as
+		 the file!
+		 The maximum length is limited.  How much depends on the system, mostly
+		 it is something like 256 or 1024 characters.
+		 You can check if all the include files are found, using the value of
+		 'path', see `:checkpath`.
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 directories from the list.  This avoids problems when a future version
+		 uses another default.  To remove the current directory use:
+		
+		 ```vim
+		 	set path-=
+		 ```
+		 To add the current directory use:
+		
+		 ```vim
+		 	set path+=
+		 ```
+		 To use an environment variable, you probably need to replace the
+		 separator.  Here is an example to append $INCL, in which directory
+		 names are separated with a semicolon:
+		
+		 ```vim
+		 	let &path = &path .. "," .. substitute($INCL, ';', ',', 'g')
+		 ```
+		 Replace the ';' with a ':' or whatever separator is used.  Note that
+		 this doesn't work when $INCL contains a comma or white space.
+		
+	**/
+	var pa : String;
+	/**
+		```lua
+		(field) vim.bo.path: string
+		```
+		
+		---
+		
+		 This is a list of directories which will be searched when using the
+		 `gf`, [f, ]f, ^Wf, `:find`, `:sfind`, `:tabfind` and other commands,
+		 provided that the file being searched for has a relative path (not
+		 starting with "/", "./" or "../").  The directories in the 'path'
+		 option may be relative or absolute.
+		 - Use commas to separate directory names:
+		
+		 ```vim
+		 	set path=.,/usr/local/include,/usr/include
+		 ```
+		 - Spaces can also be used to separate directory names.  To have a
+		   space in a directory name, precede it with an extra backslash, and
+		   escape the space:
+		
+		 ```vim
+		 	set path=.,/dir/with\\\ space
+		 ```
+		 - To include a comma in a directory name precede it with an extra
+		   backslash:
+		
+		 ```vim
+		 	set path=.,/dir/with\\,comma
+		 ```
+		 - To search relative to the directory of the current file, use:
+		
+		 ```vim
+		 	set path=.
+		 ```
+		 - To search in the current directory use an empty string between two
+		   commas:
+		
+		 ```vim
+		 	set path=,,
+		 ```
+		 - A directory name may end in a ':' or '/'.
+		 - Environment variables are expanded `:set_env`.
+		 - When using `netrw` URLs can be used.  For example, adding
+		   "https://www.vim.org" will make ":find index.html" work.
+		 - Search upwards and downwards in a directory tree using "*", "**" and
+		   ";".  See `file-searching` for info and syntax.
+		 - Careful with '\' characters, type two to get one in the option:
+		
+		 ```vim
+		 	set path=.,c:\\include
+		 ```
+		 Or just use '/' instead:
+		
+		 ```vim
+		 	set path=.,c:/include
+		 ```
+		 Don't forget "." or files won't even be found in the same directory as
+		 the file!
+		 The maximum length is limited.  How much depends on the system, mostly
+		 it is something like 256 or 1024 characters.
+		 You can check if all the include files are found, using the value of
+		 'path', see `:checkpath`.
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 directories from the list.  This avoids problems when a future version
+		 uses another default.  To remove the current directory use:
+		
+		 ```vim
+		 	set path-=
+		 ```
+		 To add the current directory use:
+		
+		 ```vim
+		 	set path+=
+		 ```
+		 To use an environment variable, you probably need to replace the
+		 separator.  Here is an example to append $INCL, in which directory
+		 names are separated with a semicolon:
+		
+		 ```vim
+		 	let &path = &path .. "," .. substitute($INCL, ';', ',', 'g')
+		 ```
+		 Replace the ';' with a ':' or whatever separator is used.  Note that
+		 this doesn't work when $INCL contains a comma or white space.
+		
+	**/
+	var path : String;
+	/**
+		```lua
+		(field) vim.bo.pi: boolean
+		```
+		
+		---
+		
+		 When changing the indent of the current line, preserve as much of the
+		 indent structure as possible.  Normally the indent is replaced by a
+		 series of tabs followed by spaces as required (unless `'expandtab'` is
+		 enabled, in which case only spaces are used).  Enabling this option
+		 means the indent will preserve as many existing characters as possible
+		 for indenting, and only add additional tabs or spaces as required.
+		 'expandtab' does not apply to the preserved white space, a Tab remains
+		 a Tab.
+		 NOTE: When using ">>" multiple times the resulting indent is a mix of
+		 tabs and spaces.  You might not like this.
+		 Also see 'copyindent'.
+		 Use `:retab` to clean up white space.
+		
+	**/
+	var pi : Bool;
+	/**
+		```lua
+		(field) vim.bo.preserveindent: boolean
+		```
+		
+		---
+		
+		 When changing the indent of the current line, preserve as much of the
+		 indent structure as possible.  Normally the indent is replaced by a
+		 series of tabs followed by spaces as required (unless `'expandtab'` is
+		 enabled, in which case only spaces are used).  Enabling this option
+		 means the indent will preserve as many existing characters as possible
+		 for indenting, and only add additional tabs or spaces as required.
+		 'expandtab' does not apply to the preserved white space, a Tab remains
+		 a Tab.
+		 NOTE: When using ">>" multiple times the resulting indent is a mix of
+		 tabs and spaces.  You might not like this.
+		 Also see 'copyindent'.
+		 Use `:retab` to clean up white space.
+		
+	**/
+	var preserveindent : Bool;
+	/**
+		```lua
+		(field) vim.bo.qe: string
+		```
+		
+		---
+		
+		 The characters that are used to escape quotes in a string.  Used for
+		 objects like a', a" and a` `a'`.
+		 When one of the characters in this option is found inside a string,
+		 the following character will be skipped.  The default value makes the
+		 text "foo\"bar\\" considered to be one string.
+		
+	**/
+	var qe : String;
+	/**
+		```lua
+		(field) vim.bo.quoteescape: string
+		```
+		
+		---
+		
+		 The characters that are used to escape quotes in a string.  Used for
+		 objects like a', a" and a` `a'`.
+		 When one of the characters in this option is found inside a string,
+		 the following character will be skipped.  The default value makes the
+		 text "foo\"bar\\" considered to be one string.
+		
+	**/
+	var quoteescape : String;
+	/**
+		```lua
+		(field) vim.bo.readonly: boolean = true|false
+		```
+		
+		---
+		
+		 If on, writes fail unless you use a '!'.  Protects you from
+		 accidentally overwriting a file.  Default on when Vim is started
+		 in read-only mode ("vim -R") or when the executable is called "view".
+		 When using ":w!" the 'readonly' option is reset for the current
+		 buffer, unless the 'Z' flag is in 'cpoptions'.
+		 When using the ":view" command the 'readonly' option is set for the
+		 newly edited buffer.
+		 See 'modifiable' for disallowing changes to the buffer.
+		
+	**/
+	var readonly : Bool;
+	/**
+		```lua
+		(field) vim.bo.ro: boolean = true|false
+		```
+		
+		---
+		
+		 If on, writes fail unless you use a '!'.  Protects you from
+		 accidentally overwriting a file.  Default on when Vim is started
+		 in read-only mode ("vim -R") or when the executable is called "view".
+		 When using ":w!" the 'readonly' option is reset for the current
+		 buffer, unless the 'Z' flag is in 'cpoptions'.
+		 When using the ":view" command the 'readonly' option is set for the
+		 newly edited buffer.
+		 See 'modifiable' for disallowing changes to the buffer.
+		
+	**/
+	var ro : Bool;
+	/**
+		```lua
+		(field) vim.bo.scbk: integer
+		```
+		
+		---
+		
+		 Maximum number of lines kept beyond the visible screen. Lines at the
+		 top are deleted if new lines exceed this limit.
+		 Minimum is 1, maximum is 100000.
+		 Only in `terminal` buffers.
+		
+		 Note: Lines that are not visible and kept in scrollback are not
+		 reflown when the terminal buffer is resized horizontally.
+		
+	**/
+	var scbk : Int;
+	/**
+		```lua
+		(field) vim.bo.scrollback: integer
+		```
+		
+		---
+		
+		 Maximum number of lines kept beyond the visible screen. Lines at the
+		 top are deleted if new lines exceed this limit.
+		 Minimum is 1, maximum is 100000.
+		 Only in `terminal` buffers.
+		
+		 Note: Lines that are not visible and kept in scrollback are not
+		 reflown when the terminal buffer is resized horizontally.
+		
+	**/
+	var scrollback : Int;
+	/**
+		```lua
+		(field) vim.bo.shiftwidth: integer
+		```
+		
+		---
+		
+		 Number of spaces to use for each step of (auto)indent.  Used for
+		 `'cindent'`, `>>`, `<<`, etc.
+		 When zero the 'tabstop' value will be used.  Use the `shiftwidth()`
+		 function to get the effective shiftwidth value.
+		
+	**/
+	var shiftwidth : Int;
+	/**
+		```lua
+		(field) vim.bo.si: boolean
+		```
+		
+		---
+		
+		 Do smart autoindenting when starting a new line.  Works for C-like
+		 programs, but can also be used for other languages.  'cindent' does
+		 something like this, works better in most cases, but is more strict,
+		 see `C-indenting`.  When 'cindent' is on or 'indentexpr' is set,
+		 setting 'si' has no effect.  'indentexpr' is a more advanced
+		 alternative.
+		 Normally 'autoindent' should also be on when using 'smartindent'.
+		 An indent is automatically inserted:
+		 - After a line ending in "{".
+		 - After a line starting with a keyword from 'cinwords'.
+		 - Before a line starting with "}" (only with the "O" command).
+		 When typing '}' as the first character in a new line, that line is
+		 given the same indent as the matching "{".
+		 When typing '#' as the first character in a new line, the indent for
+		 that line is removed, the '#' is put in the first column.  The indent
+		 is restored for the next line.  If you don't want this, use this
+		 mapping: ":inoremap # X^H#", where ^H is entered with CTRL-V CTRL-H.
+		 When using the ">>" command, lines starting with '#' are not shifted
+		 right.
+		
+	**/
+	var si : Bool;
+	/**
+		```lua
+		(field) vim.bo.smartindent: boolean
+		```
+		
+		---
+		
+		 Do smart autoindenting when starting a new line.  Works for C-like
+		 programs, but can also be used for other languages.  'cindent' does
+		 something like this, works better in most cases, but is more strict,
+		 see `C-indenting`.  When 'cindent' is on or 'indentexpr' is set,
+		 setting 'si' has no effect.  'indentexpr' is a more advanced
+		 alternative.
+		 Normally 'autoindent' should also be on when using 'smartindent'.
+		 An indent is automatically inserted:
+		 - After a line ending in "{".
+		 - After a line starting with a keyword from 'cinwords'.
+		 - Before a line starting with "}" (only with the "O" command).
+		 When typing '}' as the first character in a new line, that line is
+		 given the same indent as the matching "{".
+		 When typing '#' as the first character in a new line, the indent for
+		 that line is removed, the '#' is put in the first column.  The indent
+		 is restored for the next line.  If you don't want this, use this
+		 mapping: ":inoremap # X^H#", where ^H is entered with CTRL-V CTRL-H.
+		 When using the ">>" command, lines starting with '#' are not shifted
+		 right.
+		
+	**/
+	var smartindent : Bool;
+	/**
+		```lua
+		(field) vim.bo.smc: integer
+		```
+		
+		---
+		
+		 Maximum column in which to search for syntax items.  In long lines the
+		 text after this column is not highlighted and following lines may not
+		 be highlighted correctly, because the syntax state is cleared.
+		 This helps to avoid very slow redrawing for an XML file that is one
+		 long line.
+		 Set to zero to remove the limit.
+		
+	**/
+	var smc : Int;
+	/**
+		```lua
+		(field) vim.bo.softtabstop: integer
+		```
+		
+		---
+		
+		 Number of spaces that a <Tab> counts for while performing editing
+		 operations, like inserting a <Tab> or using <BS>.  It "feels" like
+		 <Tab>s are being inserted, while in fact a mix of spaces and <Tab>s is
+		 used.  This is useful to keep the 'ts' setting at its standard value
+		 of 8, while being able to edit like it is set to 'sts'.  However,
+		 commands like "x" still work on the actual characters.
+		 When 'sts' is zero, this feature is off.
+		 When 'sts' is negative, the value of 'shiftwidth' is used.
+		 See also `ins-expandtab`.  When 'expandtab' is not set, the number of
+		 spaces is minimized by using <Tab>s.
+		 The 'L' flag in 'cpoptions' changes how tabs are used when 'list' is
+		 set.
+		
+		 The value of 'softtabstop' will be ignored if `'varsofttabstop'` is set
+		 to anything other than an empty string.
+		
+	**/
+	var softtabstop : Int;
+	/**
+		```lua
+		(field) vim.bo.spc: string
+		```
+		
+		---
+		
+		 Pattern to locate the end of a sentence.  The following word will be
+		 checked to start with a capital letter.  If not then it is highlighted
+		 with SpellCap `hl-SpellCap` (unless the word is also badly spelled).
+		 When this check is not wanted make this option empty.
+		 Only used when 'spell' is set.
+		 Be careful with special characters, see `option-backslash` about
+		 including spaces and backslashes.
+		 To set this option automatically depending on the language, see
+		 `set-spc-auto`.
+		
+	**/
+	var spc : String;
+	/**
+		```lua
+		(field) vim.bo.spellcapcheck: string
+		```
+		
+		---
+		
+		 Pattern to locate the end of a sentence.  The following word will be
+		 checked to start with a capital letter.  If not then it is highlighted
+		 with SpellCap `hl-SpellCap` (unless the word is also badly spelled).
+		 When this check is not wanted make this option empty.
+		 Only used when 'spell' is set.
+		 Be careful with special characters, see `option-backslash` about
+		 including spaces and backslashes.
+		 To set this option automatically depending on the language, see
+		 `set-spc-auto`.
+		
+	**/
+	var spellcapcheck : String;
+	/**
+		```lua
+		(field) vim.bo.spellfile: string
+		```
+		
+		---
+		
+		 Name of the word list file where words are added for the `zg` and `zw`
+		 commands.  It must end in ".{encoding}.add".  You need to include the
+		 path, otherwise the file is placed in the current directory.
+		 The path may include characters from 'isfname', ' ', ',', '@' and ':'.
+		 							*E765*
+		 It may also be a comma-separated list of names.  A count before the
+		 `zg` and `zw` commands can be used to access each.  This allows using
+		 a personal word list file and a project word list file.
+		 When a word is added while this option is empty Vim will set it for
+		 you: Using the first directory in 'runtimepath' that is writable.  If
+		 there is no "spell" directory yet it will be created.  For the file
+		 name the first language name that appears in 'spelllang' is used,
+		 ignoring the region.
+		 The resulting ".spl" file will be used for spell checking, it does not
+		 have to appear in 'spelllang'.
+		 Normally one file is used for all regions, but you can add the region
+		 name if you want to.  However, it will then only be used when
+		 'spellfile' is set to it, for entries in 'spelllang' only files
+		 without region name will be found.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var spellfile : String;
+	/**
+		```lua
+		(field) vim.bo.spelllang: string
+		```
+		
+		---
+		
+		 A comma-separated list of word list names.  When the 'spell' option is
+		 on spellchecking will be done for these languages.  Example:
+		
+		 ```vim
+		 	set spelllang=en_us,nl,medical
+		 ```
+		 This means US English, Dutch and medical words are recognized.  Words
+		 that are not recognized will be highlighted.
+		 The word list name must consist of alphanumeric characters, a dash or
+		 an underscore.  It should not include a comma or dot.  Using a dash is
+		 recommended to separate the two letter language name from a
+		 specification.  Thus "en-rare" is used for rare English words.
+		 A region name must come last and have the form "_xx", where "xx" is
+		 the two-letter, lower case region name.  You can use more than one
+		 region by listing them: "en_us,en_ca" supports both US and Canadian
+		 English, but not words specific for Australia, New Zealand or Great
+		 Britain. (Note: currently en_au and en_nz dictionaries are older than
+		 en_ca, en_gb and en_us).
+		 If the name "cjk" is included East Asian characters are excluded from
+		 spell checking.  This is useful when editing text that also has Asian
+		 words.
+		 Note that the "medical" dictionary does not exist, it is just an
+		 example of a longer name.
+		 						*E757*
+		 As a special case the name of a .spl file can be given as-is.  The
+		 first "_xx" in the name is removed and used as the region name
+		 (_xx is an underscore, two letters and followed by a non-letter).
+		 This is mainly for testing purposes.  You must make sure the correct
+		 encoding is used, Vim doesn't check it.
+		 How the related spell files are found is explained here: `spell-load`.
+		
+		 If the `spellfile.vim` plugin is active and you use a language name
+		 for which Vim cannot find the .spl file in 'runtimepath' the plugin
+		 will ask you if you want to download the file.
+		
+		 After this option has been set successfully, Vim will source the files
+		 "spell/LANG.vim" in 'runtimepath'.  "LANG" is the value of 'spelllang'
+		 up to the first character that is not an ASCII letter or number and
+		 not a dash.  Also see `set-spc-auto`.
+		
+	**/
+	var spelllang : String;
+	/**
+		```lua
+		(field) vim.bo.spelloptions: string
+		```
+		
+		---
+		
+		 A comma-separated list of options for spell checking:
+		 camel		When a word is CamelCased, assume "Cased" is a
+		 		separate word: every upper-case character in a word
+		 		that comes after a lower case character indicates the
+		 		start of a new word.
+		 noplainbuffer	Only spellcheck a buffer when 'syntax' is enabled,
+		 		or when extmarks are set within the buffer. Only
+		 		designated regions of the buffer are spellchecked in
+		 		this case.
+		
+	**/
+	var spelloptions : String;
+	/**
+		```lua
+		(field) vim.bo.spf: string
+		```
+		
+		---
+		
+		 Name of the word list file where words are added for the `zg` and `zw`
+		 commands.  It must end in ".{encoding}.add".  You need to include the
+		 path, otherwise the file is placed in the current directory.
+		 The path may include characters from 'isfname', ' ', ',', '@' and ':'.
+		 							*E765*
+		 It may also be a comma-separated list of names.  A count before the
+		 `zg` and `zw` commands can be used to access each.  This allows using
+		 a personal word list file and a project word list file.
+		 When a word is added while this option is empty Vim will set it for
+		 you: Using the first directory in 'runtimepath' that is writable.  If
+		 there is no "spell" directory yet it will be created.  For the file
+		 name the first language name that appears in 'spelllang' is used,
+		 ignoring the region.
+		 The resulting ".spl" file will be used for spell checking, it does not
+		 have to appear in 'spelllang'.
+		 Normally one file is used for all regions, but you can add the region
+		 name if you want to.  However, it will then only be used when
+		 'spellfile' is set to it, for entries in 'spelllang' only files
+		 without region name will be found.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var spf : String;
+	/**
+		```lua
+		(field) vim.bo.spl: string
+		```
+		
+		---
+		
+		 A comma-separated list of word list names.  When the 'spell' option is
+		 on spellchecking will be done for these languages.  Example:
+		
+		 ```vim
+		 	set spelllang=en_us,nl,medical
+		 ```
+		 This means US English, Dutch and medical words are recognized.  Words
+		 that are not recognized will be highlighted.
+		 The word list name must consist of alphanumeric characters, a dash or
+		 an underscore.  It should not include a comma or dot.  Using a dash is
+		 recommended to separate the two letter language name from a
+		 specification.  Thus "en-rare" is used for rare English words.
+		 A region name must come last and have the form "_xx", where "xx" is
+		 the two-letter, lower case region name.  You can use more than one
+		 region by listing them: "en_us,en_ca" supports both US and Canadian
+		 English, but not words specific for Australia, New Zealand or Great
+		 Britain. (Note: currently en_au and en_nz dictionaries are older than
+		 en_ca, en_gb and en_us).
+		 If the name "cjk" is included East Asian characters are excluded from
+		 spell checking.  This is useful when editing text that also has Asian
+		 words.
+		 Note that the "medical" dictionary does not exist, it is just an
+		 example of a longer name.
+		 						*E757*
+		 As a special case the name of a .spl file can be given as-is.  The
+		 first "_xx" in the name is removed and used as the region name
+		 (_xx is an underscore, two letters and followed by a non-letter).
+		 This is mainly for testing purposes.  You must make sure the correct
+		 encoding is used, Vim doesn't check it.
+		 How the related spell files are found is explained here: `spell-load`.
+		
+		 If the `spellfile.vim` plugin is active and you use a language name
+		 for which Vim cannot find the .spl file in 'runtimepath' the plugin
+		 will ask you if you want to download the file.
+		
+		 After this option has been set successfully, Vim will source the files
+		 "spell/LANG.vim" in 'runtimepath'.  "LANG" is the value of 'spelllang'
+		 up to the first character that is not an ASCII letter or number and
+		 not a dash.  Also see `set-spc-auto`.
+		
+	**/
+	var spl : String;
+	/**
+		```lua
+		(field) vim.bo.spo: string
+		```
+		
+		---
+		
+		 A comma-separated list of options for spell checking:
+		 camel		When a word is CamelCased, assume "Cased" is a
+		 		separate word: every upper-case character in a word
+		 		that comes after a lower case character indicates the
+		 		start of a new word.
+		 noplainbuffer	Only spellcheck a buffer when 'syntax' is enabled,
+		 		or when extmarks are set within the buffer. Only
+		 		designated regions of the buffer are spellchecked in
+		 		this case.
+		
+	**/
+	var spo : String;
+	/**
+		```lua
+		(field) vim.bo.sts: integer
+		```
+		
+		---
+		
+		 Number of spaces that a <Tab> counts for while performing editing
+		 operations, like inserting a <Tab> or using <BS>.  It "feels" like
+		 <Tab>s are being inserted, while in fact a mix of spaces and <Tab>s is
+		 used.  This is useful to keep the 'ts' setting at its standard value
+		 of 8, while being able to edit like it is set to 'sts'.  However,
+		 commands like "x" still work on the actual characters.
+		 When 'sts' is zero, this feature is off.
+		 When 'sts' is negative, the value of 'shiftwidth' is used.
+		 See also `ins-expandtab`.  When 'expandtab' is not set, the number of
+		 spaces is minimized by using <Tab>s.
+		 The 'L' flag in 'cpoptions' changes how tabs are used when 'list' is
+		 set.
+		
+		 The value of 'softtabstop' will be ignored if `'varsofttabstop'` is set
+		 to anything other than an empty string.
+		
+	**/
+	var sts : Int;
+	/**
+		```lua
+		(field) vim.bo.sua: string
+		```
+		
+		---
+		
+		 Comma-separated list of suffixes, which are used when searching for a
+		 file for the "gf", "[I", etc. commands.  Example:
+		
+		 ```vim
+		 	set suffixesadd=.java
+		 ```
+		
+		
+	**/
+	var sua : String;
+	/**
+		```lua
+		(field) vim.bo.suffixesadd: string
+		```
+		
+		---
+		
+		 Comma-separated list of suffixes, which are used when searching for a
+		 file for the "gf", "[I", etc. commands.  Example:
+		
+		 ```vim
+		 	set suffixesadd=.java
+		 ```
+		
+		
+	**/
+	var suffixesadd : String;
+	/**
+		```lua
+		(field) vim.bo.sw: integer
+		```
+		
+		---
+		
+		 Number of spaces to use for each step of (auto)indent.  Used for
+		 `'cindent'`, `>>`, `<<`, etc.
+		 When zero the 'tabstop' value will be used.  Use the `shiftwidth()`
+		 function to get the effective shiftwidth value.
+		
+	**/
+	var sw : Int;
+	/**
+		```lua
+		(field) vim.bo.swapfile: boolean = false
+		```
+		
+		---
+		
+		 Use a swapfile for the buffer.  This option can be reset when a
+		 swapfile is not wanted for a specific buffer.  For example, with
+		 confidential information that even root must not be able to access.
+		 Careful: All text will be in memory:
+		 	- Don't use this for big files.
+		 	- Recovery will be impossible!
+		 A swapfile will only be present when `'updatecount'` is non-zero and
+		 'swapfile' is set.
+		 When 'swapfile' is reset, the swap file for the current buffer is
+		 immediately deleted.  When 'swapfile' is set, and 'updatecount' is
+		 non-zero, a swap file is immediately created.
+		 Also see `swap-file`.
+		 If you want to open a new buffer without creating a swap file for it,
+		 use the `:noswapfile` modifier.
+		 See 'directory' for where the swap file is created.
+		
+		 This option is used together with 'bufhidden' and 'buftype' to
+		 specify special kinds of buffers.   See `special-buffers`.
+		
+	**/
+	var swapfile : Bool;
+	/**
+		```lua
+		(field) vim.bo.swf: boolean = false
+		```
+		
+		---
+		
+		 Use a swapfile for the buffer.  This option can be reset when a
+		 swapfile is not wanted for a specific buffer.  For example, with
+		 confidential information that even root must not be able to access.
+		 Careful: All text will be in memory:
+		 	- Don't use this for big files.
+		 	- Recovery will be impossible!
+		 A swapfile will only be present when `'updatecount'` is non-zero and
+		 'swapfile' is set.
+		 When 'swapfile' is reset, the swap file for the current buffer is
+		 immediately deleted.  When 'swapfile' is set, and 'updatecount' is
+		 non-zero, a swap file is immediately created.
+		 Also see `swap-file`.
+		 If you want to open a new buffer without creating a swap file for it,
+		 use the `:noswapfile` modifier.
+		 See 'directory' for where the swap file is created.
+		
+		 This option is used together with 'bufhidden' and 'buftype' to
+		 specify special kinds of buffers.   See `special-buffers`.
+		
+	**/
+	var swf : Bool;
+	/**
+		```lua
+		(field) vim.bo.syn: string
+		```
+		
+		---
+		
+		 When this option is set, the syntax with this name is loaded, unless
+		 syntax highlighting has been switched off with ":syntax off".
+		 Otherwise this option does not always reflect the current syntax (the
+		 b:current_syntax variable does).
+		 This option is most useful in a modeline, for a file which syntax is
+		 not automatically recognized.  Example, in an IDL file: >c
+		 	/* vim: set syntax=idl : *\/
+		 ```
+		 When a dot appears in the value then this separates two filetype
+		 names.  Example: >c
+		 	/* vim: set syntax=c.doxygen : *\/
+		 ```
+		 This will use the "c" syntax first, then the "doxygen" syntax.
+		 Note that the second one must be prepared to be loaded as an addition,
+		 otherwise it will be skipped.  More than one dot may appear.
+		 To switch off syntax highlighting for the current file, use:
+		
+		 ```vim
+		 	set syntax=OFF
+		 ```
+		 To switch syntax highlighting on according to the current value of the
+		 'filetype' option:
+		
+		 ```vim
+		 	set syntax=ON
+		 ```
+		 What actually happens when setting the 'syntax' option is that the
+		 Syntax autocommand event is triggered with the value as argument.
+		 This option is not copied to another buffer, independent of the 's' or
+		 'S' flag in 'cpoptions'.
+		 Only alphanumeric characters, '.', '-' and '_' can be used.
+		
+	**/
+	var syn : String;
+	/**
+		```lua
+		(field) vim.bo.synmaxcol: integer
+		```
+		
+		---
+		
+		 Maximum column in which to search for syntax items.  In long lines the
+		 text after this column is not highlighted and following lines may not
+		 be highlighted correctly, because the syntax state is cleared.
+		 This helps to avoid very slow redrawing for an XML file that is one
+		 long line.
+		 Set to zero to remove the limit.
+		
+	**/
+	var synmaxcol : Int;
+	/**
+		```lua
+		(field) vim.bo.syntax: string
+		```
+		
+		---
+		
+		 When this option is set, the syntax with this name is loaded, unless
+		 syntax highlighting has been switched off with ":syntax off".
+		 Otherwise this option does not always reflect the current syntax (the
+		 b:current_syntax variable does).
+		 This option is most useful in a modeline, for a file which syntax is
+		 not automatically recognized.  Example, in an IDL file: >c
+		 	/* vim: set syntax=idl : *\/
+		 ```
+		 When a dot appears in the value then this separates two filetype
+		 names.  Example: >c
+		 	/* vim: set syntax=c.doxygen : *\/
+		 ```
+		 This will use the "c" syntax first, then the "doxygen" syntax.
+		 Note that the second one must be prepared to be loaded as an addition,
+		 otherwise it will be skipped.  More than one dot may appear.
+		 To switch off syntax highlighting for the current file, use:
+		
+		 ```vim
+		 	set syntax=OFF
+		 ```
+		 To switch syntax highlighting on according to the current value of the
+		 'filetype' option:
+		
+		 ```vim
+		 	set syntax=ON
+		 ```
+		 What actually happens when setting the 'syntax' option is that the
+		 Syntax autocommand event is triggered with the value as argument.
+		 This option is not copied to another buffer, independent of the 's' or
+		 'S' flag in 'cpoptions'.
+		 Only alphanumeric characters, '.', '-' and '_' can be used.
+		
+	**/
+	var syntax : String;
+	/**
+		```lua
+		(field) vim.bo.tabstop: integer
+		```
+		
+		---
+		
+		 Number of spaces that a <Tab> in the file counts for.  Also see
+		 the `:retab` command, and the 'softtabstop' option.
+		
+		 Note: Setting 'tabstop' to any other value than 8 can make your file
+		 appear wrong in many places.
+		 The value must be more than 0 and less than 10000.
+		
+		 There are five main ways to use tabs in Vim:
+		 1. Always keep 'tabstop' at 8, set 'softtabstop' and 'shiftwidth' to 4
+		    (or 3 or whatever you prefer) and use 'noexpandtab'.  Then Vim
+		    will use a mix of tabs and spaces, but typing <Tab> and <BS> will
+		    behave like a tab appears every 4 (or 3) characters.
+		    This is the recommended way, the file will look the same with other
+		    tools and when listing it in a terminal.
+		 2. Set 'softtabstop' and 'shiftwidth' to whatever you prefer and use
+		    'expandtab'.  This way you will always insert spaces.  The
+		    formatting will never be messed up when 'tabstop' is changed (leave
+		    it at 8 just in case).  The file will be a bit larger.
+		    You do need to check if no Tabs exist in the file.  You can get rid
+		    of them by first setting 'expandtab' and using `%retab!`, making
+		    sure the value of 'tabstop' is set correctly.
+		 3. Set 'tabstop' and 'shiftwidth' to whatever you prefer and use
+		    'expandtab'.  This way you will always insert spaces.  The
+		    formatting will never be messed up when 'tabstop' is changed.
+		    You do need to check if no Tabs exist in the file, just like in the
+		    item just above.
+		 4. Set 'tabstop' and 'shiftwidth' to whatever you prefer and use a
+		    `modeline` to set these values when editing the file again.  Only
+		    works when using Vim to edit the file, other tools assume a tabstop
+		    is worth 8 spaces.
+		 5. Always set 'tabstop' and 'shiftwidth' to the same value, and
+		    'noexpandtab'.  This should then work (for initial indents only)
+		    for any tabstop setting that people use.  It might be nice to have
+		    tabs after the first non-blank inserted as spaces if you do this
+		    though.  Otherwise aligned comments will be wrong when 'tabstop' is
+		    changed.
+		
+		 The value of 'tabstop' will be ignored if `'vartabstop'` is set to
+		 anything other than an empty string.
+		
+	**/
+	var tabstop : Int;
+	/**
+		```lua
+		(field) vim.bo.tag: string
+		```
+		
+		---
+		
+		 Filenames for the tag command, separated by spaces or commas.  To
+		 include a space or comma in a file name, precede it with backslashes
+		 (see `option-backslash` about including spaces/commas and backslashes).
+		 When a file name starts with "./", the '.' is replaced with the path
+		 of the current file.  But only when the 'd' flag is not included in
+		 'cpoptions'.  Environment variables are expanded `:set_env`.  Also see
+		 `tags-option`.
+		 "*", "**" and other wildcards can be used to search for tags files in
+		 a directory tree.  See `file-searching`.  E.g., "/lib/**\/tags" will
+		 find all files named "tags" below "/lib".  The filename itself cannot
+		 contain wildcards, it is used as-is.  E.g., "/lib/**\/tags?" will find
+		 files called "tags?".
+		 The `tagfiles()` function can be used to get a list of the file names
+		 actually used.
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 file names from the list.  This avoids problems when a future version
+		 uses another default.
+		
+	**/
+	var tag : String;
+	/**
+		```lua
+		(field) vim.bo.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
+		```
+		
+		---
+		
+		 This option specifies how case is handled when searching the tags
+		 file:
+		    followic	Follow the 'ignorecase' option
+		    followscs    Follow the 'smartcase' and 'ignorecase' options
+		    ignore	Ignore case
+		    match	Match case
+		    smart	Ignore case unless an upper case letter is used
+		
+	**/
+	var tagcase : String;
+	/**
+		```lua
+		(field) vim.bo.tagfunc: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used to perform tag searches.
+		 The function gets the tag pattern and should return a List of matching
+		 tags.  See `tag-function` for an explanation of how to write the
+		 function and an example.  The value can be the name of a function, a
+		 `lambda` or a `Funcref`. See `option-value-function` for more
+		 information.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var tagfunc : String;
+	/**
+		```lua
+		(field) vim.bo.tags: string
+		```
+		
+		---
+		
+		 Filenames for the tag command, separated by spaces or commas.  To
+		 include a space or comma in a file name, precede it with backslashes
+		 (see `option-backslash` about including spaces/commas and backslashes).
+		 When a file name starts with "./", the '.' is replaced with the path
+		 of the current file.  But only when the 'd' flag is not included in
+		 'cpoptions'.  Environment variables are expanded `:set_env`.  Also see
+		 `tags-option`.
+		 "*", "**" and other wildcards can be used to search for tags files in
+		 a directory tree.  See `file-searching`.  E.g., "/lib/**\/tags" will
+		 find all files named "tags" below "/lib".  The filename itself cannot
+		 contain wildcards, it is used as-is.  E.g., "/lib/**\/tags?" will find
+		 files called "tags?".
+		 The `tagfiles()` function can be used to get a list of the file names
+		 actually used.
+		 The use of `:set+=` and `:set-=` is preferred when adding or removing
+		 file names from the list.  This avoids problems when a future version
+		 uses another default.
+		
+	**/
+	var tags : String;
+	/**
+		```lua
+		(field) vim.bo.tc: 'followic'|'followscs'|'ignore'|'match'|'smart'
+		```
+		
+		---
+		
+		 This option specifies how case is handled when searching the tags
+		 file:
+		    followic	Follow the 'ignorecase' option
+		    followscs    Follow the 'smartcase' and 'ignorecase' options
+		    ignore	Ignore case
+		    match	Match case
+		    smart	Ignore case unless an upper case letter is used
+		
+	**/
+	var tc : String;
+	/**
+		```lua
+		(field) vim.bo.textwidth: integer
+		```
+		
+		---
+		
+		 Maximum width of text that is being inserted.  A longer line will be
+		 broken after white space to get this width.  A zero value disables
+		 this.
+		 When 'textwidth' is zero, 'wrapmargin' may be used.  See also
+		 'formatoptions' and `ins-textwidth`.
+		 When 'formatexpr' is set it will be used to break the line.
+		
+	**/
+	var textwidth : Int;
+	/**
+		```lua
+		(field) vim.bo.tfu: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used to perform tag searches.
+		 The function gets the tag pattern and should return a List of matching
+		 tags.  See `tag-function` for an explanation of how to write the
+		 function and an example.  The value can be the name of a function, a
+		 `lambda` or a `Funcref`. See `option-value-function` for more
+		 information.
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var tfu : String;
+	/**
+		```lua
+		(field) vim.bo.thesaurus: string
+		```
+		
+		---
+		
+		 List of file names, separated by commas, that are used to lookup words
+		 for thesaurus completion commands `i_CTRL-X_CTRL-T`.  See
+		 `compl-thesaurus`.
+		
+		 This option is not used if 'thesaurusfunc' is set, either for the
+		 buffer or globally.
+		
+		 To include a comma in a file name precede it with a backslash.  Spaces
+		 after a comma are ignored, otherwise spaces are included in the file
+		 name.  See `option-backslash` about using backslashes.  The use of
+		 `:set+=` and `:set-=` is preferred when adding or removing directories
+		 from the list.  This avoids problems when a future version uses
+		 another default.  Backticks cannot be used in this option for security
+		 reasons.
+		
+	**/
+	var thesaurus : String;
+	/**
+		```lua
+		(field) vim.bo.thesaurusfunc: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used for thesaurus completion
+		 with CTRL-X CTRL-T. `i_CTRL-X_CTRL-T` See `compl-thesaurusfunc`.
+		 The value can be the name of a function, a `lambda` or a `Funcref`.
+		 See `option-value-function` for more information.
+		
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var thesaurusfunc : String;
+	/**
+		```lua
+		(field) vim.bo.ts: integer
+		```
+		
+		---
+		
+		 Number of spaces that a <Tab> in the file counts for.  Also see
+		 the `:retab` command, and the 'softtabstop' option.
+		
+		 Note: Setting 'tabstop' to any other value than 8 can make your file
+		 appear wrong in many places.
+		 The value must be more than 0 and less than 10000.
+		
+		 There are five main ways to use tabs in Vim:
+		 1. Always keep 'tabstop' at 8, set 'softtabstop' and 'shiftwidth' to 4
+		    (or 3 or whatever you prefer) and use 'noexpandtab'.  Then Vim
+		    will use a mix of tabs and spaces, but typing <Tab> and <BS> will
+		    behave like a tab appears every 4 (or 3) characters.
+		    This is the recommended way, the file will look the same with other
+		    tools and when listing it in a terminal.
+		 2. Set 'softtabstop' and 'shiftwidth' to whatever you prefer and use
+		    'expandtab'.  This way you will always insert spaces.  The
+		    formatting will never be messed up when 'tabstop' is changed (leave
+		    it at 8 just in case).  The file will be a bit larger.
+		    You do need to check if no Tabs exist in the file.  You can get rid
+		    of them by first setting 'expandtab' and using `%retab!`, making
+		    sure the value of 'tabstop' is set correctly.
+		 3. Set 'tabstop' and 'shiftwidth' to whatever you prefer and use
+		    'expandtab'.  This way you will always insert spaces.  The
+		    formatting will never be messed up when 'tabstop' is changed.
+		    You do need to check if no Tabs exist in the file, just like in the
+		    item just above.
+		 4. Set 'tabstop' and 'shiftwidth' to whatever you prefer and use a
+		    `modeline` to set these values when editing the file again.  Only
+		    works when using Vim to edit the file, other tools assume a tabstop
+		    is worth 8 spaces.
+		 5. Always set 'tabstop' and 'shiftwidth' to the same value, and
+		    'noexpandtab'.  This should then work (for initial indents only)
+		    for any tabstop setting that people use.  It might be nice to have
+		    tabs after the first non-blank inserted as spaces if you do this
+		    though.  Otherwise aligned comments will be wrong when 'tabstop' is
+		    changed.
+		
+		 The value of 'tabstop' will be ignored if `'vartabstop'` is set to
+		 anything other than an empty string.
+		
+	**/
+	var ts : Int;
+	/**
+		```lua
+		(field) vim.bo.tsr: string
+		```
+		
+		---
+		
+		 List of file names, separated by commas, that are used to lookup words
+		 for thesaurus completion commands `i_CTRL-X_CTRL-T`.  See
+		 `compl-thesaurus`.
+		
+		 This option is not used if 'thesaurusfunc' is set, either for the
+		 buffer or globally.
+		
+		 To include a comma in a file name precede it with a backslash.  Spaces
+		 after a comma are ignored, otherwise spaces are included in the file
+		 name.  See `option-backslash` about using backslashes.  The use of
+		 `:set+=` and `:set-=` is preferred when adding or removing directories
+		 from the list.  This avoids problems when a future version uses
+		 another default.  Backticks cannot be used in this option for security
+		 reasons.
+		
+	**/
+	var tsr : String;
+	/**
+		```lua
+		(field) vim.bo.tsrfu: string
+		```
+		
+		---
+		
+		 This option specifies a function to be used for thesaurus completion
+		 with CTRL-X CTRL-T. `i_CTRL-X_CTRL-T` See `compl-thesaurusfunc`.
+		 The value can be the name of a function, a `lambda` or a `Funcref`.
+		 See `option-value-function` for more information.
+		
+		 This option cannot be set from a `modeline` or in the `sandbox`, for
+		 security reasons.
+		
+	**/
+	var tsrfu : String;
+	/**
+		```lua
+		(field) vim.bo.tw: integer
+		```
+		
+		---
+		
+		 Maximum width of text that is being inserted.  A longer line will be
+		 broken after white space to get this width.  A zero value disables
+		 this.
+		 When 'textwidth' is zero, 'wrapmargin' may be used.  See also
+		 'formatoptions' and `ins-textwidth`.
+		 When 'formatexpr' is set it will be used to break the line.
+		
+	**/
+	var tw : Int;
+	/**
+		```lua
+		(field) vim.bo.udf: boolean
+		```
+		
+		---
+		
+		 When on, Vim automatically saves undo history to an undo file when
+		 writing a buffer to a file, and restores undo history from the same
+		 file on buffer read.
+		 The directory where the undo file is stored is specified by 'undodir'.
+		 For more information about this feature see `undo-persistence`.
+		 The undo file is not read when 'undoreload' causes the buffer from
+		 before a reload to be saved for undo.
+		 When 'undofile' is turned off the undo file is NOT deleted.
+		
+	**/
+	var udf : Bool;
+	/**
+		```lua
+		(field) vim.bo.ul: integer
+		```
+		
+		---
+		
+		 Maximum number of changes that can be undone.  Since undo information
+		 is kept in memory, higher numbers will cause more memory to be used.
+		 Nevertheless, a single change can already use a large amount of memory.
+		 Set to 0 for Vi compatibility: One level of undo and "u" undoes
+		 itself:
+		
+		 ```vim
+		 	set ul=0
+		 ```
+		 But you can also get Vi compatibility by including the 'u' flag in
+		 'cpoptions', and still be able to use CTRL-R to repeat undo.
+		 Also see `undo-two-ways`.
+		 Set to -1 for no undo at all.  You might want to do this only for the
+		 current buffer:
+		
+		 ```vim
+		 	setlocal ul=-1
+		 ```
+		 This helps when you run out of memory for a single change.
+		
+		 The local value is set to -123456 when the global value is to be used.
+		
+		 Also see `clear-undo`.
+		
+	**/
+	var ul : Int;
+	/**
+		```lua
+		(field) vim.bo.undofile: boolean
+		```
+		
+		---
+		
+		 When on, Vim automatically saves undo history to an undo file when
+		 writing a buffer to a file, and restores undo history from the same
+		 file on buffer read.
+		 The directory where the undo file is stored is specified by 'undodir'.
+		 For more information about this feature see `undo-persistence`.
+		 The undo file is not read when 'undoreload' causes the buffer from
+		 before a reload to be saved for undo.
+		 When 'undofile' is turned off the undo file is NOT deleted.
+		
+	**/
+	var undofile : Bool;
+	/**
+		```lua
+		(field) vim.bo.undolevels: integer
+		```
+		
+		---
+		
+		 Maximum number of changes that can be undone.  Since undo information
+		 is kept in memory, higher numbers will cause more memory to be used.
+		 Nevertheless, a single change can already use a large amount of memory.
+		 Set to 0 for Vi compatibility: One level of undo and "u" undoes
+		 itself:
+		
+		 ```vim
+		 	set ul=0
+		 ```
+		 But you can also get Vi compatibility by including the 'u' flag in
+		 'cpoptions', and still be able to use CTRL-R to repeat undo.
+		 Also see `undo-two-ways`.
+		 Set to -1 for no undo at all.  You might want to do this only for the
+		 current buffer:
+		
+		 ```vim
+		 	setlocal ul=-1
+		 ```
+		 This helps when you run out of memory for a single change.
+		
+		 The local value is set to -123456 when the global value is to be used.
+		
+		 Also see `clear-undo`.
+		
+	**/
+	var undolevels : Int;
+	/**
+		```lua
+		(field) vim.bo.varsofttabstop: string
+		```
+		
+		---
+		
+		 A list of the number of spaces that a <Tab> counts for while editing,
+		 such as inserting a <Tab> or using <BS>.  It "feels" like variable-
+		 width <Tab>s are being inserted, while in fact a mixture of spaces
+		 and <Tab>s is used.  Tab widths are separated with commas, with the
+		 final value applying to all subsequent tabs.
+		
+		 For example, when editing assembly language files where statements
+		 start in the 9th column and comments in the 41st, it may be useful
+		 to use the following:
+		
+		 ```vim
+		 	set varsofttabstop=8,32,8
+		 ```
+		 This will set soft tabstops with 8 and 8 + 32 spaces, and 8 more
+		 for every column thereafter.
+		
+		 Note that the value of `'softtabstop'` will be ignored while
+		 'varsofttabstop' is set.
+		
+	**/
+	var varsofttabstop : String;
+	/**
+		```lua
+		(field) vim.bo.vartabstop: string
+		```
+		
+		---
+		
+		 A list of the number of spaces that a <Tab> in the file counts for,
+		 separated by commas.  Each value corresponds to one tab, with the
+		 final value applying to all subsequent tabs. For example:
+		
+		 ```vim
+		 	set vartabstop=4,20,10,8
+		 ```
+		 This will make the first tab 4 spaces wide, the second 20 spaces,
+		 the third 10 spaces, and all following tabs 8 spaces.
+		
+		 Note that the value of `'tabstop'` will be ignored while 'vartabstop'
+		 is set.
+		
+	**/
+	var vartabstop : String;
+	/**
+		```lua
+		(field) vim.bo.vsts: string
+		```
+		
+		---
+		
+		 A list of the number of spaces that a <Tab> counts for while editing,
+		 such as inserting a <Tab> or using <BS>.  It "feels" like variable-
+		 width <Tab>s are being inserted, while in fact a mixture of spaces
+		 and <Tab>s is used.  Tab widths are separated with commas, with the
+		 final value applying to all subsequent tabs.
+		
+		 For example, when editing assembly language files where statements
+		 start in the 9th column and comments in the 41st, it may be useful
+		 to use the following:
+		
+		 ```vim
+		 	set varsofttabstop=8,32,8
+		 ```
+		 This will set soft tabstops with 8 and 8 + 32 spaces, and 8 more
+		 for every column thereafter.
+		
+		 Note that the value of `'softtabstop'` will be ignored while
+		 'varsofttabstop' is set.
+		
+	**/
+	var vsts : String;
+	/**
+		```lua
+		(field) vim.bo.vts: string
+		```
+		
+		---
+		
+		 A list of the number of spaces that a <Tab> in the file counts for,
+		 separated by commas.  Each value corresponds to one tab, with the
+		 final value applying to all subsequent tabs. For example:
+		
+		 ```vim
+		 	set vartabstop=4,20,10,8
+		 ```
+		 This will make the first tab 4 spaces wide, the second 20 spaces,
+		 the third 10 spaces, and all following tabs 8 spaces.
+		
+		 Note that the value of `'tabstop'` will be ignored while 'vartabstop'
+		 is set.
+		
+	**/
+	var vts : String;
+	/**
+		```lua
+		(field) vim.bo.wm: integer
+		```
+		
+		---
+		
+		 Number of characters from the right window border where wrapping
+		 starts.  When typing text beyond this limit, an <EOL> will be inserted
+		 and inserting continues on the next line.
+		 Options that add a margin, such as 'number' and 'foldcolumn', cause
+		 the text width to be further reduced.
+		 When 'textwidth' is non-zero, this option is not used.
+		 See also 'formatoptions' and `ins-textwidth`.
+		
+	**/
+	var wm : Int;
+	/**
+		```lua
+		(field) vim.bo.wrapmargin: integer
+		```
+		
+		---
+		
+		 Number of characters from the right window border where wrapping
+		 starts.  When typing text beyond this limit, an <EOL> will be inserted
+		 and inserting continues on the next line.
+		 Options that add a margin, such as 'number' and 'foldcolumn', cause
+		 the text width to be further reduced.
+		 When 'textwidth' is non-zero, this option is not used.
+		 See also 'formatoptions' and `ins-textwidth`.
+		
+	**/
+	var wrapmargin : Int;
+}

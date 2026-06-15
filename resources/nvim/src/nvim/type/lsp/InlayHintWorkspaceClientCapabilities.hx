@@ -1,0 +1,31 @@
+package nvim.type.lsp;
+
+/**
+	```lua
+	(class) lsp.InlayHintWorkspaceClientCapabilities
+	```
+	
+	---
+	
+	Client workspace capabilities specific to inlay hints.
+	
+**/
+@:structInit extern class InlayHintWorkspaceClientCapabilities {
+	/**
+		```lua
+		(field) lsp.InlayHintWorkspaceClientCapabilities.refreshSupport: boolean?
+		```
+		
+		---
+		
+		
+		Whether the client implementation supports a refresh request sent from
+		the server to the client.
+		
+		Note that this event is global and will force the client to refresh all
+		inlay hints currently shown. It should be used with absolute care and
+		is useful for situation where a server for example detects a project wide
+		change that requires such a calculation.
+	**/
+	var refreshSupport : Null<Bool>;
+}
