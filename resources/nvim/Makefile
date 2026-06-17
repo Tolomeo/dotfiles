@@ -29,7 +29,6 @@ copy-raw: $(RAW_TARGETS)
 
 .PHONY=build
 build: copy-raw
-	@$(MAKE) copy-raw
 	@$(call HAXE, haxe build.hxml)
 
 .PHONY=install
