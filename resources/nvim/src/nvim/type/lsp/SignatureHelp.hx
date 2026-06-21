@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	callable. There can be multiple signature but only one
 	active and only one active parameter.
 **/
-@:structInit extern class SignatureHelp {
+@:structInit class SignatureHelp {
 	/**
 		```lua
 		(field) lsp.SignatureHelp.activeParameter: (integer|nil)?
@@ -37,7 +37,8 @@ package nvim.type.lsp;
 		mandatory (but still nullable) to better express the active parameter if
 		the active signature does have any.
 	**/
-	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+	@:optional
+	extern var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelp.activeSignature: integer?
@@ -56,7 +57,8 @@ package nvim.type.lsp;
 		In future version of the protocol this property might become
 		mandatory to better express this.
 	**/
-	var activeSignature : Null<nvim.type.Uinteger>;
+	@:optional
+	extern var activeSignature : Null<nvim.type.Uinteger>;
 	/**
 		```lua
 		(field) lsp.SignatureHelp.signatures: lsp.SignatureInformation[]
@@ -67,5 +69,5 @@ package nvim.type.lsp;
 		
 		One or more signatures.
 	**/
-	var signatures : Array<nvim.type.lsp.SignatureInformation>;
+	extern var signatures : Array<nvim.type.lsp.SignatureInformation>;
 }

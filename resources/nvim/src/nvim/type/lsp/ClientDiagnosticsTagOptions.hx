@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientDiagnosticsTagOptions
 	```
 **/
-@:structInit extern class ClientDiagnosticsTagOptions {
+@:structInit class ClientDiagnosticsTagOptions {
 	/**
 		```lua
 		(field) lsp.ClientDiagnosticsTagOptions.valueSet: 1|2[]
@@ -16,5 +16,5 @@ package nvim.type.lsp;
 		
 		The tags supported by the client.
 	**/
-	var valueSet : Array<nvim.type.lsp.DiagnosticTag>;
+	extern var valueSet : Array<nvim.type.lsp.DiagnosticTag>;
 }

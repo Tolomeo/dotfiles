@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Completion options.
 **/
-@:structInit extern class CompletionOptions {
+@:structInit class CompletionOptions {
 	/**
 		```lua
 		(field) lsp.CompletionOptions.allCommitCharacters: string[]?
@@ -26,7 +26,8 @@ package nvim.type.lsp;
 		completion item the ones on the completion item win.
 		
 	**/
-	var allCommitCharacters : Null<Array<String>>;
+	@:optional
+	extern var allCommitCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.completionItem: (lsp.ServerCompletionItemOptions)?
@@ -39,7 +40,8 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
-	var completionItem : Null<nvim.type.lsp.ServerCompletionItemOptions>;
+	@:optional
+	extern var completionItem : Null<nvim.type.lsp.ServerCompletionItemOptions>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.resolveProvider: boolean?
@@ -51,7 +53,8 @@ package nvim.type.lsp;
 		The server provides support to resolve additional
 		information for a completion item.
 	**/
-	var resolveProvider : Null<Bool>;
+	@:optional
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.triggerCharacters: string[]?
@@ -69,11 +72,13 @@ package nvim.type.lsp;
 		If code complete should automatically be trigger on characters not being valid inside
 		an identifier (for example `.` in JavaScript) list them in `triggerCharacters`.
 	**/
-	var triggerCharacters : Null<Array<String>>;
+	@:optional
+	extern var triggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.CompletionOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

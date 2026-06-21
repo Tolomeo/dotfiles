@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The client capabilities of a {@link ExecuteCommandRequest}.
 **/
-@:structInit extern class ExecuteCommandClientCapabilities {
+@:structInit class ExecuteCommandClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandClientCapabilities.dynamicRegistration: boolean?
@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		Execute command supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

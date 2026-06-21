@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client capabilities of a {@link DocumentOnTypeFormattingRequest}.
 **/
-@:structInit extern class DocumentOnTypeFormattingClientCapabilities {
+@:structInit class DocumentOnTypeFormattingClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingClientCapabilities.dynamicRegistration: boolean?
@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		Whether on type formatting supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

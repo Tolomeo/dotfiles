@@ -20,7 +20,7 @@ package nvim.type.lsp;
 	cause failure of the operation. How the client recovers from the failure is described by
 	the client capability: `workspace.workspaceEdit.failureHandling`
 **/
-@:structInit extern class WorkspaceEdit {
+@:structInit class WorkspaceEdit {
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changeAnnotations: table<string, lsp.ChangeAnnotation>?
@@ -35,7 +35,8 @@ package nvim.type.lsp;
 		Whether clients honor this property depends on the client capability `workspace.changeAnnotationSupport`.
 		
 	**/
-	var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
+	@:optional
+	extern var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changes: table<string, lsp.TextEdit[]>?
@@ -46,7 +47,8 @@ package nvim.type.lsp;
 		
 		Holds changes to existing resources.
 	**/
-	var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, Array<nvim.type.lsp.TextEdit>>>;
+	@:optional
+	extern var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, Array<nvim.type.lsp.TextEdit>>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.documentChanges: (lsp.CreateFile|lsp.DeleteFile|lsp.RenameFile|lsp.TextDocumentEdit)[]?
@@ -66,5 +68,6 @@ package nvim.type.lsp;
 		If a client neither supports `documentChanges` nor `workspace.workspaceEdit.resourceOperations` then
 		only plain `TextEdit`s using the `changes` property are supported.
 	**/
-	var documentChanges : Null<Array<haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
+	@:optional
+	extern var documentChanges : Null<Array<haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
 }

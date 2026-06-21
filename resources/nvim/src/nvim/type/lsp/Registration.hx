@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	General parameters to register for a notification or to register a provider.
 **/
-@:structInit extern class Registration {
+@:structInit class Registration {
 	/**
 		```lua
 		(field) lsp.Registration.id: string
@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again.
 	**/
-	var id : String;
+	extern var id : String;
 	/**
 		```lua
 		(field) lsp.Registration.method: string
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 		The method / capability to register for.
 	**/
-	var method : String;
+	extern var method : String;
 	/**
 		```lua
 		(field) lsp.Registration.registerOptions: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -59,5 +59,6 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var registerOptions : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var registerOptions : Null<nvim.type.lsp.LSPAny>;
 }

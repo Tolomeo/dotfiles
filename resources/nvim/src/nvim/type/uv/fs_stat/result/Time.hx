@@ -5,17 +5,17 @@ package nvim.type.uv.fs_stat.result;
 	(class) uv.fs_stat.result.time
 	```
 **/
-@:structInit extern class Time {
+@:structInit class Time {
 	/**
 		```lua
 		(field) uv.fs_stat.result.time.nsec: integer
 		```
 	**/
-	var nsec : Int;
+	extern var nsec : Int;
 	/**
 		```lua
 		(field) uv.fs_stat.result.time.sec: integer
 		```
 	**/
-	var sec : Int;
+	extern var sec : Int;
 }

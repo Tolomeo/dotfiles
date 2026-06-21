@@ -5,71 +5,82 @@ package nvim.type.vim.api.keyset.get_autocmds;
 	(class) vim.api.keyset.get_autocmds.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.buffer: integer?
 		```
 	**/
-	var buffer : Null<Int>;
+	@:optional
+	extern var buffer : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.buflocal: boolean?
 		```
 	**/
-	var buflocal : Null<Bool>;
+	@:optional
+	extern var buflocal : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.callback: function?
 		```
 	**/
-	var callback : Null<haxe.Constraints.Function>;
+	@:optional
+	extern var callback : Null<haxe.Constraints.Function>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.command: string?
 		```
 	**/
-	var command : Null<String>;
+	@:optional
+	extern var command : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.desc: string?
 		```
 	**/
-	var desc : Null<String>;
+	@:optional
+	extern var desc : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.event: string?
 		```
 	**/
-	var event : Null<String>;
+	@:optional
+	extern var event : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.group: integer?
 		```
 	**/
-	var group : Null<Int>;
+	@:optional
+	extern var group : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.group_name: integer?
 		```
 	**/
-	var group_name : Null<Int>;
+	@:optional
+	extern var group_name : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.id: integer?
 		```
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.once: boolean?
 		```
 	**/
-	var once : Null<Bool>;
+	@:optional
+	extern var once : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_autocmds.ret.pattern: string?
 		```
 	**/
-	var pattern : Null<String>;
+	@:optional
+	extern var pattern : Null<String>;
 }

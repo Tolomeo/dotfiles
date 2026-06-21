@@ -9,7 +9,7 @@ package nvim.type.vim;
 	
 	 @nodoc
 **/
-@:structInit extern class Regex {
+@:structInit class Regex {
 	/**
 		```lua
 		(method) vim.regex:match_line(bufnr: integer, line_idx: integer, start?: integer, end_?: integer)
@@ -27,7 +27,7 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index) relative to `start`, or `nil` if no match
 	**/
-	function match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
+	extern function match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) vim.regex:match_str(str: string)
@@ -46,5 +46,5 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index), or `nil` if no match
 	**/
-	function match_str(str:String):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
+	extern function match_str(str:String):nvim.helper.Multireturn<Null<Int>, Null<Int>, Void, Void, Void, Void>;
 }

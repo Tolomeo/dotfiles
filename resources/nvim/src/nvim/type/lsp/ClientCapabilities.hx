@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Defines the capabilities provided by the client.
 **/
-@:structInit extern class ClientCapabilities {
+@:structInit class ClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.experimental: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -36,7 +36,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var experimental : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var experimental : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.general: (lsp.GeneralClientCapabilities)?
@@ -53,7 +54,8 @@ package nvim.type.lsp;
 		General client capabilities.
 		
 	**/
-	var general : Null<nvim.type.lsp.GeneralClientCapabilities>;
+	@:optional
+	extern var general : Null<nvim.type.lsp.GeneralClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.notebookDocument: (lsp.NotebookDocumentClientCapabilities)?
@@ -70,7 +72,8 @@ package nvim.type.lsp;
 		Capabilities specific to the notebook document support.
 		
 	**/
-	var notebookDocument : Null<nvim.type.lsp.NotebookDocumentClientCapabilities>;
+	@:optional
+	extern var notebookDocument : Null<nvim.type.lsp.NotebookDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.textDocument: (lsp.TextDocumentClientCapabilities)?
@@ -85,7 +88,8 @@ package nvim.type.lsp;
 		
 		Text document specific client capabilities.
 	**/
-	var textDocument : Null<nvim.type.lsp.TextDocumentClientCapabilities>;
+	@:optional
+	extern var textDocument : Null<nvim.type.lsp.TextDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.window: (lsp.WindowClientCapabilities)?
@@ -96,7 +100,8 @@ package nvim.type.lsp;
 		
 		Window specific client capabilities.
 	**/
-	var window : Null<nvim.type.lsp.WindowClientCapabilities>;
+	@:optional
+	extern var window : Null<nvim.type.lsp.WindowClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.ClientCapabilities.workspace: (lsp.WorkspaceClientCapabilities)?
@@ -111,5 +116,6 @@ package nvim.type.lsp;
 		
 		Workspace specific client capabilities.
 	**/
-	var workspace : Null<nvim.type.lsp.WorkspaceClientCapabilities>;
+	@:optional
+	extern var workspace : Null<nvim.type.lsp.WorkspaceClientCapabilities>;
 }

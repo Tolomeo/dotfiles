@@ -231,7 +231,7 @@ extern class Util {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function jump_to_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, position_encoding:haxe.extern.EitherType<String, Null<String>>, ?reuse_win:Null<Bool>):Bool;
+	function jump_to_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?reuse_win:Null<Bool>):Bool;
 	/**
 		```lua
 		function M.locations_to_items(locations: lsp.LocationLink[]|lsp.Location[], position_encoding?: 'utf-16'|'utf-32'|'utf-8')
@@ -530,7 +530,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
+	function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
 	/**
 		```lua
 		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)

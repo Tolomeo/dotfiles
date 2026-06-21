@@ -5,6 +5,6 @@ package nvim.type.vim.fn.winlayout;
 	(class) vim.fn.winlayout.leaf
 	```
 **/
-@:structInit extern class Leaf {
+@:structInit class Leaf {
 
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter;
 	(class) vim.treesitter.LanguageTree
 	```
 **/
-@:structInit extern class LanguageTree {
+@:structInit class LanguageTree {
 	/**
 		```lua
 		function vim.treesitter.LanguageTree.new(source: string|integer, lang: string, opts?: vim.treesitter.LanguageTree.new.Opts)
@@ -27,31 +27,31 @@ package nvim.type.vim.treesitter;
 	**/
 	@:luaDotMethod
 	@:native("new")
-	function new_(source:haxe.extern.EitherType<Int, String>, lang:String, ?opts:Null<nvim.type.vim.treesitter.languagetree.new_.Opts>):nvim.type.vim.treesitter.LanguageTree;
+	extern function new_(source:haxe.extern.EitherType<Int, String>, lang:String, ?opts:Null<nvim.type.vim.treesitter.languagetree.new_.Opts>):nvim.type.vim.treesitter.LanguageTree;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:_on_bytes(bufnr: integer, changed_tick: integer, start_row: integer, start_col: integer, start_byte: integer, old_row: integer, old_col: integer, old_byte: integer, new_row: integer, new_col: integer, new_byte: integer)
 		```
 	**/
-	function _on_bytes(bufnr:Int, changed_tick:Int, start_row:Int, start_col:Int, start_byte:Int, old_row:Int, old_col:Int, old_byte:Int, new_row:Int, new_col:Int, new_byte:Int):Dynamic;
+	extern function _on_bytes(bufnr:Int, changed_tick:Int, start_row:Int, start_col:Int, start_byte:Int, old_row:Int, old_col:Int, old_byte:Int, new_row:Int, new_col:Int, new_byte:Int):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:_on_detach(...any)
 		```
 	**/
-	function _on_detach(___:haxe.Rest<Dynamic>):Dynamic;
+	extern function _on_detach(___:haxe.Rest<Dynamic>):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:_on_reload()
 		```
 	**/
-	function _on_reload():Dynamic;
+	extern function _on_reload():Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:_subtract_time(thread_state: { timeout: integer? }, time: integer)
 		```
 	**/
-	function _subtract_time(thread_state:nvim.type.ParserThreadState, time:Int):Dynamic;
+	extern function _subtract_time(thread_state:nvim.type.ParserThreadState, time:Int):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:children()
@@ -62,7 +62,7 @@ package nvim.type.vim.treesitter;
 		
 		 Returns a map of language to child tree.
 	**/
-	function children():lua.Table<String, nvim.type.vim.treesitter.LanguageTree>;
+	extern function children():lua.Table<String, nvim.type.vim.treesitter.LanguageTree>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:contains(range: Range4)
@@ -73,7 +73,7 @@ package nvim.type.vim.treesitter;
 		
 		 Determines whether {range} is contained in the |LanguageTree|.
 	**/
-	function contains(range:nvim.type.Range4):Bool;
+	extern function contains(range:nvim.type.Range4):Bool;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:destroy()
@@ -88,7 +88,7 @@ package nvim.type.vim.treesitter;
 		 Note: This DOES NOT remove this tree from a parent. Instead,
 		 `remove_child` must be called on the parent to remove it.
 	**/
-	function destroy():Dynamic;
+	extern function destroy():Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:for_each_tree(fn: fun(tree: TSTree, ltree: vim.treesitter.LanguageTree))
@@ -100,7 +100,7 @@ package nvim.type.vim.treesitter;
 		
 		 Note: This includes the invoking tree's child trees as well.
 	**/
-	function for_each_tree(fn:(tree:nvim.type.TSTree, ltree:nvim.type.vim.treesitter.LanguageTree) -> Dynamic):Dynamic;
+	extern function for_each_tree(fn:(tree:nvim.type.TSTree, ltree:nvim.type.vim.treesitter.LanguageTree) -> Dynamic):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:included_regions()
@@ -115,7 +115,7 @@ package nvim.type.vim.treesitter;
 		Each list represents a range in the form of
 		{ {start_row}, {start_col}, {start_bytes}, {end_row}, {end_col}, {end_bytes} }.
 	**/
-	function included_regions():lua.Table<Int, Array<nvim.type.Range6>>;
+	extern function included_regions():lua.Table<Int, Array<nvim.type.Range6>>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:invalidate(reload: boolean|nil)
@@ -128,7 +128,7 @@ package nvim.type.vim.treesitter;
 		 Should only be called when the tracked state of the LanguageTree is not valid against the parse
 		 tree in treesitter. Doesn't clear filesystem cache. Called often, so needs to be fast.
 	**/
-	function invalidate(?reload:Null<Bool>):Dynamic;
+	extern function invalidate(?reload:Null<Bool>):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:is_valid(exclude_children?: boolean, range?: Range2|Range4|Range6)
@@ -144,7 +144,7 @@ package nvim.type.vim.treesitter;
 		
 		@*param* `range` — range to check for validity
 	**/
-	function is_valid(?exclude_children:Null<Bool>, ?range:Null<nvim.type.Range>):Bool;
+	extern function is_valid(?exclude_children:Null<Bool>, ?range:Null<nvim.type.Range>):Bool;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:lang()
@@ -155,7 +155,7 @@ package nvim.type.vim.treesitter;
 		
 		 Gets the language of this tree node.
 	**/
-	function lang():String;
+	extern function lang():String;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:language_for_range(range: Range4)
@@ -168,7 +168,7 @@ package nvim.type.vim.treesitter;
 		
 		@*return* `tree` — Managing {range}
 	**/
-	function language_for_range(range:nvim.type.Range4):nvim.type.vim.treesitter.LanguageTree;
+	extern function language_for_range(range:nvim.type.Range4):nvim.type.vim.treesitter.LanguageTree;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:named_node_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
@@ -179,7 +179,7 @@ package nvim.type.vim.treesitter;
 		
 		 Gets the smallest named node that contains {range}.
 	**/
-	function named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
+	extern function named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:node_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
@@ -190,7 +190,7 @@ package nvim.type.vim.treesitter;
 		
 		 Gets the smallest node that contains {range}.
 	**/
-	function node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
+	extern function node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:parent()
@@ -201,7 +201,7 @@ package nvim.type.vim.treesitter;
 		
 		Returns the parent tree. `nil` for the root tree.
 	**/
-	function parent():Null<nvim.type.vim.treesitter.LanguageTree>;
+	extern function parent():Null<nvim.type.vim.treesitter.LanguageTree>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:parse(range: boolean|Range2|Range4|Range6|nil, on_parse?: fun(err?: string, trees?: table<integer, TSTree>))
@@ -234,7 +234,7 @@ package nvim.type.vim.treesitter;
 		     If parsing was still able to finish synchronously (within 3ms), `parse()` returns the list
 		     of trees. Otherwise, it returns `nil`.
 	**/
-	function parse(?range:Null<haxe.extern.EitherType<Bool, nvim.type.Range>>, ?on_parse:Null<(err:String, trees:lua.Table<Int, nvim.type.TSTree>) -> Dynamic>):Null<lua.Table<Int, nvim.type.TSTree>>;
+	extern function parse(?range:Null<haxe.extern.EitherType<Bool, nvim.type.Range>>, ?on_parse:Null<(err:String, trees:lua.Table<Int, nvim.type.TSTree>) -> Dynamic>):Null<lua.Table<Int, nvim.type.TSTree>>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:register_cbs(cbs: table<'on_bytes'|'on_changedtree'|'on_child_added'|'on_child_removed'|'on_detach', function>, recursive?: boolean)
@@ -259,7 +259,7 @@ package nvim.type.vim.treesitter;
 		
 		                           also inherit the callbacks.
 	**/
-	function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic;
+	extern function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:source()
@@ -270,7 +270,7 @@ package nvim.type.vim.treesitter;
 		
 		 Returns the source content of the language tree (bufnr or string).
 	**/
-	function source():haxe.extern.EitherType<Int, String>;
+	extern function source():haxe.extern.EitherType<Int, String>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:tree_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
@@ -281,7 +281,7 @@ package nvim.type.vim.treesitter;
 		
 		 Gets the tree that contains {range}.
 	**/
-	function tree_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSTree>;
+	extern function tree_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSTree>;
 	/**
 		```lua
 		(method) vim.treesitter.LanguageTree:trees()
@@ -296,5 +296,5 @@ package nvim.type.vim.treesitter;
 		 * this LanguageTree is the root, in which case the result is empty or a singleton list; or
 		 * the root LanguageTree is fully parsed.
 	**/
-	function trees():lua.Table<Int, nvim.type.TSTree>;
+	extern function trees():lua.Table<Int, nvim.type.TSTree>;
 }

@@ -5,11 +5,11 @@ package nvim.type.lsp;
 	(class) lsp.NotebookCellLanguage
 	```
 **/
-@:structInit extern class NotebookCellLanguage {
+@:structInit class NotebookCellLanguage {
 	/**
 		```lua
 		(field) lsp.NotebookCellLanguage.language: string
 		```
 	**/
-	var language : String;
+	extern var language : String;
 }

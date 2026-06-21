@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.FoldingRangeClientCapabilities
 	```
 **/
-@:structInit extern class FoldingRangeClientCapabilities {
+@:structInit class FoldingRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.dynamicRegistration: boolean?
@@ -19,7 +19,8 @@ package nvim.type.lsp;
 		`FoldingRangeRegistrationOptions` return value for the corresponding
 		server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.foldingRange: (lsp.ClientFoldingRangeOptions)?
@@ -31,7 +32,8 @@ package nvim.type.lsp;
 		Specific options for the folding range.
 		
 	**/
-	var foldingRange : Null<nvim.type.lsp.ClientFoldingRangeOptions>;
+	@:optional
+	extern var foldingRange : Null<nvim.type.lsp.ClientFoldingRangeOptions>;
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.foldingRangeKind: (lsp.ClientFoldingRangeKindOptions)?
@@ -43,7 +45,8 @@ package nvim.type.lsp;
 		Specific options for the folding range kind.
 		
 	**/
-	var foldingRangeKind : Null<nvim.type.lsp.ClientFoldingRangeKindOptions>;
+	@:optional
+	extern var foldingRangeKind : Null<nvim.type.lsp.ClientFoldingRangeKindOptions>;
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.lineFoldingOnly: boolean?
@@ -56,7 +59,8 @@ package nvim.type.lsp;
 		If set, client will ignore specified `startCharacter` and `endCharacter`
 		properties in a FoldingRange.
 	**/
-	var lineFoldingOnly : Null<Bool>;
+	@:optional
+	extern var lineFoldingOnly : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FoldingRangeClientCapabilities.rangeLimit: integer?
@@ -69,5 +73,6 @@ package nvim.type.lsp;
 		per document. The value serves as a hint, servers are free to follow the
 		limit.
 	**/
-	var rangeLimit : Null<nvim.type.Uinteger>;
+	@:optional
+	extern var rangeLimit : Null<nvim.type.Uinteger>;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.fn.setqflist;
 	(class) vim.fn.setqflist.what
 	```
 **/
-@:structInit extern class What {
+@:structInit class What {
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.context: table?
@@ -16,7 +16,8 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list context. See |quickfix-context|
 	**/
-	var context : Null<lua.Table.AnyTable>;
+	@:optional
+	extern var context : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.efm: string?
@@ -30,7 +31,8 @@ package nvim.type.vim.fn.setqflist;
 		 'errorformat' option value is used.
 		 See |quickfix-parse|
 	**/
-	var efm : Null<String>;
+	@:optional
+	extern var efm : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.id: integer?
@@ -41,7 +43,8 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list identifier |quickfix-ID|
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.idx: integer?
@@ -54,7 +57,8 @@ package nvim.type.vim.fn.setqflist;
 		 then the last entry in the list is set as the
 		 current entry. See |quickfix-index|
 	**/
-	var idx : Null<Int>;
+	@:optional
+	extern var idx : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.items: vim.quickfix.entry[]?
@@ -66,7 +70,8 @@ package nvim.type.vim.fn.setqflist;
 		 list of quickfix entries. Same as the {list}
 		 argument.
 	**/
-	var items : Null<Array<nvim.type.vim.quickfix.Entry>>;
+	@:optional
+	extern var items : Null<Array<nvim.type.vim.quickfix.Entry>>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.lines: string[]?
@@ -80,7 +85,8 @@ package nvim.type.vim.fn.setqflist;
 		 {nr} or {id}. Only a |List| value is supported.
 		 See |quickfix-parse|
 	**/
-	var lines : Null<Array<String>>;
+	@:optional
+	extern var lines : Null<Array<String>>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.nr: integer?
@@ -93,7 +99,8 @@ package nvim.type.vim.fn.setqflist;
 		 means the current quickfix list and "$" means
 		 the last quickfix list.
 	**/
-	var nr : Null<Int>;
+	@:optional
+	extern var nr : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.quickfixtextfunc: function?
@@ -108,7 +115,8 @@ package nvim.type.vim.fn.setqflist;
 		 to |quickfix-window-function| for an explanation
 		 of how to write the function and an example.
 	**/
-	var quickfixtextfunc : Null<haxe.Constraints.Function>;
+	@:optional
+	extern var quickfixtextfunc : Null<haxe.Constraints.Function>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.title: string?
@@ -119,5 +127,6 @@ package nvim.type.vim.fn.setqflist;
 		
 		 quickfix list title text. See |quickfix-title|
 	**/
-	var title : Null<String>;
+	@:optional
+	extern var title : Null<String>;
 }

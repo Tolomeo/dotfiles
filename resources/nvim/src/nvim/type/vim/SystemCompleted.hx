@@ -5,29 +5,31 @@ package nvim.type.vim;
 	(class) vim.SystemCompleted
 	```
 **/
-@:structInit extern class SystemCompleted {
+@:structInit class SystemCompleted {
 	/**
 		```lua
 		(field) vim.SystemCompleted.code: integer
 		```
 	**/
-	var code : Int;
+	extern var code : Int;
 	/**
 		```lua
 		(field) vim.SystemCompleted.signal: integer
 		```
 	**/
-	var signal : Int;
+	extern var signal : Int;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stderr: string?
 		```
 	**/
-	var stderr : Null<String>;
+	@:optional
+	extern var stderr : Null<String>;
 	/**
 		```lua
 		(field) vim.SystemCompleted.stdout: string?
 		```
 	**/
-	var stdout : Null<String>;
+	@:optional
+	extern var stdout : Null<String>;
 }

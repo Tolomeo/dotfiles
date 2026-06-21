@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic;
 	(class) vim.diagnostic.Handler
 	```
 **/
-@:structInit extern class Handler {
+@:structInit class Handler {
 	/**
 		```lua
 		(field) vim.diagnostic.Handler.hide: fun(namespace: integer, bufnr: integer)?
@@ -17,7 +17,8 @@ package nvim.type.vim.diagnostic;
 		function (namespace: integer, bufnr: integer)
 		```
 	**/
-	var hide : Null<(namespace:Int, bufnr:Int) -> Dynamic>;
+	@:optional
+	extern var hide : Null<(namespace:Int, bufnr:Int) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.diagnostic.Handler.show: fun(namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.OptsResolved)?
@@ -29,5 +30,6 @@ package nvim.type.vim.diagnostic;
 		function (namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.OptsResolved)
 		```
 	**/
-	var show : Null<(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
+	@:optional
+	extern var show : Null<(namespace:Int, bufnr:Int, diagnostics:Array<nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
 }

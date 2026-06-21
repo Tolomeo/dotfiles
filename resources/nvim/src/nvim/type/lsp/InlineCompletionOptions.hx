@@ -10,11 +10,12 @@ package nvim.type.lsp;
 	Inline completion options used during static registration.
 	
 **/
-@:structInit extern class InlineCompletionOptions {
+@:structInit class InlineCompletionOptions {
 	/**
 		```lua
 		(field) lsp.InlineCompletionOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

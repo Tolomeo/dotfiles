@@ -5,35 +5,35 @@ package nvim.type.uv.interface_addresses;
 	(class) uv.interface_addresses.addr
 	```
 **/
-@:structInit extern class Addr {
+@:structInit class Addr {
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.family: string
 		```
 	**/
-	var family : String;
+	extern var family : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.internal: boolean
 		```
 	**/
-	var internal : Bool;
+	extern var internal : Bool;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.ip: string
 		```
 	**/
-	var ip : String;
+	extern var ip : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.mac: string
 		```
 	**/
-	var mac : String;
+	extern var mac : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.netmask: string
 		```
 	**/
-	var netmask : String;
+	extern var netmask : String;
 }

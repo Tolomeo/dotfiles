@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ChangeAnnotationsSupportOptions
 	```
 **/
-@:structInit extern class ChangeAnnotationsSupportOptions {
+@:structInit class ChangeAnnotationsSupportOptions {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotationsSupportOptions.groupsOnLabel: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		for instance all edits labelled with "Changes in Strings" would
 		be a tree node.
 	**/
-	var groupsOnLabel : Null<Bool>;
+	@:optional
+	extern var groupsOnLabel : Null<Bool>;
 }

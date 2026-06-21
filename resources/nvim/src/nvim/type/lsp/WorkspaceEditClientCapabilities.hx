@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WorkspaceEditClientCapabilities
 	```
 **/
-@:structInit extern class WorkspaceEditClientCapabilities {
+@:structInit class WorkspaceEditClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.changeAnnotationSupport: (lsp.ChangeAnnotationsSupportOptions)?
@@ -18,7 +18,8 @@ package nvim.type.lsp;
 		create file, rename file and delete file changes.
 		
 	**/
-	var changeAnnotationSupport : Null<nvim.type.lsp.ChangeAnnotationsSupportOptions>;
+	@:optional
+	extern var changeAnnotationSupport : Null<nvim.type.lsp.ChangeAnnotationsSupportOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.documentChanges: boolean?
@@ -29,7 +30,8 @@ package nvim.type.lsp;
 		
 		The client supports versioned document changes in `WorkspaceEdit`s
 	**/
-	var documentChanges : Null<Bool>;
+	@:optional
+	extern var documentChanges : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.failureHandling: ("abort"|"textOnlyTransactional"|"transactional"|"undo")?
@@ -52,7 +54,8 @@ package nvim.type.lsp;
 		    | "undo" -- Undo
 		```
 	**/
-	var failureHandling : Null<nvim.type.lsp.FailureHandlingKind>;
+	@:optional
+	extern var failureHandling : Null<nvim.type.lsp.FailureHandlingKind>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.metadataSupport: boolean?
@@ -64,7 +67,8 @@ package nvim.type.lsp;
 		Whether the client supports `WorkspaceEditMetadata` in `WorkspaceEdit`s.
 		
 	**/
-	var metadataSupport : Null<Bool>;
+	@:optional
+	extern var metadataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.normalizesLineEndings: boolean?
@@ -80,7 +84,8 @@ package nvim.type.lsp;
 		character.
 		
 	**/
-	var normalizesLineEndings : Null<Bool>;
+	@:optional
+	extern var normalizesLineEndings : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.resourceOperations: "create"|"delete"|"rename"[]?
@@ -93,7 +98,8 @@ package nvim.type.lsp;
 		support 'create', 'rename' and 'delete' files and folders.
 		
 	**/
-	var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
+	@:optional
+	extern var resourceOperations : Null<Array<nvim.type.lsp.ResourceOperationKind>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEditClientCapabilities.snippetEditSupport: boolean?
@@ -105,5 +111,6 @@ package nvim.type.lsp;
 		Whether the client supports snippets as text edits.
 		
 	**/
-	var snippetEditSupport : Null<Bool>;
+	@:optional
+	extern var snippetEditSupport : Null<Bool>;
 }

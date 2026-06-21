@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.Signs
 	```
 **/
-@:structInit extern class Signs {
+@:structInit class Signs {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.linehl: table<vim.diagnostic.Severity, string>?
@@ -17,7 +17,8 @@ package nvim.type.vim.diagnostic.opts;
 		 A table mapping |diagnostic-severity| to the highlight group used for the
 		 whole line the sign is placed in.
 	**/
-	var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	@:optional
+	extern var linehl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.numhl: table<vim.diagnostic.Severity, string>?
@@ -29,7 +30,8 @@ package nvim.type.vim.diagnostic.opts;
 		 A table mapping |diagnostic-severity| to the highlight group used for the
 		 line number where the sign is placed.
 	**/
-	var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	@:optional
+	extern var numhl : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.priority: integer?
@@ -43,7 +45,8 @@ package nvim.type.vim.diagnostic.opts;
 		 Otherwise, all signs use the same priority.
 		 (default: `10`)
 	**/
-	var priority : Null<Int>;
+	@:optional
+	extern var priority : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -63,7 +66,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.text: table<vim.diagnostic.Severity, string>?
@@ -81,5 +85,6 @@ package nvim.type.vim.diagnostic.opts;
 		 })
 		 ```
 	**/
-	var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
+	@:optional
+	extern var text : Null<lua.Table<nvim.type.vim.diagnostic.Severity, String>>;
 }

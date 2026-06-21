@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link DefinitionRequest}.
 **/
-@:structInit extern class DefinitionClientCapabilities {
+@:structInit class DefinitionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DefinitionClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Whether definition supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DefinitionClientCapabilities.linkSupport: boolean?
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		The client supports additional metadata in the form of definition links.
 		
 	**/
-	var linkSupport : Null<Bool>;
+	@:optional
+	extern var linkSupport : Null<Bool>;
 }

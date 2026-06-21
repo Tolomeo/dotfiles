@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	capabilities.
 	
 **/
-@:structInit extern class CompletionListCapabilities {
+@:structInit class CompletionListCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.applyKindSupport: boolean?
@@ -31,7 +31,8 @@ package nvim.type.lsp;
 		defined in `CompletionList.applyKind`.
 		
 	**/
-	var applyKindSupport : Null<Bool>;
+	@:optional
+	extern var applyKindSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.itemDefaults: string[]?
@@ -48,5 +49,6 @@ package nvim.type.lsp;
 		no properties are supported.
 		
 	**/
-	var itemDefaults : Null<Array<String>>;
+	@:optional
+	extern var itemDefaults : Null<Array<String>>;
 }

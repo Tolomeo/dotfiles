@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.wo
 	```
 **/
-@:structInit extern class Wo {
+@:structInit class Wo {
 	/**
 		```lua
 		(field) vim.wo.arab: boolean
@@ -29,7 +29,7 @@ package nvim.type.vim;
 		 Also see `arabic.txt`.
 		
 	**/
-	var arab : Bool;
+	extern var arab : Bool;
 	/**
 		```lua
 		(field) vim.wo.arabic: boolean
@@ -53,7 +53,7 @@ package nvim.type.vim;
 		 Also see `arabic.txt`.
 		
 	**/
-	var arabic : Bool;
+	extern var arabic : Bool;
 	/**
 		```lua
 		(field) vim.wo.breakindent: boolean
@@ -66,7 +66,7 @@ package nvim.type.vim;
 		 of text.
 		
 	**/
-	var breakindent : Bool;
+	extern var breakindent : Bool;
 	/**
 		```lua
 		(field) vim.wo.breakindentopt: string
@@ -103,7 +103,7 @@ package nvim.type.vim;
 		 		    (default: off)
 		
 	**/
-	var breakindentopt : String;
+	extern var breakindentopt : String;
 	/**
 		```lua
 		(field) vim.wo.bri: boolean
@@ -116,7 +116,7 @@ package nvim.type.vim;
 		 of text.
 		
 	**/
-	var bri : Bool;
+	extern var bri : Bool;
 	/**
 		```lua
 		(field) vim.wo.briopt: string
@@ -153,7 +153,7 @@ package nvim.type.vim;
 		 		    (default: off)
 		
 	**/
-	var briopt : String;
+	extern var briopt : String;
 	/**
 		```lua
 		(field) vim.wo.cc: string
@@ -178,7 +178,7 @@ package nvim.type.vim;
 		 A maximum of 256 columns are highlighted.
 		
 	**/
-	var cc : String;
+	extern var cc : String;
 	/**
 		```lua
 		(field) vim.wo.cocu: string
@@ -203,7 +203,7 @@ package nvim.type.vim;
 		 displayed.  E.g., when moving vertically it may change column.
 		
 	**/
-	var cocu : String;
+	extern var cocu : String;
 	/**
 		```lua
 		(field) vim.wo.cole: integer
@@ -231,7 +231,7 @@ package nvim.type.vim;
 		 option.
 		
 	**/
-	var cole : Int;
+	extern var cole : Int;
 	/**
 		```lua
 		(field) vim.wo.colorcolumn: string
@@ -256,7 +256,7 @@ package nvim.type.vim;
 		 A maximum of 256 columns are highlighted.
 		
 	**/
-	var colorcolumn : String;
+	extern var colorcolumn : String;
 	/**
 		```lua
 		(field) vim.wo.concealcursor: string
@@ -281,7 +281,7 @@ package nvim.type.vim;
 		 displayed.  E.g., when moving vertically it may change column.
 		
 	**/
-	var concealcursor : String;
+	extern var concealcursor : String;
 	/**
 		```lua
 		(field) vim.wo.conceallevel: integer
@@ -309,7 +309,7 @@ package nvim.type.vim;
 		 option.
 		
 	**/
-	var conceallevel : Int;
+	extern var conceallevel : Int;
 	/**
 		```lua
 		(field) vim.wo.crb: boolean
@@ -326,7 +326,7 @@ package nvim.type.vim;
 		 taken into account.
 		
 	**/
-	var crb : Bool;
+	extern var crb : Bool;
 	/**
 		```lua
 		(field) vim.wo.cuc: boolean
@@ -347,7 +347,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var cuc : Bool;
+	extern var cuc : Bool;
 	/**
 		```lua
 		(field) vim.wo.cul: boolean = true
@@ -365,7 +365,7 @@ package nvim.type.vim;
 		 easier to see the selected text.
 		
 	**/
-	var cul : Bool;
+	extern var cul : Bool;
 	/**
 		```lua
 		(field) vim.wo.culopt: string
@@ -388,7 +388,7 @@ package nvim.type.vim;
 		 "line" and "screenline" cannot be used together.
 		
 	**/
-	var culopt : String;
+	extern var culopt : String;
 	/**
 		```lua
 		(field) vim.wo.cursorbind: boolean
@@ -405,7 +405,7 @@ package nvim.type.vim;
 		 taken into account.
 		
 	**/
-	var cursorbind : Bool;
+	extern var cursorbind : Bool;
 	/**
 		```lua
 		(field) vim.wo.cursorcolumn: boolean
@@ -426,7 +426,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var cursorcolumn : Bool;
+	extern var cursorcolumn : Bool;
 	/**
 		```lua
 		(field) vim.wo.cursorline: boolean = true
@@ -444,7 +444,7 @@ package nvim.type.vim;
 		 easier to see the selected text.
 		
 	**/
-	var cursorline : Bool;
+	extern var cursorline : Bool;
 	/**
 		```lua
 		(field) vim.wo.cursorlineopt: string
@@ -467,7 +467,7 @@ package nvim.type.vim;
 		 "line" and "screenline" cannot be used together.
 		
 	**/
-	var cursorlineopt : String;
+	extern var cursorlineopt : String;
 	/**
 		```lua
 		(field) vim.wo.diff: boolean
@@ -479,7 +479,7 @@ package nvim.type.vim;
 		 between files.  See `diff-mode`.
 		
 	**/
-	var diff : Bool;
+	extern var diff : Bool;
 	/**
 		```lua
 		(field) vim.wo.eiw: string
@@ -492,7 +492,7 @@ package nvim.type.vim;
 		 ignored indefinitely without affecting the global 'eventignore'.
 		
 	**/
-	var eiw : String;
+	extern var eiw : String;
 	/**
 		```lua
 		(field) vim.wo.eventignorewin: string
@@ -505,7 +505,7 @@ package nvim.type.vim;
 		 ignored indefinitely without affecting the global 'eventignore'.
 		
 	**/
-	var eventignorewin : String;
+	extern var eventignorewin : String;
 	/**
 		```lua
 		(field) vim.wo.fcs: string
@@ -577,7 +577,7 @@ package nvim.type.vim;
 		   lastline	NonText			`hl-NonText`
 		
 	**/
-	var fcs : String;
+	extern var fcs : String;
 	/**
 		```lua
 		(field) vim.wo.fdc: '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'
@@ -594,7 +594,7 @@ package nvim.type.vim;
 		 See `folding`.
 		
 	**/
-	var fdc : String;
+	extern var fdc : String;
 	/**
 		```lua
 		(field) vim.wo.fde: string
@@ -616,7 +616,7 @@ package nvim.type.vim;
 		 evaluating 'foldexpr' `textlock`.
 		
 	**/
-	var fde : String;
+	extern var fde : String;
 	/**
 		```lua
 		(field) vim.wo.fdi: string
@@ -630,7 +630,7 @@ package nvim.type.vim;
 		 The default "#" works well for C programs.  See `fold-indent`.
 		
 	**/
-	var fdi : String;
+	extern var fdi : String;
 	/**
 		```lua
 		(field) vim.wo.fdl: integer
@@ -645,7 +645,7 @@ package nvim.type.vim;
 		 See `fold-foldlevel`.
 		
 	**/
-	var fdl : Int;
+	extern var fdl : Int;
 	/**
 		```lua
 		(field) vim.wo.fdm: 'diff'|'expr'|'indent'|'manual'|'marker'|'syntax'
@@ -662,7 +662,7 @@ package nvim.type.vim;
 		 `fold-diff`	diff	    Fold text that is not changed.
 		
 	**/
-	var fdm : String;
+	extern var fdm : String;
 	/**
 		```lua
 		(field) vim.wo.fdn: integer
@@ -675,7 +675,7 @@ package nvim.type.vim;
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	var fdn : Int;
+	extern var fdn : Int;
 	/**
 		```lua
 		(field) vim.wo.fdt: string
@@ -699,7 +699,7 @@ package nvim.type.vim;
 		 is displayed normally with highlighting and no line wrapping.
 		
 	**/
-	var fdt : String;
+	extern var fdt : String;
 	/**
 		```lua
 		(field) vim.wo.fen: boolean
@@ -716,7 +716,7 @@ package nvim.type.vim;
 		 See `folding`.
 		
 	**/
-	var fen : Bool;
+	extern var fen : Bool;
 	/**
 		```lua
 		(field) vim.wo.fillchars: string
@@ -788,7 +788,7 @@ package nvim.type.vim;
 		   lastline	NonText			`hl-NonText`
 		
 	**/
-	var fillchars : String;
+	extern var fillchars : String;
 	/**
 		```lua
 		(field) vim.wo.fml: integer
@@ -805,7 +805,7 @@ package nvim.type.vim;
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	var fml : Int;
+	extern var fml : Int;
 	/**
 		```lua
 		(field) vim.wo.fmr: string
@@ -819,7 +819,7 @@ package nvim.type.vim;
 		 See `fold-marker`.
 		
 	**/
-	var fmr : String;
+	extern var fmr : String;
 	/**
 		```lua
 		(field) vim.wo.foldcolumn: '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'
@@ -836,7 +836,7 @@ package nvim.type.vim;
 		 See `folding`.
 		
 	**/
-	var foldcolumn : String;
+	extern var foldcolumn : String;
 	/**
 		```lua
 		(field) vim.wo.foldenable: boolean
@@ -853,7 +853,7 @@ package nvim.type.vim;
 		 See `folding`.
 		
 	**/
-	var foldenable : Bool;
+	extern var foldenable : Bool;
 	/**
 		```lua
 		(field) vim.wo.foldexpr: string
@@ -875,7 +875,7 @@ package nvim.type.vim;
 		 evaluating 'foldexpr' `textlock`.
 		
 	**/
-	var foldexpr : String;
+	extern var foldexpr : String;
 	/**
 		```lua
 		(field) vim.wo.foldignore: string
@@ -889,7 +889,7 @@ package nvim.type.vim;
 		 The default "#" works well for C programs.  See `fold-indent`.
 		
 	**/
-	var foldignore : String;
+	extern var foldignore : String;
 	/**
 		```lua
 		(field) vim.wo.foldlevel: integer
@@ -904,7 +904,7 @@ package nvim.type.vim;
 		 See `fold-foldlevel`.
 		
 	**/
-	var foldlevel : Int;
+	extern var foldlevel : Int;
 	/**
 		```lua
 		(field) vim.wo.foldmarker: string
@@ -918,7 +918,7 @@ package nvim.type.vim;
 		 See `fold-marker`.
 		
 	**/
-	var foldmarker : String;
+	extern var foldmarker : String;
 	/**
 		```lua
 		(field) vim.wo.foldmethod: 'diff'|'expr'|'indent'|'manual'|'marker'|'syntax'
@@ -935,7 +935,7 @@ package nvim.type.vim;
 		 `fold-diff`	diff	    Fold text that is not changed.
 		
 	**/
-	var foldmethod : String;
+	extern var foldmethod : String;
 	/**
 		```lua
 		(field) vim.wo.foldminlines: integer
@@ -952,7 +952,7 @@ package nvim.type.vim;
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	var foldminlines : Int;
+	extern var foldminlines : Int;
 	/**
 		```lua
 		(field) vim.wo.foldnestmax: integer
@@ -965,7 +965,7 @@ package nvim.type.vim;
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	var foldnestmax : Int;
+	extern var foldnestmax : Int;
 	/**
 		```lua
 		(field) vim.wo.foldtext: string
@@ -989,13 +989,13 @@ package nvim.type.vim;
 		 is displayed normally with highlighting and no line wrapping.
 		
 	**/
-	var foldtext : String;
+	extern var foldtext : String;
 	/**
 		```lua
 		(field) vim.wo.integer: unknown
 		```
 	**/
-	var integer : Dynamic;
+	extern var integer : Dynamic;
 	/**
 		```lua
 		(field) vim.wo.lbr: boolean
@@ -1014,7 +1014,7 @@ package nvim.type.vim;
 		 with the right amount of white space.
 		
 	**/
-	var lbr : Bool;
+	extern var lbr : Bool;
 	/**
 		```lua
 		(field) vim.wo.lcs: string
@@ -1139,7 +1139,7 @@ package nvim.type.vim;
 		 "lead" and "trail".
 		
 	**/
-	var lcs : String;
+	extern var lcs : String;
 	/**
 		```lua
 		(field) vim.wo.linebreak: boolean
@@ -1158,7 +1158,7 @@ package nvim.type.vim;
 		 with the right amount of white space.
 		
 	**/
-	var linebreak : Bool;
+	extern var linebreak : Bool;
 	/**
 		```lua
 		(field) vim.wo.list: boolean = true
@@ -1191,7 +1191,7 @@ package nvim.type.vim;
 		 changing the way tabs are displayed.
 		
 	**/
-	var list : Bool;
+	extern var list : Bool;
 	/**
 		```lua
 		(field) vim.wo.listchars: string
@@ -1316,7 +1316,7 @@ package nvim.type.vim;
 		 "lead" and "trail".
 		
 	**/
-	var listchars : String;
+	extern var listchars : String;
 	/**
 		```lua
 		(field) vim.wo.nu: boolean = true
@@ -1352,7 +1352,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var nu : Bool;
+	extern var nu : Bool;
 	/**
 		```lua
 		(field) vim.wo.number: boolean = true
@@ -1388,7 +1388,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var number : Bool;
+	extern var number : Bool;
 	/**
 		```lua
 		(field) vim.wo.numberwidth: integer
@@ -1408,7 +1408,7 @@ package nvim.type.vim;
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	var numberwidth : Int;
+	extern var numberwidth : Int;
 	/**
 		```lua
 		(field) vim.wo.nuw: integer
@@ -1428,7 +1428,7 @@ package nvim.type.vim;
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	var nuw : Int;
+	extern var nuw : Int;
 	/**
 		```lua
 		(field) vim.wo.previewwindow: boolean
@@ -1441,7 +1441,7 @@ package nvim.type.vim;
 		 `:ptag`, `:pedit`, etc.
 		
 	**/
-	var previewwindow : Bool;
+	extern var previewwindow : Bool;
 	/**
 		```lua
 		(field) vim.wo.pvw: boolean
@@ -1454,7 +1454,7 @@ package nvim.type.vim;
 		 `:ptag`, `:pedit`, etc.
 		
 	**/
-	var pvw : Bool;
+	extern var pvw : Bool;
 	/**
 		```lua
 		(field) vim.wo.relativenumber: boolean = true
@@ -1486,7 +1486,7 @@ package nvim.type.vim;
 		 options.
 		
 	**/
-	var relativenumber : Bool;
+	extern var relativenumber : Bool;
 	/**
 		```lua
 		(field) vim.wo.rightleft: boolean
@@ -1505,7 +1505,7 @@ package nvim.type.vim;
 		 in different windows).  Also see `rileft.txt`.
 		
 	**/
-	var rightleft : Bool;
+	extern var rightleft : Bool;
 	/**
 		```lua
 		(field) vim.wo.rightleftcmd: string
@@ -1522,7 +1522,7 @@ package nvim.type.vim;
 		 The 'rightleft' option must be set for 'rightleftcmd' to take effect.
 		
 	**/
-	var rightleftcmd : String;
+	extern var rightleftcmd : String;
 	/**
 		```lua
 		(field) vim.wo.rl: boolean
@@ -1541,7 +1541,7 @@ package nvim.type.vim;
 		 in different windows).  Also see `rileft.txt`.
 		
 	**/
-	var rl : Bool;
+	extern var rl : Bool;
 	/**
 		```lua
 		(field) vim.wo.rlc: string
@@ -1558,7 +1558,7 @@ package nvim.type.vim;
 		 The 'rightleft' option must be set for 'rightleftcmd' to take effect.
 		
 	**/
-	var rlc : String;
+	extern var rlc : String;
 	/**
 		```lua
 		(field) vim.wo.rnu: boolean = true
@@ -1590,7 +1590,7 @@ package nvim.type.vim;
 		 options.
 		
 	**/
-	var rnu : Bool;
+	extern var rnu : Bool;
 	/**
 		```lua
 		(field) vim.wo.sbr: string
@@ -1621,7 +1621,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var sbr : String;
+	extern var sbr : String;
 	/**
 		```lua
 		(field) vim.wo.scb: boolean
@@ -1640,7 +1640,7 @@ package nvim.type.vim;
 		 with scroll-binding, but ":split file" does not.
 		
 	**/
-	var scb : Bool;
+	extern var scb : Bool;
 	/**
 		```lua
 		(field) vim.wo.scl: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -1666,7 +1666,7 @@ package nvim.type.vim;
 		 		column is not present, then behaves like "auto".
 		
 	**/
-	var scl : String;
+	extern var scl : String;
 	/**
 		```lua
 		(field) vim.wo.scr: integer
@@ -1683,7 +1683,7 @@ package nvim.type.vim;
 		 height with ":set scroll=0".
 		
 	**/
-	var scr : Int;
+	extern var scr : Int;
 	/**
 		```lua
 		(field) vim.wo.scroll: integer
@@ -1700,7 +1700,7 @@ package nvim.type.vim;
 		 height with ":set scroll=0".
 		
 	**/
-	var scroll : Int;
+	extern var scroll : Int;
 	/**
 		```lua
 		(field) vim.wo.scrollbind: boolean
@@ -1719,7 +1719,7 @@ package nvim.type.vim;
 		 with scroll-binding, but ":split file" does not.
 		
 	**/
-	var scrollbind : Bool;
+	extern var scrollbind : Bool;
 	/**
 		```lua
 		(field) vim.wo.scrolloff: integer = 10
@@ -1746,7 +1746,7 @@ package nvim.type.vim;
 		
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
-	var scrolloff : Float;
+	extern var scrolloff : Float;
 	/**
 		```lua
 		(field) vim.wo.showbreak: string
@@ -1777,7 +1777,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var showbreak : String;
+	extern var showbreak : String;
 	/**
 		```lua
 		(field) vim.wo.sidescrolloff: integer
@@ -1813,7 +1813,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var sidescrolloff : Int;
+	extern var sidescrolloff : Int;
 	/**
 		```lua
 		(field) vim.wo.signcolumn: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -1839,7 +1839,7 @@ package nvim.type.vim;
 		 		column is not present, then behaves like "auto".
 		
 	**/
-	var signcolumn : String;
+	extern var signcolumn : String;
 	/**
 		```lua
 		(field) vim.wo.siso: integer
@@ -1875,7 +1875,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var siso : Int;
+	extern var siso : Int;
 	/**
 		```lua
 		(field) vim.wo.smoothscroll: boolean
@@ -1892,7 +1892,7 @@ package nvim.type.vim;
 		 NOTE: partly implemented, doesn't work yet for `gj` and `gk`.
 		
 	**/
-	var smoothscroll : Bool;
+	extern var smoothscroll : Bool;
 	/**
 		```lua
 		(field) vim.wo.sms: boolean
@@ -1909,7 +1909,7 @@ package nvim.type.vim;
 		 NOTE: partly implemented, doesn't work yet for `gj` and `gk`.
 		
 	**/
-	var sms : Bool;
+	extern var sms : Bool;
 	/**
 		```lua
 		(field) vim.wo.so: integer = 10
@@ -1936,7 +1936,7 @@ package nvim.type.vim;
 		
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
-	var so : Float;
+	extern var so : Float;
 	/**
 		```lua
 		(field) vim.wo.spell: boolean
@@ -1948,7 +1948,7 @@ package nvim.type.vim;
 		 The languages are specified with 'spelllang'.
 		
 	**/
-	var spell : Bool;
+	extern var spell : Bool;
 	/**
 		```lua
 		(field) vim.wo.statuscolumn: string
@@ -2012,7 +2012,7 @@ package nvim.type.vim;
 		 an expensive expression can negatively affect render performance.
 		
 	**/
-	var statuscolumn : String;
+	extern var statuscolumn : String;
 	/**
 		```lua
 		(field) vim.wo.statusline: string
@@ -2262,7 +2262,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var statusline : String;
+	extern var statusline : String;
 	/**
 		```lua
 		(field) vim.wo.stc: string
@@ -2326,7 +2326,7 @@ package nvim.type.vim;
 		 an expensive expression can negatively affect render performance.
 		
 	**/
-	var stc : String;
+	extern var stc : String;
 	/**
 		```lua
 		(field) vim.wo.stl: string
@@ -2576,7 +2576,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var stl : String;
+	extern var stl : String;
 	/**
 		```lua
 		(field) vim.wo.ve: string
@@ -2612,7 +2612,7 @@ package nvim.type.vim;
 		 When combined with other words, "none" is ignored.
 		
 	**/
-	var ve : String;
+	extern var ve : String;
 	/**
 		```lua
 		(field) vim.wo.virtualedit: string
@@ -2648,7 +2648,7 @@ package nvim.type.vim;
 		 When combined with other words, "none" is ignored.
 		
 	**/
-	var virtualedit : String;
+	extern var virtualedit : String;
 	/**
 		```lua
 		(field) vim.wo.wbr: string
@@ -2671,7 +2671,7 @@ package nvim.type.vim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	var wbr : String;
+	extern var wbr : String;
 	/**
 		```lua
 		(field) vim.wo.wfb: boolean
@@ -2686,7 +2686,7 @@ package nvim.type.vim;
 		 command has a "!" modifier, it can force switching buffers.
 		
 	**/
-	var wfb : Bool;
+	extern var wfb : Bool;
 	/**
 		```lua
 		(field) vim.wo.wfh: boolean
@@ -2700,7 +2700,7 @@ package nvim.type.vim;
 		 The height may be changed anyway when running out of room.
 		
 	**/
-	var wfh : Bool;
+	extern var wfh : Bool;
 	/**
 		```lua
 		(field) vim.wo.wfw: boolean
@@ -2713,7 +2713,7 @@ package nvim.type.vim;
 		 The width may be changed anyway when running out of room.
 		
 	**/
-	var wfw : Bool;
+	extern var wfw : Bool;
 	/**
 		```lua
 		(field) vim.wo.winbar: string
@@ -2736,7 +2736,7 @@ package nvim.type.vim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	var winbar : String;
+	extern var winbar : String;
 	/**
 		```lua
 		(field) vim.wo.winbl: integer
@@ -2751,7 +2751,7 @@ package nvim.type.vim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	var winbl : Int;
+	extern var winbl : Int;
 	/**
 		```lua
 		(field) vim.wo.winblend: integer
@@ -2766,7 +2766,7 @@ package nvim.type.vim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	var winblend : Int;
+	extern var winblend : Int;
 	/**
 		```lua
 		(field) vim.wo.winfixbuf: boolean
@@ -2781,7 +2781,7 @@ package nvim.type.vim;
 		 command has a "!" modifier, it can force switching buffers.
 		
 	**/
-	var winfixbuf : Bool;
+	extern var winfixbuf : Bool;
 	/**
 		```lua
 		(field) vim.wo.winfixheight: boolean
@@ -2795,7 +2795,7 @@ package nvim.type.vim;
 		 The height may be changed anyway when running out of room.
 		
 	**/
-	var winfixheight : Bool;
+	extern var winfixheight : Bool;
 	/**
 		```lua
 		(field) vim.wo.winfixwidth: boolean
@@ -2808,7 +2808,7 @@ package nvim.type.vim;
 		 The width may be changed anyway when running out of room.
 		
 	**/
-	var winfixwidth : Bool;
+	extern var winfixwidth : Bool;
 	/**
 		```lua
 		(field) vim.wo.winhighlight: string
@@ -2838,7 +2838,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var winhighlight : String;
+	extern var winhighlight : String;
 	/**
 		```lua
 		(field) vim.wo.winhl: string
@@ -2868,7 +2868,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	var winhl : String;
+	extern var winhl : String;
 	/**
 		```lua
 		(field) vim.wo.wrap: boolean
@@ -2896,5 +2896,5 @@ package nvim.type.vim;
 		 on.
 		
 	**/
-	var wrap : Bool;
+	extern var wrap : Bool;
 }

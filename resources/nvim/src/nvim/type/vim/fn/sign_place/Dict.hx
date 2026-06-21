@@ -5,17 +5,19 @@ package nvim.type.vim.fn.sign_place;
 	(class) vim.fn.sign_place.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_place.dict.lnum: (string|integer)?
 		```
 	**/
-	var lnum : Null<haxe.extern.EitherType<Int, String>>;
+	@:optional
+	extern var lnum : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.fn.sign_place.dict.priority: integer?
 		```
 	**/
-	var priority : Null<Int>;
+	@:optional
+	extern var priority : Null<Int>;
 }

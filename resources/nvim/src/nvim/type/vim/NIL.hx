@@ -5,6 +5,6 @@ package nvim.type.vim;
 	(class) vim.NIL
 	```
 **/
-@:structInit extern class NIL {
+@:structInit class NIL {
 
 }

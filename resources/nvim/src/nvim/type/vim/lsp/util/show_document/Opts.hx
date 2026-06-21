@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.util.show_document;
 	(class) vim.lsp.util.show_document.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.focus: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.lsp.util.show_document;
 		 Whether to focus/jump to location if possible.
 		 (defaults: true)
 	**/
-	var focus : Null<Bool>;
+	@:optional
+	extern var focus : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.util.show_document.Opts.reuse_win: boolean?
@@ -29,5 +30,6 @@ package nvim.type.vim.lsp.util.show_document;
 		
 		 Jump to existing window if buffer is already open.
 	**/
-	var reuse_win : Null<Bool>;
+	@:optional
+	extern var reuse_win : Null<Bool>;
 }

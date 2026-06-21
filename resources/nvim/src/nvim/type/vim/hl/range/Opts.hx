@@ -5,7 +5,7 @@ package nvim.type.vim.hl.range;
 	(class) vim.hl.range.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.hl.range.Opts.inclusive: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.hl.range;
 		 Indicates whether the range is end-inclusive
 		 (default: `false`)
 	**/
-	var inclusive : Null<Bool>;
+	@:optional
+	extern var inclusive : Null<Bool>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.priority: integer?
@@ -29,7 +30,8 @@ package nvim.type.vim.hl.range;
 		 Highlight priority
 		 (default: `vim.hl.priorities.user`)
 	**/
-	var priority : Null<Int>;
+	@:optional
+	extern var priority : Null<Int>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.regtype: string?
@@ -42,7 +44,8 @@ package nvim.type.vim.hl.range;
 		 Type of range. See [getregtype()]
 		 (default: `'v'` i.e. charwise)
 	**/
-	var regtype : Null<String>;
+	@:optional
+	extern var regtype : Null<String>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.timeout: integer?
@@ -54,5 +57,6 @@ package nvim.type.vim.hl.range;
 		 Time in ms before highlight is cleared
 		 (default: -1 no timeout)
 	**/
-	var timeout : Null<Int>;
+	@:optional
+	extern var timeout : Null<Int>;
 }

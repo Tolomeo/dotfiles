@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.format;
 	(class) vim.lsp.buf.format.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.async: boolean?
@@ -19,7 +19,8 @@ package nvim.type.vim.lsp.buf.format;
 		 changes.
 		 (Default: false)
 	**/
-	var async : Null<Bool>;
+	@:optional
+	extern var async : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.bufnr: integer?
@@ -31,7 +32,8 @@ package nvim.type.vim.lsp.buf.format;
 		 Restrict formatting to the clients attached to the given buffer.
 		 (default: current buffer)
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -56,7 +58,8 @@ package nvim.type.vim.lsp.buf.format;
 		  -> boolean?
 		```
 	**/
-	var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
+	@:optional
+	extern var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.formatting_options: table?
@@ -70,7 +73,8 @@ package nvim.type.vim.lsp.buf.format;
 		 automatically derived from the current Nvim options.
 		 See https://microsoft.github.io/language-server-protocol/specification/#formattingOptions
 	**/
-	var formatting_options : Null<lua.Table.AnyTable>;
+	@:optional
+	extern var formatting_options : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.id: integer?
@@ -81,7 +85,8 @@ package nvim.type.vim.lsp.buf.format;
 		
 		 Restrict formatting to the client with ID (client.id) matching this field.
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.name: string?
@@ -92,7 +97,8 @@ package nvim.type.vim.lsp.buf.format;
 		
 		 Restrict formatting to the client with name (client.name) matching this field.
 	**/
-	var name : Null<String>;
+	@:optional
+	extern var name : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.range: ({ start: [integer, integer], end: [integer, integer] }|{ start: [integer, integer], end: [integer, integer] }[])?
@@ -109,7 +115,8 @@ package nvim.type.vim.lsp.buf.format;
 		 (Default: current selection in visual mode, `nil` in other modes,
 		 formatting the full buffer)
 	**/
-	var range : Null<Dynamic>;
+	@:optional
+	extern var range : Null<Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.timeout_ms: integer?
@@ -121,5 +128,6 @@ package nvim.type.vim.lsp.buf.format;
 		 Time in milliseconds to block for formatting requests. No effect if async=true.
 		 (default: `1000`)
 	**/
-	var timeout_ms : Null<Int>;
+	@:optional
+	extern var timeout_ms : Null<Int>;
 }

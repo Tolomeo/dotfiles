@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentRangeFormattingRequest}.
 **/
-@:structInit extern class DocumentRangeFormattingOptions {
+@:structInit class DocumentRangeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingOptions.rangesSupport: boolean?
@@ -21,11 +21,13 @@ package nvim.type.lsp;
 		Whether the server supports formatting multiple ranges at once.
 		
 	**/
-	var rangesSupport : Null<Bool>;
+	@:optional
+	extern var rangesSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

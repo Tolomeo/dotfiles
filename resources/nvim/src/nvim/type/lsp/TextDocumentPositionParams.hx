@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A parameter literal used in requests to pass a text document and a position inside that
 	document.
 **/
-@:structInit extern class TextDocumentPositionParams {
+@:structInit class TextDocumentPositionParams {
 	/**
 		```lua
 		(field) lsp.TextDocumentPositionParams.position: lsp.Position
@@ -50,7 +50,7 @@ package nvim.type.lsp;
 		
 		The position inside the text document.
 	**/
-	var position : nvim.type.lsp.Position;
+	extern var position : nvim.type.lsp.Position;
 	/**
 		```lua
 		(field) lsp.TextDocumentPositionParams.textDocument: lsp.TextDocumentIdentifier
@@ -65,5 +65,5 @@ package nvim.type.lsp;
 		
 		The text document.
 	**/
-	var textDocument : nvim.type.lsp.TextDocumentIdentifier;
+	extern var textDocument : nvim.type.lsp.TextDocumentIdentifier;
 }

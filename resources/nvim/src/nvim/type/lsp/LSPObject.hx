@@ -9,6 +9,6 @@ package nvim.type.lsp;
 	
 	LSP object definition.
 **/
-@:structInit extern class LSPObject {
+@:structInit class LSPObject {
 
 }

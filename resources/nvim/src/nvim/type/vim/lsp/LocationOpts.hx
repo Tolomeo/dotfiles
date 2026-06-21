@@ -5,7 +5,7 @@ package nvim.type.vim.lsp;
 	(class) vim.lsp.LocationOpts
 	```
 **/
-@:structInit extern class LocationOpts {
+@:structInit class LocationOpts {
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.loclist: boolean?
@@ -19,7 +19,8 @@ package nvim.type.vim.lsp;
 		 vim.lsp.buf.references(nil, { loclist = false })
 		 ```
 	**/
-	var loclist : Null<Bool>;
+	@:optional
+	extern var loclist : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.on_list: fun(t: vim.lsp.LocationOpts.OnList)?
@@ -47,7 +48,8 @@ package nvim.type.vim.lsp;
 		function (t: vim.lsp.LocationOpts.OnList)
 		```
 	**/
-	var on_list : Null<(t:nvim.type.vim.lsp.locationopts.OnList) -> Dynamic>;
+	@:optional
+	extern var on_list : Null<(t:nvim.type.vim.lsp.locationopts.OnList) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.reuse_win: boolean?
@@ -58,5 +60,6 @@ package nvim.type.vim.lsp;
 		
 		 Jump to existing window if buffer is already open.
 	**/
-	var reuse_win : Null<Bool>;
+	@:optional
+	extern var reuse_win : Null<Bool>;
 }

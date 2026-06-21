@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	the server is interested in receiving.
 	
 **/
-@:structInit extern class FileOperationFilter {
+@:structInit class FileOperationFilter {
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.pattern: lsp.FileOperationPattern
@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		
 		The actual file operation pattern.
 	**/
-	var pattern : nvim.type.lsp.FileOperationPattern;
+	extern var pattern : nvim.type.lsp.FileOperationPattern;
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.scheme: string?
@@ -39,5 +39,6 @@ package nvim.type.lsp;
 		
 		A Uri scheme like `file` or `untitled`.
 	**/
-	var scheme : Null<String>;
+	@:optional
+	extern var scheme : Null<String>;
 }

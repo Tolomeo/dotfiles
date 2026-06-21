@@ -5,47 +5,52 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 	(class) vim.fn.sign_getdefined.ret.item
 	```
 **/
-@:structInit extern class Item {
+@:structInit class Item {
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.culhl: string?
 		```
 	**/
-	var culhl : Null<String>;
+	@:optional
+	extern var culhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.icon: string?
 		```
 	**/
-	var icon : Null<String>;
+	@:optional
+	extern var icon : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.linehl: string?
 		```
 	**/
-	var linehl : Null<String>;
+	@:optional
+	extern var linehl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.name: string
 		```
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.numhl: string?
 		```
 	**/
-	var numhl : Null<String>;
+	@:optional
+	extern var numhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.text: string
 		```
 	**/
-	var text : String;
+	extern var text : String;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.texthl: string?
 		```
 	**/
-	var texthl : Null<String>;
+	@:optional
+	extern var texthl : Null<String>;
 }

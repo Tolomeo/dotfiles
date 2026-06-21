@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 A table value which exposes error constants as a map, where the key is the error name (without the UV_ prefix) and its value is a negative number.
 	
 **/
-@:structInit extern class Errno {
+@:structInit class Errno {
 	/**
 		```lua
 		(field) uv.errno.E2BIG: integer
@@ -20,7 +20,7 @@ package nvim.type.uv;
 		
 		argument list too long.
 	**/
-	var E2BIG : Int;
+	extern var E2BIG : Int;
 	/**
 		```lua
 		(field) uv.errno.EACCES: integer
@@ -30,7 +30,7 @@ package nvim.type.uv;
 		
 		permission denied.
 	**/
-	var EACCES : Int;
+	extern var EACCES : Int;
 	/**
 		```lua
 		(field) uv.errno.EADDRINUSE: integer
@@ -40,7 +40,7 @@ package nvim.type.uv;
 		
 		address already in use.
 	**/
-	var EADDRINUSE : Int;
+	extern var EADDRINUSE : Int;
 	/**
 		```lua
 		(field) uv.errno.EADDRNOTAVAIL: integer
@@ -50,7 +50,7 @@ package nvim.type.uv;
 		
 		address not available.
 	**/
-	var EADDRNOTAVAIL : Int;
+	extern var EADDRNOTAVAIL : Int;
 	/**
 		```lua
 		(field) uv.errno.EAFNOSUPPORT: integer
@@ -60,7 +60,7 @@ package nvim.type.uv;
 		
 		address family not supported.
 	**/
-	var EAFNOSUPPORT : Int;
+	extern var EAFNOSUPPORT : Int;
 	/**
 		```lua
 		(field) uv.errno.EAGAIN: integer
@@ -70,7 +70,7 @@ package nvim.type.uv;
 		
 		resource temporarily unavailable.
 	**/
-	var EAGAIN : Int;
+	extern var EAGAIN : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_ADDRFAMILY: integer
@@ -80,7 +80,7 @@ package nvim.type.uv;
 		
 		address family not supported.
 	**/
-	var EAI_ADDRFAMILY : Int;
+	extern var EAI_ADDRFAMILY : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_AGAIN: integer
@@ -90,7 +90,7 @@ package nvim.type.uv;
 		
 		temporary failure.
 	**/
-	var EAI_AGAIN : Int;
+	extern var EAI_AGAIN : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_BADFLAGS: integer
@@ -100,7 +100,7 @@ package nvim.type.uv;
 		
 		bad ai_flags value.
 	**/
-	var EAI_BADFLAGS : Int;
+	extern var EAI_BADFLAGS : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_BADHINTS: integer
@@ -110,7 +110,7 @@ package nvim.type.uv;
 		
 		invalid value for hints.
 	**/
-	var EAI_BADHINTS : Int;
+	extern var EAI_BADHINTS : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_CANCELED: integer
@@ -120,7 +120,7 @@ package nvim.type.uv;
 		
 		request canceled.
 	**/
-	var EAI_CANCELED : Int;
+	extern var EAI_CANCELED : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_FAIL: integer
@@ -130,7 +130,7 @@ package nvim.type.uv;
 		
 		permanent failure.
 	**/
-	var EAI_FAIL : Int;
+	extern var EAI_FAIL : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_FAMILY: integer
@@ -140,7 +140,7 @@ package nvim.type.uv;
 		
 		ai_family not supported.
 	**/
-	var EAI_FAMILY : Int;
+	extern var EAI_FAMILY : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_MEMORY: integer
@@ -150,7 +150,7 @@ package nvim.type.uv;
 		
 		out of memory.
 	**/
-	var EAI_MEMORY : Int;
+	extern var EAI_MEMORY : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_NODATA: integer
@@ -160,7 +160,7 @@ package nvim.type.uv;
 		
 		no address.
 	**/
-	var EAI_NODATA : Int;
+	extern var EAI_NODATA : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_NONAME: integer
@@ -170,7 +170,7 @@ package nvim.type.uv;
 		
 		unknown node or service.
 	**/
-	var EAI_NONAME : Int;
+	extern var EAI_NONAME : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_OVERFLOW: integer
@@ -180,7 +180,7 @@ package nvim.type.uv;
 		
 		argument buffer overflow.
 	**/
-	var EAI_OVERFLOW : Int;
+	extern var EAI_OVERFLOW : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_PROTOCOL: integer
@@ -190,7 +190,7 @@ package nvim.type.uv;
 		
 		resolved protocol is unknown.
 	**/
-	var EAI_PROTOCOL : Int;
+	extern var EAI_PROTOCOL : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_SERVICE: integer
@@ -200,7 +200,7 @@ package nvim.type.uv;
 		
 		service not available for socket type.
 	**/
-	var EAI_SERVICE : Int;
+	extern var EAI_SERVICE : Int;
 	/**
 		```lua
 		(field) uv.errno.EAI_SOCKTYPE: integer
@@ -210,7 +210,7 @@ package nvim.type.uv;
 		
 		socket type not supported.
 	**/
-	var EAI_SOCKTYPE : Int;
+	extern var EAI_SOCKTYPE : Int;
 	/**
 		```lua
 		(field) uv.errno.EALREADY: integer
@@ -220,7 +220,7 @@ package nvim.type.uv;
 		
 		connection already in progress.
 	**/
-	var EALREADY : Int;
+	extern var EALREADY : Int;
 	/**
 		```lua
 		(field) uv.errno.EBADF: integer
@@ -230,7 +230,7 @@ package nvim.type.uv;
 		
 		bad file descriptor.
 	**/
-	var EBADF : Int;
+	extern var EBADF : Int;
 	/**
 		```lua
 		(field) uv.errno.EBUSY: integer
@@ -240,7 +240,7 @@ package nvim.type.uv;
 		
 		resource busy or locked.
 	**/
-	var EBUSY : Int;
+	extern var EBUSY : Int;
 	/**
 		```lua
 		(field) uv.errno.ECANCELED: integer
@@ -250,7 +250,7 @@ package nvim.type.uv;
 		
 		operation canceled.
 	**/
-	var ECANCELED : Int;
+	extern var ECANCELED : Int;
 	/**
 		```lua
 		(field) uv.errno.ECHARSET: integer
@@ -260,7 +260,7 @@ package nvim.type.uv;
 		
 		invalid Unicode character.
 	**/
-	var ECHARSET : Int;
+	extern var ECHARSET : Int;
 	/**
 		```lua
 		(field) uv.errno.ECONNABORTED: integer
@@ -270,7 +270,7 @@ package nvim.type.uv;
 		
 		software caused connection abort.
 	**/
-	var ECONNABORTED : Int;
+	extern var ECONNABORTED : Int;
 	/**
 		```lua
 		(field) uv.errno.ECONNREFUSED: integer
@@ -280,7 +280,7 @@ package nvim.type.uv;
 		
 		connection refused.
 	**/
-	var ECONNREFUSED : Int;
+	extern var ECONNREFUSED : Int;
 	/**
 		```lua
 		(field) uv.errno.ECONNRESET: integer
@@ -290,7 +290,7 @@ package nvim.type.uv;
 		
 		connection reset by peer.
 	**/
-	var ECONNRESET : Int;
+	extern var ECONNRESET : Int;
 	/**
 		```lua
 		(field) uv.errno.EDESTADDRREQ: integer
@@ -300,7 +300,7 @@ package nvim.type.uv;
 		
 		destination address required.
 	**/
-	var EDESTADDRREQ : Int;
+	extern var EDESTADDRREQ : Int;
 	/**
 		```lua
 		(field) uv.errno.EEXIST: integer
@@ -310,7 +310,7 @@ package nvim.type.uv;
 		
 		file already exists.
 	**/
-	var EEXIST : Int;
+	extern var EEXIST : Int;
 	/**
 		```lua
 		(field) uv.errno.EFAULT: integer
@@ -320,7 +320,7 @@ package nvim.type.uv;
 		
 		bad address in system call argument.
 	**/
-	var EFAULT : Int;
+	extern var EFAULT : Int;
 	/**
 		```lua
 		(field) uv.errno.EFBIG: integer
@@ -330,7 +330,7 @@ package nvim.type.uv;
 		
 		file too large.
 	**/
-	var EFBIG : Int;
+	extern var EFBIG : Int;
 	/**
 		```lua
 		(field) uv.errno.EFTYPE: integer
@@ -340,7 +340,7 @@ package nvim.type.uv;
 		
 		inappropriate file type or format.
 	**/
-	var EFTYPE : Int;
+	extern var EFTYPE : Int;
 	/**
 		```lua
 		(field) uv.errno.EHOSTUNREACH: integer
@@ -350,7 +350,7 @@ package nvim.type.uv;
 		
 		host is unreachable.
 	**/
-	var EHOSTUNREACH : Int;
+	extern var EHOSTUNREACH : Int;
 	/**
 		```lua
 		(field) uv.errno.EILSEQ: integer
@@ -360,7 +360,7 @@ package nvim.type.uv;
 		
 		illegal byte sequence.
 	**/
-	var EILSEQ : Int;
+	extern var EILSEQ : Int;
 	/**
 		```lua
 		(field) uv.errno.EINTR: integer
@@ -370,7 +370,7 @@ package nvim.type.uv;
 		
 		interrupted system call.
 	**/
-	var EINTR : Int;
+	extern var EINTR : Int;
 	/**
 		```lua
 		(field) uv.errno.EINVAL: integer
@@ -380,7 +380,7 @@ package nvim.type.uv;
 		
 		invalid argument.
 	**/
-	var EINVAL : Int;
+	extern var EINVAL : Int;
 	/**
 		```lua
 		(field) uv.errno.EIO: integer
@@ -390,7 +390,7 @@ package nvim.type.uv;
 		
 		i/o error.
 	**/
-	var EIO : Int;
+	extern var EIO : Int;
 	/**
 		```lua
 		(field) uv.errno.EISCONN: integer
@@ -400,7 +400,7 @@ package nvim.type.uv;
 		
 		socket is already connected.
 	**/
-	var EISCONN : Int;
+	extern var EISCONN : Int;
 	/**
 		```lua
 		(field) uv.errno.EISDIR: integer
@@ -410,7 +410,7 @@ package nvim.type.uv;
 		
 		illegal operation on a directory.
 	**/
-	var EISDIR : Int;
+	extern var EISDIR : Int;
 	/**
 		```lua
 		(field) uv.errno.ELOOP: integer
@@ -420,7 +420,7 @@ package nvim.type.uv;
 		
 		too many symbolic links encountered.
 	**/
-	var ELOOP : Int;
+	extern var ELOOP : Int;
 	/**
 		```lua
 		(field) uv.errno.EMFILE: integer
@@ -430,7 +430,7 @@ package nvim.type.uv;
 		
 		too many open files.
 	**/
-	var EMFILE : Int;
+	extern var EMFILE : Int;
 	/**
 		```lua
 		(field) uv.errno.EMLINK: integer
@@ -440,7 +440,7 @@ package nvim.type.uv;
 		
 		too many links.
 	**/
-	var EMLINK : Int;
+	extern var EMLINK : Int;
 	/**
 		```lua
 		(field) uv.errno.EMSGSIZE: integer
@@ -450,7 +450,7 @@ package nvim.type.uv;
 		
 		message too long.
 	**/
-	var EMSGSIZE : Int;
+	extern var EMSGSIZE : Int;
 	/**
 		```lua
 		(field) uv.errno.ENAMETOOLONG: integer
@@ -460,7 +460,7 @@ package nvim.type.uv;
 		
 		name too long.
 	**/
-	var ENAMETOOLONG : Int;
+	extern var ENAMETOOLONG : Int;
 	/**
 		```lua
 		(field) uv.errno.ENETDOWN: integer
@@ -470,7 +470,7 @@ package nvim.type.uv;
 		
 		network is down.
 	**/
-	var ENETDOWN : Int;
+	extern var ENETDOWN : Int;
 	/**
 		```lua
 		(field) uv.errno.ENETUNREACH: integer
@@ -480,7 +480,7 @@ package nvim.type.uv;
 		
 		network is unreachable.
 	**/
-	var ENETUNREACH : Int;
+	extern var ENETUNREACH : Int;
 	/**
 		```lua
 		(field) uv.errno.ENFILE: integer
@@ -490,7 +490,7 @@ package nvim.type.uv;
 		
 		file table overflow.
 	**/
-	var ENFILE : Int;
+	extern var ENFILE : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOBUFS: integer
@@ -500,7 +500,7 @@ package nvim.type.uv;
 		
 		no buffer space available.
 	**/
-	var ENOBUFS : Int;
+	extern var ENOBUFS : Int;
 	/**
 		```lua
 		(field) uv.errno.ENODEV: integer
@@ -510,7 +510,7 @@ package nvim.type.uv;
 		
 		no such device.
 	**/
-	var ENODEV : Int;
+	extern var ENODEV : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOENT: integer
@@ -520,7 +520,7 @@ package nvim.type.uv;
 		
 		no such file or directory.
 	**/
-	var ENOENT : Int;
+	extern var ENOENT : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOMEM: integer
@@ -530,7 +530,7 @@ package nvim.type.uv;
 		
 		not enough memory.
 	**/
-	var ENOMEM : Int;
+	extern var ENOMEM : Int;
 	/**
 		```lua
 		(field) uv.errno.ENONET: integer
@@ -540,7 +540,7 @@ package nvim.type.uv;
 		
 		machine is not on the network.
 	**/
-	var ENONET : Int;
+	extern var ENONET : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOPROTOOPT: integer
@@ -550,7 +550,7 @@ package nvim.type.uv;
 		
 		protocol not available.
 	**/
-	var ENOPROTOOPT : Int;
+	extern var ENOPROTOOPT : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOSPC: integer
@@ -560,7 +560,7 @@ package nvim.type.uv;
 		
 		no space left on device.
 	**/
-	var ENOSPC : Int;
+	extern var ENOSPC : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOSYS: integer
@@ -570,7 +570,7 @@ package nvim.type.uv;
 		
 		function not implemented.
 	**/
-	var ENOSYS : Int;
+	extern var ENOSYS : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTCONN: integer
@@ -580,7 +580,7 @@ package nvim.type.uv;
 		
 		socket is not connected.
 	**/
-	var ENOTCONN : Int;
+	extern var ENOTCONN : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTDIR: integer
@@ -590,7 +590,7 @@ package nvim.type.uv;
 		
 		not a directory.
 	**/
-	var ENOTDIR : Int;
+	extern var ENOTDIR : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTEMPTY: integer
@@ -600,7 +600,7 @@ package nvim.type.uv;
 		
 		directory not empty.
 	**/
-	var ENOTEMPTY : Int;
+	extern var ENOTEMPTY : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTSOCK: integer
@@ -610,7 +610,7 @@ package nvim.type.uv;
 		
 		socket operation on non-socket.
 	**/
-	var ENOTSOCK : Int;
+	extern var ENOTSOCK : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTSUP: integer
@@ -620,7 +620,7 @@ package nvim.type.uv;
 		
 		operation not supported on socket.
 	**/
-	var ENOTSUP : Int;
+	extern var ENOTSUP : Int;
 	/**
 		```lua
 		(field) uv.errno.ENOTTY: integer
@@ -630,7 +630,7 @@ package nvim.type.uv;
 		
 		inappropriate ioctl for device.
 	**/
-	var ENOTTY : Int;
+	extern var ENOTTY : Int;
 	/**
 		```lua
 		(field) uv.errno.ENXIO: integer
@@ -640,7 +640,7 @@ package nvim.type.uv;
 		
 		no such device or address.
 	**/
-	var ENXIO : Int;
+	extern var ENXIO : Int;
 	/**
 		```lua
 		(field) uv.errno.EOF: integer
@@ -650,7 +650,7 @@ package nvim.type.uv;
 		
 		end of file.
 	**/
-	var EOF : Int;
+	extern var EOF : Int;
 	/**
 		```lua
 		(field) uv.errno.EOVERFLOW: integer
@@ -660,7 +660,7 @@ package nvim.type.uv;
 		
 		value too large for defined data type.
 	**/
-	var EOVERFLOW : Int;
+	extern var EOVERFLOW : Int;
 	/**
 		```lua
 		(field) uv.errno.EPERM: integer
@@ -670,7 +670,7 @@ package nvim.type.uv;
 		
 		operation not permitted.
 	**/
-	var EPERM : Int;
+	extern var EPERM : Int;
 	/**
 		```lua
 		(field) uv.errno.EPIPE: integer
@@ -680,7 +680,7 @@ package nvim.type.uv;
 		
 		broken pipe.
 	**/
-	var EPIPE : Int;
+	extern var EPIPE : Int;
 	/**
 		```lua
 		(field) uv.errno.EPROTO: integer
@@ -690,7 +690,7 @@ package nvim.type.uv;
 		
 		protocol error.
 	**/
-	var EPROTO : Int;
+	extern var EPROTO : Int;
 	/**
 		```lua
 		(field) uv.errno.EPROTONOSUPPORT: integer
@@ -700,7 +700,7 @@ package nvim.type.uv;
 		
 		protocol not supported.
 	**/
-	var EPROTONOSUPPORT : Int;
+	extern var EPROTONOSUPPORT : Int;
 	/**
 		```lua
 		(field) uv.errno.EPROTOTYPE: integer
@@ -710,7 +710,7 @@ package nvim.type.uv;
 		
 		protocol wrong type for socket.
 	**/
-	var EPROTOTYPE : Int;
+	extern var EPROTOTYPE : Int;
 	/**
 		```lua
 		(field) uv.errno.ERANGE: integer
@@ -720,7 +720,7 @@ package nvim.type.uv;
 		
 		result too large.
 	**/
-	var ERANGE : Int;
+	extern var ERANGE : Int;
 	/**
 		```lua
 		(field) uv.errno.EROFS: integer
@@ -730,7 +730,7 @@ package nvim.type.uv;
 		
 		read-only file system.
 	**/
-	var EROFS : Int;
+	extern var EROFS : Int;
 	/**
 		```lua
 		(field) uv.errno.ESHUTDOWN: integer
@@ -740,7 +740,7 @@ package nvim.type.uv;
 		
 		cannot send after transport endpoint shutdown.
 	**/
-	var ESHUTDOWN : Int;
+	extern var ESHUTDOWN : Int;
 	/**
 		```lua
 		(field) uv.errno.ESOCKTNOSUPPORT: integer
@@ -750,7 +750,7 @@ package nvim.type.uv;
 		
 		socket type not supported.
 	**/
-	var ESOCKTNOSUPPORT : Int;
+	extern var ESOCKTNOSUPPORT : Int;
 	/**
 		```lua
 		(field) uv.errno.ESPIPE: integer
@@ -760,7 +760,7 @@ package nvim.type.uv;
 		
 		invalid seek.
 	**/
-	var ESPIPE : Int;
+	extern var ESPIPE : Int;
 	/**
 		```lua
 		(field) uv.errno.ESRCH: integer
@@ -770,7 +770,7 @@ package nvim.type.uv;
 		
 		no such process.
 	**/
-	var ESRCH : Int;
+	extern var ESRCH : Int;
 	/**
 		```lua
 		(field) uv.errno.ETIMEDOUT: integer
@@ -780,7 +780,7 @@ package nvim.type.uv;
 		
 		connection timed out.
 	**/
-	var ETIMEDOUT : Int;
+	extern var ETIMEDOUT : Int;
 	/**
 		```lua
 		(field) uv.errno.ETXTBSY: integer
@@ -790,7 +790,7 @@ package nvim.type.uv;
 		
 		text file is busy.
 	**/
-	var ETXTBSY : Int;
+	extern var ETXTBSY : Int;
 	/**
 		```lua
 		(field) uv.errno.EXDEV: integer
@@ -800,7 +800,7 @@ package nvim.type.uv;
 		
 		cross-device link not permitted.
 	**/
-	var EXDEV : Int;
+	extern var EXDEV : Int;
 	/**
 		```lua
 		(field) uv.errno.UNKNOWN: integer
@@ -810,5 +810,5 @@ package nvim.type.uv;
 		
 		unknown error.
 	**/
-	var UNKNOWN : Int;
+	extern var UNKNOWN : Int;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.loader.find;
 	(class) vim.loader.find.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.loader.find.Opts.all: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.loader.find;
 		 Search for all matches.
 		 (default: `false`)
 	**/
-	var all : Null<Bool>;
+	@:optional
+	extern var all : Null<Bool>;
 	/**
 		```lua
 		(field) vim.loader.find.Opts.paths: string[]?
@@ -29,7 +30,8 @@ package nvim.type.vim.loader.find;
 		 Extra paths to search for modname
 		 (default: `{}`)
 	**/
-	var paths : Null<Array<String>>;
+	@:optional
+	extern var paths : Null<Array<String>>;
 	/**
 		```lua
 		(field) vim.loader.find.Opts.patterns: string[]?
@@ -42,7 +44,8 @@ package nvim.type.vim.loader.find;
 		 A pattern is a string added to the basename of the Lua module being searched.
 		 (default: `{"/init.lua", ".lua"}`)
 	**/
-	var patterns : Null<Array<String>>;
+	@:optional
+	extern var patterns : Null<Array<String>>;
 	/**
 		```lua
 		(field) vim.loader.find.Opts.rtp: boolean?
@@ -55,5 +58,6 @@ package nvim.type.vim.loader.find;
 		 Search for modname in the runtime path.
 		 (default: `true`)
 	**/
-	var rtp : Null<Bool>;
+	@:optional
+	extern var rtp : Null<Bool>;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.gsplit;
 	(class) vim.gsplit.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.gsplit.Opts.plain: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.gsplit;
 		
 		 Use `sep` literally (as in string.find).
 	**/
-	var plain : Null<Bool>;
+	@:optional
+	extern var plain : Null<Bool>;
 	/**
 		```lua
 		(field) vim.gsplit.Opts.trimempty: boolean?
@@ -28,5 +29,6 @@ package nvim.type.vim.gsplit;
 		
 		 Discard empty segments at start and end of the sequence.
 	**/
-	var trimempty : Null<Bool>;
+	@:optional
+	extern var trimempty : Null<Bool>;
 }

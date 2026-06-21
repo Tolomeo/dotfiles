@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	can have a label, like a function-name, a doc-comment, and
 	a set of parameters.
 **/
-@:structInit extern class SignatureInformation {
+@:structInit class SignatureInformation {
 	/**
 		```lua
 		(field) lsp.SignatureInformation.activeParameter: (integer|nil)?
@@ -31,7 +31,8 @@ package nvim.type.lsp;
 		`SignatureHelp.activeParameter`.
 		
 	**/
-	var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
+	@:optional
+	extern var activeParameter : Null<haxe.extern.EitherType<nvim.type.Uinteger, nvim.type.lsp.Null>>;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.documentation: (string|lsp.MarkupContent)?
@@ -68,7 +69,8 @@ package nvim.type.lsp;
 		The human-readable doc-comment of this signature. Will be shown
 		in the UI but can be omitted.
 	**/
-	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	@:optional
+	extern var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.label: string
@@ -80,7 +82,7 @@ package nvim.type.lsp;
 		The label of this signature. Will be shown in
 		the UI.
 	**/
-	var label : String;
+	extern var label : String;
 	/**
 		```lua
 		(field) lsp.SignatureInformation.parameters: lsp.ParameterInformation[]?
@@ -91,5 +93,6 @@ package nvim.type.lsp;
 		
 		The parameters of this signature.
 	**/
-	var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
+	@:optional
+	extern var parameters : Null<Array<nvim.type.lsp.ParameterInformation>>;
 }

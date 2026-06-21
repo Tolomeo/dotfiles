@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link RenameRequest}.
 **/
-@:structInit extern class RenameOptions {
+@:structInit class RenameOptions {
 	/**
 		```lua
 		(field) lsp.RenameOptions.prepareProvider: boolean?
@@ -21,11 +21,13 @@ package nvim.type.lsp;
 		Renames should be checked and tested before being executed.
 		
 	**/
-	var prepareProvider : Null<Bool>;
+	@:optional
+	extern var prepareProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

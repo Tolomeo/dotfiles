@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The publish diagnostic notification's parameters.
 **/
-@:structInit extern class PublishDiagnosticsParams {
+@:structInit class PublishDiagnosticsParams {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.diagnostics: lsp.Diagnostic[]
@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		An array of diagnostic information items.
 	**/
-	var diagnostics : Array<nvim.type.lsp.Diagnostic>;
+	extern var diagnostics : Array<nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.uri: string
@@ -31,7 +31,7 @@ package nvim.type.lsp;
 		
 		The URI for which diagnostic information is reported.
 	**/
-	var uri : nvim.type.lsp.DocumentUri;
+	extern var uri : nvim.type.lsp.DocumentUri;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsParams.version: integer?
@@ -43,5 +43,6 @@ package nvim.type.lsp;
 		Optional the version number of the document the diagnostics are published for.
 		
 	**/
-	var version : Null<Int>;
+	@:optional
+	extern var version : Null<Int>;
 }

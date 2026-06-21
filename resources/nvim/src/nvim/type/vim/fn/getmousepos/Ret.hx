@@ -5,47 +5,47 @@ package nvim.type.vim.fn.getmousepos;
 	(class) vim.fn.getmousepos.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.column: integer
 		```
 	**/
-	var column : Int;
+	extern var column : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.line: integer
 		```
 	**/
-	var line : Int;
+	extern var line : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.screencol: integer
 		```
 	**/
-	var screencol : Int;
+	extern var screencol : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.screenrow: integer
 		```
 	**/
-	var screenrow : Int;
+	extern var screenrow : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.wincol: integer
 		```
 	**/
-	var wincol : Int;
+	extern var wincol : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.winid: integer
 		```
 	**/
-	var winid : Int;
+	extern var winid : Int;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.winrow: integer
 		```
 	**/
-	var winrow : Int;
+	extern var winrow : Int;
 }

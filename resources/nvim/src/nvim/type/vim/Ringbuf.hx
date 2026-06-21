@@ -5,7 +5,7 @@ package nvim.type.vim;
 	(class) vim.Ringbuf
 	```
 **/
-@:structInit extern class Ringbuf {
+@:structInit class Ringbuf {
 	/**
 		```lua
 		function vim.Ringbuf.clear(self: vim.Ringbuf)
@@ -15,7 +15,7 @@ package nvim.type.vim;
 		
 		 Clear all items
 	**/
-	function clear():Dynamic;
+	extern function clear():Dynamic;
 	/**
 		```lua
 		function vim.Ringbuf.peek(self: vim.Ringbuf)
@@ -26,7 +26,7 @@ package nvim.type.vim;
 		
 		 Returns the first unread item without removing it
 	**/
-	function peek<T>():Null<T>;
+	extern function peek<T>():Null<T>;
 	/**
 		```lua
 		function vim.Ringbuf.pop(self: vim.Ringbuf)
@@ -37,7 +37,7 @@ package nvim.type.vim;
 		
 		 Removes and returns the first unread item
 	**/
-	function pop<T>():Null<T>;
+	extern function pop<T>():Null<T>;
 	/**
 		```lua
 		function vim.Ringbuf.push(self: vim.Ringbuf, item: <T>)
@@ -47,5 +47,5 @@ package nvim.type.vim;
 		
 		 Adds an item, overriding the oldest item if the buffer is full.
 	**/
-	function push<T>(item:T):Dynamic;
+	extern function push<T>(item:T):Dynamic;
 }

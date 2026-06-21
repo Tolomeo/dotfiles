@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	have two ranges: one that encloses its definition and one that points to
 	its most interesting range, e.g. the range of an identifier.
 **/
-@:structInit extern class DocumentSymbol {
+@:structInit class DocumentSymbol {
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.children: lsp.DocumentSymbol[]?
@@ -23,7 +23,8 @@ package nvim.type.lsp;
 		
 		Children of this symbol, e.g. properties of a class.
 	**/
-	var children : Null<Array<nvim.type.lsp.DocumentSymbol>>;
+	@:optional
+	extern var children : Null<Array<nvim.type.lsp.DocumentSymbol>>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.deprecated: boolean?
@@ -35,7 +36,8 @@ package nvim.type.lsp;
 		Indicates if this symbol is deprecated.
 		
 	**/
-	var deprecated : Null<Bool>;
+	@:optional
+	extern var deprecated : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.detail: string?
@@ -46,7 +48,8 @@ package nvim.type.lsp;
 		
 		More detail for this symbol, e.g the signature of a function.
 	**/
-	var detail : Null<String>;
+	@:optional
+	extern var detail : Null<String>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.kind: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|26|3|4|5|6|7|8|9
@@ -94,7 +97,7 @@ package nvim.type.lsp;
 		    | 26 -- TypeParameter
 		```
 	**/
-	var kind : nvim.type.lsp.SymbolKind;
+	extern var kind : nvim.type.lsp.SymbolKind;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.name: string
@@ -106,7 +109,7 @@ package nvim.type.lsp;
 		The name of this symbol. Will be displayed in the user interface and therefore must not be
 		an empty string or a string only consisting of white spaces.
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.range: lsp.Range
@@ -133,7 +136,7 @@ package nvim.type.lsp;
 		like comments. This information is typically used to determine if the clients cursor is
 		inside the symbol to reveal in the symbol in the UI.
 	**/
-	var range : nvim.type.lsp.Range;
+	extern var range : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.selectionRange: lsp.Range
@@ -159,7 +162,7 @@ package nvim.type.lsp;
 		The range that should be selected and revealed when this symbol is being picked, e.g the name of a function.
 		Must be contained by the `range`.
 	**/
-	var selectionRange : nvim.type.lsp.Range;
+	extern var selectionRange : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.DocumentSymbol.tags: 1[]?
@@ -171,5 +174,6 @@ package nvim.type.lsp;
 		Tags for this document symbol.
 		
 	**/
-	var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
+	@:optional
+	extern var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
 }

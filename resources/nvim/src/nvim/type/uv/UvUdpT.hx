@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 UDP handles encapsulate UDP communication for both clients and servers.
 	
 **/
-@:structInit extern class UvUdpT {
+@:structInit class UvUdpT {
 	/**
 		```lua
 		(method) uv.uv_udp_t:bind(host: string, port: integer, flags?: uv.udp_bind.flags)
@@ -114,7 +114,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function bind(host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function bind(host:String, port:Int, ?flags:nvim.type.uv.udp_bind.Flags):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)
@@ -135,7 +135,7 @@ package nvim.type.uv;
 		 In-progress requests, like `uv_connect_t` or `uv_write_t`, are cancelled and
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
-	function close(?callback:haxe.Constraints.Function):Dynamic;
+	extern function close(?callback:haxe.Constraints.Function):Dynamic;
 	/**
 		```lua
 		(method) uv.uv_udp_t:connect(host: string, port: integer)
@@ -241,7 +241,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function connect(host:String, port:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function connect(host:String, port:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:fileno()
@@ -350,7 +350,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:get_send_queue_count()
@@ -361,7 +361,7 @@ package nvim.type.uv;
 		
 		 Returns the handle's send queue count.
 	**/
-	function get_send_queue_count():Int;
+	extern function get_send_queue_count():Int;
 	/**
 		```lua
 		(method) uv.uv_udp_t:get_send_queue_size()
@@ -372,7 +372,7 @@ package nvim.type.uv;
 		
 		 Returns the handle's send queue size.
 	**/
-	function get_send_queue_size():Int;
+	extern function get_send_queue_size():Int;
 	/**
 		```lua
 		(method) uv.uv_handle_t:get_type()
@@ -385,7 +385,7 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given handle (e.g. `"pipe"` for `uv_pipe_t`)
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
-	function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
+	extern function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:getpeername()
@@ -485,7 +485,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function getpeername():nvim.helper.Multireturn<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function getpeername():nvim.helper.Multireturn<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:getsockname()
@@ -585,7 +585,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function getsockname():nvim.helper.Multireturn<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function getsockname():nvim.helper.Multireturn<Null<nvim.type.uv.udp.Sockname>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:has_ref()
@@ -685,7 +685,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_active()
@@ -793,7 +793,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_closing()
@@ -896,7 +896,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:open(fd: integer)
@@ -1009,7 +1009,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function open(fd:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function open(fd:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:recv_buffer_size(size: integer)
@@ -1142,7 +1142,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	function recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:recv_start(callback: fun(err: string|nil, data: string|nil, addr: uv.udp_recv_start.callback.addr|nil, flags: uv.udp_recv_start.callback.flags))
@@ -1247,7 +1247,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function recv_start(callback:nvim.type.uv.udp_recv_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function recv_start(callback:nvim.type.uv.udp_recv_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:recv_stop()
@@ -1350,7 +1350,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function recv_stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function recv_stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:ref()
@@ -1362,7 +1362,7 @@ package nvim.type.uv;
 		
 		 References are idempotent, that is, if a handle is already referenced calling this function again will have no effect.
 	**/
-	function ref():Dynamic;
+	extern function ref():Dynamic;
 	/**
 		```lua
 		(method) uv.uv_udp_t:send(data: string|string[], host: string, port: integer, callback: fun(err: string|nil))
@@ -1464,7 +1464,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function send(data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function send(data:nvim.type.uv.Buffer, host:String, port:Int, callback:nvim.type.uv.udp_send.Callback):nvim.helper.Multireturn<Null<nvim.type.uv.UvUdpSendT>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:send_buffer_size(size: integer)
@@ -1594,7 +1594,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	function send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_broadcast(on: boolean)
@@ -1697,7 +1697,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_broadcast(on:Bool):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_broadcast(on:Bool):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_membership(multicast_addr: string, interface_addr: string, membership: "join"|"leave")
@@ -1809,7 +1809,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_membership(multicast_addr:String, interface_addr:String, membership:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_membership(multicast_addr:String, interface_addr:String, membership:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_multicast_interface(interface_addr: string)
@@ -1912,7 +1912,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_multicast_interface(interface_addr:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_multicast_interface(interface_addr:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_multicast_loop(on: boolean)
@@ -2016,7 +2016,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_multicast_loop(on:Bool):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_multicast_loop(on:Bool):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_multicast_ttl(ttl: integer)
@@ -2120,7 +2120,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_multicast_ttl(ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_multicast_ttl(ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_source_membership(multicast_addr: string, interface_addr?: string, source_addr: string, membership: "join"|"leave")
@@ -2234,7 +2234,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_source_membership(multicast_addr:String, ?interface_addr:String, source_addr:String, membership:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_source_membership(multicast_addr:String, ?interface_addr:String, source_addr:String, membership:String):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:set_ttl(ttl: integer)
@@ -2338,7 +2338,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function set_ttl(ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function set_ttl(ttl:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_udp_t:try_send(data: string|string[], host: string, port: integer)
@@ -2439,7 +2439,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function try_send(data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function try_send(data:nvim.type.uv.Buffer, host:String, port:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:unref()
@@ -2450,5 +2450,5 @@ package nvim.type.uv;
 		 Un-reference the given handle. References are idempotent, that is, if a handle
 		 is not referenced calling this function again will have no effect.
 	**/
-	function unref():Dynamic;
+	extern function unref():Dynamic;
 }

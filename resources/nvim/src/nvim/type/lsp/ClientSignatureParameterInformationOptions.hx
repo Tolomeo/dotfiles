@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSignatureParameterInformationOptions
 	```
 **/
-@:structInit extern class ClientSignatureParameterInformationOptions {
+@:structInit class ClientSignatureParameterInformationOptions {
 	/**
 		```lua
 		(field) lsp.ClientSignatureParameterInformationOptions.labelOffsetSupport: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		simple label string.
 		
 	**/
-	var labelOffsetSupport : Null<Bool>;
+	@:optional
+	extern var labelOffsetSupport : Null<Bool>;
 }

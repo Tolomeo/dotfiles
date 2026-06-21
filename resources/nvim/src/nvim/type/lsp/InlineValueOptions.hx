@@ -10,11 +10,12 @@ package nvim.type.lsp;
 	Inline value options used during static registration.
 	
 **/
-@:structInit extern class InlineValueOptions {
+@:structInit class InlineValueOptions {
 	/**
 		```lua
 		(field) lsp.InlineValueOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

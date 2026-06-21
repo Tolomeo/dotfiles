@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.semantic_tokens.highlight_token;
 	(class) vim.lsp.semantic_tokens.highlight_token.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.semantic_tokens.highlight_token.Opts.priority: integer?
@@ -18,5 +18,6 @@ package nvim.type.vim.lsp.semantic_tokens.highlight_token;
 		 Priority for the applied extmark.
 		 (Default: `vim.hl.priorities.semantic_tokens + 3`)
 	**/
-	var priority : Null<Int>;
+	@:optional
+	extern var priority : Null<Int>;
 }

@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The result of a hover request.
 **/
-@:structInit extern class Hover {
+@:structInit class Hover {
 	/**
 		```lua
 		(field) lsp.Hover.contents: string|lsp.MarkedStringWithLanguage|lsp.MarkupContent|string|lsp.MarkedStringWithLanguage[]
@@ -59,7 +59,7 @@ package nvim.type.lsp;
 		
 		Note that markdown strings will be sanitized - that means html will be escaped.
 	**/
-	var contents : haxe.extern.EitherType<nvim.type.lsp.MarkupContent, haxe.extern.EitherType<nvim.type.lsp.MarkedString, Array<nvim.type.lsp.MarkedString>>>;
+	extern var contents : haxe.extern.EitherType<nvim.type.lsp.MarkupContent, haxe.extern.EitherType<nvim.type.lsp.MarkedString, Array<nvim.type.lsp.MarkedString>>>;
 	/**
 		```lua
 		(field) lsp.Hover.range: (lsp.Range)?
@@ -85,5 +85,6 @@ package nvim.type.lsp;
 		An optional range inside the text document that is used to
 		visualize the hover, e.g. by changing the background color.
 	**/
-	var range : Null<nvim.type.lsp.Range>;
+	@:optional
+	extern var range : Null<nvim.type.lsp.Range>;
 }

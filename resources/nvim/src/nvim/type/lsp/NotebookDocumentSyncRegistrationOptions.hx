@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Registration options specific to a notebook.
 	
 **/
-@:structInit extern class NotebookDocumentSyncRegistrationOptions {
+@:structInit class NotebookDocumentSyncRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.id: string?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
-	var id : Null<String>;
+	@:optional
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]
@@ -33,7 +34,7 @@ package nvim.type.lsp;
 		
 		The notebooks to be synced
 	**/
-	var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
+	extern var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.save: boolean?
@@ -45,5 +46,6 @@ package nvim.type.lsp;
 		Whether save notification should be forwarded to
 		the server. Will only be honored if mode === `notebook`.
 	**/
-	var save : Null<Bool>;
+	@:optional
+	extern var save : Null<Bool>;
 }

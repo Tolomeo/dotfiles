@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WorkspaceFoldersServerCapabilities
 	```
 **/
-@:structInit extern class WorkspaceFoldersServerCapabilities {
+@:structInit class WorkspaceFoldersServerCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersServerCapabilities.changeNotifications: (boolean|string)?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		side. The ID can be used to unregister for these events
 		using the `client/unregisterCapability` request.
 	**/
-	var changeNotifications : Null<haxe.extern.EitherType<String, Bool>>;
+	@:optional
+	extern var changeNotifications : Null<haxe.extern.EitherType<String, Bool>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersServerCapabilities.supported: boolean?
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		
 		The server has support for workspace folders
 	**/
-	var supported : Null<Bool>;
+	@:optional
+	extern var supported : Null<Bool>;
 }

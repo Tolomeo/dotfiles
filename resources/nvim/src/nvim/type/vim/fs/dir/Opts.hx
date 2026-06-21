@@ -5,7 +5,7 @@ package nvim.type.vim.fs.dir;
 	(class) vim.fs.dir.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.depth: integer?
@@ -18,7 +18,8 @@ package nvim.type.vim.fs.dir;
 		 How deep the traverse.
 		 (default: `1`)
 	**/
-	var depth : Null<Int>;
+	@:optional
+	extern var depth : Null<Int>;
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.follow: boolean?
@@ -30,7 +31,8 @@ package nvim.type.vim.fs.dir;
 		 Follow symbolic links.
 		 (default: `false`)
 	**/
-	var follow : Null<Bool>;
+	@:optional
+	extern var follow : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.dir.Opts.skip: (fun(dir_name: string):boolean)?
@@ -51,5 +53,6 @@ package nvim.type.vim.fs.dir;
 		  -> boolean
 		```
 	**/
-	var skip : Null<(dir_name:String) -> Bool>;
+	@:optional
+	extern var skip : Null<(dir_name:String) -> Bool>;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.rename;
 	(class) vim.lsp.buf.rename.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.bufnr: integer?
@@ -16,7 +16,8 @@ package nvim.type.vim.lsp.buf.rename;
 		
 		 (default: current buffer)
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -36,7 +37,8 @@ package nvim.type.vim.lsp.buf.rename;
 		  -> boolean?
 		```
 	**/
-	var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
+	@:optional
+	extern var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.name: string?
@@ -48,5 +50,6 @@ package nvim.type.vim.lsp.buf.rename;
 		 Restrict clients used for rename to ones where client.name matches
 		 this field.
 	**/
-	var name : Null<String>;
+	@:optional
+	extern var name : Null<String>;
 }

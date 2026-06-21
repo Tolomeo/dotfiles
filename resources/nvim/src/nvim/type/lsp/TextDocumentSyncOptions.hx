@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TextDocumentSyncOptions
 	```
 **/
-@:structInit extern class TextDocumentSyncOptions {
+@:structInit class TextDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.change: (0|1|2)?
@@ -33,7 +33,8 @@ package nvim.type.lsp;
 		    | 2 -- Incremental
 		```
 	**/
-	var change : Null<nvim.type.lsp.TextDocumentSyncKind>;
+	@:optional
+	extern var change : Null<nvim.type.lsp.TextDocumentSyncKind>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.openClose: boolean?
@@ -45,7 +46,8 @@ package nvim.type.lsp;
 		Open and close notifications are sent to the server. If omitted open close notification should not
 		be sent.
 	**/
-	var openClose : Null<Bool>;
+	@:optional
+	extern var openClose : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.save: (boolean|lsp.SaveOptions)?
@@ -61,7 +63,8 @@ package nvim.type.lsp;
 		If present save notifications are sent to the server. If omitted the notification should not be
 		sent.
 	**/
-	var save : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SaveOptions>>;
+	@:optional
+	extern var save : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SaveOptions>>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.willSave: boolean?
@@ -73,7 +76,8 @@ package nvim.type.lsp;
 		If present will save notifications are sent to the server. If omitted the notification should not be
 		sent.
 	**/
-	var willSave : Null<Bool>;
+	@:optional
+	extern var willSave : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncOptions.willSaveWaitUntil: boolean?
@@ -85,5 +89,6 @@ package nvim.type.lsp;
 		If present will save wait until requests are sent to the server. If omitted the request should not be
 		sent.
 	**/
-	var willSaveWaitUntil : Null<Bool>;
+	@:optional
+	extern var willSaveWaitUntil : Null<Bool>;
 }

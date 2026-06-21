@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Notebook specific client capabilities.
 	
 **/
-@:structInit extern class NotebookDocumentSyncClientCapabilities {
+@:structInit class NotebookDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.dynamicRegistration: boolean?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		`(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncClientCapabilities.executionSummarySupport: boolean?
@@ -35,5 +36,6 @@ package nvim.type.lsp;
 		
 		The client supports sending execution summary data per cell.
 	**/
-	var executionSummarySupport : Null<Bool>;
+	@:optional
+	extern var executionSummarySupport : Null<Bool>;
 }

@@ -5,11 +5,12 @@ package nvim.type.lsp;
 	(class) lsp.MonikerOptions
 	```
 **/
-@:structInit extern class MonikerOptions {
+@:structInit class MonikerOptions {
 	/**
 		```lua
 		(field) lsp.MonikerOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

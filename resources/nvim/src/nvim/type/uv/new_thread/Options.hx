@@ -10,11 +10,11 @@ package nvim.type.uv.new_thread;
 	 uv.new_thread.options
 	
 **/
-@:structInit extern class Options {
+@:structInit class Options {
 	/**
 		```lua
 		(field) uv.new_thread.options.stack_size: integer
 		```
 	**/
-	var stack_size : Int;
+	extern var stack_size : Int;
 }

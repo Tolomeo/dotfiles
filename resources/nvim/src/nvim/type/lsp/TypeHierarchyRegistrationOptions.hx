@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Type hierarchy options used during static or dynamic registration.
 	
 **/
-@:structInit extern class TypeHierarchyRegistrationOptions {
+@:structInit class TypeHierarchyRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TypeHierarchyRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil
@@ -30,7 +30,7 @@ package nvim.type.lsp;
 		A document selector to identify the scope of the registration. If set to null
 		the document selector provided on the client side will be used.
 	**/
-	var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+	extern var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.TypeHierarchyRegistrationOptions.id: string?
@@ -42,11 +42,13 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
-	var id : Null<String>;
+	@:optional
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.TypeHierarchyRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

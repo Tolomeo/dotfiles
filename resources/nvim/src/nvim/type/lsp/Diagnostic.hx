@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents a diagnostic, such as a compiler error or warning. Diagnostic objects
 	are only valid in the scope of a resource.
 **/
-@:structInit extern class Diagnostic {
+@:structInit class Diagnostic {
 	/**
 		```lua
 		(field) lsp.Diagnostic.code: (string|integer)?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		
 		The diagnostic's code, which usually appear in the user interface.
 	**/
-	var code : Null<haxe.extern.EitherType<Int, String>>;
+	@:optional
+	extern var code : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.codeDescription: (lsp.CodeDescription)?
@@ -39,7 +40,8 @@ package nvim.type.lsp;
 		Requires the code field (above) to be present/not null.
 		
 	**/
-	var codeDescription : Null<nvim.type.lsp.CodeDescription>;
+	@:optional
+	extern var codeDescription : Null<nvim.type.lsp.CodeDescription>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -68,7 +70,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var data : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.message: string
@@ -79,7 +82,7 @@ package nvim.type.lsp;
 		
 		The diagnostic's message. It usually appears in the user interface
 	**/
-	var message : String;
+	extern var message : String;
 	/**
 		```lua
 		(field) lsp.Diagnostic.range: lsp.Range
@@ -104,7 +107,7 @@ package nvim.type.lsp;
 		
 		The range at which the message applies
 	**/
-	var range : nvim.type.lsp.Range;
+	extern var range : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.Diagnostic.relatedInformation: lsp.DiagnosticRelatedInformation[]?
@@ -116,7 +119,8 @@ package nvim.type.lsp;
 		An array of related diagnostic information, e.g. when symbol-names within
 		a scope collide all definitions can be marked via this property.
 	**/
-	var relatedInformation : Null<Array<nvim.type.lsp.DiagnosticRelatedInformation>>;
+	@:optional
+	extern var relatedInformation : Null<Array<nvim.type.lsp.DiagnosticRelatedInformation>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.severity: (1|2|3|4)?
@@ -144,7 +148,8 @@ package nvim.type.lsp;
 		    | 4 -- Hint
 		```
 	**/
-	var severity : Null<nvim.type.lsp.DiagnosticSeverity>;
+	@:optional
+	extern var severity : Null<nvim.type.lsp.DiagnosticSeverity>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.source: string?
@@ -157,7 +162,8 @@ package nvim.type.lsp;
 		diagnostic, e.g. 'typescript' or 'super lint'. It usually
 		appears in the user interface.
 	**/
-	var source : Null<String>;
+	@:optional
+	extern var source : Null<String>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.tags: 1|2[]?
@@ -169,5 +175,6 @@ package nvim.type.lsp;
 		Additional metadata about the diagnostic.
 		
 	**/
-	var tags : Null<Array<nvim.type.lsp.DiagnosticTag>>;
+	@:optional
+	extern var tags : Null<Array<nvim.type.lsp.DiagnosticTag>>;
 }

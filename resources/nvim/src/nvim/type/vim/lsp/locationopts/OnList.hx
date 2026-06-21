@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.locationopts;
 	(class) vim.lsp.LocationOpts.OnList
 	```
 **/
-@:structInit extern class OnList {
+@:structInit class OnList {
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.context: { bufnr: integer, method: string }?
@@ -15,7 +15,8 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Subset of `ctx` from |lsp-handler|.
 	**/
-	var context : Null<{ var bufnr : Int; var method : String; }>;
+	@:optional
+	extern var context : Null<{ var bufnr : Int; var method : String; }>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.items: table[]
@@ -25,7 +26,7 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Structured like |setqflist-what|
 	**/
-	var items : Array<lua.Table.AnyTable>;
+	extern var items : Array<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.title: string?
@@ -35,5 +36,6 @@ package nvim.type.vim.lsp.locationopts;
 		
 		Title for the list.
 	**/
-	var title : Null<String>;
+	@:optional
+	extern var title : Null<String>;
 }

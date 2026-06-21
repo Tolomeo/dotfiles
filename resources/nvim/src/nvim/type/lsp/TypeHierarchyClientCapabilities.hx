@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TypeHierarchyClientCapabilities
 	```
 **/
-@:structInit extern class TypeHierarchyClientCapabilities {
+@:structInit class TypeHierarchyClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TypeHierarchyClientCapabilities.dynamicRegistration: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		the client supports the new `(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

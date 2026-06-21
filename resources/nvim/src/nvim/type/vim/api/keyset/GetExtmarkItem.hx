@@ -5,6 +5,6 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_extmark_item
 	```
 **/
-@:structInit extern class GetExtmarkItem {
+@:structInit class GetExtmarkItem {
 
 }

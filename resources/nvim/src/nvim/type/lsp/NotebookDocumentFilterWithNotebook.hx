@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.NotebookDocumentFilterWithNotebook
 	```
 **/
-@:structInit extern class NotebookDocumentFilterWithNotebook {
+@:structInit class NotebookDocumentFilterWithNotebook {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithNotebook.cells: lsp.NotebookCellLanguage[]?
@@ -16,7 +16,8 @@ package nvim.type.lsp;
 		
 		The cells of the matching notebook to be synced.
 	**/
-	var cells : Null<Array<nvim.type.lsp.NotebookCellLanguage>>;
+	@:optional
+	extern var cells : Null<Array<nvim.type.lsp.NotebookCellLanguage>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterWithNotebook.notebook: string|lsp.NotebookDocumentFilterNotebookType|lsp.NotebookDocumentFilterPattern|lsp.NotebookDocumentFilterScheme
@@ -51,5 +52,5 @@ package nvim.type.lsp;
 		A notebook document filter where `pattern` is required field.
 		
 	**/
-	var notebook : haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>;
+	extern var notebook : haxe.extern.EitherType<String, nvim.type.lsp.NotebookDocumentFilter>;
 }

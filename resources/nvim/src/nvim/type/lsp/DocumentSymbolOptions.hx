@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentSymbolRequest}.
 **/
-@:structInit extern class DocumentSymbolOptions {
+@:structInit class DocumentSymbolOptions {
 	/**
 		```lua
 		(field) lsp.DocumentSymbolOptions.label: string?
@@ -22,11 +22,13 @@ package nvim.type.lsp;
 		are shown for the same document.
 		
 	**/
-	var label : Null<String>;
+	@:optional
+	extern var label : Null<String>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

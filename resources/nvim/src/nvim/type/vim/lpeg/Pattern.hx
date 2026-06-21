@@ -9,7 +9,7 @@ package nvim.type.vim.lpeg;
 	
 	 @nodoc
 **/
-@:structInit extern class Pattern {
+@:structInit class Pattern {
 	/**
 		```lua
 		(method) vim.lpeg.Pattern:match(subject: string, init?: integer, ...any)
@@ -36,5 +36,5 @@ package nvim.type.vim.lpeg;
 		 assert(pattern:match('1 hello') == nil)
 		 ```
 	**/
-	function match(subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
+	extern function match(subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
 }

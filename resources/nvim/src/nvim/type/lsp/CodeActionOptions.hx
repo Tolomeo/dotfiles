@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link CodeActionRequest}.
 **/
-@:structInit extern class CodeActionOptions {
+@:structInit class CodeActionOptions {
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.codeActionKinds: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]?
@@ -23,7 +23,8 @@ package nvim.type.lsp;
 		The list of kinds may be generic, such as `CodeActionKind.Refactor`, or the server
 		may list out every specific kind they provide.
 	**/
-	var codeActionKinds : Null<Array<nvim.type.lsp.CodeActionKind>>;
+	@:optional
+	extern var codeActionKinds : Null<Array<nvim.type.lsp.CodeActionKind>>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.documentation: lsp.CodeActionKindDocumentation[]?
@@ -46,7 +47,8 @@ package nvim.type.lsp;
 		At most one documentation entry should be shown per provider.
 		
 	**/
-	var documentation : Null<Array<nvim.type.lsp.CodeActionKindDocumentation>>;
+	@:optional
+	extern var documentation : Null<Array<nvim.type.lsp.CodeActionKindDocumentation>>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.resolveProvider: boolean?
@@ -59,11 +61,13 @@ package nvim.type.lsp;
 		information for a code action.
 		
 	**/
-	var resolveProvider : Null<Bool>;
+	@:optional
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

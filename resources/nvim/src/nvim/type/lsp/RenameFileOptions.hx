@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Rename file options
 **/
-@:structInit extern class RenameFileOptions {
+@:structInit class RenameFileOptions {
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.ignoreIfExists: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Ignores if target exists.
 	**/
-	var ignoreIfExists : Null<Bool>;
+	@:optional
+	extern var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameFileOptions.overwrite: boolean?
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		
 		Overwrite target if existing. Overwrite wins over `ignoreIfExists`
 	**/
-	var overwrite : Null<Bool>;
+	@:optional
+	extern var overwrite : Null<Bool>;
 }

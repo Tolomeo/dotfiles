@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.InitializeParams
 	```
 **/
-@:structInit extern class InitializeParams {
+@:structInit class InitializeParams {
 	/**
 		```lua
 		(field) lsp.InitializeParams.capabilities: lsp.ClientCapabilities
@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		The capabilities provided by the client (editor or tool)
 	**/
-	var capabilities : nvim.type.lsp.ClientCapabilities;
+	extern var capabilities : nvim.type.lsp.ClientCapabilities;
 	/**
 		```lua
 		(field) lsp.InitializeParams.clientInfo: (lsp.ClientInfo)?
@@ -37,7 +37,8 @@ package nvim.type.lsp;
 		Information about the client
 		
 	**/
-	var clientInfo : Null<nvim.type.lsp.ClientInfo>;
+	@:optional
+	extern var clientInfo : Null<nvim.type.lsp.ClientInfo>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.initializationOptions: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -64,7 +65,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var initializationOptions : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var initializationOptions : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.locale: string?
@@ -81,7 +83,8 @@ package nvim.type.lsp;
 		(See https://en.wikipedia.org/wiki/IETF_language_tag)
 		
 	**/
-	var locale : Null<String>;
+	@:optional
+	extern var locale : Null<String>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.processId: integer|nil
@@ -96,7 +99,7 @@ package nvim.type.lsp;
 		Is `null` if the process has not been started by another process.
 		If the parent process is not alive then the server should exit.
 	**/
-	var processId : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
+	extern var processId : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.rootPath: (string|nil)?
@@ -109,7 +112,8 @@ package nvim.type.lsp;
 		if no folder is open.
 		
 	**/
-	var rootPath : Null<haxe.extern.EitherType<String, nvim.type.lsp.Null>>;
+	@:optional
+	extern var rootPath : Null<haxe.extern.EitherType<String, nvim.type.lsp.Null>>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.rootUri: string|nil
@@ -123,7 +127,7 @@ package nvim.type.lsp;
 		`rootUri` wins.
 		
 	**/
-	var rootUri : haxe.extern.EitherType<nvim.type.lsp.DocumentUri, nvim.type.lsp.Null>;
+	extern var rootUri : haxe.extern.EitherType<nvim.type.lsp.DocumentUri, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.trace: ("messages"|"off"|"verbose")?
@@ -143,7 +147,8 @@ package nvim.type.lsp;
 		    | "verbose" -- Verbose
 		```
 	**/
-	var trace : Null<nvim.type.lsp.TraceValue>;
+	@:optional
+	extern var trace : Null<nvim.type.lsp.TraceValue>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.workDoneToken: (string|integer)?
@@ -154,7 +159,8 @@ package nvim.type.lsp;
 		
 		An optional token that a server can use to report work done progress.
 	**/
-	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+	@:optional
+	extern var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.workspaceFolders: (lsp.WorkspaceFolder[]|nil)?
@@ -170,5 +176,6 @@ package nvim.type.lsp;
 		configured.
 		
 	**/
-	var workspaceFolders : Null<haxe.extern.EitherType<Array<nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
+	@:optional
+	extern var workspaceFolders : Null<haxe.extern.EitherType<Array<nvim.type.lsp.WorkspaceFolder>, nvim.type.lsp.Null>>;
 }

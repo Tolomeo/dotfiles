@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSTree
 	```
 **/
-@:structInit extern class TSTree {
+@:structInit class TSTree {
 	/**
 		```lua
 		(method) TSTree:copy()
@@ -16,7 +16,7 @@ package nvim.type;
 		
 		 Returns a copy of the `TSTree`.
 	**/
-	function copy():nvim.type.TSTree;
+	extern function copy():nvim.type.TSTree;
 	/**
 		```lua
 		(method) TSTree:edit(start_byte: integer, end_byte_old: integer, end_byte_new: integer, start_row: integer, start_col: integer, end_row_old: integer, end_col_old: integer, end_row_new: integer, end_col_new: integer)
@@ -27,7 +27,7 @@ package nvim.type;
 		
 		 stylua: ignore
 	**/
-	function edit(start_byte:Int, end_byte_old:Int, end_byte_new:Int, start_row:Int, start_col:Int, end_row_old:Int, end_col_old:Int, end_row_new:Int, end_col_new:Int):nvim.type.TSTree;
+	extern function edit(start_byte:Int, end_byte_old:Int, end_byte_new:Int, start_row:Int, start_col:Int, end_row_old:Int, end_col_old:Int, end_row_new:Int, end_col_new:Int):nvim.type.TSTree;
 	/**
 		```lua
 		(method) TSTree:included_ranges(include_bytes: true)
@@ -55,7 +55,7 @@ package nvim.type;
 		    | false
 		```
 	**/
-	function included_ranges(include_bytes:Bool):Array<nvim.type.Range6>;
+	extern function included_ranges(include_bytes:Bool):Array<nvim.type.Range6>;
 	/**
 		```lua
 		(method) TSTree:root()
@@ -66,5 +66,5 @@ package nvim.type;
 		
 		 Return the root node of this tree.
 	**/
-	function root():nvim.type.TSNode;
+	extern function root():nvim.type.TSNode;
 }

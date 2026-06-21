@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter.languagetree.tree_for_range;
 	(class) vim.treesitter.LanguageTree.tree_for_range.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.tree_for_range.Opts.ignore_injections: boolean?
@@ -18,5 +18,6 @@ package nvim.type.vim.treesitter.languagetree.tree_for_range;
 		 Ignore injected languages
 		 (default: `true`)
 	**/
-	var ignore_injections : Null<Bool>;
+	@:optional
+	extern var ignore_injections : Null<Bool>;
 }

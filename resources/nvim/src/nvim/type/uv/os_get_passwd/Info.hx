@@ -5,35 +5,35 @@ package nvim.type.uv.os_get_passwd;
 	(class) uv.os_get_passwd.info
 	```
 **/
-@:structInit extern class Info {
+@:structInit class Info {
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.gid: integer
 		```
 	**/
-	var gid : Int;
+	extern var gid : Int;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.homedir: string
 		```
 	**/
-	var homedir : String;
+	extern var homedir : String;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.shell: string
 		```
 	**/
-	var shell : String;
+	extern var shell : String;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.uid: integer
 		```
 	**/
-	var uid : Int;
+	extern var uid : Int;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.username: string
 		```
 	**/
-	var username : String;
+	extern var username : String;
 }

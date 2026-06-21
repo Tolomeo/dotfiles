@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCompletionItemOptions
 	```
 **/
-@:structInit extern class ClientCompletionItemOptions {
+@:structInit class ClientCompletionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.commitCharactersSupport: boolean?
@@ -16,7 +16,8 @@ package nvim.type.lsp;
 		
 		Client supports commit characters on a completion item.
 	**/
-	var commitCharactersSupport : Null<Bool>;
+	@:optional
+	extern var commitCharactersSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.deprecatedSupport: boolean?
@@ -27,7 +28,8 @@ package nvim.type.lsp;
 		
 		Client supports the deprecated property on a completion item.
 	**/
-	var deprecatedSupport : Null<Bool>;
+	@:optional
+	extern var deprecatedSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.documentationFormat: "markdown"|"plaintext"[]?
@@ -39,7 +41,8 @@ package nvim.type.lsp;
 		Client supports the following content formats for the documentation
 		property. The order describes the preferred format of the client.
 	**/
-	var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	@:optional
+	extern var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.insertReplaceSupport: boolean?
@@ -52,7 +55,8 @@ package nvim.type.lsp;
 		completion item is inserted in the text or should replace text.
 		
 	**/
-	var insertReplaceSupport : Null<Bool>;
+	@:optional
+	extern var insertReplaceSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.insertTextModeSupport: (lsp.ClientCompletionItemInsertTextModeOptions)?
@@ -66,7 +70,8 @@ package nvim.type.lsp;
 		as defined by the client (see `insertTextMode`).
 		
 	**/
-	var insertTextModeSupport : Null<nvim.type.lsp.ClientCompletionItemInsertTextModeOptions>;
+	@:optional
+	extern var insertTextModeSupport : Null<nvim.type.lsp.ClientCompletionItemInsertTextModeOptions>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.labelDetailsSupport: boolean?
@@ -79,7 +84,8 @@ package nvim.type.lsp;
 		details (see also `CompletionItemLabelDetails`).
 		
 	**/
-	var labelDetailsSupport : Null<Bool>;
+	@:optional
+	extern var labelDetailsSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.preselectSupport: boolean?
@@ -90,7 +96,8 @@ package nvim.type.lsp;
 		
 		Client supports the preselect property on a completion item.
 	**/
-	var preselectSupport : Null<Bool>;
+	@:optional
+	extern var preselectSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.resolveSupport: (lsp.ClientCompletionItemResolveOptions)?
@@ -104,7 +111,8 @@ package nvim.type.lsp;
 		and `details` could be resolved lazily.
 		
 	**/
-	var resolveSupport : Null<nvim.type.lsp.ClientCompletionItemResolveOptions>;
+	@:optional
+	extern var resolveSupport : Null<nvim.type.lsp.ClientCompletionItemResolveOptions>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.snippetSupport: boolean?
@@ -120,7 +128,8 @@ package nvim.type.lsp;
 		the end of the snippet. Placeholders with equal identifiers are linked,
 		that is typing in one will update others too.
 	**/
-	var snippetSupport : Null<Bool>;
+	@:optional
+	extern var snippetSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptions.tagSupport: (lsp.CompletionItemTagOptions)?
@@ -135,5 +144,6 @@ package nvim.type.lsp;
 		a resolve call.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.CompletionItemTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.CompletionItemTagOptions>;
 }

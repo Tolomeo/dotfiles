@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The Client Capabilities of a {@link CodeActionRequest}.
 **/
-@:structInit extern class CodeActionClientCapabilities {
+@:structInit class CodeActionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.codeActionLiteralSupport: (lsp.ClientCodeActionLiteralOptions)?
@@ -23,7 +23,8 @@ package nvim.type.lsp;
 		set the request can only return `Command` literals.
 		
 	**/
-	var codeActionLiteralSupport : Null<nvim.type.lsp.ClientCodeActionLiteralOptions>;
+	@:optional
+	extern var codeActionLiteralSupport : Null<nvim.type.lsp.ClientCodeActionLiteralOptions>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.dataSupport: boolean?
@@ -37,7 +38,8 @@ package nvim.type.lsp;
 		`codeAction/resolve` request.
 		
 	**/
-	var dataSupport : Null<Bool>;
+	@:optional
+	extern var dataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.disabledSupport: boolean?
@@ -49,7 +51,8 @@ package nvim.type.lsp;
 		Whether code action supports the `disabled` property.
 		
 	**/
-	var disabledSupport : Null<Bool>;
+	@:optional
+	extern var disabledSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.documentationSupport: boolean?
@@ -62,7 +65,8 @@ package nvim.type.lsp;
 		code actions.
 		
 	**/
-	var documentationSupport : Null<Bool>;
+	@:optional
+	extern var documentationSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.dynamicRegistration: boolean?
@@ -73,7 +77,8 @@ package nvim.type.lsp;
 		
 		Whether code action supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.honorsChangeAnnotations: boolean?
@@ -89,7 +94,8 @@ package nvim.type.lsp;
 		for confirmation.
 		
 	**/
-	var honorsChangeAnnotations : Null<Bool>;
+	@:optional
+	extern var honorsChangeAnnotations : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.isPreferredSupport: boolean?
@@ -101,7 +107,8 @@ package nvim.type.lsp;
 		Whether code action supports the `isPreferred` property.
 		
 	**/
-	var isPreferredSupport : Null<Bool>;
+	@:optional
+	extern var isPreferredSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.resolveSupport: (lsp.ClientCodeActionResolveOptions)?
@@ -114,7 +121,8 @@ package nvim.type.lsp;
 		properties via a separate `codeAction/resolve` request.
 		
 	**/
-	var resolveSupport : Null<nvim.type.lsp.ClientCodeActionResolveOptions>;
+	@:optional
+	extern var resolveSupport : Null<nvim.type.lsp.ClientCodeActionResolveOptions>;
 	/**
 		```lua
 		(field) lsp.CodeActionClientCapabilities.tagSupport: (lsp.CodeActionTagOptions)?
@@ -127,5 +135,6 @@ package nvim.type.lsp;
 		supporting tags have to handle unknown tags gracefully.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.CodeActionTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.CodeActionTagOptions>;
 }

@@ -9,11 +9,12 @@ package nvim.type.lsp;
 	
 	Server Capabilities for a {@link DefinitionRequest}.
 **/
-@:structInit extern class DefinitionOptions {
+@:structInit class DefinitionOptions {
 	/**
 		```lua
 		(field) lsp.DefinitionOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 socket info
 	
 **/
-@:structInit extern class Socketinfo {
+@:structInit class Socketinfo {
 	/**
 		```lua
 		(field) uv.socketinfo.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"
@@ -32,17 +32,17 @@ package nvim.type.uv;
 		    | "packet"
 		```
 	**/
-	var family : haxe.extern.EitherType<String, nvim.type.uv.socket.Family>;
+	extern var family : haxe.extern.EitherType<String, nvim.type.uv.socket.Family>;
 	/**
 		```lua
 		(field) uv.socketinfo.ip: string
 		```
 	**/
-	var ip : String;
+	extern var ip : String;
 	/**
 		```lua
 		(field) uv.socketinfo.port: integer
 		```
 	**/
-	var port : Int;
+	extern var port : Int;
 }

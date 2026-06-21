@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A notebook document filter where `scheme` is required field.
 	
 **/
-@:structInit extern class NotebookDocumentFilterScheme {
+@:structInit class NotebookDocumentFilterScheme {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterScheme.notebookType: string?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		
 		The type of the enclosing notebook.
 	**/
-	var notebookType : Null<String>;
+	@:optional
+	extern var notebookType : Null<String>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterScheme.pattern: (string|lsp.RelativePattern)?
@@ -55,7 +56,8 @@ package nvim.type.lsp;
 		folder root, but it can be another absolute URI as well.
 		
 	**/
-	var pattern : Null<nvim.type.lsp.GlobPattern>;
+	@:optional
+	extern var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentFilterScheme.scheme: string
@@ -66,5 +68,5 @@ package nvim.type.lsp;
 		
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
-	var scheme : String;
+	extern var scheme : String;
 }

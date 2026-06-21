@@ -5,11 +5,12 @@ package nvim.type.lsp;
 	(class) lsp.TypeDefinitionOptions
 	```
 **/
-@:structInit extern class TypeDefinitionOptions {
+@:structInit class TypeDefinitionOptions {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

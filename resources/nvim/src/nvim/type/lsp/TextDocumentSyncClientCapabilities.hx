@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TextDocumentSyncClientCapabilities
 	```
 **/
-@:structInit extern class TextDocumentSyncClientCapabilities {
+@:structInit class TextDocumentSyncClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.didSave: boolean?
@@ -16,7 +16,8 @@ package nvim.type.lsp;
 		
 		The client supports did save notifications.
 	**/
-	var didSave : Null<Bool>;
+	@:optional
+	extern var didSave : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.dynamicRegistration: boolean?
@@ -27,7 +28,8 @@ package nvim.type.lsp;
 		
 		Whether text document synchronization supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.willSave: boolean?
@@ -38,7 +40,8 @@ package nvim.type.lsp;
 		
 		The client supports sending will save notifications.
 	**/
-	var willSave : Null<Bool>;
+	@:optional
+	extern var willSave : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TextDocumentSyncClientCapabilities.willSaveWaitUntil: boolean?
@@ -51,5 +54,6 @@ package nvim.type.lsp;
 		waits for a response providing text edits which will
 		be applied to the document before it is saved.
 	**/
-	var willSaveWaitUntil : Null<Bool>;
+	@:optional
+	extern var willSaveWaitUntil : Null<Bool>;
 }

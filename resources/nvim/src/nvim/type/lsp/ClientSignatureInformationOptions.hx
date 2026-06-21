@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSignatureInformationOptions
 	```
 **/
-@:structInit extern class ClientSignatureInformationOptions {
+@:structInit class ClientSignatureInformationOptions {
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.activeParameterSupport: boolean?
@@ -18,7 +18,8 @@ package nvim.type.lsp;
 		literal.
 		
 	**/
-	var activeParameterSupport : Null<Bool>;
+	@:optional
+	extern var activeParameterSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.documentationFormat: "markdown"|"plaintext"[]?
@@ -30,7 +31,8 @@ package nvim.type.lsp;
 		Client supports the following content formats for the documentation
 		property. The order describes the preferred format of the client.
 	**/
-	var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	@:optional
+	extern var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.noActiveParameterSupport: boolean?
@@ -44,7 +46,8 @@ package nvim.type.lsp;
 		indicate that no parameter should be active.
 		
 	**/
-	var noActiveParameterSupport : Null<Bool>;
+	@:optional
+	extern var noActiveParameterSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.parameterInformation: (lsp.ClientSignatureParameterInformationOptions)?
@@ -55,5 +58,6 @@ package nvim.type.lsp;
 		
 		Client capabilities specific to parameter information.
 	**/
-	var parameterInformation : Null<nvim.type.lsp.ClientSignatureParameterInformationOptions>;
+	@:optional
+	extern var parameterInformation : Null<nvim.type.lsp.ClientSignatureParameterInformationOptions>;
 }

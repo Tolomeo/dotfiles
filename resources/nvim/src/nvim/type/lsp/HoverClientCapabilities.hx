@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.HoverClientCapabilities
 	```
 **/
-@:structInit extern class HoverClientCapabilities {
+@:structInit class HoverClientCapabilities {
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.contentFormat: "markdown"|"plaintext"[]?
@@ -17,7 +17,8 @@ package nvim.type.lsp;
 		Client supports the following content formats for the content
 		property. The order describes the preferred format of the client.
 	**/
-	var contentFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	@:optional
+	extern var contentFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.dynamicRegistration: boolean?
@@ -28,5 +29,6 @@ package nvim.type.lsp;
 		
 		Whether hover supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

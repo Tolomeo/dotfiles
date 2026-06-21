@@ -5,13 +5,13 @@ package nvim.type.vim;
 	(class) vim.SystemObj
 	```
 **/
-@:structInit extern class SystemObj {
+@:structInit class SystemObj {
 	/**
 		```lua
 		(field) vim.SystemObj.cmd: string[]
 		```
 	**/
-	var cmd : Array<String>;
+	extern var cmd : Array<String>;
 	/**
 		```lua
 		(field) vim.SystemObj.is_closing: fun(self: vim.SystemObj):boolean
@@ -25,7 +25,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	function is_closing():Bool;
+	extern function is_closing():Bool;
 	/**
 		```lua
 		(field) vim.SystemObj.kill: fun(self: vim.SystemObj, signal: string|integer)
@@ -38,13 +38,13 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	function kill(signal:haxe.extern.EitherType<Int, String>):Dynamic;
+	extern function kill(signal:haxe.extern.EitherType<Int, String>):Dynamic;
 	/**
 		```lua
 		(field) vim.SystemObj.pid: integer
 		```
 	**/
-	var pid : Int;
+	extern var pid : Int;
 	/**
 		```lua
 		(field) vim.SystemObj.wait: fun(self: vim.SystemObj, timeout?: integer):vim.SystemCompleted
@@ -58,7 +58,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	function wait(timeout:Int):nvim.type.vim.SystemCompleted;
+	extern function wait(timeout:Int):nvim.type.vim.SystemCompleted;
 	/**
 		```lua
 		(field) vim.SystemObj.write: fun(self: vim.SystemObj, data?: string|string[])
@@ -71,5 +71,5 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	function write(data:haxe.extern.EitherType<String, Array<String>>):Dynamic;
+	extern function write(data:haxe.extern.EitherType<String, Array<String>>):Dynamic;
 }

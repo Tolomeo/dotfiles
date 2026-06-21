@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientShowMessageActionItemOptions
 	```
 **/
-@:structInit extern class ClientShowMessageActionItemOptions {
+@:structInit class ClientShowMessageActionItemOptions {
 	/**
 		```lua
 		(field) lsp.ClientShowMessageActionItemOptions.additionalPropertiesSupport: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		are preserved and send back to the server in the
 		request's response.
 	**/
-	var additionalPropertiesSupport : Null<Bool>;
+	@:optional
+	extern var additionalPropertiesSupport : Null<Bool>;
 }

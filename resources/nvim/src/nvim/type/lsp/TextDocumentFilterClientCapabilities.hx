@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.TextDocumentFilterClientCapabilities
 	```
 **/
-@:structInit extern class TextDocumentFilterClientCapabilities {
+@:structInit class TextDocumentFilterClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterClientCapabilities.relativePatternSupport: boolean?
@@ -17,5 +17,6 @@ package nvim.type.lsp;
 		The client supports Relative Patterns.
 		
 	**/
-	var relativePatternSupport : Null<Bool>;
+	@:optional
+	extern var relativePatternSupport : Null<Bool>;
 }

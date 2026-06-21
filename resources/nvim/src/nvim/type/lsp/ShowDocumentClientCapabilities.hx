@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities for the showDocument request.
 	
 **/
-@:structInit extern class ShowDocumentClientCapabilities {
+@:structInit class ShowDocumentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ShowDocumentClientCapabilities.support: boolean
@@ -22,5 +22,5 @@ package nvim.type.lsp;
 		The client has support for the showDocument
 		request.
 	**/
-	var support : Bool;
+	extern var support : Bool;
 }

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSemanticTokensRequestFullDelta
 	```
 **/
-@:structInit extern class ClientSemanticTokensRequestFullDelta {
+@:structInit class ClientSemanticTokensRequestFullDelta {
 	/**
 		```lua
 		(field) lsp.ClientSemanticTokensRequestFullDelta.delta: boolean?
@@ -17,5 +17,6 @@ package nvim.type.lsp;
 		The client will send the `textDocument/semanticTokens/full/delta` request if
 		the server provides a corresponding handler.
 	**/
-	var delta : Null<Bool>;
+	@:optional
+	extern var delta : Null<Bool>;
 }

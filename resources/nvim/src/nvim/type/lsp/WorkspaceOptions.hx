@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Defines workspace specific capabilities of the server.
 	
 **/
-@:structInit extern class WorkspaceOptions {
+@:structInit class WorkspaceOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.fileOperations: (lsp.FileOperationOptions)?
@@ -27,7 +27,8 @@ package nvim.type.lsp;
 		The server is interested in notifications/requests for operations on files.
 		
 	**/
-	var fileOperations : Null<nvim.type.lsp.FileOperationOptions>;
+	@:optional
+	extern var fileOperations : Null<nvim.type.lsp.FileOperationOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.textDocumentContent: (lsp.TextDocumentContentOptions|lsp.TextDocumentContentRegistrationOptions)?
@@ -49,7 +50,8 @@ package nvim.type.lsp;
 		Text document content provider registration options.
 		
 	**/
-	var textDocumentContent : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentContentOptions, nvim.type.lsp.TextDocumentContentRegistrationOptions>>;
+	@:optional
+	extern var textDocumentContent : Null<haxe.extern.EitherType<nvim.type.lsp.TextDocumentContentOptions, nvim.type.lsp.TextDocumentContentRegistrationOptions>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceOptions.workspaceFolders: (lsp.WorkspaceFoldersServerCapabilities)?
@@ -61,5 +63,6 @@ package nvim.type.lsp;
 		The server supports workspace folder.
 		
 	**/
-	var workspaceFolders : Null<nvim.type.lsp.WorkspaceFoldersServerCapabilities>;
+	@:optional
+	extern var workspaceFolders : Null<nvim.type.lsp.WorkspaceFoldersServerCapabilities>;
 }

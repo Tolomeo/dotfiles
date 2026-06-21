@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Delete file options
 **/
-@:structInit extern class DeleteFileOptions {
+@:structInit class DeleteFileOptions {
 	/**
 		```lua
 		(field) lsp.DeleteFileOptions.ignoreIfNotExists: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Ignore the operation if the file doesn't exist.
 	**/
-	var ignoreIfNotExists : Null<Bool>;
+	@:optional
+	extern var ignoreIfNotExists : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DeleteFileOptions.recursive: boolean?
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		
 		Delete the content recursively if a folder is denoted.
 	**/
-	var recursive : Null<Bool>;
+	@:optional
+	extern var recursive : Null<Bool>;
 }

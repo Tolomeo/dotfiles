@@ -40,7 +40,8 @@ extern class Diagnostic {
 		              Structured: { [1] = {...}, [5] = {.... } }
 	**/
 	@:luaDotMethod
-	private function get_line_diagnostics(?bufnr:Null<Int>, ?line_nr:Null<Int>, ?opts:Null<{ var severity : Null<nvim.type.lsp.DiagnosticSeverity>; }>, ?client_id:Null<Int>):lua.Table.AnyTable;
+	private function get_line_diagnostics(?bufnr:Null<Int>, ?line_nr:Null<Int>, ?opts:Null<{ @:optional
+	var severity : Null<nvim.type.lsp.DiagnosticSeverity>; }>, ?client_id:Null<Int>):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.get_namespace(client_id: integer, is_pull?: boolean)

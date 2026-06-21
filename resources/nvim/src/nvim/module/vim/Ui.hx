@@ -86,7 +86,8 @@ extern class Ui {
 		@*return* — Error message on failure, or nil on success.
 	**/
 	@:luaDotMethod
-	function open(path:String, ?opt:{ var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
+	function open(path:String, ?opt:{ @:optional
+	var cmd : Null<Array<String>>; }):nvim.helper.Multireturn<Null<nvim.type.vim.SystemObj>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		function M.select(items: <T>[], opts: table, on_choice: fun(item: <T>|nil, idx: integer|nil))
@@ -132,5 +133,5 @@ extern class Ui {
 		               `nil` if the user aborted the dialog.
 	**/
 	@:luaDotMethod
-	function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(item:Null<T>, idx:Null<Int>) -> Dynamic):Dynamic;
+	function select<T>(items:Array<T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Int>) -> Dynamic):Dynamic;
 }

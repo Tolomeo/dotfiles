@@ -13,7 +13,7 @@ package nvim.type.vim.keymap.set;
 	
 	 Also accepts:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.buffer: (boolean|integer)?
@@ -25,37 +25,43 @@ package nvim.type.vim.keymap.set;
 		
 		 Creates buffer-local mapping, `0` or `true` for current buffer.
 	**/
-	var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
+	@:optional
+	extern var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.callback: function?
 		```
 	**/
-	var callback : Null<haxe.Constraints.Function>;
+	@:optional
+	extern var callback : Null<haxe.Constraints.Function>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.desc: string?
 		```
 	**/
-	var desc : Null<String>;
+	@:optional
+	extern var desc : Null<String>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.expr: boolean?
 		```
 	**/
-	var expr : Null<Bool>;
+	@:optional
+	extern var expr : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.noremap: boolean?
 		```
 	**/
-	var noremap : Null<Bool>;
+	@:optional
+	extern var noremap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.nowait: boolean?
 		```
 	**/
-	var nowait : Null<Bool>;
+	@:optional
+	extern var nowait : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.remap: boolean?
@@ -67,29 +73,34 @@ package nvim.type.vim.keymap.set;
 		 Make the mapping recursive. Inverse of {noremap}.
 		 (Default: `false`)
 	**/
-	var remap : Null<Bool>;
+	@:optional
+	extern var remap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.replace_keycodes: boolean?
 		```
 	**/
-	var replace_keycodes : Null<Bool>;
+	@:optional
+	extern var replace_keycodes : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.script: boolean?
 		```
 	**/
-	var script : Null<Bool>;
+	@:optional
+	extern var script : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.silent: boolean?
 		```
 	**/
-	var silent : Null<Bool>;
+	@:optional
+	extern var silent : Null<Bool>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.unique: boolean?
 		```
 	**/
-	var unique : Null<Bool>;
+	@:optional
+	extern var unique : Null<Bool>;
 }

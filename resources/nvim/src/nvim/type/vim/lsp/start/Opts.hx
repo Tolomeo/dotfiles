@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.start;
 	(class) vim.lsp.start.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.attach: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.lsp.start;
 		 Whether to attach the client to a buffer (default true).
 		 If set to `false`, `reuse_client` and `bufnr` will be ignored.
 	**/
-	var attach : Null<Bool>;
+	@:optional
+	extern var attach : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.bufnr: integer?
@@ -28,7 +29,8 @@ package nvim.type.vim.lsp.start;
 		
 		 Buffer handle to attach to if starting or re-using a client (0 for current).
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.reuse_client: (fun(client: vim.lsp.Client, config: vim.lsp.ClientConfig):boolean)?
@@ -50,7 +52,8 @@ package nvim.type.vim.lsp.start;
 		  -> boolean
 		```
 	**/
-	var reuse_client : Null<(client:nvim.type.vim.lsp.Client, config:nvim.type.vim.lsp.ClientConfig) -> Bool>;
+	@:optional
+	extern var reuse_client : Null<(client:nvim.type.vim.lsp.Client, config:nvim.type.vim.lsp.ClientConfig) -> Bool>;
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.silent: boolean?
@@ -61,5 +64,6 @@ package nvim.type.vim.lsp.start;
 		
 		 Suppress error reporting if the LSP server fails to start (default false).
 	**/
-	var silent : Null<Bool>;
+	@:optional
+	extern var silent : Null<Bool>;
 }

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities for a text document content provider.
 	
 **/
-@:structInit extern class TextDocumentContentClientCapabilities {
+@:structInit class TextDocumentContentClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentClientCapabilities.dynamicRegistration: boolean?
@@ -21,5 +21,6 @@ package nvim.type.lsp;
 		
 		Text document content provider supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

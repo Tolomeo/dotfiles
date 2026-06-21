@@ -13,7 +13,7 @@ package nvim.type;
 	 for an example of how to obtain a query object.
 	
 **/
-@:structInit extern class TSQuery {
+@:structInit class TSQuery {
 	/**
 		```lua
 		(method) TSQuery:disable_capture(capture_name: string)
@@ -31,7 +31,7 @@ package nvim.type;
 		 vim.treesitter.get_parser():parse()
 		 ```
 	**/
-	function disable_capture(capture_name:String):Dynamic;
+	extern function disable_capture(capture_name:String):Dynamic;
 	/**
 		```lua
 		(method) TSQuery:disable_pattern(pattern_index: integer)
@@ -51,7 +51,7 @@ package nvim.type;
 		 local tree = vim.treesitter.get_parser():parse()[1]
 		 ```
 	**/
-	function disable_pattern(pattern_index:Int):Dynamic;
+	extern function disable_pattern(pattern_index:Int):Dynamic;
 	/**
 		```lua
 		(method) TSQuery:inspect()
@@ -62,5 +62,5 @@ package nvim.type;
 		
 		 Get information about the query's patterns and captures.
 	**/
-	function inspect():nvim.type.TSQueryInfo;
+	extern function inspect():nvim.type.TSQueryInfo;
 }

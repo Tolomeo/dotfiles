@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The server capabilities of a {@link ExecuteCommandRequest}.
 **/
-@:structInit extern class ExecuteCommandOptions {
+@:structInit class ExecuteCommandOptions {
 	/**
 		```lua
 		(field) lsp.ExecuteCommandOptions.commands: string[]
@@ -20,11 +20,12 @@ package nvim.type.lsp;
 		
 		The commands to be executed on the server
 	**/
-	var commands : Array<String>;
+	extern var commands : Array<String>;
 	/**
 		```lua
 		(field) lsp.ExecuteCommandOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

@@ -5,143 +5,166 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.win_config
 	```
 **/
-@:structInit extern class WinConfig {
+@:structInit class WinConfig {
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.anchor: ('NE'|'NW'|'SE'|'SW')?
 		```
 	**/
-	var anchor : Null<String>;
+	@:optional
+	extern var anchor : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.border: ('double'|'none'|'rounded'|'shadow'|'single'|'solid'|string[])?
 		```
 	**/
-	var border : Null<haxe.extern.EitherType<String, Array<String>>>;
+	@:optional
+	extern var border : Null<haxe.extern.EitherType<String, Array<String>>>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.bufpos: integer[]?
 		```
 	**/
-	var bufpos : Null<Array<Int>>;
+	@:optional
+	extern var bufpos : Null<Array<Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.col: number?
 		```
 	**/
-	var col : Null<Float>;
+	@:optional
+	extern var col : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.external: boolean?
 		```
 	**/
-	var external : Null<Bool>;
+	@:optional
+	extern var external : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.fixed: boolean?
 		```
 	**/
-	var fixed : Null<Bool>;
+	@:optional
+	extern var fixed : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.focusable: boolean?
 		```
 	**/
-	var focusable : Null<Bool>;
+	@:optional
+	extern var focusable : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.footer: any
 		```
 	**/
-	var footer : Null<Any>;
+	@:optional
+	extern var footer : Null<Any>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.footer_pos: ('center'|'left'|'right')?
 		```
 	**/
-	var footer_pos : Null<String>;
+	@:optional
+	extern var footer_pos : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.height: integer?
 		```
 	**/
-	var height : Null<Int>;
+	@:optional
+	extern var height : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.hide: boolean?
 		```
 	**/
-	var hide : Null<Bool>;
+	@:optional
+	extern var hide : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.mouse: boolean?
 		```
 	**/
-	var mouse : Null<Bool>;
+	@:optional
+	extern var mouse : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.noautocmd: boolean?
 		```
 	**/
-	var noautocmd : Null<Bool>;
+	@:optional
+	extern var noautocmd : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.relative: ('cursor'|'editor'|'laststatus'|'mouse'|'tabline'|'win')?
 		```
 	**/
-	var relative : Null<String>;
+	@:optional
+	extern var relative : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.row: number?
 		```
 	**/
-	var row : Null<Float>;
+	@:optional
+	extern var row : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.split: ('above'|'below'|'left'|'right')?
 		```
 	**/
-	var split : Null<String>;
+	@:optional
+	extern var split : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.style: 'minimal'?
 		```
 	**/
-	var style : Null<String>;
+	@:optional
+	extern var style : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.title: any
 		```
 	**/
-	var title : Null<Any>;
+	@:optional
+	extern var title : Null<Any>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.title_pos: ('center'|'left'|'right')?
 		```
 	**/
-	var title_pos : Null<String>;
+	@:optional
+	extern var title_pos : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.vertical: boolean?
 		```
 	**/
-	var vertical : Null<Bool>;
+	@:optional
+	extern var vertical : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.width: integer?
 		```
 	**/
-	var width : Null<Int>;
+	@:optional
+	extern var width : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.win: integer?
 		```
 	**/
-	var win : Null<Int>;
+	@:optional
+	extern var win : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.zindex: integer?
 		```
 	**/
-	var zindex : Null<Int>;
+	@:optional
+	extern var zindex : Null<Int>;
 }

@@ -9,7 +9,7 @@ package nvim.type.vim.diagnostic.setqflist;
 	
 	 Configuration table with the following keys:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.namespace: integer?
@@ -21,7 +21,8 @@ package nvim.type.vim.diagnostic.setqflist;
 		
 		 Only add diagnostics from the given namespace.
 	**/
-	var namespace : Null<Int>;
+	@:optional
+	extern var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.open: boolean?
@@ -33,7 +34,8 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Open quickfix list after setting.
 		 (default: `true`)
 	**/
-	var open : Null<Bool>;
+	@:optional
+	extern var open : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -52,7 +54,8 @@ package nvim.type.vim.diagnostic.setqflist;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.title: string?
@@ -64,5 +67,6 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Title of quickfix list. Defaults to "Diagnostics". If there's already a quickfix list with this
 		 title, it's updated. If not, a new quickfix list is created.
 	**/
-	var title : Null<String>;
+	@:optional
+	extern var title : Null<String>;
 }

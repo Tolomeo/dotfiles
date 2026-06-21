@@ -5,7 +5,7 @@ package nvim.type.vim.fs.find;
 	(class) vim.fs.find.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.find.Opts.follow: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.fs.find;
 		 Follow symbolic links.
 		 (default: `false`)
 	**/
-	var follow : Null<Bool>;
+	@:optional
+	extern var follow : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.limit: number?
@@ -30,7 +31,8 @@ package nvim.type.vim.fs.find;
 		 Use `math.huge` to place no limit on the number of matches.
 		 (default: `1`)
 	**/
-	var limit : Null<Float>;
+	@:optional
+	extern var limit : Null<Float>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.path: string?
@@ -43,7 +45,8 @@ package nvim.type.vim.fs.find;
 		 Path to begin searching from. If
 		 omitted, the |current-directory| is used.
 	**/
-	var path : Null<String>;
+	@:optional
+	extern var path : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.stop: string?
@@ -55,7 +58,8 @@ package nvim.type.vim.fs.find;
 		 Stop searching when this directory is reached.
 		 The directory itself is not searched.
 	**/
-	var stop : Null<String>;
+	@:optional
+	extern var stop : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.type: string?
@@ -67,7 +71,8 @@ package nvim.type.vim.fs.find;
 		 Find only items of the given type.
 		 If omitted, all items that match {names} are included.
 	**/
-	var type : Null<String>;
+	@:optional
+	extern var type : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.upward: boolean?
@@ -80,5 +85,6 @@ package nvim.type.vim.fs.find;
 		 Otherwise, search through child directories (recursively).
 		 (default: `false`)
 	**/
-	var upward : Null<Bool>;
+	@:optional
+	extern var upward : Null<Bool>;
 }

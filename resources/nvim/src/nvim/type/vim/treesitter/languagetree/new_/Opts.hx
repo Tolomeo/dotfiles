@@ -9,13 +9,14 @@ package nvim.type.vim.treesitter.languagetree.new_;
 	
 	Optional arguments:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.new.Opts.injections: table<string, string>?
 		```
 	**/
-	var injections : Null<lua.Table<String, String>>;
+	@:optional
+	extern var injections : Null<lua.Table<String, String>>;
 	/**
 		```lua
 		(field) vim.treesitter.LanguageTree.new.Opts.queries: table<string, string>?
@@ -25,5 +26,6 @@ package nvim.type.vim.treesitter.languagetree.new_;
 		
 		Deprecated
 	**/
-	var queries : Null<lua.Table<String, String>>;
+	@:optional
+	extern var queries : Null<lua.Table<String, String>>;
 }

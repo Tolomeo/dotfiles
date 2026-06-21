@@ -33,7 +33,7 @@ package nvim.type.uv;
 	 file descriptor that would be accepted by poll(2) can be used.
 	
 **/
-@:structInit extern class UvPollT {
+@:structInit class UvPollT {
 	/**
 		```lua
 		(method) uv.uv_handle_t:close(callback?: function)
@@ -54,7 +54,7 @@ package nvim.type.uv;
 		 In-progress requests, like `uv_connect_t` or `uv_write_t`, are cancelled and
 		 have their callbacks called asynchronously with `ECANCELED`.
 	**/
-	function close(?callback:haxe.Constraints.Function):Dynamic;
+	extern function close(?callback:haxe.Constraints.Function):Dynamic;
 	/**
 		```lua
 		(method) uv.uv_handle_t:fileno()
@@ -163,7 +163,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function fileno():nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:get_type()
@@ -176,7 +176,7 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given handle (e.g. `"pipe"` for `uv_pipe_t`)
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
-	function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
+	extern function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:has_ref()
@@ -276,7 +276,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_active()
@@ -384,7 +384,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:is_closing()
@@ -487,7 +487,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:recv_buffer_size(size: integer)
@@ -620,7 +620,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	function recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function recv_buffer_size(size:Int):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:ref()
@@ -632,7 +632,7 @@ package nvim.type.uv;
 		
 		 References are idempotent, that is, if a handle is already referenced calling this function again will have no effect.
 	**/
-	function ref():Dynamic;
+	extern function ref():Dynamic;
 	/**
 		```lua
 		(method) uv.uv_handle_t:send_buffer_size(size: integer)
@@ -762,7 +762,7 @@ package nvim.type.uv;
 		  3. err_name: "E2BIG"|"EACCES"|"EADDRINUSE"|"EADDRNOTAVAIL"|"EAFNOSUPPORT"|"EAGAIN"|"EAI_ADDRFAMILY"|"EAI_AGAIN"|"EAI_BADFLAGS"|"EAI_BADHINTS"|"EAI_CANCELED"|"EAI_FAIL"|"EAI_FAMILY"|"EAI_MEMORY"...(too long)...KNOWN"|nil
 		```
 	**/
-	function send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function send_buffer_size(size:Int):nvim.helper.Multireturn<Null<Int>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_poll_t:start(events: "d"|"dp"|"p"|"r"|"rd"|"rdp"|"rp"|"rw"|"rwd"|"rwdp"|"rwp"|"w"|"wd"|"wdp"|"wp", callback: fun(err: string|nil, events?: string))
@@ -898,7 +898,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function start(events:nvim.type.uv.poll.Eventspec, callback:nvim.type.uv.poll_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function start(events:nvim.type.uv.poll.Eventspec, callback:nvim.type.uv.poll_start.Callback):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_poll_t:stop()
@@ -1001,7 +1001,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_handle_t:unref()
@@ -1012,5 +1012,5 @@ package nvim.type.uv;
 		 Un-reference the given handle. References are idempotent, that is, if a handle
 		 is not referenced calling this function again will have no effect.
 	**/
-	function unref():Dynamic;
+	extern function unref():Dynamic;
 }

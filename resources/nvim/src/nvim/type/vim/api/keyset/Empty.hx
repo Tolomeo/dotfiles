@@ -5,6 +5,6 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.empty
 	```
 **/
-@:structInit extern class Empty {
+@:structInit class Empty {
 
 }

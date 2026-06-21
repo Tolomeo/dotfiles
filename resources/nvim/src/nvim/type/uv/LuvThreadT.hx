@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_thread_t
 	
 **/
-@:structInit extern class LuvThreadT {
+@:structInit class LuvThreadT {
 	/**
 		```lua
 		(method) uv.luv_thread_t:equal(other_thread: uv.luv_thread_t)
@@ -22,7 +22,7 @@ package nvim.type.uv;
 		 Returns a boolean indicating whether two threads are the same. This function is
 		 equivalent to the `__eq` metamethod.
 	**/
-	function equal(other_thread:nvim.type.uv.LuvThreadT):Bool;
+	extern function equal(other_thread:nvim.type.uv.LuvThreadT):Bool;
 	/**
 		```lua
 		(method) uv.luv_thread_t:join()
@@ -122,5 +122,5 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function join():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function join():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 }

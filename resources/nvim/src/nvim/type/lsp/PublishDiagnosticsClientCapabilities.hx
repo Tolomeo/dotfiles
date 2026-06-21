@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The publish diagnostic client capabilities.
 **/
-@:structInit extern class PublishDiagnosticsClientCapabilities {
+@:structInit class PublishDiagnosticsClientCapabilities {
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.codeDescriptionSupport: boolean?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		Client supports a codeDescription property
 		
 	**/
-	var codeDescriptionSupport : Null<Bool>;
+	@:optional
+	extern var codeDescriptionSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.dataSupport: boolean?
@@ -35,7 +36,8 @@ package nvim.type.lsp;
 		`textDocument/codeAction` request.
 		
 	**/
-	var dataSupport : Null<Bool>;
+	@:optional
+	extern var dataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.relatedInformation: boolean?
@@ -46,7 +48,8 @@ package nvim.type.lsp;
 		
 		Whether the clients accepts diagnostics with related information.
 	**/
-	var relatedInformation : Null<Bool>;
+	@:optional
+	extern var relatedInformation : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.tagSupport: (lsp.ClientDiagnosticsTagOptions)?
@@ -59,7 +62,8 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
 	/**
 		```lua
 		(field) lsp.PublishDiagnosticsClientCapabilities.versionSupport: boolean?
@@ -72,5 +76,6 @@ package nvim.type.lsp;
 		`textDocument/publishDiagnostics` notification's parameter.
 		
 	**/
-	var versionSupport : Null<Bool>;
+	@:optional
+	extern var versionSupport : Null<Bool>;
 }

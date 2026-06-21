@@ -5,7 +5,7 @@ package nvim.type.vim.fn.undotree;
 	(class) vim.fn.undotree.entry
 	```
 **/
-@:structInit extern class Entry {
+@:structInit class Entry {
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.alt: vim.fn.undotree.entry[]?
@@ -18,7 +18,8 @@ package nvim.type.vim.fn.undotree;
 		 blocks.  Each item may again have an "alt"
 		 item.
 	**/
-	var alt : Null<Array<nvim.type.vim.fn.undotree.Entry>>;
+	@:optional
+	extern var alt : Null<Array<nvim.type.vim.fn.undotree.Entry>>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.curhead: integer?
@@ -34,7 +35,8 @@ package nvim.type.vim.fn.undotree;
 		 undone after the last change this item will
 		 not appear anywhere.
 	**/
-	var curhead : Null<Int>;
+	@:optional
+	extern var curhead : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.newhead: integer?
@@ -47,7 +49,8 @@ package nvim.type.vim.fn.undotree;
 		 that was added.  This marks the last change
 		 and where further changes will be added.
 	**/
-	var newhead : Null<Int>;
+	@:optional
+	extern var newhead : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.save: integer?
@@ -61,7 +64,8 @@ package nvim.type.vim.fn.undotree;
 		 first write has number 1, the last one the
 		 "save_last" mentioned above.
 	**/
-	var save : Null<Int>;
+	@:optional
+	extern var save : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.seq: integer
@@ -73,7 +77,7 @@ package nvim.type.vim.fn.undotree;
 		 Undo sequence number.  Same as what appears in
 		 \|:undolist|.
 	**/
-	var seq : Int;
+	extern var seq : Int;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.time: integer
@@ -85,5 +89,5 @@ package nvim.type.vim.fn.undotree;
 		 Timestamp when the change happened.  Use
 		 \|strftime()| to convert to something readable.
 	**/
-	var time : Int;
+	extern var time : Int;
 }

@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Server capabilities for a {@link WorkspaceSymbolRequest}.
 **/
-@:structInit extern class WorkspaceSymbolOptions {
+@:structInit class WorkspaceSymbolOptions {
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolOptions.resolveProvider: boolean?
@@ -22,11 +22,13 @@ package nvim.type.lsp;
 		information for a workspace symbol.
 		
 	**/
-	var resolveProvider : Null<Bool>;
+	@:optional
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

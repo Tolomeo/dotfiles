@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.completion.get;
 	
 	 @inlinedoc
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.completion.get.Opts.ctx: (lsp.CompletionContext)?
@@ -23,5 +23,6 @@ package nvim.type.vim.lsp.completion.get;
 		
 		Completion context. Defaults to a trigger kind of `invoked`.
 	**/
-	var ctx : Null<nvim.type.lsp.CompletionContext>;
+	@:optional
+	extern var ctx : Null<nvim.type.lsp.CompletionContext>;
 }

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents the connection of two locations. Provides additional metadata over normal {@link Location locations},
 	including an origin range.
 **/
-@:structInit extern class LocationLink {
+@:structInit class LocationLink {
 	/**
 		```lua
 		(field) lsp.LocationLink.originSelectionRange: (lsp.Range)?
@@ -38,7 +38,8 @@ package nvim.type.lsp;
 		Used as the underlined span for mouse interaction. Defaults to the word range at
 		the definition position.
 	**/
-	var originSelectionRange : Null<nvim.type.lsp.Range>;
+	@:optional
+	extern var originSelectionRange : Null<nvim.type.lsp.Range>;
 	/**
 		```lua
 		(field) lsp.LocationLink.targetRange: lsp.Range
@@ -65,7 +66,7 @@ package nvim.type.lsp;
 		range enclosing this symbol not including leading/trailing whitespace but everything else
 		like comments. This information is typically used to highlight the range in the editor.
 	**/
-	var targetRange : nvim.type.lsp.Range;
+	extern var targetRange : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.LocationLink.targetSelectionRange: lsp.Range
@@ -91,7 +92,7 @@ package nvim.type.lsp;
 		The range that should be selected and revealed when this link is being followed, e.g the name of a function.
 		Must be contained by the `targetRange`. See also `DocumentSymbol#range`
 	**/
-	var targetSelectionRange : nvim.type.lsp.Range;
+	extern var targetSelectionRange : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.LocationLink.targetUri: string
@@ -102,5 +103,5 @@ package nvim.type.lsp;
 		
 		The target resource identifier of this link.
 	**/
-	var targetUri : nvim.type.lsp.DocumentUri;
+	extern var targetUri : nvim.type.lsp.DocumentUri;
 }

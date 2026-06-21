@@ -9,71 +9,71 @@ package nvim.type.vim.lpeg;
 	
 	 @nodoc
 **/
-@:structInit extern class Locale {
+@:structInit class Locale {
 	/**
 		```lua
 		(field) vim.lpeg.Locale.alnum: userdata
 		```
 	**/
-	var alnum : lua.UserData;
+	extern var alnum : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.alpha: userdata
 		```
 	**/
-	var alpha : lua.UserData;
+	extern var alpha : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.cntrl: userdata
 		```
 	**/
-	var cntrl : lua.UserData;
+	extern var cntrl : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.digit: userdata
 		```
 	**/
-	var digit : lua.UserData;
+	extern var digit : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.graph: userdata
 		```
 	**/
-	var graph : lua.UserData;
+	extern var graph : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.lower: userdata
 		```
 	**/
-	var lower : lua.UserData;
+	extern var lower : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.print: userdata
 		```
 	**/
-	var print : lua.UserData;
+	extern var print : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.punct: userdata
 		```
 	**/
-	var punct : lua.UserData;
+	extern var punct : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.space: userdata
 		```
 	**/
-	var space : lua.UserData;
+	extern var space : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.upper: userdata
 		```
 	**/
-	var upper : lua.UserData;
+	extern var upper : lua.UserData;
 	/**
 		```lua
 		(field) vim.lpeg.Locale.xdigit: userdata
 		```
 	**/
-	var xdigit : lua.UserData;
+	extern var xdigit : lua.UserData;
 }

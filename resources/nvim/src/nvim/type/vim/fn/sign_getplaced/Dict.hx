@@ -5,23 +5,26 @@ package nvim.type.vim.fn.sign_getplaced;
 	(class) vim.fn.sign_getplaced.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.group: string?
 		```
 	**/
-	var group : Null<String>;
+	@:optional
+	extern var group : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.id: integer?
 		```
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.lnum: (string|integer)?
 		```
 	**/
-	var lnum : Null<haxe.extern.EitherType<String, Int>>;
+	@:optional
+	extern var lnum : Null<haxe.extern.EitherType<String, Int>>;
 }

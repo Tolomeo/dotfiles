@@ -5,53 +5,61 @@ package nvim.type.vim.fn.winrestview;
 	(class) vim.fn.winrestview.dict
 	```
 **/
-@:structInit extern class Dict {
+@:structInit class Dict {
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.col: integer?
 		```
 	**/
-	var col : Null<Int>;
+	@:optional
+	extern var col : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.coladd: integer?
 		```
 	**/
-	var coladd : Null<Int>;
+	@:optional
+	extern var coladd : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.curswant: integer?
 		```
 	**/
-	var curswant : Null<Int>;
+	@:optional
+	extern var curswant : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.leftcol: integer?
 		```
 	**/
-	var leftcol : Null<Int>;
+	@:optional
+	extern var leftcol : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.lnum: integer?
 		```
 	**/
-	var lnum : Null<Int>;
+	@:optional
+	extern var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.skipcol: integer?
 		```
 	**/
-	var skipcol : Null<Int>;
+	@:optional
+	extern var skipcol : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.topfill: integer?
 		```
 	**/
-	var topfill : Null<Int>;
+	@:optional
+	extern var topfill : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.winrestview.dict.topline: integer?
 		```
 	**/
-	var topline : Null<Int>;
+	@:optional
+	extern var topline : Null<Int>;
 }

@@ -10,23 +10,23 @@ package nvim.type.uv.getnameinfo;
 	 uv.getnameinfo.address
 	
 **/
-@:structInit extern class Address {
+@:structInit class Address {
 	/**
 		```lua
 		(field) uv.getnameinfo.address.family: string|integer
 		```
 	**/
-	var family : haxe.extern.EitherType<String, Int>;
+	extern var family : haxe.extern.EitherType<String, Int>;
 	/**
 		```lua
 		(field) uv.getnameinfo.address.ip: string
 		```
 	**/
-	var ip : String;
+	extern var ip : String;
 	/**
 		```lua
 		(field) uv.getnameinfo.address.port: integer
 		```
 	**/
-	var port : Int;
+	extern var port : Int;
 }

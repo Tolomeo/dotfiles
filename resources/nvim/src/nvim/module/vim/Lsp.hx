@@ -224,7 +224,8 @@ extern class Lsp {
 		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
 	**/
 	@:luaDotMethod
-	function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, Void, Void, Void, Void>;
+	function buf_request_sync(bufnr:Int, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Int>):nvim.helper.Multireturn<Null<lua.Table<Int, { @:optional
+	var error : Null<nvim.type.lsp.ResponseError>; var result : Any; }>>, Null<String>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(global) vim.lsp.client: vim.lsp.Client

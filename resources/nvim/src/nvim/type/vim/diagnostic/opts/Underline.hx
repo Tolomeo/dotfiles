@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.Underline
 	```
 **/
-@:structInit extern class Underline {
+@:structInit class Underline {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Underline.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -25,5 +25,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

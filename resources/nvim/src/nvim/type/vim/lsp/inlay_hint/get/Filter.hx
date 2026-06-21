@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.inlay_hint.get;
 	
 	 Optional filters |kwargs|:
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.Filter.bufnr: integer?
@@ -19,7 +19,8 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		
 		 @inlinedoc
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.Filter.range: (lsp.Range)?
@@ -39,5 +40,6 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		}
 		```
 	**/
-	var range : Null<nvim.type.lsp.Range>;
+	@:optional
+	extern var range : Null<nvim.type.lsp.Range>;
 }

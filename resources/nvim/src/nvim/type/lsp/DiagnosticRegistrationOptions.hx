@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Diagnostic registration options.
 	
 **/
-@:structInit extern class DiagnosticRegistrationOptions {
+@:structInit class DiagnosticRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil
@@ -30,7 +30,7 @@ package nvim.type.lsp;
 		A document selector to identify the scope of the registration. If set to null
 		the document selector provided on the client side will be used.
 	**/
-	var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+	extern var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.id: string?
@@ -42,7 +42,8 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
-	var id : Null<String>;
+	@:optional
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.identifier: string?
@@ -54,7 +55,8 @@ package nvim.type.lsp;
 		An optional identifier under which the diagnostics are
 		managed by the client.
 	**/
-	var identifier : Null<String>;
+	@:optional
+	extern var identifier : Null<String>;
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.interFileDependencies: boolean
@@ -68,13 +70,14 @@ package nvim.type.lsp;
 		set in another file. Inter file dependencies are common for
 		most programming languages and typically uncommon for linters.
 	**/
-	var interFileDependencies : Bool;
+	extern var interFileDependencies : Bool;
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticRegistrationOptions.workspaceDiagnostics: boolean
@@ -85,5 +88,5 @@ package nvim.type.lsp;
 		
 		The server provides support for workspace diagnostics as well.
 	**/
-	var workspaceDiagnostics : Bool;
+	extern var workspaceDiagnostics : Bool;
 }

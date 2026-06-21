@@ -9,7 +9,7 @@ package nvim.type;
 	
 	token modifiers as a set. E.g., { static = true, readonly = true }
 **/
-@:structInit extern class Modifiers {
+@:structInit class Modifiers {
 
 }
 
@@ -22,13 +22,13 @@ package nvim.type;
 	
 	 @nodoc
 **/
-@:structInit extern class STTokenRangeInspect {
+@:structInit class STTokenRangeInspect {
 	/**
 		```lua
 		(field) STTokenRangeInspect.client_id: integer
 		```
 	**/
-	var client_id : Int;
+	extern var client_id : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.end_col: integer
@@ -38,7 +38,7 @@ package nvim.type;
 		
 		end column 0-based
 	**/
-	var end_col : Int;
+	extern var end_col : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.line: integer
@@ -48,7 +48,7 @@ package nvim.type;
 		
 		line number 0-based
 	**/
-	var line : Int;
+	extern var line : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.marked: boolean
@@ -58,7 +58,7 @@ package nvim.type;
 		
 		whether this token has had extmarks applied
 	**/
-	var marked : Bool;
+	extern var marked : Bool;
 	/**
 		```lua
 		(field) STTokenRangeInspect.start_col: integer
@@ -68,7 +68,7 @@ package nvim.type;
 		
 		start column 0-based
 	**/
-	var start_col : Int;
+	extern var start_col : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.type: string
@@ -78,5 +78,5 @@ package nvim.type;
 		
 		token type as string
 	**/
-	var type : String;
+	extern var type : String;
 }

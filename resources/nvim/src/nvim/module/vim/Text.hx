@@ -81,5 +81,6 @@ extern class Text {
 		@*return* — Indent size _before_ modification.
 	**/
 	@:luaDotMethod
-	function indent(size:Int, text:String, ?opts:{ var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
+	function indent(size:Int, text:String, ?opts:{ @:optional
+	var expandtab : Null<Float>; }):nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 }

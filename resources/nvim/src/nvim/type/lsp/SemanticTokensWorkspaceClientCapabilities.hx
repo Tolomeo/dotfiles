@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensWorkspaceClientCapabilities
 	```
 **/
-@:structInit extern class SemanticTokensWorkspaceClientCapabilities {
+@:structInit class SemanticTokensWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SemanticTokensWorkspaceClientCapabilities.refreshSupport: boolean?
@@ -22,5 +22,6 @@ package nvim.type.lsp;
 		and is useful for situation where a server for example detects a project
 		wide change that requires such a calculation.
 	**/
-	var refreshSupport : Null<Bool>;
+	@:optional
+	extern var refreshSupport : Null<Bool>;
 }

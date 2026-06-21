@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Contains additional information about the context in which a completion request is triggered.
 **/
-@:structInit extern class CompletionContext {
+@:structInit class CompletionContext {
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerCharacter: string?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		The trigger character (a single character) that has trigger code complete.
 		Is undefined if `triggerKind !== CompletionTriggerKind.TriggerCharacter`
 	**/
-	var triggerCharacter : Null<String>;
+	@:optional
+	extern var triggerCharacter : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerKind: 1|2|3
@@ -46,5 +47,5 @@ package nvim.type.lsp;
 		    | 3 -- TriggerForIncompleteCompletions
 		```
 	**/
-	var triggerKind : nvim.type.lsp.CompletionTriggerKind;
+	extern var triggerKind : nvim.type.lsp.CompletionTriggerKind;
 }

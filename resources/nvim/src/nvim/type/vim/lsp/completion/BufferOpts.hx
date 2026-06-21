@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.completion;
 	
 	 @inlinedoc
 **/
-@:structInit extern class BufferOpts {
+@:structInit class BufferOpts {
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.autotrigger: boolean?
@@ -19,7 +19,8 @@ package nvim.type.vim.lsp.completion;
 		
 		(default: false) When true, completion triggers automatically based on the server's `triggerCharacters`.
 	**/
-	var autotrigger : Null<Bool>;
+	@:optional
+	extern var autotrigger : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.convert: (fun(item: lsp.CompletionItem):table)?
@@ -36,5 +37,6 @@ package nvim.type.vim.lsp.completion;
 		  -> table
 		```
 	**/
-	var convert : Null<(item:nvim.type.lsp.CompletionItem) -> lua.Table.AnyTable>;
+	@:optional
+	extern var convert : Null<(item:nvim.type.lsp.CompletionItem) -> lua.Table.AnyTable>;
 }

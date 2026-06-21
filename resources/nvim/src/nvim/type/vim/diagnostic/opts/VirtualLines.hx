@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.VirtualLines
 	```
 **/
-@:structInit extern class VirtualLines {
+@:structInit class VirtualLines {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.current_line: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.diagnostic.opts;
 		 Only show diagnostics for the current line.
 		 (default: `false`)
 	**/
-	var current_line : Null<Bool>;
+	@:optional
+	extern var current_line : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.format: fun(diagnostic: vim.Diagnostic):string??
@@ -37,7 +38,8 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string?
 		```
 	**/
-	var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
+	@:optional
+	extern var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualLines.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -57,5 +59,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

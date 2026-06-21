@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Save options.
 **/
-@:structInit extern class SaveOptions {
+@:structInit class SaveOptions {
 	/**
 		```lua
 		(field) lsp.SaveOptions.includeText: boolean?
@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		The client is supposed to include the content on save.
 	**/
-	var includeText : Null<Bool>;
+	@:optional
+	extern var includeText : Null<Bool>;
 }

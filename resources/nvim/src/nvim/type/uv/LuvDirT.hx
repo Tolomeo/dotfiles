@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_dir_t
 	
 **/
-@:structInit extern class LuvDirT {
+@:structInit class LuvDirT {
 	/**
 		```lua
 		(method) uv.luv_dir_t:closedir()
@@ -121,7 +121,7 @@ package nvim.type.uv;
 		```
 	**/
 	@:overload(function (callback:nvim.type.uv.fs_closedir.Callback) : nvim.type.uv.UvFsT {})
-	function closedir():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function closedir():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.luv_dir_t:readdir()
@@ -242,5 +242,5 @@ package nvim.type.uv;
 		```
 	**/
 	@:overload(function (callback:nvim.type.uv.fs_readdir.Callback) : nvim.type.uv.UvFsT {})
-	function readdir():nvim.helper.Multireturn<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function readdir():nvim.helper.Multireturn<Null<Array<nvim.type.uv.fs_readdir.Entry>>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 }

@@ -5,11 +5,12 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.create_augroup
 	```
 **/
-@:structInit extern class CreateAugroup {
+@:structInit class CreateAugroup {
 	/**
 		```lua
 		(field) vim.api.keyset.create_augroup.clear: boolean?
 		```
 	**/
-	var clear : Null<Bool>;
+	@:optional
+	extern var clear : Null<Bool>;
 }

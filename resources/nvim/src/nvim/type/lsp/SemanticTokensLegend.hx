@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensLegend
 	```
 **/
-@:structInit extern class SemanticTokensLegend {
+@:structInit class SemanticTokensLegend {
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenModifiers: string[]
@@ -16,7 +16,7 @@ package nvim.type.lsp;
 		
 		The token modifiers a server uses.
 	**/
-	var tokenModifiers : Array<String>;
+	extern var tokenModifiers : Array<String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenTypes: string[]
@@ -27,5 +27,5 @@ package nvim.type.lsp;
 		
 		The token types a server uses.
 	**/
-	var tokenTypes : Array<String>;
+	extern var tokenTypes : Array<String>;
 }

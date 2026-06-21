@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The client capabilities of a {@link DocumentLinkRequest}.
 **/
-@:structInit extern class DocumentLinkClientCapabilities {
+@:structInit class DocumentLinkClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentLinkClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Whether document link supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentLinkClientCapabilities.tooltipSupport: boolean?
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		Whether the client supports the `tooltip` property on `DocumentLink`.
 		
 	**/
-	var tooltipSupport : Null<Bool>;
+	@:optional
+	extern var tooltipSupport : Null<Bool>;
 }

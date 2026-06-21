@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Information about the client
 	
 **/
-@:structInit extern class ClientInfo {
+@:structInit class ClientInfo {
 	/**
 		```lua
 		(field) lsp.ClientInfo.name: string
@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The name of the client as defined by the client.
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) lsp.ClientInfo.version: string?
@@ -32,5 +32,6 @@ package nvim.type.lsp;
 		
 		The client's version as defined by the client.
 	**/
-	var version : Null<String>;
+	@:optional
+	extern var version : Null<String>;
 }

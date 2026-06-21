@@ -10,7 +10,7 @@ package nvim.type.vim.diagnostic;
 	 TODO: inherit from `vim.diagnostic.Opts`, implement its fields.
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.bufnr: integer?
@@ -21,7 +21,8 @@ package nvim.type.vim.diagnostic;
 		
 		 Buffer number, or 0 for current buffer, or `nil` for all buffers.
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.ns_id: integer?
@@ -33,5 +34,6 @@ package nvim.type.vim.diagnostic;
 		
 		 Diagnostic namespace, or `nil` for all.
 	**/
-	var ns_id : Null<Int>;
+	@:optional
+	extern var ns_id : Null<Int>;
 }

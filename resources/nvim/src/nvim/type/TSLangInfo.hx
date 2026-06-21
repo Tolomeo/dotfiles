@@ -5,7 +5,7 @@ package nvim.type;
 	(field) TSLangInfo.supertypes: table<string, string[]>
 	```
 **/
-@:structInit extern class Supertypes {
+@:structInit class Supertypes {
 
 }
 
@@ -14,7 +14,7 @@ package nvim.type;
 	(field) TSLangInfo.symbols: table<string, boolean>
 	```
 **/
-@:structInit extern class Symbols {
+@:structInit class Symbols {
 
 }
 
@@ -23,25 +23,25 @@ package nvim.type;
 	(class) TSLangInfo
 	```
 **/
-@:structInit extern class TSLangInfo {
+@:structInit class TSLangInfo {
 	/**
 		```lua
 		(field) TSLangInfo._wasm: boolean
 		```
 	**/
-	var _wasm : Bool;
+	extern var _wasm : Bool;
 	/**
 		```lua
 		(field) TSLangInfo.abi_version: integer
 		```
 	**/
-	var abi_version : Int;
+	extern var abi_version : Int;
 	/**
 		```lua
 		(field) TSLangInfo.fields: string[]
 		```
 	**/
-	var fields : Array<String>;
+	extern var fields : Array<String>;
 	/**
 		```lua
 		(field) TSLangInfo.metadata: TSLangMetadata?
@@ -55,11 +55,12 @@ package nvim.type;
 		
 		ABI 15 only
 	**/
-	var metadata : Null<nvim.type.TSLangMetadata>;
+	@:optional
+	extern var metadata : Null<nvim.type.TSLangMetadata>;
 	/**
 		```lua
 		(field) TSLangInfo.state_count: integer
 		```
 	**/
-	var state_count : Int;
+	extern var state_count : Int;
 }

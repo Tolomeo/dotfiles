@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SelectionRangeClientCapabilities
 	```
 **/
-@:structInit extern class SelectionRangeClientCapabilities {
+@:structInit class SelectionRangeClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SelectionRangeClientCapabilities.dynamicRegistration: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		the client supports the new `SelectionRangeRegistrationOptions` return value for the corresponding server
 		capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

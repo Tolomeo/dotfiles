@@ -5,25 +5,25 @@ package nvim.type.uv.getaddrinfo;
 	(class) uv.getaddrinfo.hints
 	```
 **/
-@:structInit extern class Hints {
+@:structInit class Hints {
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.addrconfig: boolean
 		```
 	**/
-	var addrconfig : Bool;
+	extern var addrconfig : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.all: boolean
 		```
 	**/
-	var all : Bool;
+	extern var all : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.canonname: boolean
 		```
 	**/
-	var canonname : Bool;
+	extern var canonname : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.family: string|integer|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"
@@ -45,25 +45,25 @@ package nvim.type.uv.getaddrinfo;
 		    | "packet"
 		```
 	**/
-	var family : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Family>>;
+	extern var family : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Family>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.numerichost: boolean
 		```
 	**/
-	var numerichost : Bool;
+	extern var numerichost : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.numericserv: boolean
 		```
 	**/
-	var numericserv : Bool;
+	extern var numericserv : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.passive: boolean
 		```
 	**/
-	var passive : Bool;
+	extern var passive : Bool;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.protocol: string|integer|"icmp"|"ip"|"tcp"|"udp"
@@ -79,7 +79,7 @@ package nvim.type.uv.getaddrinfo;
 		    | "udp"
 		```
 	**/
-	var protocol : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Protocol>>;
+	extern var protocol : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Protocol>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.socktype: string|integer|"dgram"|"raw"|"rdm"|"seqpacket"|"stream"
@@ -96,11 +96,11 @@ package nvim.type.uv.getaddrinfo;
 		    | "seqpacket"
 		```
 	**/
-	var socktype : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Type>>;
+	extern var socktype : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Type>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.v4mapped: boolean
 		```
 	**/
-	var v4mapped : Bool;
+	extern var v4mapped : Bool;
 }

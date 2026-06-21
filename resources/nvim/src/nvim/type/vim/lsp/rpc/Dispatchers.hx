@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.rpc;
 	
 	 Dispatchers for LSP message types.
 **/
-@:structInit extern class Dispatchers {
+@:structInit class Dispatchers {
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.notification: fun(method: string, params: table)
@@ -26,7 +26,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function notification(method:String, params:lua.Table.AnyTable):Dynamic;
+	extern function notification(method:String, params:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.on_error: fun(code: integer, err: any)
@@ -39,7 +39,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function on_error(code:Int, err:Any):Dynamic;
+	extern function on_error(code:Int, err:Any):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.on_exit: fun(code: integer, signal: integer)
@@ -52,7 +52,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function on_exit(code:Int, signal:Int):Dynamic;
+	extern function on_exit(code:Int, signal:Int):Dynamic;
 	/**
 		```lua
 		(field) vim.lsp.rpc.Dispatchers.server_request: fun(method: string, params: table):any, (lsp.ResponseError)?
@@ -67,5 +67,5 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn<Null<Any>, Null<nvim.type.lsp.ResponseError>, Void, Void, Void, Void>;
+	extern function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn<Null<Any>, Null<nvim.type.lsp.ResponseError>, Void, Void, Void, Void>;
 }

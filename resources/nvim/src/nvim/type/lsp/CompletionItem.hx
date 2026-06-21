@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A completion item represents a text snippet that is
 	proposed to complete text that is being typed.
 **/
-@:structInit extern class CompletionItem {
+@:structInit class CompletionItem {
 	/**
 		```lua
 		(field) lsp.CompletionItem.additionalTextEdits: lsp.TextEdit[]?
@@ -27,7 +27,8 @@ package nvim.type.lsp;
 		(for example adding an import statement at the top of the file if the completion item will
 		insert an unqualified type).
 	**/
-	var additionalTextEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	@:optional
+	extern var additionalTextEdits : Null<Array<nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.command: (lsp.Command)?
@@ -47,7 +48,8 @@ package nvim.type.lsp;
 		additional modifications to the current document should be described with the
 		{@link CompletionItem.additionalTextEdits additionalTextEdits}-property.
 	**/
-	var command : Null<nvim.type.lsp.Command>;
+	@:optional
+	extern var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.commitCharacters: string[]?
@@ -60,7 +62,8 @@ package nvim.type.lsp;
 		then type that character. *Note* that all commit characters should have `length=1` and that superfluous
 		characters will be ignored.
 	**/
-	var commitCharacters : Null<Array<String>>;
+	@:optional
+	extern var commitCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -88,7 +91,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var data : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.deprecated: boolean?
@@ -99,7 +103,8 @@ package nvim.type.lsp;
 		
 		Indicates if this item is deprecated.
 	**/
-	var deprecated : Null<Bool>;
+	@:optional
+	extern var deprecated : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.detail: string?
@@ -111,7 +116,8 @@ package nvim.type.lsp;
 		A human-readable string with additional information
 		about this item, like type or symbol information.
 	**/
-	var detail : Null<String>;
+	@:optional
+	extern var detail : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.documentation: (string|lsp.MarkupContent)?
@@ -147,7 +153,8 @@ package nvim.type.lsp;
 		
 		A human-readable string that represents a doc-comment.
 	**/
-	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	@:optional
+	extern var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.filterText: string?
@@ -160,7 +167,8 @@ package nvim.type.lsp;
 		completion items. When `falsy` the {@link CompletionItem.label label}
 		is used.
 	**/
-	var filterText : Null<String>;
+	@:optional
+	extern var filterText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertText: string?
@@ -181,7 +189,8 @@ package nvim.type.lsp;
 		recommended to use `textEdit` instead since it avoids additional client
 		side interpretation.
 	**/
-	var insertText : Null<String>;
+	@:optional
+	extern var insertText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertTextFormat: (1|2)?
@@ -212,7 +221,8 @@ package nvim.type.lsp;
 		    | 2 -- Snippet
 		```
 	**/
-	var insertTextFormat : Null<nvim.type.lsp.InsertTextFormat>;
+	@:optional
+	extern var insertTextFormat : Null<nvim.type.lsp.InsertTextFormat>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertTextMode: (1|2)?
@@ -243,7 +253,8 @@ package nvim.type.lsp;
 		    | 2 -- adjustIndentation
 		```
 	**/
-	var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
+	@:optional
+	extern var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.kind: (1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|3|4|5|6|7|8|9)?
@@ -291,7 +302,8 @@ package nvim.type.lsp;
 		    | 25 -- TypeParameter
 		```
 	**/
-	var kind : Null<nvim.type.lsp.CompletionItemKind>;
+	@:optional
+	extern var kind : Null<nvim.type.lsp.CompletionItemKind>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.label: string
@@ -308,7 +320,7 @@ package nvim.type.lsp;
 		If label details are provided the label itself should
 		be an unqualified name of the completion item.
 	**/
-	var label : String;
+	extern var label : String;
 	/**
 		```lua
 		(field) lsp.CompletionItem.labelDetails: (lsp.CompletionItemLabelDetails)?
@@ -325,7 +337,8 @@ package nvim.type.lsp;
 		Additional details for the label
 		
 	**/
-	var labelDetails : Null<nvim.type.lsp.CompletionItemLabelDetails>;
+	@:optional
+	extern var labelDetails : Null<nvim.type.lsp.CompletionItemLabelDetails>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.preselect: boolean?
@@ -340,7 +353,8 @@ package nvim.type.lsp;
 		tool / client decides which item that is. The rule is that the *first*
 		item of those that match best is selected.
 	**/
-	var preselect : Null<Bool>;
+	@:optional
+	extern var preselect : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.sortText: string?
@@ -353,7 +367,8 @@ package nvim.type.lsp;
 		with other items. When `falsy` the {@link CompletionItem.label label}
 		is used.
 	**/
-	var sortText : Null<String>;
+	@:optional
+	extern var sortText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.tags: 1[]?
@@ -365,7 +380,8 @@ package nvim.type.lsp;
 		Tags for this completion item.
 		
 	**/
-	var tags : Null<Array<nvim.type.lsp.CompletionItemTag>>;
+	@:optional
+	extern var tags : Null<Array<nvim.type.lsp.CompletionItemTag>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.textEdit: (lsp.InsertReplaceEdit|lsp.TextEdit)?
@@ -403,7 +419,8 @@ package nvim.type.lsp;
 		A special text edit to provide an insert and a replace operation.
 		
 	**/
-	var textEdit : Null<haxe.extern.EitherType<nvim.type.lsp.TextEdit, nvim.type.lsp.InsertReplaceEdit>>;
+	@:optional
+	extern var textEdit : Null<haxe.extern.EitherType<nvim.type.lsp.TextEdit, nvim.type.lsp.InsertReplaceEdit>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.textEditText: string?
@@ -422,5 +439,6 @@ package nvim.type.lsp;
 		property is used as a text.
 		
 	**/
-	var textEditText : Null<String>;
+	@:optional
+	extern var textEditText : Null<String>;
 }

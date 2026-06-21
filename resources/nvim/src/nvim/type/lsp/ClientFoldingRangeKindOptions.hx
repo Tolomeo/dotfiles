@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientFoldingRangeKindOptions
 	```
 **/
-@:structInit extern class ClientFoldingRangeKindOptions {
+@:structInit class ClientFoldingRangeKindOptions {
 	/**
 		```lua
 		(field) lsp.ClientFoldingRangeKindOptions.valueSet: "comment"|"imports"|"region"[]?
@@ -19,5 +19,6 @@ package nvim.type.lsp;
 		handle values outside its set gracefully and falls back
 		to a default value when unknown.
 	**/
-	var valueSet : Null<Array<nvim.type.lsp.FoldingRangeKind>>;
+	@:optional
+	extern var valueSet : Null<Array<nvim.type.lsp.FoldingRangeKind>>;
 }

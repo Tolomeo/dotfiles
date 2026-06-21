@@ -5,19 +5,21 @@ package nvim.type.vim.filetype.add;
 	(class) vim.filetype.add.filetypes
 	```
 **/
-@:structInit extern class Filetypes {
+@:structInit class Filetypes {
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.extension: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?
 		```
 	**/
-	var extension : Null<nvim.type.vim.filetype.Mapping>;
+	@:optional
+	extern var extension : Null<nvim.type.vim.filetype.Mapping>;
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.filename: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?
 		```
 	**/
-	var filename : Null<nvim.type.vim.filetype.Mapping>;
+	@:optional
+	extern var filename : Null<nvim.type.vim.filetype.Mapping>;
 	/**
 		```lua
 		(field) vim.filetype.add.filetypes.pattern: table<string, string|[string|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?, { priority: number }]|fun(path: string, bufnr: integer, ...any):string?, fun(b: integer)?>?
@@ -27,5 +29,6 @@ package nvim.type.vim.filetype.add;
 		
 		 @inlinedoc
 	**/
-	var pattern : Null<nvim.type.vim.filetype.Mapping>;
+	@:optional
+	extern var pattern : Null<nvim.type.vim.filetype.Mapping>;
 }

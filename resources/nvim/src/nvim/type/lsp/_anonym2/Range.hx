@@ -5,6 +5,6 @@ package nvim.type.lsp._anonym2;
 	(class) lsp._anonym2.range
 	```
 **/
-@:structInit extern class Range {
+@:structInit class Range {
 
 }

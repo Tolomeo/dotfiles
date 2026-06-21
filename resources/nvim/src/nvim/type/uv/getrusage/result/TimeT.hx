@@ -5,17 +5,17 @@ package nvim.type.uv.getrusage.result;
 	(class) uv.getrusage.result.time_t
 	```
 **/
-@:structInit extern class TimeT {
+@:structInit class TimeT {
 	/**
 		```lua
 		(field) uv.getrusage.result.time_t.sec: integer
 		```
 	**/
-	var sec : Int;
+	extern var sec : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.time_t.usec: integer
 		```
 	**/
-	var usec : Int;
+	extern var usec : Int;
 }

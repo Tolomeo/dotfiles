@@ -5,29 +5,33 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.get_highlight
 	```
 **/
-@:structInit extern class GetHighlight {
+@:structInit class GetHighlight {
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.create: boolean?
 		```
 	**/
-	var create : Null<Bool>;
+	@:optional
+	extern var create : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.id: integer?
 		```
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.link: boolean?
 		```
 	**/
-	var link : Null<Bool>;
+	@:optional
+	extern var link : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.name: string?
 		```
 	**/
-	var name : Null<String>;
+	@:optional
+	extern var name : Null<String>;
 }

@@ -9,7 +9,7 @@ package nvim.type.vim.treesitter.get_node;
 	
 	 Optional keyword arguments:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.bufnr: integer?
@@ -21,7 +21,8 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Buffer number (nil or 0 for current buffer)
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.ignore_injections: boolean?
@@ -32,7 +33,8 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Ignore injected languages (default true)
 	**/
-	var ignore_injections : Null<Bool>;
+	@:optional
+	extern var ignore_injections : Null<Bool>;
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.include_anonymous: boolean?
@@ -43,7 +45,8 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Include anonymous nodes (default false)
 	**/
-	var include_anonymous : Null<Bool>;
+	@:optional
+	extern var include_anonymous : Null<Bool>;
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.lang: string?
@@ -54,7 +57,8 @@ package nvim.type.vim.treesitter.get_node;
 		
 		 Parser language. (default: from buffer filetype)
 	**/
-	var lang : Null<String>;
+	@:optional
+	extern var lang : Null<String>;
 	/**
 		```lua
 		(field) vim.treesitter.get_node.Opts.pos: [integer, integer]?
@@ -66,5 +70,5 @@ package nvim.type.vim.treesitter.get_node;
 		 0-indexed (row, col) tuple. Defaults to cursor position in the
 		 current window. Required if {bufnr} is not the current buffer
 	**/
-	var pos : Dynamic;
+	extern var pos : Dynamic;
 }

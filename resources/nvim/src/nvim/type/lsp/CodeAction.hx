@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	
 	A CodeAction must set either `edit` and/or a `command`. If both are supplied, the `edit` is applied first, then the `command` is executed.
 **/
-@:structInit extern class CodeAction {
+@:structInit class CodeAction {
 	/**
 		```lua
 		(field) lsp.CodeAction.command: (lsp.Command)?
@@ -32,7 +32,8 @@ package nvim.type.lsp;
 		provides an edit and a command, first the edit is
 		executed and then the command.
 	**/
-	var command : Null<nvim.type.lsp.Command>;
+	@:optional
+	extern var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.CodeAction.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -61,7 +62,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var data : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.CodeAction.diagnostics: lsp.Diagnostic[]?
@@ -72,7 +74,8 @@ package nvim.type.lsp;
 		
 		The diagnostics that this code action resolves.
 	**/
-	var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
+	@:optional
+	extern var diagnostics : Null<Array<nvim.type.lsp.Diagnostic>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.disabled: (lsp.CodeActionDisabled)?
@@ -101,7 +104,8 @@ package nvim.type.lsp;
 		    error message with `reason` in the editor.
 		
 	**/
-	var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
+	@:optional
+	extern var disabled : Null<nvim.type.lsp.CodeActionDisabled>;
 	/**
 		```lua
 		(field) lsp.CodeAction.edit: (lsp.WorkspaceEdit)?
@@ -127,7 +131,8 @@ package nvim.type.lsp;
 		
 		The workspace edit this code action performs.
 	**/
-	var edit : Null<nvim.type.lsp.WorkspaceEdit>;
+	@:optional
+	extern var edit : Null<nvim.type.lsp.WorkspaceEdit>;
 	/**
 		```lua
 		(field) lsp.CodeAction.isPreferred: boolean?
@@ -143,7 +148,8 @@ package nvim.type.lsp;
 		A refactoring should be marked preferred if it is the most reasonable choice of actions to take.
 		
 	**/
-	var isPreferred : Null<Bool>;
+	@:optional
+	extern var isPreferred : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeAction.kind: (""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports")?
@@ -178,7 +184,8 @@ package nvim.type.lsp;
 		    | "notebook" -- Notebook
 		```
 	**/
-	var kind : Null<nvim.type.lsp.CodeActionKind>;
+	@:optional
+	extern var kind : Null<nvim.type.lsp.CodeActionKind>;
 	/**
 		```lua
 		(field) lsp.CodeAction.tags: 1[]?
@@ -190,7 +197,8 @@ package nvim.type.lsp;
 		Tags for this code action.
 		
 	**/
-	var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
+	@:optional
+	extern var tags : Null<Array<nvim.type.lsp.CodeActionTag>>;
 	/**
 		```lua
 		(field) lsp.CodeAction.title: string
@@ -201,5 +209,5 @@ package nvim.type.lsp;
 		
 		A short, human-readable, title for this code action.
 	**/
-	var title : String;
+	extern var title : String;
 }

@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensOptions
 	```
 **/
-@:structInit extern class SemanticTokensOptions {
+@:structInit class SemanticTokensOptions {
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.full: (boolean|lsp.SemanticTokensFullDelta)?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		
 		Server supports providing semantic tokens for a full document.
 	**/
-	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+	@:optional
+	extern var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.legend: lsp.SemanticTokensLegend
@@ -32,7 +33,7 @@ package nvim.type.lsp;
 		
 		The legend used by the server
 	**/
-	var legend : nvim.type.lsp.SemanticTokensLegend;
+	extern var legend : nvim.type.lsp.SemanticTokensLegend;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.range: (boolean|lsp._anonym1.range)?
@@ -44,11 +45,13 @@ package nvim.type.lsp;
 		Server supports providing semantic tokens for a specific range
 		of a document.
 	**/
-	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+	@:optional
+	extern var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

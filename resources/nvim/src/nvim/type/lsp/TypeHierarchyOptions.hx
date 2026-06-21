@@ -10,11 +10,12 @@ package nvim.type.lsp;
 	Type hierarchy options used during static registration.
 	
 **/
-@:structInit extern class TypeHierarchyOptions {
+@:structInit class TypeHierarchyOptions {
 	/**
 		```lua
 		(field) lsp.TypeHierarchyOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

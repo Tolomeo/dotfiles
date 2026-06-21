@@ -5,7 +5,7 @@ package nvim.type.vim.lsp;
 	(class) vim.lsp.ClientConfig
 	```
 **/
-@:structInit extern class ClientConfig {
+@:structInit class ClientConfig {
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.before_init: fun(params: lsp.InitializeParams, config: vim.lsp.ClientConfig)?
@@ -24,7 +24,8 @@ package nvim.type.vim.lsp;
 		function (params: lsp.InitializeParams, config: vim.lsp.ClientConfig)
 		```
 	**/
-	var before_init : Null<(params:nvim.type.lsp.InitializeParams, config:nvim.type.vim.lsp.ClientConfig) -> Dynamic>;
+	@:optional
+	extern var before_init : Null<(params:nvim.type.lsp.InitializeParams, config:nvim.type.vim.lsp.ClientConfig) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.capabilities: (lsp.ClientCapabilities)?
@@ -42,7 +43,8 @@ package nvim.type.vim.lsp;
 		 - Note: To send an empty dictionary use |vim.empty_dict()|, else it will be encoded as an
 		   array.
 	**/
-	var capabilities : Null<nvim.type.lsp.ClientCapabilities>;
+	@:optional
+	extern var capabilities : Null<nvim.type.lsp.ClientCapabilities>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.cmd: fun(dispatchers: vim.lsp.rpc.Dispatchers, config: vim.lsp.ClientConfig):vim.lsp.rpc.PublicClient|string[]
@@ -65,7 +67,7 @@ package nvim.type.vim.lsp;
 		  -> vim.lsp.rpc.PublicClient
 		```
 	**/
-	var cmd : haxe.extern.EitherType<Array<String>, (dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, config:nvim.type.vim.lsp.ClientConfig) -> nvim.type.vim.lsp.rpc.PublicClient>;
+	extern var cmd : haxe.extern.EitherType<Array<String>, (dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, config:nvim.type.vim.lsp.ClientConfig) -> nvim.type.vim.lsp.rpc.PublicClient>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.cmd_cwd: string?
@@ -77,7 +79,8 @@ package nvim.type.vim.lsp;
 		 Directory to launch the `cmd` process. Not related to `root_dir`.
 		 (default: cwd)
 	**/
-	var cmd_cwd : Null<String>;
+	@:optional
+	extern var cmd_cwd : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.cmd_env: table?
@@ -93,7 +96,8 @@ package nvim.type.vim.lsp;
 		 { PORT = 8080; HOST = '0.0.0.0'; }
 		 ```
 	**/
-	var cmd_env : Null<lua.Table.AnyTable>;
+	@:optional
+	extern var cmd_env : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.commands: table<string, fun(command: lsp.Command, ctx: table)>?
@@ -107,7 +111,8 @@ package nvim.type.vim.lsp;
 		 the value is a function which is called if any LSP action (code action, code lenses, …) triggers
 		 the command.
 	**/
-	var commands : Null<lua.Table<String, (command:nvim.type.lsp.Command, ctx:lua.Table.AnyTable) -> Dynamic>>;
+	@:optional
+	extern var commands : Null<lua.Table<String, (command:nvim.type.lsp.Command, ctx:lua.Table.AnyTable) -> Dynamic>>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.detached: boolean?
@@ -121,7 +126,8 @@ package nvim.type.vim.lsp;
 		 behind orphaned server processes.
 		 (default: `true`)
 	**/
-	var detached : Null<Bool>;
+	@:optional
+	extern var detached : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.flags: (vim.lsp.Client.Flags)?
@@ -132,7 +138,8 @@ package nvim.type.vim.lsp;
 		
 		 A table with flags for the client. The current (experimental) flags are:
 	**/
-	var flags : Null<nvim.type.vim.lsp.client.Flags>;
+	@:optional
+	extern var flags : Null<nvim.type.vim.lsp.client.Flags>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.get_language_id: (fun(bufnr: integer, filetype: string):string)?
@@ -150,7 +157,8 @@ package nvim.type.vim.lsp;
 		  -> string
 		```
 	**/
-	var get_language_id : Null<(bufnr:Int, filetype:String) -> String>;
+	@:optional
+	extern var get_language_id : Null<(bufnr:Int, filetype:String) -> String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.handlers: table<string, function>?
@@ -161,7 +169,8 @@ package nvim.type.vim.lsp;
 		
 		 Map of LSP method names to |lsp-handler|s.
 	**/
-	var handlers : Null<lua.Table<String, haxe.Constraints.Function>>;
+	@:optional
+	extern var handlers : Null<lua.Table<String, haxe.Constraints.Function>>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.init_options: table<string, boolean|string|number|unknown[]|nil>?
@@ -177,7 +186,8 @@ package nvim.type.vim.lsp;
 		 Values to pass in the initialization request as `initializationOptions`. See `initialize` in
 		 the LSP spec.
 	**/
-	var init_options : Null<nvim.type.lsp.LSPObject>;
+	@:optional
+	extern var init_options : Null<nvim.type.lsp.LSPObject>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.name: string?
@@ -189,7 +199,8 @@ package nvim.type.vim.lsp;
 		 Name in logs and user messages.
 		 (default: client-id)
 	**/
-	var name : Null<String>;
+	@:optional
+	extern var name : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.offset_encoding: ('utf-16'|'utf-32'|'utf-8')?
@@ -201,7 +212,8 @@ package nvim.type.vim.lsp;
 		 Called "position encoding" in LSP spec. The encoding that the LSP server expects, used for
 		 communication. Not validated. Can be modified in `on_init` before text is sent to the server.
 	**/
-	var offset_encoding : Null<String>;
+	@:optional
+	extern var offset_encoding : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.on_attach: elem_or_list<fun(client: vim.lsp.Client, bufnr: integer)>?
@@ -218,7 +230,8 @@ package nvim.type.vim.lsp;
 		function (client: vim.lsp.Client, bufnr: integer)
 		```
 	**/
-	var on_attach : Null<nvim.type.ElemOrList>;
+	@:optional
+	extern var on_attach : Null<nvim.type.ElemOrList>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.on_error: fun(code: integer, err: string)?
@@ -237,7 +250,8 @@ package nvim.type.vim.lsp;
 		function (code: integer, err: string)
 		```
 	**/
-	var on_error : Null<(code:Int, err:String) -> Dynamic>;
+	@:optional
+	extern var on_error : Null<(code:Int, err:String) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.on_exit: elem_or_list<fun(code: integer, signal: integer, client_id: integer)>?
@@ -256,7 +270,8 @@ package nvim.type.vim.lsp;
 		function (code: integer, signal: integer, client_id: integer)
 		```
 	**/
-	var on_exit : Null<nvim.type.ElemOrList>;
+	@:optional
+	extern var on_exit : Null<nvim.type.ElemOrList>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.on_init: elem_or_list<fun(client: vim.lsp.Client, init_result: lsp.InitializeResult)>?
@@ -276,7 +291,8 @@ package nvim.type.vim.lsp;
 		function (client: vim.lsp.Client, init_result: lsp.InitializeResult)
 		```
 	**/
-	var on_init : Null<nvim.type.ElemOrList>;
+	@:optional
+	extern var on_init : Null<nvim.type.ElemOrList>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.root_dir: string?
@@ -287,7 +303,8 @@ package nvim.type.vim.lsp;
 		
 		 Directory where the LSP server will base its workspaceFolders, rootUri, and rootPath on initialization.
 	**/
-	var root_dir : Null<String>;
+	@:optional
+	extern var root_dir : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.settings: table<string, boolean|string|number|unknown[]|nil>?
@@ -303,7 +320,8 @@ package nvim.type.vim.lsp;
 		 Map of language server-specific settings, decided by the client. Sent to the LS if requested via
 		 `workspace/configuration`. Keys are case-sensitive.
 	**/
-	var settings : Null<nvim.type.lsp.LSPObject>;
+	@:optional
+	extern var settings : Null<nvim.type.lsp.LSPObject>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.trace: ('messages'|'off'|'verbose')?
@@ -315,7 +333,8 @@ package nvim.type.vim.lsp;
 		 Passed directly to the language server in the initialize request. Invalid/empty values will
 		 (default: "off")
 	**/
-	var trace : Null<String>;
+	@:optional
+	extern var trace : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.workspace_folders: lsp.WorkspaceFolder[]?
@@ -328,7 +347,8 @@ package nvim.type.vim.lsp;
 		 rootPath are derived from the first workspace folder in this list. Can be `null` if the client
 		 supports workspace folders but none are configured. See `workspaceFolders` in LSP spec.
 	**/
-	var workspace_folders : Null<Array<nvim.type.lsp.WorkspaceFolder>>;
+	@:optional
+	extern var workspace_folders : Null<Array<nvim.type.lsp.WorkspaceFolder>>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.workspace_required: boolean?
@@ -342,5 +362,6 @@ package nvim.type.vim.lsp;
 		 language server, even if the server doesn't require a workspace.
 		 (default: `false`)
 	**/
-	var workspace_required : Null<Bool>;
+	@:optional
+	extern var workspace_required : Null<Bool>;
 }

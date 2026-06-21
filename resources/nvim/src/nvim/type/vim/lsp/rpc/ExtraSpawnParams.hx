@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.rpc;
 	
 	 Additional context for the LSP server process.
 **/
-@:structInit extern class ExtraSpawnParams {
+@:structInit class ExtraSpawnParams {
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.cwd: string?
@@ -19,7 +19,8 @@ package nvim.type.vim.lsp.rpc;
 		
 		Working directory for the LSP server process
 	**/
-	var cwd : Null<String>;
+	@:optional
+	extern var cwd : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.detached: boolean?
@@ -29,7 +30,8 @@ package nvim.type.vim.lsp.rpc;
 		
 		Detach the LSP server process from the current process
 	**/
-	var detached : Null<Bool>;
+	@:optional
+	extern var detached : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.rpc.ExtraSpawnParams.env: table<string, string>?
@@ -39,5 +41,6 @@ package nvim.type.vim.lsp.rpc;
 		
 		Additional environment variables for LSP server process. See |vim.system()|
 	**/
-	var env : Null<lua.Table<String, String>>;
+	@:optional
+	extern var env : Null<lua.Table<String, String>>;
 }

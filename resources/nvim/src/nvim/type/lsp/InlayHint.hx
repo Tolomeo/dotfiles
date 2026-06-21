@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint information.
 	
 **/
-@:structInit extern class InlayHint {
+@:structInit class InlayHint {
 	/**
 		```lua
 		(field) lsp.InlayHint.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -38,7 +38,8 @@ package nvim.type.lsp;
 		
 		LSP arrays.
 	**/
-	var data : Null<nvim.type.lsp.LSPAny>;
+	@:optional
+	extern var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.InlayHint.kind: (1|2)?
@@ -65,7 +66,8 @@ package nvim.type.lsp;
 		    | 2 -- Parameter
 		```
 	**/
-	var kind : Null<nvim.type.lsp.InlayHintKind>;
+	@:optional
+	extern var kind : Null<nvim.type.lsp.InlayHintKind>;
 	/**
 		```lua
 		(field) lsp.InlayHint.label: string|lsp.InlayHintLabelPart[]
@@ -79,7 +81,7 @@ package nvim.type.lsp;
 		
 		*Note* that neither the string nor the label part can be empty.
 	**/
-	var label : haxe.extern.EitherType<String, Array<nvim.type.lsp.InlayHintLabelPart>>;
+	extern var label : haxe.extern.EitherType<String, Array<nvim.type.lsp.InlayHintLabelPart>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingLeft: boolean?
@@ -94,7 +96,8 @@ package nvim.type.lsp;
 		background color of the hint itself. That means padding can be used
 		to visually align/separate an inlay hint.
 	**/
-	var paddingLeft : Null<Bool>;
+	@:optional
+	extern var paddingLeft : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingRight: boolean?
@@ -109,7 +112,8 @@ package nvim.type.lsp;
 		background color of the hint itself. That means padding can be used
 		to visually align/separate an inlay hint.
 	**/
-	var paddingRight : Null<Bool>;
+	@:optional
+	extern var paddingRight : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHint.position: lsp.Position
@@ -152,7 +156,7 @@ package nvim.type.lsp;
 		If multiple hints have the same position, they will be shown in the order
 		they appear in the response.
 	**/
-	var position : nvim.type.lsp.Position;
+	extern var position : nvim.type.lsp.Position;
 	/**
 		```lua
 		(field) lsp.InlayHint.textEdits: lsp.TextEdit[]?
@@ -167,7 +171,8 @@ package nvim.type.lsp;
 		hint (or its nearest variant) is now part of the document and the inlay
 		hint itself is now obsolete.
 	**/
-	var textEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	@:optional
+	extern var textEdits : Null<Array<nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.tooltip: (string|lsp.MarkupContent)?
@@ -203,5 +208,6 @@ package nvim.type.lsp;
 		
 		The tooltip text when you hover over this item.
 	**/
-	var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	@:optional
+	extern var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 }

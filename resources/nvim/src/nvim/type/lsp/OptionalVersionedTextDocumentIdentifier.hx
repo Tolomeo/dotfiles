@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	A text document identifier to optionally denote a specific version of a text document.
 **/
-@:structInit extern class OptionalVersionedTextDocumentIdentifier {
+@:structInit class OptionalVersionedTextDocumentIdentifier {
 	/**
 		```lua
 		(field) lsp.OptionalVersionedTextDocumentIdentifier.uri: string
@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		The text document's uri.
 	**/
-	var uri : nvim.type.lsp.DocumentUri;
+	extern var uri : nvim.type.lsp.DocumentUri;
 	/**
 		```lua
 		(field) lsp.OptionalVersionedTextDocumentIdentifier.version: integer|nil
@@ -35,5 +35,5 @@ package nvim.type.lsp;
 		`null` to indicate that the version is unknown and the content on disk is the
 		truth (as specified with document content ownership).
 	**/
-	var version : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
+	extern var version : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
 }

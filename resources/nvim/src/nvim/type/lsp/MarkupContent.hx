@@ -30,7 +30,7 @@ package nvim.type.lsp;
 	*Please Note* that clients might sanitize the return markdown. A client could decide to
 	remove HTML from the markdown to avoid script execution.
 **/
-@:structInit extern class MarkupContent {
+@:structInit class MarkupContent {
 	/**
 		```lua
 		(field) lsp.MarkupContent.kind: "markdown"|"plaintext"
@@ -62,7 +62,7 @@ package nvim.type.lsp;
 		    | "markdown" -- Markdown
 		```
 	**/
-	var kind : nvim.type.lsp.MarkupKind;
+	extern var kind : nvim.type.lsp.MarkupKind;
 	/**
 		```lua
 		(field) lsp.MarkupContent.value: string
@@ -73,5 +73,5 @@ package nvim.type.lsp;
 		
 		The content itself
 	**/
-	var value : String;
+	extern var value : String;
 }

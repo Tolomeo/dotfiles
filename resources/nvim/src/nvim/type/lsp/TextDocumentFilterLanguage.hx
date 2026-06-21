@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A document filter where `language` is required field.
 	
 **/
-@:structInit extern class TextDocumentFilterLanguage {
+@:structInit class TextDocumentFilterLanguage {
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.language: string
@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		A language id, like `typescript`.
 	**/
-	var language : String;
+	extern var language : String;
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.pattern: (string|lsp.RelativePattern)?
@@ -58,7 +58,8 @@ package nvim.type.lsp;
 		folder root, but it can be another absolute URI as well.
 		
 	**/
-	var pattern : Null<nvim.type.lsp.GlobPattern>;
+	@:optional
+	extern var pattern : Null<nvim.type.lsp.GlobPattern>;
 	/**
 		```lua
 		(field) lsp.TextDocumentFilterLanguage.scheme: string?
@@ -69,5 +70,6 @@ package nvim.type.lsp;
 		
 		A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
 	**/
-	var scheme : Null<String>;
+	@:optional
+	extern var scheme : Null<String>;
 }

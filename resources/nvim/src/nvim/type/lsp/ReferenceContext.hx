@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Value-object that contains additional information when
 	requesting references.
 **/
-@:structInit extern class ReferenceContext {
+@:structInit class ReferenceContext {
 	/**
 		```lua
 		(field) lsp.ReferenceContext.includeDeclaration: boolean
@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		
 		Include the declaration of the current symbol.
 	**/
-	var includeDeclaration : Bool;
+	extern var includeDeclaration : Bool;
 }

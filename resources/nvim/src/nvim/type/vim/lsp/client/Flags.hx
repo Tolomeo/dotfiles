@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.client;
 	(class) vim.lsp.Client.Flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.allow_incremental_sync: boolean?
@@ -18,7 +18,8 @@ package nvim.type.vim.lsp.client;
 		 Allow using incremental sync for buffer edits
 		 (default: `true`)
 	**/
-	var allow_incremental_sync : Null<Bool>;
+	@:optional
+	extern var allow_incremental_sync : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.debounce_text_changes: integer
@@ -31,7 +32,7 @@ package nvim.type.vim.lsp.client;
 		 No debounce occurs if `nil`.
 		 (default: `150`)
 	**/
-	var debounce_text_changes : Int;
+	extern var debounce_text_changes : Int;
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.exit_timeout: integer|false
@@ -45,5 +46,5 @@ package nvim.type.vim.lsp.client;
 		 immediately after sending the "shutdown" request to the server.
 		 (default: `false`)
 	**/
-	var exit_timeout : haxe.extern.EitherType<Int, Bool>;
+	extern var exit_timeout : haxe.extern.EitherType<Int, Bool>;
 }

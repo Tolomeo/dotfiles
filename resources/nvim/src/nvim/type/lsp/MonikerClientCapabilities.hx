@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to the moniker request.
 	
 **/
-@:structInit extern class MonikerClientCapabilities {
+@:structInit class MonikerClientCapabilities {
 	/**
 		```lua
 		(field) lsp.MonikerClientCapabilities.dynamicRegistration: boolean?
@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the client supports the new `MonikerRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

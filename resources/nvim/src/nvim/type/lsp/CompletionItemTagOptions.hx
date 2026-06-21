@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.CompletionItemTagOptions
 	```
 **/
-@:structInit extern class CompletionItemTagOptions {
+@:structInit class CompletionItemTagOptions {
 	/**
 		```lua
 		(field) lsp.CompletionItemTagOptions.valueSet: 1[]
@@ -16,5 +16,5 @@ package nvim.type.lsp;
 		
 		The tags supported by the client.
 	**/
-	var valueSet : Array<nvim.type.lsp.CompletionItemTag>;
+	extern var valueSet : Array<nvim.type.lsp.CompletionItemTag>;
 }

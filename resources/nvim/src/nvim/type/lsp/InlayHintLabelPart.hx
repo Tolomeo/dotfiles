@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	of inlay hints.
 	
 **/
-@:structInit extern class InlayHintLabelPart {
+@:structInit class InlayHintLabelPart {
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.command: (lsp.Command)?
@@ -32,7 +32,8 @@ package nvim.type.lsp;
 		Depending on the client capability `inlayHint.resolveSupport` clients
 		might resolve this property late using the resolve request.
 	**/
-	var command : Null<nvim.type.lsp.Command>;
+	@:optional
+	extern var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.location: (lsp.Location)?
@@ -58,7 +59,8 @@ package nvim.type.lsp;
 		Depending on the client capability `inlayHint.resolveSupport` clients
 		might resolve this property late using the resolve request.
 	**/
-	var location : Null<nvim.type.lsp.Location>;
+	@:optional
+	extern var location : Null<nvim.type.lsp.Location>;
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.tooltip: (string|lsp.MarkupContent)?
@@ -96,7 +98,8 @@ package nvim.type.lsp;
 		the client capability `inlayHint.resolveSupport` clients might resolve
 		this property late using the resolve request.
 	**/
-	var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	@:optional
+	extern var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.InlayHintLabelPart.value: string
@@ -107,5 +110,5 @@ package nvim.type.lsp;
 		
 		The value of this label part.
 	**/
-	var value : String;
+	extern var value : String;
 }

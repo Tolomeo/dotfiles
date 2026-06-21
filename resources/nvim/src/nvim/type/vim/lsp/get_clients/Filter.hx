@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.get_clients;
 	
 	 Key-value pairs used to filter the returned clients.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.bufnr: integer?
@@ -20,7 +20,8 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients attached to this buffer
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.id: integer?
@@ -32,7 +33,8 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients with the given id
 	**/
-	var id : Null<Int>;
+	@:optional
+	extern var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.method: string?
@@ -43,7 +45,8 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients supporting the given method
 	**/
-	var method : Null<String>;
+	@:optional
+	extern var method : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.get_clients.Filter.name: string?
@@ -54,5 +57,6 @@ package nvim.type.vim.lsp.get_clients;
 		
 		 Only return clients with the given name
 	**/
-	var name : Null<String>;
+	@:optional
+	extern var name : Null<String>;
 }

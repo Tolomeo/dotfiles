@@ -5,7 +5,7 @@ package nvim.type.uv.udp_recv_start.callback;
 	(class) uv.udp_recv_start.callback.addr
 	```
 **/
-@:structInit extern class Addr {
+@:structInit class Addr {
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.family: string|"appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"
@@ -27,17 +27,17 @@ package nvim.type.uv.udp_recv_start.callback;
 		    | "packet"
 		```
 	**/
-	var family : haxe.extern.EitherType<nvim.type.uv.socket.Family, String>;
+	extern var family : haxe.extern.EitherType<nvim.type.uv.socket.Family, String>;
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.ip: string
 		```
 	**/
-	var ip : String;
+	extern var ip : String;
 	/**
 		```lua
 		(field) uv.udp_recv_start.callback.addr.port: integer
 		```
 	**/
-	var port : Int;
+	extern var port : Int;
 }

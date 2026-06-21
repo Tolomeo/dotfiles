@@ -5,7 +5,7 @@ package nvim.type.uv.getrusage;
 	(class) uv.getrusage.result
 	```
 **/
-@:structInit extern class Result {
+@:structInit class Result {
 	/**
 		```lua
 		(field) uv.getrusage.result.idrss: integer
@@ -15,7 +15,7 @@ package nvim.type.uv.getrusage;
 		
 		integral unshared data size
 	**/
-	var idrss : Int;
+	extern var idrss : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.inblock: integer
@@ -25,7 +25,7 @@ package nvim.type.uv.getrusage;
 		
 		block input operations
 	**/
-	var inblock : Int;
+	extern var inblock : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.isrss: integer
@@ -35,7 +35,7 @@ package nvim.type.uv.getrusage;
 		
 		integral unshared stack size
 	**/
-	var isrss : Int;
+	extern var isrss : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.ixrss: integer
@@ -45,7 +45,7 @@ package nvim.type.uv.getrusage;
 		
 		integral shared memory size
 	**/
-	var ixrss : Int;
+	extern var ixrss : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.majflt: integer
@@ -55,7 +55,7 @@ package nvim.type.uv.getrusage;
 		
 		page faults (hard page faults)
 	**/
-	var majflt : Int;
+	extern var majflt : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.maxrss: integer
@@ -65,7 +65,7 @@ package nvim.type.uv.getrusage;
 		
 		maximum resident set size
 	**/
-	var maxrss : Int;
+	extern var maxrss : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.minflt: integer
@@ -75,7 +75,7 @@ package nvim.type.uv.getrusage;
 		
 		page reclaims (soft page faults)
 	**/
-	var minflt : Int;
+	extern var minflt : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.msgrcv: integer
@@ -85,7 +85,7 @@ package nvim.type.uv.getrusage;
 		
 		IPC messages received
 	**/
-	var msgrcv : Int;
+	extern var msgrcv : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.msgsnd: integer
@@ -95,7 +95,7 @@ package nvim.type.uv.getrusage;
 		
 		IPC messages sent
 	**/
-	var msgsnd : Int;
+	extern var msgsnd : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.nivcsw: integer
@@ -105,7 +105,7 @@ package nvim.type.uv.getrusage;
 		
 		involuntary context switches
 	**/
-	var nivcsw : Int;
+	extern var nivcsw : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.nsignals: integer
@@ -115,7 +115,7 @@ package nvim.type.uv.getrusage;
 		
 		signals received
 	**/
-	var nsignals : Int;
+	extern var nsignals : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.nswap: integer
@@ -125,7 +125,7 @@ package nvim.type.uv.getrusage;
 		
 		swaps
 	**/
-	var nswap : Int;
+	extern var nswap : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.nvcsw: integer
@@ -135,7 +135,7 @@ package nvim.type.uv.getrusage;
 		
 		voluntary context switches
 	**/
-	var nvcsw : Int;
+	extern var nvcsw : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.oublock: integer
@@ -145,7 +145,7 @@ package nvim.type.uv.getrusage;
 		
 		block output operations
 	**/
-	var oublock : Int;
+	extern var oublock : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.stime: uv.getrusage.result.time_t
@@ -155,7 +155,7 @@ package nvim.type.uv.getrusage;
 		
 		system CPU time used
 	**/
-	var stime : nvim.type.uv.getrusage.result.TimeT;
+	extern var stime : nvim.type.uv.getrusage.result.TimeT;
 	/**
 		```lua
 		(field) uv.getrusage.result.utime: uv.getrusage.result.time_t
@@ -165,5 +165,5 @@ package nvim.type.uv.getrusage;
 		
 		user CPU time used
 	**/
-	var utime : nvim.type.uv.getrusage.result.TimeT;
+	extern var utime : nvim.type.uv.getrusage.result.TimeT;
 }

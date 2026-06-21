@@ -10,7 +10,7 @@ package nvim.type.uv;
 	 luv_work_ctx_t
 	
 **/
-@:structInit extern class LuvWorkCtxT {
+@:structInit class LuvWorkCtxT {
 	/**
 		```lua
 		(method) uv.luv_work_ctx_t:queue(...any)
@@ -113,5 +113,5 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function queue(___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function queue(___:haxe.Rest<nvim.type.uv.Threadargs>):nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 }

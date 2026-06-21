@@ -5,6 +5,6 @@ package nvim.type;
 	(class) Range6
 	```
 **/
-@:structInit extern class Range6 {
+@:structInit class Range6 {
 
 }

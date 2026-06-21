@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client capabilities of a {@link DocumentRangeFormattingRequest}.
 **/
-@:structInit extern class DocumentRangeFormattingClientCapabilities {
+@:structInit class DocumentRangeFormattingClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Whether range formatting supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingClientCapabilities.rangesSupport: boolean?
@@ -32,5 +33,6 @@ package nvim.type.lsp;
 		Whether the client supports formatting multiple ranges at once.
 		
 	**/
-	var rangesSupport : Null<Bool>;
+	@:optional
+	extern var rangesSupport : Null<Bool>;
 }

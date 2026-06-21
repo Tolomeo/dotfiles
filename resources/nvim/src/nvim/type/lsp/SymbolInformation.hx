@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents information about programming constructs like variables, classes,
 	interfaces etc.
 **/
-@:structInit extern class SymbolInformation {
+@:structInit class SymbolInformation {
 	/**
 		```lua
 		(field) lsp.SymbolInformation.containerName: string?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		if necessary). It can't be used to re-infer a hierarchy for the document
 		symbols.
 	**/
-	var containerName : Null<String>;
+	@:optional
+	extern var containerName : Null<String>;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.deprecated: boolean?
@@ -36,7 +37,8 @@ package nvim.type.lsp;
 		Indicates if this symbol is deprecated.
 		
 	**/
-	var deprecated : Null<Bool>;
+	@:optional
+	extern var deprecated : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.kind: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|26|3|4|5|6|7|8|9
@@ -84,7 +86,7 @@ package nvim.type.lsp;
 		    | 26 -- TypeParameter
 		```
 	**/
-	var kind : nvim.type.lsp.SymbolKind;
+	extern var kind : nvim.type.lsp.SymbolKind;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.location: lsp.Location
@@ -108,7 +110,7 @@ package nvim.type.lsp;
 		syntax tree. It can therefore not be used to re-construct a hierarchy of
 		the symbols.
 	**/
-	var location : nvim.type.lsp.Location;
+	extern var location : nvim.type.lsp.Location;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.name: string
@@ -119,7 +121,7 @@ package nvim.type.lsp;
 		
 		The name of this symbol.
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.tags: 1[]?
@@ -131,5 +133,6 @@ package nvim.type.lsp;
 		Tags for this symbol.
 		
 	**/
-	var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
+	@:optional
+	extern var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
 }

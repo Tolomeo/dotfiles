@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentOnTypeFormattingRequest}.
 **/
-@:structInit extern class DocumentOnTypeFormattingOptions {
+@:structInit class DocumentOnTypeFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingOptions.firstTriggerCharacter: string
@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		A character on which formatting should be triggered, like `{`.
 	**/
-	var firstTriggerCharacter : String;
+	extern var firstTriggerCharacter : String;
 	/**
 		```lua
 		(field) lsp.DocumentOnTypeFormattingOptions.moreTriggerCharacter: string[]?
@@ -31,5 +31,6 @@ package nvim.type.lsp;
 		
 		More trigger characters.
 	**/
-	var moreTriggerCharacter : Null<Array<String>>;
+	@:optional
+	extern var moreTriggerCharacter : Null<Array<String>>;
 }

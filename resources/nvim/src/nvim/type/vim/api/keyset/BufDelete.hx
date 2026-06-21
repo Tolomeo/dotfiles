@@ -5,17 +5,19 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.buf_delete
 	```
 **/
-@:structInit extern class BufDelete {
+@:structInit class BufDelete {
 	/**
 		```lua
 		(field) vim.api.keyset.buf_delete.force: boolean?
 		```
 	**/
-	var force : Null<Bool>;
+	@:optional
+	extern var force : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.buf_delete.unload: boolean?
 		```
 	**/
-	var unload : Null<Bool>;
+	@:optional
+	extern var unload : Null<Bool>;
 }

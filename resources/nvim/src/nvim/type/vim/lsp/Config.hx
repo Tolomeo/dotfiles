@@ -9,6 +9,6 @@ package nvim.type.vim.lsp;
 	
 	 @nodoc
 **/
-@:structInit extern class Config {
+@:structInit class Config {
 
 }

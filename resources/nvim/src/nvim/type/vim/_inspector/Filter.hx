@@ -5,7 +5,7 @@ package nvim.type.vim._inspector;
 	(class) vim._inspector.Filter
 	```
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim._inspector.Filter.extmarks: boolean|"all"
@@ -17,7 +17,7 @@ package nvim.type.vim._inspector;
 		 Include extmarks. When `all`, then extmarks without a `hl_group` will also be included.
 		 (default: true)
 	**/
-	var extmarks : haxe.extern.EitherType<Bool, String>;
+	extern var extmarks : haxe.extern.EitherType<Bool, String>;
 	/**
 		```lua
 		(field) vim._inspector.Filter.semantic_tokens: boolean
@@ -29,7 +29,7 @@ package nvim.type.vim._inspector;
 		 Include semantic token highlights.
 		 (default: true)
 	**/
-	var semantic_tokens : Bool;
+	extern var semantic_tokens : Bool;
 	/**
 		```lua
 		(field) vim._inspector.Filter.syntax: boolean
@@ -42,7 +42,7 @@ package nvim.type.vim._inspector;
 		 Include syntax based highlight groups.
 		 (default: `true`)
 	**/
-	var syntax : Bool;
+	extern var syntax : Bool;
 	/**
 		```lua
 		(field) vim._inspector.Filter.treesitter: boolean
@@ -54,5 +54,5 @@ package nvim.type.vim._inspector;
 		 Include treesitter based highlight groups.
 		 (default: `true`)
 	**/
-	var treesitter : Bool;
+	extern var treesitter : Bool;
 }

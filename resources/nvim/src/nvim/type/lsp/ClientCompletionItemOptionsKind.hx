@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientCompletionItemOptionsKind
 	```
 **/
-@:structInit extern class ClientCompletionItemOptionsKind {
+@:structInit class ClientCompletionItemOptionsKind {
 	/**
 		```lua
 		(field) lsp.ClientCompletionItemOptionsKind.valueSet: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|3|4|5|6|7|8|9[]?
@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the completion items kinds from `Text` to `Reference` as defined in
 		the initial version of the protocol.
 	**/
-	var valueSet : Null<Array<nvim.type.lsp.CompletionItemKind>>;
+	@:optional
+	extern var valueSet : Null<Array<nvim.type.lsp.CompletionItemKind>>;
 }

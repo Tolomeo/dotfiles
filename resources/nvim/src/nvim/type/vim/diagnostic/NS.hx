@@ -5,19 +5,20 @@ package nvim.type.vim.diagnostic;
 	(class) vim.diagnostic.NS
 	```
 **/
-@:structInit extern class NS {
+@:structInit class NS {
 	/**
 		```lua
 		(field) vim.diagnostic.NS.disabled: boolean?
 		```
 	**/
-	var disabled : Null<Bool>;
+	@:optional
+	extern var disabled : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.NS.name: string
 		```
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) vim.diagnostic.NS.opts: vim.diagnostic.Opts
@@ -31,11 +32,11 @@ package nvim.type.vim.diagnostic;
 		 - `table`: Enable this feature with overrides. Use an empty table to use default values.
 		 - `function`: Function with signature (namespace, bufnr) that returns any of the above.
 	**/
-	var opts : nvim.type.vim.diagnostic.Opts;
+	extern var opts : nvim.type.vim.diagnostic.Opts;
 	/**
 		```lua
 		(field) vim.diagnostic.NS.user_data: table
 		```
 	**/
-	var user_data : lua.Table.AnyTable;
+	extern var user_data : lua.Table.AnyTable;
 }

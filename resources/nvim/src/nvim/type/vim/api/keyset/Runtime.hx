@@ -5,17 +5,19 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.runtime
 	```
 **/
-@:structInit extern class Runtime {
+@:structInit class Runtime {
 	/**
 		```lua
 		(field) vim.api.keyset.runtime.do_source: boolean?
 		```
 	**/
-	var do_source : Null<Bool>;
+	@:optional
+	extern var do_source : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.runtime.is_lua: boolean?
 		```
 	**/
-	var is_lua : Null<Bool>;
+	@:optional
+	extern var is_lua : Null<Bool>;
 }

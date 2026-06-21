@@ -5,7 +5,7 @@ package nvim.type.vim.fs.normalize;
 	(class) vim.fs.normalize.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.fs.normalize.Opts.expand_env: boolean?
@@ -18,7 +18,8 @@ package nvim.type.vim.fs.normalize;
 		 Expand environment variables.
 		 (default: `true`)
 	**/
-	var expand_env : Null<Bool>;
+	@:optional
+	extern var expand_env : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.normalize.Opts.win: boolean?
@@ -30,5 +31,6 @@ package nvim.type.vim.fs.normalize;
 		 Path is a Windows path.
 		 (default: `true` in Windows, `false` otherwise)
 	**/
-	var win : Null<Bool>;
+	@:optional
+	extern var win : Null<Bool>;
 }

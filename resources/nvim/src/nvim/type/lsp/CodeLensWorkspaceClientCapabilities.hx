@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.CodeLensWorkspaceClientCapabilities
 	```
 **/
-@:structInit extern class CodeLensWorkspaceClientCapabilities {
+@:structInit class CodeLensWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeLensWorkspaceClientCapabilities.refreshSupport: boolean?
@@ -22,5 +22,6 @@ package nvim.type.lsp;
 		useful for situation where a server for example detect a project wide
 		change that requires such a calculation.
 	**/
-	var refreshSupport : Null<Bool>;
+	@:optional
+	extern var refreshSupport : Null<Bool>;
 }

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Documentation for a class of code actions.
 	
 **/
-@:structInit extern class CodeActionKindDocumentation {
+@:structInit class CodeActionKindDocumentation {
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.command: lsp.Command
@@ -30,7 +30,7 @@ package nvim.type.lsp;
 		
 		The title of this documentation code action is taken from {@linkcode Command.title}
 	**/
-	var command : nvim.type.lsp.Command;
+	extern var command : nvim.type.lsp.Command;
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.kind: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"
@@ -67,5 +67,5 @@ package nvim.type.lsp;
 		    | "notebook" -- Notebook
 		```
 	**/
-	var kind : nvim.type.lsp.CodeActionKind;
+	extern var kind : nvim.type.lsp.CodeActionKind;
 }

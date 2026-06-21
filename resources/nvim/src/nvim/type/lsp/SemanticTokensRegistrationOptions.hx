@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.SemanticTokensRegistrationOptions
 	```
 **/
-@:structInit extern class SemanticTokensRegistrationOptions {
+@:structInit class SemanticTokensRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.documentSelector: lsp.NotebookCellTextDocumentFilter|lsp.TextDocumentFilterLanguage|lsp.TextDocumentFilterPattern|lsp.TextDocumentFilterScheme[]|nil
@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		A document selector to identify the scope of the registration. If set to null
 		the document selector provided on the client side will be used.
 	**/
-	var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+	extern var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.full: (boolean|lsp.SemanticTokensFullDelta)?
@@ -41,7 +41,8 @@ package nvim.type.lsp;
 		
 		Server supports providing semantic tokens for a full document.
 	**/
-	var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
+	@:optional
+	extern var full : Null<haxe.extern.EitherType<Bool, nvim.type.lsp.SemanticTokensFullDelta>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.id: string?
@@ -53,7 +54,8 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
-	var id : Null<String>;
+	@:optional
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.legend: lsp.SemanticTokensLegend
@@ -64,7 +66,7 @@ package nvim.type.lsp;
 		
 		The legend used by the server
 	**/
-	var legend : nvim.type.lsp.SemanticTokensLegend;
+	extern var legend : nvim.type.lsp.SemanticTokensLegend;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.range: (boolean|lsp._anonym1.range)?
@@ -76,11 +78,13 @@ package nvim.type.lsp;
 		Server supports providing semantic tokens for a specific range
 		of a document.
 	**/
-	var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
+	@:optional
+	extern var range : Null<haxe.extern.EitherType<Bool, nvim.type.lsp._anonym1.Range>>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

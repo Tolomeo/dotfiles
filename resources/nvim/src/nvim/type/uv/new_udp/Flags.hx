@@ -5,7 +5,7 @@ package nvim.type.uv.new_udp;
 	(class) uv.new_udp.flags
 	```
 **/
-@:structInit extern class Flags {
+@:structInit class Flags {
 	/**
 		```lua
 		(field) uv.new_udp.flags.family: "appletalk"|"atmpvc"|"ax25"|"inet"|"inet6"|"ipx"|"netlink"|"packet"|"unix"|"x25"|nil
@@ -47,7 +47,8 @@ package nvim.type.uv.new_udp;
 		    | "packet"
 		```
 	**/
-	var family : Null<nvim.type.uv.new_udp.flags.Family>;
+	@:optional
+	extern var family : Null<nvim.type.uv.new_udp.flags.Family>;
 	/**
 		```lua
 		(field) uv.new_udp.flags.mmsgs: integer|nil
@@ -57,5 +58,6 @@ package nvim.type.uv.new_udp;
 		
 		default `1`
 	**/
-	var mmsgs : Null<Int>;
+	@:optional
+	extern var mmsgs : Null<Int>;
 }

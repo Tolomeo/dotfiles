@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSymbolResolveOptions
 	```
 **/
-@:structInit extern class ClientSymbolResolveOptions {
+@:structInit class ClientSymbolResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolResolveOptions.properties: string[]
@@ -17,5 +17,5 @@ package nvim.type.lsp;
 		The properties that a client can resolve lazily. Usually
 		`location.range`
 	**/
-	var properties : Array<String>;
+	extern var properties : Array<String>;
 }

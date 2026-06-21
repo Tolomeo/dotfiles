@@ -9,11 +9,12 @@ package nvim.type.lsp;
 	
 	Provider options for a {@link DocumentFormattingRequest}.
 **/
-@:structInit extern class DocumentFormattingOptions {
+@:structInit class DocumentFormattingOptions {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

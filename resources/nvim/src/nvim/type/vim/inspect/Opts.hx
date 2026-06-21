@@ -9,19 +9,21 @@ package nvim.type.vim.inspect;
 	
 	 @nodoc
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.inspect.Opts.depth: integer?
 		```
 	**/
-	var depth : Null<Int>;
+	@:optional
+	extern var depth : Null<Int>;
 	/**
 		```lua
 		(field) vim.inspect.Opts.newline: string?
 		```
 	**/
-	var newline : Null<String>;
+	@:optional
+	extern var newline : Null<String>;
 	/**
 		```lua
 		(field) vim.inspect.Opts.process: (fun(item: any, path: string[]):any)?
@@ -34,5 +36,6 @@ package nvim.type.vim.inspect;
 		  -> any
 		```
 	**/
-	var process : Null<(item:Any, path:Array<String>) -> Any>;
+	@:optional
+	extern var process : Null<(item:Any, path:Array<String>) -> Any>;
 }

@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link ReferencesRequest}.
 **/
-@:structInit extern class ReferenceClientCapabilities {
+@:structInit class ReferenceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ReferenceClientCapabilities.dynamicRegistration: boolean?
@@ -20,5 +20,6 @@ package nvim.type.lsp;
 		
 		Whether references supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

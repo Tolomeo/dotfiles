@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientInlayHintResolveOptions
 	```
 **/
-@:structInit extern class ClientInlayHintResolveOptions {
+@:structInit class ClientInlayHintResolveOptions {
 	/**
 		```lua
 		(field) lsp.ClientInlayHintResolveOptions.properties: string[]
@@ -16,5 +16,5 @@ package nvim.type.lsp;
 		
 		The properties that a client can resolve lazily.
 	**/
-	var properties : Array<String>;
+	extern var properties : Array<String>;
 }

@@ -5,6 +5,6 @@ package nvim.type.vim;
 	(class) vim.var_accessor
 	```
 **/
-@:structInit extern class VarAccessor {
+@:structInit class VarAccessor {
 
 }

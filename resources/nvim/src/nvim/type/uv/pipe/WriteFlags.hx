@@ -10,11 +10,11 @@ package nvim.type.uv.pipe;
 	 uv.pipe.write_flags
 	
 **/
-@:structInit extern class WriteFlags {
+@:structInit class WriteFlags {
 	/**
 		```lua
 		(field) uv.pipe.write_flags.nonblock: boolean
 		```
 	**/
-	var nonblock : Bool;
+	extern var nonblock : Bool;
 }

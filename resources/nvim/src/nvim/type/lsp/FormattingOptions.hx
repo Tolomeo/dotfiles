@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Value-object describing what options formatting should use.
 **/
-@:structInit extern class FormattingOptions {
+@:structInit class FormattingOptions {
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertFinalNewline: boolean?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		Insert a newline character at the end of the file if one does not exist.
 		
 	**/
-	var insertFinalNewline : Null<Bool>;
+	@:optional
+	extern var insertFinalNewline : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.insertSpaces: boolean
@@ -32,7 +33,7 @@ package nvim.type.lsp;
 		
 		Prefer spaces over tabs.
 	**/
-	var insertSpaces : Bool;
+	extern var insertSpaces : Bool;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.tabSize: integer
@@ -43,7 +44,7 @@ package nvim.type.lsp;
 		
 		Size of a tab in spaces.
 	**/
-	var tabSize : nvim.type.Uinteger;
+	extern var tabSize : nvim.type.Uinteger;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.trimFinalNewlines: boolean?
@@ -55,7 +56,8 @@ package nvim.type.lsp;
 		Trim all newlines after the final newline at the end of the file.
 		
 	**/
-	var trimFinalNewlines : Null<Bool>;
+	@:optional
+	extern var trimFinalNewlines : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FormattingOptions.trimTrailingWhitespace: boolean?
@@ -67,5 +69,6 @@ package nvim.type.lsp;
 		Trim trailing whitespace on a line.
 		
 	**/
-	var trimTrailingWhitespace : Null<Bool>;
+	@:optional
+	extern var trimTrailingWhitespace : Null<Bool>;
 }

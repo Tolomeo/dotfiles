@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client capabilities for a {@link WorkspaceSymbolRequest}.
 **/
-@:structInit extern class WorkspaceSymbolClientCapabilities {
+@:structInit class WorkspaceSymbolClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Symbol request supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.resolveSupport: (lsp.ClientSymbolResolveOptions)?
@@ -34,7 +35,8 @@ package nvim.type.lsp;
 		properties.
 		
 	**/
-	var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
+	@:optional
+	extern var resolveSupport : Null<nvim.type.lsp.ClientSymbolResolveOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.symbolKind: (lsp.ClientSymbolKindOptions)?
@@ -45,7 +47,8 @@ package nvim.type.lsp;
 		
 		Specific capabilities for the `SymbolKind` in the `workspace/symbol` request.
 	**/
-	var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
+	@:optional
+	extern var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
 	/**
 		```lua
 		(field) lsp.WorkspaceSymbolClientCapabilities.tagSupport: (lsp.ClientSymbolTagOptions)?
@@ -58,5 +61,6 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
 }

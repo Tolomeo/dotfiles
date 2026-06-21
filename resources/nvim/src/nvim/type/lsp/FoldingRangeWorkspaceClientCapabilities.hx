@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client workspace capabilities specific to folding ranges
 	
 **/
-@:structInit extern class FoldingRangeWorkspaceClientCapabilities {
+@:structInit class FoldingRangeWorkspaceClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FoldingRangeWorkspaceClientCapabilities.refreshSupport: boolean?
@@ -28,5 +28,6 @@ package nvim.type.lsp;
 		change that requires such a calculation.
 		
 	**/
-	var refreshSupport : Null<Bool>;
+	@:optional
+	extern var refreshSupport : Null<Bool>;
 }

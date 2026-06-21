@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ClientSymbolKindOptions
 	```
 **/
-@:structInit extern class ClientSymbolKindOptions {
+@:structInit class ClientSymbolKindOptions {
 	/**
 		```lua
 		(field) lsp.ClientSymbolKindOptions.valueSet: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|26|3|4|5|6|7|8|9[]?
@@ -23,5 +23,6 @@ package nvim.type.lsp;
 		the symbol kinds from `File` to `Array` as defined in
 		the initial version of the protocol.
 	**/
-	var valueSet : Null<Array<nvim.type.lsp.SymbolKind>>;
+	@:optional
+	extern var valueSet : Null<Array<nvim.type.lsp.SymbolKind>>;
 }

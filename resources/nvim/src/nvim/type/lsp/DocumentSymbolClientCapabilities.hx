@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link DocumentSymbolRequest}.
 **/
-@:structInit extern class DocumentSymbolClientCapabilities {
+@:structInit class DocumentSymbolClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Whether document symbol supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.hierarchicalDocumentSymbolSupport: boolean?
@@ -31,7 +32,8 @@ package nvim.type.lsp;
 		
 		The client supports hierarchical document symbols.
 	**/
-	var hierarchicalDocumentSymbolSupport : Null<Bool>;
+	@:optional
+	extern var hierarchicalDocumentSymbolSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.labelSupport: boolean?
@@ -44,7 +46,8 @@ package nvim.type.lsp;
 		registering a document symbol provider.
 		
 	**/
-	var labelSupport : Null<Bool>;
+	@:optional
+	extern var labelSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.symbolKind: (lsp.ClientSymbolKindOptions)?
@@ -56,7 +59,8 @@ package nvim.type.lsp;
 		Specific capabilities for the `SymbolKind` in the
 		`textDocument/documentSymbol` request.
 	**/
-	var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
+	@:optional
+	extern var symbolKind : Null<nvim.type.lsp.ClientSymbolKindOptions>;
 	/**
 		```lua
 		(field) lsp.DocumentSymbolClientCapabilities.tagSupport: (lsp.ClientSymbolTagOptions)?
@@ -70,5 +74,6 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.ClientSymbolTagOptions>;
 }

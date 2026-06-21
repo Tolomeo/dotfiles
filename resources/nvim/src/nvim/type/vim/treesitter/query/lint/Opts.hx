@@ -9,7 +9,7 @@ package nvim.type.vim.treesitter.query.lint;
 	
 	 Optional keyword arguments:
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.lint.Opts.clear: boolean
@@ -20,7 +20,7 @@ package nvim.type.vim.treesitter.query.lint;
 		
 		 Just clear current lint errors
 	**/
-	var clear : Bool;
+	extern var clear : Bool;
 	/**
 		```lua
 		(field) vim.treesitter.query.lint.Opts.langs: (string|string[])?
@@ -33,5 +33,6 @@ package nvim.type.vim.treesitter.query.lint;
 		 Language(s) to use for checking the query.
 		 If multiple languages are specified, queries are validated for all of them
 	**/
-	var langs : Null<haxe.extern.EitherType<String, Array<String>>>;
+	@:optional
+	extern var langs : Null<haxe.extern.EitherType<String, Array<String>>>;
 }

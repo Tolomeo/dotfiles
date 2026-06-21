@@ -12,7 +12,7 @@ package nvim.type.lsp;
 	an array of arguments which will be passed to the command handler
 	function when invoked.
 **/
-@:structInit extern class Command {
+@:structInit class Command {
 	/**
 		```lua
 		(field) lsp.Command.arguments: boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		Arguments that the command handler should be
 		invoked with.
 	**/
-	var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
+	@:optional
+	extern var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
 	/**
 		```lua
 		(field) lsp.Command.command: string
@@ -35,7 +36,7 @@ package nvim.type.lsp;
 		
 		The identifier of the actual command handler.
 	**/
-	var command : String;
+	extern var command : String;
 	/**
 		```lua
 		(field) lsp.Command.title: string
@@ -46,7 +47,7 @@ package nvim.type.lsp;
 		
 		Title of the command, like `save`.
 	**/
-	var title : String;
+	extern var title : String;
 	/**
 		```lua
 		(field) lsp.Command.tooltip: string?
@@ -58,5 +59,6 @@ package nvim.type.lsp;
 		An optional tooltip.
 		
 	**/
-	var tooltip : Null<String>;
+	@:optional
+	extern var tooltip : Null<String>;
 }

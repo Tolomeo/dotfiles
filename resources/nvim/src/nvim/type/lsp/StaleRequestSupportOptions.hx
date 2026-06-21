@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.StaleRequestSupportOptions
 	```
 **/
-@:structInit extern class StaleRequestSupportOptions {
+@:structInit class StaleRequestSupportOptions {
 	/**
 		```lua
 		(field) lsp.StaleRequestSupportOptions.cancel: boolean
@@ -16,7 +16,7 @@ package nvim.type.lsp;
 		
 		The client will actively cancel the request.
 	**/
-	var cancel : Bool;
+	extern var cancel : Bool;
 	/**
 		```lua
 		(field) lsp.StaleRequestSupportOptions.retryOnContentModified: string[]
@@ -29,5 +29,5 @@ package nvim.type.lsp;
 		will retry the request if it receives a
 		response with error code `ContentModified`
 	**/
-	var retryOnContentModified : Array<String>;
+	extern var retryOnContentModified : Array<String>;
 }

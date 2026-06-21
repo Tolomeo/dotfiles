@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	General client capabilities.
 	
 **/
-@:structInit extern class GeneralClientCapabilities {
+@:structInit class GeneralClientCapabilities {
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.markdown: (lsp.MarkdownClientCapabilities)?
@@ -27,7 +27,8 @@ package nvim.type.lsp;
 		Client capabilities specific to the client's markdown parser.
 		
 	**/
-	var markdown : Null<nvim.type.lsp.MarkdownClientCapabilities>;
+	@:optional
+	extern var markdown : Null<nvim.type.lsp.MarkdownClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.positionEncodings: "utf-16"|"utf-32"|"utf-8"[]?
@@ -54,7 +55,8 @@ package nvim.type.lsp;
 		side.
 		
 	**/
-	var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
+	@:optional
+	extern var positionEncodings : Null<Array<nvim.type.lsp.PositionEncodingKind>>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.regularExpressions: (lsp.RegularExpressionsClientCapabilities)?
@@ -71,7 +73,8 @@ package nvim.type.lsp;
 		Client capabilities specific to regular expressions.
 		
 	**/
-	var regularExpressions : Null<nvim.type.lsp.RegularExpressionsClientCapabilities>;
+	@:optional
+	extern var regularExpressions : Null<nvim.type.lsp.RegularExpressionsClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.GeneralClientCapabilities.staleRequestSupport: (lsp.StaleRequestSupportOptions)?
@@ -86,5 +89,6 @@ package nvim.type.lsp;
 		anymore since the information is outdated).
 		
 	**/
-	var staleRequestSupport : Null<nvim.type.lsp.StaleRequestSupportOptions>;
+	@:optional
+	extern var staleRequestSupport : Null<nvim.type.lsp.StaleRequestSupportOptions>;
 }

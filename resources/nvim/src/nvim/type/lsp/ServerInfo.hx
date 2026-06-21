@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Information about the server
 	
 **/
-@:structInit extern class ServerInfo {
+@:structInit class ServerInfo {
 	/**
 		```lua
 		(field) lsp.ServerInfo.name: string
@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The name of the server as defined by the server.
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) lsp.ServerInfo.version: string?
@@ -32,5 +32,6 @@ package nvim.type.lsp;
 		
 		The server's version as defined by the server.
 	**/
-	var version : Null<String>;
+	@:optional
+	extern var version : Null<String>;
 }

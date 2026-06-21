@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Client capabilities specific to diagnostic pull requests.
 	
 **/
-@:structInit extern class DiagnosticClientCapabilities {
+@:structInit class DiagnosticClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.codeDescriptionSupport: boolean?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		Client supports a codeDescription property
 		
 	**/
-	var codeDescriptionSupport : Null<Bool>;
+	@:optional
+	extern var codeDescriptionSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dataSupport: boolean?
@@ -36,7 +37,8 @@ package nvim.type.lsp;
 		`textDocument/codeAction` request.
 		
 	**/
-	var dataSupport : Null<Bool>;
+	@:optional
+	extern var dataSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.dynamicRegistration: boolean?
@@ -49,7 +51,8 @@ package nvim.type.lsp;
 		the client supports the new `(TextDocumentRegistrationOptions & StaticRegistrationOptions)`
 		return value for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedDocumentSupport: boolean?
@@ -60,7 +63,8 @@ package nvim.type.lsp;
 		
 		Whether the clients supports related documents for document diagnostic pulls.
 	**/
-	var relatedDocumentSupport : Null<Bool>;
+	@:optional
+	extern var relatedDocumentSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.relatedInformation: boolean?
@@ -71,7 +75,8 @@ package nvim.type.lsp;
 		
 		Whether the clients accepts diagnostics with related information.
 	**/
-	var relatedInformation : Null<Bool>;
+	@:optional
+	extern var relatedInformation : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DiagnosticClientCapabilities.tagSupport: (lsp.ClientDiagnosticsTagOptions)?
@@ -84,5 +89,6 @@ package nvim.type.lsp;
 		Clients supporting tags have to handle unknown tags gracefully.
 		
 	**/
-	var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
+	@:optional
+	extern var tagSupport : Null<nvim.type.lsp.ClientDiagnosticsTagOptions>;
 }

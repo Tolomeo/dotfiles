@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.WindowClientCapabilities
 	```
 **/
-@:structInit extern class WindowClientCapabilities {
+@:structInit class WindowClientCapabilities {
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.showDocument: (lsp.ShowDocumentClientCapabilities)?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		Capabilities specific to the showDocument request.
 		
 	**/
-	var showDocument : Null<nvim.type.lsp.ShowDocumentClientCapabilities>;
+	@:optional
+	extern var showDocument : Null<nvim.type.lsp.ShowDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.showMessage: (lsp.ShowMessageRequestClientCapabilities)?
@@ -38,7 +39,8 @@ package nvim.type.lsp;
 		Capabilities specific to the showMessage request.
 		
 	**/
-	var showMessage : Null<nvim.type.lsp.ShowMessageRequestClientCapabilities>;
+	@:optional
+	extern var showMessage : Null<nvim.type.lsp.ShowMessageRequestClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.workDoneProgress: boolean?
@@ -56,5 +58,6 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

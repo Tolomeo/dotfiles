@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Represents a parameter of a callable-signature. A parameter can
 	have a label and a doc-comment.
 **/
-@:structInit extern class ParameterInformation {
+@:structInit class ParameterInformation {
 	/**
 		```lua
 		(field) lsp.ParameterInformation.documentation: (string|lsp.MarkupContent)?
@@ -47,7 +47,8 @@ package nvim.type.lsp;
 		The human-readable doc-comment of this parameter. Will be shown
 		in the UI but can be omitted.
 	**/
-	var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	@:optional
+	extern var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.ParameterInformation.label: string|[integer, integer]
@@ -69,5 +70,5 @@ package nvim.type.lsp;
 		*Note*: a label of type string should be a substring of its containing signature label.
 		Its intended use case is to highlight the parameter label part in the `SignatureInformation.label`.
 	**/
-	var label : Dynamic;
+	extern var label : Dynamic;
 }

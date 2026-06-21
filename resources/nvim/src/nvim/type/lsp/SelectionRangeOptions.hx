@@ -5,11 +5,12 @@ package nvim.type.lsp;
 	(class) lsp.SelectionRangeOptions
 	```
 **/
-@:structInit extern class SelectionRangeOptions {
+@:structInit class SelectionRangeOptions {
 	/**
 		```lua
 		(field) lsp.SelectionRangeOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

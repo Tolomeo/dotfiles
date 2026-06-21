@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	An unchanged diagnostic report with a set of related documents.
 	
 **/
-@:structInit extern class RelatedUnchangedDocumentDiagnosticReport {
+@:structInit class RelatedUnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.kind: "unchanged"
@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		only return `unchanged` if result ids are
 		provided.
 	**/
-	var kind : String;
+	extern var kind : String;
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.relatedDocuments: table<string, lsp.FullDocumentDiagnosticReport|lsp.UnchangedDocumentDiagnosticReport>?
@@ -40,7 +40,8 @@ package nvim.type.lsp;
 		a.cpp and result in errors in a header file b.hpp.
 		
 	**/
-	var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
+	@:optional
+	extern var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.resultId: string
@@ -52,5 +53,5 @@ package nvim.type.lsp;
 		A result id which will be sent on the next
 		diagnostic request for the same document.
 	**/
-	var resultId : String;
+	extern var resultId : String;
 }

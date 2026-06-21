@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Completion client capabilities
 **/
-@:structInit extern class CompletionClientCapabilities {
+@:structInit class CompletionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItem: (lsp.ClientCompletionItemOptions)?
@@ -21,13 +21,15 @@ package nvim.type.lsp;
 		The client supports the following `CompletionItem` specific
 		capabilities.
 	**/
-	var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
+	@:optional
+	extern var completionItem : Null<nvim.type.lsp.ClientCompletionItemOptions>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionItemKind: (lsp.ClientCompletionItemOptionsKind)?
 		```
 	**/
-	var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
+	@:optional
+	extern var completionItemKind : Null<nvim.type.lsp.ClientCompletionItemOptionsKind>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.completionList: (lsp.CompletionListCapabilities)?
@@ -46,7 +48,8 @@ package nvim.type.lsp;
 		capabilities.
 		
 	**/
-	var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
+	@:optional
+	extern var completionList : Null<nvim.type.lsp.CompletionListCapabilities>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.contextSupport: boolean?
@@ -58,7 +61,8 @@ package nvim.type.lsp;
 		The client supports to send additional context information for a
 		`textDocument/completion` request.
 	**/
-	var contextSupport : Null<Bool>;
+	@:optional
+	extern var contextSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.dynamicRegistration: boolean?
@@ -69,7 +73,8 @@ package nvim.type.lsp;
 		
 		Whether completion supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionClientCapabilities.insertTextMode: (1|2)?
@@ -100,5 +105,6 @@ package nvim.type.lsp;
 		    | 2 -- adjustIndentation
 		```
 	**/
-	var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
+	@:optional
+	extern var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
 }

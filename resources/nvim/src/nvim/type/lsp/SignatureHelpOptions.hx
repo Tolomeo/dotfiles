@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Server Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:structInit extern class SignatureHelpOptions {
+@:structInit class SignatureHelpOptions {
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.retriggerCharacters: string[]?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		are also counted as re-trigger characters.
 		
 	**/
-	var retriggerCharacters : Null<Array<String>>;
+	@:optional
+	extern var retriggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.triggerCharacters: string[]?
@@ -35,11 +36,13 @@ package nvim.type.lsp;
 		
 		List of characters that trigger signature help automatically.
 	**/
-	var triggerCharacters : Null<Array<String>>;
+	@:optional
+	extern var triggerCharacters : Null<Array<String>>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

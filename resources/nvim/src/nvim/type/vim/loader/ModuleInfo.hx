@@ -5,7 +5,7 @@ package nvim.type.vim.loader;
 	(class) vim.loader.ModuleInfo
 	```
 **/
-@:structInit extern class ModuleInfo {
+@:structInit class ModuleInfo {
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modname: string
@@ -16,7 +16,7 @@ package nvim.type.vim.loader;
 		
 		 Name of the module
 	**/
-	var modname : String;
+	extern var modname : String;
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.modpath: string
@@ -28,7 +28,7 @@ package nvim.type.vim.loader;
 		
 		 Path of the module
 	**/
-	var modpath : String;
+	extern var modpath : String;
 	/**
 		```lua
 		(field) vim.loader.ModuleInfo.stat: (uv.fs_stat.result)?
@@ -39,5 +39,6 @@ package nvim.type.vim.loader;
 		
 		 The fs_stat of the module path. Won't be returned for `modname="*"`
 	**/
-	var stat : Null<nvim.type.uv.fs_stat.Result>;
+	@:optional
+	extern var stat : Null<nvim.type.uv.fs_stat.Result>;
 }

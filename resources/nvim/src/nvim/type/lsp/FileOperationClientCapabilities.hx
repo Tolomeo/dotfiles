@@ -13,7 +13,7 @@ package nvim.type.lsp;
 	like renaming a file in the UI.
 	
 **/
-@:structInit extern class FileOperationClientCapabilities {
+@:structInit class FileOperationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didCreate: boolean?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		
 		The client has support for sending didCreateFiles notifications.
 	**/
-	var didCreate : Null<Bool>;
+	@:optional
+	extern var didCreate : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didDelete: boolean?
@@ -35,7 +36,8 @@ package nvim.type.lsp;
 		
 		The client has support for sending didDeleteFiles notifications.
 	**/
-	var didDelete : Null<Bool>;
+	@:optional
+	extern var didDelete : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didRename: boolean?
@@ -46,7 +48,8 @@ package nvim.type.lsp;
 		
 		The client has support for sending didRenameFiles notifications.
 	**/
-	var didRename : Null<Bool>;
+	@:optional
+	extern var didRename : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.dynamicRegistration: boolean?
@@ -57,7 +60,8 @@ package nvim.type.lsp;
 		
 		Whether the client supports dynamic registration for file requests/notifications.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willCreate: boolean?
@@ -68,7 +72,8 @@ package nvim.type.lsp;
 		
 		The client has support for sending willCreateFiles requests.
 	**/
-	var willCreate : Null<Bool>;
+	@:optional
+	extern var willCreate : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willDelete: boolean?
@@ -79,7 +84,8 @@ package nvim.type.lsp;
 		
 		The client has support for sending willDeleteFiles requests.
 	**/
-	var willDelete : Null<Bool>;
+	@:optional
+	extern var willDelete : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willRename: boolean?
@@ -90,5 +96,6 @@ package nvim.type.lsp;
 		
 		The client has support for sending willRenameFiles requests.
 	**/
-	var willRename : Null<Bool>;
+	@:optional
+	extern var willRename : Null<Bool>;
 }

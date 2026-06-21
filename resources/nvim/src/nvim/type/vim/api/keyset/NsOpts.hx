@@ -5,11 +5,12 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.ns_opts
 	```
 **/
-@:structInit extern class NsOpts {
+@:structInit class NsOpts {
 	/**
 		```lua
 		(field) vim.api.keyset.ns_opts.wins: any[]?
 		```
 	**/
-	var wins : Null<Array<Any>>;
+	@:optional
+	extern var wins : Null<Array<Any>>;
 }

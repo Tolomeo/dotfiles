@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Client Capabilities for a {@link SignatureHelpRequest}.
 **/
-@:structInit extern class SignatureHelpClientCapabilities {
+@:structInit class SignatureHelpClientCapabilities {
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.contextSupport: boolean?
@@ -24,7 +24,8 @@ package nvim.type.lsp;
 		`SignatureHelpOptions`.
 		
 	**/
-	var contextSupport : Null<Bool>;
+	@:optional
+	extern var contextSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.dynamicRegistration: boolean?
@@ -35,7 +36,8 @@ package nvim.type.lsp;
 		
 		Whether signature help supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SignatureHelpClientCapabilities.signatureInformation: (lsp.ClientSignatureInformationOptions)?
@@ -47,5 +49,6 @@ package nvim.type.lsp;
 		The client supports the following `SignatureInformation`
 		specific properties.
 	**/
-	var signatureInformation : Null<nvim.type.lsp.ClientSignatureInformationOptions>;
+	@:optional
+	extern var signatureInformation : Null<nvim.type.lsp.ClientSignatureInformationOptions>;
 }

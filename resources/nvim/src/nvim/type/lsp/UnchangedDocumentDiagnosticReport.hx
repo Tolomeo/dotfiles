@@ -11,7 +11,7 @@ package nvim.type.lsp;
 	report is still accurate.
 	
 **/
-@:structInit extern class UnchangedDocumentDiagnosticReport {
+@:structInit class UnchangedDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.UnchangedDocumentDiagnosticReport.kind: "unchanged"
@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		only return `unchanged` if result ids are
 		provided.
 	**/
-	var kind : String;
+	extern var kind : String;
 	/**
 		```lua
 		(field) lsp.UnchangedDocumentDiagnosticReport.resultId: string
@@ -37,5 +37,5 @@ package nvim.type.lsp;
 		A result id which will be sent on the next
 		diagnostic request for the same document.
 	**/
-	var resultId : String;
+	extern var resultId : String;
 }

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A diagnostic report with a full set of problems.
 	
 **/
-@:structInit extern class FullDocumentDiagnosticReport {
+@:structInit class FullDocumentDiagnosticReport {
 	/**
 		```lua
 		(field) lsp.FullDocumentDiagnosticReport.items: lsp.Diagnostic[]
@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The actual items.
 	**/
-	var items : Array<nvim.type.lsp.Diagnostic>;
+	extern var items : Array<nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.FullDocumentDiagnosticReport.kind: "full"
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 		A full document diagnostic report.
 	**/
-	var kind : String;
+	extern var kind : String;
 	/**
 		```lua
 		(field) lsp.FullDocumentDiagnosticReport.resultId: string?
@@ -45,5 +45,6 @@ package nvim.type.lsp;
 		be sent on the next diagnostic request for the
 		same document.
 	**/
-	var resultId : Null<String>;
+	@:optional
+	extern var resultId : Null<String>;
 }

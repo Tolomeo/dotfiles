@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint options used during static registration.
 	
 **/
-@:structInit extern class InlayHintOptions {
+@:structInit class InlayHintOptions {
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.resolveProvider: boolean?
@@ -22,11 +22,13 @@ package nvim.type.lsp;
 		The server provides support to resolve additional
 		information for an inlay hint item.
 	**/
-	var resolveProvider : Null<Bool>;
+	@:optional
+	extern var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.workDoneProgress: boolean?
 		```
 	**/
-	var workDoneProgress : Null<Bool>;
+	@:optional
+	extern var workDoneProgress : Null<Bool>;
 }

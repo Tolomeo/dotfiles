@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.VirtualText
 	```
 **/
-@:structInit extern class VirtualText {
+@:structInit class VirtualText {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.current_line: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.diagnostic.opts;
 		 Only show diagnostics for the current line.
 		 (default `false`)
 	**/
-	var current_line : Null<Bool>;
+	@:optional
+	extern var current_line : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.format: fun(diagnostic: vim.Diagnostic):string??
@@ -44,7 +45,8 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string?
 		```
 	**/
-	var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
+	@:optional
+	extern var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.hl_mode: ('blend'|'combine'|'replace')?
@@ -55,7 +57,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
-	var hl_mode : Null<String>;
+	@:optional
+	extern var hl_mode : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.prefix: (string|fun(diagnostic: vim.Diagnostic, i: integer, total: integer):string)?
@@ -76,7 +79,8 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string
 		```
 	**/
-	var prefix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> String>>;
+	@:optional
+	extern var prefix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -96,7 +100,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.source: (boolean|"if_many")?
@@ -109,7 +114,8 @@ package nvim.type.vim.diagnostic.opts;
 		 show sources if there is more than one diagnostic source in the buffer.
 		 Otherwise, any truthy value means to always show the diagnostic source.
 	**/
-	var source : Null<haxe.extern.EitherType<Bool, String>>;
+	@:optional
+	extern var source : Null<haxe.extern.EitherType<Bool, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.spacing: integer?
@@ -120,7 +126,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 Amount of empty spaces inserted at the beginning of the virtual text.
 	**/
-	var spacing : Null<Int>;
+	@:optional
+	extern var spacing : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.suffix: (string|fun(diagnostic: vim.Diagnostic):string)?
@@ -139,7 +146,8 @@ package nvim.type.vim.diagnostic.opts;
 		  -> string
 		```
 	**/
-	var suffix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic) -> String>>;
+	@:optional
+	extern var suffix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic) -> String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.virt_text: [string, any][]?
@@ -150,7 +158,7 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
-	var virt_text : Dynamic;
+	extern var virt_text : Dynamic;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.virt_text_hide: boolean?
@@ -161,7 +169,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
-	var virt_text_hide : Null<Bool>;
+	@:optional
+	extern var virt_text_hide : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.virt_text_pos: ('eol'|'eol_right_align'|'inline'|'overlay'|'right_align')?
@@ -172,7 +181,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
-	var virt_text_pos : Null<String>;
+	@:optional
+	extern var virt_text_pos : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.virt_text_win_col: integer?
@@ -183,5 +193,6 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 See |nvim_buf_set_extmark()|.
 	**/
-	var virt_text_win_col : Null<Int>;
+	@:optional
+	extern var virt_text_win_col : Null<Int>;
 }

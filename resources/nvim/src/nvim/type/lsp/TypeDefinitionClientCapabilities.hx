@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Since 3.6.0
 **/
-@:structInit extern class TypeDefinitionClientCapabilities {
+@:structInit class TypeDefinitionClientCapabilities {
 	/**
 		```lua
 		(field) lsp.TypeDefinitionClientCapabilities.dynamicRegistration: boolean?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		the client supports the new `TypeDefinitionRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TypeDefinitionClientCapabilities.linkSupport: boolean?
@@ -35,5 +36,6 @@ package nvim.type.lsp;
 		
 		Since 3.14.0
 	**/
-	var linkSupport : Null<Bool>;
+	@:optional
+	extern var linkSupport : Null<Bool>;
 }

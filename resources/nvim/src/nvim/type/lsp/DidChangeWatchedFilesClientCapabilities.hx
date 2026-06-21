@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DidChangeWatchedFilesClientCapabilities
 	```
 **/
-@:structInit extern class DidChangeWatchedFilesClientCapabilities {
+@:structInit class DidChangeWatchedFilesClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DidChangeWatchedFilesClientCapabilities.dynamicRegistration: boolean?
@@ -18,7 +18,8 @@ package nvim.type.lsp;
 		that the current protocol doesn't support static configuration for file changes
 		from the server side.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DidChangeWatchedFilesClientCapabilities.relativePatternSupport: boolean?
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		or not.
 		
 	**/
-	var relativePatternSupport : Null<Bool>;
+	@:optional
+	extern var relativePatternSupport : Null<Bool>;
 }

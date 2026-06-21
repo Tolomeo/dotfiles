@@ -5,6 +5,6 @@ package nvim.type.vim.fn.winlayout;
 	(class) vim.fn.winlayout.branch
 	```
 **/
-@:structInit extern class Branch {
+@:structInit class Branch {
 
 }

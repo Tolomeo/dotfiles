@@ -5,7 +5,7 @@ package nvim.type;
 	(field) TSQueryInfo.patterns: table<integer, (string|integer)[][]>
 	```
 **/
-@:structInit extern class Patterns {
+@:structInit class Patterns {
 
 }
 
@@ -14,11 +14,11 @@ package nvim.type;
 	(class) TSQueryInfo
 	```
 **/
-@:structInit extern class TSQueryInfo {
+@:structInit class TSQueryInfo {
 	/**
 		```lua
 		(field) TSQueryInfo.captures: string[]
 		```
 	**/
-	var captures : Array<String>;
+	extern var captures : Array<String>;
 }

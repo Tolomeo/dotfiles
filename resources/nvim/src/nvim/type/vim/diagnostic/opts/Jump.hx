@@ -5,7 +5,7 @@ package nvim.type.vim.diagnostic.opts;
 	(class) vim.diagnostic.Opts.Jump
 	```
 **/
-@:structInit extern class Jump {
+@:structInit class Jump {
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.float: (boolean|vim.diagnostic.Opts.Float)?
@@ -17,7 +17,8 @@ package nvim.type.vim.diagnostic.opts;
 		 Default value of the {float} parameter of |vim.diagnostic.jump()|.
 		 (default: false)
 	**/
-	var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
+	@:optional
+	extern var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -36,7 +37,8 @@ package nvim.type.vim.diagnostic.opts;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Jump.wrap: boolean?
@@ -48,5 +50,6 @@ package nvim.type.vim.diagnostic.opts;
 		 Default value of the {wrap} parameter of |vim.diagnostic.jump()|.
 		 (default: true)
 	**/
-	var wrap : Null<Bool>;
+	@:optional
+	extern var wrap : Null<Bool>;
 }

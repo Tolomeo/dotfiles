@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.buf.code_action;
 	(class) vim.lsp.buf.code_action.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.apply: boolean?
@@ -17,7 +17,8 @@ package nvim.type.vim.lsp.buf.code_action;
 		 When set to `true`, and there is just one remaining action
 		 (after filtering), the action is applied without user query.
 	**/
-	var apply : Null<Bool>;
+	@:optional
+	extern var apply : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.context: (lsp.CodeActionContext)?
@@ -40,7 +41,8 @@ package nvim.type.vim.lsp.buf.code_action;
 		     or `quickfix`.
 		   - {triggerKind}? (`integer`) The reason why code actions were requested.
 	**/
-	var context : Null<nvim.type.lsp.CodeActionContext>;
+	@:optional
+	extern var context : Null<nvim.type.lsp.CodeActionContext>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.filter: (fun(x: lsp.CodeAction|lsp.Command):boolean)?
@@ -58,7 +60,8 @@ package nvim.type.vim.lsp.buf.code_action;
 		  -> boolean
 		```
 	**/
-	var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
+	@:optional
+	extern var filter : Null<(x:haxe.extern.EitherType<nvim.type.lsp.CodeAction, nvim.type.lsp.Command>) -> Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.code_action.Opts.range: { start: integer[], end: integer[] }?
@@ -72,5 +75,6 @@ package nvim.type.vim.lsp.buf.code_action;
 		 Table must contain `start` and `end` keys with {row,col} tuples
 		 using mark-like indexing. See |api-indexing|
 	**/
-	var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
+	@:optional
+	extern var range : Null<{ var start : Array<Int>; var end : Array<Int>; }>;
 }

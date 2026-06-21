@@ -5,65 +5,75 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.redraw
 	```
 **/
-@:structInit extern class Redraw {
+@:structInit class Redraw {
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.buf: integer?
 		```
 	**/
-	var buf : Null<Int>;
+	@:optional
+	extern var buf : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.cursor: boolean?
 		```
 	**/
-	var cursor : Null<Bool>;
+	@:optional
+	extern var cursor : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.flush: boolean?
 		```
 	**/
-	var flush : Null<Bool>;
+	@:optional
+	extern var flush : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.range: any[]?
 		```
 	**/
-	var range : Null<Array<Any>>;
+	@:optional
+	extern var range : Null<Array<Any>>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statuscolumn: boolean?
 		```
 	**/
-	var statuscolumn : Null<Bool>;
+	@:optional
+	extern var statuscolumn : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statusline: boolean?
 		```
 	**/
-	var statusline : Null<Bool>;
+	@:optional
+	extern var statusline : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.tabline: boolean?
 		```
 	**/
-	var tabline : Null<Bool>;
+	@:optional
+	extern var tabline : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.valid: boolean?
 		```
 	**/
-	var valid : Null<Bool>;
+	@:optional
+	extern var valid : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.win: integer?
 		```
 	**/
-	var win : Null<Int>;
+	@:optional
+	extern var win : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.winbar: boolean?
 		```
 	**/
-	var winbar : Null<Bool>;
+	@:optional
+	extern var winbar : Null<Bool>;
 }

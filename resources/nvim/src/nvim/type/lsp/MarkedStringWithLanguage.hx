@@ -5,17 +5,17 @@ package nvim.type.lsp;
 	(class) lsp.MarkedStringWithLanguage
 	```
 **/
-@:structInit extern class MarkedStringWithLanguage {
+@:structInit class MarkedStringWithLanguage {
 	/**
 		```lua
 		(field) lsp.MarkedStringWithLanguage.language: string
 		```
 	**/
-	var language : String;
+	extern var language : String;
 	/**
 		```lua
 		(field) lsp.MarkedStringWithLanguage.value: string
 		```
 	**/
-	var value : String;
+	extern var value : String;
 }

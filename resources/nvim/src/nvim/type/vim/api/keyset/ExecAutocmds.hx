@@ -5,35 +5,40 @@ package nvim.type.vim.api.keyset;
 	(class) vim.api.keyset.exec_autocmds
 	```
 **/
-@:structInit extern class ExecAutocmds {
+@:structInit class ExecAutocmds {
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.buffer: integer?
 		```
 	**/
-	var buffer : Null<Int>;
+	@:optional
+	extern var buffer : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.data: any
 		```
 	**/
-	var data : Null<Any>;
+	@:optional
+	extern var data : Null<Any>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.group: (string|integer)?
 		```
 	**/
-	var group : Null<haxe.extern.EitherType<Int, String>>;
+	@:optional
+	extern var group : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.modeline: boolean?
 		```
 	**/
-	var modeline : Null<Bool>;
+	@:optional
+	extern var modeline : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.exec_autocmds.pattern: (string|string[])?
 		```
 	**/
-	var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
+	@:optional
+	extern var pattern : Null<haxe.extern.EitherType<String, Array<String>>>;
 }

@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Inlay hint client capabilities.
 	
 **/
-@:structInit extern class InlayHintClientCapabilities {
+@:structInit class InlayHintClientCapabilities {
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.dynamicRegistration: boolean?
@@ -21,7 +21,8 @@ package nvim.type.lsp;
 		
 		Whether inlay hints support dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.resolveSupport: (lsp.ClientInlayHintResolveOptions)?
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		Indicates which properties a client can resolve lazily on an inlay
 		hint.
 	**/
-	var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
+	@:optional
+	extern var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
 }

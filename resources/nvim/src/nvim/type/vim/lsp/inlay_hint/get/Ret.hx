@@ -5,7 +5,7 @@ package nvim.type.vim.lsp.inlay_hint.get;
 	(class) vim.lsp.inlay_hint.get.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.bufnr: integer
@@ -15,13 +15,13 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		
 		 @inlinedoc
 	**/
-	var bufnr : Int;
+	extern var bufnr : Int;
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.client_id: integer
 		```
 	**/
-	var client_id : Int;
+	extern var client_id : Int;
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.get.ret.inlay_hint: lsp.InlayHint
@@ -32,5 +32,5 @@ package nvim.type.vim.lsp.inlay_hint.get;
 		Inlay hint information.
 		
 	**/
-	var inlay_hint : nvim.type.lsp.InlayHint;
+	extern var inlay_hint : nvim.type.lsp.InlayHint;
 }

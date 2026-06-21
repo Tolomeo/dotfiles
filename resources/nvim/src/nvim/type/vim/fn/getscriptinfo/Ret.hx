@@ -5,41 +5,43 @@ package nvim.type.vim.fn.getscriptinfo;
 	(class) vim.fn.getscriptinfo.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.autoload: false
 		```
 	**/
-	var autoload : Bool;
+	extern var autoload : Bool;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.functions: string[]?
 		```
 	**/
-	var functions : Null<Array<String>>;
+	@:optional
+	extern var functions : Null<Array<String>>;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.name: string
 		```
 	**/
-	var name : String;
+	extern var name : String;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.sid: string
 		```
 	**/
-	var sid : String;
+	extern var sid : String;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.variables: table<string, any>?
 		```
 	**/
-	var variables : Null<lua.Table<String, Any>>;
+	@:optional
+	extern var variables : Null<lua.Table<String, Any>>;
 	/**
 		```lua
 		(field) vim.fn.getscriptinfo.ret.version: 1
 		```
 	**/
-	var version : Float;
+	extern var version : Float;
 }

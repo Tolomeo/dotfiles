@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The client capabilities  of a {@link CodeLensRequest}.
 **/
-@:structInit extern class CodeLensClientCapabilities {
+@:structInit class CodeLensClientCapabilities {
 	/**
 		```lua
 		(field) lsp.CodeLensClientCapabilities.dynamicRegistration: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Whether code lens supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CodeLensClientCapabilities.resolveSupport: (lsp.ClientCodeLensResolveOptions)?
@@ -33,5 +34,6 @@ package nvim.type.lsp;
 		properties via a separate `codeLens/resolve` request.
 		
 	**/
-	var resolveSupport : Null<nvim.type.lsp.ClientCodeLensResolveOptions>;
+	@:optional
+	extern var resolveSupport : Null<nvim.type.lsp.ClientCodeLensResolveOptions>;
 }

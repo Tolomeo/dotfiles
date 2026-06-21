@@ -12,7 +12,7 @@ package nvim.type.uv;
 	 `uv_req_t` is the base type for all libuv request types.
 	
 **/
-@:structInit extern class UvReqT {
+@:structInit class UvReqT {
 	/**
 		```lua
 		(method) uv.uv_req_t:cancel()
@@ -117,7 +117,7 @@ package nvim.type.uv;
 		    | "UNKNOWN" -- unknown error
 		```
 	**/
-	function cancel():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
+	extern function cancel():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, Void, Void, Void>;
 	/**
 		```lua
 		(method) uv.uv_req_t:get_type()
@@ -130,5 +130,5 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given request (e.g. `"fs"` for `uv_fs_t`)
 		 and the libuv enum integer for the request's type (`uv_req_type`).
 	**/
-	function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
+	extern function get_type():nvim.helper.Multireturn<String, Int, Void, Void, Void, Void>;
 }

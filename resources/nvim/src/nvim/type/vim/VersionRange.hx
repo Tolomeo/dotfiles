@@ -5,24 +5,25 @@ package nvim.type.vim;
 	(class) vim.VersionRange
 	```
 **/
-@:structInit extern class VersionRange {
+@:structInit class VersionRange {
 	/**
 		```lua
 		(field) vim.VersionRange.from: vim.Version
 		```
 	**/
-	var from : nvim.type.vim.Version;
+	extern var from : nvim.type.vim.Version;
 	/**
 		```lua
 		(field) vim.VersionRange.to: (vim.Version)?
 		```
 	**/
-	var to : Null<nvim.type.vim.Version>;
+	@:optional
+	extern var to : Null<nvim.type.vim.Version>;
 	/**
 		```lua
 		(method) vim.VersionRange:has(version: string|vim.Version)
 		  -> boolean
 		```
 	**/
-	function has(version:haxe.extern.EitherType<String, nvim.type.vim.Version>):Dynamic;
+	extern function has(version:haxe.extern.EitherType<String, nvim.type.vim.Version>):Dynamic;
 }

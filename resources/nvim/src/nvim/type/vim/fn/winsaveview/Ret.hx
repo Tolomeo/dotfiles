@@ -5,53 +5,53 @@ package nvim.type.vim.fn.winsaveview;
 	(class) vim.fn.winsaveview.ret
 	```
 **/
-@:structInit extern class Ret {
+@:structInit class Ret {
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.col: integer
 		```
 	**/
-	var col : Int;
+	extern var col : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.coladd: integer
 		```
 	**/
-	var coladd : Int;
+	extern var coladd : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.curswant: integer
 		```
 	**/
-	var curswant : Int;
+	extern var curswant : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.leftcol: integer
 		```
 	**/
-	var leftcol : Int;
+	extern var leftcol : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.lnum: integer
 		```
 	**/
-	var lnum : Int;
+	extern var lnum : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.skipcol: integer
 		```
 	**/
-	var skipcol : Int;
+	extern var skipcol : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.topfill: integer
 		```
 	**/
-	var topfill : Int;
+	extern var topfill : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.topline: integer
 		```
 	**/
-	var topline : Int;
+	extern var topline : Int;
 }

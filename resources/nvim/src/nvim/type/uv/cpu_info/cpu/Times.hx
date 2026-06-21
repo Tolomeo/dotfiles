@@ -5,35 +5,35 @@ package nvim.type.uv.cpu_info.cpu;
 	(class) uv.cpu_info.cpu.times
 	```
 **/
-@:structInit extern class Times {
+@:structInit class Times {
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.idle: number
 		```
 	**/
-	var idle : Float;
+	extern var idle : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.irq: number
 		```
 	**/
-	var irq : Float;
+	extern var irq : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.nice: number
 		```
 	**/
-	var nice : Float;
+	extern var nice : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.sys: number
 		```
 	**/
-	var sys : Float;
+	extern var sys : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.user: number
 		```
 	**/
-	var user : Float;
+	extern var user : Float;
 }

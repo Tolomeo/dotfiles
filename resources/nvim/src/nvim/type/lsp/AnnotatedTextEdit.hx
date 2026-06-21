@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	A special text edit with an additional change annotation.
 	
 **/
-@:structInit extern class AnnotatedTextEdit {
+@:structInit class AnnotatedTextEdit {
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.annotationId: string
@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		
 		The actual identifier of the change annotation
 	**/
-	var annotationId : nvim.type.lsp.ChangeAnnotationIdentifier;
+	extern var annotationId : nvim.type.lsp.ChangeAnnotationIdentifier;
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.newText: string
@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		The string to be inserted. For delete operations use an
 		empty string.
 	**/
-	var newText : String;
+	extern var newText : String;
 	/**
 		```lua
 		(field) lsp.AnnotatedTextEdit.range: lsp.Range
@@ -63,5 +63,5 @@ package nvim.type.lsp;
 		The range of the text document to be manipulated. To insert
 		text into a document create a range where start === end.
 	**/
-	var range : nvim.type.lsp.Range;
+	extern var range : nvim.type.lsp.Range;
 }

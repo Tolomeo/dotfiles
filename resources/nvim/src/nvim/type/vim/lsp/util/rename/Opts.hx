@@ -5,13 +5,14 @@ package nvim.type.vim.lsp.util.rename;
 	(class) vim.lsp.util.rename.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.lsp.util.rename.Opts.ignoreIfExists: boolean?
 		```
 	**/
-	var ignoreIfExists : Null<Bool>;
+	@:optional
+	extern var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.util.rename.Opts.overwrite: boolean?
@@ -21,5 +22,6 @@ package nvim.type.vim.lsp.util.rename;
 		
 		 @inlinedoc
 	**/
-	var overwrite : Null<Bool>;
+	@:optional
+	extern var overwrite : Null<Bool>;
 }

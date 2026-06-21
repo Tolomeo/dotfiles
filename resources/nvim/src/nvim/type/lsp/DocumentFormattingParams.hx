@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	The parameters of a {@link DocumentFormattingRequest}.
 **/
-@:structInit extern class DocumentFormattingParams {
+@:structInit class DocumentFormattingParams {
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.options: lsp.FormattingOptions
@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		
 		The format options.
 	**/
-	var options : nvim.type.lsp.FormattingOptions;
+	extern var options : nvim.type.lsp.FormattingOptions;
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.textDocument: lsp.TextDocumentIdentifier
@@ -39,7 +39,7 @@ package nvim.type.lsp;
 		
 		The document to format.
 	**/
-	var textDocument : nvim.type.lsp.TextDocumentIdentifier;
+	extern var textDocument : nvim.type.lsp.TextDocumentIdentifier;
 	/**
 		```lua
 		(field) lsp.DocumentFormattingParams.workDoneToken: (string|integer)?
@@ -50,5 +50,6 @@ package nvim.type.lsp;
 		
 		An optional token that a server can use to report work done progress.
 	**/
-	var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+	@:optional
+	extern var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 }

@@ -5,6 +5,6 @@ package nvim.type.vim.fn.winlayout;
 	(class) vim.fn.winlayout.empty
 	```
 **/
-@:structInit extern class Empty {
+@:structInit class Empty {
 
 }

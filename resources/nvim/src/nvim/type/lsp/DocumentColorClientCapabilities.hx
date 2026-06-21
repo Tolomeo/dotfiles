@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.DocumentColorClientCapabilities
 	```
 **/
-@:structInit extern class DocumentColorClientCapabilities {
+@:structInit class DocumentColorClientCapabilities {
 	/**
 		```lua
 		(field) lsp.DocumentColorClientCapabilities.dynamicRegistration: boolean?
@@ -18,5 +18,6 @@ package nvim.type.lsp;
 		the client supports the new `DocumentColorRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 }

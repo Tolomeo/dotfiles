@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Additional information that describes document changes.
 	
 **/
-@:structInit extern class ChangeAnnotation {
+@:structInit class ChangeAnnotation {
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.description: string?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		A human-readable string which is rendered less prominent in
 		the user interface.
 	**/
-	var description : Null<String>;
+	@:optional
+	extern var description : Null<String>;
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.label: string
@@ -34,7 +35,7 @@ package nvim.type.lsp;
 		A human-readable string describing the actual change. The string
 		is rendered prominent in the user interface.
 	**/
-	var label : String;
+	extern var label : String;
 	/**
 		```lua
 		(field) lsp.ChangeAnnotation.needsConfirmation: boolean?
@@ -46,5 +47,6 @@ package nvim.type.lsp;
 		A flag which indicates that user confirmation is needed
 		before applying the change.
 	**/
-	var needsConfirmation : Null<Bool>;
+	@:optional
+	extern var needsConfirmation : Null<Bool>;
 }

@@ -14,7 +14,7 @@ package nvim.type.vim.treesitter;
 	string represents (literal) arguments to predicate/directive. See |treesitter-predicates|
 	and |treesitter-directives| for more details.
 **/
-@:structInit extern class Patterns {
+@:structInit class Patterns {
 
 }
 
@@ -27,7 +27,7 @@ package nvim.type.vim.treesitter;
 	
 	Information for Query, see |vim.treesitter.query.parse()|
 **/
-@:structInit extern class QueryInfo {
+@:structInit class QueryInfo {
 	/**
 		```lua
 		(field) vim.treesitter.QueryInfo.captures: string[]
@@ -38,5 +38,5 @@ package nvim.type.vim.treesitter;
 		
 		List of (unique) capture names defined in query.
 	**/
-	var captures : Array<String>;
+	extern var captures : Array<String>;
 }

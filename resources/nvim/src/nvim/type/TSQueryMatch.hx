@@ -5,7 +5,7 @@ package nvim.type;
 	(class) TSQueryMatch
 	```
 **/
-@:structInit extern class TSQueryMatch {
+@:structInit class TSQueryMatch {
 	/**
 		```lua
 		(field) TSQueryMatch.captures: fun(self: TSQueryMatch):table<integer, TSNode[]>
@@ -19,7 +19,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
+	extern function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
 	/**
 		```lua
 		(method) TSQueryMatch:info()
@@ -27,5 +27,5 @@ package nvim.type;
 		  2. pattern_index: integer
 		```
 	**/
-	function info():nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
+	extern function info():nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
 }

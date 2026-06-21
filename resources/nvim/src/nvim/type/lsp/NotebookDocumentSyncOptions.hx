@@ -20,7 +20,7 @@ package nvim.type.lsp;
 	cell will be synced.
 	
 **/
-@:structInit extern class NotebookDocumentSyncOptions {
+@:structInit class NotebookDocumentSyncOptions {
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]
@@ -31,7 +31,7 @@ package nvim.type.lsp;
 		
 		The notebooks to be synced
 	**/
-	var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
+	extern var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncOptions.save: boolean?
@@ -43,5 +43,6 @@ package nvim.type.lsp;
 		Whether save notification should be forwarded to
 		the server. Will only be honored if mode === `notebook`.
 	**/
-	var save : Null<Bool>;
+	@:optional
+	extern var save : Null<Bool>;
 }

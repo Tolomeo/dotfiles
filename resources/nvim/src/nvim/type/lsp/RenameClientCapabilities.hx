@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.RenameClientCapabilities
 	```
 **/
-@:structInit extern class RenameClientCapabilities {
+@:structInit class RenameClientCapabilities {
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.dynamicRegistration: boolean?
@@ -16,7 +16,8 @@ package nvim.type.lsp;
 		
 		Whether rename supports dynamic registration.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.honorsChangeAnnotations: boolean?
@@ -32,7 +33,8 @@ package nvim.type.lsp;
 		for confirmation.
 		
 	**/
-	var honorsChangeAnnotations : Null<Bool>;
+	@:optional
+	extern var honorsChangeAnnotations : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.prepareSupport: boolean?
@@ -45,7 +47,8 @@ package nvim.type.lsp;
 		before execution.
 		
 	**/
-	var prepareSupport : Null<Bool>;
+	@:optional
+	extern var prepareSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameClientCapabilities.prepareSupportDefaultBehavior: 1?
@@ -67,5 +70,6 @@ package nvim.type.lsp;
 		    | 1 -- Identifier
 		```
 	**/
-	var prepareSupportDefaultBehavior : Null<nvim.type.lsp.PrepareSupportDefaultBehavior>;
+	@:optional
+	extern var prepareSupportDefaultBehavior : Null<nvim.type.lsp.PrepareSupportDefaultBehavior>;
 }

@@ -5,7 +5,7 @@ package nvim.type.vim.treesitter.query.add_predicate;
 	(class) vim.treesitter.query.add_predicate.Opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.all: boolean?
@@ -18,7 +18,8 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		 a list of nodes instead of a single node. Defaults to true. This option will
 		 be removed in a future release.
 	**/
-	var all : Null<Bool>;
+	@:optional
+	extern var all : Null<Bool>;
 	/**
 		```lua
 		(field) vim.treesitter.query.add_predicate.Opts.force: boolean?
@@ -30,5 +31,6 @@ package nvim.type.vim.treesitter.query.add_predicate;
 		
 		 Override an existing predicate of the same name
 	**/
-	var force : Null<Bool>;
+	@:optional
+	extern var force : Null<Bool>;
 }

@@ -5,6 +5,6 @@ package nvim.type;
 	(class) IterMod
 	```
 **/
-@:structInit extern class IterMod {
+@:structInit class IterMod {
 
 }

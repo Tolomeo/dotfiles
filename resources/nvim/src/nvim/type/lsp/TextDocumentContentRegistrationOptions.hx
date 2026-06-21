@@ -10,7 +10,7 @@ package nvim.type.lsp;
 	Text document content provider registration options.
 	
 **/
-@:structInit extern class TextDocumentContentRegistrationOptions {
+@:structInit class TextDocumentContentRegistrationOptions {
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.id: string?
@@ -22,7 +22,8 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again. See also Registration#id.
 	**/
-	var id : Null<String>;
+	@:optional
+	extern var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.schemes: string[]
@@ -33,5 +34,5 @@ package nvim.type.lsp;
 		
 		The schemes for which the server provides content.
 	**/
-	var schemes : Array<String>;
+	extern var schemes : Array<String>;
 }

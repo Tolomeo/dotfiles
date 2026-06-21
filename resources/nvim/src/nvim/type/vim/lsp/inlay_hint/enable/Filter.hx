@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.inlay_hint.enable;
 	
 	 Optional filters |kwargs|, or `nil` for all.
 **/
-@:structInit extern class Filter {
+@:structInit class Filter {
 	/**
 		```lua
 		(field) vim.lsp.inlay_hint.enable.Filter.bufnr: integer?
@@ -20,5 +20,6 @@ package nvim.type.vim.lsp.inlay_hint.enable;
 		 @inlinedoc
 		 Buffer number, or 0 for current buffer, or nil for all.
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 }

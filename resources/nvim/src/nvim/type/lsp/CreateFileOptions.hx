@@ -9,7 +9,7 @@ package nvim.type.lsp;
 	
 	Options to create a file.
 **/
-@:structInit extern class CreateFileOptions {
+@:structInit class CreateFileOptions {
 	/**
 		```lua
 		(field) lsp.CreateFileOptions.ignoreIfExists: boolean?
@@ -20,7 +20,8 @@ package nvim.type.lsp;
 		
 		Ignore if exists.
 	**/
-	var ignoreIfExists : Null<Bool>;
+	@:optional
+	extern var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CreateFileOptions.overwrite: boolean?
@@ -31,5 +32,6 @@ package nvim.type.lsp;
 		
 		Overwrite existing file. Overwrite wins over `ignoreIfExists`
 	**/
-	var overwrite : Null<Bool>;
+	@:optional
+	extern var overwrite : Null<Bool>;
 }

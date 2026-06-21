@@ -9,7 +9,7 @@ package nvim.type.vim.diagnostic;
 	
 	 A table with the following keys:
 **/
-@:structInit extern class GetOpts {
+@:structInit class GetOpts {
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.lnum: integer?
@@ -20,7 +20,8 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to those spanning the specified line number.
 	**/
-	var lnum : Null<Int>;
+	@:optional
+	extern var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.namespace: (integer|integer[])?
@@ -31,7 +32,8 @@ package nvim.type.vim.diagnostic;
 		
 		 Limit diagnostics to one or more namespaces.
 	**/
-	var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
+	@:optional
+	extern var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -50,5 +52,6 @@ package nvim.type.vim.diagnostic;
 		
 		 @nodoc
 	**/
-	var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	@:optional
+	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

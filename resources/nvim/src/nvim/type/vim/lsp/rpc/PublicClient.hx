@@ -9,7 +9,7 @@ package nvim.type.vim.lsp.rpc;
 	
 	 Client RPC object
 **/
-@:structInit extern class PublicClient {
+@:structInit class PublicClient {
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.is_closing: fun():boolean
@@ -28,7 +28,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function is_closing():Bool;
+	extern function is_closing():Bool;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.notify: fun(method: string, params: any):boolean
@@ -47,7 +47,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function notify(method:String, params:Any):Bool;
+	extern function notify(method:String, params:Any):Bool;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?
@@ -67,7 +67,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
+	extern function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.terminate: fun()
@@ -85,5 +85,5 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	function terminate():Dynamic;
+	extern function terminate():Dynamic;
 }

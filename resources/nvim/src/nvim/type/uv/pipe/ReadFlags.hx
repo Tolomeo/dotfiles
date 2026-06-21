@@ -10,11 +10,11 @@ package nvim.type.uv.pipe;
 	 uv.pipe.read_flags
 	
 **/
-@:structInit extern class ReadFlags {
+@:structInit class ReadFlags {
 	/**
 		```lua
 		(field) uv.pipe.read_flags.nonblock: boolean
 		```
 	**/
-	var nonblock : Bool;
+	extern var nonblock : Bool;
 }

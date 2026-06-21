@@ -5,7 +5,7 @@ package nvim.type.lsp;
 	(class) lsp.ImplementationClientCapabilities
 	```
 **/
-@:structInit extern class ImplementationClientCapabilities {
+@:structInit class ImplementationClientCapabilities {
 	/**
 		```lua
 		(field) lsp.ImplementationClientCapabilities.dynamicRegistration: boolean?
@@ -18,7 +18,8 @@ package nvim.type.lsp;
 		the client supports the new `ImplementationRegistrationOptions` return value
 		for the corresponding server capability as well.
 	**/
-	var dynamicRegistration : Null<Bool>;
+	@:optional
+	extern var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ImplementationClientCapabilities.linkSupport: boolean?
@@ -30,5 +31,6 @@ package nvim.type.lsp;
 		The client supports additional metadata in the form of definition links.
 		
 	**/
-	var linkSupport : Null<Bool>;
+	@:optional
+	extern var linkSupport : Null<Bool>;
 }

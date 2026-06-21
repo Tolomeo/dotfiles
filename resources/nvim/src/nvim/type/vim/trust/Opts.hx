@@ -5,7 +5,7 @@ package nvim.type.vim.trust;
 	(class) vim.trust.opts
 	```
 **/
-@:structInit extern class Opts {
+@:structInit class Opts {
 	/**
 		```lua
 		(field) vim.trust.opts.action: 'allow'|'deny'|'remove'
@@ -19,7 +19,7 @@ package nvim.type.vim.trust;
 		 - `'deny'` to add a file to the trust database and deny it,
 		 - `'remove'` to remove file from the trust database
 	**/
-	var action : String;
+	extern var action : String;
 	/**
 		```lua
 		(field) vim.trust.opts.bufnr: integer?
@@ -29,7 +29,8 @@ package nvim.type.vim.trust;
 		
 		 Buffer number to update. Mutually exclusive with {path}.
 	**/
-	var bufnr : Null<Int>;
+	@:optional
+	extern var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.trust.opts.path: string?
@@ -41,5 +42,6 @@ package nvim.type.vim.trust;
 		 Path to a file to update. Mutually exclusive with {bufnr}.
 		 Cannot be used when {action} is "allow".
 	**/
-	var path : Null<String>;
+	@:optional
+	extern var path : Null<String>;
 }
