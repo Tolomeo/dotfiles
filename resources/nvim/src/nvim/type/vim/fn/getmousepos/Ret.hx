@@ -11,41 +11,41 @@ package nvim.type.vim.fn.getmousepos;
 		(field) vim.fn.getmousepos.ret.column: integer
 		```
 	**/
-	extern var column : Int;
+	extern public var column : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.line: integer
 		```
 	**/
-	extern var line : Int;
+	extern public var line : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.screencol: integer
 		```
 	**/
-	extern var screencol : Int;
+	extern public var screencol : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.screenrow: integer
 		```
 	**/
-	extern var screenrow : Int;
+	extern public var screenrow : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.wincol: integer
 		```
 	**/
-	extern var wincol : Int;
+	extern public var wincol : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.winid: integer
 		```
 	**/
-	extern var winid : Int;
+	extern public var winid : Float;
 	/**
 		```lua
 		(field) vim.fn.getmousepos.ret.winrow: integer
 		```
 	**/
-	extern var winrow : Int;
+	extern public var winrow : Float;
 }

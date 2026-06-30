@@ -19,5 +19,5 @@ package nvim.type.lsp;
 		handle values outside its set gracefully and falls back
 		to a default value when unknown.
 	**/
-	extern var valueSet : Array<nvim.type.lsp.CodeActionKind>;
+	extern public var valueSet : lua.Table<Int, nvim.type.lsp.CodeActionKind>;
 }

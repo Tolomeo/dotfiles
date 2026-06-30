@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		Is undefined if `triggerKind !== CompletionTriggerKind.TriggerCharacter`
 	**/
 	@:optional
-	extern var triggerCharacter : Null<String>;
+	extern public var triggerCharacter : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionContext.triggerKind: 1|2|3
@@ -47,5 +47,5 @@ package nvim.type.lsp;
 		    | 3 -- TriggerForIncompleteCompletions
 		```
 	**/
-	extern var triggerKind : nvim.type.lsp.CompletionTriggerKind;
+	extern public var triggerKind : nvim.type.lsp.CompletionTriggerKind;
 }

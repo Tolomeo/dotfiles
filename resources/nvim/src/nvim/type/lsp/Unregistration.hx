@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		The id used to unregister the request or notification. Usually an id
 		provided during the register request.
 	**/
-	extern var id : String;
+	extern public var id : String;
 	/**
 		```lua
 		(field) lsp.Unregistration.method: string
@@ -32,5 +32,5 @@ package nvim.type.lsp;
 		
 		The method to unregister for.
 	**/
-	extern var method : String;
+	extern public var method : String;
 }

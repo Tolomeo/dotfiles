@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		
 		The actual items.
 	**/
-	extern var items : Array<nvim.type.lsp.Diagnostic>;
+	extern public var items : lua.Table<Int, nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.RelatedFullDocumentDiagnosticReport.kind: "full"
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 		A full document diagnostic report.
 	**/
-	extern var kind : String;
+	extern public var kind : String;
 	/**
 		```lua
 		(field) lsp.RelatedFullDocumentDiagnosticReport.relatedDocuments: table<string, lsp.FullDocumentDiagnosticReport|lsp.UnchangedDocumentDiagnosticReport>?
@@ -49,7 +49,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
+	extern public var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
 	/**
 		```lua
 		(field) lsp.RelatedFullDocumentDiagnosticReport.resultId: string?
@@ -63,5 +63,5 @@ package nvim.type.lsp;
 		same document.
 	**/
 	@:optional
-	extern var resultId : Null<String>;
+	extern public var resultId : Null<String>;
 }

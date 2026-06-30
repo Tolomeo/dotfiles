@@ -22,12 +22,12 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var rangesSupport : Null<Bool>;
+	extern public var rangesSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

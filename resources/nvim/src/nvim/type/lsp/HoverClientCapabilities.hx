@@ -18,7 +18,7 @@ package nvim.type.lsp;
 		property. The order describes the preferred format of the client.
 	**/
 	@:optional
-	extern var contentFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	extern public var contentFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.HoverClientCapabilities.dynamicRegistration: boolean?
@@ -30,5 +30,5 @@ package nvim.type.lsp;
 		Whether hover supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 }

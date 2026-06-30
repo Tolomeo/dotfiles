@@ -11,78 +11,78 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.get_option_info.allows_duplicates: boolean
 		```
 	**/
-	extern var allows_duplicates : Bool;
+	extern public var allows_duplicates : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.commalist: boolean
 		```
 	**/
-	extern var commalist : Bool;
+	extern public var commalist : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.default: boolean|string|integer
 		```
 	**/
 	@:native("default")
-	extern var default_ : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
+	extern public var default_ : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Float>>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.flaglist: boolean
 		```
 	**/
-	extern var flaglist : Bool;
+	extern public var flaglist : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.global_local: boolean
 		```
 	**/
-	extern var global_local : Bool;
+	extern public var global_local : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.last_set_chan: integer
 		```
 	**/
-	extern var last_set_chan : Int;
+	extern public var last_set_chan : Float;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.last_set_linenr: integer
 		```
 	**/
-	extern var last_set_linenr : Int;
+	extern public var last_set_linenr : Float;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.last_set_sid: integer
 		```
 	**/
-	extern var last_set_sid : Int;
+	extern public var last_set_sid : Float;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.name: string
 		```
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.scope: 'buf'|'global'|'win'
 		```
 	**/
-	extern var scope : String;
+	extern public var scope : String;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.shortname: string
 		```
 	**/
-	extern var shortname : String;
+	extern public var shortname : String;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.type: 'boolean'|'number'|'string'
 		```
 	**/
-	extern var type : String;
+	extern public var type : String;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.was_set: boolean
 		```
 	**/
-	extern var was_set : Bool;
+	extern public var was_set : Bool;
 }

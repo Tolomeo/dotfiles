@@ -39,7 +39,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	extern var data : Null<nvim.type.lsp.LSPAny>;
+	extern public var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.InlayHint.kind: (1|2)?
@@ -67,7 +67,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var kind : Null<nvim.type.lsp.InlayHintKind>;
+	extern public var kind : Null<nvim.type.lsp.InlayHintKind>;
 	/**
 		```lua
 		(field) lsp.InlayHint.label: string|lsp.InlayHintLabelPart[]
@@ -81,7 +81,7 @@ package nvim.type.lsp;
 		
 		*Note* that neither the string nor the label part can be empty.
 	**/
-	extern var label : haxe.extern.EitherType<String, Array<nvim.type.lsp.InlayHintLabelPart>>;
+	extern public var label : haxe.extern.EitherType<String, lua.Table<Int, nvim.type.lsp.InlayHintLabelPart>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingLeft: boolean?
@@ -97,7 +97,7 @@ package nvim.type.lsp;
 		to visually align/separate an inlay hint.
 	**/
 	@:optional
-	extern var paddingLeft : Null<Bool>;
+	extern public var paddingLeft : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHint.paddingRight: boolean?
@@ -113,7 +113,7 @@ package nvim.type.lsp;
 		to visually align/separate an inlay hint.
 	**/
 	@:optional
-	extern var paddingRight : Null<Bool>;
+	extern public var paddingRight : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHint.position: lsp.Position
@@ -156,7 +156,7 @@ package nvim.type.lsp;
 		If multiple hints have the same position, they will be shown in the order
 		they appear in the response.
 	**/
-	extern var position : nvim.type.lsp.Position;
+	extern public var position : nvim.type.lsp.Position;
 	/**
 		```lua
 		(field) lsp.InlayHint.textEdits: lsp.TextEdit[]?
@@ -172,7 +172,7 @@ package nvim.type.lsp;
 		hint itself is now obsolete.
 	**/
 	@:optional
-	extern var textEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	extern public var textEdits : Null<lua.Table<Int, nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.InlayHint.tooltip: (string|lsp.MarkupContent)?
@@ -209,5 +209,5 @@ package nvim.type.lsp;
 		The tooltip text when you hover over this item.
 	**/
 	@:optional
-	extern var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	extern public var tooltip : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 }

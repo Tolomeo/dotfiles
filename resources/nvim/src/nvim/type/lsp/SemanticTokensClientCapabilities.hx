@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var augmentsSyntaxTokens : Null<Bool>;
+	extern public var augmentsSyntaxTokens : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.dynamicRegistration: boolean?
@@ -39,7 +39,7 @@ package nvim.type.lsp;
 		return value for the corresponding server capability as well.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.formats: "relative"[]
@@ -50,7 +50,7 @@ package nvim.type.lsp;
 		
 		The token formats the clients supports.
 	**/
-	extern var formats : Array<nvim.type.lsp.TokenFormat>;
+	extern public var formats : lua.Table<Int, nvim.type.lsp.TokenFormat>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.multilineTokenSupport: boolean?
@@ -62,7 +62,7 @@ package nvim.type.lsp;
 		Whether the client supports tokens that can span multiple lines.
 	**/
 	@:optional
-	extern var multilineTokenSupport : Null<Bool>;
+	extern public var multilineTokenSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.overlappingTokenSupport: boolean?
@@ -74,7 +74,7 @@ package nvim.type.lsp;
 		Whether the client supports tokens that can overlap each other.
 	**/
 	@:optional
-	extern var overlappingTokenSupport : Null<Bool>;
+	extern public var overlappingTokenSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.requests: lsp.ClientSemanticTokensRequestOptions
@@ -92,7 +92,7 @@ package nvim.type.lsp;
 		range provider the client might not render a minimap correctly or might
 		even decide to not show any semantic tokens at all.
 	**/
-	extern var requests : nvim.type.lsp.ClientSemanticTokensRequestOptions;
+	extern public var requests : nvim.type.lsp.ClientSemanticTokensRequestOptions;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.serverCancelSupport: boolean?
@@ -108,7 +108,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var serverCancelSupport : Null<Bool>;
+	extern public var serverCancelSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.tokenModifiers: string[]
@@ -119,7 +119,7 @@ package nvim.type.lsp;
 		
 		The token modifiers that the client supports.
 	**/
-	extern var tokenModifiers : Array<String>;
+	extern public var tokenModifiers : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensClientCapabilities.tokenTypes: string[]
@@ -130,5 +130,5 @@ package nvim.type.lsp;
 		
 		The token types that the client supports.
 	**/
-	extern var tokenTypes : Array<String>;
+	extern public var tokenTypes : lua.Table<Int, String>;
 }

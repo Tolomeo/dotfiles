@@ -19,7 +19,7 @@ package nvim.type.lsp;
 		for the corresponding server capability as well.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DeclarationClientCapabilities.linkSupport: boolean?
@@ -31,5 +31,5 @@ package nvim.type.lsp;
 		The client supports additional metadata in the form of declaration links.
 	**/
 	@:optional
-	extern var linkSupport : Null<Bool>;
+	extern public var linkSupport : Null<Bool>;
 }

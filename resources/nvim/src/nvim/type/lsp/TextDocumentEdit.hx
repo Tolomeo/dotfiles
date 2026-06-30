@@ -27,7 +27,7 @@ package nvim.type.lsp;
 		
 		client capability.
 	**/
-	extern var edits : Array<haxe.extern.EitherType<nvim.type.lsp.TextEdit, haxe.extern.EitherType<nvim.type.lsp.AnnotatedTextEdit, nvim.type.lsp.SnippetTextEdit>>>;
+	extern public var edits : lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.TextEdit, haxe.extern.EitherType<nvim.type.lsp.AnnotatedTextEdit, nvim.type.lsp.SnippetTextEdit>>>;
 	/**
 		```lua
 		(field) lsp.TextDocumentEdit.textDocument: lsp.OptionalVersionedTextDocumentIdentifier
@@ -42,5 +42,5 @@ package nvim.type.lsp;
 		
 		The text document to change.
 	**/
-	extern var textDocument : nvim.type.lsp.OptionalVersionedTextDocumentIdentifier;
+	extern public var textDocument : nvim.type.lsp.OptionalVersionedTextDocumentIdentifier;
 }

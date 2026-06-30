@@ -12,19 +12,19 @@ package nvim.type.vim.fn.sign_unplacelist.list;
 		```
 	**/
 	@:optional
-	extern var buffer : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var buffer : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) vim.fn.sign_unplacelist.list.item.group: string?
 		```
 	**/
 	@:optional
-	extern var group : Null<String>;
+	extern public var group : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_unplacelist.list.item.id: integer?
 		```
 	**/
 	@:optional
-	extern var id : Null<Int>;
+	extern public var id : Null<Float>;
 }

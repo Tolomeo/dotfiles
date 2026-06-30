@@ -12,12 +12,12 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var details : Null<Bool>;
+	extern public var details : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmark.hl_name: boolean?
 		```
 	**/
 	@:optional
-	extern var hl_name : Null<Bool>;
+	extern public var hl_name : Null<Bool>;
 }

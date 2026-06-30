@@ -27,7 +27,7 @@ package nvim.type.lsp;
 		The server is interested in receiving didCreateFiles notifications.
 	**/
 	@:optional
-	extern var didCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var didCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didDelete: (lsp.FileOperationRegistrationOptions)?
@@ -44,7 +44,7 @@ package nvim.type.lsp;
 		The server is interested in receiving didDeleteFiles file notifications.
 	**/
 	@:optional
-	extern var didDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var didDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.didRename: (lsp.FileOperationRegistrationOptions)?
@@ -61,7 +61,7 @@ package nvim.type.lsp;
 		The server is interested in receiving didRenameFiles notifications.
 	**/
 	@:optional
-	extern var didRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var didRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willCreate: (lsp.FileOperationRegistrationOptions)?
@@ -78,7 +78,7 @@ package nvim.type.lsp;
 		The server is interested in receiving willCreateFiles requests.
 	**/
 	@:optional
-	extern var willCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var willCreate : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willDelete: (lsp.FileOperationRegistrationOptions)?
@@ -95,7 +95,7 @@ package nvim.type.lsp;
 		The server is interested in receiving willDeleteFiles file requests.
 	**/
 	@:optional
-	extern var willDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var willDelete : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 	/**
 		```lua
 		(field) lsp.FileOperationOptions.willRename: (lsp.FileOperationRegistrationOptions)?
@@ -112,5 +112,5 @@ package nvim.type.lsp;
 		The server is interested in receiving willRenameFiles requests.
 	**/
 	@:optional
-	extern var willRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
+	extern public var willRename : Null<nvim.type.lsp.FileOperationRegistrationOptions>;
 }

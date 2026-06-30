@@ -27,5 +27,5 @@ package nvim.type.lsp;
 		Capabilities specific to notebook document synchronization
 		
 	**/
-	extern var synchronization : nvim.type.lsp.NotebookDocumentSyncClientCapabilities;
+	extern public var synchronization : nvim.type.lsp.NotebookDocumentSyncClientCapabilities;
 }

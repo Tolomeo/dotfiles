@@ -18,5 +18,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var relativePatternSupport : Null<Bool>;
+	extern public var relativePatternSupport : Null<Bool>;
 }

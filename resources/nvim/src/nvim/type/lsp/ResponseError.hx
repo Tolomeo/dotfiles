@@ -11,18 +11,18 @@ package nvim.type.lsp;
 		(field) lsp.ResponseError.code: integer
 		```
 	**/
-	extern var code : Int;
+	extern public var code : Float;
 	/**
 		```lua
 		(field) lsp.ResponseError.data: boolean|string|number|table|table[]|nil
 		```
 	**/
 	@:optional
-	extern var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<Array<lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
+	extern public var data : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table<Int, lua.Table.AnyTable>, lua.Table.AnyTable>>>>>;
 	/**
 		```lua
 		(field) lsp.ResponseError.message: string
 		```
 	**/
-	extern var message : String;
+	extern public var message : String;
 }

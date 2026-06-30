@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		The command this code lens represents.
 	**/
 	@:optional
-	extern var command : Null<nvim.type.lsp.Command>;
+	extern public var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.CodeLens.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -61,7 +61,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	extern var data : Null<nvim.type.lsp.LSPAny>;
+	extern public var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.CodeLens.range: lsp.Range
@@ -86,5 +86,5 @@ package nvim.type.lsp;
 		
 		The range in which this code lens is valid. Should only span a single line.
 	**/
-	extern var range : nvim.type.lsp.Range;
+	extern public var range : nvim.type.lsp.Range;
 }

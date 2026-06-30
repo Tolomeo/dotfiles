@@ -12,7 +12,7 @@ package nvim.type.vim.lsp.util.rename;
 		```
 	**/
 	@:optional
-	extern var ignoreIfExists : Null<Bool>;
+	extern public var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.util.rename.Opts.overwrite: boolean?
@@ -23,5 +23,5 @@ package nvim.type.vim.lsp.util.rename;
 		 @inlinedoc
 	**/
 	@:optional
-	extern var overwrite : Null<Bool>;
+	extern public var overwrite : Null<Bool>;
 }

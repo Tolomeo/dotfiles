@@ -22,5 +22,5 @@ package nvim.type.lsp;
 		Text document content provider supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 }

@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		for the corresponding server capability as well.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.TypeDefinitionClientCapabilities.linkSupport: boolean?
@@ -37,5 +37,5 @@ package nvim.type.lsp;
 		Since 3.14.0
 	**/
 	@:optional
-	extern var linkSupport : Null<Bool>;
+	extern public var linkSupport : Null<Bool>;
 }

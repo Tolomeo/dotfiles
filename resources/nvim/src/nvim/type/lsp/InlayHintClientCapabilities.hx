@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		Whether inlay hints support dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintClientCapabilities.resolveSupport: (lsp.ClientInlayHintResolveOptions)?
@@ -35,5 +35,5 @@ package nvim.type.lsp;
 		hint.
 	**/
 	@:optional
-	extern var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
+	extern public var resolveSupport : Null<nvim.type.lsp.ClientInlayHintResolveOptions>;
 }

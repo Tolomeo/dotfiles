@@ -16,7 +16,7 @@ package nvim.type.lsp;
 		
 		The token modifiers a server uses.
 	**/
-	extern var tokenModifiers : Array<String>;
+	extern public var tokenModifiers : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) lsp.SemanticTokensLegend.tokenTypes: string[]
@@ -27,5 +27,5 @@ package nvim.type.lsp;
 		
 		The token types a server uses.
 	**/
-	extern var tokenTypes : Array<String>;
+	extern public var tokenTypes : lua.Table<Int, String>;
 }

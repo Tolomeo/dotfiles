@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		the request again. See also Registration#id.
 	**/
 	@:optional
-	extern var id : Null<String>;
+	extern public var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.TextDocumentContentRegistrationOptions.schemes: string[]
@@ -34,5 +34,5 @@ package nvim.type.lsp;
 		
 		The schemes for which the server provides content.
 	**/
-	extern var schemes : Array<String>;
+	extern public var schemes : lua.Table<Int, String>;
 }

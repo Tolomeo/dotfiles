@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		The client has support for sending didCreateFiles notifications.
 	**/
 	@:optional
-	extern var didCreate : Null<Bool>;
+	extern public var didCreate : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didDelete: boolean?
@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		The client has support for sending didDeleteFiles notifications.
 	**/
 	@:optional
-	extern var didDelete : Null<Bool>;
+	extern public var didDelete : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.didRename: boolean?
@@ -49,7 +49,7 @@ package nvim.type.lsp;
 		The client has support for sending didRenameFiles notifications.
 	**/
 	@:optional
-	extern var didRename : Null<Bool>;
+	extern public var didRename : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.dynamicRegistration: boolean?
@@ -61,7 +61,7 @@ package nvim.type.lsp;
 		Whether the client supports dynamic registration for file requests/notifications.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willCreate: boolean?
@@ -73,7 +73,7 @@ package nvim.type.lsp;
 		The client has support for sending willCreateFiles requests.
 	**/
 	@:optional
-	extern var willCreate : Null<Bool>;
+	extern public var willCreate : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willDelete: boolean?
@@ -85,7 +85,7 @@ package nvim.type.lsp;
 		The client has support for sending willDeleteFiles requests.
 	**/
 	@:optional
-	extern var willDelete : Null<Bool>;
+	extern public var willDelete : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.FileOperationClientCapabilities.willRename: boolean?
@@ -97,5 +97,5 @@ package nvim.type.lsp;
 		The client has support for sending willRenameFiles requests.
 	**/
 	@:optional
-	extern var willRename : Null<Bool>;
+	extern public var willRename : Null<Bool>;
 }

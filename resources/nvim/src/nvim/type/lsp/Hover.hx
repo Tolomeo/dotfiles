@@ -59,7 +59,7 @@ package nvim.type.lsp;
 		
 		Note that markdown strings will be sanitized - that means html will be escaped.
 	**/
-	extern var contents : haxe.extern.EitherType<nvim.type.lsp.MarkupContent, haxe.extern.EitherType<nvim.type.lsp.MarkedString, Array<nvim.type.lsp.MarkedString>>>;
+	extern public var contents : haxe.extern.EitherType<nvim.type.lsp.MarkupContent, haxe.extern.EitherType<nvim.type.lsp.MarkedString, lua.Table<Int, nvim.type.lsp.MarkedString>>>;
 	/**
 		```lua
 		(field) lsp.Hover.range: (lsp.Range)?
@@ -86,5 +86,5 @@ package nvim.type.lsp;
 		visualize the hover, e.g. by changing the background color.
 	**/
 	@:optional
-	extern var range : Null<nvim.type.lsp.Range>;
+	extern public var range : Null<nvim.type.lsp.Range>;
 }

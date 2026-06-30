@@ -11,29 +11,29 @@ package nvim.type.uv.cpu_info.cpu;
 		(field) uv.cpu_info.cpu.times.idle: number
 		```
 	**/
-	extern var idle : Float;
+	extern public var idle : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.irq: number
 		```
 	**/
-	extern var irq : Float;
+	extern public var irq : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.nice: number
 		```
 	**/
-	extern var nice : Float;
+	extern public var nice : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.sys: number
 		```
 	**/
-	extern var sys : Float;
+	extern public var sys : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times.user: number
 		```
 	**/
-	extern var user : Float;
+	extern public var user : Float;
 }

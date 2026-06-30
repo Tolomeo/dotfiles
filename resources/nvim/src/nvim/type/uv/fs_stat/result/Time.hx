@@ -11,11 +11,11 @@ package nvim.type.uv.fs_stat.result;
 		(field) uv.fs_stat.result.time.nsec: integer
 		```
 	**/
-	extern var nsec : Int;
+	extern public var nsec : Float;
 	/**
 		```lua
 		(field) uv.fs_stat.result.time.sec: integer
 		```
 	**/
-	extern var sec : Int;
+	extern public var sec : Float;
 }

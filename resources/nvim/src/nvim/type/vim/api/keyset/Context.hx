@@ -12,5 +12,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var types : Null<Array<String>>;
+	extern public var types : Null<lua.Table<Int, String>>;
 }

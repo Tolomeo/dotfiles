@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		insert an unqualified type).
 	**/
 	@:optional
-	extern var additionalTextEdits : Null<Array<nvim.type.lsp.TextEdit>>;
+	extern public var additionalTextEdits : Null<lua.Table<Int, nvim.type.lsp.TextEdit>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.command: (lsp.Command)?
@@ -49,7 +49,7 @@ package nvim.type.lsp;
 		{@link CompletionItem.additionalTextEdits additionalTextEdits}-property.
 	**/
 	@:optional
-	extern var command : Null<nvim.type.lsp.Command>;
+	extern public var command : Null<nvim.type.lsp.Command>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.commitCharacters: string[]?
@@ -63,7 +63,7 @@ package nvim.type.lsp;
 		characters will be ignored.
 	**/
 	@:optional
-	extern var commitCharacters : Null<Array<String>>;
+	extern public var commitCharacters : Null<lua.Table<Int, String>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -92,7 +92,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	extern var data : Null<nvim.type.lsp.LSPAny>;
+	extern public var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.deprecated: boolean?
@@ -104,7 +104,7 @@ package nvim.type.lsp;
 		Indicates if this item is deprecated.
 	**/
 	@:optional
-	extern var deprecated : Null<Bool>;
+	extern public var deprecated : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.detail: string?
@@ -117,7 +117,7 @@ package nvim.type.lsp;
 		about this item, like type or symbol information.
 	**/
 	@:optional
-	extern var detail : Null<String>;
+	extern public var detail : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.documentation: (string|lsp.MarkupContent)?
@@ -154,7 +154,7 @@ package nvim.type.lsp;
 		A human-readable string that represents a doc-comment.
 	**/
 	@:optional
-	extern var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
+	extern public var documentation : Null<haxe.extern.EitherType<String, nvim.type.lsp.MarkupContent>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.filterText: string?
@@ -168,7 +168,7 @@ package nvim.type.lsp;
 		is used.
 	**/
 	@:optional
-	extern var filterText : Null<String>;
+	extern public var filterText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertText: string?
@@ -190,7 +190,7 @@ package nvim.type.lsp;
 		side interpretation.
 	**/
 	@:optional
-	extern var insertText : Null<String>;
+	extern public var insertText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertTextFormat: (1|2)?
@@ -222,7 +222,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var insertTextFormat : Null<nvim.type.lsp.InsertTextFormat>;
+	extern public var insertTextFormat : Null<nvim.type.lsp.InsertTextFormat>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.insertTextMode: (1|2)?
@@ -254,7 +254,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
+	extern public var insertTextMode : Null<nvim.type.lsp.InsertTextMode>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.kind: (1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|3|4|5|6|7|8|9)?
@@ -303,7 +303,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var kind : Null<nvim.type.lsp.CompletionItemKind>;
+	extern public var kind : Null<nvim.type.lsp.CompletionItemKind>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.label: string
@@ -320,7 +320,7 @@ package nvim.type.lsp;
 		If label details are provided the label itself should
 		be an unqualified name of the completion item.
 	**/
-	extern var label : String;
+	extern public var label : String;
 	/**
 		```lua
 		(field) lsp.CompletionItem.labelDetails: (lsp.CompletionItemLabelDetails)?
@@ -338,7 +338,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var labelDetails : Null<nvim.type.lsp.CompletionItemLabelDetails>;
+	extern public var labelDetails : Null<nvim.type.lsp.CompletionItemLabelDetails>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.preselect: boolean?
@@ -354,7 +354,7 @@ package nvim.type.lsp;
 		item of those that match best is selected.
 	**/
 	@:optional
-	extern var preselect : Null<Bool>;
+	extern public var preselect : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.sortText: string?
@@ -368,7 +368,7 @@ package nvim.type.lsp;
 		is used.
 	**/
 	@:optional
-	extern var sortText : Null<String>;
+	extern public var sortText : Null<String>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.tags: 1[]?
@@ -381,7 +381,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.CompletionItemTag>>;
+	extern public var tags : Null<lua.Table<Int, nvim.type.lsp.CompletionItemTag>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.textEdit: (lsp.InsertReplaceEdit|lsp.TextEdit)?
@@ -420,7 +420,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var textEdit : Null<haxe.extern.EitherType<nvim.type.lsp.TextEdit, nvim.type.lsp.InsertReplaceEdit>>;
+	extern public var textEdit : Null<haxe.extern.EitherType<nvim.type.lsp.TextEdit, nvim.type.lsp.InsertReplaceEdit>>;
 	/**
 		```lua
 		(field) lsp.CompletionItem.textEditText: string?
@@ -440,5 +440,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var textEditText : Null<String>;
+	extern public var textEditText : Null<String>;
 }

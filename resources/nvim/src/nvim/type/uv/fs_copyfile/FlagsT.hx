@@ -11,17 +11,17 @@ package nvim.type.uv.fs_copyfile;
 		(field) uv.fs_copyfile.flags_t.excl: boolean
 		```
 	**/
-	extern var excl : Bool;
+	extern public var excl : Bool;
 	/**
 		```lua
 		(field) uv.fs_copyfile.flags_t.ficlone: boolean
 		```
 	**/
-	extern var ficlone : Bool;
+	extern public var ficlone : Bool;
 	/**
 		```lua
 		(field) uv.fs_copyfile.flags_t.ficlone_force: boolean
 		```
 	**/
-	extern var ficlone_force : Bool;
+	extern public var ficlone_force : Bool;
 }

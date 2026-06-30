@@ -16,5 +16,5 @@ package nvim.type.uv.tcp_bind;
 		(field) uv.tcp_bind.flags.ipv6only: boolean
 		```
 	**/
-	extern var ipv6only : Bool;
+	extern public var ipv6only : Bool;
 }

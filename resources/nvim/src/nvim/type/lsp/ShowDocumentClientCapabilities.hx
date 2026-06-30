@@ -22,5 +22,5 @@ package nvim.type.lsp;
 		The client has support for the showDocument
 		request.
 	**/
-	extern var support : Bool;
+	extern public var support : Bool;
 }

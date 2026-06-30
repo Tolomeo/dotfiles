@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		'workspace/applyEdit'
 	**/
 	@:optional
-	extern var applyEdit : Null<Bool>;
+	extern public var applyEdit : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.codeLens: (lsp.CodeLensWorkspaceClientCapabilities)?
@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var codeLens : Null<nvim.type.lsp.CodeLensWorkspaceClientCapabilities>;
+	extern public var codeLens : Null<nvim.type.lsp.CodeLensWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.configuration: boolean?
@@ -50,7 +50,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var configuration : Null<Bool>;
+	extern public var configuration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.diagnostics: (lsp.DiagnosticWorkspaceClientCapabilities)?
@@ -69,7 +69,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var diagnostics : Null<nvim.type.lsp.DiagnosticWorkspaceClientCapabilities>;
+	extern public var diagnostics : Null<nvim.type.lsp.DiagnosticWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.didChangeConfiguration: (lsp.DidChangeConfigurationClientCapabilities)?
@@ -81,7 +81,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `workspace/didChangeConfiguration` notification.
 	**/
 	@:optional
-	extern var didChangeConfiguration : Null<nvim.type.lsp.DidChangeConfigurationClientCapabilities>;
+	extern public var didChangeConfiguration : Null<nvim.type.lsp.DidChangeConfigurationClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.didChangeWatchedFiles: (lsp.DidChangeWatchedFilesClientCapabilities)?
@@ -93,7 +93,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `workspace/didChangeWatchedFiles` notification.
 	**/
 	@:optional
-	extern var didChangeWatchedFiles : Null<nvim.type.lsp.DidChangeWatchedFilesClientCapabilities>;
+	extern public var didChangeWatchedFiles : Null<nvim.type.lsp.DidChangeWatchedFilesClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.executeCommand: (lsp.ExecuteCommandClientCapabilities)?
@@ -109,7 +109,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `workspace/executeCommand` request.
 	**/
 	@:optional
-	extern var executeCommand : Null<nvim.type.lsp.ExecuteCommandClientCapabilities>;
+	extern public var executeCommand : Null<nvim.type.lsp.ExecuteCommandClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.fileOperations: (lsp.FileOperationClientCapabilities)?
@@ -131,7 +131,7 @@ package nvim.type.lsp;
 		Since 3.16.0
 	**/
 	@:optional
-	extern var fileOperations : Null<nvim.type.lsp.FileOperationClientCapabilities>;
+	extern public var fileOperations : Null<nvim.type.lsp.FileOperationClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.foldingRange: (lsp.FoldingRangeWorkspaceClientCapabilities)?
@@ -149,7 +149,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var foldingRange : Null<nvim.type.lsp.FoldingRangeWorkspaceClientCapabilities>;
+	extern public var foldingRange : Null<nvim.type.lsp.FoldingRangeWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.inlayHint: (lsp.InlayHintWorkspaceClientCapabilities)?
@@ -168,7 +168,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var inlayHint : Null<nvim.type.lsp.InlayHintWorkspaceClientCapabilities>;
+	extern public var inlayHint : Null<nvim.type.lsp.InlayHintWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.inlineValue: (lsp.InlineValueWorkspaceClientCapabilities)?
@@ -187,7 +187,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var inlineValue : Null<nvim.type.lsp.InlineValueWorkspaceClientCapabilities>;
+	extern public var inlineValue : Null<nvim.type.lsp.InlineValueWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.semanticTokens: (lsp.SemanticTokensWorkspaceClientCapabilities)?
@@ -201,7 +201,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var semanticTokens : Null<nvim.type.lsp.SemanticTokensWorkspaceClientCapabilities>;
+	extern public var semanticTokens : Null<nvim.type.lsp.SemanticTokensWorkspaceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.symbol: (lsp.WorkspaceSymbolClientCapabilities)?
@@ -217,7 +217,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `workspace/symbol` request.
 	**/
 	@:optional
-	extern var symbol : Null<nvim.type.lsp.WorkspaceSymbolClientCapabilities>;
+	extern public var symbol : Null<nvim.type.lsp.WorkspaceSymbolClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.textDocumentContent: (lsp.TextDocumentContentClientCapabilities)?
@@ -235,7 +235,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var textDocumentContent : Null<nvim.type.lsp.TextDocumentContentClientCapabilities>;
+	extern public var textDocumentContent : Null<nvim.type.lsp.TextDocumentContentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.workspaceEdit: (lsp.WorkspaceEditClientCapabilities)?
@@ -247,7 +247,7 @@ package nvim.type.lsp;
 		Capabilities specific to `WorkspaceEdit`s.
 	**/
 	@:optional
-	extern var workspaceEdit : Null<nvim.type.lsp.WorkspaceEditClientCapabilities>;
+	extern public var workspaceEdit : Null<nvim.type.lsp.WorkspaceEditClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WorkspaceClientCapabilities.workspaceFolders: boolean?
@@ -260,5 +260,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var workspaceFolders : Null<Bool>;
+	extern public var workspaceFolders : Null<Bool>;
 }

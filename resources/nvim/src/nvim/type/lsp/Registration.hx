@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		The id used to register the request. The id can be used to deregister
 		the request again.
 	**/
-	extern var id : String;
+	extern public var id : String;
 	/**
 		```lua
 		(field) lsp.Registration.method: string
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 		The method / capability to register for.
 	**/
-	extern var method : String;
+	extern public var method : String;
 	/**
 		```lua
 		(field) lsp.Registration.registerOptions: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -60,5 +60,5 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	extern var registerOptions : Null<nvim.type.lsp.LSPAny>;
+	extern public var registerOptions : Null<nvim.type.lsp.LSPAny>;
 }

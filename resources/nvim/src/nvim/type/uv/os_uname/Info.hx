@@ -11,23 +11,23 @@ package nvim.type.uv.os_uname;
 		(field) uv.os_uname.info.machine: string
 		```
 	**/
-	extern var machine : String;
+	extern public var machine : String;
 	/**
 		```lua
 		(field) uv.os_uname.info.release: string
 		```
 	**/
-	extern var release : String;
+	extern public var release : String;
 	/**
 		```lua
 		(field) uv.os_uname.info.sysname: string
 		```
 	**/
-	extern var sysname : String;
+	extern public var sysname : String;
 	/**
 		```lua
 		(field) uv.os_uname.info.version: string
 		```
 	**/
-	extern var version : String;
+	extern public var version : String;
 }

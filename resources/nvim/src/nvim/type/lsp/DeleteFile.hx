@@ -26,7 +26,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
+	extern public var annotationId : Null<nvim.type.lsp.ChangeAnnotationIdentifier>;
 	/**
 		```lua
 		(field) lsp.DeleteFile.kind: "delete"
@@ -37,7 +37,7 @@ package nvim.type.lsp;
 		
 		A delete
 	**/
-	extern var kind : String;
+	extern public var kind : String;
 	/**
 		```lua
 		(field) lsp.DeleteFile.options: (lsp.DeleteFileOptions)?
@@ -53,7 +53,7 @@ package nvim.type.lsp;
 		Delete options.
 	**/
 	@:optional
-	extern var options : Null<nvim.type.lsp.DeleteFileOptions>;
+	extern public var options : Null<nvim.type.lsp.DeleteFileOptions>;
 	/**
 		```lua
 		(field) lsp.DeleteFile.uri: string
@@ -64,5 +64,5 @@ package nvim.type.lsp;
 		
 		The file to delete.
 	**/
-	extern var uri : nvim.type.lsp.DocumentUri;
+	extern public var uri : nvim.type.lsp.DocumentUri;
 }

@@ -11,5 +11,5 @@ package nvim.type.lsp;
 		(field) lsp.NotebookCellLanguage.language: string
 		```
 	**/
-	extern var language : String;
+	extern public var language : String;
 }

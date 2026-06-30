@@ -16,7 +16,7 @@ package nvim.type.lsp;
 		
 		The client will actively cancel the request.
 	**/
-	extern var cancel : Bool;
+	extern public var cancel : Bool;
 	/**
 		```lua
 		(field) lsp.StaleRequestSupportOptions.retryOnContentModified: string[]
@@ -29,5 +29,5 @@ package nvim.type.lsp;
 		will retry the request if it receives a
 		response with error code `ContentModified`
 	**/
-	extern var retryOnContentModified : Array<String>;
+	extern public var retryOnContentModified : lua.Table<Int, String>;
 }

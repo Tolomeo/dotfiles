@@ -19,7 +19,7 @@ package nvim.type.vim.trust;
 		 - `'deny'` to add a file to the trust database and deny it,
 		 - `'remove'` to remove file from the trust database
 	**/
-	extern var action : String;
+	extern public var action : String;
 	/**
 		```lua
 		(field) vim.trust.opts.bufnr: integer?
@@ -30,7 +30,7 @@ package nvim.type.vim.trust;
 		 Buffer number to update. Mutually exclusive with {path}.
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.trust.opts.path: string?
@@ -43,5 +43,5 @@ package nvim.type.vim.trust;
 		 Cannot be used when {action} is "allow".
 	**/
 	@:optional
-	extern var path : Null<String>;
+	extern public var path : Null<String>;
 }

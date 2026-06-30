@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		The string to be inserted. For delete operations use an
 		empty string.
 	**/
-	extern var newText : String;
+	extern public var newText : String;
 	/**
 		```lua
 		(field) lsp.TextEdit.range: lsp.Range
@@ -47,5 +47,5 @@ package nvim.type.lsp;
 		The range of the text document to be manipulated. To insert
 		text into a document create a range where start === end.
 	**/
-	extern var range : nvim.type.lsp.Range;
+	extern public var range : nvim.type.lsp.Range;
 }

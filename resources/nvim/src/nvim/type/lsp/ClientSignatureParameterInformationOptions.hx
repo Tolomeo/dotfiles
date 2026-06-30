@@ -19,5 +19,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var labelOffsetSupport : Null<Bool>;
+	extern public var labelOffsetSupport : Null<Bool>;
 }

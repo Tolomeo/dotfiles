@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Whether definition supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DefinitionClientCapabilities.linkSupport: boolean?
@@ -34,5 +34,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var linkSupport : Null<Bool>;
+	extern public var linkSupport : Null<Bool>;
 }

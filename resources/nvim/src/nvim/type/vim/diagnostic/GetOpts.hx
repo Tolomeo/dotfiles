@@ -21,7 +21,7 @@ package nvim.type.vim.diagnostic;
 		 Limit diagnostics to those spanning the specified line number.
 	**/
 	@:optional
-	extern var lnum : Null<Int>;
+	extern public var lnum : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.namespace: (integer|integer[])?
@@ -33,7 +33,7 @@ package nvim.type.vim.diagnostic;
 		 Limit diagnostics to one or more namespaces.
 	**/
 	@:optional
-	extern var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
+	extern public var namespace : Null<haxe.extern.EitherType<lua.Table<Int, Float>, Float>>;
 	/**
 		```lua
 		(field) vim.diagnostic.GetOpts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -53,5 +53,5 @@ package nvim.type.vim.diagnostic;
 		 @nodoc
 	**/
 	@:optional
-	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 }

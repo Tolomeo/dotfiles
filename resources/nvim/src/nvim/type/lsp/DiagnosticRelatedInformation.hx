@@ -27,7 +27,7 @@ package nvim.type.lsp;
 		
 		The location of this related diagnostic information.
 	**/
-	extern var location : nvim.type.lsp.Location;
+	extern public var location : nvim.type.lsp.Location;
 	/**
 		```lua
 		(field) lsp.DiagnosticRelatedInformation.message: string
@@ -38,5 +38,5 @@ package nvim.type.lsp;
 		
 		The message of this related diagnostic information.
 	**/
-	extern var message : String;
+	extern public var message : String;
 }

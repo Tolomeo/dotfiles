@@ -21,5 +21,5 @@ package nvim.type.vim.lsp.inlay_hint.enable;
 		 Buffer number, or 0 for current buffer, or nil for all.
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 }

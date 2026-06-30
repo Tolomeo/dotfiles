@@ -22,12 +22,12 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var prepareProvider : Null<Bool>;
+	extern public var prepareProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.RenameOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

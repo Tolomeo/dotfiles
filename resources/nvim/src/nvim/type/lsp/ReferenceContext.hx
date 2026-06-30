@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		
 		Include the declaration of the current symbol.
 	**/
-	extern var includeDeclaration : Bool;
+	extern public var includeDeclaration : Bool;
 }

@@ -23,5 +23,5 @@ package nvim.type.lsp;
 		
 		This is displayed in the code actions UI.
 	**/
-	extern var reason : String;
+	extern public var reason : String;
 }

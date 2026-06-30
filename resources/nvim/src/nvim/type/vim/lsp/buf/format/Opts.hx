@@ -20,7 +20,7 @@ package nvim.type.vim.lsp.buf.format;
 		 (Default: false)
 	**/
 	@:optional
-	extern var async : Null<Bool>;
+	extern public var async : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.bufnr: integer?
@@ -33,7 +33,7 @@ package nvim.type.vim.lsp.buf.format;
 		 (default: current buffer)
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -59,7 +59,7 @@ package nvim.type.vim.lsp.buf.format;
 		```
 	**/
 	@:optional
-	extern var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
+	extern public var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.formatting_options: table?
@@ -74,7 +74,7 @@ package nvim.type.vim.lsp.buf.format;
 		 See https://microsoft.github.io/language-server-protocol/specification/#formattingOptions
 	**/
 	@:optional
-	extern var formatting_options : Null<lua.Table.AnyTable>;
+	extern public var formatting_options : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.id: integer?
@@ -86,7 +86,7 @@ package nvim.type.vim.lsp.buf.format;
 		 Restrict formatting to the client with ID (client.id) matching this field.
 	**/
 	@:optional
-	extern var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.name: string?
@@ -98,7 +98,7 @@ package nvim.type.vim.lsp.buf.format;
 		 Restrict formatting to the client with name (client.name) matching this field.
 	**/
 	@:optional
-	extern var name : Null<String>;
+	extern public var name : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.range: ({ start: [integer, integer], end: [integer, integer] }|{ start: [integer, integer], end: [integer, integer] }[])?
@@ -116,7 +116,7 @@ package nvim.type.vim.lsp.buf.format;
 		 formatting the full buffer)
 	**/
 	@:optional
-	extern var range : Null<Dynamic>;
+	extern public var range : Null<Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.buf.format.Opts.timeout_ms: integer?
@@ -129,5 +129,5 @@ package nvim.type.vim.lsp.buf.format;
 		 (default: `1000`)
 	**/
 	@:optional
-	extern var timeout_ms : Null<Int>;
+	extern public var timeout_ms : Null<Float>;
 }

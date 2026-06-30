@@ -19,7 +19,7 @@ package nvim.type;
 		```
 	**/
 	@:luaDotMethod
-	extern function captures():lua.Table<Int, Array<nvim.type.TSNode>>;
+	extern public function captures():lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>;
 	/**
 		```lua
 		(method) TSQueryMatch:info()
@@ -27,5 +27,17 @@ package nvim.type;
 		  2. pattern_index: integer
 		```
 	**/
-	extern function info():nvim.helper.Multireturn<Int, Int, Void, Void, Void, Void>;
+	@:native("info")
+	private extern function __info():nvim.helper.Multireturn<Float, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		(method) TSQueryMatch:info()
+		  -> match_id: integer
+		  2. pattern_index: integer
+		```
+	**/
+	inline public function info():nvim.helper.Multireturn.Return2<Float, Float> {
+		final result = __info();
+		return new nvim.helper.Multireturn.Return2<Float, Float>(result._0, result._1);
+	}
 }

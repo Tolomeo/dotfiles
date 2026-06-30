@@ -19,5 +19,5 @@ package nvim.type.lsp;
 		request's response.
 	**/
 	@:optional
-	extern var additionalPropertiesSupport : Null<Bool>;
+	extern public var additionalPropertiesSupport : Null<Bool>;
 }

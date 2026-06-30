@@ -12,124 +12,124 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var abbr : Null<Float>;
+	extern public var abbr : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.buffer: (0|1)?
 		```
 	**/
 	@:optional
-	extern var buffer : Null<Float>;
+	extern public var buffer : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.callback: function?
 		```
 	**/
 	@:optional
-	extern var callback : Null<haxe.Constraints.Function>;
+	extern public var callback : Null<haxe.Constraints.Function>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.desc: string?
 		```
 	**/
 	@:optional
-	extern var desc : Null<String>;
+	extern public var desc : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.expr: (0|1)?
 		```
 	**/
 	@:optional
-	extern var expr : Null<Float>;
+	extern public var expr : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.lhs: string?
 		```
 	**/
 	@:optional
-	extern var lhs : Null<String>;
+	extern public var lhs : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.lhsraw: string?
 		```
 	**/
 	@:optional
-	extern var lhsraw : Null<String>;
+	extern public var lhsraw : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.lhsrawalt: string?
 		```
 	**/
 	@:optional
-	extern var lhsrawalt : Null<String>;
+	extern public var lhsrawalt : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.lnum: integer?
 		```
 	**/
 	@:optional
-	extern var lnum : Null<Int>;
+	extern public var lnum : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.mode: string?
 		```
 	**/
 	@:optional
-	extern var mode : Null<String>;
+	extern public var mode : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.mode_bits: integer?
 		```
 	**/
 	@:optional
-	extern var mode_bits : Null<Int>;
+	extern public var mode_bits : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.noremap: (0|1)?
 		```
 	**/
 	@:optional
-	extern var noremap : Null<Float>;
+	extern public var noremap : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.nowait: (0|1)?
 		```
 	**/
 	@:optional
-	extern var nowait : Null<Float>;
+	extern public var nowait : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.rhs: string?
 		```
 	**/
 	@:optional
-	extern var rhs : Null<String>;
+	extern public var rhs : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.script: (0|1)?
 		```
 	**/
 	@:optional
-	extern var script : Null<Float>;
+	extern public var script : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.scriptversion: integer?
 		```
 	**/
 	@:optional
-	extern var scriptversion : Null<Int>;
+	extern public var scriptversion : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.sid: integer?
 		```
 	**/
 	@:optional
-	extern var sid : Null<Int>;
+	extern public var sid : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.silent: (0|1)?
 		```
 	**/
 	@:optional
-	extern var silent : Null<Float>;
+	extern public var silent : Null<Float>;
 }

@@ -36,7 +36,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
+	extern public var changeAnnotations : Null<lua.Table<nvim.type.lsp.ChangeAnnotationIdentifier, nvim.type.lsp.ChangeAnnotation>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.changes: table<string, lsp.TextEdit[]>?
@@ -48,7 +48,7 @@ package nvim.type.lsp;
 		Holds changes to existing resources.
 	**/
 	@:optional
-	extern var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, Array<nvim.type.lsp.TextEdit>>>;
+	extern public var changes : Null<lua.Table<nvim.type.lsp.DocumentUri, lua.Table<Int, nvim.type.lsp.TextEdit>>>;
 	/**
 		```lua
 		(field) lsp.WorkspaceEdit.documentChanges: (lsp.CreateFile|lsp.DeleteFile|lsp.RenameFile|lsp.TextDocumentEdit)[]?
@@ -69,5 +69,5 @@ package nvim.type.lsp;
 		only plain `TextEdit`s using the `changes` property are supported.
 	**/
 	@:optional
-	extern var documentChanges : Null<Array<haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
+	extern public var documentChanges : Null<lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.TextDocumentEdit, haxe.extern.EitherType<nvim.type.lsp.CreateFile, haxe.extern.EitherType<nvim.type.lsp.RenameFile, nvim.type.lsp.DeleteFile>>>>>;
 }

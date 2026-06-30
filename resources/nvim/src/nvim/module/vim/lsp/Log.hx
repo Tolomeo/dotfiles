@@ -100,7 +100,7 @@ extern class Log {
 		@*return* `current` — log level
 	**/
 	@:luaDotMethod
-	function get_level():Int;
+	function get_level():Float;
 	/**
 		```lua
 		(global) vim.lsp.log.info: fun(...any):boolean?
@@ -133,7 +133,7 @@ extern class Log {
 		 Level numbers begin with "TRACE" at 0
 		 @nodoc
 	**/
-	var levels : haxe.extern.EitherType<lua.Table<String, Int>, lua.Table<Int, String>>;
+	var levels : haxe.extern.EitherType<lua.Table<String, Float>, lua.Table<Float, String>>;
 	/**
 		```lua
 		function log.set_format_func(handle: function)
@@ -159,7 +159,7 @@ extern class Log {
 		@*param* `level` — One of |vim.log.levels|
 	**/
 	@:luaDotMethod
-	function set_level(level:haxe.extern.EitherType<String, Int>):Dynamic;
+	function set_level(level:haxe.extern.EitherType<String, Float>):Dynamic;
 	/**
 		```lua
 		function log.should_log(level: integer)
@@ -175,7 +175,7 @@ extern class Log {
 		@*return* — : true if would log, false if not
 	**/
 	@:luaDotMethod
-	function should_log(level:Int):Bool;
+	function should_log(level:Float):Bool;
 	/**
 		```lua
 		(global) vim.lsp.log.trace: fun(...any):boolean?

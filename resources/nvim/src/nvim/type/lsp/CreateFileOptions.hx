@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Ignore if exists.
 	**/
 	@:optional
-	extern var ignoreIfExists : Null<Bool>;
+	extern public var ignoreIfExists : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CreateFileOptions.overwrite: boolean?
@@ -33,5 +33,5 @@ package nvim.type.lsp;
 		Overwrite existing file. Overwrite wins over `ignoreIfExists`
 	**/
 	@:optional
-	extern var overwrite : Null<Bool>;
+	extern public var overwrite : Null<Bool>;
 }

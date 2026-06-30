@@ -11,5 +11,5 @@ package nvim.type.lsp;
 		(field) lsp.ClientCompletionItemInsertTextModeOptions.valueSet: 1|2[]
 		```
 	**/
-	extern var valueSet : Array<nvim.type.lsp.InsertTextMode>;
+	extern public var valueSet : lua.Table<Int, nvim.type.lsp.InsertTextMode>;
 }

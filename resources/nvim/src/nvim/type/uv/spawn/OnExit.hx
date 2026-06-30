@@ -1,3 +1,3 @@
 package nvim.type.uv.spawn;
 
-extern typedef OnExit = (code:Int, signal:Int) -> Dynamic;
+extern typedef OnExit = (code:Float, signal:Float) -> Dynamic;

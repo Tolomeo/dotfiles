@@ -19,7 +19,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var _tags : Null<{ var deprecated : Bool; var unnecessary : Bool; }>;
+	extern public var _tags : Null<{ var deprecated : Bool; var unnecessary : Bool; }>;
 	/**
 		```lua
 		(field) vim.Diagnostic.bufnr: integer?
@@ -31,7 +31,7 @@ package nvim.type.vim;
 		 Buffer number
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.Diagnostic.code: (string|integer)?
@@ -43,7 +43,7 @@ package nvim.type.vim;
 		 The diagnostic code
 	**/
 	@:optional
-	extern var code : Null<haxe.extern.EitherType<String, Int>>;
+	extern public var code : Null<haxe.extern.EitherType<String, Float>>;
 	/**
 		```lua
 		(field) vim.Diagnostic.col: integer
@@ -54,7 +54,7 @@ package nvim.type.vim;
 		
 		 The starting column of the diagnostic (0-indexed)
 	**/
-	extern var col : Int;
+	extern public var col : Float;
 	/**
 		```lua
 		(field) vim.Diagnostic.end_col: integer?
@@ -66,7 +66,7 @@ package nvim.type.vim;
 		 The final column of the diagnostic (0-indexed)
 	**/
 	@:optional
-	extern var end_col : Null<Int>;
+	extern public var end_col : Null<Float>;
 	/**
 		```lua
 		(field) vim.Diagnostic.end_lnum: integer?
@@ -78,7 +78,7 @@ package nvim.type.vim;
 		 The final line of the diagnostic (0-indexed)
 	**/
 	@:optional
-	extern var end_lnum : Null<Int>;
+	extern public var end_lnum : Null<Float>;
 	/**
 		```lua
 		(field) vim.Diagnostic.lnum: integer
@@ -89,7 +89,7 @@ package nvim.type.vim;
 		
 		 The starting line of the diagnostic (0-indexed)
 	**/
-	extern var lnum : Int;
+	extern public var lnum : Float;
 	/**
 		```lua
 		(field) vim.Diagnostic.message: string
@@ -100,14 +100,14 @@ package nvim.type.vim;
 		
 		 The diagnostic text
 	**/
-	extern var message : String;
+	extern public var message : String;
 	/**
 		```lua
 		(field) vim.Diagnostic.namespace: integer?
 		```
 	**/
 	@:optional
-	extern var namespace : Null<Int>;
+	extern public var namespace : Null<Float>;
 	/**
 		```lua
 		(field) vim.Diagnostic.severity: (vim.diagnostic.Severity)?
@@ -123,7 +123,7 @@ package nvim.type.vim;
 		 The severity of the diagnostic |vim.diagnostic.severity|
 	**/
 	@:optional
-	extern var severity : Null<nvim.type.vim.diagnostic.Severity>;
+	extern public var severity : Null<nvim.type.vim.diagnostic.Severity>;
 	/**
 		```lua
 		(field) vim.Diagnostic.source: string?
@@ -135,7 +135,7 @@ package nvim.type.vim;
 		 The source of the diagnostic
 	**/
 	@:optional
-	extern var source : Null<String>;
+	extern public var source : Null<String>;
 	/**
 		```lua
 		(field) vim.Diagnostic.user_data: any
@@ -146,5 +146,5 @@ package nvim.type.vim;
 		arbitrary data plugins can add
 	**/
 	@:optional
-	extern var user_data : Null<Any>;
+	extern public var user_data : Null<Any>;
 }

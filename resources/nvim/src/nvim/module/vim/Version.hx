@@ -35,7 +35,7 @@ extern class Version {
 		@*return* — -1 if `v1 < v2`, 0 if `v1 == v2`, 1 if `v1 > v2`.
 	**/
 	@:luaDotMethod
-	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Int;
+	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Float;
 	/**
 		```lua
 		function M.eq(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -47,7 +47,7 @@ extern class Version {
 		Returns `true` if the given versions are equal. See |vim.version.cmp()| for usage.
 	**/
 	@:luaDotMethod
-	function eq(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Bool;
+	function eq(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
 	/**
 		```lua
 		function M.ge(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -59,7 +59,7 @@ extern class Version {
 		Returns `true` if `v1 >= v2`. See |vim.version.cmp()| for usage.
 	**/
 	@:luaDotMethod
-	function ge(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Bool;
+	function ge(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
 	/**
 		```lua
 		function M.gt(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -71,7 +71,7 @@ extern class Version {
 		Returns `true` if `v1 > v2`. See |vim.version.cmp()| for usage.
 	**/
 	@:luaDotMethod
-	function gt(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Bool;
+	function gt(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
 	/**
 		```lua
 		function M.last(versions: <T:vim.Version>[])
@@ -83,7 +83,7 @@ extern class Version {
 		TODO: generalize this, move to func.lua
 	**/
 	@:luaDotMethod
-	function last<T:(nvim.type.vim.Version)>(versions:Array<T>):Null<T>;
+	function last<T:(nvim.type.vim.Version)>(versions:lua.Table<Int, T>):Null<T>;
 	/**
 		```lua
 		function M.le(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -95,7 +95,7 @@ extern class Version {
 		Returns `true` if `v1 <= v2`. See |vim.version.cmp()| for usage.
 	**/
 	@:luaDotMethod
-	function le(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Bool;
+	function le(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
 	/**
 		```lua
 		function M.lt(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -107,7 +107,7 @@ extern class Version {
 		Returns `true` if `v1 < v2`. See |vim.version.cmp()| for usage.
 	**/
 	@:luaDotMethod
-	function lt(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<Array<Float>, String>>):Bool;
+	function lt(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
 	/**
 		```lua
 		function M.parse(version: string, opts: table|nil)

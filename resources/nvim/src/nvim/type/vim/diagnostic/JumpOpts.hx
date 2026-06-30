@@ -24,7 +24,7 @@ package nvim.type.vim.diagnostic;
 		 backward by {count} diagnostics. Mutually exclusive with {diagnostic}.
 	**/
 	@:optional
-	extern var count : Null<Int>;
+	extern public var count : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.diagnostic: (vim.Diagnostic)?
@@ -44,7 +44,7 @@ package nvim.type.vim.diagnostic;
 		 and {severity}.
 	**/
 	@:optional
-	extern var diagnostic : Null<nvim.type.vim.Diagnostic>;
+	extern public var diagnostic : Null<nvim.type.vim.Diagnostic>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.float: (boolean|vim.diagnostic.Opts.Float)?
@@ -60,7 +60,7 @@ package nvim.type.vim.diagnostic;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
+	extern public var float : Null<haxe.extern.EitherType<Bool, nvim.type.vim.diagnostic.opts.Float>>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.lnum: integer?
@@ -72,7 +72,7 @@ package nvim.type.vim.diagnostic;
 		 Limit diagnostics to those spanning the specified line number.
 	**/
 	@:optional
-	extern var lnum : Null<Int>;
+	extern public var lnum : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.namespace: (integer|integer[])?
@@ -84,7 +84,7 @@ package nvim.type.vim.diagnostic;
 		 Limit diagnostics to one or more namespaces.
 	**/
 	@:optional
-	extern var namespace : Null<haxe.extern.EitherType<Array<Int>, Int>>;
+	extern public var namespace : Null<haxe.extern.EitherType<lua.Table<Int, Float>, Float>>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.pos: [integer, integer]?
@@ -97,7 +97,7 @@ package nvim.type.vim.diagnostic;
 		 to find the nearest diagnostic when {count} is used. Only used when {count}
 		 is non-nil. Default is the current cursor position.
 	**/
-	extern var pos : Dynamic;
+	extern public var pos : Dynamic;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -117,7 +117,7 @@ package nvim.type.vim.diagnostic;
 		 @nodoc
 	**/
 	@:optional
-	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.winid: integer?
@@ -130,7 +130,7 @@ package nvim.type.vim.diagnostic;
 		 (default: `0`)
 	**/
 	@:optional
-	extern var winid : Null<Int>;
+	extern public var winid : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.JumpOpts.wrap: boolean?
@@ -143,5 +143,5 @@ package nvim.type.vim.diagnostic;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var wrap : Null<Bool>;
+	extern public var wrap : Null<Bool>;
 }

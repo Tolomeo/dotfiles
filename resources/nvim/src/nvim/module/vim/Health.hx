@@ -13,7 +13,7 @@ extern class Health {
 		@*param* `...` — Optional advice
 	**/
 	@:luaDotMethod
-	function error(msg:String, ___:haxe.Rest<haxe.extern.EitherType<String, Array<String>>>):Dynamic;
+	function error(msg:String, ___:haxe.Rest<haxe.extern.EitherType<String, lua.Table<Int, String>>>):Dynamic;
 	/**
 		```lua
 		function M.info(msg: string)
@@ -61,5 +61,5 @@ extern class Health {
 		@*param* `...` — Optional advice
 	**/
 	@:luaDotMethod
-	function warn(msg:String, ___:haxe.Rest<haxe.extern.EitherType<String, Array<String>>>):Dynamic;
+	function warn(msg:String, ___:haxe.Rest<haxe.extern.EitherType<String, lua.Table<Int, String>>>):Dynamic;
 }

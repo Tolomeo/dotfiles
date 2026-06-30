@@ -19,7 +19,7 @@ package nvim.type.vim.fn.undotree;
 		 item.
 	**/
 	@:optional
-	extern var alt : Null<Array<nvim.type.vim.fn.undotree.Entry>>;
+	extern public var alt : Null<lua.Table<Int, nvim.type.vim.fn.undotree.Entry>>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.curhead: integer?
@@ -36,7 +36,7 @@ package nvim.type.vim.fn.undotree;
 		 not appear anywhere.
 	**/
 	@:optional
-	extern var curhead : Null<Int>;
+	extern public var curhead : Null<Float>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.newhead: integer?
@@ -50,7 +50,7 @@ package nvim.type.vim.fn.undotree;
 		 and where further changes will be added.
 	**/
 	@:optional
-	extern var newhead : Null<Int>;
+	extern public var newhead : Null<Float>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.save: integer?
@@ -65,7 +65,7 @@ package nvim.type.vim.fn.undotree;
 		 "save_last" mentioned above.
 	**/
 	@:optional
-	extern var save : Null<Int>;
+	extern public var save : Null<Float>;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.seq: integer
@@ -77,7 +77,7 @@ package nvim.type.vim.fn.undotree;
 		 Undo sequence number.  Same as what appears in
 		 \|:undolist|.
 	**/
-	extern var seq : Int;
+	extern public var seq : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.entry.time: integer
@@ -89,5 +89,5 @@ package nvim.type.vim.fn.undotree;
 		 Timestamp when the change happened.  Use
 		 \|strftime()| to convert to something readable.
 	**/
-	extern var time : Int;
+	extern public var time : Float;
 }

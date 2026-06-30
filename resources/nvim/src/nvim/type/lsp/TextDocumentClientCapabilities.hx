@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var callHierarchy : Null<nvim.type.lsp.CallHierarchyClientCapabilities>;
+	extern public var callHierarchy : Null<nvim.type.lsp.CallHierarchyClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.codeAction: (lsp.CodeActionClientCapabilities)?
@@ -38,7 +38,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/codeAction` request.
 	**/
 	@:optional
-	extern var codeAction : Null<nvim.type.lsp.CodeActionClientCapabilities>;
+	extern public var codeAction : Null<nvim.type.lsp.CodeActionClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.codeLens: (lsp.CodeLensClientCapabilities)?
@@ -54,7 +54,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/codeLens` request.
 	**/
 	@:optional
-	extern var codeLens : Null<nvim.type.lsp.CodeLensClientCapabilities>;
+	extern public var codeLens : Null<nvim.type.lsp.CodeLensClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.colorProvider: (lsp.DocumentColorClientCapabilities)?
@@ -68,7 +68,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var colorProvider : Null<nvim.type.lsp.DocumentColorClientCapabilities>;
+	extern public var colorProvider : Null<nvim.type.lsp.DocumentColorClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.completion: (lsp.CompletionClientCapabilities)?
@@ -84,7 +84,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/completion` request.
 	**/
 	@:optional
-	extern var completion : Null<nvim.type.lsp.CompletionClientCapabilities>;
+	extern public var completion : Null<nvim.type.lsp.CompletionClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.declaration: (lsp.DeclarationClientCapabilities)?
@@ -97,7 +97,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var declaration : Null<nvim.type.lsp.DeclarationClientCapabilities>;
+	extern public var declaration : Null<nvim.type.lsp.DeclarationClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.definition: (lsp.DefinitionClientCapabilities)?
@@ -113,7 +113,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/definition` request.
 	**/
 	@:optional
-	extern var definition : Null<nvim.type.lsp.DefinitionClientCapabilities>;
+	extern public var definition : Null<nvim.type.lsp.DefinitionClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.diagnostic: (lsp.DiagnosticClientCapabilities)?
@@ -131,7 +131,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var diagnostic : Null<nvim.type.lsp.DiagnosticClientCapabilities>;
+	extern public var diagnostic : Null<nvim.type.lsp.DiagnosticClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.documentHighlight: (lsp.DocumentHighlightClientCapabilities)?
@@ -147,7 +147,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/documentHighlight` request.
 	**/
 	@:optional
-	extern var documentHighlight : Null<nvim.type.lsp.DocumentHighlightClientCapabilities>;
+	extern public var documentHighlight : Null<nvim.type.lsp.DocumentHighlightClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.documentLink: (lsp.DocumentLinkClientCapabilities)?
@@ -163,7 +163,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/documentLink` request.
 	**/
 	@:optional
-	extern var documentLink : Null<nvim.type.lsp.DocumentLinkClientCapabilities>;
+	extern public var documentLink : Null<nvim.type.lsp.DocumentLinkClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.documentSymbol: (lsp.DocumentSymbolClientCapabilities)?
@@ -179,7 +179,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/documentSymbol` request.
 	**/
 	@:optional
-	extern var documentSymbol : Null<nvim.type.lsp.DocumentSymbolClientCapabilities>;
+	extern public var documentSymbol : Null<nvim.type.lsp.DocumentSymbolClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.filters: (lsp.TextDocumentFilterClientCapabilities)?
@@ -192,7 +192,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var filters : Null<nvim.type.lsp.TextDocumentFilterClientCapabilities>;
+	extern public var filters : Null<nvim.type.lsp.TextDocumentFilterClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.foldingRange: (lsp.FoldingRangeClientCapabilities)?
@@ -205,7 +205,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var foldingRange : Null<nvim.type.lsp.FoldingRangeClientCapabilities>;
+	extern public var foldingRange : Null<nvim.type.lsp.FoldingRangeClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.formatting: (lsp.DocumentFormattingClientCapabilities)?
@@ -221,7 +221,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/formatting` request.
 	**/
 	@:optional
-	extern var formatting : Null<nvim.type.lsp.DocumentFormattingClientCapabilities>;
+	extern public var formatting : Null<nvim.type.lsp.DocumentFormattingClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.hover: (lsp.HoverClientCapabilities)?
@@ -233,7 +233,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/hover` request.
 	**/
 	@:optional
-	extern var hover : Null<nvim.type.lsp.HoverClientCapabilities>;
+	extern public var hover : Null<nvim.type.lsp.HoverClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.implementation: (lsp.ImplementationClientCapabilities)?
@@ -246,7 +246,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var implementation : Null<nvim.type.lsp.ImplementationClientCapabilities>;
+	extern public var implementation : Null<nvim.type.lsp.ImplementationClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.inlayHint: (lsp.InlayHintClientCapabilities)?
@@ -264,7 +264,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var inlayHint : Null<nvim.type.lsp.InlayHintClientCapabilities>;
+	extern public var inlayHint : Null<nvim.type.lsp.InlayHintClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.inlineCompletion: (lsp.InlineCompletionClientCapabilities)?
@@ -282,7 +282,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var inlineCompletion : Null<nvim.type.lsp.InlineCompletionClientCapabilities>;
+	extern public var inlineCompletion : Null<nvim.type.lsp.InlineCompletionClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.inlineValue: (lsp.InlineValueClientCapabilities)?
@@ -300,7 +300,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var inlineValue : Null<nvim.type.lsp.InlineValueClientCapabilities>;
+	extern public var inlineValue : Null<nvim.type.lsp.InlineValueClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.linkedEditingRange: (lsp.LinkedEditingRangeClientCapabilities)?
@@ -318,7 +318,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var linkedEditingRange : Null<nvim.type.lsp.LinkedEditingRangeClientCapabilities>;
+	extern public var linkedEditingRange : Null<nvim.type.lsp.LinkedEditingRangeClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.moniker: (lsp.MonikerClientCapabilities)?
@@ -336,7 +336,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var moniker : Null<nvim.type.lsp.MonikerClientCapabilities>;
+	extern public var moniker : Null<nvim.type.lsp.MonikerClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.onTypeFormatting: (lsp.DocumentOnTypeFormattingClientCapabilities)?
@@ -352,7 +352,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/onTypeFormatting` request.
 	**/
 	@:optional
-	extern var onTypeFormatting : Null<nvim.type.lsp.DocumentOnTypeFormattingClientCapabilities>;
+	extern public var onTypeFormatting : Null<nvim.type.lsp.DocumentOnTypeFormattingClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.publishDiagnostics: (lsp.PublishDiagnosticsClientCapabilities)?
@@ -368,7 +368,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/publishDiagnostics` notification.
 	**/
 	@:optional
-	extern var publishDiagnostics : Null<nvim.type.lsp.PublishDiagnosticsClientCapabilities>;
+	extern public var publishDiagnostics : Null<nvim.type.lsp.PublishDiagnosticsClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.rangeFormatting: (lsp.DocumentRangeFormattingClientCapabilities)?
@@ -384,7 +384,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/rangeFormatting` request.
 	**/
 	@:optional
-	extern var rangeFormatting : Null<nvim.type.lsp.DocumentRangeFormattingClientCapabilities>;
+	extern public var rangeFormatting : Null<nvim.type.lsp.DocumentRangeFormattingClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.references: (lsp.ReferenceClientCapabilities)?
@@ -400,7 +400,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/references` request.
 	**/
 	@:optional
-	extern var references : Null<nvim.type.lsp.ReferenceClientCapabilities>;
+	extern public var references : Null<nvim.type.lsp.ReferenceClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.rename: (lsp.RenameClientCapabilities)?
@@ -412,7 +412,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/rename` request.
 	**/
 	@:optional
-	extern var rename : Null<nvim.type.lsp.RenameClientCapabilities>;
+	extern public var rename : Null<nvim.type.lsp.RenameClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.selectionRange: (lsp.SelectionRangeClientCapabilities)?
@@ -425,7 +425,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var selectionRange : Null<nvim.type.lsp.SelectionRangeClientCapabilities>;
+	extern public var selectionRange : Null<nvim.type.lsp.SelectionRangeClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.semanticTokens: (lsp.SemanticTokensClientCapabilities)?
@@ -438,7 +438,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var semanticTokens : Null<nvim.type.lsp.SemanticTokensClientCapabilities>;
+	extern public var semanticTokens : Null<nvim.type.lsp.SemanticTokensClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.signatureHelp: (lsp.SignatureHelpClientCapabilities)?
@@ -454,7 +454,7 @@ package nvim.type.lsp;
 		Capabilities specific to the `textDocument/signatureHelp` request.
 	**/
 	@:optional
-	extern var signatureHelp : Null<nvim.type.lsp.SignatureHelpClientCapabilities>;
+	extern public var signatureHelp : Null<nvim.type.lsp.SignatureHelpClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.synchronization: (lsp.TextDocumentSyncClientCapabilities)?
@@ -466,7 +466,7 @@ package nvim.type.lsp;
 		Defines which synchronization capabilities the client supports.
 	**/
 	@:optional
-	extern var synchronization : Null<nvim.type.lsp.TextDocumentSyncClientCapabilities>;
+	extern public var synchronization : Null<nvim.type.lsp.TextDocumentSyncClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.typeDefinition: (lsp.TypeDefinitionClientCapabilities)?
@@ -483,7 +483,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var typeDefinition : Null<nvim.type.lsp.TypeDefinitionClientCapabilities>;
+	extern public var typeDefinition : Null<nvim.type.lsp.TypeDefinitionClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.TextDocumentClientCapabilities.typeHierarchy: (lsp.TypeHierarchyClientCapabilities)?
@@ -496,5 +496,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var typeHierarchy : Null<nvim.type.lsp.TypeHierarchyClientCapabilities>;
+	extern public var typeHierarchy : Null<nvim.type.lsp.TypeHierarchyClientCapabilities>;
 }

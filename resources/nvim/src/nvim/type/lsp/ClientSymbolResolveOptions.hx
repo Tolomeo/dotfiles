@@ -17,5 +17,5 @@ package nvim.type.lsp;
 		The properties that a client can resolve lazily. Usually
 		`location.range`
 	**/
-	extern var properties : Array<String>;
+	extern public var properties : lua.Table<Int, String>;
 }

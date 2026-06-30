@@ -18,7 +18,7 @@ package nvim.type.vim.hl.range;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var inclusive : Null<Bool>;
+	extern public var inclusive : Null<Bool>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.priority: integer?
@@ -31,7 +31,7 @@ package nvim.type.vim.hl.range;
 		 (default: `vim.hl.priorities.user`)
 	**/
 	@:optional
-	extern var priority : Null<Int>;
+	extern public var priority : Null<Float>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.regtype: string?
@@ -45,7 +45,7 @@ package nvim.type.vim.hl.range;
 		 (default: `'v'` i.e. charwise)
 	**/
 	@:optional
-	extern var regtype : Null<String>;
+	extern public var regtype : Null<String>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.timeout: integer?
@@ -58,5 +58,5 @@ package nvim.type.vim.hl.range;
 		 (default: -1 no timeout)
 	**/
 	@:optional
-	extern var timeout : Null<Int>;
+	extern public var timeout : Null<Float>;
 }

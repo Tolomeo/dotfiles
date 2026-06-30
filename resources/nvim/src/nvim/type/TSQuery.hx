@@ -31,7 +31,7 @@ package nvim.type;
 		 vim.treesitter.get_parser():parse()
 		 ```
 	**/
-	extern function disable_capture(capture_name:String):Dynamic;
+	extern public function disable_capture(capture_name:String):Dynamic;
 	/**
 		```lua
 		(method) TSQuery:disable_pattern(pattern_index: integer)
@@ -51,7 +51,7 @@ package nvim.type;
 		 local tree = vim.treesitter.get_parser():parse()[1]
 		 ```
 	**/
-	extern function disable_pattern(pattern_index:Int):Dynamic;
+	extern public function disable_pattern(pattern_index:Float):Dynamic;
 	/**
 		```lua
 		(method) TSQuery:inspect()
@@ -62,5 +62,5 @@ package nvim.type;
 		
 		 Get information about the query's patterns and captures.
 	**/
-	extern function inspect():nvim.type.TSQueryInfo;
+	extern public function inspect():nvim.type.TSQueryInfo;
 }

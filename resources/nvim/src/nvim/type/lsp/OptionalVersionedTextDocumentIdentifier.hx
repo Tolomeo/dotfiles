@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		The text document's uri.
 	**/
-	extern var uri : nvim.type.lsp.DocumentUri;
+	extern public var uri : nvim.type.lsp.DocumentUri;
 	/**
 		```lua
 		(field) lsp.OptionalVersionedTextDocumentIdentifier.version: integer|nil
@@ -35,5 +35,5 @@ package nvim.type.lsp;
 		`null` to indicate that the version is unknown and the content on disk is the
 		truth (as specified with document content ownership).
 	**/
-	extern var version : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
+	extern public var version : haxe.extern.EitherType<Float, nvim.type.lsp.Null>;
 }

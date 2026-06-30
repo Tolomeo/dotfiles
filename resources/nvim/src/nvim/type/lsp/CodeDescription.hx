@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		
 		An URI to open with more information about the diagnostic error.
 	**/
-	extern var href : nvim.type.lsp.URI;
+	extern public var href : nvim.type.lsp.URI;
 }

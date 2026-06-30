@@ -18,7 +18,7 @@ package nvim.type.vim.fs.find;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var follow : Null<Bool>;
+	extern public var follow : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.limit: number?
@@ -32,7 +32,7 @@ package nvim.type.vim.fs.find;
 		 (default: `1`)
 	**/
 	@:optional
-	extern var limit : Null<Float>;
+	extern public var limit : Null<Float>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.path: string?
@@ -46,7 +46,7 @@ package nvim.type.vim.fs.find;
 		 omitted, the |current-directory| is used.
 	**/
 	@:optional
-	extern var path : Null<String>;
+	extern public var path : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.stop: string?
@@ -59,7 +59,7 @@ package nvim.type.vim.fs.find;
 		 The directory itself is not searched.
 	**/
 	@:optional
-	extern var stop : Null<String>;
+	extern public var stop : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.type: string?
@@ -72,7 +72,7 @@ package nvim.type.vim.fs.find;
 		 If omitted, all items that match {names} are included.
 	**/
 	@:optional
-	extern var type : Null<String>;
+	extern public var type : Null<String>;
 	/**
 		```lua
 		(field) vim.fs.find.Opts.upward: boolean?
@@ -86,5 +86,5 @@ package nvim.type.vim.fs.find;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var upward : Null<Bool>;
+	extern public var upward : Null<Bool>;
 }

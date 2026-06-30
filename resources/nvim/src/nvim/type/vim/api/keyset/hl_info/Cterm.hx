@@ -12,110 +12,110 @@ package nvim.type.vim.api.keyset.hl_info;
 		```
 	**/
 	@:optional
-	extern var altfont : Null<Bool>;
+	extern public var altfont : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.background: integer?
 		```
 	**/
 	@:optional
-	extern var background : Null<Int>;
+	extern public var background : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.bold: true?
 		```
 	**/
 	@:optional
-	extern var bold : Null<Bool>;
+	extern public var bold : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.ctermbg: integer?
 		```
 	**/
 	@:optional
-	extern var ctermbg : Null<Int>;
+	extern public var ctermbg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.ctermfg: integer?
 		```
 	**/
 	@:optional
-	extern var ctermfg : Null<Int>;
+	extern public var ctermfg : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.foreground: integer?
 		```
 	**/
 	@:optional
-	extern var foreground : Null<Int>;
+	extern public var foreground : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.italic: true?
 		```
 	**/
 	@:optional
-	extern var italic : Null<Bool>;
+	extern public var italic : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.nocombine: true?
 		```
 	**/
 	@:optional
-	extern var nocombine : Null<Bool>;
+	extern public var nocombine : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.reverse: true?
 		```
 	**/
 	@:optional
-	extern var reverse : Null<Bool>;
+	extern public var reverse : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.standout: true?
 		```
 	**/
 	@:optional
-	extern var standout : Null<Bool>;
+	extern public var standout : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.strikethrough: true?
 		```
 	**/
 	@:optional
-	extern var strikethrough : Null<Bool>;
+	extern public var strikethrough : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.undercurl: true?
 		```
 	**/
 	@:optional
-	extern var undercurl : Null<Bool>;
+	extern public var undercurl : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdashed: true?
 		```
 	**/
 	@:optional
-	extern var underdashed : Null<Bool>;
+	extern public var underdashed : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdotted: true?
 		```
 	**/
 	@:optional
-	extern var underdotted : Null<Bool>;
+	extern public var underdotted : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underdouble: true?
 		```
 	**/
 	@:optional
-	extern var underdouble : Null<Bool>;
+	extern public var underdouble : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.hl_info.cterm.underline: true?
 		```
 	**/
 	@:optional
-	extern var underline : Null<Bool>;
+	extern public var underline : Null<Bool>;
 }

@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		that these accurately reflect the error state of the resource. The primary parameter
 		to compute code actions is the provided range.
 	**/
-	extern var diagnostics : Array<nvim.type.lsp.Diagnostic>;
+	extern public var diagnostics : lua.Table<Int, nvim.type.lsp.Diagnostic>;
 	/**
 		```lua
 		(field) lsp.CodeActionContext.only: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"[]?
@@ -40,7 +40,7 @@ package nvim.type.lsp;
 		can omit computing them.
 	**/
 	@:optional
-	extern var only : Null<Array<nvim.type.lsp.CodeActionKind>>;
+	extern public var only : Null<lua.Table<Int, nvim.type.lsp.CodeActionKind>>;
 	/**
 		```lua
 		(field) lsp.CodeActionContext.triggerKind: (1|2)?
@@ -68,5 +68,5 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var triggerKind : Null<nvim.type.lsp.CodeActionTriggerKind>;
+	extern public var triggerKind : Null<nvim.type.lsp.CodeActionTriggerKind>;
 }

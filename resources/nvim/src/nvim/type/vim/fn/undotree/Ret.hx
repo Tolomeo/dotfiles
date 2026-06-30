@@ -17,7 +17,7 @@ package nvim.type.vim.fn.undotree;
 		 A list of dictionaries with information about
 		 undo blocks.
 	**/
-	extern var entries : Array<nvim.type.vim.fn.undotree.Entry>;
+	extern public var entries : lua.Table<Int, nvim.type.vim.fn.undotree.Entry>;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.save_cur: integer
@@ -29,7 +29,7 @@ package nvim.type.vim.fn.undotree;
 		 Number of the current position in the undo
 		 tree.
 	**/
-	extern var save_cur : Int;
+	extern public var save_cur : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.save_last: integer
@@ -41,7 +41,7 @@ package nvim.type.vim.fn.undotree;
 		 Number of the last file write.  Zero when no
 		 write yet.
 	**/
-	extern var save_last : Int;
+	extern public var save_last : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.seq_cur: integer
@@ -54,7 +54,7 @@ package nvim.type.vim.fn.undotree;
 		 the undo tree.  This differs from "seq_last"
 		 when some changes were undone.
 	**/
-	extern var seq_cur : Int;
+	extern public var seq_cur : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.seq_last: integer
@@ -65,7 +65,7 @@ package nvim.type.vim.fn.undotree;
 		
 		 The highest undo sequence number used.
 	**/
-	extern var seq_last : Int;
+	extern public var seq_last : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.synced: integer
@@ -78,7 +78,7 @@ package nvim.type.vim.fn.undotree;
 		 This happens when waiting from input from the
 		 user.  See |undo-blocks|.
 	**/
-	extern var synced : Int;
+	extern public var synced : Float;
 	/**
 		```lua
 		(field) vim.fn.undotree.ret.time_cur: integer
@@ -91,5 +91,5 @@ package nvim.type.vim.fn.undotree;
 		 commands.  Use |strftime()| to convert to
 		 something readable.
 	**/
-	extern var time_cur : Int;
+	extern public var time_cur : Float;
 }

@@ -20,5 +20,5 @@ package nvim.type.lsp;
 		to a default value when unknown.
 	**/
 	@:optional
-	extern var valueSet : Null<Array<nvim.type.lsp.FoldingRangeKind>>;
+	extern public var valueSet : Null<lua.Table<Int, nvim.type.lsp.FoldingRangeKind>>;
 }

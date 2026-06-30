@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		The diagnostic's code, which usually appear in the user interface.
 	**/
 	@:optional
-	extern var code : Null<haxe.extern.EitherType<Int, String>>;
+	extern public var code : Null<haxe.extern.EitherType<Float, String>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.codeDescription: (lsp.CodeDescription)?
@@ -41,7 +41,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var codeDescription : Null<nvim.type.lsp.CodeDescription>;
+	extern public var codeDescription : Null<nvim.type.lsp.CodeDescription>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.data: (boolean|string|number|boolean|string|number|table<string, lsp.LSPAny>|table<string, lsp.LSPAny>[]|nil[]|table<string, lsp.LSPAny>|nil)?
@@ -71,7 +71,7 @@ package nvim.type.lsp;
 		LSP arrays.
 	**/
 	@:optional
-	extern var data : Null<nvim.type.lsp.LSPAny>;
+	extern public var data : Null<nvim.type.lsp.LSPAny>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.message: string
@@ -82,7 +82,7 @@ package nvim.type.lsp;
 		
 		The diagnostic's message. It usually appears in the user interface
 	**/
-	extern var message : String;
+	extern public var message : String;
 	/**
 		```lua
 		(field) lsp.Diagnostic.range: lsp.Range
@@ -107,7 +107,7 @@ package nvim.type.lsp;
 		
 		The range at which the message applies
 	**/
-	extern var range : nvim.type.lsp.Range;
+	extern public var range : nvim.type.lsp.Range;
 	/**
 		```lua
 		(field) lsp.Diagnostic.relatedInformation: lsp.DiagnosticRelatedInformation[]?
@@ -120,7 +120,7 @@ package nvim.type.lsp;
 		a scope collide all definitions can be marked via this property.
 	**/
 	@:optional
-	extern var relatedInformation : Null<Array<nvim.type.lsp.DiagnosticRelatedInformation>>;
+	extern public var relatedInformation : Null<lua.Table<Int, nvim.type.lsp.DiagnosticRelatedInformation>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.severity: (1|2|3|4)?
@@ -149,7 +149,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var severity : Null<nvim.type.lsp.DiagnosticSeverity>;
+	extern public var severity : Null<nvim.type.lsp.DiagnosticSeverity>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.source: string?
@@ -163,7 +163,7 @@ package nvim.type.lsp;
 		appears in the user interface.
 	**/
 	@:optional
-	extern var source : Null<String>;
+	extern public var source : Null<String>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.tags: 1|2[]?
@@ -176,5 +176,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.DiagnosticTag>>;
+	extern public var tags : Null<lua.Table<Int, nvim.type.lsp.DiagnosticTag>>;
 }

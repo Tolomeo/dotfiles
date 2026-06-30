@@ -24,5 +24,5 @@ package nvim.type.lsp;
 		for the corresponding server capability as well.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 }

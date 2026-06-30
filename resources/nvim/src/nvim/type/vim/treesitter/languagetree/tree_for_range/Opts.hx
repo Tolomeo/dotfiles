@@ -19,5 +19,5 @@ package nvim.type.vim.treesitter.languagetree.tree_for_range;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var ignore_injections : Null<Bool>;
+	extern public var ignore_injections : Null<Bool>;
 }

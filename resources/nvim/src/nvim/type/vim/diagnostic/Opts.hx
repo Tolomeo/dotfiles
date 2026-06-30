@@ -32,7 +32,7 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var float : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Float, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Float>>>;
+	extern public var float : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Float, (namespace:Float, bufnr:Float) -> nvim.type.vim.diagnostic.opts.Float>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.jump: (vim.diagnostic.Opts.Jump)?
@@ -44,7 +44,7 @@ package nvim.type.vim.diagnostic;
 		 Default values for |vim.diagnostic.jump()|. See |vim.diagnostic.Opts.Jump|.
 	**/
 	@:optional
-	extern var jump : Null<nvim.type.vim.diagnostic.opts.Jump>;
+	extern public var jump : Null<nvim.type.vim.diagnostic.opts.Jump>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.severity_sort: (boolean|{ reverse: boolean })?
@@ -61,7 +61,7 @@ package nvim.type.vim.diagnostic;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
+	extern public var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
 	var reverse : Null<Bool>; }>>;
 	/**
 		```lua
@@ -82,7 +82,7 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var signs : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Signs, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Signs>>>;
+	extern public var signs : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Signs, (namespace:Float, bufnr:Float) -> nvim.type.vim.diagnostic.opts.Signs>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.underline: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.Underline|vim.diagnostic.Opts.Underline)?
@@ -102,7 +102,7 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var underline : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Underline, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.Underline>>>;
+	extern public var underline : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.Underline, (namespace:Float, bufnr:Float) -> nvim.type.vim.diagnostic.opts.Underline>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.update_in_insert: boolean?
@@ -116,7 +116,7 @@ package nvim.type.vim.diagnostic;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var update_in_insert : Null<Bool>;
+	extern public var update_in_insert : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.virtual_lines: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.VirtualLines|vim.diagnostic.Opts.VirtualLines)?
@@ -136,7 +136,7 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var virtual_lines : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualLines, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.VirtualLines>>>;
+	extern public var virtual_lines : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualLines, (namespace:Float, bufnr:Float) -> nvim.type.vim.diagnostic.opts.VirtualLines>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.virtual_text: (boolean|fun(namespace: integer, bufnr: integer):vim.diagnostic.Opts.VirtualText|vim.diagnostic.Opts.VirtualText)?
@@ -158,5 +158,5 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern var virtual_text : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualText, (namespace:Int, bufnr:Int) -> nvim.type.vim.diagnostic.opts.VirtualText>>>;
+	extern public var virtual_text : Null<haxe.extern.EitherType<Bool, haxe.extern.EitherType<nvim.type.vim.diagnostic.opts.VirtualText, (namespace:Float, bufnr:Float) -> nvim.type.vim.diagnostic.opts.VirtualText>>>;
 }

@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Arguments that the command should be invoked with.
 	**/
 	@:optional
-	extern var arguments : Null<Array<nvim.type.lsp.LSPAny>>;
+	extern public var arguments : Null<lua.Table<Int, nvim.type.lsp.LSPAny>>;
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.command: string
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 		The identifier of the actual command handler.
 	**/
-	extern var command : String;
+	extern public var command : String;
 	/**
 		```lua
 		(field) lsp.ExecuteCommandParams.workDoneToken: (string|integer)?
@@ -44,5 +44,5 @@ package nvim.type.lsp;
 		An optional token that a server can use to report work done progress.
 	**/
 	@:optional
-	extern var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
+	extern public var workDoneToken : Null<nvim.type.lsp.ProgressToken>;
 }

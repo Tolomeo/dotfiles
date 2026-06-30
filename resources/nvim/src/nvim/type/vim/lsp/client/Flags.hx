@@ -19,7 +19,7 @@ package nvim.type.vim.lsp.client;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var allow_incremental_sync : Null<Bool>;
+	extern public var allow_incremental_sync : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.debounce_text_changes: integer
@@ -32,7 +32,7 @@ package nvim.type.vim.lsp.client;
 		 No debounce occurs if `nil`.
 		 (default: `150`)
 	**/
-	extern var debounce_text_changes : Int;
+	extern public var debounce_text_changes : Float;
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.exit_timeout: integer|false
@@ -46,5 +46,5 @@ package nvim.type.vim.lsp.client;
 		 immediately after sending the "shutdown" request to the server.
 		 (default: `false`)
 	**/
-	extern var exit_timeout : haxe.extern.EitherType<Int, Bool>;
+	extern public var exit_timeout : haxe.extern.EitherType<Float, Bool>;
 }

@@ -11,11 +11,11 @@ package nvim.type.uv.fs_readdir;
 		(field) uv.fs_readdir.entry.name: string
 		```
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) uv.fs_readdir.entry.type: string
 		```
 	**/
-	extern var type : String;
+	extern public var type : String;
 }

@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		- `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
 		- `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
 	**/
-	extern var glob : String;
+	extern public var glob : String;
 	/**
 		```lua
 		(field) lsp.FileOperationPattern.matches: ("file"|"folder")?
@@ -59,7 +59,7 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var matches : Null<nvim.type.lsp.FileOperationPatternKind>;
+	extern public var matches : Null<nvim.type.lsp.FileOperationPatternKind>;
 	/**
 		```lua
 		(field) lsp.FileOperationPattern.options: (lsp.FileOperationPatternOptions)?
@@ -76,5 +76,5 @@ package nvim.type.lsp;
 		Additional options used during matching.
 	**/
 	@:optional
-	extern var options : Null<nvim.type.lsp.FileOperationPatternOptions>;
+	extern public var options : Null<nvim.type.lsp.FileOperationPatternOptions>;
 }

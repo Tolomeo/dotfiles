@@ -28,8 +28,42 @@ extern class Language {
 		
 		@*return* `Error` — if parser cannot be loaded
 	**/
+	@:native("add")
 	@:luaDotMethod
-	function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>, Void, Void, Void, Void>;
+	private function __add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	/**
+		```lua
+		function M.add(lang: string, opts?: vim.treesitter.language.add.Opts)
+		  -> True: boolean?
+		  2. Error: string?
+		```
+		
+		---
+		
+		 Load parser with name {lang}
+		
+		 Parsers are searched in the `parser` runtime directory, or the provided {path}.
+		 Can be used to check for available parsers before enabling treesitter features, e.g.,
+		 ```lua
+		   if vim.treesitter.language.add('markdown') then
+		     vim.treesitter.start(bufnr, 'markdown')
+		   end
+		 ```
+		
+		@*param* `lang` — Name of the parser (alphanumerical and `_` only)
+		
+		@*param* `opts` — Options:
+		
+		@*return* `True` — if parser is loaded
+		
+		@*return* `Error` — if parser cannot be loaded
+	**/
+	@:luaDotMethod
+	inline function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
+		opts = nvim.helper.Arg.pure(opts);
+		final result = __add(lang, opts);
+		return new nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>>(result._0, result._1);
+	}
 	/**
 		```lua
 		function M.get_filetypes(lang: string)
@@ -46,7 +80,7 @@ extern class Language {
 		@*param* `lang` — Name of parser
 	**/
 	@:luaDotMethod
-	function get_filetypes(lang:String):Array<String>;
+	function get_filetypes(lang:String):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.get_lang(filetype: string)
@@ -105,7 +139,7 @@ extern class Language {
 		@*param* `filetype` — Filetype(s) to associate with lang
 	**/
 	@:luaDotMethod
-	function register(lang:String, filetype:haxe.extern.EitherType<String, Array<String>>):Dynamic;
+	function register(lang:String, filetype:haxe.extern.EitherType<String, lua.Table<Int, String>>):Dynamic;
 	/**
 		```lua
 		function M.require_language(lang: any, path: any, silent: any, symbol_name: any)

@@ -17,5 +17,5 @@ package nvim.type.lsp;
 		The code action kind is support with the following value
 		set.
 	**/
-	extern var codeActionKind : nvim.type.lsp.ClientCodeActionKindOptions;
+	extern public var codeActionKind : nvim.type.lsp.ClientCodeActionKindOptions;
 }

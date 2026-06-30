@@ -22,5 +22,5 @@ package nvim.type.lsp;
 		The pattern should be matched ignoring casing.
 	**/
 	@:optional
-	extern var ignoreCase : Null<Bool>;
+	extern public var ignoreCase : Null<Bool>;
 }

@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var applyKindSupport : Null<Bool>;
+	extern public var applyKindSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.CompletionListCapabilities.itemDefaults: string[]?
@@ -50,5 +50,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var itemDefaults : Null<Array<String>>;
+	extern public var itemDefaults : Null<lua.Table<Int, String>>;
 }

@@ -16,7 +16,7 @@ package nvim.type;
 		
 		 Check if the node has any of the given node types as its ancestor.
 	**/
-	extern function __has_ancestor(node_types:Array<String>):Bool;
+	extern public function __has_ancestor(node_types:lua.Table<Int, String>):Bool;
 	/**
 		```lua
 		(method) TSNode:byte_length()
@@ -27,7 +27,7 @@ package nvim.type;
 		
 		 Return the number of bytes spanned by this node.
 	**/
-	extern function byte_length():Int;
+	extern public function byte_length():Float;
 	/**
 		```lua
 		(method) TSNode:child(index: integer)
@@ -39,7 +39,7 @@ package nvim.type;
 		 Get the node's child at the given {index}, where zero represents the first
 		 child.
 	**/
-	extern function child(index:Int):Null<nvim.type.TSNode>;
+	extern public function child(index:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:child_count()
@@ -50,7 +50,7 @@ package nvim.type;
 		
 		 Get the node's number of children.
 	**/
-	extern function child_count():Int;
+	extern public function child_count():Float;
 	/**
 		```lua
 		(method) TSNode:child_with_descendant(descendant: TSNode)
@@ -71,7 +71,33 @@ package nvim.type;
 		 a:child_with_descendant(a) == nil
 		 ```
 	**/
-	extern function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode>;
+	@:native("child_with_descendant")
+	private extern function __child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode>;
+	/**
+		```lua
+		(method) TSNode:child_with_descendant(descendant: TSNode)
+		  -> TSNode?
+		```
+		
+		---
+		
+		 Get the node's child that contains {descendant} (includes {descendant}).
+		
+		 For example, with the following node hierarchy:
+		
+		 ```
+		 a -> b -> c
+		
+		 a:child_with_descendant(c) == b
+		 a:child_with_descendant(b) == b
+		 a:child_with_descendant(a) == nil
+		 ```
+	**/
+	inline public function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode> {
+		descendant = nvim.helper.Arg.pure(descendant);
+		final result = __child_with_descendant(descendant);
+		return result;
+	}
 	/**
 		```lua
 		(method) TSNode:descendant_for_range(start_row: integer, start_col: integer, end_row: integer, end_col: integer)
@@ -83,7 +109,7 @@ package nvim.type;
 		 Get the smallest node within this node that spans the given range of (row,
 		 column) positions
 	**/
-	extern function descendant_for_range(start_row:Int, start_col:Int, end_row:Int, end_col:Int):Null<nvim.type.TSNode>;
+	extern public function descendant_for_range(start_row:Float, start_col:Float, end_row:Float, end_col:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:end_()
@@ -97,7 +123,7 @@ package nvim.type;
 		 Get the node's end position. Return three values: the row, column and
 		 total byte count (all zero-based).
 	**/
-	extern function end_():Int;
+	extern public function end_():Float;
 	/**
 		```lua
 		(method) TSNode:equal(node: TSNode)
@@ -108,7 +134,23 @@ package nvim.type;
 		
 		 Check if {node} refers to the same node within the same tree.
 	**/
-	extern function equal(node:nvim.type.TSNode):Bool;
+	@:native("equal")
+	private extern function __equal(node:nvim.type.TSNode):Bool;
+	/**
+		```lua
+		(method) TSNode:equal(node: TSNode)
+		  -> boolean
+		```
+		
+		---
+		
+		 Check if {node} refers to the same node within the same tree.
+	**/
+	inline public function equal(node:nvim.type.TSNode):Bool {
+		node = nvim.helper.Arg.pure(node);
+		final result = __equal(node);
+		return result;
+	}
 	/**
 		```lua
 		(method) TSNode:extra()
@@ -120,7 +162,7 @@ package nvim.type;
 		 Check if the node is extra. Extra nodes represent things like comments,
 		 which are not required by the grammar but can appear anywhere.
 	**/
-	extern function extra():Bool;
+	extern public function extra():Bool;
 	/**
 		```lua
 		(method) TSNode:field(name: string)
@@ -131,7 +173,7 @@ package nvim.type;
 		
 		 Returns a list of all the node's children that have the given field name.
 	**/
-	extern function field(name:String):Array<nvim.type.TSNode>;
+	extern public function field(name:String):lua.Table<Int, nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:has_changes()
@@ -142,7 +184,7 @@ package nvim.type;
 		
 		 Check if a syntax node has been edited.
 	**/
-	extern function has_changes():Bool;
+	extern public function has_changes():Bool;
 	/**
 		```lua
 		(method) TSNode:has_error()
@@ -153,7 +195,7 @@ package nvim.type;
 		
 		 Check if the node is a syntax error or contains any syntax errors.
 	**/
-	extern function has_error():Bool;
+	extern public function has_error():Bool;
 	/**
 		```lua
 		(method) TSNode:id()
@@ -171,7 +213,7 @@ package nvim.type;
 		 Note: The `id` is not guaranteed to be unique for nodes from different
 		 trees.
 	**/
-	extern function id():String;
+	extern public function id():String;
 	/**
 		```lua
 		(method) TSNode:iter_children()
@@ -185,7 +227,7 @@ package nvim.type;
 		 Returns the child node plus the eventual field name corresponding to this
 		 child node.
 	**/
-	extern function iter_children():() -> nvim.helper.Multireturn<nvim.type.TSNode, String, Void, Void, Void, Void>;
+	extern public function iter_children():() -> nvim.helper.Multireturn<nvim.type.TSNode, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) TSNode:missing()
@@ -197,7 +239,7 @@ package nvim.type;
 		 Check if the node is missing. Missing nodes are inserted by the parser in
 		 order to recover from certain kinds of syntax errors.
 	**/
-	extern function missing():Bool;
+	extern public function missing():Bool;
 	/**
 		```lua
 		(method) TSNode:named()
@@ -210,7 +252,7 @@ package nvim.type;
 		 grammar, whereas anonymous nodes correspond to string literals in the
 		 grammar.
 	**/
-	extern function named():Bool;
+	extern public function named():Bool;
 	/**
 		```lua
 		(method) TSNode:named_child(index: integer)
@@ -222,7 +264,7 @@ package nvim.type;
 		 Get the node's named child at the given {index}, where zero represents the
 		 first named child.
 	**/
-	extern function named_child(index:Int):Null<nvim.type.TSNode>;
+	extern public function named_child(index:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:named_child_count()
@@ -233,7 +275,7 @@ package nvim.type;
 		
 		 Get the node's number of named children.
 	**/
-	extern function named_child_count():Int;
+	extern public function named_child_count():Float;
 	/**
 		```lua
 		(method) TSNode:named_children()
@@ -244,7 +286,7 @@ package nvim.type;
 		
 		 Returns a list of the node's named children.
 	**/
-	extern function named_children():Array<nvim.type.TSNode>;
+	extern public function named_children():lua.Table<Int, nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:named_descendant_for_range(start_row: integer, start_col: integer, end_row: integer, end_col: integer)
@@ -256,7 +298,7 @@ package nvim.type;
 		 Get the smallest named node within this node that spans the given range of
 		 (row, column) positions
 	**/
-	extern function named_descendant_for_range(start_row:Int, start_col:Int, end_row:Int, end_col:Int):Null<nvim.type.TSNode>;
+	extern public function named_descendant_for_range(start_row:Float, start_col:Float, end_row:Float, end_col:Float):Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:next_named_sibling()
@@ -267,7 +309,7 @@ package nvim.type;
 		
 		 Get the node's next named sibling.
 	**/
-	extern function next_named_sibling():Null<nvim.type.TSNode>;
+	extern public function next_named_sibling():Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:next_sibling()
@@ -278,7 +320,7 @@ package nvim.type;
 		
 		 Get the node's next sibling.
 	**/
-	extern function next_sibling():Null<nvim.type.TSNode>;
+	extern public function next_sibling():Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:parent()
@@ -291,7 +333,7 @@ package nvim.type;
 		 Prefer |TSNode:child_with_descendant()|
 		 for iterating over the node's ancestors.
 	**/
-	extern function parent():Null<nvim.type.TSNode>;
+	extern public function parent():Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:prev_named_sibling()
@@ -302,7 +344,7 @@ package nvim.type;
 		
 		 Get the node's previous named sibling.
 	**/
-	extern function prev_named_sibling():Null<nvim.type.TSNode>;
+	extern public function prev_named_sibling():Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:prev_sibling()
@@ -313,7 +355,7 @@ package nvim.type;
 		
 		 Get the node's previous sibling.
 	**/
-	extern function prev_sibling():Null<nvim.type.TSNode>;
+	extern public function prev_sibling():Null<nvim.type.TSNode>;
 	/**
 		```lua
 		(method) TSNode:range(include_bytes?: false)
@@ -355,8 +397,8 @@ package nvim.type;
 		  6. integer
 		```
 	**/
-	@:overload(function (include_bytes:Bool) : nvim.helper.Multireturn<Int, Int, Int, Int, Int, Int> {})
-	extern function range(?include_bytes:Null<Bool>):Int;
+	@:overload(function (include_bytes:Bool) : nvim.helper.Multireturn<Float, Float, Float, Float, Float, Float> {})
+	extern public function range(?include_bytes:Null<Bool>):Float;
 	/**
 		```lua
 		(method) TSNode:sexpr()
@@ -367,7 +409,7 @@ package nvim.type;
 		
 		 Get an S-expression representing the node as a string.
 	**/
-	extern function sexpr():String;
+	extern public function sexpr():String;
 	/**
 		```lua
 		(method) TSNode:start()
@@ -381,7 +423,7 @@ package nvim.type;
 		 Get the node's start position. Return three values: the row, column and
 		 total byte count (all zero-based).
 	**/
-	extern function start():Int;
+	extern public function start():Float;
 	/**
 		```lua
 		(method) TSNode:symbol()
@@ -392,7 +434,7 @@ package nvim.type;
 		
 		 Get the node's type as a numerical id.
 	**/
-	extern function symbol():Int;
+	extern public function symbol():Float;
 	/**
 		```lua
 		(method) TSNode:tree()
@@ -403,7 +445,7 @@ package nvim.type;
 		
 		 Get the |TSTree| of the node.
 	**/
-	extern function tree():nvim.type.TSTree;
+	extern public function tree():nvim.type.TSTree;
 	/**
 		```lua
 		(method) TSNode:type()
@@ -414,5 +456,5 @@ package nvim.type;
 		
 		 Get the node's type as a string.
 	**/
-	extern function type():String;
+	extern public function type():String;
 }

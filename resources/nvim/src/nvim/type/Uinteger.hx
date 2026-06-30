@@ -1,3 +1,3 @@
 package nvim.type;
 
-extern typedef Uinteger = Int;
+extern typedef Uinteger = Float;

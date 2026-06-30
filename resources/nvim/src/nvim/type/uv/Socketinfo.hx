@@ -32,17 +32,17 @@ package nvim.type.uv;
 		    | "packet"
 		```
 	**/
-	extern var family : haxe.extern.EitherType<String, nvim.type.uv.socket.Family>;
+	extern public var family : haxe.extern.EitherType<String, nvim.type.uv.socket.Family>;
 	/**
 		```lua
 		(field) uv.socketinfo.ip: string
 		```
 	**/
-	extern var ip : String;
+	extern public var ip : String;
 	/**
 		```lua
 		(field) uv.socketinfo.port: integer
 		```
 	**/
-	extern var port : Int;
+	extern public var port : Float;
 }

@@ -12,45 +12,45 @@ package nvim.type.vim.fn.sign_getdefined.ret;
 		```
 	**/
 	@:optional
-	extern var culhl : Null<String>;
+	extern public var culhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.icon: string?
 		```
 	**/
 	@:optional
-	extern var icon : Null<String>;
+	extern public var icon : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.linehl: string?
 		```
 	**/
 	@:optional
-	extern var linehl : Null<String>;
+	extern public var linehl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.name: string
 		```
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.numhl: string?
 		```
 	**/
 	@:optional
-	extern var numhl : Null<String>;
+	extern public var numhl : Null<String>;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.text: string
 		```
 	**/
-	extern var text : String;
+	extern public var text : String;
 	/**
 		```lua
 		(field) vim.fn.sign_getdefined.ret.item.texthl: string?
 		```
 	**/
 	@:optional
-	extern var texthl : Null<String>;
+	extern public var texthl : Null<String>;
 }

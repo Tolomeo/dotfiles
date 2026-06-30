@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		A document selector to identify the scope of the registration. If set to null
 		the document selector provided on the client side will be used.
 	**/
-	extern var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
+	extern public var documentSelector : haxe.extern.EitherType<nvim.type.lsp.DocumentSelector, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeRegistrationOptions.id: string?
@@ -38,12 +38,12 @@ package nvim.type.lsp;
 		the request again. See also Registration#id.
 	**/
 	@:optional
-	extern var id : Null<String>;
+	extern public var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.LinkedEditingRangeRegistrationOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

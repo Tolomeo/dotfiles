@@ -19,7 +19,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var activeParameterSupport : Null<Bool>;
+	extern public var activeParameterSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.documentationFormat: "markdown"|"plaintext"[]?
@@ -32,7 +32,7 @@ package nvim.type.lsp;
 		property. The order describes the preferred format of the client.
 	**/
 	@:optional
-	extern var documentationFormat : Null<Array<nvim.type.lsp.MarkupKind>>;
+	extern public var documentationFormat : Null<lua.Table<Int, nvim.type.lsp.MarkupKind>>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.noActiveParameterSupport: boolean?
@@ -47,7 +47,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var noActiveParameterSupport : Null<Bool>;
+	extern public var noActiveParameterSupport : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.ClientSignatureInformationOptions.parameterInformation: (lsp.ClientSignatureParameterInformationOptions)?
@@ -59,5 +59,5 @@ package nvim.type.lsp;
 		Client capabilities specific to parameter information.
 	**/
 	@:optional
-	extern var parameterInformation : Null<nvim.type.lsp.ClientSignatureParameterInformationOptions>;
+	extern public var parameterInformation : Null<nvim.type.lsp.ClientSignatureParameterInformationOptions>;
 }

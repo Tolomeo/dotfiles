@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		the request again. See also Registration#id.
 	**/
 	@:optional
-	extern var id : Null<String>;
+	extern public var id : Null<String>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.notebookSelector: (lsp.NotebookDocumentFilterWithCells|lsp.NotebookDocumentFilterWithNotebook)[]
@@ -34,7 +34,7 @@ package nvim.type.lsp;
 		
 		The notebooks to be synced
 	**/
-	extern var notebookSelector : Array<haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
+	extern public var notebookSelector : lua.Table<Int, haxe.extern.EitherType<nvim.type.lsp.NotebookDocumentFilterWithNotebook, nvim.type.lsp.NotebookDocumentFilterWithCells>>;
 	/**
 		```lua
 		(field) lsp.NotebookDocumentSyncRegistrationOptions.save: boolean?
@@ -47,5 +47,5 @@ package nvim.type.lsp;
 		the server. Will only be honored if mode === `notebook`.
 	**/
 	@:optional
-	extern var save : Null<Bool>;
+	extern public var save : Null<Bool>;
 }

@@ -20,7 +20,7 @@ package nvim.type.vim.lsp.completion;
 		(default: false) When true, completion triggers automatically based on the server's `triggerCharacters`.
 	**/
 	@:optional
-	extern var autotrigger : Null<Bool>;
+	extern public var autotrigger : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.completion.BufferOpts.convert: (fun(item: lsp.CompletionItem):table)?
@@ -38,5 +38,5 @@ package nvim.type.vim.lsp.completion;
 		```
 	**/
 	@:optional
-	extern var convert : Null<(item:nvim.type.lsp.CompletionItem) -> lua.Table.AnyTable>;
+	extern public var convert : Null<(item:nvim.type.lsp.CompletionItem) -> lua.Table.AnyTable>;
 }

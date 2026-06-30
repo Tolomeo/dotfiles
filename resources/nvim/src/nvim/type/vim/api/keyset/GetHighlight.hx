@@ -12,26 +12,26 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var create : Null<Bool>;
+	extern public var create : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.id: integer?
 		```
 	**/
 	@:optional
-	extern var id : Null<Int>;
+	extern public var id : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.link: boolean?
 		```
 	**/
 	@:optional
-	extern var link : Null<Bool>;
+	extern public var link : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.name: string?
 		```
 	**/
 	@:optional
-	extern var name : Null<String>;
+	extern public var name : Null<String>;
 }

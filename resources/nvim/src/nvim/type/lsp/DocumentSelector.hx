@@ -1,3 +1,3 @@
 package nvim.type.lsp;
 
-extern typedef DocumentSelector = Array<nvim.type.lsp.DocumentFilter>;
+extern typedef DocumentSelector = lua.Table<Int, nvim.type.lsp.DocumentFilter>;

@@ -16,7 +16,7 @@ package nvim.type.vim.diagnostic.opts;
 		see |nvim_open_win()|.
 	**/
 	@:optional
-	extern var border : Null<String>;
+	extern public var border : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.bufnr: integer?
@@ -29,14 +29,14 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: current buffer)
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.focus_id: string?
 		```
 	**/
 	@:optional
-	extern var focus_id : Null<String>;
+	extern public var focus_id : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.format: fun(diagnostic: vim.Diagnostic):string??
@@ -58,7 +58,7 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
+	extern public var format : Null<(diagnostic:nvim.type.vim.Diagnostic) -> Null<String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.header: (string|[string, any])?
@@ -72,7 +72,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Overrides the setting from |vim.diagnostic.config()|.
 	**/
 	@:optional
-	extern var header : Null<String>;
+	extern public var header : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.namespace: integer?
@@ -84,7 +84,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Limit diagnostics to the given namespace
 	**/
 	@:optional
-	extern var namespace : Null<Int>;
+	extern public var namespace : Null<Float>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.pos: (integer|[integer, integer])?
@@ -97,7 +97,7 @@ package nvim.type.vim.diagnostic.opts;
 		 position. If a number, interpreted as a line number; otherwise, a
 		 (row, col) tuple.
 	**/
-	extern var pos : Dynamic;
+	extern public var pos : Dynamic;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.prefix: (string|table|fun(diagnostic: vim.Diagnostic, i: integer, total: integer):string, string)?
@@ -127,7 +127,7 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern var prefix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
+	extern public var prefix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Float, total:Float) -> nvim.helper.Multireturn<String, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>>>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.scope: ('b'|'buffer'|'c'|'cursor'|'l'|'line')?
@@ -142,7 +142,7 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: `line`)
 	**/
 	@:optional
-	extern var scope : Null<String>;
+	extern public var scope : Null<String>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -163,7 +163,7 @@ package nvim.type.vim.diagnostic.opts;
 		 @nodoc
 	**/
 	@:optional
-	extern var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
+	extern public var severity : Null<nvim.type.vim.diagnostic.SeverityFilter>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.severity_sort: (boolean|{ reverse: boolean })?
@@ -177,7 +177,7 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: `false`)
 	**/
 	@:optional
-	extern var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
+	extern public var severity_sort : Null<haxe.extern.EitherType<Bool, { @:optional
 	var reverse : Null<Bool>; }>>;
 	/**
 		```lua
@@ -194,7 +194,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Overrides the setting from |vim.diagnostic.config()|.
 	**/
 	@:optional
-	extern var source : Null<haxe.extern.EitherType<Bool, String>>;
+	extern public var source : Null<haxe.extern.EitherType<Bool, String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Float.suffix: (string|table|fun(diagnostic: vim.Diagnostic, i: integer, total: integer):string, string)?
@@ -216,5 +216,5 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern var suffix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> nvim.helper.Multireturn<String, String, Void, Void, Void, Void>>>>;
+	extern public var suffix : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, (diagnostic:nvim.type.vim.Diagnostic, i:Float, total:Float) -> nvim.helper.Multireturn<String, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>>>>;
 }

@@ -12,12 +12,12 @@ package nvim.type.uv.fs_event_start.callback;
 		```
 	**/
 	@:optional
-	extern var change : Null<Bool>;
+	extern public var change : Null<Bool>;
 	/**
 		```lua
 		(field) uv.fs_event_start.callback.events.rename: boolean|nil
 		```
 	**/
 	@:optional
-	extern var rename : Null<Bool>;
+	extern public var rename : Null<Bool>;
 }

@@ -19,7 +19,7 @@ package nvim.type.vim.fs.normalize;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var expand_env : Null<Bool>;
+	extern public var expand_env : Null<Bool>;
 	/**
 		```lua
 		(field) vim.fs.normalize.Opts.win: boolean?
@@ -32,5 +32,5 @@ package nvim.type.vim.fs.normalize;
 		 (default: `true` in Windows, `false` otherwise)
 	**/
 	@:optional
-	extern var win : Null<Bool>;
+	extern public var win : Null<Bool>;
 }

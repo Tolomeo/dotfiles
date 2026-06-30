@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Whether range formatting supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentRangeFormattingClientCapabilities.rangesSupport: boolean?
@@ -34,5 +34,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var rangesSupport : Null<Bool>;
+	extern public var rangesSupport : Null<Bool>;
 }

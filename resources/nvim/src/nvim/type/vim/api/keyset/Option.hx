@@ -12,26 +12,26 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var buf : Null<Int>;
+	extern public var buf : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.filetype: string?
 		```
 	**/
 	@:optional
-	extern var filetype : Null<String>;
+	extern public var filetype : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.scope: string?
 		```
 	**/
 	@:optional
-	extern var scope : Null<String>;
+	extern public var scope : Null<String>;
 	/**
 		```lua
 		(field) vim.api.keyset.option.win: integer?
 		```
 	**/
 	@:optional
-	extern var win : Null<Int>;
+	extern public var win : Null<Float>;
 }

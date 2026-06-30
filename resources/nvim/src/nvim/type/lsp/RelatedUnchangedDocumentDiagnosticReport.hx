@@ -24,7 +24,7 @@ package nvim.type.lsp;
 		only return `unchanged` if result ids are
 		provided.
 	**/
-	extern var kind : String;
+	extern public var kind : String;
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.relatedDocuments: table<string, lsp.FullDocumentDiagnosticReport|lsp.UnchangedDocumentDiagnosticReport>?
@@ -41,7 +41,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
+	extern public var relatedDocuments : Null<lua.Table<nvim.type.lsp.DocumentUri, haxe.extern.EitherType<nvim.type.lsp.FullDocumentDiagnosticReport, nvim.type.lsp.UnchangedDocumentDiagnosticReport>>>;
 	/**
 		```lua
 		(field) lsp.RelatedUnchangedDocumentDiagnosticReport.resultId: string
@@ -53,5 +53,5 @@ package nvim.type.lsp;
 		A result id which will be sent on the next
 		diagnostic request for the same document.
 	**/
-	extern var resultId : String;
+	extern public var resultId : String;
 }

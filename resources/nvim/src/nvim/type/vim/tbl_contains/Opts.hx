@@ -18,5 +18,5 @@ package nvim.type.vim.tbl_contains;
 		 `value` is a function reference to be checked (default false)
 	**/
 	@:optional
-	extern var predicate : Null<Bool>;
+	extern public var predicate : Null<Bool>;
 }

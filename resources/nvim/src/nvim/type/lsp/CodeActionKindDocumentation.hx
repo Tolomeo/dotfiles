@@ -30,7 +30,7 @@ package nvim.type.lsp;
 		
 		The title of this documentation code action is taken from {@linkcode Command.title}
 	**/
-	extern var command : nvim.type.lsp.Command;
+	extern public var command : nvim.type.lsp.Command;
 	/**
 		```lua
 		(field) lsp.CodeActionKindDocumentation.kind: ""|"notebook"|"quickfix"|"refactor"|"refactor.extract"|"refactor.inline"|"refactor.move"|"refactor.rewrite"|"source"|"source.fixAll"|"source.organizeImports"
@@ -67,5 +67,5 @@ package nvim.type.lsp;
 		    | "notebook" -- Notebook
 		```
 	**/
-	extern var kind : nvim.type.lsp.CodeActionKind;
+	extern public var kind : nvim.type.lsp.CodeActionKind;
 }

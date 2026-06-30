@@ -12,12 +12,12 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var force : Null<Bool>;
+	extern public var force : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.buf_delete.unload: boolean?
 		```
 	**/
 	@:optional
-	extern var unload : Null<Bool>;
+	extern public var unload : Null<Bool>;
 }

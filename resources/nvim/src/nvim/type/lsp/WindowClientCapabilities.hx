@@ -23,7 +23,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var showDocument : Null<nvim.type.lsp.ShowDocumentClientCapabilities>;
+	extern public var showDocument : Null<nvim.type.lsp.ShowDocumentClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.showMessage: (lsp.ShowMessageRequestClientCapabilities)?
@@ -40,7 +40,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var showMessage : Null<nvim.type.lsp.ShowMessageRequestClientCapabilities>;
+	extern public var showMessage : Null<nvim.type.lsp.ShowMessageRequestClientCapabilities>;
 	/**
 		```lua
 		(field) lsp.WindowClientCapabilities.workDoneProgress: boolean?
@@ -59,5 +59,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

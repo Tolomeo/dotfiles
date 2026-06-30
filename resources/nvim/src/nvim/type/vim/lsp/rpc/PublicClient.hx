@@ -28,7 +28,7 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function is_closing():Bool;
+	extern public function is_closing():Bool;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.notify: fun(method: string, params: any):boolean
@@ -47,7 +47,28 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function notify(method:String, params:Any):Bool;
+	extern public function notify(method:String, params:Any):Bool;
+	/**
+		```lua
+		(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?
+		```
+		
+		---
+		
+		
+		 See [vim.lsp.rpc.request()]
+		
+		---
+		
+		```lua
+		function (method: string, params: table?, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer))
+		  -> boolean
+		  2. integer?
+		```
+	**/
+	@:native("request")
+	@:luaDotMethod
+	private extern function __request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?
@@ -67,7 +88,10 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Int>, Void, Void, Void, Void>;
+	inline public function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn.Return2<Bool, Null<Float>> {
+		final result = __request(method, params, callback, notify_reply_callback);
+		return new nvim.helper.Multireturn.Return2<Bool, Null<Float>>(result._0, result._1);
+	}
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.terminate: fun()
@@ -85,5 +109,5 @@ package nvim.type.vim.lsp.rpc;
 		```
 	**/
 	@:luaDotMethod
-	extern function terminate():Dynamic;
+	extern public function terminate():Dynamic;
 }

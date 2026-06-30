@@ -12,7 +12,7 @@ package nvim.type.vim.lsp.buf.hover;
 		```
 	**/
 	@:optional
-	extern var _update_win : Null<Int>;
+	extern public var _update_win : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.anchor_bias: ('above'|'auto'|'below')?
@@ -30,7 +30,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 (default: `'auto'`)
 	**/
 	@:optional
-	extern var anchor_bias : Null<String>;
+	extern public var anchor_bias : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.border: (string|(string|[string, string])[])?
@@ -41,7 +41,7 @@ package nvim.type.vim.lsp.buf.hover;
 		override `border`
 	**/
 	@:optional
-	extern var border : Null<haxe.extern.EitherType<String, Array<Dynamic>>>;
+	extern public var border : Null<haxe.extern.EitherType<String, lua.Table<Int, Dynamic>>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.close_events: table?
@@ -53,7 +53,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 List of events that closes the floating window
 	**/
 	@:optional
-	extern var close_events : Null<lua.Table.AnyTable>;
+	extern public var close_events : Null<lua.Table.AnyTable>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.focus: boolean?
@@ -67,7 +67,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var focus : Null<Bool>;
+	extern public var focus : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.focus_id: string?
@@ -79,7 +79,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 If a popup with this id is opened, then focus it
 	**/
 	@:optional
-	extern var focus_id : Null<String>;
+	extern public var focus_id : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.focusable: boolean?
@@ -92,7 +92,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var focusable : Null<Bool>;
+	extern public var focusable : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.height: integer?
@@ -104,7 +104,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 Height of floating window
 	**/
 	@:optional
-	extern var height : Null<Int>;
+	extern public var height : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.max_height: integer?
@@ -116,7 +116,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 Maximal height of floating window
 	**/
 	@:optional
-	extern var max_height : Null<Int>;
+	extern public var max_height : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.max_width: integer?
@@ -128,7 +128,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 Maximal width of floating window
 	**/
 	@:optional
-	extern var max_width : Null<Int>;
+	extern public var max_width : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.offset_x: integer?
@@ -140,7 +140,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 offset to add to `col`
 	**/
 	@:optional
-	extern var offset_x : Null<Int>;
+	extern public var offset_x : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.offset_y: integer?
@@ -152,7 +152,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 offset to add to `row`
 	**/
 	@:optional
-	extern var offset_y : Null<Int>;
+	extern public var offset_y : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.relative: ('cursor'|'editor'|'mouse')?
@@ -164,28 +164,28 @@ package nvim.type.vim.lsp.buf.hover;
 		 (default: `'cursor'`)
 	**/
 	@:optional
-	extern var relative : Null<String>;
+	extern public var relative : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.silent: boolean?
 		```
 	**/
 	@:optional
-	extern var silent : Null<Bool>;
+	extern public var silent : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.title: (string|[string, string][])?
 		```
 	**/
 	@:optional
-	extern var title : Null<String>;
+	extern public var title : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.title_pos: ('center'|'left'|'right')?
 		```
 	**/
 	@:optional
-	extern var title_pos : Null<String>;
+	extern public var title_pos : Null<String>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.width: integer?
@@ -197,7 +197,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 Width of floating window
 	**/
 	@:optional
-	extern var width : Null<Int>;
+	extern public var width : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.wrap: boolean?
@@ -210,7 +210,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 (default: `true`)
 	**/
 	@:optional
-	extern var wrap : Null<Bool>;
+	extern public var wrap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.wrap_at: integer?
@@ -222,7 +222,7 @@ package nvim.type.vim.lsp.buf.hover;
 		 Character to wrap at for computing height when wrap is enabled
 	**/
 	@:optional
-	extern var wrap_at : Null<Int>;
+	extern public var wrap_at : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.hover.Opts.zindex: integer?
@@ -233,5 +233,5 @@ package nvim.type.vim.lsp.buf.hover;
 		override `zindex`, defaults to 50
 	**/
 	@:optional
-	extern var zindex : Null<Int>;
+	extern public var zindex : Null<Float>;
 }

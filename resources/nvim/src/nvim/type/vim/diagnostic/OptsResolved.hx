@@ -7,7 +7,7 @@ package nvim.type.vim.diagnostic;
 **/
 @:structInit class SeveritySort {
 	@:optional
-	extern var reverse : Null<Bool>;
+	extern public var reverse : Null<Bool>;
 }
 
 /**
@@ -21,35 +21,35 @@ package nvim.type.vim.diagnostic;
 		(field) vim.diagnostic.OptsResolved.float: vim.diagnostic.Opts.Float
 		```
 	**/
-	extern var float : nvim.type.vim.diagnostic.opts.Float;
+	extern public var float : nvim.type.vim.diagnostic.opts.Float;
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.signs: vim.diagnostic.Opts.Signs
 		```
 	**/
-	extern var signs : nvim.type.vim.diagnostic.opts.Signs;
+	extern public var signs : nvim.type.vim.diagnostic.opts.Signs;
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.underline: vim.diagnostic.Opts.Underline
 		```
 	**/
-	extern var underline : nvim.type.vim.diagnostic.opts.Underline;
+	extern public var underline : nvim.type.vim.diagnostic.opts.Underline;
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.update_in_insert: boolean
 		```
 	**/
-	extern var update_in_insert : Bool;
+	extern public var update_in_insert : Bool;
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.virtual_lines: vim.diagnostic.Opts.VirtualLines
 		```
 	**/
-	extern var virtual_lines : nvim.type.vim.diagnostic.opts.VirtualLines;
+	extern public var virtual_lines : nvim.type.vim.diagnostic.opts.VirtualLines;
 	/**
 		```lua
 		(field) vim.diagnostic.OptsResolved.virtual_text: vim.diagnostic.Opts.VirtualText
 		```
 	**/
-	extern var virtual_text : nvim.type.vim.diagnostic.opts.VirtualText;
+	extern public var virtual_text : nvim.type.vim.diagnostic.opts.VirtualText;
 }

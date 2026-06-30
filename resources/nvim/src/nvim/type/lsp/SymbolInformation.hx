@@ -25,7 +25,7 @@ package nvim.type.lsp;
 		symbols.
 	**/
 	@:optional
-	extern var containerName : Null<String>;
+	extern public var containerName : Null<String>;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.deprecated: boolean?
@@ -38,7 +38,7 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var deprecated : Null<Bool>;
+	extern public var deprecated : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.kind: 1|10|11|12|13|14|15|16|17|18|19|2|20|21|22|23|24|25|26|3|4|5|6|7|8|9
@@ -86,7 +86,7 @@ package nvim.type.lsp;
 		    | 26 -- TypeParameter
 		```
 	**/
-	extern var kind : nvim.type.lsp.SymbolKind;
+	extern public var kind : nvim.type.lsp.SymbolKind;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.location: lsp.Location
@@ -110,7 +110,7 @@ package nvim.type.lsp;
 		syntax tree. It can therefore not be used to re-construct a hierarchy of
 		the symbols.
 	**/
-	extern var location : nvim.type.lsp.Location;
+	extern public var location : nvim.type.lsp.Location;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.name: string
@@ -121,7 +121,7 @@ package nvim.type.lsp;
 		
 		The name of this symbol.
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) lsp.SymbolInformation.tags: 1[]?
@@ -134,5 +134,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tags : Null<Array<nvim.type.lsp.SymbolTag>>;
+	extern public var tags : Null<lua.Table<Int, nvim.type.lsp.SymbolTag>>;
 }

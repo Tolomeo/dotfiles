@@ -16,5 +16,5 @@ package nvim.type.uv.pipe;
 		(field) uv.pipe.read_flags.nonblock: boolean
 		```
 	**/
-	extern var nonblock : Bool;
+	extern public var nonblock : Bool;
 }

@@ -20,7 +20,7 @@ package nvim.type.lsp;
 	```
 **/
 @:structInit class Range {
-	extern var end : Dynamic;
+	extern public var end : Dynamic;
 	/**
 		```lua
 		(field) lsp.Range.start: lsp.Position
@@ -60,5 +60,5 @@ package nvim.type.lsp;
 		
 		The range's start position.
 	**/
-	extern var start : nvim.type.lsp.Position;
+	extern public var start : nvim.type.lsp.Position;
 }

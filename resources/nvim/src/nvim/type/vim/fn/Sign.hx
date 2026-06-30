@@ -11,29 +11,29 @@ package nvim.type.vim.fn;
 		(field) vim.fn.sign.group: string
 		```
 	**/
-	extern var group : String;
+	extern public var group : String;
 	/**
 		```lua
 		(field) vim.fn.sign.id: integer
 		```
 	**/
-	extern var id : Int;
+	extern public var id : Float;
 	/**
 		```lua
 		(field) vim.fn.sign.lnum: integer
 		```
 	**/
-	extern var lnum : Int;
+	extern public var lnum : Float;
 	/**
 		```lua
 		(field) vim.fn.sign.name: string
 		```
 	**/
-	extern var name : String;
+	extern public var name : String;
 	/**
 		```lua
 		(field) vim.fn.sign.priority: integer
 		```
 	**/
-	extern var priority : Int;
+	extern public var priority : Float;
 }

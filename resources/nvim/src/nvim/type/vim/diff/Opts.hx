@@ -26,7 +26,7 @@ package nvim.type.vim.diff;
 		 (default: `'myers'`)
 	**/
 	@:optional
-	extern var algorithm : Null<String>;
+	extern public var algorithm : Null<String>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ctxlen: integer?
@@ -37,7 +37,7 @@ package nvim.type.vim.diff;
 		Context length
 	**/
 	@:optional
-	extern var ctxlen : Null<Int>;
+	extern public var ctxlen : Null<Float>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_blank_lines: boolean?
@@ -48,7 +48,7 @@ package nvim.type.vim.diff;
 		Ignore blank lines
 	**/
 	@:optional
-	extern var ignore_blank_lines : Null<Bool>;
+	extern public var ignore_blank_lines : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_cr_at_eol: boolean?
@@ -59,7 +59,7 @@ package nvim.type.vim.diff;
 		Ignore carriage return at end-of-line
 	**/
 	@:optional
-	extern var ignore_cr_at_eol : Null<Bool>;
+	extern public var ignore_cr_at_eol : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace: boolean?
@@ -70,7 +70,7 @@ package nvim.type.vim.diff;
 		Ignore whitespace
 	**/
 	@:optional
-	extern var ignore_whitespace : Null<Bool>;
+	extern public var ignore_whitespace : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace_change: boolean?
@@ -81,7 +81,7 @@ package nvim.type.vim.diff;
 		Ignore whitespace change
 	**/
 	@:optional
-	extern var ignore_whitespace_change : Null<Bool>;
+	extern public var ignore_whitespace_change : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_whitespace_change_at_eol: boolean?
@@ -92,7 +92,7 @@ package nvim.type.vim.diff;
 		Ignore whitespace change at end-of-line.
 	**/
 	@:optional
-	extern var ignore_whitespace_change_at_eol : Null<Bool>;
+	extern public var ignore_whitespace_change_at_eol : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.indent_heuristic: boolean?
@@ -103,7 +103,7 @@ package nvim.type.vim.diff;
 		Use the indent heuristic for the internal diff library.
 	**/
 	@:optional
-	extern var indent_heuristic : Null<Bool>;
+	extern public var indent_heuristic : Null<Bool>;
 	/**
 		```lua
 		(field) vim.diff.Opts.interhunkctxlen: integer?
@@ -114,7 +114,7 @@ package nvim.type.vim.diff;
 		Inter hunk context length
 	**/
 	@:optional
-	extern var interhunkctxlen : Null<Int>;
+	extern public var interhunkctxlen : Null<Float>;
 	/**
 		```lua
 		(field) vim.diff.Opts.linematch: (boolean|integer)?
@@ -128,7 +128,7 @@ package nvim.type.vim.diff;
 		 Requires `result_type = indices`, ignored otherwise.
 	**/
 	@:optional
-	extern var linematch : Null<haxe.extern.EitherType<Bool, Int>>;
+	extern public var linematch : Null<haxe.extern.EitherType<Bool, Float>>;
 	/**
 		```lua
 		(field) vim.diff.Opts.on_hunk: fun(start_a: integer, count_a: integer, start_b: integer, count_b: integer):integer??
@@ -154,7 +154,7 @@ package nvim.type.vim.diff;
 		```
 	**/
 	@:optional
-	extern var on_hunk : Null<(start_a:Int, count_a:Int, start_b:Int, count_b:Int) -> Null<Int>>;
+	extern public var on_hunk : Null<(start_a:Float, count_a:Float, start_b:Float, count_b:Float) -> Null<Float>>;
 	/**
 		```lua
 		(field) vim.diff.Opts.result_type: ('indices'|'unified')?
@@ -170,5 +170,5 @@ package nvim.type.vim.diff;
 		 (default: `'unified'`)
 	**/
 	@:optional
-	extern var result_type : Null<String>;
+	extern public var result_type : Null<String>;
 }

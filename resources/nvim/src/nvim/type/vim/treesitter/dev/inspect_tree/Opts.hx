@@ -17,7 +17,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 Buffer to draw the tree into. If omitted, a new buffer is created.
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.command: string?
@@ -30,7 +30,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 Only used when {winid} is nil.
 	**/
 	@:optional
-	extern var command : Null<String>;
+	extern public var command : Null<String>;
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.lang: string?
@@ -44,7 +44,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 buffer is used.
 	**/
 	@:optional
-	extern var lang : Null<String>;
+	extern public var lang : Null<String>;
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.title: string|fun(bufnr: integer):string|nil
@@ -63,7 +63,7 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		  -> string|nil
 		```
 	**/
-	extern var title : haxe.extern.EitherType<String, (bufnr:Int) -> Null<String>>;
+	extern public var title : haxe.extern.EitherType<String, (bufnr:Float) -> Null<String>>;
 	/**
 		```lua
 		(field) vim.treesitter.dev.inspect_tree.Opts.winid: integer?
@@ -76,5 +76,5 @@ package nvim.type.vim.treesitter.dev.inspect_tree;
 		 created with {command}.
 	**/
 	@:optional
-	extern var winid : Null<Int>;
+	extern public var winid : Null<Float>;
 }

@@ -12,33 +12,33 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var details : Null<Bool>;
+	extern public var details : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmarks.hl_name: boolean?
 		```
 	**/
 	@:optional
-	extern var hl_name : Null<Bool>;
+	extern public var hl_name : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmarks.limit: integer?
 		```
 	**/
 	@:optional
-	extern var limit : Null<Int>;
+	extern public var limit : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmarks.overlap: boolean?
 		```
 	**/
 	@:optional
-	extern var overlap : Null<Bool>;
+	extern public var overlap : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmarks.type: string?
 		```
 	**/
 	@:optional
-	extern var type : Null<String>;
+	extern public var type : Null<String>;
 }

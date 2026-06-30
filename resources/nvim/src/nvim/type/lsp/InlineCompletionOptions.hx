@@ -17,5 +17,5 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

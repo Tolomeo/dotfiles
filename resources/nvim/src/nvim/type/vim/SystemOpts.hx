@@ -12,28 +12,28 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var clear_env : Null<Bool>;
+	extern public var clear_env : Null<Bool>;
 	/**
 		```lua
 		(field) vim.SystemOpts.cwd: string?
 		```
 	**/
 	@:optional
-	extern var cwd : Null<String>;
+	extern public var cwd : Null<String>;
 	/**
 		```lua
 		(field) vim.SystemOpts.detach: boolean?
 		```
 	**/
 	@:optional
-	extern var detach : Null<Bool>;
+	extern public var detach : Null<Bool>;
 	/**
 		```lua
 		(field) vim.SystemOpts.env: table<string, string|number>?
 		```
 	**/
 	@:optional
-	extern var env : Null<lua.Table<String, haxe.extern.EitherType<String, Float>>>;
+	extern public var env : Null<lua.Table<String, haxe.extern.EitherType<String, Float>>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.stderr: (fun(err?: string, data?: string)|false)?
@@ -46,14 +46,14 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var stderr : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
+	extern public var stderr : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.stdin: (string|string[]|true)?
 		```
 	**/
 	@:optional
-	extern var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<Array<String>, Bool>>>;
+	extern public var stdin : Null<haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Bool>>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.stdout: (fun(err?: string, data?: string)|false)?
@@ -66,14 +66,14 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern var stdout : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
+	extern public var stdout : Null<haxe.extern.EitherType<(?err:Null<String>, ?data:Null<String>) -> Dynamic, Bool>>;
 	/**
 		```lua
 		(field) vim.SystemOpts.text: boolean?
 		```
 	**/
 	@:optional
-	extern var text : Null<Bool>;
+	extern public var text : Null<Bool>;
 	/**
 		```lua
 		(field) vim.SystemOpts.timeout: integer?
@@ -84,5 +84,5 @@ package nvim.type.vim;
 		Timeout in ms
 	**/
 	@:optional
-	extern var timeout : Null<Int>;
+	extern public var timeout : Null<Float>;
 }

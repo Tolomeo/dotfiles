@@ -23,12 +23,12 @@ package nvim.type.lsp;
 		information for an inlay hint item.
 	**/
 	@:optional
-	extern var resolveProvider : Null<Bool>;
+	extern public var resolveProvider : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.InlayHintOptions.workDoneProgress: boolean?
 		```
 	**/
 	@:optional
-	extern var workDoneProgress : Null<Bool>;
+	extern public var workDoneProgress : Null<Bool>;
 }

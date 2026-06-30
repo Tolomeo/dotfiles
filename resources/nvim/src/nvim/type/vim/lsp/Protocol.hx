@@ -15,67 +15,67 @@ package nvim.type.vim.lsp;
 		(field) CodeActionKind.Empty: unknown
 		```
 	**/
-	extern var Empty : Dynamic;
+	extern public var Empty : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.QuickFix: unknown
 		```
 	**/
-	extern var QuickFix : Dynamic;
+	extern public var QuickFix : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.Refactor: unknown
 		```
 	**/
-	extern var Refactor : Dynamic;
+	extern public var Refactor : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.RefactorExtract: unknown
 		```
 	**/
-	extern var RefactorExtract : Dynamic;
+	extern public var RefactorExtract : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.RefactorInline: unknown
 		```
 	**/
-	extern var RefactorInline : Dynamic;
+	extern public var RefactorInline : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.RefactorRewrite: unknown
 		```
 	**/
-	extern var RefactorRewrite : Dynamic;
+	extern public var RefactorRewrite : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.Source: unknown
 		```
 	**/
-	extern var Source : Dynamic;
+	extern public var Source : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.SourceOrganizeImports: unknown
 		```
 	**/
-	extern var SourceOrganizeImports : Dynamic;
+	extern public var SourceOrganizeImports : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.quickfix: unknown
 		```
 	**/
-	extern var quickfix : Dynamic;
+	extern public var quickfix : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.refactor: unknown
 		```
 	**/
-	extern var refactor : Dynamic;
+	extern public var refactor : Dynamic;
 	/**
 		```lua
 		(field) CodeActionKind.source: unknown
 		```
 	**/
-	extern var source : Dynamic;
+	extern public var source : Dynamic;
 }
 
 /**
@@ -93,13 +93,13 @@ package nvim.type.vim.lsp;
 		(field) CodeActionTriggerKind.Automatic: unknown
 		```
 	**/
-	extern var Automatic : Dynamic;
+	extern public var Automatic : Dynamic;
 	/**
 		```lua
 		(field) CodeActionTriggerKind.Invoked: unknown
 		```
 	**/
-	extern var Invoked : Dynamic;
+	extern public var Invoked : Dynamic;
 }
 
 /**
@@ -117,151 +117,151 @@ package nvim.type.vim.lsp;
 		(field) CompletionItemKind.Class: unknown
 		```
 	**/
-	extern var Class : Dynamic;
+	extern public var Class : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Color: unknown
 		```
 	**/
-	extern var Color : Dynamic;
+	extern public var Color : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Constant: unknown
 		```
 	**/
-	extern var Constant : Dynamic;
+	extern public var Constant : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Constructor: unknown
 		```
 	**/
-	extern var Constructor : Dynamic;
+	extern public var Constructor : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Enum: unknown
 		```
 	**/
-	extern var Enum : Dynamic;
+	extern public var Enum : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.EnumMember: unknown
 		```
 	**/
-	extern var EnumMember : Dynamic;
+	extern public var EnumMember : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Event: unknown
 		```
 	**/
-	extern var Event : Dynamic;
+	extern public var Event : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Field: unknown
 		```
 	**/
-	extern var Field : Dynamic;
+	extern public var Field : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.File: unknown
 		```
 	**/
-	extern var File : Dynamic;
+	extern public var File : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Folder: unknown
 		```
 	**/
-	extern var Folder : Dynamic;
+	extern public var Folder : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Function: unknown
 		```
 	**/
-	extern var Function : Dynamic;
+	extern public var Function : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Interface: unknown
 		```
 	**/
-	extern var Interface : Dynamic;
+	extern public var Interface : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Keyword: unknown
 		```
 	**/
-	extern var Keyword : Dynamic;
+	extern public var Keyword : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Method: unknown
 		```
 	**/
-	extern var Method : Dynamic;
+	extern public var Method : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Module: unknown
 		```
 	**/
-	extern var Module : Dynamic;
+	extern public var Module : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Operator: unknown
 		```
 	**/
-	extern var Operator : Dynamic;
+	extern public var Operator : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Property: unknown
 		```
 	**/
-	extern var Property : Dynamic;
+	extern public var Property : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Reference: unknown
 		```
 	**/
-	extern var Reference : Dynamic;
+	extern public var Reference : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Snippet: unknown
 		```
 	**/
-	extern var Snippet : Dynamic;
+	extern public var Snippet : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Struct: unknown
 		```
 	**/
-	extern var Struct : Dynamic;
+	extern public var Struct : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Text: unknown
 		```
 	**/
-	extern var Text : Dynamic;
+	extern public var Text : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.TypeParameter: unknown
 		```
 	**/
-	extern var TypeParameter : Dynamic;
+	extern public var TypeParameter : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Unit: unknown
 		```
 	**/
-	extern var Unit : Dynamic;
+	extern public var Unit : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Value: unknown
 		```
 	**/
-	extern var Value : Dynamic;
+	extern public var Value : Dynamic;
 	/**
 		```lua
 		(field) CompletionItemKind.Variable: unknown
 		```
 	**/
-	extern var Variable : Dynamic;
+	extern public var Variable : Dynamic;
 }
 
 /**
@@ -280,7 +280,7 @@ package nvim.type.vim.lsp;
 		(field) CompletionTag.Deprecated: unknown
 		```
 	**/
-	extern var Deprecated : Dynamic;
+	extern public var Deprecated : Dynamic;
 }
 
 /**
@@ -298,19 +298,19 @@ package nvim.type.vim.lsp;
 		(field) CompletionTriggerKind.Invoked: unknown
 		```
 	**/
-	extern var Invoked : Dynamic;
+	extern public var Invoked : Dynamic;
 	/**
 		```lua
 		(field) CompletionTriggerKind.TriggerCharacter: unknown
 		```
 	**/
-	extern var TriggerCharacter : Dynamic;
+	extern public var TriggerCharacter : Dynamic;
 	/**
 		```lua
 		(field) CompletionTriggerKind.TriggerForIncompleteCompletions: unknown
 		```
 	**/
-	extern var TriggerForIncompleteCompletions : Dynamic;
+	extern public var TriggerForIncompleteCompletions : Dynamic;
 }
 
 /**
@@ -324,25 +324,25 @@ package nvim.type.vim.lsp;
 		(field) DiagnosticSeverity.Error: unknown
 		```
 	**/
-	extern var Error : Dynamic;
+	extern public var Error : Dynamic;
 	/**
 		```lua
 		(field) DiagnosticSeverity.Hint: unknown
 		```
 	**/
-	extern var Hint : Dynamic;
+	extern public var Hint : Dynamic;
 	/**
 		```lua
 		(field) DiagnosticSeverity.Information: unknown
 		```
 	**/
-	extern var Information : Dynamic;
+	extern public var Information : Dynamic;
 	/**
 		```lua
 		(field) DiagnosticSeverity.Warning: unknown
 		```
 	**/
-	extern var Warning : Dynamic;
+	extern public var Warning : Dynamic;
 }
 
 /**
@@ -356,13 +356,13 @@ package nvim.type.vim.lsp;
 		(field) DiagnosticTag.Deprecated: unknown
 		```
 	**/
-	extern var Deprecated : Dynamic;
+	extern public var Deprecated : Dynamic;
 	/**
 		```lua
 		(field) DiagnosticTag.Unnecessary: unknown
 		```
 	**/
-	extern var Unnecessary : Dynamic;
+	extern public var Unnecessary : Dynamic;
 }
 
 /**
@@ -380,19 +380,19 @@ package nvim.type.vim.lsp;
 		(field) DocumentHighlightKind.Read: unknown
 		```
 	**/
-	extern var Read : Dynamic;
+	extern public var Read : Dynamic;
 	/**
 		```lua
 		(field) DocumentHighlightKind.Text: unknown
 		```
 	**/
-	extern var Text : Dynamic;
+	extern public var Text : Dynamic;
 	/**
 		```lua
 		(field) DocumentHighlightKind.Write: unknown
 		```
 	**/
-	extern var Write : Dynamic;
+	extern public var Write : Dynamic;
 }
 
 /**
@@ -406,67 +406,67 @@ package nvim.type.vim.lsp;
 		(field) ErrorCodes.ContentModified: unknown
 		```
 	**/
-	extern var ContentModified : Dynamic;
+	extern public var ContentModified : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.InternalError: unknown
 		```
 	**/
-	extern var InternalError : Dynamic;
+	extern public var InternalError : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.InvalidParams: unknown
 		```
 	**/
-	extern var InvalidParams : Dynamic;
+	extern public var InvalidParams : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.InvalidRequest: unknown
 		```
 	**/
-	extern var InvalidRequest : Dynamic;
+	extern public var InvalidRequest : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.MethodNotFound: unknown
 		```
 	**/
-	extern var MethodNotFound : Dynamic;
+	extern public var MethodNotFound : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.ParseError: unknown
 		```
 	**/
-	extern var ParseError : Dynamic;
+	extern public var ParseError : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.RequestCancelled: unknown
 		```
 	**/
-	extern var RequestCancelled : Dynamic;
+	extern public var RequestCancelled : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.RequestFailed: unknown
 		```
 	**/
-	extern var RequestFailed : Dynamic;
+	extern public var RequestFailed : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.ServerCancelled: unknown
 		```
 	**/
-	extern var ServerCancelled : Dynamic;
+	extern public var ServerCancelled : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.ServerNotInitialized: unknown
 		```
 	**/
-	extern var ServerNotInitialized : Dynamic;
+	extern public var ServerNotInitialized : Dynamic;
 	/**
 		```lua
 		(field) ErrorCodes.UnknownErrorCode: unknown
 		```
 	**/
-	extern var UnknownErrorCode : Dynamic;
+	extern public var UnknownErrorCode : Dynamic;
 }
 
 /**
@@ -480,49 +480,49 @@ package nvim.type.vim.lsp;
 		(field) FailureHandlingKind.Abort: unknown
 		```
 	**/
-	extern var Abort : Dynamic;
+	extern public var Abort : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.TextOnlyTransactional: unknown
 		```
 	**/
-	extern var TextOnlyTransactional : Dynamic;
+	extern public var TextOnlyTransactional : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.Transactional: unknown
 		```
 	**/
-	extern var Transactional : Dynamic;
+	extern public var Transactional : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.Undo: unknown
 		```
 	**/
-	extern var Undo : Dynamic;
+	extern public var Undo : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.abort: unknown
 		```
 	**/
-	extern var abort : Dynamic;
+	extern public var abort : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.textOnlyTransactional: unknown
 		```
 	**/
-	extern var textOnlyTransactional : Dynamic;
+	extern public var textOnlyTransactional : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.transactional: unknown
 		```
 	**/
-	extern var transactional : Dynamic;
+	extern public var transactional : Dynamic;
 	/**
 		```lua
 		(field) FailureHandlingKind.undo: unknown
 		```
 	**/
-	extern var undo : Dynamic;
+	extern public var undo : Dynamic;
 }
 
 /**
@@ -540,19 +540,19 @@ package nvim.type.vim.lsp;
 		(field) FileChangeType.Changed: unknown
 		```
 	**/
-	extern var Changed : Dynamic;
+	extern public var Changed : Dynamic;
 	/**
 		```lua
 		(field) FileChangeType.Created: unknown
 		```
 	**/
-	extern var Created : Dynamic;
+	extern public var Created : Dynamic;
 	/**
 		```lua
 		(field) FileChangeType.Deleted: unknown
 		```
 	**/
-	extern var Deleted : Dynamic;
+	extern public var Deleted : Dynamic;
 }
 
 /**
@@ -570,7 +570,7 @@ package nvim.type.vim.lsp;
 		(field) InitializeError.unknownProtocolVersion: unknown
 		```
 	**/
-	extern var unknownProtocolVersion : Dynamic;
+	extern public var unknownProtocolVersion : Dynamic;
 }
 
 /**
@@ -589,13 +589,13 @@ package nvim.type.vim.lsp;
 		(field) InsertTextFormat.PlainText: unknown
 		```
 	**/
-	extern var PlainText : Dynamic;
+	extern public var PlainText : Dynamic;
 	/**
 		```lua
 		(field) InsertTextFormat.Snippet: unknown
 		```
 	**/
-	extern var Snippet : Dynamic;
+	extern public var Snippet : Dynamic;
 }
 
 /**
@@ -617,25 +617,25 @@ package nvim.type.vim.lsp;
 		(field) MarkupKind.Markdown: unknown
 		```
 	**/
-	extern var Markdown : Dynamic;
+	extern public var Markdown : Dynamic;
 	/**
 		```lua
 		(field) MarkupKind.PlainText: unknown
 		```
 	**/
-	extern var PlainText : Dynamic;
+	extern public var PlainText : Dynamic;
 	/**
 		```lua
 		(field) MarkupKind.markdown: unknown
 		```
 	**/
-	extern var markdown : Dynamic;
+	extern public var markdown : Dynamic;
 	/**
 		```lua
 		(field) MarkupKind.plaintext: unknown
 		```
 	**/
-	extern var plaintext : Dynamic;
+	extern public var plaintext : Dynamic;
 }
 
 /**
@@ -649,31 +649,31 @@ package nvim.type.vim.lsp;
 		(field) MessageType.Debug: unknown
 		```
 	**/
-	extern var Debug : Dynamic;
+	extern public var Debug : Dynamic;
 	/**
 		```lua
 		(field) MessageType.Error: unknown
 		```
 	**/
-	extern var Error : Dynamic;
+	extern public var Error : Dynamic;
 	/**
 		```lua
 		(field) MessageType.Info: unknown
 		```
 	**/
-	extern var Info : Dynamic;
+	extern public var Info : Dynamic;
 	/**
 		```lua
 		(field) MessageType.Log: unknown
 		```
 	**/
-	extern var Log : Dynamic;
+	extern public var Log : Dynamic;
 	/**
 		```lua
 		(field) MessageType.Warning: unknown
 		```
 	**/
-	extern var Warning : Dynamic;
+	extern public var Warning : Dynamic;
 }
 
 /**
@@ -687,101 +687,101 @@ package nvim.type.vim.lsp;
 	See: ~https~ ://microsoft.github.io/language-server-protocol/specification/#metaModel
 **/
 @:structInit class Methods {
-	extern var callHierarchy_incomingCalls : nvim.type.vim.lsp.protocol.Methods;
-	extern var callHierarchy_outgoingCalls : nvim.type.vim.lsp.protocol.Methods;
-	extern var client_registerCapability : nvim.type.vim.lsp.protocol.Methods;
-	extern var client_unregisterCapability : nvim.type.vim.lsp.protocol.Methods;
-	extern var codeAction_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var codeLens_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var completionItem_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var documentLink_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var dollar_cancelRequest : nvim.type.vim.lsp.protocol.Methods;
-	extern var dollar_logTrace : nvim.type.vim.lsp.protocol.Methods;
-	extern var dollar_progress : nvim.type.vim.lsp.protocol.Methods;
-	extern var dollar_setTrace : nvim.type.vim.lsp.protocol.Methods;
-	extern var exit : nvim.type.vim.lsp.protocol.Methods;
-	extern var initialize : nvim.type.vim.lsp.protocol.Methods;
-	extern var initialized : nvim.type.vim.lsp.protocol.Methods;
-	extern var inlayHint_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var notebookDocument_didChange : nvim.type.vim.lsp.protocol.Methods;
-	extern var notebookDocument_didClose : nvim.type.vim.lsp.protocol.Methods;
-	extern var notebookDocument_didOpen : nvim.type.vim.lsp.protocol.Methods;
-	extern var notebookDocument_didSave : nvim.type.vim.lsp.protocol.Methods;
-	extern var shutdown : nvim.type.vim.lsp.protocol.Methods;
-	extern var telemetry_event : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_codeAction : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_codeLens : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_colorPresentation : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_completion : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_declaration : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_definition : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_diagnostic : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_didChange : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_didClose : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_didOpen : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_didSave : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_documentColor : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_documentHighlight : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_documentLink : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_documentSymbol : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_foldingRange : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_formatting : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_hover : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_implementation : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_inlayHint : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_inlineCompletion : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_inlineValue : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_linkedEditingRange : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_moniker : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_onTypeFormatting : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_prepareCallHierarchy : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_prepareRename : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_prepareTypeHierarchy : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_publishDiagnostics : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_rangeFormatting : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_rangesFormatting : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_references : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_rename : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_selectionRange : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_semanticTokens_full : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_semanticTokens_full_delta : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_semanticTokens_range : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_signatureHelp : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_typeDefinition : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_willSave : nvim.type.vim.lsp.protocol.Methods;
-	extern var textDocument_willSaveWaitUntil : nvim.type.vim.lsp.protocol.Methods;
-	extern var typeHierarchy_subtypes : nvim.type.vim.lsp.protocol.Methods;
-	extern var typeHierarchy_supertypes : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_logMessage : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_showDocument : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_showMessage : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_showMessageRequest : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_workDoneProgress_cancel : nvim.type.vim.lsp.protocol.Methods;
-	extern var window_workDoneProgress_create : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspaceSymbol_resolve : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_applyEdit : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_codeLens_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_configuration : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_diagnostic : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_diagnostic_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didChangeConfiguration : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didChangeWatchedFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didChangeWorkspaceFolders : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didCreateFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didDeleteFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_didRenameFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_executeCommand : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_foldingRange_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_inlayHint_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_inlineValue_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_semanticTokens_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_symbol : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_textDocumentContent : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_textDocumentContent_refresh : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_willCreateFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_willDeleteFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_willRenameFiles : nvim.type.vim.lsp.protocol.Methods;
-	extern var workspace_workspaceFolders : nvim.type.vim.lsp.protocol.Methods;
+	extern public var callHierarchy_incomingCalls : nvim.type.vim.lsp.protocol.Methods;
+	extern public var callHierarchy_outgoingCalls : nvim.type.vim.lsp.protocol.Methods;
+	extern public var client_registerCapability : nvim.type.vim.lsp.protocol.Methods;
+	extern public var client_unregisterCapability : nvim.type.vim.lsp.protocol.Methods;
+	extern public var codeAction_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var codeLens_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var completionItem_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var documentLink_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var dollar_cancelRequest : nvim.type.vim.lsp.protocol.Methods;
+	extern public var dollar_logTrace : nvim.type.vim.lsp.protocol.Methods;
+	extern public var dollar_progress : nvim.type.vim.lsp.protocol.Methods;
+	extern public var dollar_setTrace : nvim.type.vim.lsp.protocol.Methods;
+	extern public var exit : nvim.type.vim.lsp.protocol.Methods;
+	extern public var initialize : nvim.type.vim.lsp.protocol.Methods;
+	extern public var initialized : nvim.type.vim.lsp.protocol.Methods;
+	extern public var inlayHint_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var notebookDocument_didChange : nvim.type.vim.lsp.protocol.Methods;
+	extern public var notebookDocument_didClose : nvim.type.vim.lsp.protocol.Methods;
+	extern public var notebookDocument_didOpen : nvim.type.vim.lsp.protocol.Methods;
+	extern public var notebookDocument_didSave : nvim.type.vim.lsp.protocol.Methods;
+	extern public var shutdown : nvim.type.vim.lsp.protocol.Methods;
+	extern public var telemetry_event : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_codeAction : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_codeLens : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_colorPresentation : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_completion : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_declaration : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_definition : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_diagnostic : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_didChange : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_didClose : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_didOpen : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_didSave : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_documentColor : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_documentHighlight : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_documentLink : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_documentSymbol : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_foldingRange : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_formatting : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_hover : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_implementation : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_inlayHint : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_inlineCompletion : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_inlineValue : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_linkedEditingRange : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_moniker : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_onTypeFormatting : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_prepareCallHierarchy : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_prepareRename : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_prepareTypeHierarchy : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_publishDiagnostics : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_rangeFormatting : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_rangesFormatting : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_references : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_rename : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_selectionRange : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_semanticTokens_full : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_semanticTokens_full_delta : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_semanticTokens_range : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_signatureHelp : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_typeDefinition : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_willSave : nvim.type.vim.lsp.protocol.Methods;
+	extern public var textDocument_willSaveWaitUntil : nvim.type.vim.lsp.protocol.Methods;
+	extern public var typeHierarchy_subtypes : nvim.type.vim.lsp.protocol.Methods;
+	extern public var typeHierarchy_supertypes : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_logMessage : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_showDocument : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_showMessage : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_showMessageRequest : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_workDoneProgress_cancel : nvim.type.vim.lsp.protocol.Methods;
+	extern public var window_workDoneProgress_create : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspaceSymbol_resolve : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_applyEdit : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_codeLens_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_configuration : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_diagnostic : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_diagnostic_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didChangeConfiguration : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didChangeWatchedFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didChangeWorkspaceFolders : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didCreateFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didDeleteFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_didRenameFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_executeCommand : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_foldingRange_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_inlayHint_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_inlineValue_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_semanticTokens_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_symbol : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_textDocumentContent : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_textDocumentContent_refresh : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_willCreateFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_willDeleteFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_willRenameFiles : nvim.type.vim.lsp.protocol.Methods;
+	extern public var workspace_workspaceFolders : nvim.type.vim.lsp.protocol.Methods;
 }
 
 /**
@@ -795,37 +795,37 @@ package nvim.type.vim.lsp;
 		(field) ResourceOperationKind.Create: unknown
 		```
 	**/
-	extern var Create : Dynamic;
+	extern public var Create : Dynamic;
 	/**
 		```lua
 		(field) ResourceOperationKind.Delete: unknown
 		```
 	**/
-	extern var Delete : Dynamic;
+	extern public var Delete : Dynamic;
 	/**
 		```lua
 		(field) ResourceOperationKind.Rename: unknown
 		```
 	**/
-	extern var Rename : Dynamic;
+	extern public var Rename : Dynamic;
 	/**
 		```lua
 		(field) ResourceOperationKind.create: unknown
 		```
 	**/
-	extern var create : Dynamic;
+	extern public var create : Dynamic;
 	/**
 		```lua
 		(field) ResourceOperationKind.delete: unknown
 		```
 	**/
-	extern var delete : Dynamic;
+	extern public var delete : Dynamic;
 	/**
 		```lua
 		(field) ResourceOperationKind.rename: unknown
 		```
 	**/
-	extern var rename : Dynamic;
+	extern public var rename : Dynamic;
 }
 
 /**
@@ -843,157 +843,157 @@ package nvim.type.vim.lsp;
 		(field) SymbolKind.Array: unknown
 		```
 	**/
-	extern var Array : Dynamic;
+	extern public var Array : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Boolean: unknown
 		```
 	**/
-	extern var Boolean : Dynamic;
+	extern public var Boolean : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Class: unknown
 		```
 	**/
-	extern var Class : Dynamic;
+	extern public var Class : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Constant: unknown
 		```
 	**/
-	extern var Constant : Dynamic;
+	extern public var Constant : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Constructor: unknown
 		```
 	**/
-	extern var Constructor : Dynamic;
+	extern public var Constructor : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Enum: unknown
 		```
 	**/
-	extern var Enum : Dynamic;
+	extern public var Enum : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.EnumMember: unknown
 		```
 	**/
-	extern var EnumMember : Dynamic;
+	extern public var EnumMember : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Event: unknown
 		```
 	**/
-	extern var Event : Dynamic;
+	extern public var Event : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Field: unknown
 		```
 	**/
-	extern var Field : Dynamic;
+	extern public var Field : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.File: unknown
 		```
 	**/
-	extern var File : Dynamic;
+	extern public var File : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Function: unknown
 		```
 	**/
-	extern var Function : Dynamic;
+	extern public var Function : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Interface: unknown
 		```
 	**/
-	extern var Interface : Dynamic;
+	extern public var Interface : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Key: unknown
 		```
 	**/
-	extern var Key : Dynamic;
+	extern public var Key : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Method: unknown
 		```
 	**/
-	extern var Method : Dynamic;
+	extern public var Method : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Module: unknown
 		```
 	**/
-	extern var Module : Dynamic;
+	extern public var Module : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Namespace: unknown
 		```
 	**/
-	extern var Namespace : Dynamic;
+	extern public var Namespace : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Null: unknown
 		```
 	**/
-	extern var Null : Dynamic;
+	extern public var Null : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Number: unknown
 		```
 	**/
-	extern var Number : Dynamic;
+	extern public var Number : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Object: unknown
 		```
 	**/
-	extern var Object : Dynamic;
+	extern public var Object : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Operator: unknown
 		```
 	**/
-	extern var Operator : Dynamic;
+	extern public var Operator : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Package: unknown
 		```
 	**/
-	extern var Package : Dynamic;
+	extern public var Package : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Property: unknown
 		```
 	**/
-	extern var Property : Dynamic;
+	extern public var Property : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.String: unknown
 		```
 	**/
-	extern var String : Dynamic;
+	extern public var String : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Struct: unknown
 		```
 	**/
-	extern var Struct : Dynamic;
+	extern public var Struct : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.TypeParameter: unknown
 		```
 	**/
-	extern var TypeParameter : Dynamic;
+	extern public var TypeParameter : Dynamic;
 	/**
 		```lua
 		(field) SymbolKind.Variable: unknown
 		```
 	**/
-	extern var Variable : Dynamic;
+	extern public var Variable : Dynamic;
 }
 
 /**
@@ -1011,19 +1011,19 @@ package nvim.type.vim.lsp;
 		(field) TextDocumentSaveReason.AfterDelay: unknown
 		```
 	**/
-	extern var AfterDelay : Dynamic;
+	extern public var AfterDelay : Dynamic;
 	/**
 		```lua
 		(field) TextDocumentSaveReason.FocusOut: unknown
 		```
 	**/
-	extern var FocusOut : Dynamic;
+	extern public var FocusOut : Dynamic;
 	/**
 		```lua
 		(field) TextDocumentSaveReason.Manual: unknown
 		```
 	**/
-	extern var Manual : Dynamic;
+	extern public var Manual : Dynamic;
 }
 
 /**
@@ -1041,19 +1041,19 @@ package nvim.type.vim.lsp;
 		(field) TextDocumentSyncKind.Full: unknown
 		```
 	**/
-	extern var Full : Dynamic;
+	extern public var Full : Dynamic;
 	/**
 		```lua
 		(field) TextDocumentSyncKind.Incremental: unknown
 		```
 	**/
-	extern var Incremental : Dynamic;
+	extern public var Incremental : Dynamic;
 	/**
 		```lua
 		(field) TextDocumentSyncKind.None: unknown
 		```
 	**/
-	extern var None : Dynamic;
+	extern public var None : Dynamic;
 }
 
 /**
@@ -1067,19 +1067,19 @@ package nvim.type.vim.lsp;
 		(field) WatchKind.Change: unknown
 		```
 	**/
-	extern var Change : Dynamic;
+	extern public var Change : Dynamic;
 	/**
 		```lua
 		(field) WatchKind.Create: unknown
 		```
 	**/
-	extern var Create : Dynamic;
+	extern public var Create : Dynamic;
 	/**
 		```lua
 		(field) WatchKind.Delete: unknown
 		```
 	**/
-	extern var Delete : Dynamic;
+	extern public var Delete : Dynamic;
 }
 
 /**
@@ -1119,7 +1119,24 @@ package nvim.type.vim.lsp;
 		 capabilities.
 	**/
 	@:luaDotMethod
-	extern function make_client_capabilities():nvim.type.lsp.ClientCapabilities;
+	extern public function make_client_capabilities():nvim.type.lsp.ClientCapabilities;
+	/**
+		```lua
+		function vim.lsp.protocol.resolve_capabilities(server_capabilities: table)
+		  -> lsp.ServerCapabilities|nil
+		```
+		
+		---
+		
+		 Creates a normalized object describing LSP server capabilities.
+		
+		@*param* `server_capabilities` — Table of capabilities supported by the server
+		
+		@*return* — : Normalized table of capabilities
+	**/
+	@:native("resolve_capabilities")
+	@:luaDotMethod
+	private extern function __resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
 	/**
 		```lua
 		function vim.lsp.protocol.resolve_capabilities(server_capabilities: table)
@@ -1135,5 +1152,9 @@ package nvim.type.vim.lsp;
 		@*return* — : Normalized table of capabilities
 	**/
 	@:luaDotMethod
-	extern function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities>;
+	inline public function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities> {
+		server_capabilities = nvim.helper.Arg.pure(server_capabilities);
+		final result = __resolve_capabilities(server_capabilities);
+		return result;
+	}
 }

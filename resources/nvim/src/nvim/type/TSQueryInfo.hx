@@ -20,5 +20,5 @@ package nvim.type;
 		(field) TSQueryInfo.captures: string[]
 		```
 	**/
-	extern var captures : Array<String>;
+	extern public var captures : lua.Table<Int, String>;
 }

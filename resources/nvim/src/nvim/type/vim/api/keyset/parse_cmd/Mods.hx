@@ -6,8 +6,8 @@ package nvim.type.vim.api.keyset.parse_cmd;
 	```
 **/
 @:structInit class Filter {
-	extern var force : Bool;
-	extern var pattern : String;
+	extern public var force : Bool;
+	extern public var pattern : String;
 }
 
 /**
@@ -21,113 +21,113 @@ package nvim.type.vim.api.keyset.parse_cmd;
 		(field) vim.api.keyset.parse_cmd.mods.browse: boolean
 		```
 	**/
-	extern var browse : Bool;
+	extern public var browse : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.confirm: boolean
 		```
 	**/
-	extern var confirm : Bool;
+	extern public var confirm : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.emsg_silent: boolean
 		```
 	**/
-	extern var emsg_silent : Bool;
+	extern public var emsg_silent : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.hide: boolean
 		```
 	**/
-	extern var hide : Bool;
+	extern public var hide : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.horizontal: boolean
 		```
 	**/
-	extern var horizontal : Bool;
+	extern public var horizontal : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.keepalt: boolean
 		```
 	**/
-	extern var keepalt : Bool;
+	extern public var keepalt : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.keepjumps: boolean
 		```
 	**/
-	extern var keepjumps : Bool;
+	extern public var keepjumps : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.keepmarks: boolean
 		```
 	**/
-	extern var keepmarks : Bool;
+	extern public var keepmarks : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.keeppatterns: boolean
 		```
 	**/
-	extern var keeppatterns : Bool;
+	extern public var keeppatterns : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.lockmarks: boolean
 		```
 	**/
-	extern var lockmarks : Bool;
+	extern public var lockmarks : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.noautocmd: boolean
 		```
 	**/
-	extern var noautocmd : Bool;
+	extern public var noautocmd : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.noswapfile: boolean
 		```
 	**/
-	extern var noswapfile : Bool;
+	extern public var noswapfile : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.sandbox: boolean
 		```
 	**/
-	extern var sandbox : Bool;
+	extern public var sandbox : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.silent: boolean
 		```
 	**/
-	extern var silent : Bool;
+	extern public var silent : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.split: ''|'aboveleft'|'belowright'|'botright'|'topleft'
 		```
 	**/
-	extern var split : String;
+	extern public var split : String;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.tab: integer
 		```
 	**/
-	extern var tab : Int;
+	extern public var tab : Float;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.unsilent: boolean
 		```
 	**/
-	extern var unsilent : Bool;
+	extern public var unsilent : Bool;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.verbose: integer
 		```
 	**/
-	extern var verbose : Int;
+	extern public var verbose : Float;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.vertical: boolean
 		```
 	**/
-	extern var vertical : Bool;
+	extern public var vertical : Bool;
 }

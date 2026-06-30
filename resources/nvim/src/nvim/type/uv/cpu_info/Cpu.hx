@@ -11,17 +11,17 @@ package nvim.type.uv.cpu_info;
 		(field) uv.cpu_info.cpu.model: string
 		```
 	**/
-	extern var model : String;
+	extern public var model : String;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.speed: number
 		```
 	**/
-	extern var speed : Float;
+	extern public var speed : Float;
 	/**
 		```lua
 		(field) uv.cpu_info.cpu.times: uv.cpu_info.cpu.times
 		```
 	**/
-	extern var times : nvim.type.uv.cpu_info.cpu.Times;
+	extern public var times : nvim.type.uv.cpu_info.cpu.Times;
 }

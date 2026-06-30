@@ -29,19 +29,19 @@ package nvim.type;
 		(field) TSLangInfo._wasm: boolean
 		```
 	**/
-	extern var _wasm : Bool;
+	extern public var _wasm : Bool;
 	/**
 		```lua
 		(field) TSLangInfo.abi_version: integer
 		```
 	**/
-	extern var abi_version : Int;
+	extern public var abi_version : Float;
 	/**
 		```lua
 		(field) TSLangInfo.fields: string[]
 		```
 	**/
-	extern var fields : Array<String>;
+	extern public var fields : lua.Table<Int, String>;
 	/**
 		```lua
 		(field) TSLangInfo.metadata: TSLangMetadata?
@@ -56,11 +56,11 @@ package nvim.type;
 		ABI 15 only
 	**/
 	@:optional
-	extern var metadata : Null<nvim.type.TSLangMetadata>;
+	extern public var metadata : Null<nvim.type.TSLangMetadata>;
 	/**
 		```lua
 		(field) TSLangInfo.state_count: integer
 		```
 	**/
-	extern var state_count : Int;
+	extern public var state_count : Float;
 }

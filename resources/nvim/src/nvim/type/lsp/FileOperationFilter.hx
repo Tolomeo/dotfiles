@@ -28,7 +28,7 @@ package nvim.type.lsp;
 		
 		The actual file operation pattern.
 	**/
-	extern var pattern : nvim.type.lsp.FileOperationPattern;
+	extern public var pattern : nvim.type.lsp.FileOperationPattern;
 	/**
 		```lua
 		(field) lsp.FileOperationFilter.scheme: string?
@@ -40,5 +40,5 @@ package nvim.type.lsp;
 		A Uri scheme like `file` or `untitled`.
 	**/
 	@:optional
-	extern var scheme : Null<String>;
+	extern public var scheme : Null<String>;
 }

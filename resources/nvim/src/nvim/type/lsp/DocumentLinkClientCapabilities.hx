@@ -21,7 +21,7 @@ package nvim.type.lsp;
 		Whether document link supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 	/**
 		```lua
 		(field) lsp.DocumentLinkClientCapabilities.tooltipSupport: boolean?
@@ -34,5 +34,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern var tooltipSupport : Null<Bool>;
+	extern public var tooltipSupport : Null<Bool>;
 }

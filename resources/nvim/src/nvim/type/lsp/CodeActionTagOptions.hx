@@ -16,5 +16,5 @@ package nvim.type.lsp;
 		
 		The tags supported by the client.
 	**/
-	extern var valueSet : Array<nvim.type.lsp.CodeActionTag>;
+	extern public var valueSet : lua.Table<Int, nvim.type.lsp.CodeActionTag>;
 }

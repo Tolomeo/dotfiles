@@ -11,29 +11,29 @@ package nvim.type.uv.interface_addresses;
 		(field) uv.interface_addresses.addr.family: string
 		```
 	**/
-	extern var family : String;
+	extern public var family : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.internal: boolean
 		```
 	**/
-	extern var internal : Bool;
+	extern public var internal : Bool;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.ip: string
 		```
 	**/
-	extern var ip : String;
+	extern public var ip : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.mac: string
 		```
 	**/
-	extern var mac : String;
+	extern public var mac : String;
 	/**
 		```lua
 		(field) uv.interface_addresses.addr.netmask: string
 		```
 	**/
-	extern var netmask : String;
+	extern public var netmask : String;
 }

@@ -12,68 +12,68 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern var buf : Null<Int>;
+	extern public var buf : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.cursor: boolean?
 		```
 	**/
 	@:optional
-	extern var cursor : Null<Bool>;
+	extern public var cursor : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.flush: boolean?
 		```
 	**/
 	@:optional
-	extern var flush : Null<Bool>;
+	extern public var flush : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.range: any[]?
 		```
 	**/
 	@:optional
-	extern var range : Null<Array<Any>>;
+	extern public var range : Null<lua.Table<Int, Any>>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statuscolumn: boolean?
 		```
 	**/
 	@:optional
-	extern var statuscolumn : Null<Bool>;
+	extern public var statuscolumn : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.statusline: boolean?
 		```
 	**/
 	@:optional
-	extern var statusline : Null<Bool>;
+	extern public var statusline : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.tabline: boolean?
 		```
 	**/
 	@:optional
-	extern var tabline : Null<Bool>;
+	extern public var tabline : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.valid: boolean?
 		```
 	**/
 	@:optional
-	extern var valid : Null<Bool>;
+	extern public var valid : Null<Bool>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.win: integer?
 		```
 	**/
 	@:optional
-	extern var win : Null<Int>;
+	extern public var win : Null<Float>;
 	/**
 		```lua
 		(field) vim.api.keyset.redraw.winbar: boolean?
 		```
 	**/
 	@:optional
-	extern var winbar : Null<Bool>;
+	extern public var winbar : Null<Bool>;
 }

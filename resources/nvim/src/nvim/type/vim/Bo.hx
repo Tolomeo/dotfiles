@@ -26,7 +26,7 @@ package nvim.type.vim;
 		 a different way.
 		
 	**/
-	extern var ai : Bool;
+	extern public var ai : Bool;
 	/**
 		```lua
 		(field) vim.bo.ar: boolean
@@ -48,7 +48,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var ar : Bool;
+	extern public var ar : Bool;
 	/**
 		```lua
 		(field) vim.bo.autoindent: boolean
@@ -69,7 +69,7 @@ package nvim.type.vim;
 		 a different way.
 		
 	**/
-	extern var autoindent : Bool;
+	extern public var autoindent : Bool;
 	/**
 		```lua
 		(field) vim.bo.autoread: boolean
@@ -91,7 +91,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var autoread : Bool;
+	extern public var autoread : Bool;
 	/**
 		```lua
 		(field) vim.bo.backupcopy: string
@@ -163,7 +163,7 @@ package nvim.type.vim;
 		 again not rename the file.
 		
 	**/
-	extern var backupcopy : String;
+	extern public var backupcopy : String;
 	/**
 		```lua
 		(field) vim.bo.bh: string|''|'delete'|'hide'|'unload'|'wipe' = 'unload'
@@ -192,7 +192,7 @@ package nvim.type.vim;
 		 special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	extern var bh : String;
+	extern public var bh : String;
 	/**
 		```lua
 		(field) vim.bo.bin: boolean
@@ -228,7 +228,7 @@ package nvim.type.vim;
 		 the 'endofline' option.
 		
 	**/
-	extern var bin : Bool;
+	extern public var bin : Bool;
 	/**
 		```lua
 		(field) vim.bo.binary: boolean
@@ -264,7 +264,7 @@ package nvim.type.vim;
 		 the 'endofline' option.
 		
 	**/
-	extern var binary : Bool;
+	extern public var binary : Bool;
 	/**
 		```lua
 		(field) vim.bo.bkc: string
@@ -336,7 +336,7 @@ package nvim.type.vim;
 		 again not rename the file.
 		
 	**/
-	extern var bkc : String;
+	extern public var bkc : String;
 	/**
 		```lua
 		(field) vim.bo.bl: boolean
@@ -351,7 +351,7 @@ package nvim.type.vim;
 		 But not when moving to a buffer with ":buffer".
 		
 	**/
-	extern var bl : Bool;
+	extern public var bl : Bool;
 	/**
 		```lua
 		(field) vim.bo.bomb: boolean
@@ -376,7 +376,7 @@ package nvim.type.vim;
 		 will be restored when writing the file.
 		
 	**/
-	extern var bomb : Bool;
+	extern public var bomb : Bool;
 	/**
 		```lua
 		(field) vim.bo.bt: string|''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal' = 'nofile'
@@ -430,7 +430,7 @@ package nvim.type.vim;
 		 `FileWriteCmd` or `FileAppendCmd` autocommands.
 		
 	**/
-	extern var bt : String;
+	extern public var bt : String;
 	/**
 		```lua
 		(field) vim.bo.bufhidden: string|''|'delete'|'hide'|'unload'|'wipe' = 'unload'
@@ -459,7 +459,7 @@ package nvim.type.vim;
 		 special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	extern var bufhidden : String;
+	extern public var bufhidden : String;
 	/**
 		```lua
 		(field) vim.bo.buflisted: boolean
@@ -474,7 +474,7 @@ package nvim.type.vim;
 		 But not when moving to a buffer with ":buffer".
 		
 	**/
-	extern var buflisted : Bool;
+	extern public var buflisted : Bool;
 	/**
 		```lua
 		(field) vim.bo.buftype: string|''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal' = 'nofile'
@@ -528,7 +528,7 @@ package nvim.type.vim;
 		 `FileWriteCmd` or `FileAppendCmd` autocommands.
 		
 	**/
-	extern var buftype : String;
+	extern public var buftype : String;
 	/**
 		```lua
 		(field) vim.bo.cfu: string
@@ -546,7 +546,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var cfu : String;
+	extern public var cfu : String;
 	/**
 		```lua
 		(field) vim.bo.channel: integer
@@ -559,7 +559,7 @@ package nvim.type.vim;
 		 Read-only.
 		
 	**/
-	extern var channel : Int;
+	extern public var channel : Float;
 	/**
 		```lua
 		(field) vim.bo.ci: boolean
@@ -578,7 +578,7 @@ package nvim.type.vim;
 		 See 'preserveindent'.
 		
 	**/
-	extern var ci : Bool;
+	extern public var ci : Bool;
 	/**
 		```lua
 		(field) vim.bo.cin: boolean
@@ -598,7 +598,7 @@ package nvim.type.vim;
 		 option or 'indentexpr'.
 		
 	**/
-	extern var cin : Bool;
+	extern public var cin : Bool;
 	/**
 		```lua
 		(field) vim.bo.cindent: boolean
@@ -618,7 +618,7 @@ package nvim.type.vim;
 		 option or 'indentexpr'.
 		
 	**/
-	extern var cindent : Bool;
+	extern public var cindent : Bool;
 	/**
 		```lua
 		(field) vim.bo.cink: string
@@ -633,7 +633,7 @@ package nvim.type.vim;
 		 See `C-indenting`.
 		
 	**/
-	extern var cink : String;
+	extern public var cink : String;
 	/**
 		```lua
 		(field) vim.bo.cinkeys: string
@@ -648,7 +648,7 @@ package nvim.type.vim;
 		 See `C-indenting`.
 		
 	**/
-	extern var cinkeys : String;
+	extern public var cinkeys : String;
 	/**
 		```lua
 		(field) vim.bo.cino: string
@@ -661,7 +661,7 @@ package nvim.type.vim;
 		 `C-indenting` for info on C indenting in general.
 		
 	**/
-	extern var cino : String;
+	extern public var cino : String;
 	/**
 		```lua
 		(field) vim.bo.cinoptions: string
@@ -674,7 +674,7 @@ package nvim.type.vim;
 		 `C-indenting` for info on C indenting in general.
 		
 	**/
-	extern var cinoptions : String;
+	extern public var cinoptions : String;
 	/**
 		```lua
 		(field) vim.bo.cinscopedecls: string
@@ -692,7 +692,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var cinscopedecls : String;
+	extern public var cinscopedecls : String;
 	/**
 		```lua
 		(field) vim.bo.cinsd: string
@@ -710,7 +710,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var cinsd : String;
+	extern public var cinsd : String;
 	/**
 		```lua
 		(field) vim.bo.cinw: string
@@ -726,7 +726,7 @@ package nvim.type.vim;
 		 "if,If,IF".
 		
 	**/
-	extern var cinw : String;
+	extern public var cinw : String;
 	/**
 		```lua
 		(field) vim.bo.cinwords: string
@@ -742,7 +742,7 @@ package nvim.type.vim;
 		 "if,If,IF".
 		
 	**/
-	extern var cinwords : String;
+	extern public var cinwords : String;
 	/**
 		```lua
 		(field) vim.bo.cms: string = '// %s'
@@ -759,7 +759,7 @@ package nvim.type.vim;
 		 Used for `commenting` and to add markers for folding, see `fold-marker`.
 		
 	**/
-	extern var cms : String;
+	extern public var cms : String;
 	/**
 		```lua
 		(field) vim.bo.com: string
@@ -772,7 +772,7 @@ package nvim.type.vim;
 		 insert a space.
 		
 	**/
-	extern var com : String;
+	extern public var com : String;
 	/**
 		```lua
 		(field) vim.bo.comments: string
@@ -785,7 +785,7 @@ package nvim.type.vim;
 		 insert a space.
 		
 	**/
-	extern var comments : String;
+	extern public var comments : String;
 	/**
 		```lua
 		(field) vim.bo.commentstring: string = '// %s'
@@ -802,7 +802,7 @@ package nvim.type.vim;
 		 Used for `commenting` and to add markers for folding, see `fold-marker`.
 		
 	**/
-	extern var commentstring : String;
+	extern public var commentstring : String;
 	/**
 		```lua
 		(field) vim.bo.complete: string
@@ -847,7 +847,7 @@ package nvim.type.vim;
 		 `i_CTRL-X_CTRL-I`, tags `i_CTRL-X_CTRL-]` and normal expansions).
 		
 	**/
-	extern var complete : String;
+	extern public var complete : String;
 	/**
 		```lua
 		(field) vim.bo.completefunc: string
@@ -865,7 +865,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var completefunc : String;
+	extern public var completefunc : String;
 	/**
 		```lua
 		(field) vim.bo.completeopt: string
@@ -925,7 +925,7 @@ package nvim.type.vim;
 		 	    combination with "menu" or "menuone".
 		
 	**/
-	extern var completeopt : String;
+	extern public var completeopt : String;
 	/**
 		```lua
 		(field) vim.bo.completeslash: ''|'backslash'|'slash'
@@ -946,7 +946,7 @@ package nvim.type.vim;
 		 command line completion the global value is used.
 		
 	**/
-	extern var completeslash : String;
+	extern public var completeslash : String;
 	/**
 		```lua
 		(field) vim.bo.copyindent: boolean
@@ -965,7 +965,7 @@ package nvim.type.vim;
 		 See 'preserveindent'.
 		
 	**/
-	extern var copyindent : Bool;
+	extern public var copyindent : Bool;
 	/**
 		```lua
 		(field) vim.bo.cot: string
@@ -1025,7 +1025,7 @@ package nvim.type.vim;
 		 	    combination with "menu" or "menuone".
 		
 	**/
-	extern var cot : String;
+	extern public var cot : String;
 	/**
 		```lua
 		(field) vim.bo.cpt: string
@@ -1070,7 +1070,7 @@ package nvim.type.vim;
 		 `i_CTRL-X_CTRL-I`, tags `i_CTRL-X_CTRL-]` and normal expansions).
 		
 	**/
-	extern var cpt : String;
+	extern public var cpt : String;
 	/**
 		```lua
 		(field) vim.bo.csl: ''|'backslash'|'slash'
@@ -1091,7 +1091,7 @@ package nvim.type.vim;
 		 command line completion the global value is used.
 		
 	**/
-	extern var csl : String;
+	extern public var csl : String;
 	/**
 		```lua
 		(field) vim.bo.def: string = '^\s*#\s*define'
@@ -1137,7 +1137,7 @@ package nvim.type.vim;
 		^\s*#\s*define
 		```
 	**/
-	extern var def : String;
+	extern public var def : String;
 	/**
 		```lua
 		(field) vim.bo.define: string = '^\s*#\s*define'
@@ -1183,7 +1183,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var define : String;
+	extern public var define : String;
 	/**
 		```lua
 		(field) vim.bo.dict: string
@@ -1215,7 +1215,7 @@ package nvim.type.vim;
 		 Backticks cannot be used in this option for security reasons.
 		
 	**/
-	extern var dict : String;
+	extern public var dict : String;
 	/**
 		```lua
 		(field) vim.bo.dictionary: string
@@ -1247,7 +1247,7 @@ package nvim.type.vim;
 		 Backticks cannot be used in this option for security reasons.
 		
 	**/
-	extern var dictionary : String;
+	extern public var dictionary : String;
 	/**
 		```lua
 		(field) vim.bo.efm: string
@@ -1259,7 +1259,7 @@ package nvim.type.vim;
 		 (see `errorformat`).
 		
 	**/
-	extern var efm : String;
+	extern public var efm : String;
 	/**
 		```lua
 		(field) vim.bo.endoffile: boolean
@@ -1275,7 +1275,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var endoffile : Bool;
+	extern public var endoffile : Bool;
 	/**
 		```lua
 		(field) vim.bo.endofline: boolean
@@ -1297,7 +1297,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var endofline : Bool;
+	extern public var endofline : Bool;
 	/**
 		```lua
 		(field) vim.bo.eof: boolean
@@ -1313,7 +1313,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var eof : Bool;
+	extern public var eof : Bool;
 	/**
 		```lua
 		(field) vim.bo.eol: boolean
@@ -1335,7 +1335,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var eol : Bool;
+	extern public var eol : Bool;
 	/**
 		```lua
 		(field) vim.bo.ep: string
@@ -1352,7 +1352,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var ep : String;
+	extern public var ep : String;
 	/**
 		```lua
 		(field) vim.bo.equalprg: string
@@ -1369,7 +1369,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var equalprg : String;
+	extern public var equalprg : String;
 	/**
 		```lua
 		(field) vim.bo.errorformat: string
@@ -1381,7 +1381,7 @@ package nvim.type.vim;
 		 (see `errorformat`).
 		
 	**/
-	extern var errorformat : String;
+	extern public var errorformat : String;
 	/**
 		```lua
 		(field) vim.bo.et: boolean
@@ -1395,7 +1395,7 @@ package nvim.type.vim;
 		 on, use CTRL-V<Tab>.  See also `:retab` and `ins-expandtab`.
 		
 	**/
-	extern var et : Bool;
+	extern public var et : Bool;
 	/**
 		```lua
 		(field) vim.bo.expandtab: boolean
@@ -1409,7 +1409,7 @@ package nvim.type.vim;
 		 on, use CTRL-V<Tab>.  See also `:retab` and `ins-expandtab`.
 		
 	**/
-	extern var expandtab : Bool;
+	extern public var expandtab : Bool;
 	/**
 		```lua
 		(field) vim.bo.fenc: string
@@ -1456,7 +1456,7 @@ package nvim.type.vim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	extern var fenc : String;
+	extern public var fenc : String;
 	/**
 		```lua
 		(field) vim.bo.fex: string
@@ -1512,7 +1512,7 @@ package nvim.type.vim;
 		 NOTE: This option is set to "" when 'compatible' is set.
 		
 	**/
-	extern var fex : String;
+	extern public var fex : String;
 	/**
 		```lua
 		(field) vim.bo.ff: 'dos'|'mac'|'unix'
@@ -1537,7 +1537,7 @@ package nvim.type.vim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	extern var ff : String;
+	extern public var ff : String;
 	/**
 		```lua
 		(field) vim.bo.ffu: string
@@ -1594,7 +1594,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var ffu : String;
+	extern public var ffu : String;
 	/**
 		```lua
 		(field) vim.bo.fileencoding: string
@@ -1641,7 +1641,7 @@ package nvim.type.vim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	extern var fileencoding : String;
+	extern public var fileencoding : String;
 	/**
 		```lua
 		(field) vim.bo.fileformat: 'dos'|'mac'|'unix'
@@ -1666,7 +1666,7 @@ package nvim.type.vim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	extern var fileformat : String;
+	extern public var fileformat : String;
 	/**
 		```lua
 		(field) vim.bo.filetype: string = 'html'|'man'|'qf'
@@ -1703,7 +1703,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '-' and '_' can be used.
 		
 	**/
-	extern var filetype : String;
+	extern public var filetype : String;
 	/**
 		```lua
 		(field) vim.bo.findfunc: string
@@ -1760,7 +1760,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var findfunc : String;
+	extern public var findfunc : String;
 	/**
 		```lua
 		(field) vim.bo.fixendofline: boolean
@@ -1777,7 +1777,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var fixendofline : Bool;
+	extern public var fixendofline : Bool;
 	/**
 		```lua
 		(field) vim.bo.fixeol: boolean
@@ -1794,7 +1794,7 @@ package nvim.type.vim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	extern var fixeol : Bool;
+	extern public var fixeol : Bool;
 	/**
 		```lua
 		(field) vim.bo.flp: string
@@ -1813,7 +1813,7 @@ package nvim.type.vim;
 		 character and white space.
 		
 	**/
-	extern var flp : String;
+	extern public var flp : String;
 	/**
 		```lua
 		(field) vim.bo.fo: string
@@ -1829,7 +1829,7 @@ package nvim.type.vim;
 		 "+=" and "-=" feature of ":set" `add-option-flags`.
 		
 	**/
-	extern var fo : String;
+	extern public var fo : String;
 	/**
 		```lua
 		(field) vim.bo.formatexpr: string
@@ -1885,7 +1885,7 @@ package nvim.type.vim;
 		 NOTE: This option is set to "" when 'compatible' is set.
 		
 	**/
-	extern var formatexpr : String;
+	extern public var formatexpr : String;
 	/**
 		```lua
 		(field) vim.bo.formatlistpat: string
@@ -1904,7 +1904,7 @@ package nvim.type.vim;
 		 character and white space.
 		
 	**/
-	extern var formatlistpat : String;
+	extern public var formatlistpat : String;
 	/**
 		```lua
 		(field) vim.bo.formatoptions: string
@@ -1920,7 +1920,7 @@ package nvim.type.vim;
 		 "+=" and "-=" feature of ":set" `add-option-flags`.
 		
 	**/
-	extern var formatoptions : String;
+	extern public var formatoptions : String;
 	/**
 		```lua
 		(field) vim.bo.formatprg: string
@@ -1941,7 +1941,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var formatprg : String;
+	extern public var formatprg : String;
 	/**
 		```lua
 		(field) vim.bo.fp: string
@@ -1962,7 +1962,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var fp : String;
+	extern public var fp : String;
 	/**
 		```lua
 		(field) vim.bo.ft: string = 'html'|'man'|'qf'
@@ -1999,7 +1999,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '-' and '_' can be used.
 		
 	**/
-	extern var ft : String;
+	extern public var ft : String;
 	/**
 		```lua
 		(field) vim.bo.gp: string = 'rg --vimgrep -uu '
@@ -2035,7 +2035,7 @@ package nvim.type.vim;
 		 An `OptionSet` autocmd can be used to set it up to match automatically.
 		
 	**/
-	extern var gp : String;
+	extern public var gp : String;
 	/**
 		```lua
 		(field) vim.bo.grepprg: string = 'rg --vimgrep -uu '
@@ -2071,7 +2071,7 @@ package nvim.type.vim;
 		 An `OptionSet` autocmd can be used to set it up to match automatically.
 		
 	**/
-	extern var grepprg : String;
+	extern public var grepprg : String;
 	/**
 		```lua
 		(field) vim.bo.imi: integer
@@ -2098,7 +2098,7 @@ package nvim.type.vim;
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	extern var imi : Int;
+	extern public var imi : Float;
 	/**
 		```lua
 		(field) vim.bo.iminsert: integer
@@ -2125,7 +2125,7 @@ package nvim.type.vim;
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	extern var iminsert : Int;
+	extern public var iminsert : Float;
 	/**
 		```lua
 		(field) vim.bo.ims: integer
@@ -2146,7 +2146,7 @@ package nvim.type.vim;
 		 option to a valid keymap name.
 		
 	**/
-	extern var ims : Int;
+	extern public var ims : Float;
 	/**
 		```lua
 		(field) vim.bo.imsearch: integer
@@ -2167,7 +2167,7 @@ package nvim.type.vim;
 		 option to a valid keymap name.
 		
 	**/
-	extern var imsearch : Int;
+	extern public var imsearch : Float;
 	/**
 		```lua
 		(field) vim.bo.inc: string = '^\s*#\s*include'
@@ -2193,7 +2193,7 @@ package nvim.type.vim;
 		^\s*#\s*include
 		```
 	**/
-	extern var inc : String;
+	extern public var inc : String;
 	/**
 		```lua
 		(field) vim.bo.include: string = '^\s*#\s*include'
@@ -2219,7 +2219,7 @@ package nvim.type.vim;
 		 See `option-backslash` about including spaces and backslashes.
 		
 	**/
-	extern var include : String;
+	extern public var include : String;
 	/**
 		```lua
 		(field) vim.bo.includeexpr: string = [[v:lua.require'vim._ftplugin.lua'.includeexpr(v:fname)]]
@@ -2267,7 +2267,7 @@ package nvim.type.vim;
 		 evaluating 'includeexpr' `textlock`.
 		
 	**/
-	extern var includeexpr : String;
+	extern public var includeexpr : String;
 	/**
 		```lua
 		(field) vim.bo.inde: string
@@ -2323,7 +2323,7 @@ package nvim.type.vim;
 		 evaluating 'indentexpr' `textlock`.
 		
 	**/
-	extern var inde : String;
+	extern public var inde : String;
 	/**
 		```lua
 		(field) vim.bo.indentexpr: string
@@ -2379,7 +2379,7 @@ package nvim.type.vim;
 		 evaluating 'indentexpr' `textlock`.
 		
 	**/
-	extern var indentexpr : String;
+	extern public var indentexpr : String;
 	/**
 		```lua
 		(field) vim.bo.indentkeys: string
@@ -2393,7 +2393,7 @@ package nvim.type.vim;
 		 See `C-indenting` and `indent-expression`.
 		
 	**/
-	extern var indentkeys : String;
+	extern public var indentkeys : String;
 	/**
 		```lua
 		(field) vim.bo.indk: string
@@ -2407,7 +2407,7 @@ package nvim.type.vim;
 		 See `C-indenting` and `indent-expression`.
 		
 	**/
-	extern var indk : String;
+	extern public var indk : String;
 	/**
 		```lua
 		(field) vim.bo.inex: string = [[v:lua.require'vim._ftplugin.lua'.includeexpr(v:fname)]]
@@ -2455,7 +2455,7 @@ package nvim.type.vim;
 		 evaluating 'includeexpr' `textlock`.
 		
 	**/
-	extern var inex : String;
+	extern public var inex : String;
 	/**
 		```lua
 		(field) vim.bo.inf: boolean
@@ -2473,7 +2473,7 @@ package nvim.type.vim;
 		 With 'noinfercase' the match is used as-is.
 		
 	**/
-	extern var inf : Bool;
+	extern public var inf : Bool;
 	/**
 		```lua
 		(field) vim.bo.infercase: boolean
@@ -2491,13 +2491,13 @@ package nvim.type.vim;
 		 With 'noinfercase' the match is used as-is.
 		
 	**/
-	extern var infercase : Bool;
+	extern public var infercase : Bool;
 	/**
 		```lua
 		(field) vim.bo.integer: unknown
 		```
 	**/
-	extern var integer : Dynamic;
+	extern public var integer : Dynamic;
 	/**
 		```lua
 		(field) vim.bo.isk: string
@@ -2519,7 +2519,7 @@ package nvim.type.vim;
 		 uses `:syn-iskeyword`.
 		
 	**/
-	extern var isk : String;
+	extern public var isk : String;
 	/**
 		```lua
 		(field) vim.bo.iskeyword: string
@@ -2541,7 +2541,7 @@ package nvim.type.vim;
 		 uses `:syn-iskeyword`.
 		
 	**/
-	extern var iskeyword : String;
+	extern public var iskeyword : String;
 	/**
 		```lua
 		(field) vim.bo.keymap: string
@@ -2556,7 +2556,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	extern var keymap : String;
+	extern public var keymap : String;
 	/**
 		```lua
 		(field) vim.bo.keywordprg: string
@@ -2583,7 +2583,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var keywordprg : String;
+	extern public var keywordprg : String;
 	/**
 		```lua
 		(field) vim.bo.kmp: string
@@ -2598,7 +2598,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	extern var kmp : String;
+	extern public var kmp : String;
 	/**
 		```lua
 		(field) vim.bo.kp: string
@@ -2625,7 +2625,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var kp : String;
+	extern public var kp : String;
 	/**
 		```lua
 		(field) vim.bo.lisp: boolean
@@ -2643,7 +2643,7 @@ package nvim.type.vim;
 		 calling an external program if 'equalprg' is empty.
 		
 	**/
-	extern var lisp : Bool;
+	extern public var lisp : Bool;
 	/**
 		```lua
 		(field) vim.bo.lispoptions: string
@@ -2660,7 +2660,7 @@ package nvim.type.vim;
 		 lines, otherwise the first line is not indented (Vi-compatible).
 		
 	**/
-	extern var lispoptions : String;
+	extern public var lispoptions : String;
 	/**
 		```lua
 		(field) vim.bo.lispwords: string
@@ -2672,7 +2672,7 @@ package nvim.type.vim;
 		 enabled with the `'lisp'` option.
 		
 	**/
-	extern var lispwords : String;
+	extern public var lispwords : String;
 	/**
 		```lua
 		(field) vim.bo.lop: string
@@ -2689,7 +2689,7 @@ package nvim.type.vim;
 		 lines, otherwise the first line is not indented (Vi-compatible).
 		
 	**/
-	extern var lop : String;
+	extern public var lop : String;
 	/**
 		```lua
 		(field) vim.bo.lw: string
@@ -2701,7 +2701,7 @@ package nvim.type.vim;
 		 enabled with the `'lisp'` option.
 		
 	**/
-	extern var lw : String;
+	extern public var lw : String;
 	/**
 		```lua
 		(field) vim.bo.ma: boolean = true|false
@@ -2714,7 +2714,7 @@ package nvim.type.vim;
 		 Can be reset on startup with the `-M` command line argument.
 		
 	**/
-	extern var ma : Bool;
+	extern public var ma : Bool;
 	/**
 		```lua
 		(field) vim.bo.makeencoding: string
@@ -2738,7 +2738,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var makeencoding : String;
+	extern public var makeencoding : String;
 	/**
 		```lua
 		(field) vim.bo.makeprg: string
@@ -2769,7 +2769,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var makeprg : String;
+	extern public var makeprg : String;
 	/**
 		```lua
 		(field) vim.bo.matchpairs: string
@@ -2798,7 +2798,7 @@ package nvim.type.vim;
 		 the $VIMRUNTIME/plugin directory. `add-local-help`
 		
 	**/
-	extern var matchpairs : String;
+	extern public var matchpairs : String;
 	/**
 		```lua
 		(field) vim.bo.menc: string
@@ -2822,7 +2822,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var menc : String;
+	extern public var menc : String;
 	/**
 		```lua
 		(field) vim.bo.ml: boolean
@@ -2835,7 +2835,7 @@ package nvim.type.vim;
 		 no lines are checked.  See `modeline`.
 		
 	**/
-	extern var ml : Bool;
+	extern public var ml : Bool;
 	/**
 		```lua
 		(field) vim.bo.mod: boolean = false
@@ -2866,7 +2866,7 @@ package nvim.type.vim;
 		 when using "rA" on an "A".
 		
 	**/
-	extern var mod : Bool;
+	extern public var mod : Bool;
 	/**
 		```lua
 		(field) vim.bo.modeline: boolean
@@ -2879,7 +2879,7 @@ package nvim.type.vim;
 		 no lines are checked.  See `modeline`.
 		
 	**/
-	extern var modeline : Bool;
+	extern public var modeline : Bool;
 	/**
 		```lua
 		(field) vim.bo.modifiable: boolean = true|false
@@ -2892,7 +2892,7 @@ package nvim.type.vim;
 		 Can be reset on startup with the `-M` command line argument.
 		
 	**/
-	extern var modifiable : Bool;
+	extern public var modifiable : Bool;
 	/**
 		```lua
 		(field) vim.bo.modified: boolean = false
@@ -2923,7 +2923,7 @@ package nvim.type.vim;
 		 when using "rA" on an "A".
 		
 	**/
-	extern var modified : Bool;
+	extern public var modified : Bool;
 	/**
 		```lua
 		(field) vim.bo.mp: string
@@ -2954,7 +2954,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var mp : String;
+	extern public var mp : String;
 	/**
 		```lua
 		(field) vim.bo.mps: string
@@ -2983,7 +2983,7 @@ package nvim.type.vim;
 		 the $VIMRUNTIME/plugin directory. `add-local-help`
 		
 	**/
-	extern var mps : String;
+	extern public var mps : String;
 	/**
 		```lua
 		(field) vim.bo.nf: string
@@ -3033,7 +3033,7 @@ package nvim.type.vim;
 		 recognized as octal or hex.
 		
 	**/
-	extern var nf : String;
+	extern public var nf : String;
 	/**
 		```lua
 		(field) vim.bo.nrformats: string
@@ -3083,7 +3083,7 @@ package nvim.type.vim;
 		 recognized as octal or hex.
 		
 	**/
-	extern var nrformats : String;
+	extern public var nrformats : String;
 	/**
 		```lua
 		(field) vim.bo.ofu: string = 'v:lua.vim.lua_omnifunc'|'v:lua.vim.treesitter.query.omnifunc'
@@ -3107,7 +3107,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var ofu : String;
+	extern public var ofu : String;
 	/**
 		```lua
 		(field) vim.bo.omnifunc: string = 'v:lua.vim.lua_omnifunc'|'v:lua.vim.treesitter.query.omnifunc'
@@ -3131,7 +3131,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var omnifunc : String;
+	extern public var omnifunc : String;
 	/**
 		```lua
 		(field) vim.bo.pa: string
@@ -3218,7 +3218,7 @@ package nvim.type.vim;
 		 this doesn't work when $INCL contains a comma or white space.
 		
 	**/
-	extern var pa : String;
+	extern public var pa : String;
 	/**
 		```lua
 		(field) vim.bo.path: string
@@ -3305,7 +3305,7 @@ package nvim.type.vim;
 		 this doesn't work when $INCL contains a comma or white space.
 		
 	**/
-	extern var path : String;
+	extern public var path : String;
 	/**
 		```lua
 		(field) vim.bo.pi: boolean
@@ -3327,7 +3327,7 @@ package nvim.type.vim;
 		 Use `:retab` to clean up white space.
 		
 	**/
-	extern var pi : Bool;
+	extern public var pi : Bool;
 	/**
 		```lua
 		(field) vim.bo.preserveindent: boolean
@@ -3349,7 +3349,7 @@ package nvim.type.vim;
 		 Use `:retab` to clean up white space.
 		
 	**/
-	extern var preserveindent : Bool;
+	extern public var preserveindent : Bool;
 	/**
 		```lua
 		(field) vim.bo.qe: string
@@ -3364,7 +3364,7 @@ package nvim.type.vim;
 		 text "foo\"bar\\" considered to be one string.
 		
 	**/
-	extern var qe : String;
+	extern public var qe : String;
 	/**
 		```lua
 		(field) vim.bo.quoteescape: string
@@ -3379,7 +3379,7 @@ package nvim.type.vim;
 		 text "foo\"bar\\" considered to be one string.
 		
 	**/
-	extern var quoteescape : String;
+	extern public var quoteescape : String;
 	/**
 		```lua
 		(field) vim.bo.readonly: boolean = true|false
@@ -3397,7 +3397,7 @@ package nvim.type.vim;
 		 See 'modifiable' for disallowing changes to the buffer.
 		
 	**/
-	extern var readonly : Bool;
+	extern public var readonly : Bool;
 	/**
 		```lua
 		(field) vim.bo.ro: boolean = true|false
@@ -3415,7 +3415,7 @@ package nvim.type.vim;
 		 See 'modifiable' for disallowing changes to the buffer.
 		
 	**/
-	extern var ro : Bool;
+	extern public var ro : Bool;
 	/**
 		```lua
 		(field) vim.bo.scbk: integer
@@ -3432,7 +3432,7 @@ package nvim.type.vim;
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	extern var scbk : Int;
+	extern public var scbk : Float;
 	/**
 		```lua
 		(field) vim.bo.scrollback: integer
@@ -3449,7 +3449,7 @@ package nvim.type.vim;
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	extern var scrollback : Int;
+	extern public var scrollback : Float;
 	/**
 		```lua
 		(field) vim.bo.shiftwidth: integer
@@ -3463,7 +3463,7 @@ package nvim.type.vim;
 		 function to get the effective shiftwidth value.
 		
 	**/
-	extern var shiftwidth : Int;
+	extern public var shiftwidth : Float;
 	/**
 		```lua
 		(field) vim.bo.si: boolean
@@ -3492,7 +3492,7 @@ package nvim.type.vim;
 		 right.
 		
 	**/
-	extern var si : Bool;
+	extern public var si : Bool;
 	/**
 		```lua
 		(field) vim.bo.smartindent: boolean
@@ -3521,7 +3521,7 @@ package nvim.type.vim;
 		 right.
 		
 	**/
-	extern var smartindent : Bool;
+	extern public var smartindent : Bool;
 	/**
 		```lua
 		(field) vim.bo.smc: integer
@@ -3537,7 +3537,7 @@ package nvim.type.vim;
 		 Set to zero to remove the limit.
 		
 	**/
-	extern var smc : Int;
+	extern public var smc : Float;
 	/**
 		```lua
 		(field) vim.bo.softtabstop: integer
@@ -3562,7 +3562,7 @@ package nvim.type.vim;
 		 to anything other than an empty string.
 		
 	**/
-	extern var softtabstop : Int;
+	extern public var softtabstop : Float;
 	/**
 		```lua
 		(field) vim.bo.spc: string
@@ -3581,7 +3581,7 @@ package nvim.type.vim;
 		 `set-spc-auto`.
 		
 	**/
-	extern var spc : String;
+	extern public var spc : String;
 	/**
 		```lua
 		(field) vim.bo.spellcapcheck: string
@@ -3600,7 +3600,7 @@ package nvim.type.vim;
 		 `set-spc-auto`.
 		
 	**/
-	extern var spellcapcheck : String;
+	extern public var spellcapcheck : String;
 	/**
 		```lua
 		(field) vim.bo.spellfile: string
@@ -3631,7 +3631,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var spellfile : String;
+	extern public var spellfile : String;
 	/**
 		```lua
 		(field) vim.bo.spelllang: string
@@ -3680,7 +3680,7 @@ package nvim.type.vim;
 		 not a dash.  Also see `set-spc-auto`.
 		
 	**/
-	extern var spelllang : String;
+	extern public var spelllang : String;
 	/**
 		```lua
 		(field) vim.bo.spelloptions: string
@@ -3699,7 +3699,7 @@ package nvim.type.vim;
 		 		this case.
 		
 	**/
-	extern var spelloptions : String;
+	extern public var spelloptions : String;
 	/**
 		```lua
 		(field) vim.bo.spf: string
@@ -3730,7 +3730,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var spf : String;
+	extern public var spf : String;
 	/**
 		```lua
 		(field) vim.bo.spl: string
@@ -3779,7 +3779,7 @@ package nvim.type.vim;
 		 not a dash.  Also see `set-spc-auto`.
 		
 	**/
-	extern var spl : String;
+	extern public var spl : String;
 	/**
 		```lua
 		(field) vim.bo.spo: string
@@ -3798,7 +3798,7 @@ package nvim.type.vim;
 		 		this case.
 		
 	**/
-	extern var spo : String;
+	extern public var spo : String;
 	/**
 		```lua
 		(field) vim.bo.sts: integer
@@ -3823,7 +3823,7 @@ package nvim.type.vim;
 		 to anything other than an empty string.
 		
 	**/
-	extern var sts : Int;
+	extern public var sts : Float;
 	/**
 		```lua
 		(field) vim.bo.sua: string
@@ -3840,7 +3840,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var sua : String;
+	extern public var sua : String;
 	/**
 		```lua
 		(field) vim.bo.suffixesadd: string
@@ -3857,7 +3857,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern var suffixesadd : String;
+	extern public var suffixesadd : String;
 	/**
 		```lua
 		(field) vim.bo.sw: integer
@@ -3871,7 +3871,7 @@ package nvim.type.vim;
 		 function to get the effective shiftwidth value.
 		
 	**/
-	extern var sw : Int;
+	extern public var sw : Float;
 	/**
 		```lua
 		(field) vim.bo.swapfile: boolean = false
@@ -3899,7 +3899,7 @@ package nvim.type.vim;
 		 specify special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	extern var swapfile : Bool;
+	extern public var swapfile : Bool;
 	/**
 		```lua
 		(field) vim.bo.swf: boolean = false
@@ -3927,7 +3927,7 @@ package nvim.type.vim;
 		 specify special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	extern var swf : Bool;
+	extern public var swf : Bool;
 	/**
 		```lua
 		(field) vim.bo.syn: string
@@ -3968,7 +3968,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	extern var syn : String;
+	extern public var syn : String;
 	/**
 		```lua
 		(field) vim.bo.synmaxcol: integer
@@ -3984,7 +3984,7 @@ package nvim.type.vim;
 		 Set to zero to remove the limit.
 		
 	**/
-	extern var synmaxcol : Int;
+	extern public var synmaxcol : Float;
 	/**
 		```lua
 		(field) vim.bo.syntax: string
@@ -4025,7 +4025,7 @@ package nvim.type.vim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	extern var syntax : String;
+	extern public var syntax : String;
 	/**
 		```lua
 		(field) vim.bo.tabstop: integer
@@ -4074,7 +4074,7 @@ package nvim.type.vim;
 		 anything other than an empty string.
 		
 	**/
-	extern var tabstop : Int;
+	extern public var tabstop : Float;
 	/**
 		```lua
 		(field) vim.bo.tag: string
@@ -4101,7 +4101,7 @@ package nvim.type.vim;
 		 uses another default.
 		
 	**/
-	extern var tag : String;
+	extern public var tag : String;
 	/**
 		```lua
 		(field) vim.bo.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -4118,7 +4118,7 @@ package nvim.type.vim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	extern var tagcase : String;
+	extern public var tagcase : String;
 	/**
 		```lua
 		(field) vim.bo.tagfunc: string
@@ -4136,7 +4136,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var tagfunc : String;
+	extern public var tagfunc : String;
 	/**
 		```lua
 		(field) vim.bo.tags: string
@@ -4163,7 +4163,7 @@ package nvim.type.vim;
 		 uses another default.
 		
 	**/
-	extern var tags : String;
+	extern public var tags : String;
 	/**
 		```lua
 		(field) vim.bo.tc: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -4180,7 +4180,7 @@ package nvim.type.vim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	extern var tc : String;
+	extern public var tc : String;
 	/**
 		```lua
 		(field) vim.bo.textwidth: integer
@@ -4196,7 +4196,7 @@ package nvim.type.vim;
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	extern var textwidth : Int;
+	extern public var textwidth : Float;
 	/**
 		```lua
 		(field) vim.bo.tfu: string
@@ -4214,7 +4214,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var tfu : String;
+	extern public var tfu : String;
 	/**
 		```lua
 		(field) vim.bo.thesaurus: string
@@ -4238,7 +4238,7 @@ package nvim.type.vim;
 		 reasons.
 		
 	**/
-	extern var thesaurus : String;
+	extern public var thesaurus : String;
 	/**
 		```lua
 		(field) vim.bo.thesaurusfunc: string
@@ -4255,7 +4255,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var thesaurusfunc : String;
+	extern public var thesaurusfunc : String;
 	/**
 		```lua
 		(field) vim.bo.ts: integer
@@ -4304,7 +4304,7 @@ package nvim.type.vim;
 		 anything other than an empty string.
 		
 	**/
-	extern var ts : Int;
+	extern public var ts : Float;
 	/**
 		```lua
 		(field) vim.bo.tsr: string
@@ -4328,7 +4328,7 @@ package nvim.type.vim;
 		 reasons.
 		
 	**/
-	extern var tsr : String;
+	extern public var tsr : String;
 	/**
 		```lua
 		(field) vim.bo.tsrfu: string
@@ -4345,7 +4345,7 @@ package nvim.type.vim;
 		 security reasons.
 		
 	**/
-	extern var tsrfu : String;
+	extern public var tsrfu : String;
 	/**
 		```lua
 		(field) vim.bo.tw: integer
@@ -4361,7 +4361,7 @@ package nvim.type.vim;
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	extern var tw : Int;
+	extern public var tw : Float;
 	/**
 		```lua
 		(field) vim.bo.udf: boolean
@@ -4379,7 +4379,7 @@ package nvim.type.vim;
 		 When 'undofile' is turned off the undo file is NOT deleted.
 		
 	**/
-	extern var udf : Bool;
+	extern public var udf : Bool;
 	/**
 		```lua
 		(field) vim.bo.ul: integer
@@ -4412,7 +4412,7 @@ package nvim.type.vim;
 		 Also see `clear-undo`.
 		
 	**/
-	extern var ul : Int;
+	extern public var ul : Float;
 	/**
 		```lua
 		(field) vim.bo.undofile: boolean
@@ -4430,7 +4430,7 @@ package nvim.type.vim;
 		 When 'undofile' is turned off the undo file is NOT deleted.
 		
 	**/
-	extern var undofile : Bool;
+	extern public var undofile : Bool;
 	/**
 		```lua
 		(field) vim.bo.undolevels: integer
@@ -4463,7 +4463,7 @@ package nvim.type.vim;
 		 Also see `clear-undo`.
 		
 	**/
-	extern var undolevels : Int;
+	extern public var undolevels : Float;
 	/**
 		```lua
 		(field) vim.bo.varsofttabstop: string
@@ -4491,7 +4491,7 @@ package nvim.type.vim;
 		 'varsofttabstop' is set.
 		
 	**/
-	extern var varsofttabstop : String;
+	extern public var varsofttabstop : String;
 	/**
 		```lua
 		(field) vim.bo.vartabstop: string
@@ -4513,7 +4513,7 @@ package nvim.type.vim;
 		 is set.
 		
 	**/
-	extern var vartabstop : String;
+	extern public var vartabstop : String;
 	/**
 		```lua
 		(field) vim.bo.vsts: string
@@ -4541,7 +4541,7 @@ package nvim.type.vim;
 		 'varsofttabstop' is set.
 		
 	**/
-	extern var vsts : String;
+	extern public var vsts : String;
 	/**
 		```lua
 		(field) vim.bo.vts: string
@@ -4563,7 +4563,7 @@ package nvim.type.vim;
 		 is set.
 		
 	**/
-	extern var vts : String;
+	extern public var vts : String;
 	/**
 		```lua
 		(field) vim.bo.wm: integer
@@ -4580,7 +4580,7 @@ package nvim.type.vim;
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	extern var wm : Int;
+	extern public var wm : Float;
 	/**
 		```lua
 		(field) vim.bo.wrapmargin: integer
@@ -4597,5 +4597,5 @@ package nvim.type.vim;
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	extern var wrapmargin : Int;
+	extern public var wrapmargin : Float;
 }

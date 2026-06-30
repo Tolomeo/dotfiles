@@ -20,7 +20,7 @@ package nvim.type.lsp;
 		
 		The array of added workspace folders
 	**/
-	extern var added : Array<nvim.type.lsp.WorkspaceFolder>;
+	extern public var added : lua.Table<Int, nvim.type.lsp.WorkspaceFolder>;
 	/**
 		```lua
 		(field) lsp.WorkspaceFoldersChangeEvent.removed: lsp.WorkspaceFolder[]
@@ -31,5 +31,5 @@ package nvim.type.lsp;
 		
 		The array of the removed workspace folders
 	**/
-	extern var removed : Array<nvim.type.lsp.WorkspaceFolder>;
+	extern public var removed : lua.Table<Int, nvim.type.lsp.WorkspaceFolder>;
 }

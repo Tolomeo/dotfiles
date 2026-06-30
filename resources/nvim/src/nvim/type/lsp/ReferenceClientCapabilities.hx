@@ -21,5 +21,5 @@ package nvim.type.lsp;
 		Whether references supports dynamic registration.
 	**/
 	@:optional
-	extern var dynamicRegistration : Null<Bool>;
+	extern public var dynamicRegistration : Null<Bool>;
 }

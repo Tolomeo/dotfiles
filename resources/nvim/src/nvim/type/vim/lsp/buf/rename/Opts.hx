@@ -17,7 +17,7 @@ package nvim.type.vim.lsp.buf.rename;
 		 (default: current buffer)
 	**/
 	@:optional
-	extern var bufnr : Null<Int>;
+	extern public var bufnr : Null<Float>;
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.filter: fun(client: vim.lsp.Client):boolean??
@@ -38,7 +38,7 @@ package nvim.type.vim.lsp.buf.rename;
 		```
 	**/
 	@:optional
-	extern var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
+	extern public var filter : Null<(client:nvim.type.vim.lsp.Client) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.name: string?
@@ -51,5 +51,5 @@ package nvim.type.vim.lsp.buf.rename;
 		 this field.
 	**/
 	@:optional
-	extern var name : Null<String>;
+	extern public var name : Null<String>;
 }
