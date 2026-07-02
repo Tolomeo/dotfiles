@@ -63,4 +63,16 @@ package nvim.type;
 		```
 	**/
 	extern public var state_count : Float;
+	/**
+		```lua
+		(field) TSLangInfo.supertypes: table<string, string[]>
+		```
+	**/
+	extern public var supertypes : Supertypes;
+	/**
+		```lua
+		(field) TSLangInfo.symbols: table<string, boolean>
+		```
+	**/
+	extern public var symbols : Symbols;
 }

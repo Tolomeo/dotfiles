@@ -51,26 +51,6 @@ package nvim.type;
 		 Get the node's number of children.
 	**/
 	extern public function child_count():Float;
-	/**
-		```lua
-		(method) TSNode:child_with_descendant(descendant: TSNode)
-		  -> TSNode?
-		```
-		
-		---
-		
-		 Get the node's child that contains {descendant} (includes {descendant}).
-		
-		 For example, with the following node hierarchy:
-		
-		 ```
-		 a -> b -> c
-		
-		 a:child_with_descendant(c) == b
-		 a:child_with_descendant(b) == b
-		 a:child_with_descendant(a) == nil
-		 ```
-	**/
 	@:native("child_with_descendant")
 	private extern function __child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode>;
 	/**
@@ -124,16 +104,6 @@ package nvim.type;
 		 total byte count (all zero-based).
 	**/
 	extern public function end_():Float;
-	/**
-		```lua
-		(method) TSNode:equal(node: TSNode)
-		  -> boolean
-		```
-		
-		---
-		
-		 Check if {node} refers to the same node within the same tree.
-	**/
 	@:native("equal")
 	private extern function __equal(node:nvim.type.TSNode):Bool;
 	/**

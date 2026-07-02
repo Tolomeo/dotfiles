@@ -42,20 +42,6 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	private function create_read_loop(handle_body:(body:String) -> Dynamic, ?on_exit:() -> Dynamic, on_error:(err:Any) -> Dynamic):Dynamic;
-	/**
-		```lua
-		function M.format_rpc_error(err: table)
-		  -> error_message: string
-		```
-		
-		---
-		
-		 Constructs an error message from an LSP error object.
-		
-		@*param* `err` — The error object
-		
-		@*return* `error_message` — The formatted error message
-	**/
 	@:native("format_rpc_error")
 	@:luaDotMethod
 	private function __format_rpc_error(err:lua.Table.AnyTable):String;
@@ -100,20 +86,6 @@ extern class Rpc {
 	**/
 	@:luaDotMethod
 	function rpc_response_error(code:Float, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
-	/**
-		```lua
-		function M.start(cmd: string[], dispatchers?: vim.lsp.rpc.Dispatchers, extra_spawn_params?: vim.lsp.rpc.ExtraSpawnParams)
-		  -> vim.lsp.rpc.PublicClient
-		```
-		
-		---
-		
-		 Starts an LSP server process and create an LSP RPC client object to
-		 interact with it. Communication with the spawned process happens via stdio. For
-		 communication via TCP, spawn a process manually and use |vim.lsp.rpc.connect()|
-		
-		@*param* `cmd` — Command to start the LSP server.
-	**/
 	@:native("start")
 	@:luaDotMethod
 	private function __start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient;

@@ -10,21 +10,6 @@ package nvim.type.vim.lsp.rpc;
 	 Dispatchers for LSP message types.
 **/
 @:structInit class Dispatchers {
-	/**
-		```lua
-		(field) vim.lsp.rpc.Dispatchers.notification: fun(method: string, params: table)
-		```
-		
-		---
-		
-		 @inlinedoc
-		
-		---
-		
-		```lua
-		function (method: string, params: table)
-		```
-	**/
 	@:native("notification")
 	@:luaDotMethod
 	private extern function __notification(method:String, params:lua.Table.AnyTable):Dynamic;
@@ -75,19 +60,6 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:luaDotMethod
 	extern public function on_exit(code:Float, signal:Float):Dynamic;
-	/**
-		```lua
-		(field) vim.lsp.rpc.Dispatchers.server_request: fun(method: string, params: table):any, (lsp.ResponseError)?
-		```
-		
-		---
-		
-		```lua
-		function (method: string, params: table)
-		  -> any
-		  2. (lsp.ResponseError)?
-		```
-	**/
 	@:native("server_request")
 	@:luaDotMethod
 	private extern function __server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn<Null<Any>, Null<nvim.type.lsp.ResponseError>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

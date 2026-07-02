@@ -9,19 +9,6 @@ extern class Perl {
 	**/
 	@:luaDotMethod
 	function call(method:Dynamic, args:Dynamic):Dynamic;
-	/**
-		```lua
-		function M.detect()
-		  -> path: string?
-		  2. error: string?
-		```
-		
-		---
-		
-		@*return* `path` — to detected perl, if any; nil if not found
-		
-		@*return* `error` — message if perl can't be detected; nil if success
-	**/
 	@:native("detect")
 	@:luaDotMethod
 	private function __detect():nvim.helper.Multireturn<Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

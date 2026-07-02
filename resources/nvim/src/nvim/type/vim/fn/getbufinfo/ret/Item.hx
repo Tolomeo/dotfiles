@@ -83,6 +83,12 @@ package nvim.type.vim.fn.getbufinfo.ret;
 	extern public var signs : lua.Table<Int, nvim.type.vim.fn.Sign>;
 	/**
 		```lua
+		(field) vim.fn.getbufinfo.ret.item.variables: table<string, any>
+		```
+	**/
+	extern public var variables : Variables;
+	/**
+		```lua
 		(field) vim.fn.getbufinfo.ret.item.windows: integer[]
 		```
 	**/

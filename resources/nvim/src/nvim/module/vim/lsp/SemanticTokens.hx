@@ -49,30 +49,6 @@ extern class SemanticTokens {
 	**/
 	@:luaDotMethod
 	function get_at_pos(?bufnr:Null<Float>, ?row:Null<Float>, ?col:Null<Float>):Null<lua.Table<Int, nvim.type.STTokenRangeInspect>>;
-	/**
-		```lua
-		function M.highlight_token(token: table, bufnr: integer, client_id: integer, hl_group: string, opts?: vim.lsp.semantic_tokens.highlight_token.Opts)
-		```
-		
-		---
-		
-		 Highlight a semantic token.
-		
-		 Apply an extmark with a given highlight group for a semantic token. The
-		 mark will be deleted by the semantic token engine when appropriate; for
-		 example, when the LSP sends updated tokens. This function is intended for
-		 use inside |LspTokenUpdate| callbacks.
-		
-		@*param* `token` — A semantic token, found as `args.data.token` in |LspTokenUpdate|
-		
-		@*param* `bufnr` — The buffer to highlight, or `0` for current buffer
-		
-		@*param* `client_id` — The ID of the |vim.lsp.Client|
-		
-		@*param* `hl_group` — Highlight group name
-		
-		@*param* `opts` — Optional parameters:
-	**/
 	@:native("highlight_token")
 	@:luaDotMethod
 	private function __highlight_token(token:lua.Table.AnyTable, bufnr:Float, client_id:Float, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic;
@@ -107,35 +83,6 @@ extern class SemanticTokens {
 		final result = __highlight_token(token, bufnr, client_id, hl_group, opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.start(bufnr: integer, client_id: integer, opts?: table)
-		```
-		
-		---
-		
-		 Start the semantic token highlighting engine for the given buffer with the
-		 given client. The client must already be attached to the buffer.
-		
-		 NOTE: This is currently called automatically by |vim.lsp.buf_attach_client()|. To
-		 opt-out of semantic highlighting with a server that supports it, you can
-		 delete the semanticTokensProvider table from the {server_capabilities} of
-		 your client in your |LspAttach| callback or your configuration's
-		 `on_attach` callback:
-		
-		 ```lua
-		 client.server_capabilities.semanticTokensProvider = nil
-		 ```
-		
-		@*param* `bufnr` — Buffer number, or `0` for current buffer
-		
-		@*param* `client_id` — The ID of the |vim.lsp.Client|
-		
-		@*param* `opts` — Optional keyword arguments
-		
-		  - debounce (integer, default: 200): Debounce token requests
-		        to the server by the given number in milliseconds
-	**/
 	@:native("start")
 	@:luaDotMethod
 	private function __start(bufnr:Float, client_id:Float, ?opts:lua.Table.AnyTable):Dynamic;

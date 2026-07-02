@@ -28,23 +28,6 @@ extern class Secure {
 	**/
 	@:luaDotMethod
 	function read(path:String):Null<haxe.extern.EitherType<Bool, String>>;
-	/**
-		```lua
-		function M.trust(opts: vim.trust.opts)
-		  -> success: boolean
-		  2. msg: string
-		```
-		
-		---
-		
-		 Manage the trust database.
-		
-		 The trust database is located at |$XDG_STATE_HOME|/nvim/trust.
-		
-		@*return* `success` — true if operation was successful
-		
-		@*return* `msg` — full path if operation was successful, else error message
-	**/
 	@:native("trust")
 	@:luaDotMethod
 	private function __trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn<Bool, String, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

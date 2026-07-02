@@ -36,6 +36,12 @@ package nvim.type.vim.api.keyset.parse_cmd;
 	extern public var emsg_silent : Bool;
 	/**
 		```lua
+		(field) vim.api.keyset.parse_cmd.mods.filter: { force: boolean, pattern: string }
+		```
+	**/
+	extern public var filter : Filter;
+	/**
+		```lua
 		(field) vim.api.keyset.parse_cmd.mods.hide: boolean
 		```
 	**/

@@ -24,6 +24,12 @@ package nvim.type.vim.diagnostic;
 	extern public var float : nvim.type.vim.diagnostic.opts.Float;
 	/**
 		```lua
+		(field) vim.diagnostic.OptsResolved.severity_sort: { reverse: boolean }
+		```
+	**/
+	extern public var severity_sort : SeveritySort;
+	/**
+		```lua
 		(field) vim.diagnostic.OptsResolved.signs: vim.diagnostic.Opts.Signs
 		```
 	**/

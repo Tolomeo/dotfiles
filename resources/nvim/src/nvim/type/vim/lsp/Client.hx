@@ -70,6 +70,12 @@ package nvim.type.vim.lsp;
 	extern public var _is_stopping : Bool;
 	/**
 		```lua
+		(field) vim.lsp.Client.attached_buffers: table<integer, true>
+		```
+	**/
+	extern public var attached_buffers : AttachedBuffers;
+	/**
+		```lua
 		(field) vim.lsp.Client.capabilities: lsp.ClientCapabilities
 		```
 		
@@ -85,6 +91,17 @@ package nvim.type.vim.lsp;
 	extern public var capabilities : nvim.type.lsp.ClientCapabilities;
 	/**
 		```lua
+		(field) vim.lsp.Client.commands: table<string, fun(command: lsp.Command, ctx: table)>
+		```
+		
+		---
+		
+		
+		 Client commands. See [vim.lsp.ClientConfig].
+	**/
+	extern public var commands : Commands;
+	/**
+		```lua
 		(field) vim.lsp.Client.config: vim.lsp.ClientConfig
 		```
 		
@@ -94,16 +111,6 @@ package nvim.type.vim.lsp;
 		 Copy of the config passed to |vim.lsp.start()|.
 	**/
 	extern public var config : nvim.type.vim.lsp.ClientConfig;
-	/**
-		```lua
-		function vim.lsp.Client.create(config: vim.lsp.ClientConfig)
-		  -> (vim.lsp.Client)?
-		```
-		
-		---
-		
-		 @nodoc
-	**/
 	@:native("create")
 	@:luaDotMethod
 	private extern function __create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client>;
@@ -166,6 +173,17 @@ package nvim.type.vim.lsp;
 	extern public function get_language_id(bufnr:Float, filetype:String):String;
 	/**
 		```lua
+		(field) vim.lsp.Client.handlers: table<string, fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown>
+		```
+		
+		---
+		
+		
+		 See [vim.lsp.ClientConfig].
+	**/
+	extern public var handlers : Handlers;
+	/**
+		```lua
 		(field) vim.lsp.Client.id: integer
 		```
 		
@@ -223,6 +241,22 @@ package nvim.type.vim.lsp;
 		 sent by the server.
 	**/
 	extern public var progress : nvim.type.vim.lsp.client.Progress;
+	/**
+		```lua
+		(field) vim.lsp.Client.requests: table<integer, { type: string, bufnr: integer, method: string }?>
+		```
+		
+		---
+		
+		
+		 The current pending requests in flight to the server. Entries are key-value
+		 pairs with the key being the request id while the value is a table with
+		 `type`, `bufnr`, and `method` key-value pairs. `type` is either "pending"
+		 for an active request, or "cancel" for a cancel request. It will be
+		 "complete" ephemerally while executing |LspRequest| autocmds when replies
+		 are received from the server.
+	**/
+	extern public var requests : Requests;
 	/**
 		```lua
 		(field) vim.lsp.Client.root_dir: string?
@@ -402,18 +436,6 @@ package nvim.type.vim.lsp;
 		 @see |Client:notify()|
 	**/
 	extern public function cancel_request(id:Float):Bool;
-	/**
-		```lua
-		(method) vim.lsp.Client:exec_cmd(command: lsp.Command, context?: { bufnr: integer }, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown)
-		```
-		
-		---
-		
-		 Execute a lsp command, either via client command function (if available)
-		 or via workspace/executeCommand (if supported by the server)
-		
-		@*param* `handler` — only called if a server command
-	**/
 	@:native("exec_cmd")
 	private extern function __exec_cmd(command:nvim.type.lsp.Command, ?context:{ @:optional
 	var bufnr : Null<Float>; }, ?handler:nvim.type.lsp.Handler):Dynamic;
@@ -494,38 +516,6 @@ package nvim.type.vim.lsp;
 		@*param* `bufnr` — Buffer number
 	**/
 	extern public function on_attach(bufnr:Float):Dynamic;
-	/**
-		```lua
-		(method) vim.lsp.Client:request(method: string, params?: table, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, bufnr?: integer)
-		  -> status: boolean
-		  2. request_id: integer?
-		```
-		
-		---
-		
-		 Sends a request to the server.
-		
-		 This is a thin wrapper around {client.rpc.request} with some additional
-		 checks for capabilities and handler availability.
-		
-		@*param* `method` — LSP method name.
-		
-		@*param* `params` — LSP request params.
-		
-		@*param* `handler` — Response |lsp-handler| for this method.
-		
-		@*param* `bufnr` — (default: 0) Buffer handle, or 0 for current.
-		
-		@*return* `status` — indicates whether the request was successful.
-		
-		     If it is `false`, then it will always be `false` (the client has shutdown).
-		
-		@*return* `request_id` — Can be used with |Client:cancel_request()|.
-		
-		                             `nil` is request failed.
-		 to cancel the-request.
-		 @see |vim.lsp.buf_request_all()|
-	**/
 	@:native("request")
 	private extern function __request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Float):nvim.helper.Multireturn<Bool, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
@@ -566,38 +556,6 @@ package nvim.type.vim.lsp;
 		final result = __request(method, params, handler, bufnr);
 		return new nvim.helper.Multireturn.Return2<Bool, Null<Float>>(result._0, result._1);
 	}
-	/**
-		```lua
-		(method) vim.lsp.Client:request_sync(method: string, params: table, timeout_ms?: integer, bufnr?: integer)
-		  -> { err: (lsp.ResponseError)?, result: any }?
-		  2. err: string?
-		```
-		
-		---
-		
-		 Sends a request to the server and synchronously waits for the response.
-		
-		 This is a wrapper around |Client:request()|
-		
-		@*param* `method` — LSP method name.
-		
-		@*param* `params` — LSP request params.
-		
-		@*param* `timeout_ms` — Maximum time in milliseconds to wait for
-		
-		                                a result. Defaults to 1000
-		
-		@*param* `bufnr` — (default: 0) Buffer handle, or 0 for current.
-		
-		@*return* — `result` and `err` from the |lsp-handler|.
-		
-		                 `nil` is the request was unsuccessful
-		
-		@*return* `err` — On timeout, cancel or error, where `err` is a
-		
-		                 string describing the failure reason.
-		 @see |vim.lsp.buf_request_sync()|
-	**/
 	@:native("request_sync")
 	private extern function __request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Float>, ?bufnr:Float):nvim.helper.Multireturn<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

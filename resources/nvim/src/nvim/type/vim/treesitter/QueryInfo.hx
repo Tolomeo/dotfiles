@@ -39,4 +39,19 @@ package nvim.type.vim.treesitter;
 		List of (unique) capture names defined in query.
 	**/
 	extern public var captures : lua.Table<Int, String>;
+	/**
+		```lua
+		(field) vim.treesitter.QueryInfo.patterns: table<integer, (string|integer)[][]>
+		```
+		
+		---
+		
+		
+		Contains information about predicates and directives.
+		Key is pattern id, and value is list of predicates or directives defined in the pattern.
+		A predicate or directive is a list of (integer|string); integer represents `capture_id`, and
+		string represents (literal) arguments to predicate/directive. See |treesitter-predicates|
+		and |treesitter-directives| for more details.
+	**/
+	extern public var patterns : Patterns;
 }

@@ -21,4 +21,10 @@ package nvim.type;
 		```
 	**/
 	extern public var captures : lua.Table<Int, String>;
+	/**
+		```lua
+		(field) TSQueryInfo.patterns: table<integer, (string|integer)[][]>
+		```
+	**/
+	extern public var patterns : Patterns;
 }

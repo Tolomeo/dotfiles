@@ -72,24 +72,6 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function config(?opts:Null<nvim.type.vim.diagnostic.Opts>, ?namespace:Null<Float>):Null<nvim.type.vim.diagnostic.Opts>;
-	/**
-		```lua
-		function M.count(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
-		  -> table
-		```
-		
-		---
-		
-		 Get current diagnostics count.
-		
-		@*param* `bufnr` — Buffer number to get diagnostics from. Use 0 for
-		
-		                      current buffer or nil for all buffers.
-		
-		@*return* — : Table with actually present severity values as keys
-		
-		                (see |diagnostic-severity|) and integer counts as values.
-	**/
 	@:native("count")
 	@:luaDotMethod
 	private function __count(?bufnr:Float, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table.AnyTable;
@@ -158,27 +140,6 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function fromqflist(list:lua.Table<Int, lua.Table.AnyTable>):lua.Table<Int, nvim.type.vim.Diagnostic>;
-	/**
-		```lua
-		function M.get(bufnr?: integer, opts?: vim.diagnostic.GetOpts)
-		  -> vim.Diagnostic[]
-		```
-		
-		---
-		
-		 Get current diagnostics.
-		
-		 Modifying diagnostics in the returned table has no effect.
-		 To set diagnostics in a buffer, use |vim.diagnostic.set()|.
-		
-		@*param* `bufnr` — Buffer number to get diagnostics from. Use 0 for
-		
-		                      current buffer or nil for all buffers.
-		
-		@*return* — : Fields `bufnr`, `end_lnum`, `end_col`, and `severity`
-		
-		                           are guaranteed to be present.
-	**/
 	@:native("get")
 	@:luaDotMethod
 	private function __get(?bufnr:Null<Float>, ?opts:nvim.type.vim.diagnostic.GetOpts):lua.Table<Int, nvim.type.vim.Diagnostic>;
@@ -239,18 +200,6 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function get_namespaces():lua.Table<Float, nvim.type.vim.diagnostic.NS>;
-	/**
-		```lua
-		function M.get_next(opts?: vim.diagnostic.JumpOpts)
-		  -> (vim.Diagnostic)?
-		```
-		
-		---
-		
-		 Get the next diagnostic closest to the cursor position.
-		
-		@*return* — : Next diagnostic
-	**/
 	@:native("get_next")
 	@:luaDotMethod
 	private function __get_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
@@ -272,25 +221,6 @@ extern class Diagnostic {
 		final result = __get_next(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.get_next_pos(opts?: vim.diagnostic.JumpOpts)
-		  -> table|false
-		```
-		
-		---
-		
-		 Return the position of the next diagnostic in the current buffer.
-		
-		@*return* — : Next diagnostic position as a `(row, col)` tuple or false if no next
-		
-		                      diagnostic.
-		
-		```lua
-		return #1:
-		    | false
-		```
-	**/
 	@:native("get_next_pos")
 	@:luaDotMethod
 	private function __get_next_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool>;
@@ -320,18 +250,6 @@ extern class Diagnostic {
 		final result = __get_next_pos(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.get_prev(opts?: vim.diagnostic.JumpOpts)
-		  -> (vim.Diagnostic)?
-		```
-		
-		---
-		
-		 Get the previous diagnostic closest to the cursor position.
-		
-		@*return* — : Previous diagnostic
-	**/
 	@:native("get_prev")
 	@:luaDotMethod
 	private function __get_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
@@ -353,25 +271,6 @@ extern class Diagnostic {
 		final result = __get_prev(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.get_prev_pos(opts?: vim.diagnostic.JumpOpts)
-		  -> table|false
-		```
-		
-		---
-		
-		 Return the position of the previous diagnostic in the current buffer.
-		
-		@*return* — : Previous diagnostic position as a `(row, col)` tuple
-		
-		                     or `false` if there is no prior diagnostic.
-		
-		```lua
-		return #1:
-		    | false
-		```
-	**/
 	@:native("get_prev_pos")
 	@:luaDotMethod
 	private function __get_prev_pos(?opts:nvim.type.vim.diagnostic.JumpOpts):haxe.extern.EitherType<lua.Table.AnyTable, Bool>;
@@ -401,15 +300,6 @@ extern class Diagnostic {
 		final result = __get_prev_pos(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.goto_next(opts?: vim.diagnostic.JumpOpts)
-		```
-		
-		---
-		
-		 Move to the next diagnostic.
-	**/
 	@:native("goto_next")
 	@:luaDotMethod
 	private function __goto_next(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic;
@@ -429,15 +319,6 @@ extern class Diagnostic {
 		final result = __goto_next(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.goto_prev(opts?: vim.diagnostic.JumpOpts)
-		```
-		
-		---
-		
-		 Move to the previous diagnostic in the current buffer.
-	**/
 	@:native("goto_prev")
 	@:luaDotMethod
 	private function __goto_prev(?opts:nvim.type.vim.diagnostic.JumpOpts):Dynamic;
@@ -457,6 +338,16 @@ extern class Diagnostic {
 		final result = __goto_prev(opts);
 		return result;
 	}
+	/**
+		```lua
+		(global) vim.diagnostic.handlers: table<string, vim.diagnostic.Handler>
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	var handlers : Handlers;
 	/**
 		```lua
 		function M.hide(namespace?: integer, bufnr?: integer)
@@ -506,18 +397,6 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function is_enabled(?filter:Null<nvim.type.vim.diagnostic.Filter>):Bool;
-	/**
-		```lua
-		function M.jump(opts: vim.diagnostic.JumpOpts)
-		  -> (vim.Diagnostic)?
-		```
-		
-		---
-		
-		 Move to a diagnostic.
-		
-		@*return* — The diagnostic that was moved to.
-	**/
 	@:native("jump")
 	@:luaDotMethod
 	private function __jump(opts:nvim.type.vim.diagnostic.JumpOpts):Null<nvim.type.vim.Diagnostic>;
@@ -539,50 +418,6 @@ extern class Diagnostic {
 		final result = __jump(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.match(str: string, pat: string, groups: string[], severity_map: table, defaults?: table)
-		  -> (vim.Diagnostic)?
-		```
-		
-		---
-		
-		 Parse a diagnostic from a string.
-		
-		 For example, consider a line of output from a linter:
-		
-		 ```
-		 WARNING filename:27:3: Variable 'foo' does not exist
-		 ```
-		
-		 This can be parsed into |vim.Diagnostic| structure with:
-		
-		 ```lua
-		 local s = "WARNING filename:27:3: Variable 'foo' does not exist"
-		 local pattern = "^(%w+) %w+:(%d+):(%d+): (.+)$"
-		 local groups = { "severity", "lnum", "col", "message" }
-		 vim.diagnostic.match(s, pattern, groups, { WARNING = vim.diagnostic.WARN })
-		 ```
-		
-		@*param* `str` — String to parse diagnostics from.
-		
-		@*param* `pat` — Lua pattern with capture groups.
-		
-		@*param* `groups` — List of fields in a |vim.Diagnostic| structure to
-		
-		                    associate with captures from {pat}.
-		
-		@*param* `severity_map` — A table mapping the severity field from {groups}
-		
-		                          with an item from |vim.diagnostic.severity|.
-		
-		@*param* `defaults` — Table of default values for any fields not listed in {groups}.
-		
-		                       When omitted, numeric values default to 0 and "severity" defaults to
-		                       ERROR.
-		
-		@*return* — : |vim.Diagnostic| structure or `nil` if {pat} fails to match {str}.
-	**/
 	@:native("match")
 	@:luaDotMethod
 	private function __match(str:String, pat:String, groups:lua.Table<Int, String>, severity_map:lua.Table.AnyTable, ?defaults:Null<lua.Table.AnyTable>):Null<nvim.type.vim.Diagnostic>;
@@ -636,17 +471,6 @@ extern class Diagnostic {
 		final result = __match(str, pat, groups, severity_map, defaults);
 		return result;
 	}
-	/**
-		```lua
-		function M.open_float(opts?: vim.diagnostic.Opts.Float, ...any)
-		  -> float_bufnr: integer?
-		  2. winid: integer?
-		```
-		
-		---
-		
-		 Show diagnostics in a floating window.
-	**/
 	@:native("open_float")
 	@:luaDotMethod
 	private function __open_float(?opts:Null<nvim.type.vim.diagnostic.opts.Float>, ___:haxe.Rest<Dynamic>):nvim.helper.Multireturn<Null<Float>, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -690,21 +514,6 @@ extern class Diagnostic {
 	**/
 	@:luaDotMethod
 	function reset(?namespace:Null<Float>, ?bufnr:Null<Float>):Dynamic;
-	/**
-		```lua
-		function M.set(namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
-		```
-		
-		---
-		
-		 Set diagnostics for the given namespace and buffer.
-		
-		@*param* `namespace` — The diagnostic namespace
-		
-		@*param* `bufnr` — Buffer number
-		
-		@*param* `opts` — Display options to pass to |vim.diagnostic.show()|
-	**/
 	@:native("set")
 	@:luaDotMethod
 	private function __set(namespace:Float, bufnr:Float, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;
@@ -729,15 +538,6 @@ extern class Diagnostic {
 		final result = __set(namespace, bufnr, diagnostics, opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.setloclist(opts?: vim.diagnostic.setloclist.Opts)
-		```
-		
-		---
-		
-		 Add buffer diagnostics to the location list.
-	**/
 	@:native("setloclist")
 	@:luaDotMethod
 	private function __setloclist(?opts:nvim.type.vim.diagnostic.setloclist.Opts):Dynamic;
@@ -756,15 +556,6 @@ extern class Diagnostic {
 		final result = __setloclist(opts);
 		return result;
 	}
-	/**
-		```lua
-		function M.setqflist(opts?: vim.diagnostic.setqflist.Opts)
-		```
-		
-		---
-		
-		 Add all diagnostics to the quickfix list.
-	**/
 	@:native("setqflist")
 	@:luaDotMethod
 	private function __setqflist(?opts:nvim.type.vim.diagnostic.setqflist.Opts):Dynamic;
@@ -785,31 +576,10 @@ extern class Diagnostic {
 	}
 	/**
 		```lua
-		function M.show(namespace?: integer, bufnr?: integer, diagnostics?: vim.Diagnostic[], opts?: vim.diagnostic.Opts)
+		(global) vim.diagnostic.severity: enum vim.diagnostic.Severity
 		```
-		
-		---
-		
-		 Display diagnostics for the given namespace and buffer.
-		
-		@*param* `namespace` — Diagnostic namespace. When omitted, show
-		
-		                          diagnostics from all namespaces.
-		
-		@*param* `bufnr` — Buffer number, or 0 for current buffer. When omitted, show
-		
-		                      diagnostics in all buffers.
-		
-		@*param* `diagnostics` — The diagnostics to display. When omitted, use the
-		
-		                             saved diagnostics for the given namespace and
-		                             buffer. This can be used to display a list of diagnostics
-		                             without saving them or to display only a subset of
-		                             diagnostics. May not be used when {namespace}
-		                             or {bufnr} is nil.
-		
-		@*param* `opts` — Display options.
 	**/
+	var severity : Severity;
 	@:native("show")
 	@:luaDotMethod
 	private function __show(?namespace:Null<Float>, ?bufnr:Null<Float>, ?diagnostics:Null<lua.Table<Int, nvim.type.vim.Diagnostic>>, ?opts:nvim.type.vim.diagnostic.Opts):Dynamic;

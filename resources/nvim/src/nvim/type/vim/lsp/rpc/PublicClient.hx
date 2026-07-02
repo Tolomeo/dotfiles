@@ -48,24 +48,6 @@ package nvim.type.vim.lsp.rpc;
 	**/
 	@:luaDotMethod
 	extern public function notify(method:String, params:Any):Bool;
-	/**
-		```lua
-		(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?
-		```
-		
-		---
-		
-		
-		 See [vim.lsp.rpc.request()]
-		
-		---
-		
-		```lua
-		function (method: string, params: table?, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer))
-		  -> boolean
-		  2. integer?
-		```
-	**/
 	@:native("request")
 	@:luaDotMethod
 	private extern function __request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

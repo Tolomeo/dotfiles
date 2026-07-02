@@ -61,6 +61,16 @@ package nvim.type;
 	extern public var marked : Bool;
 	/**
 		```lua
+		(field) STTokenRangeInspect.modifiers: table<string, boolean>
+		```
+		
+		---
+		
+		token modifiers as a set. E.g., { static = true, readonly = true }
+	**/
+	extern public var modifiers : Modifiers;
+	/**
+		```lua
 		(field) STTokenRangeInspect.start_col: integer
 		```
 		

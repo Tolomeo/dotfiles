@@ -17,6 +17,12 @@ package nvim.type.lsp;
 @:structInit class DynamicCapabilities {
 	/**
 		```lua
+		(field) lsp.DynamicCapabilities.capabilities: table<string, lsp.Registration[]>
+		```
+	**/
+	extern public var capabilities : Capabilities;
+	/**
+		```lua
 		(field) lsp.DynamicCapabilities.client_id: integer
 		```
 	**/

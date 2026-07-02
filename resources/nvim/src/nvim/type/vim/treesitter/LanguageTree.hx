@@ -46,11 +46,6 @@ package nvim.type.vim.treesitter;
 		```
 	**/
 	extern public function _on_reload():Dynamic;
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:_subtract_time(thread_state: { timeout: integer? }, time: integer)
-		```
-	**/
 	@:native("_subtract_time")
 	private extern function ___subtract_time(thread_state:nvim.type.ParserThreadState, time:Float):Dynamic;
 	/**
@@ -74,16 +69,6 @@ package nvim.type.vim.treesitter;
 		 Returns a map of language to child tree.
 	**/
 	extern public function children():lua.Table<String, nvim.type.vim.treesitter.LanguageTree>;
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:contains(range: Range4)
-		  -> boolean
-		```
-		
-		---
-		
-		 Determines whether {range} is contained in the |LanguageTree|.
-	**/
 	@:native("contains")
 	private extern function __contains(range:nvim.type.Range4):Bool;
 	/**
@@ -183,18 +168,6 @@ package nvim.type.vim.treesitter;
 		 Gets the language of this tree node.
 	**/
 	extern public function lang():String;
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:language_for_range(range: Range4)
-		  -> tree: vim.treesitter.LanguageTree
-		```
-		
-		---
-		
-		 Gets the appropriate language that contains {range}.
-		
-		@*return* `tree` — Managing {range}
-	**/
 	@:native("language_for_range")
 	private extern function __language_for_range(range:nvim.type.Range4):nvim.type.vim.treesitter.LanguageTree;
 	/**
@@ -214,16 +187,6 @@ package nvim.type.vim.treesitter;
 		final result = __language_for_range(range);
 		return result;
 	}
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:named_node_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
-		  -> TSNode?
-		```
-		
-		---
-		
-		 Gets the smallest named node that contains {range}.
-	**/
 	@:native("named_node_for_range")
 	private extern function __named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
 	/**
@@ -242,16 +205,6 @@ package nvim.type.vim.treesitter;
 		final result = __named_node_for_range(range, opts);
 		return result;
 	}
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:node_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
-		  -> TSNode?
-		```
-		
-		---
-		
-		 Gets the smallest node that contains {range}.
-	**/
 	@:native("node_for_range")
 	private extern function __node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
 	/**
@@ -314,30 +267,6 @@ package nvim.type.vim.treesitter;
 		     of trees. Otherwise, it returns `nil`.
 	**/
 	extern public function parse(?range:Null<haxe.extern.EitherType<Bool, nvim.type.Range>>, ?on_parse:Null<(err:String, trees:lua.Table<Float, nvim.type.TSTree>) -> Dynamic>):Null<lua.Table<Float, nvim.type.TSTree>>;
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:register_cbs(cbs: table<'on_bytes'|'on_changedtree'|'on_child_added'|'on_child_removed'|'on_detach', function>, recursive?: boolean)
-		```
-		
-		---
-		
-		 Registers callbacks for the [LanguageTree].
-		
-		@*param* `cbs` — An [nvim_buf_attach()]-like table argument with the following handlers:
-		
-		           - `on_bytes` : see [nvim_buf_attach()].
-		           - `on_changedtree` : a callback that will be called every time the tree has syntactical changes.
-		              It will be passed two arguments: a table of the ranges (as node ranges) that
-		              changed and the changed tree.
-		           - `on_child_added` : emitted when a child is added to the tree.
-		           - `on_child_removed` : emitted when a child is removed from the tree.
-		           - `on_detach` : emitted when the buffer is detached, see [nvim_buf_detach_event].
-		              Takes one argument, the number of the buffer.
-		
-		@*param* `recursive` — Apply callbacks recursively for all children. Any new children will
-		
-		                           also inherit the callbacks.
-	**/
 	@:native("register_cbs")
 	private extern function __register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic;
 	/**
@@ -380,16 +309,6 @@ package nvim.type.vim.treesitter;
 		 Returns the source content of the language tree (bufnr or string).
 	**/
 	extern public function source():haxe.extern.EitherType<Float, String>;
-	/**
-		```lua
-		(method) vim.treesitter.LanguageTree:tree_for_range(range: Range4, opts?: vim.treesitter.LanguageTree.tree_for_range.Opts)
-		  -> TSTree?
-		```
-		
-		---
-		
-		 Gets the tree that contains {range}.
-	**/
 	@:native("tree_for_range")
 	private extern function __tree_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSTree>;
 	/**

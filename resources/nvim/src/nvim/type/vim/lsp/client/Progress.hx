@@ -38,6 +38,12 @@ package nvim.type.vim.lsp.client;
 	extern public function peek<T>():Null<T>;
 	/**
 		```lua
+		(field) vim.lsp.Client.Progress.pending: table<string|integer, boolean|string|number|lsp.LSPAny[]|table<string, lsp.LSPAny>|nil>
+		```
+	**/
+	extern public var pending : Pending;
+	/**
+		```lua
 		function vim.Ringbuf.pop(self: vim.Ringbuf)
 		  -> <T>?
 		```

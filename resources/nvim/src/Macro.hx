@@ -35,13 +35,13 @@ class Macro extends Module {
 	}
 
 	static function yank() {
-		final registerName = Fn.input('Please specify a register to yank from: ');
+		final registerName = Vim.fn.input('Please specify a register to yank from: ');
 
-		Api.nvim_echo(Table.create(), false, {});
+		Vim.api.nvim_echo(Table.create(), false, {});
 
 		Vim.schedule(() -> {
 			if (registerName == "") {
-				Vim.notify('Invalid register name', Levels.ERROR);
+				Vim.notify('Invalid register name', Vim.log.levels.ERROR);
 				return null;
 			}
 
@@ -50,31 +50,31 @@ class Macro extends Module {
 	}
 
 	static function yankRegister(registerName:String) {
-		final registerContent = Fn.getreg(registerName);
+		final registerContent = Vim.fn.getreg(registerName);
 
 		if (registerContent == "") {
-			Vim.notify('Invalid register content', Levels.ERROR);
+			Vim.notify('Invalid register content', Vim.log.levels.ERROR);
 			return null;
 		}
 
 		final macroContent = Macro.config.escapeCharacters.fold((character:String, content:String) -> {
 			return content.replace(character, '\\${character}');
-		}, Fn.keytrans(registerContent));
+		}, Vim.fn.keytrans(registerContent));
 
-		Fn.setreg('+', macroContent);
-		Fn.setreg('*', macroContent);
-		Fn.setreg('"', macroContent);
+		Vim.fn.setreg('+', macroContent);
+		Vim.fn.setreg('*', macroContent);
+		Vim.fn.setreg('"', macroContent);
 
-		Vim.notify('Yanked macro content from register ${registerName}', Levels.INFO);
+		Vim.notify('Yanked macro content from register ${registerName}', Vim.log.levels.INFO);
 		return null;
 	}
 
 	override public function setup() {
-		Api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (args.fargs.toArray()) {
+		Vim.api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (args.fargs.toArray()) {
 			case []: Macro.yank();
 			case [r]: Macro.yankRegister(r);
-			case r:
-				Vim.notify('Error yanking macro: invalid number of arguments received ${r}', Levels.ERROR);
+			case arguments:
+				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', Vim.log.levels.ERROR);
 		}, {nargs: "*"});
 		/* Vim.keymap.set("n", "8", () -> {
 			Api.nvim_echo(Table.create(), false, {});

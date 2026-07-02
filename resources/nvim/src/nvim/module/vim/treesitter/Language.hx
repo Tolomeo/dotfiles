@@ -1,33 +1,6 @@
 package nvim.module.vim.treesitter;
 
 extern class Language {
-	/**
-		```lua
-		function M.add(lang: string, opts?: vim.treesitter.language.add.Opts)
-		  -> True: boolean?
-		  2. Error: string?
-		```
-		
-		---
-		
-		 Load parser with name {lang}
-		
-		 Parsers are searched in the `parser` runtime directory, or the provided {path}.
-		 Can be used to check for available parsers before enabling treesitter features, e.g.,
-		 ```lua
-		   if vim.treesitter.language.add('markdown') then
-		     vim.treesitter.start(bufnr, 'markdown')
-		   end
-		 ```
-		
-		@*param* `lang` — Name of the parser (alphanumerical and `_` only)
-		
-		@*param* `opts` — Options:
-		
-		@*return* `True` — if parser is loaded
-		
-		@*return* `Error` — if parser cannot be loaded
-	**/
 	@:native("add")
 	@:luaDotMethod
 	private function __add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn<Null<Bool>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;

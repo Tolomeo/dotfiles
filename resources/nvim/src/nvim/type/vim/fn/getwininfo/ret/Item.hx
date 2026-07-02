@@ -71,6 +71,12 @@ package nvim.type.vim.fn.getwininfo.ret;
 	extern public var topline : Float;
 	/**
 		```lua
+		(field) vim.fn.getwininfo.ret.item.variables: table<string, any>
+		```
+	**/
+	extern public var variables : Variables;
+	/**
+		```lua
 		(field) vim.fn.getwininfo.ret.item.width: integer
 		```
 	**/

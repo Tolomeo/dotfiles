@@ -43,15 +43,6 @@ extern class Codelens {
 	**/
 	@:luaDotMethod
 	function get(bufnr:Float):lua.Table<Int, nvim.type.lsp.CodeLens>;
-	/**
-		```lua
-		function M.on_codelens(err?: lsp.ResponseError, result: lsp.CodeLens[], ctx: lsp.HandlerContext)
-		```
-		
-		---
-		
-		 |lsp-handler| for the method `textDocument/codeLens`
-	**/
 	@:native("on_codelens")
 	@:luaDotMethod
 	private function __on_codelens(err:Null<nvim.type.lsp.ResponseError>, result:lua.Table<Int, nvim.type.lsp.CodeLens>, ctx:nvim.type.lsp.HandlerContext):Dynamic;
@@ -70,25 +61,6 @@ extern class Codelens {
 		final result = __on_codelens(err, result, ctx);
 		return result;
 	}
-	/**
-		```lua
-		function M.refresh(opts?: vim.lsp.codelens.refresh.Opts)
-		```
-		
-		---
-		
-		 Refresh the lenses.
-		
-		 It is recommended to trigger this using an autocmd or via keymap.
-		
-		 Example:
-		
-		 ```vim
-		 autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
-		 ```
-		
-		@*param* `opts` — Optional fields
-	**/
 	@:native("refresh")
 	@:luaDotMethod
 	private function __refresh(?opts:nvim.type.vim.lsp.codelens.refresh.Opts):Dynamic;

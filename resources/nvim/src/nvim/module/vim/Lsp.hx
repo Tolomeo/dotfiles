@@ -131,38 +131,6 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	function buf_notify(bufnr:Null<Float>, method:String, params:Any):Bool;
-	/**
-		```lua
-		function lsp.buf_request(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler?: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, on_unsupported?: fun())
-		  -> client_request_ids: table<integer, integer>
-		  2. _cancel_all_requests: function
-		```
-		
-		---
-		
-		 Sends an async request for all active clients attached to the
-		 buffer.
-		
-		@*param* `bufnr` — Buffer handle, or 0 for current.
-		
-		@*param* `method` — LSP method name
-		
-		@*param* `params` — Parameters to send to the server
-		
-		@*param* `handler` — See |lsp-handler|
-		
-		       If nil, follows resolution strategy defined in |lsp-handler-configuration|
-		       Defaults to an `ERROR` level notification.
-		
-		@*return* `client_request_ids` — Map of client-id:request-id pairs
-		
-		for all successful requests.
-		
-		@*return* `_cancel_all_requests` — Function which can be used to
-		
-		cancel all the requests. You could instead
-		iterate all clients and call their `cancel_request()` methods.
-	**/
 	@:native("buf_request")
 	@:luaDotMethod
 	private function __buf_request(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, ?handler:nvim.type.lsp.Handler, ?on_unsupported:() -> Dynamic):nvim.helper.Multireturn<lua.Table<Float, Float>, haxe.Constraints.Function, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -204,33 +172,6 @@ extern class Lsp {
 		final result = __buf_request(bufnr, method, params, handler, on_unsupported);
 		return new nvim.helper.Multireturn.Return2<lua.Table<Float, Float>, haxe.Constraints.Function>(result._0, result._1);
 	}
-	/**
-		```lua
-		function lsp.buf_request_all(bufnr: integer, method: string, params?: table|fun(client: vim.lsp.Client, bufnr: integer):table?, handler: fun(results: table<integer, { err: (lsp.ResponseError)?, result: any }>, context: lsp.HandlerContext, config?: table):...unknown)
-		  -> cancel: function
-		```
-		
-		---
-		
-		 Sends an async request for all active clients attached to the buffer and executes the `handler`
-		 callback with the combined result.
-		
-		@*param* `bufnr` — Buffer handle, or 0 for current.
-		
-		@*param* `method` — LSP method name
-		
-		@*param* `params` — Parameters to send to the server.
-		
-		               Can also be passed as a function that returns the params table for cases where
-		               parameters are specific to the client.
-		
-		@*param* `handler` — (function)
-		
-		 Handler called after all requests are completed. Server results are passed as
-		 a `client_id:result` map.
-		
-		@*return* `cancel` — Function that cancels all requests.
-	**/
 	@:native("buf_request_all")
 	@:luaDotMethod
 	private function __buf_request_all(bufnr:Float, method:String, ?params:haxe.extern.EitherType<lua.Table.AnyTable, (client:nvim.type.vim.lsp.Client, bufnr:Float) -> Null<lua.Table.AnyTable>>, handler:nvim.type.lsp.MultiHandler):haxe.Constraints.Function;
@@ -267,35 +208,6 @@ extern class Lsp {
 		final result = __buf_request_all(bufnr, method, params, handler);
 		return result;
 	}
-	/**
-		```lua
-		function lsp.buf_request_sync(bufnr: integer, method: string, params?: table, timeout_ms?: integer)
-		  -> result: table<integer, { error: (lsp.ResponseError)?, result: any }>?
-		  2. err: string?
-		```
-		
-		---
-		
-		 Sends a request to all server and waits for the response of all of them.
-		
-		 Calls |vim.lsp.buf_request_all()| but blocks Nvim while awaiting the result.
-		 Parameters are the same as |vim.lsp.buf_request_all()| but the result is
-		 different. Waits a maximum of {timeout_ms}.
-		
-		@*param* `bufnr` — Buffer handle, or 0 for current.
-		
-		@*param* `method` — LSP method name
-		
-		@*param* `params` — Parameters to send to the server
-		
-		@*param* `timeout_ms` — Maximum time in milliseconds to wait for a result.
-		
-		                           (default: `1000`)
-		
-		@*return* `result` — Map of client_id:request_result.
-		
-		@*return* `err` — On timeout, cancel, or error, `err` is a string describing the failure reason, and `result` is nil.
-	**/
 	@:native("buf_request_sync")
 	@:luaDotMethod
 	private function __buf_request_sync(bufnr:Float, method:String, ?params:Null<lua.Table.AnyTable>, ?timeout_ms:Null<Float>):nvim.helper.Multireturn<Null<lua.Table<Float, { @:optional
@@ -376,6 +288,34 @@ extern class Lsp {
 	var codelens : nvim.module.vim.lsp.Codelens;
 	/**
 		```lua
+		(global) vim.lsp.commands: table<string, function>
+		```
+		
+		---
+		
+		 Registry for client side commands.
+		 This is an extension point for plugins to handle custom commands which are
+		 not part of the core language server protocol specification.
+		
+		 The registry is a table where the key is a unique command name,
+		 and the value is a function which is called if any LSP action
+		 (code action, code lenses, ...) triggers the command.
+		
+		 If an LSP response contains a command for which no matching entry is
+		 available in this registry, the command will be executed via the LSP server
+		 using `workspace/executeCommand`.
+		
+		 The first argument to the function will be the `Command`:
+		   Command
+		     title: String
+		     command: String
+		     arguments?: any[]
+		
+		 The second argument is the `ctx` of |lsp-handler|
+	**/
+	var commands : Commands;
+	/**
+		```lua
 		(global) vim.lsp.completion: table
 		```
 	**/
@@ -442,39 +382,6 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	function enable(name:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?enable:Bool):Dynamic;
-	/**
-		```lua
-		function lsp.foldclose(kind: "comment"|"imports"|"region", winid?: integer)
-		```
-		
-		---
-		
-		 Close all {kind} of folds in the the window with {winid}.
-		
-		 To automatically fold imports when opening a file, you can use an autocmd:
-		
-		 ```lua
-		 vim.api.nvim_create_autocmd('LspNotify', {
-		   callback = function(args)
-		     if args.data.method == 'textDocument/didOpen' then
-		       vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
-		     end
-		   end,
-		 })
-		 ```
-		
-		@*param* `kind` — Kind to close, one of "comment", "imports" or "region".
-		
-		@*param* `winid` — Defaults to the current window.
-		
-		```lua
-		-- A set of predefined range kinds.
-		kind:
-		    | "comment" -- Comment
-		    | "imports" -- Imports
-		    | "region" -- Region
-		```
-	**/
 	@:native("foldclose")
 	@:luaDotMethod
 	private function __foldclose(kind:nvim.type.lsp.FoldingRangeKind, ?winid:Float):Dynamic;
@@ -589,20 +496,6 @@ extern class Lsp {
 	@:luaDotMethod
 	@:deprecated
 	private function for_each_buffer_client(bufnr:Float, fn:haxe.Constraints.Function):Dynamic;
-	/**
-		```lua
-		function lsp.formatexpr(opts?: vim.lsp.formatexpr.Opts)
-		  -> integer
-		```
-		
-		---
-		
-		 Provides an interface between the built-in client and a `formatexpr` function.
-		
-		 Currently only supports a single client. This can be set via
-		 `setlocal formatexpr=v:lua.vim.lsp.formatexpr()` or (more typically) in `on_attach`
-		 via `vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'`.
-	**/
 	@:native("formatexpr")
 	@:luaDotMethod
 	private function __formatexpr(?opts:nvim.type.vim.lsp.formatexpr.Opts):Dynamic;
@@ -669,18 +562,6 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	function get_client_by_id(client_id:Float):Null<nvim.type.vim.lsp.Client>;
-	/**
-		```lua
-		function lsp.get_clients(filter?: vim.lsp.get_clients.Filter)
-		  -> vim.lsp.Client[]
-		```
-		
-		---
-		
-		 Get active clients.
-		
-		@*return* — : List of |vim.lsp.Client| objects
-	**/
 	@:native("get_clients")
 	@:luaDotMethod
 	private function __get_clients(?filter:nvim.type.vim.lsp.get_clients.Filter):lua.Table<Int, nvim.type.vim.lsp.Client>;
@@ -852,54 +733,6 @@ extern class Lsp {
 	**/
 	@:luaDotMethod
 	function set_log_level(level:haxe.extern.EitherType<Float, String>):Dynamic;
-	/**
-		```lua
-		function lsp.start(config: vim.lsp.ClientConfig, opts?: vim.lsp.start.Opts)
-		  -> client_id: integer?
-		```
-		
-		---
-		
-		 Create a new LSP client and start a language server or reuses an already
-		 running client if one is found matching `name` and `root_dir`.
-		 Attaches the current buffer to the client.
-		
-		 Example:
-		
-		 ```lua
-		 vim.lsp.start({
-		    name = 'my-server-name',
-		    cmd = {'name-of-language-server-executable'},
-		    root_dir = vim.fs.root(0, {'pyproject.toml', 'setup.py'}),
-		 })
-		 ```
-		
-		 See |vim.lsp.ClientConfig| for all available options. The most important are:
-		
-		 - `name` arbitrary name for the LSP client. Should be unique per language server.
-		 - `cmd` command string[] or function.
-		 - `root_dir` path to the project root. By default this is used to decide if an existing client
-		   should be re-used. The example above uses |vim.fs.root()| to detect the root by traversing
-		   the file system upwards starting from the current directory until either a `pyproject.toml`
-		   or `setup.py` file is found.
-		 - `workspace_folders` list of `{ uri:string, name: string }` tables specifying the project root
-		   folders used by the language server. If `nil` the property is derived from `root_dir` for
-		   convenience.
-		
-		 Language servers use this information to discover metadata like the
-		 dependencies of your project and they tend to index the contents within the
-		 project folder.
-		
-		
-		 To ensure a language server is only started for languages it can handle,
-		 make sure to call |vim.lsp.start()| within a |FileType| autocmd.
-		 Either use |:au|, |nvim_create_autocmd()| or put the call in a
-		 `ftplugin/<filetype_name>.lua` (See |ftplugin-name|)
-		
-		@*param* `config` — Configuration for the server.
-		
-		@*param* `opts` — Optional keyword arguments.
-	**/
 	@:native("start")
 	@:luaDotMethod
 	private function __start(config:nvim.type.vim.lsp.ClientConfig, ?opts:Null<nvim.type.vim.lsp.start.Opts>):Null<Float>;
@@ -957,26 +790,6 @@ extern class Lsp {
 		final result = __start(config, opts);
 		return result;
 	}
-	/**
-		```lua
-		function lsp.start_client(config: vim.lsp.ClientConfig)
-		  -> client_id: integer?
-		  2. string?
-		```
-		
-		---
-		
-		 Starts and initializes a client with the given configuration.
-		
-		@*param* `config` — Configuration for the server.
-		
-		@*return* `client_id` — |vim.lsp.get_client_by_id()| Note: client may not be
-		
-		         fully initialized. Use `on_init` to do any actions once
-		         the client has been initialized.
-		
-		@*return* — Error message, if any
-	**/
 	@:native("start_client")
 	@:luaDotMethod
 	private function __start_client(config:nvim.type.vim.lsp.ClientConfig):nvim.helper.Multireturn<Null<Float>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -1075,20 +888,6 @@ extern class Lsp {
 		```
 	**/
 	var util : nvim.module.vim.lsp.Util;
-	/**
-		```lua
-		function lsp.with(handler: fun(err?: lsp.ResponseError, result: any, context: lsp.HandlerContext, config?: table):...unknown, override_config: table)
-		  -> function
-		```
-		
-		---
-		
-		 Function to manage overriding defaults for LSP handlers.
-		
-		@*param* `handler` — See |lsp-handler|
-		
-		@*param* `override_config` — Table containing the keys to override behavior of the {handler}
-	**/
 	@:native("with")
 	@:luaDotMethod
 	private function __with(handler:nvim.type.lsp.Handler, override_config:lua.Table.AnyTable):Dynamic;

@@ -69,6 +69,17 @@ package nvim.type.uv.spawn;
 	extern public var detached : Bool;
 	/**
 		```lua
+		(field) uv.spawn.options.env: table<string, string>
+		```
+		
+		---
+		
+		
+		 Set environment variables for the new process.
+	**/
+	extern public var env : Env;
+	/**
+		```lua
 		(field) uv.spawn.options.gid: string
 		```
 		
@@ -89,6 +100,17 @@ package nvim.type.uv.spawn;
 		 If true, hide the subprocess console window that would normally be created. This option is only meaningful on Windows systems. On Unix it is silently ignored.
 	**/
 	extern public var hide : Bool;
+	/**
+		```lua
+		(field) uv.spawn.options.stdio: { [1]: integer|uv.uv_stream_t|nil, [2]: integer|uv.uv_stream_t|nil, [3]: integer|uv.uv_stream_t|nil }
+		```
+		
+		---
+		
+		
+		 Set the file descriptors that will be made available to the child process. The convention is that the first entries are stdin, stdout, and stderr. (**Note**: On Windows, file descriptors after the third are available to the child process only if the child processes uses the MSVCRT runtime.)
+	**/
+	extern public var stdio : Stdio;
 	/**
 		```lua
 		(field) uv.spawn.options.uid: string

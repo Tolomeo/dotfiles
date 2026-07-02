@@ -5,47 +5,26 @@ package nvim;
 	(global) vim.api: table
 	```
 **/
-@:native("vim.api") extern class Api {
+extern class Api {
 	/**
 		```lua
 		function vim.api.nvim__buf_debug_extmarks(buffer: integer, keys: boolean, dot: boolean)
 		  -> string
 		```
 	**/
-	static function nvim__buf_debug_extmarks(buffer:Float, keys:Bool, dot:Bool):String;
+	@:luaDotMethod
+	function nvim__buf_debug_extmarks(buffer:Float, keys:Bool, dot:Bool):String;
 	/**
 		```lua
 		function vim.api.nvim__buf_stats(buffer: integer)
 		  -> table<string, any>
 		```
 	**/
-	static function nvim__buf_stats(buffer:Float):lua.Table<String, Any>;
-	/**
-		```lua
-		function vim.api.nvim__complete_set(index: integer, opts: vim.api.keyset.complete_set)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API may change in the future.
-		
-		 Sets info for the completion item at the given index. If the info text was shown in a window,
-		 returns the window and buffer ids, or empty dict if not shown.
-		
-		@*param* `index` — Completion candidate index
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - info: (string) info text.
-		
-		@*return* — Dict containing these keys:
-		
-		 - winid: (number) floating window id
-		 - bufnr: (number) buffer id in floating window
-	**/
+	@:luaDotMethod
+	function nvim__buf_stats(buffer:Float):lua.Table<String, Any>;
 	@:native("nvim__complete_set")
-	private static function __nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim__complete_set(index: integer, opts: vim.api.keyset.complete_set)
@@ -70,7 +49,8 @@ package nvim;
 		 - winid: (number) floating window id
 		 - bufnr: (number) buffer id in floating window
 	**/
-	inline static function nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim__complete_set(index, opts);
 		return result;
@@ -81,27 +61,11 @@ package nvim;
 		  -> string
 		```
 	**/
-	static function nvim__get_lib_dir():String;
-	/**
-		```lua
-		function vim.api.nvim__get_runtime(pat: any[], all: boolean, opts: vim.api.keyset.runtime)
-		  -> string[]
-		```
-		
-		---
-		
-		 Find files in runtime directories
-		
-		@*param* `pat` — pattern of files to search for
-		
-		@*param* `all` — whether to return all matches or only the first
-		
-		@*param* `opts` — is_lua: only search Lua subdirs
-		
-		@*return* — list of absolute paths to the found files
-	**/
+	@:luaDotMethod
+	function nvim__get_lib_dir():String;
 	@:native("nvim__get_runtime")
-	private static function __nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String>;
+	@:luaDotMethod
+	private function __nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim__get_runtime(pat: any[], all: boolean, opts: vim.api.keyset.runtime)
@@ -120,7 +84,8 @@ package nvim;
 		
 		@*return* — list of absolute paths to the found files
 	**/
-	inline static function nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
+	@:luaDotMethod
+	inline function nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim__get_runtime(pat, all, opts);
 		return result;
@@ -142,7 +107,8 @@ package nvim;
 		
 		@*return* — its argument.
 	**/
-	static function nvim__id(obj:Any):Any;
+	@:luaDotMethod
+	function nvim__id(obj:Any):Any;
 	/**
 		```lua
 		function vim.api.nvim__id_array(arr: any[])
@@ -160,26 +126,11 @@ package nvim;
 		
 		@*return* — its argument.
 	**/
-	static function nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
-	/**
-		```lua
-		function vim.api.nvim__id_dict(dct: table<string, any>)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Returns dict given as argument.
-		
-		 This API function is used for testing. One should not rely on its presence
-		 in plugins.
-		
-		@*param* `dct` — Dict to return.
-		
-		@*return* — its argument.
-	**/
+	@:luaDotMethod
+	function nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
 	@:native("nvim__id_dict")
-	private static function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim__id_dict(dct: table<string, any>)
@@ -197,7 +148,8 @@ package nvim;
 		
 		@*return* — its argument.
 	**/
-	inline static function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
 		dct = nvim.helper.Arg.pure(dct);
 		final result = __nvim__id_dict(dct);
 		return result;
@@ -219,7 +171,8 @@ package nvim;
 		
 		@*return* — its argument.
 	**/
-	static function nvim__id_float(flt:Float):Float;
+	@:luaDotMethod
+	function nvim__id_float(flt:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim__inspect_cell(grid: integer, row: integer, col: integer)
@@ -230,7 +183,8 @@ package nvim;
 		
 		 NB: if your UI doesn't use hlstate, this will not return hlstate first time.
 	**/
-	static function nvim__inspect_cell(grid:Float, row:Float, col:Float):lua.Table<Int, Any>;
+	@:luaDotMethod
+	function nvim__inspect_cell(grid:Float, row:Float, col:Float):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim__invalidate_glyph_cache()
@@ -241,7 +195,8 @@ package nvim;
 		 For testing. The condition in schar_cache_clear_if_full is hard to
 		 reach, so this function can be used to force a cache clear in a test.
 	**/
-	static function nvim__invalidate_glyph_cache():Dynamic;
+	@:luaDotMethod
+	function nvim__invalidate_glyph_cache():Dynamic;
 	/**
 		```lua
 		function vim.api.nvim__ns_get(ns_id: integer)
@@ -258,26 +213,11 @@ package nvim;
 		
 		@*return* — Map defining the namespace properties, see |nvim__ns_set()|
 	**/
-	static function nvim__ns_get(ns_id:Float):nvim.type.vim.api.keyset.NsOpts;
-	/**
-		```lua
-		function vim.api.nvim__ns_set(ns_id: integer, opts: vim.api.keyset.ns_opts)
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API will change in the future.
-		
-		 Set some properties for namespace
-		
-		@*param* `ns_id` — Namespace
-		
-		@*param* `opts` — Optional parameters to set:
-		
-		 - wins: a list of windows to be scoped in
-	**/
+	@:luaDotMethod
+	function nvim__ns_get(ns_id:Float):nvim.type.vim.api.keyset.NsOpts;
 	@:native("nvim__ns_set")
-	private static function __nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
+	@:luaDotMethod
+	private function __nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim__ns_set(ns_id: integer, opts: vim.api.keyset.ns_opts)
@@ -295,48 +235,15 @@ package nvim;
 		
 		 - wins: a list of windows to be scoped in
 	**/
-	inline static function nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
+	@:luaDotMethod
+	inline function nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim__ns_set(ns_id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim__redraw(opts: vim.api.keyset.redraw)
-		```
-		
-		---
-		
-		 EXPERIMENTAL: this API may change in the future.
-		
-		 Instruct Nvim to redraw various components.
-		
-		
-		 @see `:help :redraw`
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - win: Target a specific `window-ID` as described below.
-		 - buf: Target a specific buffer number as described below.
-		 - flush: Update the screen with pending updates.
-		 - valid: When present mark `win`, `buf`, or all windows for
-		   redraw. When `true`, only redraw changed lines (useful for
-		   decoration providers). When `false`, forcefully redraw.
-		 - range: Redraw a range in `buf`, the buffer in `win` or the
-		   current buffer (useful for decoration providers). Expects a
-		   tuple `[first, last]` with the first and last line number
-		   of the range, 0-based end-exclusive `api-indexing`.
-		 - cursor: Immediately update cursor position on the screen in
-		   `win` or the current window.
-		 - statuscolumn: Redraw the 'statuscolumn' in `buf`, `win` or
-		   all windows.
-		 - statusline: Redraw the 'statusline' in `buf`, `win` or all
-		   windows.
-		 - winbar: Redraw the 'winbar' in `buf`, `win` or all windows.
-		 - tabline: Redraw the 'tabline'.
-	**/
 	@:native("nvim__redraw")
-	private static function __nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic;
+	@:luaDotMethod
+	private function __nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim__redraw(opts: vim.api.keyset.redraw)
@@ -372,7 +279,8 @@ package nvim;
 		 - winbar: Redraw the 'winbar' in `buf`, `win` or all windows.
 		 - tabline: Redraw the 'tabline'.
 	**/
-	inline static function nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic {
+	@:luaDotMethod
+	inline function nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim__redraw(opts);
 		return result;
@@ -383,13 +291,15 @@ package nvim;
 		  -> any[]
 		```
 	**/
-	static function nvim__runtime_inspect():lua.Table<Int, Any>;
+	@:luaDotMethod
+	function nvim__runtime_inspect():lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim__screenshot(path: string)
 		```
 	**/
-	static function nvim__screenshot(path:String):Dynamic;
+	@:luaDotMethod
+	function nvim__screenshot(path:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim__stats()
@@ -402,111 +312,28 @@ package nvim;
 		
 		@*return* — Map of various internal stats.
 	**/
-	static function nvim__stats():lua.Table<String, Any>;
+	@:luaDotMethod
+	function nvim__stats():lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim__unpack(str: string)
 		  -> any
 		```
 	**/
-	static function nvim__unpack(str:String):Any;
+	@:luaDotMethod
+	function nvim__unpack(str:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_buf_add_highlight(buffer: integer, ns_id: integer, hl_group: string, line: integer, col_start: integer, col_end: integer)
 		  -> integer
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_buf_add_highlight(buffer:Float, ns_id:Float, hl_group:String, line:Float, col_start:Float, col_end:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_attach(buffer: integer, send_buffer: boolean, opts: vim.api.keyset.buf_attach)
-		  -> boolean
-		```
-		
-		---
-		
-		 Activates buffer-update events on a channel, or as Lua callbacks.
-		
-		 Example (Lua): capture buffer updates in a global `events` variable
-		 (use "vim.print(events)" to see its contents):
-		
-		 ```lua
-		 events = {}
-		 vim.api.nvim_buf_attach(0, false, {
-		   on_lines = function(...)
-		     table.insert(events, {...})
-		   end,
-		 })
-		 ```
-		
-		
-		 @see `:help api-buffer-updates-lua`
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `send_buffer` — True if the initial notification should contain the
-		
-		 whole buffer: first notification will be `nvim_buf_lines_event`.
-		 Else the first notification will be `nvim_buf_changedtick_event`.
-		 Not for Lua callbacks.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - on_lines: Lua callback invoked on change.
-		   Return a truthy value (not `false` or `nil`) to detach. Args:
-		   - the string "lines"
-		   - buffer id
-		   - b:changedtick
-		   - first line that changed (zero-indexed)
-		   - last line that was changed
-		   - last line in the updated range
-		   - byte count of previous contents
-		   - deleted_codepoints (if `utf_sizes` is true)
-		   - deleted_codeunits (if `utf_sizes` is true)
-		 - on_bytes: Lua callback invoked on change.
-		   This callback receives more granular information about the
-		   change compared to on_lines.
-		   Return a truthy value (not `false` or `nil`) to detach. Args:
-		   - the string "bytes"
-		   - buffer id
-		   - b:changedtick
-		   - start row of the changed text (zero-indexed)
-		   - start column of the changed text
-		   - byte offset of the changed text (from the start of
-		       the buffer)
-		   - old end row of the changed text (offset from start row)
-		   - old end column of the changed text
-		     (if old end row = 0, offset from start column)
-		   - old end byte length of the changed text
-		   - new end row of the changed text (offset from start row)
-		   - new end column of the changed text
-		     (if new end row = 0, offset from start column)
-		   - new end byte length of the changed text
-		 - on_changedtick: Lua callback invoked on changedtick
-		   increment without text change. Args:
-		   - the string "changedtick"
-		   - buffer id
-		   - b:changedtick
-		 - on_detach: Lua callback invoked on detach. Args:
-		   - the string "detach"
-		   - buffer id
-		 - on_reload: Lua callback invoked on reload. The entire buffer
-		              content should be considered changed. Args:
-		   - the string "reload"
-		   - buffer id
-		 - utf_sizes: include UTF-32 and UTF-16 size of the replaced
-		   region, as args to `on_lines`.
-		 - preview: also attach to command preview (i.e. 'inccommand')
-		   events.
-		
-		@*return* — False if attach failed (invalid parameter, or buffer isn't loaded);
-		
-		 otherwise True. TODO: LUA_API_NO_EVAL
-		See: ~vim.api.nvim_buf_detach~
-	**/
+	function nvim_buf_add_highlight(buffer:Float, ns_id:Float, hl_group:String, line:Float, col_start:Float, col_end:Float):Float;
 	@:native("nvim_buf_attach")
-	private static function __nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
+	@:luaDotMethod
+	private function __nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_attach(buffer: integer, send_buffer: boolean, opts: vim.api.keyset.buf_attach)
@@ -594,7 +421,8 @@ package nvim;
 		 otherwise True. TODO: LUA_API_NO_EVAL
 		See: ~vim.api.nvim_buf_detach~
 	**/
-	inline static function nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
+	@:luaDotMethod
+	inline function nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_attach(buffer, send_buffer, opts);
 		return result;
@@ -627,14 +455,16 @@ package nvim;
 		
 		@*return* — Return value of function.
 	**/
-	static function nvim_buf_call(buffer:Float, fun:haxe.Constraints.Function):Any;
+	@:luaDotMethod
+	function nvim_buf_call(buffer:Float, fun:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_highlight(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_buf_clear_highlight(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
+	function nvim_buf_clear_highlight(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_namespace(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
@@ -658,22 +488,11 @@ package nvim;
 		
 		 to end of buffer.
 	**/
-	static function nvim_buf_clear_namespace(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_create_user_command(buffer: integer, name: string, command: any, opts: vim.api.keyset.user_command)
-		```
-		
-		---
-		
-		 Creates a buffer-local command `user-commands`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer.
-		
-		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
-	**/
+	@:luaDotMethod
+	function nvim_buf_clear_namespace(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
 	@:native("nvim_buf_create_user_command")
-	private static function __nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
+	@:luaDotMethod
+	private function __nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_create_user_command(buffer: integer, name: string, command: any, opts: vim.api.keyset.user_command)
@@ -687,7 +506,8 @@ package nvim;
 		
 		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
 	**/
-	inline static function nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
+	@:luaDotMethod
+	inline function nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_create_user_command(buffer, name, command, opts);
 		return result;
@@ -710,7 +530,8 @@ package nvim;
 		
 		@*return* — true if the extmark was found, else false
 	**/
-	static function nvim_buf_del_extmark(buffer:Float, ns_id:Float, id:Float):Bool;
+	@:luaDotMethod
+	function nvim_buf_del_extmark(buffer:Float, ns_id:Float, id:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_keymap(buffer: integer, mode: string, lhs: string)
@@ -725,7 +546,8 @@ package nvim;
 		
 		See: [vim.api.nvim_del_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1063#9)
 	**/
-	static function nvim_buf_del_keymap(buffer:Float, mode:String, lhs:String):Dynamic;
+	@:luaDotMethod
+	function nvim_buf_del_keymap(buffer:Float, mode:String, lhs:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_mark(buffer: integer, name: string)
@@ -750,7 +572,8 @@ package nvim;
 		  * [vim.api.nvim_buf_set_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#735#9)
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
-	static function nvim_buf_del_mark(buffer:Float, name:String):Bool;
+	@:luaDotMethod
+	function nvim_buf_del_mark(buffer:Float, name:String):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_user_command(buffer: integer, name: string)
@@ -767,7 +590,8 @@ package nvim;
 		
 		@*param* `name` — Name of the command to delete.
 	**/
-	static function nvim_buf_del_user_command(buffer:Float, name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_buf_del_user_command(buffer:Float, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_var(buffer: integer, name: string)
@@ -781,25 +605,11 @@ package nvim;
 		
 		@*param* `name` — Variable name
 	**/
-	static function nvim_buf_del_var(buffer:Float, name:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_delete(buffer: integer, opts: vim.api.keyset.buf_delete)
-		```
-		
-		---
-		
-		 Deletes the buffer. See `:bwipeout`
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - force:  Force deletion and ignore unsaved changes.
-		 - unload: Unloaded only, do not delete. See `:bunload`
-	**/
+	@:luaDotMethod
+	function nvim_buf_del_var(buffer:Float, name:String):Dynamic;
 	@:native("nvim_buf_delete")
-	private static function __nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
+	@:luaDotMethod
+	private function __nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_delete(buffer: integer, opts: vim.api.keyset.buf_delete)
@@ -816,7 +626,8 @@ package nvim;
 		 - force:  Force deletion and ignore unsaved changes.
 		 - unload: Unloaded only, do not delete. See `:bunload`
 	**/
-	inline static function nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
+	@:luaDotMethod
+	inline function nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_delete(buffer, opts);
 		return result;
@@ -835,25 +646,11 @@ package nvim;
 		
 		@*return* — `b:changedtick` value.
 	**/
-	static function nvim_buf_get_changedtick(buffer:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_get_commands(buffer: integer, opts: vim.api.keyset.get_commands)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of buffer-local `user-commands`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `opts` — Optional parameters. Currently not used.
-		
-		@*return* — Map of maps describing commands.
-	**/
+	@:luaDotMethod
+	function nvim_buf_get_changedtick(buffer:Float):Float;
 	@:native("nvim_buf_get_commands")
-	private static function __nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_commands(buffer: integer, opts: vim.api.keyset.get_commands)
@@ -870,38 +667,15 @@ package nvim;
 		
 		@*return* — Map of maps describing commands.
 	**/
-	inline static function nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_get_commands(buffer, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_get_extmark_by_id(buffer: integer, ns_id: integer, id: integer, opts: vim.api.keyset.get_extmark)
-		  -> vim.api.keyset.get_extmark_item_by_id
-		```
-		
-		---
-		
-		 Gets the position (0-indexed) of an `extmark`.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `id` — Extmark id
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - details: Whether to include the details dict
-		 - hl_name: Whether to include highlight group name instead of id, true if omitted
-		
-		@*return* — 0-indexed (row, col) tuple or empty list () if extmark id was
-		
-		 absent
-	**/
 	@:native("nvim_buf_get_extmark_by_id")
-	private static function __nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
+	@:luaDotMethod
+	private function __nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmark_by_id(buffer: integer, ns_id: integer, id: integer, opts: vim.api.keyset.get_extmark)
@@ -927,87 +701,15 @@ package nvim;
 		
 		 absent
 	**/
-	inline static function nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
+	@:luaDotMethod
+	inline function nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_get_extmarks(buffer: integer, ns_id: integer, start: any, end_: any, opts: vim.api.keyset.get_extmarks)
-		  -> vim.api.keyset.get_extmark_item[]
-		```
-		
-		---
-		
-		 Gets `extmarks` in "traversal order" from a `charwise` region defined by
-		 buffer positions (inclusive, 0-indexed `api-indexing`).
-		
-		 Region can be given as (row,col) tuples, or valid extmark ids (whose
-		 positions define the bounds). 0 and -1 are understood as (0,0) and (-1,-1)
-		 respectively, thus the following are equivalent:
-		
-		 ```lua
-		 vim.api.nvim_buf_get_extmarks(0, my_ns, 0, -1, {})
-		 vim.api.nvim_buf_get_extmarks(0, my_ns, {0,0}, {-1,-1}, {})
-		 ```
-		
-		 If `end` is less than `start`, marks are returned in reverse order.
-		 (Useful with `limit`, to get the first marks prior to a given position.)
-		
-		 Note: For a reverse range, `limit` does not actually affect the traversed
-		 range, just how many marks are returned
-		
-		 Note: when using extmark ranges (marks with a end_row/end_col position)
-		 the `overlap` option might be useful. Otherwise only the start position
-		 of an extmark will be considered.
-		
-		 Note: legacy signs placed through the `:sign` commands are implemented
-		 as extmarks and will show up here. Their details array will contain a
-		 `sign_name` field.
-		
-		 Example:
-		
-		 ```lua
-		 local api = vim.api
-		 local pos = api.nvim_win_get_cursor(0)
-		 local ns  = api.nvim_create_namespace('my-plugin')
-		 -- Create new extmark at line 1, column 1.
-		 local m1  = api.nvim_buf_set_extmark(0, ns, 0, 0, {})
-		 -- Create new extmark at line 3, column 1.
-		 local m2  = api.nvim_buf_set_extmark(0, ns, 2, 0, {})
-		 -- Get extmarks only from line 3.
-		 local ms  = api.nvim_buf_get_extmarks(0, ns, {2,0}, {2,0}, {})
-		 -- Get all marks in this buffer + namespace.
-		 local all = api.nvim_buf_get_extmarks(0, ns, 0, -1, {})
-		 vim.print(ms)
-		 ```
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()` or -1 for all namespaces
-		
-		@*param* `start` — Start of range: a 0-indexed (row, col) or valid extmark id
-		
-		 (whose position defines the bound). `api-indexing`
-		
-		@*param* `end_` — End of range (inclusive): a 0-indexed (row, col) or valid
-		
-		 extmark id (whose position defines the bound). `api-indexing`
-		
-		@*param* `opts` — Optional parameters. Keys:
-		
-		 - limit:  Maximum number of marks to return
-		 - details: Whether to include the details dict
-		 - hl_name: Whether to include highlight group name instead of id, true if omitted
-		 - overlap: Also include marks which overlap the range, even if
-		            their start position is less than `start`
-		 - type: Filter marks by type: "highlight", "sign", "virt_text" and "virt_lines"
-		
-		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
-	**/
 	@:native("nvim_buf_get_extmarks")
-	private static function __nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
+	@:luaDotMethod
+	private function __nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmarks(buffer: integer, ns_id: integer, start: any, end_: any, opts: vim.api.keyset.get_extmarks)
@@ -1082,7 +784,8 @@ package nvim;
 		
 		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
 	**/
-	inline static function nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem> {
+	@:luaDotMethod
+	inline function nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_get_extmarks(buffer, ns_id, start, end_, opts);
 		return result;
@@ -1105,7 +808,8 @@ package nvim;
 		
 		 The "buffer" key holds the associated buffer id.
 	**/
-	static function nvim_buf_get_keymap(buffer:Float, mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
+	@:luaDotMethod
+	function nvim_buf_get_keymap(buffer:Float, mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean)
@@ -1136,7 +840,8 @@ package nvim;
 		
 		See: [vim.api.nvim_buf_get_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#505#9)
 	**/
-	static function nvim_buf_get_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool):lua.Table<Int, String>;
+	@:luaDotMethod
+	function nvim_buf_get_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_mark(buffer: integer, name: string)
@@ -1162,7 +867,8 @@ package nvim;
 		  * [vim.api.nvim_buf_set_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#735#9)
 		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
 	**/
-	static function nvim_buf_get_mark(buffer:Float, name:String):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_buf_get_mark(buffer:Float, name:String):lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_name(buffer: integer)
@@ -1177,15 +883,17 @@ package nvim;
 		
 		@*return* — Buffer name
 	**/
-	static function nvim_buf_get_name(buffer:Float):String;
+	@:luaDotMethod
+	function nvim_buf_get_name(buffer:Float):String;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_number(buffer: integer)
 		  -> integer
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_buf_get_number(buffer:Float):Float;
+	function nvim_buf_get_number(buffer:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_offset(buffer: integer, index: integer)
@@ -1210,46 +918,20 @@ package nvim;
 		
 		@*return* — Integer byte offset, or -1 for unloaded buffer.
 	**/
-	static function nvim_buf_get_offset(buffer:Float, index:Float):Float;
+	@:luaDotMethod
+	function nvim_buf_get_offset(buffer:Float, index:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_option(buffer: integer, name: string)
 		  -> any
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_buf_get_option(buffer:Float, name:String):Any;
-	/**
-		```lua
-		function vim.api.nvim_buf_get_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, opts: vim.api.keyset.empty)
-		  -> string[]
-		```
-		
-		---
-		
-		 Gets a range from the buffer (may be partial lines, unlike `nvim_buf_get_lines()`).
-		
-		 Indexing is zero-based. Row indices are end-inclusive, and column indices
-		 are end-exclusive.
-		
-		 Prefer `nvim_buf_get_lines()` when retrieving entire lines.
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `start_row` — First line index
-		
-		@*param* `start_col` — Starting column (byte offset) on first line
-		
-		@*param* `end_row` — Last line index, inclusive
-		
-		@*param* `end_col` — Ending column (byte offset) on last line, exclusive
-		
-		@*param* `opts` — Optional parameters. Currently unused.
-		
-		@*return* — Array of lines, or empty array for unloaded buffer.
-	**/
+	function nvim_buf_get_option(buffer:Float, name:String):Any;
 	@:native("nvim_buf_get_text")
-	private static function __nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
+	@:luaDotMethod
+	private function __nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, opts: vim.api.keyset.empty)
@@ -1279,7 +961,8 @@ package nvim;
 		
 		@*return* — Array of lines, or empty array for unloaded buffer.
 	**/
-	inline static function nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String> {
+	@:luaDotMethod
+	inline function nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, opts);
 		return result;
@@ -1300,7 +983,8 @@ package nvim;
 		
 		@*return* — Variable value
 	**/
-	static function nvim_buf_get_var(buffer:Float, name:String):Any;
+	@:luaDotMethod
+	function nvim_buf_get_var(buffer:Float, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_buf_is_loaded(buffer: integer)
@@ -1316,7 +1000,8 @@ package nvim;
 		
 		@*return* — true if the buffer is valid and loaded, false otherwise.
 	**/
-	static function nvim_buf_is_loaded(buffer:Float):Bool;
+	@:luaDotMethod
+	function nvim_buf_is_loaded(buffer:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_is_valid(buffer: integer)
@@ -1336,7 +1021,8 @@ package nvim;
 		
 		@*return* — true if the buffer is valid, false otherwise.
 	**/
-	static function nvim_buf_is_valid(buffer:Float):Bool;
+	@:luaDotMethod
+	function nvim_buf_is_valid(buffer:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_line_count(buffer: integer)
@@ -1351,170 +1037,11 @@ package nvim;
 		
 		@*return* — Line count, or 0 for unloaded buffer. |api-buffer|
 	**/
-	static function nvim_buf_line_count(buffer:Float):Float;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_extmark(buffer: integer, ns_id: integer, line: integer, col: integer, opts: vim.api.keyset.set_extmark)
-		  -> integer
-		```
-		
-		---
-		
-		 Creates or updates an `extmark`.
-		
-		 By default a new extmark is created when no id is passed in, but it is also
-		 possible to create a new mark by passing in a previously unused id or move
-		 an existing mark by passing in its id. The caller must then keep track of
-		 existing and unused ids itself. (Useful over RPC, to avoid waiting for the
-		 return value.)
-		
-		 Using the optional arguments, it is possible to use this to highlight
-		 a range of text, and also to associate virtual text to the mark.
-		
-		 If present, the position defined by `end_col` and `end_row` should be after
-		 the start position in order for the extmark to cover a range.
-		 An earlier end position is not an error, but then it behaves like an empty
-		 range (no highlighting).
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `line` — Line where to place the mark, 0-based. `api-indexing`
-		
-		@*param* `col` — Column where to place the mark, 0-based. `api-indexing`
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - id : id of the extmark to edit.
-		 - end_row : ending line of the mark, 0-based inclusive.
-		 - end_col : ending col of the mark, 0-based exclusive.
-		 - hl_group : highlight group used for the text range. This and below
-		     highlight groups can be supplied either as a string or as an integer,
-		     the latter of which can be obtained using `nvim_get_hl_id_by_name()`.
-		
-		     Multiple highlight groups can be stacked by passing an array (highest
-		     priority last).
-		 - hl_eol : when true, for a multiline highlight covering the
-		            EOL of a line, continue the highlight for the rest
-		            of the screen line (just like for diff and
-		            cursorline highlight).
-		 - virt_text : virtual text to link to this mark.
-		     A list of `[text, highlight]` tuples, each representing a
-		     text chunk with specified highlight. `highlight` element
-		     can either be a single highlight group, or an array of
-		     multiple highlight groups that will be stacked
-		     (highest priority last).
-		 - virt_text_pos : position of virtual text. Possible values:
-		   - "eol": right after eol character (default).
-		   - "eol_right_align": display right aligned in the window
-		                        unless the virtual text is longer than
-		                        the space available. If the virtual
-		                        text is too long, it is truncated to
-		                        fit in the window after the EOL
-		                        character. If the line is wrapped, the
-		                        virtual text is shown after the end of
-		                        the line rather than the previous
-		                        screen line.
-		   - "overlay": display over the specified column, without
-		                shifting the underlying text.
-		   - "right_align": display right aligned in the window.
-		   - "inline": display at the specified column, and
-		               shift the buffer text to the right as needed.
-		 - virt_text_win_col : position the virtual text at a fixed
-		                       window column (starting from the first
-		                       text column of the screen line) instead
-		                       of "virt_text_pos".
-		 - virt_text_hide : hide the virtual text when the background
-		                    text is selected or hidden because of
-		                    scrolling with 'nowrap' or 'smoothscroll'.
-		                    Currently only affects "overlay" virt_text.
-		 - virt_text_repeat_linebreak : repeat the virtual text on
-		                                wrapped lines.
-		 - hl_mode : control how highlights are combined with the
-		             highlights of the text. Currently only affects
-		             virt_text highlights, but might affect `hl_group`
-		             in later versions.
-		   - "replace": only show the virt_text color. This is the default.
-		   - "combine": combine with background text color.
-		   - "blend": blend with background text color.
-		              Not supported for "inline" virt_text.
-		
-		 - virt_lines : virtual lines to add next to this mark
-		     This should be an array over lines, where each line in
-		     turn is an array over `[text, highlight]` tuples. In
-		     general, buffer and window options do not affect the
-		     display of the text. In particular 'wrap'
-		     and 'linebreak' options do not take effect, so
-		     the number of extra screen lines will always match
-		     the size of the array. However the 'tabstop' buffer
-		     option is still used for hard tabs. By default lines are
-		     placed below the buffer line containing the mark.
-		
-		 - virt_lines_above: place virtual lines above instead.
-		 - virt_lines_leftcol: Place virtual lines in the leftmost
-		                       column of the window, bypassing
-		                       sign and number columns.
-		 - virt_lines_overflow: controls how to handle virtual lines wider
-		     than the window. Currently takes the one of the following values:
-		   - "trunc": truncate virtual lines on the right (default).
-		   - "scroll": virtual lines can scroll horizontally with 'nowrap',
-		      otherwise the same as "trunc".
-		 - ephemeral : for use with `nvim_set_decoration_provider()`
-		     callbacks. The mark will only be used for the current
-		     redraw cycle, and not be permanently stored in the buffer.
-		 - right_gravity : boolean that indicates the direction
-		     the extmark will be shifted in when new text is inserted
-		     (true for right, false for left). Defaults to true.
-		 - end_right_gravity : boolean that indicates the direction
-		     the extmark end position (if it exists) will be shifted
-		     in when new text is inserted (true for right, false
-		     for left). Defaults to false.
-		 - undo_restore : Restore the exact position of the mark
-		     if text around the mark was deleted and then restored by undo.
-		     Defaults to true.
-		 - invalidate : boolean that indicates whether to hide the
-		     extmark if the entirety of its range is deleted. For
-		     hidden marks, an "invalid" key is added to the "details"
-		     array of `nvim_buf_get_extmarks()` and family. If
-		     "undo_restore" is false, the extmark is deleted instead.
-		 - priority: a priority value for the highlight group, sign
-		     attribute or virtual text. For virtual text, item with
-		     highest priority is drawn last. For example treesitter
-		     highlighting uses a value of 100.
-		 - strict: boolean that indicates extmark should not be placed
-		     if the line or column value is past the end of the
-		     buffer or end of the line respectively. Defaults to true.
-		 - sign_text: string of length 1-2 used to display in the
-		     sign column.
-		 - sign_hl_group: highlight group used for the sign column text.
-		 - number_hl_group: highlight group used for the number column.
-		 - line_hl_group: highlight group used for the whole line.
-		 - cursorline_hl_group: highlight group used for the sign
-		     column text when the cursor is on the same line as the
-		     mark and 'cursorline' is enabled.
-		 - conceal: string which should be either empty or a single
-		     character. Enable concealing similar to `:syn-conceal`.
-		     When a character is supplied it is used as `:syn-cchar`.
-		     "hl_group" is used as highlight for the cchar if provided,
-		     otherwise it defaults to `hl-Conceal`.
-		 - conceal_lines: string which should be empty. When
-		     provided, lines in the range are not drawn at all
-		     (according to 'conceallevel'); the next unconcealed line
-		     is drawn instead.
-		 - spell: boolean indicating that spell checking should be
-		     performed within this extmark
-		 - ui_watched: boolean that indicates the mark should be drawn
-		     by a UI. When set, the UI will receive win_extmark events.
-		     Note: the mark is positioned by virt_text attributes. Can be
-		     used together with virt_text.
-		 - url: A URL to associate with this extmark. In the TUI, the OSC 8 control
-		     sequence is used to generate a clickable hyperlink to this URL.
-		
-		@*return* — Id of the created/updated extmark
-	**/
+	@:luaDotMethod
+	function nvim_buf_line_count(buffer:Float):Float;
 	@:native("nvim_buf_set_extmark")
-	private static function __nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float;
+	@:luaDotMethod
+	private function __nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_extmark(buffer: integer, ns_id: integer, line: integer, col: integer, opts: vim.api.keyset.set_extmark)
@@ -1676,27 +1203,15 @@ package nvim;
 		
 		@*return* — Id of the created/updated extmark
 	**/
-	inline static function nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float {
+	@:luaDotMethod
+	inline function nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_buf_set_keymap(buffer: integer, mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
-		```
-		
-		---
-		
-		 Sets a buffer-local `mapping` for the given mode.
-		
-		
-		@*param* `buffer` — Buffer id, or 0 for current buffer
-		
-		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
-	**/
 	@:native("nvim_buf_set_keymap")
-	private static function __nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
+	@:luaDotMethod
+	private function __nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_keymap(buffer: integer, mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
@@ -1711,7 +1226,8 @@ package nvim;
 		
 		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
 	**/
-	inline static function nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
+	@:luaDotMethod
+	inline function nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 		return result;
@@ -1748,42 +1264,11 @@ package nvim;
 		
 		See: [vim.api.nvim_buf_set_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#773#9)
 	**/
-	static function nvim_buf_set_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_mark(buffer: integer, name: string, line: integer, col: integer, opts: vim.api.keyset.empty)
-		  -> boolean
-		```
-		
-		---
-		
-		 Sets a named mark in the given buffer, all marks are allowed
-		 file/uppercase, visual, last change, etc. See `mark-motions`.
-		
-		 Marks are (1,0)-indexed. `api-indexing`
-		
-		 Note:
-		 Passing 0 as line deletes the mark
-		
-		
-		@*param* `buffer` — Buffer to set the mark on
-		
-		@*param* `name` — Mark name
-		
-		@*param* `line` — Line number
-		
-		@*param* `col` — Column/row number
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — true if the mark was set, else false.
-		
-		See:
-		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
-		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
-	**/
+	@:luaDotMethod
+	function nvim_buf_set_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
 	@:native("nvim_buf_set_mark")
-	private static function __nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool;
+	@:luaDotMethod
+	private function __nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_mark(buffer: integer, name: string, line: integer, col: integer, opts: vim.api.keyset.empty)
@@ -1817,7 +1302,8 @@ package nvim;
 		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
 		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
 	**/
-	inline static function nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool {
+	@:luaDotMethod
+	inline function nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_set_mark(buffer, name, line, col, opts);
 		return result;
@@ -1835,14 +1321,16 @@ package nvim;
 		
 		@*param* `name` — Buffer name
 	**/
-	static function nvim_buf_set_name(buffer:Float, name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_buf_set_name(buffer:Float, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_option(buffer: integer, name: string, value: any)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_buf_set_option(buffer:Float, name:String, value:Any):Dynamic;
+	function nvim_buf_set_option(buffer:Float, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, replacement: string[])
@@ -1880,7 +1368,8 @@ package nvim;
 		
 		@*param* `replacement` — Array of lines to use as replacement
 	**/
-	static function nvim_buf_set_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, replacement:lua.Table<Int, String>):Dynamic;
+	@:luaDotMethod
+	function nvim_buf_set_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, replacement:lua.Table<Int, String>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_var(buffer: integer, name: string, value: any)
@@ -1896,23 +1385,20 @@ package nvim;
 		
 		@*param* `value` — Variable value
 	**/
-	static function nvim_buf_set_var(buffer:Float, name:String, value:Any):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_buf_set_virtual_text(buffer: integer, src_id: integer, line: integer, chunks: any[], opts: vim.api.keyset.empty)
-		  -> integer
-		```
-	**/
+	@:luaDotMethod
+	function nvim_buf_set_var(buffer:Float, name:String, value:Any):Dynamic;
 	@:native("nvim_buf_set_virtual_text")
-	private static function __nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float;
+	@:luaDotMethod
+	private function __nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_virtual_text(buffer: integer, src_id: integer, line: integer, chunks: any[], opts: vim.api.keyset.empty)
 		  -> integer
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	inline static function nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float {
+	inline function nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 		return result;
@@ -1937,7 +1423,8 @@ package nvim;
 		
 		@*return* — Result of the function call
 	**/
-	static function nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
+	@:luaDotMethod
+	function nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_call_function(fn: string, args: any[])
@@ -1956,7 +1443,8 @@ package nvim;
 		
 		@*return* — Result of the function call
 	**/
-	static function nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
+	@:luaDotMethod
+	function nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_chan_send(chan: integer, data: string)
@@ -1978,38 +1466,11 @@ package nvim;
 		
 		@*param* `data` — data to write. 8-bit clean: can contain NUL bytes.
 	**/
-	static function nvim_chan_send(chan:Float, data:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_clear_autocmds(opts: vim.api.keyset.clear_autocmds)
-		```
-		
-		---
-		
-		 Clears all autocommands selected by {opts}. To delete autocmds see `nvim_del_autocmd()`.
-		
-		@*param* `opts` — Parameters
-		
-		 - event: (string|table)
-		      Examples:
-		      - event: "pat1"
-		      - event: { "pat1" }
-		      - event: { "pat1", "pat2", "pat3" }
-		 - pattern: (string|table)
-		     - pattern or patterns to match exactly.
-		         - For example, if you have `*.py` as that pattern for the autocmd,
-		           you must pass `*.py` exactly to clear it. `test.py` will not
-		           match the pattern.
-		     - defaults to clearing all patterns.
-		     - NOTE: Cannot be used with {buffer}
-		 - buffer: (bufnr)
-		     - clear only `autocmd-buflocal` autocommands.
-		     - NOTE: Cannot be used with {pattern}
-		 - group: (string|int) The augroup name or id.
-		     - NOTE: If not passed, will only delete autocmds *not* in any group.
-	**/
+	@:luaDotMethod
+	function nvim_chan_send(chan:Float, data:String):Dynamic;
 	@:native("nvim_clear_autocmds")
-	private static function __nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic;
+	@:luaDotMethod
+	private function __nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_clear_autocmds(opts: vim.api.keyset.clear_autocmds)
@@ -2039,50 +1500,15 @@ package nvim;
 		 - group: (string|int) The augroup name or id.
 		     - NOTE: If not passed, will only delete autocmds *not* in any group.
 	**/
-	inline static function nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic {
+	@:luaDotMethod
+	inline function nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_clear_autocmds(opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_cmd(cmd: vim.api.keyset.cmd, opts: vim.api.keyset.cmd_opts)
-		  -> string
-		```
-		
-		---
-		
-		 Executes an Ex command.
-		
-		 Unlike `nvim_command()` this command takes a structured Dict instead of a String. This
-		 allows for easier construction and manipulation of an Ex command. This also allows for things
-		 such as having spaces inside a command argument, expanding filenames in a command that otherwise
-		 doesn't expand filenames, etc. Command arguments may also be Number, Boolean or String.
-		
-		 The first argument may also be used instead of count for commands that support it in order to
-		 make their usage simpler with `vim.cmd()`. For example, instead of
-		 `vim.cmd.bdelete{ count = 2 }`, you may do `vim.cmd.bdelete(2)`.
-		
-		 On execution error: fails with Vimscript error, updates v:errmsg.
-		
-		
-		@*param* `cmd` — Command to execute. Must be a Dict that can contain the same values as
-		
-		 the return value of `nvim_parse_cmd()` except "addr", "nargs" and "nextcmd"
-		 which are ignored if provided. All values except for "cmd" are optional.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - output: (boolean, default false) Whether to return command output.
-		
-		@*return* — Command output (non-error, non-shell |:!|) if `output` is true, else empty string.
-		
-		See:
-		  * [vim.api.nvim_exec2](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1167#9)
-		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
-	**/
 	@:native("nvim_cmd")
-	private static function __nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String;
+	@:luaDotMethod
+	private function __nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String;
 	/**
 		```lua
 		function vim.api.nvim_cmd(cmd: vim.api.keyset.cmd, opts: vim.api.keyset.cmd_opts)
@@ -2120,7 +1546,8 @@ package nvim;
 		  * [vim.api.nvim_exec2](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1167#9)
 		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
 	**/
-	inline static function nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String {
+	@:luaDotMethod
+	inline function nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String {
 		cmd = nvim.helper.Arg.pure(cmd);
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_cmd(cmd, opts);
@@ -2142,7 +1569,8 @@ package nvim;
 		
 		@*param* `command` — Ex command string
 	**/
-	static function nvim_command(command:String):Dynamic;
+	@:luaDotMethod
+	function nvim_command(command:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_command_output(command: string)
@@ -2153,39 +1581,12 @@ package nvim;
 		
 		See: [vim.api.nvim_exec2](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1167#9)
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_command_output(command:String):String;
-	/**
-		```lua
-		function vim.api.nvim_create_augroup(name: string, opts: vim.api.keyset.create_augroup)
-		  -> integer
-		```
-		
-		---
-		
-		 Create or get an autocommand group `autocmd-groups`.
-		
-		 To get an existing group id, do:
-		
-		 ```lua
-		 local id = vim.api.nvim_create_augroup('my.lsp.config', {
-		     clear = false
-		 })
-		 ```
-		
-		 @see `:help autocmd-groups`
-		
-		@*param* `name` — String: The name of the group
-		
-		@*param* `opts` — Dict Parameters
-		
-		 - clear (bool) optional: defaults to true. Clear existing
-		 commands if the group already exists `autocmd-groups`.
-		
-		@*return* — Integer id of the created group.
-	**/
+	function nvim_command_output(command:String):String;
 	@:native("nvim_create_augroup")
-	private static function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float;
+	@:luaDotMethod
+	private function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float;
 	/**
 		```lua
 		function vim.api.nvim_create_augroup(name: string, opts: vim.api.keyset.create_augroup)
@@ -2215,84 +1616,15 @@ package nvim;
 		
 		@*return* — Integer id of the created group.
 	**/
-	inline static function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float {
+	@:luaDotMethod
+	inline function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_create_augroup(name, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_create_autocmd(event: any, opts: vim.api.keyset.create_autocmd)
-		  -> integer
-		```
-		
-		---
-		
-		 Creates an `autocommand` event handler, defined by `callback` (Lua function or Vimscript
-		 function _name_ string) or `command` (Ex command string).
-		
-		 Example using Lua callback:
-		
-		 ```lua
-		 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-		   pattern = {'*.c', '*.h'},
-		   callback = function(ev)
-		     print(string.format('event fired: %s', vim.inspect(ev)))
-		   end
-		 })
-		 ```
-		
-		 Example using an Ex command as the handler:
-		
-		 ```lua
-		 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-		   pattern = {'*.c', '*.h'},
-		   command = "echo 'Entering a C or C++ file'",
-		 })
-		 ```
-		
-		 Note: `pattern` is NOT automatically expanded (unlike with `:autocmd`), thus names like "$HOME"
-		 and "~" must be expanded explicitly:
-		
-		 ```lua
-		 pattern = vim.fn.expand('~') .. '/some/path/*.py'
-		 ```
-		
-		 @see `:help autocommand`
-		
-		@*param* `event` — (string|array) Event(s) that will trigger the handler (`callback` or `command`).
-		
-		@*param* `opts` — Options dict:
-		
-		 - group (string|integer) optional: autocommand group name or id to match against.
-		 - pattern (string|array) optional: pattern(s) to match literally `autocmd-pattern`.
-		 - buffer (integer) optional: buffer number for buffer-local autocommands
-		 `autocmd-buflocal`. Cannot be used with {pattern}.
-		 - desc (string) optional: description (for documentation and troubleshooting).
-		 - callback (function|string) optional: Lua function (or Vimscript function name, if
-		 string) called when the event(s) is triggered. Lua callback can return a truthy
-		 value (not `false` or `nil`) to delete the autocommand, and receives one argument, a
-		 table with these keys: [event-args](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		     - id: (number) autocommand id
-		     - event: (string) name of the triggered event `autocmd-events`
-		     - group: (number|nil) autocommand group id, if any
-		     - file: (string) [<afile>] (not expanded to a full path)
-		     - match: (string) [<amatch>] (expanded to a full path)
-		     - buf: (number) [<abuf>]
-		     - data: (any) arbitrary data passed from [nvim_exec_autocmds()] [event-data](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		 - command (string) optional: Vim command to execute on event. Cannot be used with
-		 {callback}
-		 - once (boolean) optional: defaults to false. Run the autocommand
-		 only once `autocmd-once`.
-		 - nested (boolean) optional: defaults to false. Run nested
-		 autocommands `autocmd-nested`.
-		
-		@*return* — Autocommand id (number)
-		
-		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
-	**/
 	@:native("nvim_create_autocmd")
-	private static function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float;
+	@:luaDotMethod
+	private function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float;
 	/**
 		```lua
 		function vim.api.nvim_create_autocmd(event: any, opts: vim.api.keyset.create_autocmd)
@@ -2364,7 +1696,8 @@ package nvim;
 		
 		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
 	**/
-	inline static function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float {
+	@:luaDotMethod
+	inline function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_create_autocmd(event, opts);
 		return result;
@@ -2390,7 +1723,8 @@ package nvim;
 		
 		See: ~buf_open_scratch~
 	**/
-	static function nvim_create_buf(listed:Bool, scratch:Bool):Float;
+	@:luaDotMethod
+	function nvim_create_buf(listed:Bool, scratch:Bool):Float;
 	/**
 		```lua
 		function vim.api.nvim_create_namespace(name: string)
@@ -2412,61 +1746,11 @@ package nvim;
 		
 		@*return* — Namespace id
 	**/
-	static function nvim_create_namespace(name:String):Float;
-	/**
-		```lua
-		function vim.api.nvim_create_user_command(name: string, command: string|fun(args: vim.api.keyset.create_user_command.command_args), opts: vim.api.keyset.user_command)
-		```
-		
-		---
-		
-		 Creates a global `user-commands` command.
-		
-		 For Lua usage see `lua-guide-commands-create`.
-		
-		 Example:
-		
-		 ```vim
-		 :call nvim_create_user_command('SayHello', 'echo "Hello world!"', {'bang': v:true})
-		 :SayHello
-		 Hello world!
-		 ```
-		
-		@*param* `name` — Name of the new user command. Must begin with an uppercase letter.
-		
-		@*param* `command` — Replacement command to execute when this user command is executed. When called
-		
-		 from Lua, the command can also be a Lua function. The function is called with a
-		 single table argument that contains the following keys:
-		 - name: (string) Command name
-		 - args: (string) The args passed to the command, if any [<args>]
-		 - fargs: (table) The args split by unescaped whitespace (when more than one
-		 argument is allowed), if any [<f-args>]
-		 - nargs: (string) Number of arguments `:command-nargs`
-		 - bang: (boolean) "true" if the command was executed with a ! modifier [<bang>]
-		 - line1: (number) The starting line of the command range [<line1>]
-		 - line2: (number) The final line of the command range [<line2>]
-		 - range: (number) The number of items in the command range: 0, 1, or 2 [<range>]
-		 - count: (number) Any count supplied [<count>]
-		 - reg: (string) The optional register, if specified [<reg>]
-		 - mods: (string) Command modifiers, if any [<mods>]
-		 - smods: (table) Command modifiers in a structured format. Has the same
-		 structure as the "mods" key of `nvim_parse_cmd()`.
-		
-		@*param* `opts` — Optional `command-attributes`.
-		
-		 - Set boolean attributes such as `:command-bang` or `:command-bar` to true (but
-		   not `:command-buffer`, use `nvim_buf_create_user_command()` instead).
-		 - "complete" `:command-complete` also accepts a Lua function which works like
-		   `:command-completion-customlist`.
-		 - Other parameters:
-		   - desc: (string) Used for listing the command when a Lua function is used for
-		                    {command}.
-		   - force: (boolean, default true) Override any previous definition.
-		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
-	**/
+	@:luaDotMethod
+	function nvim_create_namespace(name:String):Float;
 	@:native("nvim_create_user_command")
-	private static function __nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
+	@:luaDotMethod
+	private function __nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_create_user_command(name: string, command: string|fun(args: vim.api.keyset.create_user_command.command_args), opts: vim.api.keyset.user_command)
@@ -2519,7 +1803,8 @@ package nvim;
 		   - force: (boolean, default true) Override any previous definition.
 		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
 	**/
-	inline static function nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
+	@:luaDotMethod
+	inline function nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_create_user_command(name, command, opts);
 		return result;
@@ -2544,7 +1829,8 @@ package nvim;
 		  * [vim.api.nvim_del_augroup_by_name](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1045#9)
 		  * [vim.api.nvim_create_augroup](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#902#9)
 	**/
-	static function nvim_del_augroup_by_id(id:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_del_augroup_by_id(id:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_augroup_by_name(name: string)
@@ -2560,7 +1846,8 @@ package nvim;
 		
 		@*param* `name` — String The name of the group.
 	**/
-	static function nvim_del_augroup_by_name(name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_del_augroup_by_name(name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_autocmd(id: integer)
@@ -2572,7 +1859,8 @@ package nvim;
 		
 		@*param* `id` — Integer Autocommand id returned by `nvim_create_autocmd()`
 	**/
-	static function nvim_del_autocmd(id:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_del_autocmd(id:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_current_line()
@@ -2582,7 +1870,8 @@ package nvim;
 		
 		 Deletes the current line.
 	**/
-	static function nvim_del_current_line():Dynamic;
+	@:luaDotMethod
+	function nvim_del_current_line():Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_keymap(mode: string, lhs: string)
@@ -2596,7 +1885,8 @@ package nvim;
 		
 		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
 	**/
-	static function nvim_del_keymap(mode:String, lhs:String):Dynamic;
+	@:luaDotMethod
+	function nvim_del_keymap(mode:String, lhs:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_mark(name: string)
@@ -2618,7 +1908,8 @@ package nvim;
 		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
 		  * [vim.api.nvim_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1425#9)
 	**/
-	static function nvim_del_mark(name:String):Bool;
+	@:luaDotMethod
+	function nvim_del_mark(name:String):Bool;
 	/**
 		```lua
 		function vim.api.nvim_del_user_command(name: string)
@@ -2630,7 +1921,8 @@ package nvim;
 		
 		@*param* `name` — Name of the command to delete.
 	**/
-	static function nvim_del_user_command(name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_del_user_command(name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_var(name: string)
@@ -2642,35 +1934,11 @@ package nvim;
 		
 		@*param* `name` — Variable name
 	**/
-	static function nvim_del_var(name:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_echo(chunks: any[], history: boolean, opts: vim.api.keyset.echo_opts)
-		```
-		
-		---
-		
-		 Prints a message given by a list of `[text, hl_group]` "chunks".
-		
-		 Example:
-		 ```lua
-		 vim.api.nvim_echo({ { 'chunk1-line1\nchunk1-line2\n' }, { 'chunk2-line1' } }, true, {})
-		 ```
-		
-		@*param* `chunks` — List of `[text, hl_group]` pairs, where each is a `text` string highlighted by
-		
-		 the (optional) name or ID `hl_group`.
-		
-		@*param* `history` — if true, add to `message-history`.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - err: Treat the message like `:echoerr`. Sets `hl_group` to `hl-ErrorMsg` by default.
-		 - verbose: Message is controlled by the 'verbose' option. Nvim invoked with `-V3log`
-		   will write the message to the "log" file instead of standard output.
-	**/
+	@:luaDotMethod
+	function nvim_del_var(name:String):Dynamic;
 	@:native("nvim_echo")
-	private static function __nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic;
+	@:luaDotMethod
+	private function __nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_echo(chunks: any[], history: boolean, opts: vim.api.keyset.echo_opts)
@@ -2697,7 +1965,8 @@ package nvim;
 		 - verbose: Message is controlled by the 'verbose' option. Nvim invoked with `-V3log`
 		   will write the message to the "log" file instead of standard output.
 	**/
-	inline static function nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
+	@:luaDotMethod
+	inline function nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_echo(chunks, history, opts);
 		return result;
@@ -2707,15 +1976,17 @@ package nvim;
 		function vim.api.nvim_err_write(str: string)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_err_write(str:String):Dynamic;
+	function nvim_err_write(str:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_err_writeln(str: string)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_err_writeln(str:String):Dynamic;
+	function nvim_err_writeln(str:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_eval(expr: string)
@@ -2732,36 +2003,11 @@ package nvim;
 		
 		@*return* — Evaluation result or expanded object
 	**/
-	static function nvim_eval(expr:String):Any;
-	/**
-		```lua
-		function vim.api.nvim_eval_statusline(str: string, opts: vim.api.keyset.eval_statusline)
-		  -> these: table<string|Dict>|with
-		```
-		
-		---
-		
-		 Evaluates statusline string.
-		
-		@*param* `str` — Statusline string (see 'statusline').
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - winid: (number) `window-ID` of the window to use as context for statusline.
-		 - maxwidth: (number) Maximum width of statusline.
-		 - fillchar: (string) Character to fill blank spaces in the statusline (see
-		                      'fillchars'). Treated as single-width even if it isn't.
-		 - highlights: (boolean) Return highlight information.
-		 - use_winbar: (boolean) Evaluate winbar instead of statusline.
-		 - use_tabline: (boolean) Evaluate tabline instead of statusline. When true, {winid}
-		                          is ignored. Mutually exclusive with {use_winbar}.
-		 - use_statuscol_lnum: (number) Evaluate statuscolumn for this line number instead of statusline.
-		     - start: (number) Byte index (0-based) of first character that uses the highlight.
-		     - group: (string) Deprecated. Use `groups` instead.
-		     - groups: (array) Names of stacked highlight groups (highest priority last).
-	**/
+	@:luaDotMethod
+	function nvim_eval(expr:String):Any;
 	@:native("nvim_eval_statusline")
-	private static function __nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_eval_statusline(str: string, opts: vim.api.keyset.eval_statusline)
@@ -2789,7 +2035,8 @@ package nvim;
 		     - group: (string) Deprecated. Use `groups` instead.
 		     - groups: (array) Names of stacked highlight groups (highest priority last).
 	**/
-	inline static function nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_eval_statusline(str, opts);
 		return result;
@@ -2804,43 +2051,12 @@ package nvim;
 		
 		See: [vim.api.nvim_exec2](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1167#9)
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_exec(src:String, output:Bool):String;
-	/**
-		```lua
-		function vim.api.nvim_exec2(src: string, opts: vim.api.keyset.exec_opts)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Executes Vimscript (multiline block of Ex commands), like anonymous
-		 `:source`.
-		
-		 Unlike `nvim_command()` this function supports heredocs, script-scope (s:),
-		 etc.
-		
-		 On execution error: fails with Vimscript error, updates v:errmsg.
-		
-		
-		 @see `:help execute()`
-		
-		@*param* `src` — Vimscript code
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - output: (boolean, default false) Whether to capture and return
-		           all (non-error, non-shell `:!`) output.
-		
-		@*return* — Dict containing information about execution, with these keys:
-		
-		 - output: (string|nil) Output if `opts.output` is true.
-		See:
-		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
-		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
-	**/
+	function nvim_exec(src:String, output:Bool):String;
 	@:native("nvim_exec2")
-	private static function __nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_exec2(src: string, opts: vim.api.keyset.exec_opts)
@@ -2874,39 +2090,15 @@ package nvim;
 		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
 		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
 	**/
-	inline static function nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_exec2(src, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_exec_autocmds(event: any, opts: vim.api.keyset.exec_autocmds)
-		```
-		
-		---
-		
-		 Execute all autocommands for {event} that match the corresponding
-		  {opts} `autocmd-execute`.
-		 @see `:help :doautocmd`
-		
-		@*param* `event` — (String|Array) The event or events to execute
-		
-		@*param* `opts` — Dict of autocommand options:
-		
-		 - group (string|integer) optional: the autocommand group name or
-		 id to match against. `autocmd-groups`.
-		 - pattern (string|array) optional: defaults to "*" `autocmd-pattern`. Cannot be used
-		 with {buffer}.
-		 - buffer (integer) optional: buffer number `autocmd-buflocal`. Cannot be used with
-		 {pattern}.
-		 - modeline (bool) optional: defaults to true. Process the
-		 modeline after the autocommands [<nomodeline>].
-		 - data (any): arbitrary data to send to the autocommand callback. See
-		 `nvim_create_autocmd()` for details.
-	**/
 	@:native("nvim_exec_autocmds")
-	private static function __nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic;
+	@:luaDotMethod
+	private function __nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_exec_autocmds(event: any, opts: vim.api.keyset.exec_autocmds)
@@ -2933,7 +2125,8 @@ package nvim;
 		 - data (any): arbitrary data to send to the autocommand callback. See
 		 `nvim_create_autocmd()` for details.
 	**/
-	inline static function nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic {
+	@:luaDotMethod
+	inline function nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_exec_autocmds(event, opts);
 		return result;
@@ -2973,7 +2166,8 @@ package nvim;
 		  * ~feedkeys~ ()
 		  * ~vim_strsave_escape_ks~
 	**/
-	static function nvim_feedkeys(keys:String, mode:String, escape_ks:Bool):Dynamic;
+	@:luaDotMethod
+	function nvim_feedkeys(keys:String, mode:String, escape_ks:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_get_all_options_info()
@@ -2992,65 +2186,11 @@ package nvim;
 		
 		See: [vim.api.nvim_get_commands](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1324#9)
 	**/
-	static function nvim_get_all_options_info():lua.Table<String, Any>;
-	/**
-		```lua
-		function vim.api.nvim_get_autocmds(opts: vim.api.keyset.get_autocmds)
-		  -> vim.api.keyset.get_autocmds.ret[]
-		```
-		
-		---
-		
-		 Get all autocommands that match the corresponding {opts}.
-		
-		 These examples will get autocommands matching ALL the given criteria:
-		
-		 ```lua
-		 -- Matches all criteria
-		 autocommands = vim.api.nvim_get_autocmds({
-		   group = 'MyGroup',
-		   event = {'BufEnter', 'BufWinEnter'},
-		   pattern = {'*.c', '*.h'}
-		 })
-		
-		 -- All commands from one group
-		 autocommands = vim.api.nvim_get_autocmds({
-		   group = 'MyGroup',
-		 })
-		 ```
-		
-		 NOTE: When multiple patterns or events are provided, it will find all the autocommands that
-		 match any combination of them.
-		
-		@*param* `opts` — Dict with at least one of the following:
-		
-		 - buffer: (integer) Buffer number or list of buffer numbers for buffer local autocommands
-		 `autocmd-buflocal`. Cannot be used with {pattern}
-		 - event: (string|table) event or events to match against `autocmd-events`.
-		 - id: (integer) Autocommand ID to match.
-		 - group: (string|table) the autocommand group name or id to match against.
-		 - pattern: (string|table) pattern or patterns to match against `autocmd-pattern`.
-		 Cannot be used with {buffer}
-		
-		@*return* — Array of autocommands matching the criteria, with each item
-		
-		 containing the following fields:
-		 - buffer: (integer) the buffer number.
-		 - buflocal: (boolean) true if the autocommand is buffer local.
-		 - command: (string) the autocommand command. Note: this will be empty if a callback is set.
-		 - callback: (function|string|nil): Lua function or name of a Vim script function
-		   which is executed when this autocommand is triggered.
-		 - desc: (string) the autocommand description.
-		 - event: (string) the autocommand event.
-		 - id: (integer) the autocommand id (only when defined with the API).
-		 - group: (integer) the autocommand group id.
-		 - group_name: (string) the autocommand group name.
-		 - once: (boolean) whether the autocommand is only run once.
-		 - pattern: (string) the autocommand pattern.
-		   If the autocommand is buffer local |autocmd-buffer-local|:
-	**/
+	@:luaDotMethod
+	function nvim_get_all_options_info():lua.Table<String, Any>;
 	@:native("nvim_get_autocmds")
-	private static function __nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret>;
+	@:luaDotMethod
+	private function __nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret>;
 	/**
 		```lua
 		function vim.api.nvim_get_autocmds(opts: vim.api.keyset.get_autocmds)
@@ -3107,7 +2247,8 @@ package nvim;
 		 - pattern: (string) the autocommand pattern.
 		   If the autocommand is buffer local |autocmd-buffer-local|:
 	**/
-	inline static function nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret> {
+	@:luaDotMethod
+	inline function nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_autocmds(opts);
 		return result;
@@ -3146,7 +2287,8 @@ package nvim;
 		 -  "client"  (optional) Info about the peer (client on the other end of the channel), as set
 		              by |nvim_set_client_info()|.
 	**/
-	static function nvim_get_chan_info(chan:Float):lua.Table<String, Any>;
+	@:luaDotMethod
+	function nvim_get_chan_info(chan:Float):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_color_by_name(name: string)
@@ -3169,7 +2311,8 @@ package nvim;
 		
 		@*return* — 24-bit RGB value, or -1 for invalid argument.
 	**/
-	static function nvim_get_color_by_name(name:String):Float;
+	@:luaDotMethod
+	function nvim_get_color_by_name(name:String):Float;
 	/**
 		```lua
 		function vim.api.nvim_get_color_map()
@@ -3185,30 +2328,11 @@ package nvim;
 		
 		@*return* — Map of color names and RGB values.
 	**/
-	static function nvim_get_color_map():lua.Table<String, Float>;
-	/**
-		```lua
-		function vim.api.nvim_get_commands(opts: vim.api.keyset.get_commands)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of global (non-buffer-local) Ex commands.
-		
-		 Currently only `user-commands` are supported, not builtin Ex commands.
-		
-		
-		@*param* `opts` — Optional parameters. Currently only supports
-		
-		 {"builtin":false}
-		
-		@*return* — Map of maps describing commands.
-		
-		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
-	**/
+	@:luaDotMethod
+	function nvim_get_color_map():lua.Table<String, Float>;
 	@:native("nvim_get_commands")
-	private static function __nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_commands(opts: vim.api.keyset.get_commands)
@@ -3230,30 +2354,15 @@ package nvim;
 		
 		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
 	**/
-	inline static function nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_commands(opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_get_context(opts: vim.api.keyset.context)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Gets a map of the current editor state.
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - types:  List of `context-types` ("regs", "jumps", "bufs",
-		   "gvars", …) to gather, or empty for "all".
-		
-		@*return* — map of global |context|.
-	**/
 	@:native("nvim_get_context")
-	private static function __nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_context(opts: vim.api.keyset.context)
@@ -3271,7 +2380,8 @@ package nvim;
 		
 		@*return* — map of global |context|.
 	**/
-	inline static function nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_context(opts);
 		return result;
@@ -3288,7 +2398,8 @@ package nvim;
 		
 		@*return* — Buffer id
 	**/
-	static function nvim_get_current_buf():Float;
+	@:luaDotMethod
+	function nvim_get_current_buf():Float;
 	/**
 		```lua
 		function vim.api.nvim_get_current_line()
@@ -3301,7 +2412,8 @@ package nvim;
 		
 		@*return* — Current line string
 	**/
-	static function nvim_get_current_line():String;
+	@:luaDotMethod
+	function nvim_get_current_line():String;
 	/**
 		```lua
 		function vim.api.nvim_get_current_tabpage()
@@ -3314,7 +2426,8 @@ package nvim;
 		
 		@*return* — |tab-ID|
 	**/
-	static function nvim_get_current_tabpage():Float;
+	@:luaDotMethod
+	function nvim_get_current_tabpage():Float;
 	/**
 		```lua
 		function vim.api.nvim_get_current_win()
@@ -3327,39 +2440,11 @@ package nvim;
 		
 		@*return* — |window-ID|
 	**/
-	static function nvim_get_current_win():Float;
-	/**
-		```lua
-		function vim.api.nvim_get_hl(ns_id: integer, opts: vim.api.keyset.get_highlight)
-		  -> vim.api.keyset.get_hl_info
-		```
-		
-		---
-		
-		 Gets all or specific highlight groups in a namespace.
-		
-		 Note:
-		 When the `link` attribute is defined in the highlight definition
-		 map, other attributes will not be taking effect (see |:hi-link|).
-		
-		
-		@*param* `ns_id` — Get highlight groups for namespace ns_id `nvim_get_namespaces()`.
-		
-		 Use 0 to get global highlight groups `:highlight`.
-		
-		@*param* `opts` — Options dict:
-		
-		 - name: (string) Get a highlight definition by name.
-		 - id: (integer) Get a highlight definition by id.
-		 - link: (boolean, default true) Show linked group name instead of effective definition `:hi-link`.
-		 - create: (boolean, default true) When highlight group doesn't exist create it.
-		
-		@*return* — Highlight groups as a map from group name to a highlight definition map as in |nvim_set_hl()|,
-		
-		 or only a single highlight definition map if requested by name or id.
-	**/
+	@:luaDotMethod
+	function nvim_get_current_win():Float;
 	@:native("nvim_get_hl")
-	private static function __nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
+	@:luaDotMethod
+	private function __nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
 	/**
 		```lua
 		function vim.api.nvim_get_hl(ns_id: integer, opts: vim.api.keyset.get_highlight)
@@ -3390,7 +2475,8 @@ package nvim;
 		
 		 or only a single highlight definition map if requested by name or id.
 	**/
-	inline static function nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
+	@:luaDotMethod
+	inline function nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_hl(ns_id, opts);
 		return result;
@@ -3405,8 +2491,9 @@ package nvim;
 		
 		See: [vim.api.nvim_get_hl_by_name](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1384#9)
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_get_hl_by_id(hl_id:Float, rgb:Bool):lua.Table<String, Any>;
+	function nvim_get_hl_by_id(hl_id:Float, rgb:Bool):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_hl_by_name(name: string, rgb: boolean)
@@ -3417,8 +2504,9 @@ package nvim;
 		
 		See: [vim.api.nvim_get_hl_by_id](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1377#9)
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_get_hl_by_name(name:String, rgb:Bool):lua.Table<String, Any>;
+	function nvim_get_hl_by_name(name:String, rgb:Bool):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_hl_id_by_name(name: string)
@@ -3431,28 +2519,11 @@ package nvim;
 		
 		 similar to `hlID()`, but allocates a new ID if not present.
 	**/
-	static function nvim_get_hl_id_by_name(name:String):Float;
-	/**
-		```lua
-		function vim.api.nvim_get_hl_ns(opts: vim.api.keyset.get_ns)
-		  -> integer
-		```
-		
-		---
-		
-		 Gets the active highlight namespace.
-		
-		@*param* `opts` — Optional parameters
-		
-		 - winid: (number) `window-ID` for retrieving a window's highlight
-		   namespace. A value of -1 is returned when `nvim_win_set_hl_ns()`
-		   has not been called for the window (or was called with a namespace
-		   of -1).
-		
-		@*return* — Namespace id, or -1
-	**/
+	@:luaDotMethod
+	function nvim_get_hl_id_by_name(name:String):Float;
 	@:native("nvim_get_hl_ns")
-	private static function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float;
+	@:luaDotMethod
+	private function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float;
 	/**
 		```lua
 		function vim.api.nvim_get_hl_ns(opts: vim.api.keyset.get_ns)
@@ -3472,7 +2543,8 @@ package nvim;
 		
 		@*return* — Namespace id, or -1
 	**/
-	inline static function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float {
+	@:luaDotMethod
+	inline function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_hl_ns(opts);
 		return result;
@@ -3493,37 +2565,11 @@ package nvim;
 		
 		 The "buffer" key is always zero.
 	**/
-	static function nvim_get_keymap(mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
-	/**
-		```lua
-		function vim.api.nvim_get_mark(name: string, opts: vim.api.keyset.empty)
-		  -> vim.api.keyset.get_mark
-		```
-		
-		---
-		
-		 Returns a `(row, col, buffer, buffername)` tuple representing the position
-		 of the uppercase/file named mark. "End of line" column position is returned
-		 as `v:maxcol` (big number). See `mark-motions`.
-		
-		 Marks are (1,0)-indexed. `api-indexing`
-		
-		 Note:
-		 Lowercase name (or other buffer-local mark) is an error.
-		
-		@*param* `name` — Mark name
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — 4-tuple (row, col, buffer, buffername), (0, 0, 0, '') if the mark is
-		
-		 not set.
-		See:
-		  * [vim.api.nvim_buf_set_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#735#9)
-		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
-	**/
+	@:luaDotMethod
+	function nvim_get_keymap(mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
 	@:native("nvim_get_mark")
-	private static function __nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark;
+	@:luaDotMethod
+	private function __nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark;
 	/**
 		```lua
 		function vim.api.nvim_get_mark(name: string, opts: vim.api.keyset.empty)
@@ -3552,7 +2598,8 @@ package nvim;
 		  * [vim.api.nvim_buf_set_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#735#9)
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
-	inline static function nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark {
+	@:luaDotMethod
+	inline function nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_mark(name, opts);
 		return result;
@@ -3570,7 +2617,8 @@ package nvim;
 		
 		@*return* — Dict { "mode": String, "blocking": Boolean }
 	**/
-	static function nvim_get_mode():nvim.type.vim.api.keyset.GetMode;
+	@:luaDotMethod
+	function nvim_get_mode():nvim.type.vim.api.keyset.GetMode;
 	/**
 		```lua
 		function vim.api.nvim_get_namespaces()
@@ -3583,69 +2631,29 @@ package nvim;
 		
 		@*return* — dict that maps from names to namespace ids.
 	**/
-	static function nvim_get_namespaces():lua.Table<String, Float>;
+	@:luaDotMethod
+	function nvim_get_namespaces():lua.Table<String, Float>;
 	/**
 		```lua
 		function vim.api.nvim_get_option(name: string)
 		  -> any
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_get_option(name:String):Any;
+	function nvim_get_option(name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_get_option_info(name: string)
 		  -> vim.api.keyset.get_option_info
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_get_option_info(name:String):nvim.type.vim.api.keyset.GetOptionInfo;
-	/**
-		```lua
-		function vim.api.nvim_get_option_info2(name: string, opts: vim.api.keyset.option)
-		  -> vim.api.keyset.get_option_info
-		```
-		
-		---
-		
-		 Gets the option information for one option from arbitrary buffer or window
-		
-		 Resulting dict has keys:
-		 - name: Name of the option (like 'filetype')
-		 - shortname: Shortened name of the option (like 'ft')
-		 - type: type of option ("string", "number" or "boolean")
-		 - default: The default value for the option
-		 - was_set: Whether the option was set.
-		
-		 - last_set_sid: Last set script id (if any)
-		 - last_set_linenr: line number where option was set
-		 - last_set_chan: Channel where option was set (0 for local)
-		
-		 - scope: one of "global", "win", or "buf"
-		 - global_local: whether win or buf option has a global value
-		
-		 - commalist: List of comma separated values
-		 - flaglist: List of single char flags
-		
-		 When {scope} is not provided, the last set information applies to the local
-		 value in the current buffer or window if it is available, otherwise the
-		 global value information is returned. This behavior can be disabled by
-		 explicitly specifying {scope} in the {opts} table.
-		
-		@*param* `name` — Option name
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for getting window local options.
-		 - buf: Buffer number. Used for getting buffer local options.
-		        Implies {scope} is "local".
-		
-		@*return* — Option Information
-	**/
+	function nvim_get_option_info(name:String):nvim.type.vim.api.keyset.GetOptionInfo;
 	@:native("nvim_get_option_info2")
-	private static function __nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo;
+	@:luaDotMethod
+	private function __nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo;
 	/**
 		```lua
 		function vim.api.nvim_get_option_info2(name: string, opts: vim.api.keyset.option)
@@ -3690,42 +2698,15 @@ package nvim;
 		
 		@*return* — Option Information
 	**/
-	inline static function nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo {
+	@:luaDotMethod
+	inline function nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_option_info2(name, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_get_option_value(name: string, opts: vim.api.keyset.option)
-		  -> any
-		```
-		
-		---
-		
-		 Gets the value of an option. The behavior of this function matches that of
-		 `:set`: the local value of an option is returned if it exists; otherwise,
-		 the global value is returned. Local values always correspond to the current
-		 buffer or window, unless "buf" or "win" is set in {opts}.
-		
-		@*param* `name` — Option name
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for getting window local options.
-		 - buf: Buffer number. Used for getting buffer local options.
-		        Implies {scope} is "local".
-		 - filetype: `filetype`. Used to get the default option for a
-		   specific filetype. Cannot be used with any other option.
-		   Note: this will trigger `ftplugin` and all `FileType`
-		   autocommands for the corresponding filetype.
-		
-		@*return* — Option value
-	**/
 	@:native("nvim_get_option_value")
-	private static function __nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any;
+	@:luaDotMethod
+	private function __nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any;
 	/**
 		```lua
 		function vim.api.nvim_get_option_value(name: string, opts: vim.api.keyset.option)
@@ -3755,7 +2736,8 @@ package nvim;
 		
 		@*return* — Option value
 	**/
-	inline static function nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any {
+	@:luaDotMethod
+	inline function nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_get_option_value(name, opts);
 		return result;
@@ -3772,7 +2754,8 @@ package nvim;
 		
 		@*return* — Map of process properties, or NIL if process not found.
 	**/
-	static function nvim_get_proc(pid:Float):Any;
+	@:luaDotMethod
+	function nvim_get_proc(pid:Float):Any;
 	/**
 		```lua
 		function vim.api.nvim_get_proc_children(pid: integer)
@@ -3785,7 +2768,8 @@ package nvim;
 		
 		@*return* — Array of child process ids, empty if process not found.
 	**/
-	static function nvim_get_proc_children(pid:Float):lua.Table<Int, Any>;
+	@:luaDotMethod
+	function nvim_get_proc_children(pid:Float):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_runtime_file(name: string, all: boolean)
@@ -3809,7 +2793,8 @@ package nvim;
 		
 		@*return* — list of absolute paths to the found files
 	**/
-	static function nvim_get_runtime_file(name:String, all:Bool):lua.Table<Int, String>;
+	@:luaDotMethod
+	function nvim_get_runtime_file(name:String, all:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_get_var(name: string)
@@ -3824,7 +2809,8 @@ package nvim;
 		
 		@*return* — Variable value
 	**/
-	static function nvim_get_var(name:String):Any;
+	@:luaDotMethod
+	function nvim_get_var(name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_get_vvar(name: string)
@@ -3839,7 +2825,8 @@ package nvim;
 		
 		@*return* — Variable value
 	**/
-	static function nvim_get_vvar(name:String):Any;
+	@:luaDotMethod
+	function nvim_get_vvar(name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_input(keys: string)
@@ -3869,7 +2856,8 @@ package nvim;
 		
 		 requested if the buffer becomes full).
 	**/
-	static function nvim_input(keys:String):Float;
+	@:luaDotMethod
+	function nvim_input(keys:String):Float;
 	/**
 		```lua
 		function vim.api.nvim_input_mouse(button: string, action: string, modifier: string, grid: integer, row: integer, col: integer)
@@ -3910,7 +2898,8 @@ package nvim;
 		
 		@*param* `col` — Mouse column-position (zero-based, like redraw events)
 	**/
-	static function nvim_input_mouse(button:String, action:String, modifier:String, grid:Float, row:Float, col:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_input_mouse(button:String, action:String, modifier:String, grid:Float, row:Float, col:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_list_bufs()
@@ -3926,7 +2915,8 @@ package nvim;
 		
 		@*return* — List of buffer ids
 	**/
-	static function nvim_list_bufs():lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_list_bufs():lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_list_chans()
@@ -3941,7 +2931,8 @@ package nvim;
 		
 		 the format specified at |nvim_get_chan_info()|.
 	**/
-	static function nvim_list_chans():lua.Table<Int, Any>;
+	@:luaDotMethod
+	function nvim_list_chans():lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim_list_runtime_paths()
@@ -3954,7 +2945,8 @@ package nvim;
 		
 		@*return* — List of paths
 	**/
-	static function nvim_list_runtime_paths():lua.Table<Int, String>;
+	@:luaDotMethod
+	function nvim_list_runtime_paths():lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_list_tabpages()
@@ -3967,7 +2959,8 @@ package nvim;
 		
 		@*return* — List of |tab-ID|s
 	**/
-	static function nvim_list_tabpages():lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_list_tabpages():lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_list_uis()
@@ -3994,7 +2987,8 @@ package nvim;
 		 - "ext_..." Requested UI extensions, see |ui-option|
 		 - "chan"    |channel-id| of remote UI
 	**/
-	static function nvim_list_uis():lua.Table<Int, Any>;
+	@:luaDotMethod
+	function nvim_list_uis():lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim_list_wins()
@@ -4007,21 +3001,11 @@ package nvim;
 		
 		@*return* — List of |window-ID|s
 	**/
-	static function nvim_list_wins():lua.Table<Int, Float>;
-	/**
-		```lua
-		function vim.api.nvim_load_context(dict: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Sets the current editor state from the given `context` map.
-		
-		@*param* `dict` — `Context` map.
-	**/
+	@:luaDotMethod
+	function nvim_list_wins():lua.Table<Int, Float>;
 	@:native("nvim_load_context")
-	private static function __nvim_load_context(dict:lua.Table<String, Any>):Any;
+	@:luaDotMethod
+	private function __nvim_load_context(dict:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_load_context(dict: table<string, any>)
@@ -4034,79 +3018,31 @@ package nvim;
 		
 		@*param* `dict` — `Context` map.
 	**/
-	inline static function nvim_load_context(dict:lua.Table<String, Any>):Any {
+	@:luaDotMethod
+	inline function nvim_load_context(dict:lua.Table<String, Any>):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __nvim_load_context(dict);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
-		  -> any
-		```
-	**/
 	@:native("nvim_notify")
-	private static function __nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any;
+	@:luaDotMethod
+	private function __nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
 		  -> any
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	inline static function nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any {
+	inline function nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_notify(msg, log_level, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
-		  -> integer
-		```
-		
-		---
-		
-		 Open a terminal instance in a buffer
-		
-		 By default (and currently the only option) the terminal will not be
-		 connected to an external process. Instead, input sent on the channel
-		 will be echoed directly by the terminal. This is useful to display
-		 ANSI terminal sequences returned as part of a rpc message, or similar.
-		
-		 Note: to directly initiate the terminal using the right size, display the
-		 buffer in a configured window before calling this. For instance, for a
-		 floating display, first create an empty buffer using `nvim_create_buf()`,
-		 then display it using `nvim_open_win()`, and then  call this function.
-		 Then `nvim_chan_send()` can be called immediately to process sequences
-		 in a virtual terminal having the intended size.
-		
-		 Example: this `TermHl` command can be used to display and highlight raw ANSI termcodes, so you
-		 can use Nvim as a "scrollback pager" (for terminals like kitty): [ansi-colorize](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		 [terminal-scrollback-pager](file:///usr/local/share/nvim/runtime/lua/vim/_meta)
-		
-		 ```lua
-		 vim.api.nvim_create_user_command('TermHl', function()
-		   vim.api.nvim_open_term(0, {})
-		 end, { desc = 'Highlights ANSI termcodes in curbuf' })
-		 ```
-		
-		@*param* `buffer` — the buffer to use (expected to be empty)
-		
-		@*param* `opts` — Optional parameters.
-		
-		 - on_input: Lua callback for input sent, i e keypresses in terminal
-		   mode. Note: keypresses are sent raw as they would be to the pty
-		   master end. For instance, a carriage return is sent
-		   as a "\r", not as a "\n". `textlock` applies. It is possible
-		   to call `nvim_chan_send()` directly in the callback however.
-		        `["input", term, bufnr, data]`
-		 - force_crlf: (boolean, default true) Convert "\n" to "\r\n".
-		
-		@*return* — Channel id, or 0 on error
-	**/
 	@:native("nvim_open_term")
-	private static function __nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float;
+	@:luaDotMethod
+	private function __nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float;
 	/**
 		```lua
 		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
@@ -4153,193 +3089,15 @@ package nvim;
 		
 		@*return* — Channel id, or 0 on error
 	**/
-	inline static function nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float {
+	@:luaDotMethod
+	inline function nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_open_term(buffer, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_open_win(buffer: integer, enter: boolean, config: vim.api.keyset.win_config)
-		  -> integer
-		```
-		
-		---
-		
-		 Opens a new split window, or a floating window if `relative` is specified,
-		 or an external window (managed by the UI) if `external` is specified.
-		
-		 Floats are windows that are drawn above the split layout, at some anchor
-		 position in some other window. Floats can be drawn internally or by external
-		 GUI with the `ui-multigrid` extension. External windows are only supported
-		 with multigrid GUIs, and are displayed as separate top-level windows.
-		
-		 For a general overview of floats, see `api-floatwin`.
-		
-		 The `width` and `height` of the new window must be specified when opening
-		 a floating window, but are optional for normal windows.
-		
-		 If `relative` and `external` are omitted, a normal "split" window is created.
-		 The `win` property determines which window will be split. If no `win` is
-		 provided or `win == 0`, a window will be created adjacent to the current window.
-		 If -1 is provided, a top-level split will be created. `vertical` and `split` are
-		 only valid for normal windows, and are used to control split direction. For `vertical`,
-		 the exact direction is determined by `'splitright'` and `'splitbelow'`.
-		 Split windows cannot have `bufpos`/`row`/`col`/`border`/`title`/`footer`
-		 properties.
-		
-		 With relative=editor (row=0,col=0) refers to the top-left corner of the
-		 screen-grid and (row=Lines-1,col=Columns-1) refers to the bottom-right
-		 corner. Fractional values are allowed, but the builtin implementation
-		 (used by non-multigrid UIs) will always round down to nearest integer.
-		
-		 Out-of-bounds values, and configurations that make the float not fit inside
-		 the main editor, are allowed. The builtin implementation truncates values
-		 so floats are fully within the main screen grid. External GUIs
-		 could let floats hover outside of the main window like a tooltip, but
-		 this should not be used to specify arbitrary WM screen positions.
-		
-		 Example (Lua): window-relative float
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false,
-		   {relative='win', row=3, col=3, width=12, height=3})
-		 ```
-		
-		 Example (Lua): buffer-relative float (travels as buffer is scrolled)
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false,
-		   {relative='win', width=12, height=3, bufpos={100,10}})
-		 ```
-		
-		 Example (Lua): vertical split left of the current window
-		
-		 ```lua
-		 vim.api.nvim_open_win(0, false, {
-		   split = 'left',
-		   win = 0
-		 })
-		 ```
-		
-		@*param* `buffer` — Buffer to display, or 0 for current buffer
-		
-		@*param* `enter` — Enter the window (make it the current window)
-		
-		@*param* `config` — Map defining the window configuration. Keys:
-		
-		 - relative: Sets the window layout to "floating", placed at (row,col)
-		               coordinates relative to:
-		    - "cursor"     Cursor position in current window.
-		    - "editor"     The global editor grid.
-		    - "laststatus" 'laststatus' if present, or last row.
-		    - "mouse"      Mouse position.
-		    - "tabline"    Tabline if present, or first row.
-		    - "win"        Window given by the `win` field, or current window.
-		 - win: `window-ID` window to split, or relative window when creating a
-		    float (relative="win").
-		 - anchor: Decides which corner of the float to place at (row,col):
-		    - "NW" northwest (default)
-		    - "NE" northeast
-		    - "SW" southwest
-		    - "SE" southeast
-		 - width: Window width (in character cells). Minimum of 1.
-		 - height: Window height (in character cells). Minimum of 1.
-		 - bufpos: Places float relative to buffer text (only when
-		     relative="win"). Takes a tuple of zero-indexed `[line, column]`.
-		     `row` and `col` if given are applied relative to this
-		     position, else they default to:
-		     - `row=1` and `col=0` if `anchor` is "NW" or "NE"
-		     - `row=0` and `col=0` if `anchor` is "SW" or "SE"
-		       (thus like a tooltip near the buffer text).
-		 - row: Row position in units of "screen cell height", may be fractional.
-		 - col: Column position in units of "screen cell width", may be
-		          fractional.
-		 - focusable: Enable focus by user actions (wincmds, mouse events).
-		     Defaults to true. Non-focusable windows can be entered by
-		     `nvim_set_current_win()`, or, when the `mouse` field is set to true,
-		     by mouse events. See `focusable`.
-		 - mouse: Specify how this window interacts with mouse events.
-		     Defaults to `focusable` value.
-		     - If false, mouse events pass through this window.
-		     - If true, mouse events interact with this window normally.
-		 - external: GUI should display the window as an external
-		     top-level window. Currently accepts no other positioning
-		     configuration together with this.
-		 - zindex: Stacking order. floats with higher `zindex` go on top on
-		             floats with lower indices. Must be larger than zero. The
-		             following screen elements have hard-coded z-indices:
-		     - 100: insert completion popupmenu
-		     - 200: message scrollback
-		     - 250: cmdline completion popupmenu (when wildoptions+=pum)
-		   The default value for floats are 50.  In general, values below 100 are
-		   recommended, unless there is a good reason to overshadow builtin
-		   elements.
-		 - style: (optional) Configure the appearance of the window. Currently
-		     only supports one value:
-		     - "minimal"  Nvim will display the window with many UI options
-		                  disabled. This is useful when displaying a temporary
-		                  float where the text should not be edited. Disables
-		                  'number', 'relativenumber', 'cursorline', 'cursorcolumn',
-		                  'foldcolumn', 'spell' and 'list' options. 'signcolumn'
-		                  is changed to `auto` and 'colorcolumn' is cleared.
-		                  'statuscolumn' is changed to empty. The end-of-buffer
-		                   region is hidden by setting `eob` flag of
-		                  'fillchars' to a space char, and clearing the
-		                  `hl-EndOfBuffer` region in 'winhighlight'.
-		 - border: Style of (optional) window border. This can either be a string
-		   or an array. The string values are the same as those described in 'winborder'.
-		   If it is an array, it should have a length of eight or any divisor of
-		   eight. The array will specify the eight chars building up the border
-		   in a clockwise fashion starting with the top-left corner. As an
-		   example, the double box style could be specified as:
-		     ```
-		     [ "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" ].
-		     ```
-		     If the number of chars are less than eight, they will be repeated. Thus
-		     an ASCII border could be specified as
-		     ```
-		     [ "/", "-", \"\\\\\", "|" ],
-		     ```
-		     or all chars the same as
-		     ```
-		     [ "x" ].
-		     ```
-		   An empty string can be used to turn off a specific border, for instance,
-		   ```
-		     [ "", "", "", ">", "", "", "", "<" ]
-		   ```
-		   will only make vertical borders but not horizontal ones.
-		   By default, `FloatBorder` highlight is used, which links to `WinSeparator`
-		   when not defined.  It could also be specified by character:
-		   ```
-		     [ ["+", "MyCorner"], ["x", "MyBorder"] ].
-		   ```
-		 - title: Title (optional) in window border, string or list.
-		   List should consist of `[text, highlight]` tuples.
-		   If string, or a tuple lacks a highlight, the default highlight group is `FloatTitle`.
-		 - title_pos: Title position. Must be set with `title` option.
-		   Value can be one of "left", "center", or "right".
-		   Default is `"left"`.
-		 - footer: Footer (optional) in window border, string or list.
-		   List should consist of `[text, highlight]` tuples.
-		   If string, or a tuple lacks a highlight, the default highlight group is `FloatFooter`.
-		 - footer_pos: Footer position. Must be set with `footer` option.
-		   Value can be one of "left", "center", or "right".
-		   Default is `"left"`.
-		 - noautocmd: If true then all autocommands are blocked for the duration of
-		   the call.
-		 - fixed: If true when anchor is NW or SW, the float window
-		          would be kept fixed even if the window would be truncated.
-		 - hide: If true the floating window will be hidden and the cursor will be invisible when
-		         focused on it.
-		 - vertical: Split vertically `:vertical`.
-		 - split: Split direction: "left", "right", "above", "below".
-		
-		@*return* — |window-ID|, or 0 on error
-	**/
 	@:native("nvim_open_win")
-	private static function __nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float;
+	@:luaDotMethod
+	private function __nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float;
 	/**
 		```lua
 		function vim.api.nvim_open_win(buffer: integer, enter: boolean, config: vim.api.keyset.win_config)
@@ -4520,7 +3278,8 @@ package nvim;
 		
 		@*return* — |window-ID|, or 0 on error
 	**/
-	inline static function nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float {
+	@:luaDotMethod
+	inline function nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float {
 		config = nvim.helper.Arg.pure(config);
 		final result = __nvim_open_win(buffer, enter, config);
 		return result;
@@ -4530,78 +3289,12 @@ package nvim;
 		function vim.api.nvim_out_write(str: string)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_out_write(str:String):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_parse_cmd(str: string, opts: vim.api.keyset.empty)
-		  -> vim.api.keyset.parse_cmd
-		```
-		
-		---
-		
-		 Parse command line.
-		
-		 Doesn't check the validity of command arguments.
-		
-		@*param* `str` — Command line string to parse. Cannot contain "\n".
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-		
-		@*return* — Dict containing command information, with these keys:
-		
-		 - cmd: (string) Command name.
-		 - range: (array) (optional) Command range ([<line1>] [<line2>]).
-		                  Omitted if command doesn't accept a range.
-		                  Otherwise, has no elements if no range was specified, one element if
-		                  only a single range item was specified, or two elements if both range
-		                  items were specified.
-		 - count: (number) (optional) Command [<count>].
-		                   Omitted if command cannot take a count.
-		 - reg: (string) (optional) Command [<register>].
-		                 Omitted if command cannot take a register.
-		 - bang: (boolean) Whether command contains a [<bang>] (!) modifier.
-		 - args: (array) Command arguments.
-		 - addr: (string) Value of |:command-addr|. Uses short name or "line" for -addr=lines.
-		 - nargs: (string) Value of |:command-nargs|.
-		 - nextcmd: (string) Next command if there are multiple commands separated by a |:bar|.
-		                     Empty if there isn't a next command.
-		 - magic: (dict) Which characters have special meaning in the command arguments.
-		     - file: (boolean) The command expands filenames. Which means characters such as "%",
-		                       "#" and wildcards are expanded.
-		     - bar: (boolean) The "|" character is treated as a command separator and the double
-		                      quote character (") is treated as the start of a comment.
-		 - mods: (dict) |:command-modifiers|.
-		     - filter: (dict) |:filter|.
-		         - pattern: (string) Filter pattern. Empty string if there is no filter.
-		         - force: (boolean) Whether filter is inverted or not.
-		     - silent: (boolean) |:silent|.
-		     - emsg_silent: (boolean) |:silent!|.
-		     - unsilent: (boolean) |:unsilent|.
-		     - sandbox: (boolean) |:sandbox|.
-		     - noautocmd: (boolean) |:noautocmd|.
-		     - browse: (boolean) |:browse|.
-		     - confirm: (boolean) |:confirm|.
-		     - hide: (boolean) |:hide|.
-		     - horizontal: (boolean) |:horizontal|.
-		     - keepalt: (boolean) |:keepalt|.
-		     - keepjumps: (boolean) |:keepjumps|.
-		     - keepmarks: (boolean) |:keepmarks|.
-		     - keeppatterns: (boolean) |:keeppatterns|.
-		     - lockmarks: (boolean) |:lockmarks|.
-		     - noswapfile: (boolean) |:noswapfile|.
-		     - tab: (integer) |:tab|. -1 when omitted.
-		     - verbose: (integer) |:verbose|. -1 when omitted.
-		     - vertical: (boolean) |:vertical|.
-		     - split: (string) Split modifier string, is an empty string when there's no split
-		                       modifier. If there is a split modifier it can be one of:
-		       - "aboveleft": |:aboveleft|.
-		       - "belowright": |:belowright|.
-		       - "topleft": |:topleft|.
-		       - "botright": |:botright|.
-	**/
+	function nvim_out_write(str:String):Dynamic;
 	@:native("nvim_parse_cmd")
-	private static function __nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd;
+	@:luaDotMethod
+	private function __nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd;
 	/**
 		```lua
 		function vim.api.nvim_parse_cmd(str: string, opts: vim.api.keyset.empty)
@@ -4670,7 +3363,8 @@ package nvim;
 		       - "topleft": |:topleft|.
 		       - "botright": |:botright|.
 	**/
-	inline static function nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd {
+	@:luaDotMethod
+	inline function nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_parse_cmd(str, opts);
 		return result;
@@ -4762,7 +3456,8 @@ package nvim;
 		   - "svalue": String, value for "SingleQuotedString" and
 		               "DoubleQuotedString" nodes.
 	**/
-	static function nvim_parse_expression(expr:String, flags:String, highlight:Bool):lua.Table<String, Any>;
+	@:luaDotMethod
+	function nvim_parse_expression(expr:String, flags:String, highlight:Bool):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_paste(data: string, crlf: boolean, phase: integer)
@@ -4811,7 +3506,8 @@ package nvim;
 		 - true: Client may continue pasting.
 		 - false: Client should cancel the paste.
 	**/
-	static function nvim_paste(data:String, crlf:Bool, phase:Float):Bool;
+	@:luaDotMethod
+	function nvim_paste(data:String, crlf:Bool, phase:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_put(lines: string[], type: string, after: boolean, follow: boolean)
@@ -4836,7 +3532,8 @@ package nvim;
 		
 		@*param* `follow` — If true place cursor at end of inserted text.
 	**/
-	static function nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
+	@:luaDotMethod
+	function nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_replace_termcodes(str: string, from_part: boolean, do_lt: boolean, special: boolean)
@@ -4860,36 +3557,11 @@ package nvim;
 		  * ~replace_termcodes~
 		  * ~cpoptions~
 	**/
-	static function nvim_replace_termcodes(str:String, from_part:Bool, do_lt:Bool, special:Bool):String;
-	/**
-		```lua
-		function vim.api.nvim_select_popupmenu_item(item: integer, insert: boolean, finish: boolean, opts: vim.api.keyset.empty)
-		```
-		
-		---
-		
-		 Selects an item in the completion popup menu.
-		
-		 If neither `ins-completion` nor `cmdline-completion` popup menu is active
-		 this API call is silently ignored.
-		 Useful for an external UI using `ui-popupmenu` to control the popup menu with the mouse.
-		 Can also be used in a mapping; use [<Cmd>] `:map-cmd` or a Lua mapping to ensure the mapping
-		 doesn't end completion mode.
-		
-		@*param* `item` — Index (zero-based) of the item to select. Value of -1 selects nothing
-		
-		 and restores the original text.
-		
-		@*param* `insert` — For `ins-completion`, whether the selection should be inserted in the buffer.
-		
-		 Ignored for `cmdline-completion`.
-		
-		@*param* `finish` — Finish the completion and dismiss the popup menu. Implies {insert}.
-		
-		@*param* `opts` — Optional parameters. Reserved for future use.
-	**/
+	@:luaDotMethod
+	function nvim_replace_termcodes(str:String, from_part:Bool, do_lt:Bool, special:Bool):String;
 	@:native("nvim_select_popupmenu_item")
-	private static function __nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
+	@:luaDotMethod
+	private function __nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_select_popupmenu_item(item: integer, insert: boolean, finish: boolean, opts: vim.api.keyset.empty)
@@ -4917,7 +3589,8 @@ package nvim;
 		
 		@*param* `opts` — Optional parameters. Reserved for future use.
 	**/
-	inline static function nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
+	@:luaDotMethod
+	inline function nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_select_popupmenu_item(item, insert, finish, opts);
 		return result;
@@ -4933,7 +3606,8 @@ package nvim;
 		
 		@*param* `buffer` — Buffer id
 	**/
-	static function nvim_set_current_buf(buffer:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_set_current_buf(buffer:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_dir(dir: string)
@@ -4945,7 +3619,8 @@ package nvim;
 		
 		@*param* `dir` — Directory path
 	**/
-	static function nvim_set_current_dir(dir:String):Dynamic;
+	@:luaDotMethod
+	function nvim_set_current_dir(dir:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_line(line: string)
@@ -4957,7 +3632,8 @@ package nvim;
 		
 		@*param* `line` — Line contents
 	**/
-	static function nvim_set_current_line(line:String):Dynamic;
+	@:luaDotMethod
+	function nvim_set_current_line(line:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_tabpage(tabpage: integer)
@@ -4969,7 +3645,8 @@ package nvim;
 		
 		@*param* `tabpage` — `tab-ID` to focus
 	**/
-	static function nvim_set_current_tabpage(tabpage:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_set_current_tabpage(tabpage:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_win(window: integer)
@@ -4981,71 +3658,11 @@ package nvim;
 		
 		@*param* `window` — `window-ID` to focus
 	**/
-	static function nvim_set_current_win(window:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_decoration_provider(ns_id: integer, opts: vim.api.keyset.set_decoration_provider)
-		```
-		
-		---
-		
-		 Set or change decoration provider for a `namespace`
-		
-		 This is a very general purpose interface for having Lua callbacks
-		 being triggered during the redraw code.
-		
-		 The expected usage is to set `extmarks` for the currently
-		 redrawn buffer. `nvim_buf_set_extmark()` can be called to add marks
-		 on a per-window or per-lines basis. Use the `ephemeral` key to only
-		 use the mark for the current screen redraw (the callback will be called
-		 again for the next redraw).
-		
-		 Note: this function should not be called often. Rather, the callbacks
-		 themselves can be used to throttle unneeded callbacks. the `on_start`
-		 callback can return `false` to disable the provider until the next redraw.
-		 Similarly, return `false` in `on_win` will skip the `on_line` calls
-		 for that window (but any extmarks set in `on_win` will still be used).
-		 A plugin managing multiple sources of decoration should ideally only set
-		 one provider, and merge the sources internally. You can use multiple `ns_id`
-		 for the extmarks set/modified inside the callback anyway.
-		
-		 Note: doing anything other than setting extmarks is considered experimental.
-		 Doing things like changing options are not explicitly forbidden, but is
-		 likely to have unexpected consequences (such as 100% CPU consumption).
-		 Doing `vim.rpcnotify` should be OK, but `vim.rpcrequest` is quite dubious
-		 for the moment.
-		
-		 Note: It is not allowed to remove or update extmarks in `on_line` callbacks.
-		
-		@*param* `ns_id` — Namespace id from `nvim_create_namespace()`
-		
-		@*param* `opts` — Table of callbacks:
-		
-		 - on_start: called first on each screen redraw
-		   ```
-		     ["start", tick]
-		   ```
-		 - on_buf: called for each buffer being redrawn (once per edit,
-		   before window callbacks)
-		   ```
-		     ["buf", bufnr, tick]
-		   ```
-		 - on_win: called when starting to redraw a specific window.
-		   ```
-		     ["win", winid, bufnr, toprow, botrow]
-		   ```
-		 - on_line: called for each buffer line being redrawn.
-		     (The interaction with fold lines is subject to change)
-		   ```
-		     ["line", winid, bufnr, row]
-		   ```
-		 - on_end: called at the end of a redraw cycle
-		   ```
-		     ["end", tick]
-		   ```
-	**/
+	@:luaDotMethod
+	function nvim_set_current_win(window:Float):Dynamic;
 	@:native("nvim_set_decoration_provider")
-	private static function __nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
+	@:luaDotMethod
+	private function __nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_decoration_provider(ns_id: integer, opts: vim.api.keyset.set_decoration_provider)
@@ -5108,72 +3725,15 @@ package nvim;
 		     ["end", tick]
 		   ```
 	**/
-	inline static function nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
+	@:luaDotMethod
+	inline function nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_set_decoration_provider(ns_id, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.api.nvim_set_hl(ns_id: integer, name: string, val: vim.api.keyset.highlight)
-		```
-		
-		---
-		
-		 Sets a highlight group.
-		
-		 Note:
-		 Unlike the `:highlight` command which can update a highlight group,
-		 this function completely replaces the definition. For example:
-		 `nvim_set_hl(0, 'Visual', {})` will clear the highlight group
-		 'Visual'.
-		
-		 The fg and bg keys also accept the string values `"fg"` or `"bg"`
-		 which act as aliases to the corresponding foreground and background
-		 values of the Normal group. If the Normal group has not been defined,
-		 using these values results in an error.
-		
-		
-		 If `link` is used in combination with other attributes; only the
-		 `link` will take effect (see |:hi-link|).
-		
-		
-		@*param* `ns_id` — Namespace id for this highlight `nvim_create_namespace()`.
-		
-		 Use 0 to set a highlight group globally `:highlight`.
-		 Highlights from non-global namespaces are not active by default, use
-		 `nvim_set_hl_ns()` or `nvim_win_set_hl_ns()` to activate them.
-		
-		@*param* `name` — Highlight group name, e.g. "ErrorMsg"
-		
-		@*param* `val` — Highlight definition map, accepts the following keys:
-		
-		 - fg: color name or "#RRGGBB", see note.
-		 - bg: color name or "#RRGGBB", see note.
-		 - sp: color name or "#RRGGBB"
-		 - blend: integer between 0 and 100
-		 - bold: boolean
-		 - standout: boolean
-		 - underline: boolean
-		 - undercurl: boolean
-		 - underdouble: boolean
-		 - underdotted: boolean
-		 - underdashed: boolean
-		 - strikethrough: boolean
-		 - italic: boolean
-		 - reverse: boolean
-		 - nocombine: boolean
-		 - link: name of another highlight group to link to, see `:hi-link`.
-		 - default: Don't override existing definition `:hi-default`
-		 - ctermfg: Sets foreground of cterm color `ctermfg`
-		 - ctermbg: Sets background of cterm color `ctermbg`
-		 - cterm: cterm attribute map, like `highlight-args`. If not set,
-		          cterm attributes will match those from the attribute map
-		          documented above.
-		 - force: if true force update the highlight group when it exists.
-	**/
 	@:native("nvim_set_hl")
-	private static function __nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
+	@:luaDotMethod
+	private function __nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_hl(ns_id: integer, name: string, val: vim.api.keyset.highlight)
@@ -5233,7 +3793,8 @@ package nvim;
 		          documented above.
 		 - force: if true force update the highlight group when it exists.
 	**/
-	inline static function nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
+	@:luaDotMethod
+	inline function nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
 		val = nvim.helper.Arg.pure(val);
 		final result = __nvim_set_hl(ns_id, name, val);
 		return result;
@@ -5250,7 +3811,8 @@ package nvim;
 		
 		@*param* `ns_id` — the namespace to use
 	**/
-	static function nvim_set_hl_ns(ns_id:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_set_hl_ns(ns_id:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_hl_ns_fast(ns_id: integer)
@@ -5266,54 +3828,11 @@ package nvim;
 		
 		@*param* `ns_id` — the namespace to activate
 	**/
-	static function nvim_set_hl_ns_fast(ns_id:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_keymap(mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
-		```
-		
-		---
-		
-		 Sets a global `mapping` for the given mode.
-		
-		 To set a buffer-local mapping, use `nvim_buf_set_keymap()`.
-		
-		 Unlike `:map`, leading/trailing whitespace is accepted as part of the {lhs} or {rhs}.
-		 Empty {rhs} is [<Nop>]. `keycodes` are replaced as usual.
-		
-		 Example:
-		
-		 ```vim
-		 call nvim_set_keymap('n', ' <NL>', '', {'nowait': v:true})
-		 ```
-		
-		 is equivalent to:
-		
-		 ```vim
-		 nmap <nowait> <Space><NL> <Nop>
-		 ```
-		
-		@*param* `mode` — Mode short-name (map command prefix: "n", "i", "v", "x", …)
-		
-		 or "!" for `:map!`, or empty string for `:map`.
-		 "ia", "ca" or "!a" for abbreviation in Insert mode, Cmdline mode, or both, respectively
-		
-		@*param* `lhs` — Left-hand-side `{lhs}` of the mapping.
-		
-		@*param* `rhs` — Right-hand-side `{rhs}` of the mapping.
-		
-		@*param* `opts` — Optional parameters map: Accepts all `:map-arguments` as keys except [<buffer>],
-		
-		 values are booleans (default false). Also:
-		 - "noremap" disables `recursive_mapping`, like `:noremap`
-		 - "desc" human-readable description.
-		 - "callback" Lua function called in place of {rhs}.
-		 - "replace_keycodes" (boolean) When "expr" is true, replace keycodes in the
-		   resulting string (see `nvim_replace_termcodes()`). Returning nil from the Lua
-		   "callback" is equivalent to returning an empty string.
-	**/
+	@:luaDotMethod
+	function nvim_set_hl_ns_fast(ns_id:Float):Dynamic;
 	@:native("nvim_set_keymap")
-	private static function __nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
+	@:luaDotMethod
+	private function __nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_keymap(mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
@@ -5359,7 +3878,8 @@ package nvim;
 		   resulting string (see `nvim_replace_termcodes()`). Returning nil from the Lua
 		   "callback" is equivalent to returning an empty string.
 	**/
-	inline static function nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
+	@:luaDotMethod
+	inline function nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_set_keymap(mode, lhs, rhs, opts);
 		return result;
@@ -5369,34 +3889,12 @@ package nvim;
 		function vim.api.nvim_set_option(name: string, value: any)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_set_option(name:String, value:Any):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_set_option_value(name: string, value: any, opts: vim.api.keyset.option)
-		```
-		
-		---
-		
-		 Sets the value of an option. The behavior of this function matches that of
-		 `:set`: for global-local options, both the global and local value are set
-		 unless otherwise specified with {scope}.
-		
-		 Note the options {win} and {buf} cannot be used together.
-		
-		@*param* `name` — Option name
-		
-		@*param* `value` — New option value
-		
-		@*param* `opts` — Optional parameters
-		
-		 - scope: One of "global" or "local". Analogous to
-		 `:setglobal` and `:setlocal`, respectively.
-		 - win: `window-ID`. Used for setting window local option.
-		 - buf: Buffer number. Used for setting buffer local option.
-	**/
+	function nvim_set_option(name:String, value:Any):Dynamic;
 	@:native("nvim_set_option_value")
-	private static function __nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic;
+	@:luaDotMethod
+	private function __nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_option_value(name: string, value: any, opts: vim.api.keyset.option)
@@ -5421,7 +3919,8 @@ package nvim;
 		 - win: `window-ID`. Used for setting window local option.
 		 - buf: Buffer number. Used for setting buffer local option.
 	**/
-	inline static function nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic {
+	@:luaDotMethod
+	inline function nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_set_option_value(name, value, opts);
 		return result;
@@ -5439,7 +3938,8 @@ package nvim;
 		
 		@*param* `value` — Variable value
 	**/
-	static function nvim_set_var(name:String, value:Any):Dynamic;
+	@:luaDotMethod
+	function nvim_set_var(name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_vvar(name: string, value: any)
@@ -5453,7 +3953,8 @@ package nvim;
 		
 		@*param* `value` — Variable value
 	**/
-	static function nvim_set_vvar(name:String, value:Any):Dynamic;
+	@:luaDotMethod
+	function nvim_set_vvar(name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_strwidth(text: string)
@@ -5469,7 +3970,8 @@ package nvim;
 		
 		@*return* — Number of cells
 	**/
-	static function nvim_strwidth(text:String):Float;
+	@:luaDotMethod
+	function nvim_strwidth(text:String):Float;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_del_var(tabpage: integer, name: string)
@@ -5483,7 +3985,8 @@ package nvim;
 		
 		@*param* `name` — Variable name
 	**/
-	static function nvim_tabpage_del_var(tabpage:Float, name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_tabpage_del_var(tabpage:Float, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_number(tabpage: integer)
@@ -5498,7 +4001,8 @@ package nvim;
 		
 		@*return* — Tabpage number
 	**/
-	static function nvim_tabpage_get_number(tabpage:Float):Float;
+	@:luaDotMethod
+	function nvim_tabpage_get_number(tabpage:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_var(tabpage: integer, name: string)
@@ -5515,7 +4019,8 @@ package nvim;
 		
 		@*return* — Variable value
 	**/
-	static function nvim_tabpage_get_var(tabpage:Float, name:String):Any;
+	@:luaDotMethod
+	function nvim_tabpage_get_var(tabpage:Float, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_win(tabpage: integer)
@@ -5530,7 +4035,8 @@ package nvim;
 		
 		@*return* — |window-ID|
 	**/
-	static function nvim_tabpage_get_win(tabpage:Float):Float;
+	@:luaDotMethod
+	function nvim_tabpage_get_win(tabpage:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_is_valid(tabpage: integer)
@@ -5545,7 +4051,8 @@ package nvim;
 		
 		@*return* — true if the tabpage is valid, false otherwise
 	**/
-	static function nvim_tabpage_is_valid(tabpage:Float):Bool;
+	@:luaDotMethod
+	function nvim_tabpage_is_valid(tabpage:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_list_wins(tabpage: integer)
@@ -5560,7 +4067,8 @@ package nvim;
 		
 		@*return* — List of windows in `tabpage`
 	**/
-	static function nvim_tabpage_list_wins(tabpage:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_tabpage_list_wins(tabpage:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_var(tabpage: integer, name: string, value: any)
@@ -5576,7 +4084,8 @@ package nvim;
 		
 		@*param* `value` — Variable value
 	**/
-	static function nvim_tabpage_set_var(tabpage:Float, name:String, value:Any):Dynamic;
+	@:luaDotMethod
+	function nvim_tabpage_set_var(tabpage:Float, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_win(tabpage: integer, win: integer)
@@ -5590,7 +4099,8 @@ package nvim;
 		
 		@*param* `win` — `window-ID`, must already belong to {tabpage}
 	**/
-	static function nvim_tabpage_set_win(tabpage:Float, win:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_tabpage_set_win(tabpage:Float, win:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_call(window: integer, fun: function)
@@ -5614,7 +4124,8 @@ package nvim;
 		
 		See: [vim.api.nvim_buf_call](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#251#9)
 	**/
-	static function nvim_win_call(window:Float, fun:haxe.Constraints.Function):Any;
+	@:luaDotMethod
+	function nvim_win_call(window:Float, fun:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_close(window: integer, force: boolean)
@@ -5631,7 +4142,8 @@ package nvim;
 		 unwritten changes can be closed. The buffer will become
 		 hidden, even if 'hidden' is not set.
 	**/
-	static function nvim_win_close(window:Float, force:Bool):Dynamic;
+	@:luaDotMethod
+	function nvim_win_close(window:Float, force:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_del_var(window: integer, name: string)
@@ -5645,7 +4157,8 @@ package nvim;
 		
 		@*param* `name` — Variable name
 	**/
-	static function nvim_win_del_var(window:Float, name:String):Dynamic;
+	@:luaDotMethod
+	function nvim_win_del_var(window:Float, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_get_buf(window: integer)
@@ -5660,7 +4173,8 @@ package nvim;
 		
 		@*return* — Buffer id
 	**/
-	static function nvim_win_get_buf(window:Float):Float;
+	@:luaDotMethod
+	function nvim_win_get_buf(window:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_win_get_config(window: integer)
@@ -5679,7 +4193,8 @@ package nvim;
 		
 		@*return* — Map defining the window configuration, see |nvim_open_win()|
 	**/
-	static function nvim_win_get_config(window:Float):nvim.type.vim.api.keyset.WinConfig;
+	@:luaDotMethod
+	function nvim_win_get_config(window:Float):nvim.type.vim.api.keyset.WinConfig;
 	/**
 		```lua
 		function vim.api.nvim_win_get_cursor(window: integer)
@@ -5699,7 +4214,8 @@ package nvim;
 		
 		@*return* — (row, col) tuple
 	**/
-	static function nvim_win_get_cursor(window:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_win_get_cursor(window:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_win_get_height(window: integer)
@@ -5714,7 +4230,8 @@ package nvim;
 		
 		@*return* — Height as a count of rows
 	**/
-	static function nvim_win_get_height(window:Float):Float;
+	@:luaDotMethod
+	function nvim_win_get_height(window:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_win_get_number(window: integer)
@@ -5729,15 +4246,17 @@ package nvim;
 		
 		@*return* — Window number
 	**/
-	static function nvim_win_get_number(window:Float):Float;
+	@:luaDotMethod
+	function nvim_win_get_number(window:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_win_get_option(window: integer, name: string)
 		  -> any
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_win_get_option(window:Float, name:String):Any;
+	function nvim_win_get_option(window:Float, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_get_position(window: integer)
@@ -5752,7 +4271,8 @@ package nvim;
 		
 		@*return* — (row, col) tuple with the window position
 	**/
-	static function nvim_win_get_position(window:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function nvim_win_get_position(window:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function vim.api.nvim_win_get_tabpage(window: integer)
@@ -5767,7 +4287,8 @@ package nvim;
 		
 		@*return* — Tabpage that contains the window
 	**/
-	static function nvim_win_get_tabpage(window:Float):Float;
+	@:luaDotMethod
+	function nvim_win_get_tabpage(window:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_win_get_var(window: integer, name: string)
@@ -5784,7 +4305,8 @@ package nvim;
 		
 		@*return* — Variable value
 	**/
-	static function nvim_win_get_var(window:Float, name:String):Any;
+	@:luaDotMethod
+	function nvim_win_get_var(window:Float, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_get_width(window: integer)
@@ -5799,7 +4321,8 @@ package nvim;
 		
 		@*return* — Width as a count of columns
 	**/
-	static function nvim_win_get_width(window:Float):Float;
+	@:luaDotMethod
+	function nvim_win_get_width(window:Float):Float;
 	/**
 		```lua
 		function vim.api.nvim_win_hide(window: integer)
@@ -5816,7 +4339,8 @@ package nvim;
 		
 		@*param* `window` — `window-ID`, or 0 for current window
 	**/
-	static function nvim_win_hide(window:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_win_hide(window:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_is_valid(window: integer)
@@ -5831,7 +4355,8 @@ package nvim;
 		
 		@*return* — true if the window is valid, false otherwise
 	**/
-	static function nvim_win_is_valid(window:Float):Bool;
+	@:luaDotMethod
+	function nvim_win_is_valid(window:Float):Bool;
 	/**
 		```lua
 		function vim.api.nvim_win_set_buf(window: integer, buffer: integer)
@@ -5845,30 +4370,11 @@ package nvim;
 		
 		@*param* `buffer` — Buffer id
 	**/
-	static function nvim_win_set_buf(window:Float, buffer:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_win_set_config(window: integer, config: vim.api.keyset.win_config)
-		```
-		
-		---
-		
-		 Configures window layout. Cannot be used to move the last window in a
-		 tabpage to a different one.
-		
-		 When reconfiguring a window, absent option keys will not be changed.
-		 `row`/`col` and `relative` must be reconfigured together.
-		
-		
-		@*param* `window` — `window-ID`, or 0 for current window
-		
-		@*param* `config` — Map defining the window configuration,
-		
-		 see `nvim_open_win()`
-		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
-	**/
+	@:luaDotMethod
+	function nvim_win_set_buf(window:Float, buffer:Float):Dynamic;
 	@:native("nvim_win_set_config")
-	private static function __nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
+	@:luaDotMethod
+	private function __nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_config(window: integer, config: vim.api.keyset.win_config)
@@ -5890,7 +4396,8 @@ package nvim;
 		 see `nvim_open_win()`
 		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
 	**/
-	inline static function nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
+	@:luaDotMethod
+	inline function nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
 		config = nvim.helper.Arg.pure(config);
 		final result = __nvim_win_set_config(window, config);
 		return result;
@@ -5909,7 +4416,8 @@ package nvim;
 		
 		@*param* `pos` — (row, col) tuple representing the new position
 	**/
-	static function nvim_win_set_cursor(window:Float, pos:lua.Table<Int, Float>):Dynamic;
+	@:luaDotMethod
+	function nvim_win_set_cursor(window:Float, pos:lua.Table<Int, Float>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_height(window: integer, height: integer)
@@ -5923,7 +4431,8 @@ package nvim;
 		
 		@*param* `height` — Height as a count of rows
 	**/
-	static function nvim_win_set_height(window:Float, height:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_win_set_height(window:Float, height:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_hl_ns(window: integer, ns_id: integer)
@@ -5939,14 +4448,16 @@ package nvim;
 		
 		@*param* `ns_id` — the namespace to use
 	**/
-	static function nvim_win_set_hl_ns(window:Float, ns_id:Float):Dynamic;
+	@:luaDotMethod
+	function nvim_win_set_hl_ns(window:Float, ns_id:Float):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_option(window: integer, name: string, value: any)
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function nvim_win_set_option(window:Float, name:String, value:Any):Dynamic;
+	function nvim_win_set_option(window:Float, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_var(window: integer, name: string, value: any)
@@ -5962,7 +4473,8 @@ package nvim;
 		
 		@*param* `value` — Variable value
 	**/
-	static function nvim_win_set_var(window:Float, name:String, value:Any):Dynamic;
+	@:luaDotMethod
+	function nvim_win_set_var(window:Float, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_width(window: integer, width: integer)
@@ -5977,50 +4489,11 @@ package nvim;
 		
 		@*param* `width` — Width as a count of columns
 	**/
-	static function nvim_win_set_width(window:Float, width:Float):Dynamic;
-	/**
-		```lua
-		function vim.api.nvim_win_text_height(window: integer, opts: vim.api.keyset.win_text_height)
-		  -> table<string, any>
-		```
-		
-		---
-		
-		 Computes the number of screen lines occupied by a range of text in a given window.
-		 Works for off-screen text and takes folds into account.
-		
-		 Diff filler or virtual lines above a line are counted as a part of that line,
-		 unless the line is on "start_row" and "start_vcol" is specified.
-		
-		 Diff filler or virtual lines below the last buffer line are counted in the result
-		 when "end_row" is omitted.
-		
-		 Line indexing is similar to `nvim_buf_get_text()`.
-		
-		 @see `:help virtcol()` for text width.
-		
-		@*param* `window` — `window-ID`, or 0 for current window.
-		
-		@*param* `opts` — Optional parameters:
-		
-		 - start_row: Starting line index, 0-based inclusive.
-		              When omitted start at the very top.
-		 - end_row: Ending line index, 0-based inclusive.
-		            When omitted end at the very bottom.
-		 - start_vcol: Starting virtual column index on "start_row",
-		               0-based inclusive, rounded down to full screen lines.
-		               When omitted include the whole line.
-		 - end_vcol: Ending virtual column index on "end_row",
-		             0-based exclusive, rounded up to full screen lines.
-		             When omitted include the whole line.
-		
-		@*return* — Dict containing text height information, with these keys:
-		
-		 - all: The total number of screen lines occupied by the range.
-		 - fill: The number of diff filler or virtual lines among them.
-	**/
+	@:luaDotMethod
+	function nvim_win_set_width(window:Float, width:Float):Dynamic;
 	@:native("nvim_win_text_height")
-	private static function __nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
+	@:luaDotMethod
+	private function __nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_win_text_height(window: integer, opts: vim.api.keyset.win_text_height)
@@ -6062,7 +4535,8 @@ package nvim;
 		 - all: The total number of screen lines occupied by the range.
 		 - fill: The number of diff filler or virtual lines among them.
 	**/
-	inline static function nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
+	@:luaDotMethod
+	inline function nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __nvim_win_text_height(window, opts);
 		return result;
@@ -6074,7 +4548,7 @@ package nvim;
 	(global) vim.base64: unknown
 	```
 **/
-@:native("vim.base64") extern class Base64 {
+extern class Base64 {
 	/**
 		```lua
 		function vim.base64.decode(str: string)
@@ -6089,7 +4563,8 @@ package nvim;
 		
 		@*return* — : Decoded string
 	**/
-	static function decode(str:String):String;
+	@:luaDotMethod
+	function decode(str:String):String;
 	/**
 		```lua
 		function vim.base64.encode(str: string)
@@ -6104,7 +4579,8 @@ package nvim;
 		
 		@*return* — : Encoded string
 	**/
-	static function encode(str:String):String;
+	@:luaDotMethod
+	function encode(str:String):String;
 }
 
 /**
@@ -6125,7 +4601,7 @@ package nvim;
 	 print(vim.env.TERM)
 	 ```
 **/
-@:native("vim.env") extern class Env {
+extern class Env {
 
 }
 
@@ -6138,43 +4614,43 @@ package nvim;
 	
 	 vim.fn.{func}(...)
 **/
-@:native("vim.fn") extern class Fn {
+extern class Fn {
 	/**
 		```lua
 		(global) table.GetLuaIndent: unknown
 		```
 	**/
-	static var GetLuaIndent : Dynamic;
+	var GetLuaIndent : Dynamic;
 	/**
 		```lua
 		(global) table.GetLuaIndentIntern: unknown
 		```
 	**/
-	static var GetLuaIndentIntern : Dynamic;
+	var GetLuaIndentIntern : Dynamic;
 	/**
 		```lua
 		(global) table.MatchDisable: unknown
 		```
 	**/
-	static var MatchDisable : Dynamic;
+	var MatchDisable : Dynamic;
 	/**
 		```lua
 		(global) table.MatchEnable: unknown
 		```
 	**/
-	static var MatchEnable : Dynamic;
+	var MatchEnable : Dynamic;
 	/**
 		```lua
 		(global) table.NetUserPass: unknown
 		```
 	**/
-	static var NetUserPass : Dynamic;
+	var NetUserPass : Dynamic;
 	/**
 		```lua
 		(global) table.NetrwStatusLine: unknown
 		```
 	**/
-	static var NetrwStatusLine : Dynamic;
+	var NetrwStatusLine : Dynamic;
 	/**
 		```lua
 		function table.abs(expr: number)
@@ -6195,7 +4671,8 @@ package nvim;
 		   echo abs(-4)
 		 <  4
 	**/
-	static function abs(expr:Float):Float;
+	@:luaDotMethod
+	function abs(expr:Float):Float;
 	/**
 		```lua
 		function table.acos(expr: number)
@@ -6216,7 +4693,8 @@ package nvim;
 		   echo acos(-0.5)
 		 <  2.094395
 	**/
-	static function acos(expr:Float):Float;
+	@:luaDotMethod
+	function acos(expr:Float):Float;
 	/**
 		```lua
 		function table.add(object: any, expr: any)
@@ -6237,7 +4715,8 @@ package nvim;
 		
 		@*return* — Resulting |List| or |Blob|, or 1 if {object} is not a |List| or a |Blob|.
 	**/
-	static function add(object:Any, expr:Any):Any;
+	@:luaDotMethod
+	function add(object:Any, expr:Any):Any;
 	/**
 		```lua
 		function (expr: number, expr1: number)
@@ -6254,7 +4733,8 @@ package nvim;
 		 <
 		
 	**/
-	static function and(expr:Float, expr1:Float):Float;
+	@:luaDotMethod
+	function and(expr:Float, expr1:Float):Float;
 	/**
 		```lua
 		function table.api_info()
@@ -6269,7 +4749,8 @@ package nvim;
 		        lua vim.print(vim.fn.api_info())
 		 <
 	**/
-	static function api_info():lua.Table.AnyTable;
+	@:luaDotMethod
+	function api_info():lua.Table.AnyTable;
 	/**
 		```lua
 		function table.append(lnum: string|integer, text: string|string[])
@@ -6299,7 +4780,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function append(lnum:haxe.extern.EitherType<Float, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	@:luaDotMethod
+	function append(lnum:haxe.extern.EitherType<Float, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
 	/**
 		```lua
 		function table.appendbufline(buf: string|integer, lnum: integer, text: string)
@@ -6335,7 +4817,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function appendbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:String):Float;
+	@:luaDotMethod
+	function appendbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:String):Float;
 	/**
 		```lua
 		function table.argc(winid?: integer)
@@ -6353,7 +4836,8 @@ package nvim;
 		 list is used: either the window number or the window ID.
 		 Returns -1 if the {winid} argument is invalid.
 	**/
-	static function argc(?winid:Float):Float;
+	@:luaDotMethod
+	function argc(?winid:Float):Float;
 	/**
 		```lua
 		function table.argidx()
@@ -6365,7 +4849,8 @@ package nvim;
 		 The result is the current index in the argument list.  0 is
 		 the first file.  argc() - 1 is the last one.  See |arglist|.
 	**/
-	static function argidx():Float;
+	@:luaDotMethod
+	function argidx():Float;
 	/**
 		```lua
 		function table.arglistid(winnr?: integer, tabnr?: integer)
@@ -6385,7 +4870,8 @@ package nvim;
 		 page.
 		 {winnr} can be the window number or the |window-ID|.
 	**/
-	static function arglistid(?winnr:Float, ?tabnr:Float):Float;
+	@:luaDotMethod
+	function arglistid(?winnr:Float, ?tabnr:Float):Float;
 	/**
 		```lua
 		function table.argv(nr?: integer, winid?: integer)
@@ -6412,7 +4898,8 @@ package nvim;
 		 the argument list.  Returns an empty List if the {winid}
 		 argument is invalid.
 	**/
-	static function argv(?nr:Float, ?winid:Float):haxe.extern.EitherType<String, lua.Table<Int, String>>;
+	@:luaDotMethod
+	function argv(?nr:Float, ?winid:Float):haxe.extern.EitherType<String, lua.Table<Int, String>>;
 	/**
 		```lua
 		function table.asin(expr: any)
@@ -6433,7 +4920,8 @@ package nvim;
 		   echo asin(-0.5)
 		 <  -0.523599
 	**/
-	static function asin(expr:Any):Float;
+	@:luaDotMethod
+	function asin(expr:Any):Float;
 	/**
 		```lua
 		function table.assert_beeps(cmd: string)
@@ -6454,7 +4942,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_beeps(cmd:String):Float;
+	@:luaDotMethod
+	function assert_beeps(cmd:String):Float;
 	/**
 		```lua
 		function table.assert_equal(expected: any, actual: any, msg?: any)
@@ -6486,7 +4975,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_equal(expected:Any, actual:Any, ?msg:Any):Float;
+	@:luaDotMethod
+	function assert_equal(expected:Any, actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_equalfile(fname_one: string, fname_two: string)
@@ -6508,7 +4998,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_equalfile(fname_one:String, fname_two:String):Float;
+	@:luaDotMethod
+	function assert_equalfile(fname_one:String, fname_two:String):Float;
 	/**
 		```lua
 		function table.assert_exception(error: any, msg?: any)
@@ -6537,7 +5028,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_exception(error:Any, ?msg:Any):Float;
+	@:luaDotMethod
+	function assert_exception(error:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_fails(cmd: string, error?: any, msg?: any, lnum?: integer, context?: any)
@@ -6586,7 +5078,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Float, ?context:Any):Float;
+	@:luaDotMethod
+	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Float, ?context:Any):Float;
 	/**
 		```lua
 		function table.assert_false(actual: any, msg?: any)
@@ -6612,7 +5105,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_false(actual:Any, ?msg:Any):Float;
+	@:luaDotMethod
+	function assert_false(actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_inrange(lower: number, upper: number, actual: number, msg?: string)
@@ -6635,7 +5129,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Float;
+	@:luaDotMethod
+	function assert_inrange(lower:Float, upper:Float, actual:Float, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_match(pattern: string, actual: string, msg?: string)
@@ -6670,7 +5165,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_match(pattern:String, actual:String, ?msg:String):Float;
+	@:luaDotMethod
+	function assert_match(pattern:String, actual:String, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_nobeep(cmd: string)
@@ -6690,7 +5186,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_nobeep(cmd:String):Float;
+	@:luaDotMethod
+	function assert_nobeep(cmd:String):Float;
 	/**
 		```lua
 		function table.assert_notequal(expected: any, actual: any, msg?: any)
@@ -6710,7 +5207,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_notequal(expected:Any, actual:Any, ?msg:Any):Float;
+	@:luaDotMethod
+	function assert_notequal(expected:Any, actual:Any, ?msg:Any):Float;
 	/**
 		```lua
 		function table.assert_notmatch(pattern: string, actual: string, msg?: string)
@@ -6730,7 +5228,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_notmatch(pattern:String, actual:String, ?msg:String):Float;
+	@:luaDotMethod
+	function assert_notmatch(pattern:String, actual:String, ?msg:String):Float;
 	/**
 		```lua
 		function table.assert_report(msg: string)
@@ -6749,7 +5248,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_report(msg:String):Float;
+	@:luaDotMethod
+	function assert_report(msg:String):Float;
 	/**
 		```lua
 		function table.assert_true(actual: any, msg?: string)
@@ -6773,7 +5273,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function assert_true(actual:Any, ?msg:String):Float;
+	@:luaDotMethod
+	function assert_true(actual:Any, ?msg:String):Float;
 	/**
 		```lua
 		function table.atan(expr: number)
@@ -6792,7 +5293,8 @@ package nvim;
 		   echo atan(-4.01)
 		 <  -1.326405
 	**/
-	static function atan(expr:Float):Float;
+	@:luaDotMethod
+	function atan(expr:Float):Float;
 	/**
 		```lua
 		function table.atan2(expr1: number, expr2: number)
@@ -6812,7 +5314,8 @@ package nvim;
 		   echo atan2(1, -1)
 		 <  2.356194
 	**/
-	static function atan2(expr1:Float, expr2:Float):Float;
+	@:luaDotMethod
+	function atan2(expr1:Float, expr2:Float):Float;
 	/**
 		```lua
 		function table.blob2list(blob: any)
@@ -6828,7 +5331,8 @@ package nvim;
 		 <Returns an empty List on error.  |list2blob()| does the
 		 opposite.
 	**/
-	static function blob2list(blob:Any):lua.Table<Int, Any>;
+	@:luaDotMethod
+	function blob2list(blob:Any):lua.Table<Int, Any>;
 	/**
 		```lua
 		function table.browse(save: any, title: string, initdir: string, default: string)
@@ -6854,7 +5358,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function browse(save:Any, title:String, initdir:String, default_:String):Float;
+	@:luaDotMethod
+	function browse(save:Any, title:String, initdir:String, default_:String):Float;
 	/**
 		```lua
 		function table.browsedir(title: string, initdir: string)
@@ -6881,7 +5386,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function browsedir(title:String, initdir:String):Float;
+	@:luaDotMethod
+	function browsedir(title:String, initdir:String):Float;
 	/**
 		```lua
 		function table.bufadd(name: string)
@@ -6903,7 +5409,8 @@ package nvim;
 		   call setbufline(bufnr, 1, ['some', 'text'])
 		 <Returns 0 on error.
 	**/
-	static function bufadd(name:String):Float;
+	@:luaDotMethod
+	function bufadd(name:String):Float;
 	/**
 		```lua
 		function table.bufexists(buf: any)
@@ -6940,7 +5447,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function bufexists(buf:Any):Float;
+	@:luaDotMethod
+	function bufexists(buf:Any):Float;
 	/**
 		```lua
 		function table.buffer_exists(...any)
@@ -6958,8 +5466,9 @@ package nvim;
 		    | 1
 		```
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function buffer_exists(___:haxe.Rest<Any>):Float;
+	function buffer_exists(___:haxe.Rest<Any>):Float;
 	/**
 		```lua
 		function table.buffer_name(...any)
@@ -6970,8 +5479,9 @@ package nvim;
 		
 		 Obsolete name for |bufname()|.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function buffer_name(___:haxe.Rest<Any>):String;
+	function buffer_name(___:haxe.Rest<Any>):String;
 	/**
 		```lua
 		function table.buffer_number(...any)
@@ -6982,8 +5492,9 @@ package nvim;
 		
 		 Obsolete name for |bufnr()|.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function buffer_number(___:haxe.Rest<Any>):Float;
+	function buffer_number(___:haxe.Rest<Any>):Float;
 	/**
 		```lua
 		function table.buflisted(buf: any)
@@ -7003,7 +5514,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function buflisted(buf:Any):Float;
+	@:luaDotMethod
+	function buflisted(buf:Any):Float;
 	/**
 		```lua
 		function table.bufload(buf: any)
@@ -7020,7 +5532,8 @@ package nvim;
 		 there will be no dialog, the buffer will be loaded anyway.
 		 The {buf} argument is used like with |bufexists()|.
 	**/
-	static function bufload(buf:Any):Dynamic;
+	@:luaDotMethod
+	function bufload(buf:Any):Dynamic;
 	/**
 		```lua
 		function table.bufloaded(buf: any)
@@ -7040,7 +5553,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function bufloaded(buf:Any):Float;
+	@:luaDotMethod
+	function bufloaded(buf:Any):Float;
 	/**
 		```lua
 		function table.bufname(buf?: string|integer)
@@ -7079,7 +5593,8 @@ package nvim;
 		   echo bufname("file2")  " name of buffer where "file2" matches.
 		 <
 	**/
-	static function bufname(?buf:haxe.extern.EitherType<Float, String>):String;
+	@:luaDotMethod
+	function bufname(?buf:haxe.extern.EitherType<Float, String>):String;
 	/**
 		```lua
 		function table.bufnr(buf?: string|integer, create?: any)
@@ -7101,7 +5616,8 @@ package nvim;
 		 number necessarily exist, because ":bwipeout" may have removed
 		 them.  Use bufexists() to test for the existence of a buffer.
 	**/
-	static function bufnr(?buf:haxe.extern.EitherType<Float, String>, ?create:Any):Float;
+	@:luaDotMethod
+	function bufnr(?buf:haxe.extern.EitherType<Float, String>, ?create:Any):Float;
 	/**
 		```lua
 		function table.bufwinid(buf: any)
@@ -7120,7 +5636,8 @@ package nvim;
 		 Only deals with the current tab page.  See |win_findbuf()| for
 		 finding more.
 	**/
-	static function bufwinid(buf:Any):Float;
+	@:luaDotMethod
+	function bufwinid(buf:Any):Float;
 	/**
 		```lua
 		function table.bufwinnr(buf: any)
@@ -7139,7 +5656,8 @@ package nvim;
 		 <The number can be used with |CTRL-W_w| and ":wincmd w"
 		 |:wincmd|.
 	**/
-	static function bufwinnr(buf:Any):Float;
+	@:luaDotMethod
+	function bufwinnr(buf:Any):Float;
 	/**
 		```lua
 		function table.byte2line(byte: any)
@@ -7157,7 +5675,8 @@ package nvim;
 		
 		 Returns -1 if the {byte} value is invalid.
 	**/
-	static function byte2line(byte:Any):Float;
+	@:luaDotMethod
+	function byte2line(byte:Any):Float;
 	/**
 		```lua
 		function table.byteidx(expr: any, nr: integer, utf16?: any)
@@ -7201,7 +5720,8 @@ package nvim;
 		   echo byteidx('a😊😊', 3, 1)  " returns 5
 		 <
 	**/
-	static function byteidx(expr:Any, nr:Float, ?utf16:Any):Float;
+	@:luaDotMethod
+	function byteidx(expr:Any, nr:Float, ?utf16:Any):Float;
 	/**
 		```lua
 		function table.byteidxcomp(expr: any, nr: integer, utf16?: any)
@@ -7220,7 +5740,8 @@ package nvim;
 		 character is 3 bytes), the second echo results in 1 ('e' is
 		 one byte).
 	**/
-	static function byteidxcomp(expr:Any, nr:Float, ?utf16:Any):Float;
+	@:luaDotMethod
+	function byteidxcomp(expr:Any, nr:Float, ?utf16:Any):Float;
 	/**
 		```lua
 		function table.call(func: any, arglist: any, dict?: any)
@@ -7237,7 +5758,8 @@ package nvim;
 		 {dict} is for functions with the "dict" attribute.  It will be
 		 used to set the local variable "self". |Dictionary-function|
 	**/
-	static function call(func:Any, arglist:Any, ?dict:Any):Any;
+	@:luaDotMethod
+	function call(func:Any, arglist:Any, ?dict:Any):Any;
 	/**
 		```lua
 		function table.ceil(expr: number)
@@ -7259,7 +5781,8 @@ package nvim;
 		
 		 Returns 0.0 if {expr} is not a |Float| or a |Number|.
 	**/
-	static function ceil(expr:Float):Float;
+	@:luaDotMethod
+	function ceil(expr:Float):Float;
 	/**
 		```lua
 		function table.chanclose(id: integer, stream?: string)
@@ -7284,7 +5807,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function chanclose(id:Float, ?stream:String):Float;
+	@:luaDotMethod
+	function chanclose(id:Float, ?stream:String):Float;
 	/**
 		```lua
 		function table.changenr()
@@ -7301,7 +5825,8 @@ package nvim;
 		 one less than the number of the undone change.
 		 Returns 0 if the undo list is empty.
 	**/
-	static function changenr():Float;
+	@:luaDotMethod
+	function changenr():Float;
 	/**
 		```lua
 		function table.chansend(id: number, data: string|string[])
@@ -7334,7 +5859,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function chansend(id:Float, data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	@:luaDotMethod
+	function chansend(id:Float, data:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
 	/**
 		```lua
 		function table.char2nr(string: string, utf8?: any)
@@ -7364,7 +5890,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function char2nr(string:String, ?utf8:Any):Float;
+	@:luaDotMethod
+	function char2nr(string:String, ?utf8:Any):Float;
 	/**
 		```lua
 		function table.charclass(string: string)
@@ -7393,7 +5920,8 @@ package nvim;
 		    | 'other'
 		```
 	**/
-	static function charclass(string:String):haxe.extern.EitherType<Float, String>;
+	@:luaDotMethod
+	function charclass(string:String):haxe.extern.EitherType<Float, String>;
 	/**
 		```lua
 		function table.charcol(expr: string|any[], winid?: integer)
@@ -7411,7 +5939,8 @@ package nvim;
 		   echo col('.')    " returns 7
 		 <
 	**/
-	static function charcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
+	@:luaDotMethod
+	function charcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
 	/**
 		```lua
 		function table.charidx(string: string, idx: integer, countcc?: boolean, utf16?: boolean)
@@ -7453,7 +5982,8 @@ package nvim;
 		   echo charidx('a😊😊', 4, 0, 1)  " returns 2
 		 <
 	**/
-	static function charidx(string:String, idx:Float, ?countcc:Bool, ?utf16:Bool):Float;
+	@:luaDotMethod
+	function charidx(string:String, idx:Float, ?countcc:Bool, ?utf16:Bool):Float;
 	/**
 		```lua
 		function table.chdir(dir: string)
@@ -7484,7 +6014,8 @@ package nvim;
 		   endif
 		 <
 	**/
-	static function chdir(dir:String):String;
+	@:luaDotMethod
+	function chdir(dir:String):String;
 	/**
 		```lua
 		function table.cindent(lnum: string|integer)
@@ -7501,7 +6032,8 @@ package nvim;
 		
 		 To get or set indent of lines in a string, see |vim.text.indent()|.
 	**/
-	static function cindent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function cindent(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.clearmatches(win?: integer)
@@ -7514,7 +6046,8 @@ package nvim;
 		 If {win} is specified, use the window with this number or
 		 window ID instead of the current window.
 	**/
-	static function clearmatches(?win:Float):Dynamic;
+	@:luaDotMethod
+	function clearmatches(?win:Float):Dynamic;
 	/**
 		```lua
 		function table.col(expr: string|any[], winid?: integer)
@@ -7561,7 +6094,8 @@ package nvim;
 		   imap <F2> <Cmd>echo col(".").."\n"<CR>
 		 <
 	**/
-	static function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
+	@:luaDotMethod
+	function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
 	/**
 		```lua
 		function table.complete(startcol: integer, matches: any[])
@@ -7598,7 +6132,8 @@ package nvim;
 		 <This isn't very useful, but it shows how it works.  Note that
 		 an empty string is returned to avoid a zero being inserted.
 	**/
-	static function complete(startcol:Float, matches:lua.Table<Int, Any>):Dynamic;
+	@:luaDotMethod
+	function complete(startcol:Float, matches:lua.Table<Int, Any>):Dynamic;
 	/**
 		```lua
 		function table.complete_add(expr: any)
@@ -7623,7 +6158,8 @@ package nvim;
 		    | 2
 		```
 	**/
-	static function complete_add(expr:Any):Float;
+	@:luaDotMethod
+	function complete_add(expr:Any):Float;
 	/**
 		```lua
 		function table.complete_check()
@@ -7646,7 +6182,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function complete_check():Float;
+	@:luaDotMethod
+	function complete_check():Float;
 	/**
 		```lua
 		function table.complete_info(what?: any[])
@@ -7721,7 +6258,8 @@ package nvim;
 		   call complete_info(['mode', 'pum_visible'])
 		 <
 	**/
-	static function complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
+	@:luaDotMethod
+	function complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
 	/**
 		```lua
 		function table.confirm(msg: string, choices?: string, default?: integer, type?: string)
@@ -7781,7 +6319,8 @@ package nvim;
 		 don't fit, a vertical layout is used anyway.  For some systems
 		 the horizontal layout is always used.
 	**/
-	static function confirm(msg:String, ?choices:String, ?default_:Float, ?type:String):Float;
+	@:luaDotMethod
+	function confirm(msg:String, ?choices:String, ?default_:Float, ?type:String):Float;
 	/**
 		```lua
 		function table.copy(expr: <T>)
@@ -7799,7 +6338,8 @@ package nvim;
 		 A |Dictionary| is copied in a similar way as a |List|.
 		 Also see |deepcopy()|.
 	**/
-	static function copy<T>(expr:T):T;
+	@:luaDotMethod
+	function copy<T>(expr:T):T;
 	/**
 		```lua
 		function table.cos(expr: number)
@@ -7817,7 +6357,8 @@ package nvim;
 		   echo cos(-4.01)
 		 <  -0.646043
 	**/
-	static function cos(expr:Float):Float;
+	@:luaDotMethod
+	function cos(expr:Float):Float;
 	/**
 		```lua
 		function table.cosh(expr: number)
@@ -7836,7 +6377,8 @@ package nvim;
 		   echo cosh(-0.5)
 		 <  -1.127626
 	**/
-	static function cosh(expr:Float):Float;
+	@:luaDotMethod
+	function cosh(expr:Float):Float;
 	/**
 		```lua
 		function table.count(comp: string|table|any[], expr: any, ic?: boolean, start?: integer)
@@ -7857,7 +6399,8 @@ package nvim;
 		 occurrences of {expr} is returned. Zero is returned when
 		 {expr} is an empty string.
 	**/
-	static function count(comp:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr:Any, ?ic:Bool, ?start:Float):Float;
+	@:luaDotMethod
+	function count(comp:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr:Any, ?ic:Bool, ?start:Float):Float;
 	/**
 		```lua
 		function table.ctxget(index?: integer)
@@ -7870,7 +6413,8 @@ package nvim;
 		 from the top of the |context-stack| (see |context-dict|).
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
-	static function ctxget(?index:Float):lua.Table.AnyTable;
+	@:luaDotMethod
+	function ctxget(?index:Float):lua.Table.AnyTable;
 	/**
 		```lua
 		function table.ctxpop()
@@ -7882,7 +6426,8 @@ package nvim;
 		 Pops and restores the |context| at the top of the
 		 |context-stack|.
 	**/
-	static function ctxpop():Any;
+	@:luaDotMethod
+	function ctxpop():Any;
 	/**
 		```lua
 		function table.ctxpush(types?: string[])
@@ -7897,22 +6442,11 @@ package nvim;
 		 which |context-types| to include in the pushed context.
 		 Otherwise, all context types are included.
 	**/
-	static function ctxpush(?types:lua.Table<Int, String>):Any;
-	/**
-		```lua
-		function table.ctxset(context: table, index?: integer)
-		  -> integer
-		```
-		
-		---
-		
-		 Sets the |context| at {index} from the top of the
-		 |context-stack| to that represented by {context}.
-		 {context} is a Dictionary with context data (|context-dict|).
-		 If {index} is not given, it is assumed to be 0 (i.e.: top).
-	**/
+	@:luaDotMethod
+	function ctxpush(?types:lua.Table<Int, String>):Any;
 	@:native("ctxset")
-	private static function __ctxset(context:lua.Table.AnyTable, ?index:Float):Float;
+	@:luaDotMethod
+	private function __ctxset(context:lua.Table.AnyTable, ?index:Float):Float;
 	/**
 		```lua
 		function table.ctxset(context: table, index?: integer)
@@ -7926,7 +6460,8 @@ package nvim;
 		 {context} is a Dictionary with context data (|context-dict|).
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
-	inline static function ctxset(context:lua.Table.AnyTable, ?index:Float):Float {
+	@:luaDotMethod
+	inline function ctxset(context:lua.Table.AnyTable, ?index:Float):Float {
 		context = nvim.helper.Arg.pure(context);
 		final result = __ctxset(context, index);
 		return result;
@@ -7941,7 +6476,8 @@ package nvim;
 		
 		 Returns the size of the |context-stack|.
 	**/
-	static function ctxsize():Any;
+	@:luaDotMethod
+	function ctxsize():Any;
 	/**
 		```lua
 		function table.cursor(lnum: string|integer, col?: integer, off?: integer)
@@ -7988,7 +6524,8 @@ package nvim;
 		 position within a <Tab> or after the last character.
 		 Returns 0 when the position could be set, -1 otherwise.
 	**/
-	static function cursor(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
+	@:luaDotMethod
+	function cursor(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
 	/**
 		```lua
 		function table.debugbreak(pid: integer)
@@ -8005,7 +6542,8 @@ package nvim;
 		 Returns |TRUE| if successfully interrupted the program.
 		 Otherwise returns |FALSE|.
 	**/
-	static function debugbreak(pid:Float):Any;
+	@:luaDotMethod
+	function debugbreak(pid:Float):Any;
 	/**
 		```lua
 		function table.deepcopy(expr: <T>, noref?: boolean)
@@ -8033,7 +6571,8 @@ package nvim;
 		 {noref} set to 1 will fail.
 		 Also see |copy()|.
 	**/
-	static function deepcopy<T>(expr:T, ?noref:Bool):T;
+	@:luaDotMethod
+	function deepcopy<T>(expr:T, ?noref:Bool):T;
 	/**
 		```lua
 		function table.delete(fname: string, flags?: string)
@@ -8060,7 +6599,8 @@ package nvim;
 		 operation was successful and -1/true when the deletion failed
 		 or partly failed.
 	**/
-	static function delete(fname:String, ?flags:String):Float;
+	@:luaDotMethod
+	function delete(fname:String, ?flags:String):Float;
 	/**
 		```lua
 		function table.deletebufline(buf: string|integer, first: string|integer, last?: string|integer)
@@ -8082,56 +6622,11 @@ package nvim;
 		 when using |line()| this refers to the current buffer. Use "$"
 		 to refer to the last line in buffer {buf}.
 	**/
-	static function deletebufline(buf:haxe.extern.EitherType<Float, String>, first:haxe.extern.EitherType<Float, String>, ?last:haxe.extern.EitherType<Float, String>):Any;
-	/**
-		```lua
-		function table.dictwatcheradd(dict: table, pattern: string, callback: function)
-		  -> any
-		```
-		
-		---
-		
-		 Adds a watcher to a dictionary. A dictionary watcher is
-		 identified by three components:
-		
-		 - A dictionary({dict});
-		 - A key pattern({pattern}).
-		 - A function({callback}).
-		
-		 After this is called, every change on {dict} and on keys
-		 matching {pattern} will result in {callback} being invoked.
-		
-		 For example, to watch all global variables: >vim
-		   silent! call dictwatcherdel(g:, '*', 'OnDictChanged')
-		   function! OnDictChanged(d,k,z)
-		     echomsg string(a:k) string(a:z)
-		   endfunction
-		   call dictwatcheradd(g:, '*', 'OnDictChanged')
-		 <
-		 For now {pattern} only accepts very simple patterns that can
-		 contain a "*" at the end of the string, in which case it will
-		 match every key that begins with the substring before the "*".
-		 That means if "*" is not the last character of {pattern}, only
-		 keys that are exactly equal as {pattern} will be matched.
-		
-		 The {callback} receives three arguments:
-		
-		 - The dictionary being watched.
-		 - The key which changed.
-		 - A dictionary containing the new and old values for the key.
-		
-		 The type of change can be determined by examining the keys
-		 present on the third argument:
-		
-		 - If contains both `old` and `new`, the key was updated.
-		 - If it contains only `new`, the key was added.
-		 - If it contains only `old`, the key was deleted.
-		
-		 This function can be used by plugins to implement options with
-		 validation and parsing logic.
-	**/
+	@:luaDotMethod
+	function deletebufline(buf:haxe.extern.EitherType<Float, String>, first:haxe.extern.EitherType<Float, String>, ?last:haxe.extern.EitherType<Float, String>):Any;
 	@:native("dictwatcheradd")
-	private static function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
+	@:luaDotMethod
+	private function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function table.dictwatcheradd(dict: table, pattern: string, callback: function)
@@ -8179,7 +6674,8 @@ package nvim;
 		 This function can be used by plugins to implement options with
 		 validation and parsing logic.
 	**/
-	inline static function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
+	@:luaDotMethod
+	inline function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __dictwatcheradd(dict, pattern, callback);
 		return result;
@@ -8196,7 +6692,8 @@ package nvim;
 		 arguments must match the ones passed to |dictwatcheradd()| in
 		 order for the watcher to be successfully deleted.
 	**/
-	static function dictwatcherdel(dict:Any, pattern:String, callback:haxe.Constraints.Function):Any;
+	@:luaDotMethod
+	function dictwatcherdel(dict:Any, pattern:String, callback:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function table.did_filetype()
@@ -8216,7 +6713,8 @@ package nvim;
 		 editing another buffer to set 'filetype' and load a syntax
 		 file.
 	**/
-	static function did_filetype():Float;
+	@:luaDotMethod
+	function did_filetype():Float;
 	/**
 		```lua
 		function table.diff_filler(lnum: string|integer)
@@ -8233,7 +6731,8 @@ package nvim;
 		 line, "'m" mark m, etc.
 		 Returns 0 if the current window is not in diff mode.
 	**/
-	static function diff_filler(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function diff_filler(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.diff_hlID(lnum: string|integer, col: integer)
@@ -8252,7 +6751,8 @@ package nvim;
 		 The highlight ID can be used with |synIDattr()| to obtain
 		 syntax information about the highlighting.
 	**/
-	static function diff_hlID(lnum:haxe.extern.EitherType<Float, String>, col:Float):Any;
+	@:luaDotMethod
+	function diff_hlID(lnum:haxe.extern.EitherType<Float, String>, col:Float):Any;
 	/**
 		```lua
 		function table.digraph_get(chars: string)
@@ -8277,7 +6777,8 @@ package nvim;
 		 echo digraph_get('aa')    " Returns 'あ'
 		 <
 	**/
-	static function digraph_get(chars:String):String;
+	@:luaDotMethod
+	function digraph_get(chars:String):String;
 	/**
 		```lua
 		function table.digraph_getlist(listall?: boolean)
@@ -8300,7 +6801,8 @@ package nvim;
 		 echo digraph_getlist(1)
 		 <
 	**/
-	static function digraph_getlist(?listall:Bool):lua.Table<Int, lua.Table<Int, String>>;
+	@:luaDotMethod
+	function digraph_getlist(?listall:Bool):lua.Table<Int, lua.Table<Int, String>>;
 	/**
 		```lua
 		function table.digraph_set(chars: string, digraph: string)
@@ -8326,31 +6828,11 @@ package nvim;
 		   call digraph_set('  ', 'あ')
 		 <
 	**/
-	static function digraph_set(chars:String, digraph:String):Any;
-	/**
-		```lua
-		function table.digraph_setlist(digraphlist: table<integer, string[]>)
-		  -> any
-		```
-		
-		---
-		
-		 Similar to |digraph_set()| but this function can add multiple
-		 digraphs at once.  {digraphlist} is a list composed of lists,
-		 where each list contains two strings with {chars} and
-		 {digraph} as in |digraph_set()|. *E1216*
-		 Example: >vim
-		     call digraph_setlist([['aa', 'あ'], ['ii', 'い']])
-		 <
-		 It is similar to the following: >vim
-		     for [chars, digraph] in [['aa', 'あ'], ['ii', 'い']]
-		     call digraph_set(chars, digraph)
-		     endfor
-		 <Except that the function returns after the first error,
-		 following digraphs will not be added.
-	**/
+	@:luaDotMethod
+	function digraph_set(chars:String, digraph:String):Any;
 	@:native("digraph_setlist")
-	private static function __digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any;
+	@:luaDotMethod
+	private function __digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any;
 	/**
 		```lua
 		function table.digraph_setlist(digraphlist: table<integer, string[]>)
@@ -8373,7 +6855,8 @@ package nvim;
 		 <Except that the function returns after the first error,
 		 following digraphs will not be added.
 	**/
-	inline static function digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any {
+	@:luaDotMethod
+	inline function digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any {
 		digraphlist = nvim.helper.Arg.pure(digraphlist);
 		final result = __digraph_setlist(digraphlist);
 		return result;
@@ -8394,7 +6877,8 @@ package nvim;
 		 - |v:false| and |v:null| are empty, |v:true| is not.
 		 - A |Blob| is empty when its length is zero.
 	**/
-	static function empty(expr:Any):Float;
+	@:luaDotMethod
+	function empty(expr:Any):Float;
 	/**
 		```lua
 		function table.environ()
@@ -8411,7 +6895,8 @@ package nvim;
 		   echo index(keys(environ()), 'HOME', 0, 1) != -1
 		 <
 	**/
-	static function environ():Any;
+	@:luaDotMethod
+	function environ():Any;
 	/**
 		```lua
 		function table.escape(string: string, chars: string)
@@ -8427,7 +6912,8 @@ package nvim;
 		   c:\\program\ files\\vim
 		 <Also see |shellescape()| and |fnameescape()|.
 	**/
-	static function escape(string:String, chars:String):String;
+	@:luaDotMethod
+	function escape(string:String, chars:String):String;
 	/**
 		```lua
 		function table.eval(string: string)
@@ -8442,7 +6928,8 @@ package nvim;
 		 of them.  Also works for |Funcref|s that refer to existing
 		 functions.
 	**/
-	static function eval(string:String):Any;
+	@:luaDotMethod
+	function eval(string:String):Any;
 	/**
 		```lua
 		function table.eventhandler()
@@ -8456,7 +6943,8 @@ package nvim;
 		 e.g., when dropping a file on Vim.  This means interactive
 		 commands cannot be used.  Otherwise zero is returned.
 	**/
-	static function eventhandler():Any;
+	@:luaDotMethod
+	function eventhandler():Any;
 	/**
 		```lua
 		function table.executable(expr: string)
@@ -8500,7 +6988,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function executable(expr:String):Float;
+	@:luaDotMethod
+	function executable(expr:String):Float;
 	/**
 		```lua
 		function table.execute(command: string|string[], silent?: ''|'silent!'|'silent')
@@ -8544,7 +7033,8 @@ package nvim;
 		    | 'silent!'
 		```
 	**/
-	static function execute(command:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?silent:String):String;
+	@:luaDotMethod
+	function execute(command:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?silent:String):String;
 	/**
 		```lua
 		function table.exepath(expr: string)
@@ -8558,7 +7048,8 @@ package nvim;
 		 Returns empty string otherwise.
 		 If {expr} starts with "./" the |current-directory| is used.
 	**/
-	static function exepath(expr:String):String;
+	@:luaDotMethod
+	function exepath(expr:String):String;
 	/**
 		```lua
 		function table.exists(expr: string)
@@ -8662,7 +7153,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function exists(expr:String):Float;
+	@:luaDotMethod
+	function exists(expr:String):Float;
 	/**
 		```lua
 		function table.exp(expr: number)
@@ -8681,7 +7173,8 @@ package nvim;
 		   echo exp(-1)
 		 <  0.367879
 	**/
-	static function exp(expr:Float):Any;
+	@:luaDotMethod
+	function exp(expr:Float):Any;
 	/**
 		```lua
 		function table.expand(string: string, nosuf?: boolean, list?: false)
@@ -8801,40 +7294,11 @@ package nvim;
 		    | true
 		```
 	**/
-	static function expand(string:String, ?nosuf:Bool, ?list:Null<Bool>):String;
-	/**
-		```lua
-		function table.expandcmd(string: string, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Expand special items in String {string} like what is done for
-		 an Ex command such as `:edit`.  This expands special keywords,
-		 like with |expand()|, and environment variables, anywhere in
-		 {string}.  "~user" and "~/path" are only expanded at the
-		 start.
-		
-		 The following items are supported in the {options} Dict
-		 argument:
-		     errmsg  If set to TRUE, error messages are displayed
-		     if an error is encountered during expansion.
-		     By default, error messages are not displayed.
-		
-		 Returns the expanded string.  If an error is encountered
-		 during expansion, the unmodified {string} is returned.
-		
-		 Example: >vim
-		   echo expandcmd('make %<.o')
-		 < >
-		   make /path/runtime/doc/builtin.o
-		 < >vim
-		   echo expandcmd('make %<.o', {'errmsg': v:true})
-		 <
-	**/
+	@:luaDotMethod
+	function expand(string:String, ?nosuf:Bool, ?list:Null<Bool>):String;
 	@:native("expandcmd")
-	private static function __expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __expandcmd(string:String, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.expandcmd(string: string, options?: table)
@@ -8866,57 +7330,15 @@ package nvim;
 		   echo expandcmd('make %<.o', {'errmsg': v:true})
 		 <
 	**/
-	inline static function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
 		options = nvim.helper.Arg.pure(options);
 		final result = __expandcmd(string, options);
 		return result;
 	}
-	/**
-		```lua
-		function table.extend(expr1: table, expr2: table, expr3?: table)
-		  -> any
-		```
-		
-		---
-		
-		 {expr1} and {expr2} must be both |Lists| or both
-		 |Dictionaries|.
-		
-		 If they are |Lists|: Append {expr2} to {expr1}.
-		 If {expr3} is given insert the items of {expr2} before the
-		 item with index {expr3} in {expr1}.  When {expr3} is zero
-		 insert before the first item.  When {expr3} is equal to
-		 len({expr1}) then {expr2} is appended.
-		 Examples: >vim
-		   echo sort(extend(mylist, [7, 5]))
-		   call extend(mylist, [2, 3], 1)
-		 <When {expr1} is the same List as {expr2} then the number of
-		 items copied is equal to the original length of the List.
-		 E.g., when {expr3} is 1 you get N new copies of the first item
-		 (where N is the original length of the List).
-		 Use |add()| to concatenate one item to a list.  To concatenate
-		 two lists into a new list use the + operator: >vim
-		   let newlist = [1, 2, 3] + [4, 5]
-		 <
-		 If they are |Dictionaries|:
-		 Add all entries from {expr2} to {expr1}.
-		 If a key exists in both {expr1} and {expr2} then {expr3} is
-		 used to decide what to do:
-		 {expr3} = "keep": keep the value of {expr1}
-		 {expr3} = "force": use the value of {expr2}
-		 {expr3} = "error": give an error message    *E737*
-		 When {expr3} is omitted then "force" is assumed.
-		
-		 {expr1} is changed when {expr2} is not empty.  If necessary
-		 make a copy of {expr1} first or use |extendnew()| to return a
-		 new List/Dictionary.
-		 {expr2} remains unchanged.
-		 When {expr1} is locked and {expr2} is not empty the operation
-		 fails.
-		 Returns {expr1}.  Returns 0 on error.
-	**/
 	@:native("extend")
-	private static function __extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.extend(expr1: table, expr2: table, expr3?: table)
@@ -8961,27 +7383,17 @@ package nvim;
 		 fails.
 		 Returns {expr1}.  Returns 0 on error.
 	**/
-	inline static function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
 		expr1 = nvim.helper.Arg.pure(expr1);
 		expr2 = nvim.helper.Arg.pure(expr2);
 		expr3 = nvim.helper.Arg.pure(expr3);
 		final result = __extend(expr1, expr2, expr3);
 		return result;
 	}
-	/**
-		```lua
-		function table.extendnew(expr1: table, expr2: table, expr3?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Like |extend()| but instead of adding items to {expr1} a new
-		 List or Dictionary is created and returned.  {expr1} remains
-		 unchanged.
-	**/
 	@:native("extendnew")
-	private static function __extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.extendnew(expr1: table, expr2: table, expr3?: table)
@@ -8994,7 +7406,8 @@ package nvim;
 		 List or Dictionary is created and returned.  {expr1} remains
 		 unchanged.
 	**/
-	inline static function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
 		expr1 = nvim.helper.Arg.pure(expr1);
 		expr2 = nvim.helper.Arg.pure(expr2);
 		expr3 = nvim.helper.Arg.pure(expr3);
@@ -9054,7 +7467,8 @@ package nvim;
 		
 		 Return value is always 0.
 	**/
-	static function feedkeys(string:String, ?mode:String):Any;
+	@:luaDotMethod
+	function feedkeys(string:String, ?mode:String):Any;
 	/**
 		```lua
 		function table.file_readable(file: string)
@@ -9065,8 +7479,9 @@ package nvim;
 		
 		 Obsolete name for |filereadable()|.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function file_readable(file:String):Any;
+	function file_readable(file:String):Any;
 	/**
 		```lua
 		function table.filecopy(from: string, to: string)
@@ -9090,7 +7505,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function filecopy(from:String, to:String):Float;
+	@:luaDotMethod
+	function filecopy(from:String, to:String):Float;
 	/**
 		```lua
 		function table.filereadable(file: string)
@@ -9122,7 +7538,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function filereadable(file:String):Float;
+	@:luaDotMethod
+	function filereadable(file:String):Float;
 	/**
 		```lua
 		function table.filewritable(file: string)
@@ -9143,7 +7560,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function filewritable(file:String):Float;
+	@:luaDotMethod
+	function filewritable(file:String):Float;
 	/**
 		```lua
 		function table.filter(expr1: string|table, expr2: string|function)
@@ -9204,7 +7622,8 @@ package nvim;
 		 When {expr2} is a Funcref errors inside a function are ignored,
 		 unless it was defined with the "abort" flag.
 	**/
-	static function filter(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	@:luaDotMethod
+	function filter(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.finddir(name: string, path?: string, count?: integer)
@@ -9230,7 +7649,8 @@ package nvim;
 		
 		 This is quite similar to the ex-command `:find`.
 	**/
-	static function finddir(name:String, ?path:String, ?count:Float):Any;
+	@:luaDotMethod
+	function finddir(name:String, ?path:String, ?count:Float):Any;
 	/**
 		```lua
 		function table.findfile(name: string, path?: string, count?: any)
@@ -9246,7 +7666,8 @@ package nvim;
 		 <Searches from the directory of the current file upwards until
 		 it finds the file "tags.vim".
 	**/
-	static function findfile(name:String, ?path:String, ?count:Any):Any;
+	@:luaDotMethod
+	function findfile(name:String, ?path:String, ?count:Any):Any;
 	/**
 		```lua
 		function table.flatten(list: any[], maxdepth?: integer)
@@ -9279,7 +7700,8 @@ package nvim;
 		    | 0
 		```
 	**/
-	static function flatten(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	@:luaDotMethod
+	function flatten(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.flattennew(list: any[], maxdepth?: integer)
@@ -9296,7 +7718,8 @@ package nvim;
 		    | 0
 		```
 	**/
-	static function flattennew(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	@:luaDotMethod
+	function flattennew(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.float2nr(expr: number)
@@ -9326,7 +7749,8 @@ package nvim;
 		   echo float2nr(1.0e-100)
 		 <  0
 	**/
-	static function float2nr(expr:Float):Any;
+	@:luaDotMethod
+	function float2nr(expr:Float):Any;
 	/**
 		```lua
 		function table.floor(expr: number)
@@ -9347,7 +7771,8 @@ package nvim;
 		   echo floor(4.0)
 		 <  4.0
 	**/
-	static function floor(expr:Float):Any;
+	@:luaDotMethod
+	function floor(expr:Float):Any;
 	/**
 		```lua
 		function table.fmod(expr1: number, expr2: number)
@@ -9371,7 +7796,8 @@ package nvim;
 		   echo fmod(-12.33, 1.22)
 		 <  -0.13
 	**/
-	static function fmod(expr1:Float, expr2:Float):Any;
+	@:luaDotMethod
+	function fmod(expr1:Float, expr2:Float):Any;
 	/**
 		```lua
 		function table.fnameescape(string: string)
@@ -9396,7 +7822,8 @@ package nvim;
 		   edit \+some\ str\%nge\|name
 		 <
 	**/
-	static function fnameescape(string:String):String;
+	@:luaDotMethod
+	function fnameescape(string:String):String;
 	/**
 		```lua
 		function table.fnamemodify(fname: string, mods: string)
@@ -9421,7 +7848,8 @@ package nvim;
 		 Note: Environment variables don't work in {fname}, use
 		 |expand()| first then.
 	**/
-	static function fnamemodify(fname:String, mods:String):String;
+	@:luaDotMethod
+	function fnamemodify(fname:String, mods:String):String;
 	/**
 		```lua
 		function table.foldclosed(lnum: string|integer)
@@ -9436,7 +7864,8 @@ package nvim;
 		 {lnum} is used like with |getline()|.  Thus "." is the current
 		 line, "'m" mark m, etc.
 	**/
-	static function foldclosed(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function foldclosed(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.foldclosedend(lnum: string|integer)
@@ -9451,7 +7880,8 @@ package nvim;
 		 {lnum} is used like with |getline()|.  Thus "." is the current
 		 line, "'m" mark m, etc.
 	**/
-	static function foldclosedend(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function foldclosedend(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.foldlevel(lnum: string|integer)
@@ -9471,7 +7901,8 @@ package nvim;
 		 {lnum} is used like with |getline()|.  Thus "." is the current
 		 line, "'m" mark m, etc.
 	**/
-	static function foldlevel(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function foldlevel(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.foldtext()
@@ -9496,7 +7927,8 @@ package nvim;
 		 setting.
 		 Returns an empty string when there is no fold.
 	**/
-	static function foldtext():String;
+	@:luaDotMethod
+	function foldtext():String;
 	/**
 		```lua
 		function table.foldtextresult(lnum: string|integer)
@@ -9513,7 +7945,8 @@ package nvim;
 		 line, "'m" mark m, etc.
 		 Useful when exporting folded text, e.g., to HTML.
 	**/
-	static function foldtextresult(lnum:haxe.extern.EitherType<Float, String>):String;
+	@:luaDotMethod
+	function foldtextresult(lnum:haxe.extern.EitherType<Float, String>):String;
 	/**
 		```lua
 		function table.foreach(expr1: string|table, expr2: string|function)
@@ -9556,13 +7989,14 @@ package nvim;
 		 When {expr2} is a Funcref errors inside a function are ignored,
 		 unless it was defined with the "abort" flag.
 	**/
-	static function foreach(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):haxe.extern.EitherType<String, lua.Table.AnyTable>;
+	@:luaDotMethod
+	function foreach(expr1:haxe.extern.EitherType<String, lua.Table.AnyTable>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):haxe.extern.EitherType<String, lua.Table.AnyTable>;
 	/**
 		```lua
 		(global) table.foreground: unknown
 		```
 	**/
-	static var foreground : Dynamic;
+	var foreground : Dynamic;
 	/**
 		```lua
 		function table.fullcommand(name: string)
@@ -9582,7 +8016,8 @@ package nvim;
 		 For example `fullcommand('s')`, `fullcommand('sub')`,
 		 `fullcommand(':%substitute')` all return "substitute".
 	**/
-	static function fullcommand(name:String):String;
+	@:luaDotMethod
+	function fullcommand(name:String):String;
 	/**
 		```lua
 		function table.funcref(name: string, arglist?: any, dict?: any)
@@ -9602,7 +8037,8 @@ package nvim;
 		 instead). {name} cannot be a builtin function.
 		 Returns 0 on error.
 	**/
-	static function funcref(name:String, ?arglist:Any, ?dict:Any):Any;
+	@:luaDotMethod
+	function funcref(name:String, ?arglist:Any, ?dict:Any):Any;
 	/**
 		```lua
 		function (name: string, arglist?: any, dict?: any)
@@ -9693,8 +8129,9 @@ package nvim;
 		 Returns 0 on error.
 		
 	**/
+	@:luaDotMethod
 	@:native("function")
-	static function function_(name:String, ?arglist:Any, ?dict:Any):Any;
+	function function_(name:String, ?arglist:Any, ?dict:Any):Any;
 	/**
 		```lua
 		function table.garbagecollect(atexit?: boolean)
@@ -9722,7 +8159,8 @@ package nvim;
 		 it's safe to perform.  This is when waiting for the user to
 		 type a character.
 	**/
-	static function garbagecollect(?atexit:Bool):Any;
+	@:luaDotMethod
+	function garbagecollect(?atexit:Bool):Any;
 	/**
 		```lua
 		function table.get(list: any[], idx: integer, default?: any)
@@ -9794,7 +8232,8 @@ package nvim;
 		
 		 Returns zero on error.
 	**/
-	static function get(list:lua.Table<Int, Any>, idx:Float, ?default_:Any):Any;
+	@:luaDotMethod
+	function get(list:lua.Table<Int, Any>, idx:Float, ?default_:Any):Any;
 	/**
 		```lua
 		function table.getbufinfo(buf?: string|integer)
@@ -9877,7 +8316,8 @@ package nvim;
 		   getbufvar({bufnr}, '&option_name')
 		 <
 	**/
-	static function getbufinfo(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, nvim.type.vim.fn.getbufinfo.ret.Item>;
+	@:luaDotMethod
+	function getbufinfo(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, nvim.type.vim.fn.getbufinfo.ret.Item>;
 	/**
 		```lua
 		function table.getbufline(buf: string|integer, lnum: integer, end_?: integer)
@@ -9911,7 +8351,8 @@ package nvim;
 		   let lines = getbufline(bufnr("myfile"), 1, "$")
 		 <
 	**/
-	static function getbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, ?end_:Float):lua.Table<Int, String>;
+	@:luaDotMethod
+	function getbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, ?end_:Float):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.getbufoneline(buf: string|integer, lnum: integer)
@@ -9923,7 +8364,8 @@ package nvim;
 		 Just like `getbufline()` but only get one line and return it
 		 as a string.
 	**/
-	static function getbufoneline(buf:haxe.extern.EitherType<Float, String>, lnum:Float):String;
+	@:luaDotMethod
+	function getbufoneline(buf:haxe.extern.EitherType<Float, String>, lnum:Float):String;
 	/**
 		```lua
 		function table.getbufvar(buf: string|integer, varname: string, def?: any)
@@ -9952,7 +8394,8 @@ package nvim;
 		   let bufmodified = getbufvar(1, "&mod")
 		   echo "todo myvar = " .. getbufvar("todo", "myvar")
 	**/
-	static function getbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, ?def:Any):Any;
+	@:luaDotMethod
+	function getbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.getcellwidths()
@@ -9966,7 +8409,8 @@ package nvim;
 		 |setcellwidths()|.  If no character ranges have their cell
 		 widths overridden, an empty List is returned.
 	**/
-	static function getcellwidths():Any;
+	@:luaDotMethod
+	function getcellwidths():Any;
 	/**
 		```lua
 		function table.getchangelist(buf?: string|integer)
@@ -9990,118 +8434,11 @@ package nvim;
 		 position refers to the position in the list. For other
 		 buffers, it is set to the length of the list.
 	**/
-	static function getchangelist(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, lua.Table.AnyTable>;
-	/**
-		```lua
-		function table.getchar(expr?: -1|0|1, opts?: table)
-		  -> string|integer
-		```
-		
-		---
-		
-		 Get a single character from the user or input stream.
-		 If {expr} is omitted or is -1, wait until a character is
-		   available.
-		 If {expr} is 0, only get a character when one is available.
-		   Return zero otherwise.
-		 If {expr} is 1, only check if a character is available, it is
-		   not consumed.  Return zero if no character available.
-		 If you prefer always getting a string use |getcharstr()|, or
-		 specify |FALSE| as "number" in {opts}.
-		
-		 Without {expr} and when {expr} is 0 a whole character or
-		 special key is returned.  If it is a single character, the
-		 result is a Number.  Use |nr2char()| to convert it to a String.
-		 Otherwise a String is returned with the encoded character.
-		 For a special key it's a String with a sequence of bytes
-		 starting with 0x80 (decimal: 128).  This is the same value as
-		 the String "\<Key>", e.g., "\<Left>".  The returned value is
-		 also a String when a modifier (shift, control, alt) was used
-		 that is not included in the character.  |keytrans()| can also
-		 be used to convert a returned String into a readable form.
-		
-		 When {expr} is 0 and Esc is typed, there will be a short delay
-		 while Vim waits to see if this is the start of an escape
-		 sequence.
-		
-		 When {expr} is 1 only the first byte is returned.  For a
-		 one-byte character it is the character itself as a number.
-		 Use nr2char() to convert it to a String.
-		
-		 Use getcharmod() to obtain any additional modifiers.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		
-		   cursor    A String specifying cursor behavior
-		       when waiting for a character.
-		       "hide": hide the cursor.
-		       "keep": keep current cursor unchanged.
-		       "msg": move cursor to message area.
-		       (default: automagically decide
-		       between "keep" and "msg")
-		
-		   number    If |TRUE|, return a Number when getting
-		       a single character.
-		       If |FALSE|, the return value is always
-		       converted to a String, and an empty
-		       String (instead of 0) is returned when
-		       no character is available.
-		       (default: |TRUE|)
-		
-		   simplify  If |TRUE|, include modifiers in the
-		       character if possible.  E.g., return
-		       the same value for CTRL-I and <Tab>.
-		       If |FALSE|, don't include modifiers in
-		       the character.
-		       (default: |TRUE|)
-		
-		 When the user clicks a mouse button, the mouse event will be
-		 returned.  The position can then be found in |v:mouse_col|,
-		 |v:mouse_lnum|, |v:mouse_winid| and |v:mouse_win|.
-		 |getmousepos()| can also be used.  Mouse move events will be
-		 ignored.
-		 This example positions the mouse as it would normally happen: >vim
-		   let c = getchar()
-		   if c == "\<LeftMouse>" && v:mouse_win > 0
-		     exe v:mouse_win .. "wincmd w"
-		     exe v:mouse_lnum
-		     exe "normal " .. v:mouse_col .. "|"
-		   endif
-		 <
-		 There is no prompt, you will somehow have to make clear to the
-		 user that a character has to be typed.  The screen is not
-		 redrawn, e.g. when resizing the window.
-		
-		 There is no mapping for the character.
-		 Key codes are replaced, thus when the user presses the <Del>
-		 key you get the code for the <Del> key, not the raw character
-		 sequence.  Examples: >vim
-		   getchar() == "\<Del>"
-		   getchar() == "\<S-Left>"
-		 <This example redefines "f" to ignore case: >vim
-		   nmap f :call FindChar()<CR>
-		   function FindChar()
-		     let c = nr2char(getchar())
-		     while col('.') < col('$') - 1
-		       normal l
-		       if getline('.')[col('.') - 1] ==? c
-		         break
-		       endif
-		     endwhile
-		   endfunction
-		 <
-		
-		
-		```lua
-		expr:
-		    | -1
-		    | 0
-		    | 1
-		```
-	**/
+	@:luaDotMethod
+	function getchangelist(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, lua.Table.AnyTable>;
 	@:native("getchar")
-	private static function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String>;
+	@:luaDotMethod
+	private function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String>;
 	/**
 		```lua
 		function table.getchar(expr?: -1|0|1, opts?: table)
@@ -10211,7 +8548,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	inline static function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String> {
+	@:luaDotMethod
+	inline function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __getchar(expr, opts);
 		return result;
@@ -10239,7 +8577,8 @@ package nvim;
 		 character itself are obtained.  Thus Shift-a results in "A"
 		 without a modifier.  Returns 0 if no modifiers are used.
 	**/
-	static function getcharmod():Float;
+	@:luaDotMethod
+	function getcharmod():Float;
 	/**
 		```lua
 		function table.getcharpos(expr: string)
@@ -10261,7 +8600,8 @@ package nvim;
 		   getpos('.')    returns [0, 5, 7, 0]
 		 <
 	**/
-	static function getcharpos(expr:String):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function getcharpos(expr:String):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.getcharsearch()
@@ -10289,28 +8629,11 @@ package nvim;
 		   nnoremap <expr> , getcharsearch().forward ? ',' : ';'
 		 <Also see |setcharsearch()|.
 	**/
-	static function getcharsearch():lua.Table.AnyTable;
-	/**
-		```lua
-		function table.getcharstr(expr?: -1|0|1, opts?: table)
-		  -> string
-		```
-		
-		---
-		
-		 The same as |getchar()|, except that this always returns a
-		 String, and "number" isn't allowed in {opts}.
-		
-		
-		```lua
-		expr:
-		    | -1
-		    | 0
-		    | 1
-		```
-	**/
+	@:luaDotMethod
+	function getcharsearch():lua.Table.AnyTable;
 	@:native("getcharstr")
-	private static function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
+	@:luaDotMethod
+	private function __getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String;
 	/**
 		```lua
 		function table.getcharstr(expr?: -1|0|1, opts?: table)
@@ -10330,7 +8653,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	inline static function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
+	@:luaDotMethod
+	inline function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __getcharstr(expr, opts);
 		return result;
@@ -10350,7 +8674,8 @@ package nvim;
 		 |getcmdprompt()|, |getcmdcompltype()| and |setcmdline()|.
 		 Returns an empty string when completion is not defined.
 	**/
-	static function getcmdcomplpat():String;
+	@:luaDotMethod
+	function getcmdcomplpat():String;
 	/**
 		```lua
 		function table.getcmdcompltype()
@@ -10367,7 +8692,8 @@ package nvim;
 		 |getcmdprompt()|, |getcmdcomplpat()| and |setcmdline()|.
 		 Returns an empty string when completion is not defined.
 	**/
-	static function getcmdcompltype():String;
+	@:luaDotMethod
+	function getcmdcompltype():String;
 	/**
 		```lua
 		function table.getcmdline()
@@ -10386,7 +8712,8 @@ package nvim;
 		 Returns an empty string when entering a password or using
 		 |inputsecret()|.
 	**/
-	static function getcmdline():String;
+	@:luaDotMethod
+	function getcmdline():String;
 	/**
 		```lua
 		function table.getcmdpos()
@@ -10403,7 +8730,8 @@ package nvim;
 		 Also see |getcmdtype()|, |setcmdpos()|, |getcmdline()|,
 		 |getcmdprompt()| and |setcmdline()|.
 	**/
-	static function getcmdpos():Float;
+	@:luaDotMethod
+	function getcmdpos():Float;
 	/**
 		```lua
 		function table.getcmdprompt()
@@ -10419,7 +8747,8 @@ package nvim;
 		 Also see |getcmdtype()|, |getcmdline()|, |getcmdpos()|,
 		 |setcmdpos()| and |setcmdline()|.
 	**/
-	static function getcmdprompt():String;
+	@:luaDotMethod
+	function getcmdprompt():String;
 	/**
 		```lua
 		function table.getcmdscreenpos()
@@ -10437,7 +8766,8 @@ package nvim;
 		 Also see |getcmdpos()|, |setcmdpos()|, |getcmdline()| and
 		 |setcmdline()|.
 	**/
-	static function getcmdscreenpos():Float;
+	@:luaDotMethod
+	function getcmdscreenpos():Float;
 	/**
 		```lua
 		function table.getcmdtype()
@@ -10472,7 +8802,8 @@ package nvim;
 		    | '='
 		```
 	**/
-	static function getcmdtype():String;
+	@:luaDotMethod
+	function getcmdtype():String;
 	/**
 		```lua
 		function table.getcmdwintype()
@@ -10497,7 +8828,8 @@ package nvim;
 		    | '='
 		```
 	**/
-	static function getcmdwintype():String;
+	@:luaDotMethod
+	function getcmdwintype():String;
 	/**
 		```lua
 		function table.getcompletion(pat: string, type: string, filtered?: boolean)
@@ -10576,7 +8908,8 @@ package nvim;
 		 If there are no matches, an empty list is returned.  An
 		 invalid value for {type} produces an error.
 	**/
-	static function getcompletion(pat:String, type:String, ?filtered:Bool):lua.Table<Int, String>;
+	@:luaDotMethod
+	function getcompletion(pat:String, type:String, ?filtered:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.getcurpos(winid?: integer)
@@ -10609,7 +8942,8 @@ package nvim;
 		 <Note that this only works within the window.  See
 		 |winrestview()| for restoring more state.
 	**/
-	static function getcurpos(?winid:Float):Any;
+	@:luaDotMethod
+	function getcurpos(?winid:Float):Any;
 	/**
 		```lua
 		function table.getcursorcharpos(winid?: integer)
@@ -10627,7 +8961,8 @@ package nvim;
 		   getcurpos()    " returns [0, 3, 4, 0, 3]
 		 <
 	**/
-	static function getcursorcharpos(?winid:Float):Any;
+	@:luaDotMethod
+	function getcursorcharpos(?winid:Float):Any;
 	/**
 		```lua
 		function table.getcwd(winnr?: integer, tabnr?: integer)
@@ -10651,7 +8986,8 @@ package nvim;
 		 directory is returned.
 		 Throw error if the arguments are invalid. |E5000| |E5001| |E5002|
 	**/
-	static function getcwd(?winnr:Float, ?tabnr:Float):String;
+	@:luaDotMethod
+	function getcwd(?winnr:Float, ?tabnr:Float):String;
 	/**
 		```lua
 		function table.getenv(name: string)
@@ -10668,7 +9004,8 @@ package nvim;
 		 is different from a variable set to an empty string.
 		 See also |expr-env|.
 	**/
-	static function getenv(name:String):String;
+	@:luaDotMethod
+	function getenv(name:String):String;
 	/**
 		```lua
 		function table.getfontname(name?: string)
@@ -10688,7 +9025,8 @@ package nvim;
 		 gvimrc file.  Use the |GUIEnter| autocommand to use this
 		 function just after the GUI has started.
 	**/
-	static function getfontname(?name:String):String;
+	@:luaDotMethod
+	function getfontname(?name:String):String;
 	/**
 		```lua
 		function table.getfperm(fname: string)
@@ -10713,7 +9051,8 @@ package nvim;
 		
 		 For setting permissions use |setfperm()|.
 	**/
-	static function getfperm(fname:String):String;
+	@:luaDotMethod
+	function getfperm(fname:String):String;
 	/**
 		```lua
 		function table.getfsize(fname: string)
@@ -10729,7 +9068,8 @@ package nvim;
 		 If the size of {fname} is too big to fit in a Number then -2
 		 is returned.
 	**/
-	static function getfsize(fname:String):Float;
+	@:luaDotMethod
+	function getfsize(fname:String):Float;
 	/**
 		```lua
 		function table.getftime(fname: string)
@@ -10744,7 +9084,8 @@ package nvim;
 		 |localtime()| and |strftime()|.
 		 If the file {fname} can't be found -1 is returned.
 	**/
-	static function getftime(fname:String):Float;
+	@:luaDotMethod
+	function getftime(fname:String):Float;
 	/**
 		```lua
 		function table.getftype(fname: string)
@@ -10785,7 +9126,8 @@ package nvim;
 		    | 'other'
 		```
 	**/
-	static function getftype(fname:String):String;
+	@:luaDotMethod
+	function getftype(fname:String):String;
 	/**
 		```lua
 		function table.getjumplist(winnr?: integer, tabnr?: integer)
@@ -10813,7 +9155,8 @@ package nvim;
 		   filename  filename if available
 		   lnum    line number
 	**/
-	static function getjumplist(?winnr:Float, ?tabnr:Float):nvim.type.vim.fn.getjumplist.Ret;
+	@:luaDotMethod
+	function getjumplist(?winnr:Float, ?tabnr:Float):nvim.type.vim.fn.getjumplist.Ret;
 	/**
 		```lua
 		function table.getline(lnum: string|integer, end_?: false)
@@ -10866,48 +9209,11 @@ package nvim;
 		    | true
 		```
 	**/
-	static function getline(lnum:haxe.extern.EitherType<Float, String>, ?end_:Null<Bool>):String;
-	/**
-		```lua
-		function table.getloclist(nr: integer, what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns a |List| with all the entries in the location list for
-		 window {nr}.  {nr} can be the window number or the |window-ID|.
-		 When {nr} is zero the current window is used.
-		
-		 For a location list window, the displayed location list is
-		 returned.  For an invalid window number {nr}, an empty list is
-		 returned. Otherwise, same as |getqflist()|.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 returns the items listed in {what} as a dictionary. Refer to
-		 |getqflist()| for the supported items in {what}.
-		
-		 In addition to the items supported by |getqflist()| in {what},
-		 the following item is supported by |getloclist()|:
-		
-		   filewinid  id of the window used to display files
-		       from the location list. This field is
-		       applicable only when called from a
-		       location list window. See
-		       |location-list-file-window| for more
-		       details.
-		
-		 Returns a |Dictionary| with default values if there is no
-		 location list for the window {nr}.
-		 Returns an empty Dictionary if window {nr} does not exist.
-		
-		 Examples (See also |getqflist-examples|): >vim
-		   echo getloclist(3, {'all': 0})
-		   echo getloclist(5, {'filewinid': 0})
-		 <
-	**/
+	@:luaDotMethod
+	function getline(lnum:haxe.extern.EitherType<Float, String>, ?end_:Null<Bool>):String;
 	@:native("getloclist")
-	private static function __getloclist(nr:Float, ?what:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __getloclist(nr:Float, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.getloclist(nr: integer, what?: table)
@@ -10947,7 +9253,8 @@ package nvim;
 		   echo getloclist(5, {'filewinid': 0})
 		 <
 	**/
-	inline static function getloclist(nr:Float, ?what:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function getloclist(nr:Float, ?what:lua.Table.AnyTable):Any {
 		what = nvim.helper.Arg.pure(what);
 		final result = __getloclist(nr, what);
 		return result;
@@ -10978,7 +9285,8 @@ package nvim;
 		 Refer to |getpos()| for getting information about a specific
 		 mark.
 	**/
-	static function getmarklist(?buf:Null<Float>):lua.Table<Int, nvim.type.vim.fn.getmarklist.ret.Item>;
+	@:luaDotMethod
+	function getmarklist(?buf:Null<Float>):lua.Table<Int, nvim.type.vim.fn.getmarklist.ret.Item>;
 	/**
 		```lua
 		function table.getmatches(win?: integer)
@@ -11018,7 +9326,8 @@ package nvim;
 		   unlet m
 		 <
 	**/
-	static function getmatches(?win:Float):Any;
+	@:luaDotMethod
+	function getmatches(?win:Float):Any;
 	/**
 		```lua
 		function table.getmousepos()
@@ -11057,7 +9366,8 @@ package nvim;
 		 When using |getchar()| the Vim variables |v:mouse_lnum|,
 		 |v:mouse_col| and |v:mouse_winid| also provide these values.
 	**/
-	static function getmousepos():nvim.type.vim.fn.getmousepos.Ret;
+	@:luaDotMethod
+	function getmousepos():nvim.type.vim.fn.getmousepos.Ret;
 	/**
 		```lua
 		function table.getpid()
@@ -11069,7 +9379,8 @@ package nvim;
 		 Return a Number which is the process ID of the Vim process.
 		 This is a unique number, until Vim exits.
 	**/
-	static function getpid():Float;
+	@:luaDotMethod
+	function getpid():Float;
 	/**
 		```lua
 		function table.getpos(expr: string)
@@ -11136,120 +9447,11 @@ package nvim;
 		 <
 		 Also see |getcharpos()|, |getcurpos()| and |setpos()|.
 	**/
-	static function getpos(expr:String):lua.Table<Int, Float>;
-	/**
-		```lua
-		function table.getqflist(what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns a |List| with all the current quickfix errors.  Each
-		 list item is a dictionary with these entries:
-		   bufnr  number of buffer that has the file name, use
-		     bufname() to get the name
-		   module  module name
-		   lnum  line number in the buffer (first line is 1)
-		   end_lnum
-		     end of line number if the item is multiline
-		   col  column number (first column is 1)
-		   end_col  end of column number if the item has range
-		   vcol  |TRUE|: "col" is visual column
-		     |FALSE|: "col" is byte index
-		   nr  error number
-		   pattern  search pattern used to locate the error
-		   text  description of the error
-		   type  type of the error, 'E', '1', etc.
-		   valid  |TRUE|: recognized error message
-		   user_data
-		     custom data associated with the item, can be
-		     any type.
-		
-		 When there is no error list or it's empty, an empty list is
-		 returned. Quickfix list entries with a non-existing buffer
-		 number are returned with "bufnr" set to zero (Note: some
-		 functions accept buffer number zero for the alternate buffer,
-		 you may need to explicitly check for zero).
-		
-		 Useful application: Find pattern matches in multiple files and
-		 do something with them: >vim
-		   vimgrep /theword/jg *.c
-		   for d in getqflist()
-		      echo bufname(d.bufnr) ':' d.lnum '=' d.text
-		   endfor
-		 <
-		 If the optional {what} dictionary argument is supplied, then
-		 returns only the items listed in {what} as a dictionary. The
-		 following string items are supported in {what}:
-		   changedtick  get the total number of changes made
-		       to the list |quickfix-changedtick|
-		   context  get the |quickfix-context|
-		   efm  errorformat to use when parsing "lines". If
-		     not present, then the 'errorformat' option
-		     value is used.
-		   id  get information for the quickfix list with
-		     |quickfix-ID|; zero means the id for the
-		     current list or the list specified by "nr"
-		   idx  get information for the quickfix entry at this
-		     index in the list specified by "id" or "nr".
-		     If set to zero, then uses the current entry.
-		     See |quickfix-index|
-		   items  quickfix list entries
-		   lines  parse a list of lines using 'efm' and return
-		     the resulting entries.  Only a |List| type is
-		     accepted.  The current quickfix list is not
-		     modified. See |quickfix-parse|.
-		   nr  get information for this quickfix list; zero
-		     means the current quickfix list and "$" means
-		     the last quickfix list
-		   qfbufnr number of the buffer displayed in the quickfix
-		     window. Returns 0 if the quickfix buffer is
-		     not present. See |quickfix-buffer|.
-		   size  number of entries in the quickfix list
-		   title  get the list title |quickfix-title|
-		   winid  get the quickfix |window-ID|
-		   all  all of the above quickfix properties
-		 Non-string items in {what} are ignored. To get the value of a
-		 particular item, set it to zero.
-		 If "nr" is not present then the current quickfix list is used.
-		 If both "nr" and a non-zero "id" are specified, then the list
-		 specified by "id" is used.
-		 To get the number of lists in the quickfix stack, set "nr" to
-		 "$" in {what}. The "nr" value in the returned dictionary
-		 contains the quickfix stack size.
-		 When "lines" is specified, all the other items except "efm"
-		 are ignored.  The returned dictionary contains the entry
-		 "items" with the list of entries.
-		
-		 The returned dictionary contains the following entries:
-		   changedtick  total number of changes made to the
-		       list |quickfix-changedtick|
-		   context  quickfix list context. See |quickfix-context|
-		     If not present, set to "".
-		   id  quickfix list ID |quickfix-ID|. If not
-		     present, set to 0.
-		   idx  index of the quickfix entry in the list. If not
-		     present, set to 0.
-		   items  quickfix list entries. If not present, set to
-		     an empty list.
-		   nr  quickfix list number. If not present, set to 0
-		   qfbufnr  number of the buffer displayed in the quickfix
-		     window. If not present, set to 0.
-		   size  number of entries in the quickfix list. If not
-		     present, set to 0.
-		   title  quickfix list title text. If not present, set
-		     to "".
-		   winid  quickfix |window-ID|. If not present, set to 0
-		
-		 Examples (See also |getqflist-examples|): >vim
-		   echo getqflist({'all': 1})
-		   echo getqflist({'nr': 2, 'title': 1})
-		   echo getqflist({'lines' : ["F1:10:L10"]})
-		 <
-	**/
+	@:luaDotMethod
+	function getpos(expr:String):lua.Table<Int, Float>;
 	@:native("getqflist")
-	private static function __getqflist(?what:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __getqflist(?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.getqflist(what?: table)
@@ -11361,7 +9563,8 @@ package nvim;
 		   echo getqflist({'lines' : ["F1:10:L10"]})
 		 <
 	**/
-	inline static function getqflist(?what:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function getqflist(?what:lua.Table.AnyTable):Any {
 		what = nvim.helper.Arg.pure(what);
 		final result = __getqflist(what);
 		return result;
@@ -11416,7 +9619,8 @@ package nvim;
 		    | true
 		```
 	**/
-	static function getreg(?regname:String, ?list:Null<Bool>):String;
+	@:luaDotMethod
+	function getreg(?regname:String, ?list:Null<Bool>):String;
 	/**
 		```lua
 		function table.getreginfo(regname?: string)
@@ -11448,71 +9652,11 @@ package nvim;
 		 If {regname} is not specified, |v:register| is used.
 		 The returned Dictionary can be passed to |setreg()|.
 	**/
-	static function getreginfo(?regname:String):lua.Table.AnyTable;
-	/**
-		```lua
-		function table.getregion(pos1: table, pos2: table, opts?: table)
-		  -> string[]
-		```
-		
-		---
-		
-		 Returns the list of strings from {pos1} to {pos2} from a
-		 buffer.
-		
-		 {pos1} and {pos2} must both be |List|s with four numbers.
-		 See |getpos()| for the format of the list.  It's possible
-		 to specify positions from a different buffer, but please
-		 note the limitations at |getregion-notes|.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		
-		   type    Specify the region's selection type.
-		       See |getregtype()| for possible values,
-		       except that the width can be omitted
-		       and an empty string cannot be used.
-		       (default: "v")
-		
-		   exclusive  If |TRUE|, use exclusive selection
-		       for the end position.
-		       (default: follow 'selection')
-		
-		 You can get the last selection type by |visualmode()|.
-		 If Visual mode is active, use |mode()| to get the Visual mode
-		 (e.g., in a |:vmap|).
-		 This function is useful to get text starting and ending in
-		 different columns, such as a |charwise-visual| selection.
-		
-		           *getregion-notes*
-		 Note that:
-		 - Order of {pos1} and {pos2} doesn't matter, it will always
-		   return content from the upper left position to the lower
-		   right position.
-		 - If 'virtualedit' is enabled and the region is past the end
-		   of the lines, resulting lines are padded with spaces.
-		 - If the region is blockwise and it starts or ends in the
-		   middle of a multi-cell character, it is not included but
-		   its selected part is substituted with spaces.
-		 - If {pos1} and {pos2} are not in the same buffer, an empty
-		   list is returned.
-		 - {pos1} and {pos2} must belong to a |bufloaded()| buffer.
-		 - It is evaluated in current window context, which makes a
-		   difference if the buffer is displayed in a window with
-		   different 'virtualedit' or 'list' values.
-		 - When specifying an exclusive selection and {pos1} and {pos2}
-		   are equal, the returned list contains a single character as
-		   if selection is inclusive, to match the behavior of an empty
-		   exclusive selection in Visual mode.
-		
-		 Examples: >vim
-		   xnoremap <CR>
-		   \ <Cmd>echom getregion(
-		   \ getpos('v'), getpos('.'), #{ type: mode() })<CR>
-		 <
-	**/
+	@:luaDotMethod
+	function getreginfo(?regname:String):lua.Table.AnyTable;
 	@:native("getregion")
-	private static function __getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String>;
+	@:luaDotMethod
+	private function __getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.getregion(pos1: table, pos2: table, opts?: table)
@@ -11575,54 +9719,17 @@ package nvim;
 		   \ getpos('v'), getpos('.'), #{ type: mode() })<CR>
 		 <
 	**/
-	inline static function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String> {
+	@:luaDotMethod
+	inline function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String> {
 		pos1 = nvim.helper.Arg.pure(pos1);
 		pos2 = nvim.helper.Arg.pure(pos2);
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __getregion(pos1, pos2, opts);
 		return result;
 	}
-	/**
-		```lua
-		function table.getregionpos(pos1: table, pos2: table, opts?: table)
-		  -> integer[][][]
-		```
-		
-		---
-		
-		 Same as |getregion()|, but returns a list of positions
-		 describing the buffer text segments bound by {pos1} and
-		 {pos2}.
-		 The segments are a pair of positions for every line: >
-		   [[{start_pos}, {end_pos}], ...]
-		 <
-		 The position is a |List| with four numbers:
-		     [bufnum, lnum, col, off]
-		 "bufnum" is the buffer number.
-		 "lnum" and "col" are the position in the buffer.  The first
-		 column is 1.
-		 If the "off" number of a starting position is non-zero, it is
-		 the offset in screen columns from the start of the character.
-		 E.g., a position within a <Tab> or after the last character.
-		 If the "off" number of an ending position is non-zero, it is
-		 the offset of the character's first cell not included in the
-		 selection, otherwise all its cells are included.
-		
-		 Apart from the options supported by |getregion()|, {opts} also
-		 supports the following:
-		
-		   eol    If |TRUE|, indicate positions beyond
-		       the end of a line with "col" values
-		       one more than the length of the line.
-		       If |FALSE|, positions are limited
-		       within their lines, and if a line is
-		       empty or the selection is entirely
-		       beyond the end of a line, a "col"
-		       value of 0 is used for both positions.
-		       (default: |FALSE|)
-	**/
 	@:native("getregionpos")
-	private static function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>>;
+	@:luaDotMethod
+	private function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>>;
 	/**
 		```lua
 		function table.getregionpos(pos1: table, pos2: table, opts?: table)
@@ -11662,7 +9769,8 @@ package nvim;
 		       value of 0 is used for both positions.
 		       (default: |FALSE|)
 	**/
-	inline static function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>> {
+	@:luaDotMethod
+	inline function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>> {
 		pos1 = nvim.helper.Arg.pure(pos1);
 		pos2 = nvim.helper.Arg.pure(pos2);
 		opts = nvim.helper.Arg.pure(opts);
@@ -11687,53 +9795,11 @@ package nvim;
 		 The {regname} argument is a string.  If {regname} is not
 		 specified, |v:register| is used.
 	**/
-	static function getregtype(?regname:String):String;
-	/**
-		```lua
-		function table.getscriptinfo(opts?: table)
-		  -> vim.fn.getscriptinfo.ret[]
-		```
-		
-		---
-		
-		 Returns a |List| with information about all the sourced Vim
-		 scripts in the order they were sourced, like what
-		 `:scriptnames` shows.
-		
-		 The optional Dict argument {opts} supports the following
-		 optional items:
-		     name  Script name match pattern. If specified,
-		     and "sid" is not specified, information about
-		     scripts with a name that match the pattern
-		     "name" are returned.
-		     sid    Script ID |<SID>|.  If specified, only
-		     information about the script with ID "sid" is
-		     returned and "name" is ignored.
-		
-		 Each item in the returned List is a |Dict| with the following
-		 items:
-		     autoload  Always set to FALSE.
-		     functions   List of script-local function names defined in
-		     the script.  Present only when a particular
-		     script is specified using the "sid" item in
-		     {opts}.
-		     name  Vim script file name.
-		     sid    Script ID |<SID>|.
-		     variables   A dictionary with the script-local variables.
-		     Present only when a particular script is
-		     specified using the "sid" item in {opts}.
-		     Note that this is a copy, the value of
-		     script-local variables cannot be changed using
-		     this dictionary.
-		     version  Vim script version, always 1
-		
-		 Examples: >vim
-		   echo getscriptinfo({'name': 'myscript'})
-		   echo getscriptinfo({'sid': 15})[0].variables
-		 <
-	**/
+	@:luaDotMethod
+	function getregtype(?regname:String):String;
 	@:native("getscriptinfo")
-	private static function __getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret>;
+	@:luaDotMethod
+	private function __getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret>;
 	/**
 		```lua
 		function table.getscriptinfo(opts?: table)
@@ -11778,7 +9844,8 @@ package nvim;
 		   echo getscriptinfo({'sid': 15})[0].variables
 		 <
 	**/
-	inline static function getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret> {
+	@:luaDotMethod
+	inline function getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret> {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __getscriptinfo(opts);
 		return result;
@@ -11802,7 +9869,8 @@ package nvim;
 		     lnum  The line number in the script on the stack.
 		     filepath  The file path of the script on the stack.
 	**/
-	static function getstacktrace():lua.Table<Int, lua.Table.AnyTable>;
+	@:luaDotMethod
+	function getstacktrace():lua.Table<Int, lua.Table.AnyTable>;
 	/**
 		```lua
 		function table.gettabinfo(tabnr?: integer)
@@ -11823,7 +9891,8 @@ package nvim;
 		       tabpage-local variables
 		   windows    List of |window-ID|s in the tab page.
 	**/
-	static function gettabinfo(?tabnr:Float):Any;
+	@:luaDotMethod
+	function gettabinfo(?tabnr:Float):Any;
 	/**
 		```lua
 		function table.gettabvar(tabnr: integer, varname: string, def?: any)
@@ -11841,7 +9910,8 @@ package nvim;
 		 When the tab or variable doesn't exist {def} or an empty
 		 string is returned, there is no error message.
 	**/
-	static function gettabvar(tabnr:Float, varname:String, ?def:Any):Any;
+	@:luaDotMethod
+	function gettabvar(tabnr:Float, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.gettabwinvar(tabnr: integer, winnr: integer, varname: string, def?: any)
@@ -11876,7 +9946,8 @@ package nvim;
 		   gettabwinvar({tabnr}, {winnr}, '&')
 		 <
 	**/
-	static function gettabwinvar(tabnr:Float, winnr:Float, varname:String, ?def:Any):Any;
+	@:luaDotMethod
+	function gettabwinvar(tabnr:Float, winnr:Float, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.gettagstack(winnr?: integer)
@@ -11912,7 +9983,8 @@ package nvim;
 		
 		 See |tagstack| for more information about the tag stack.
 	**/
-	static function gettagstack(?winnr:Float):Any;
+	@:luaDotMethod
+	function gettagstack(?winnr:Float):Any;
 	/**
 		```lua
 		function table.gettext(text: string)
@@ -11931,7 +10003,8 @@ package nvim;
 		 xgettext does not understand escaping in single quoted
 		 strings.
 	**/
-	static function gettext(text:String):String;
+	@:luaDotMethod
+	function gettext(text:String):String;
 	/**
 		```lua
 		function table.getwininfo(winid?: integer)
@@ -11975,7 +10048,8 @@ package nvim;
 		   winrow    topmost screen line of the window;
 		       "row" from |win_screenpos()|
 	**/
-	static function getwininfo(?winid:Float):lua.Table<Int, nvim.type.vim.fn.getwininfo.ret.Item>;
+	@:luaDotMethod
+	function getwininfo(?winid:Float):lua.Table<Int, nvim.type.vim.fn.getwininfo.ret.Item>;
 	/**
 		```lua
 		function table.getwinpos(timeout?: integer)
@@ -12004,7 +10078,8 @@ package nvim;
 		   endwhile
 		 <
 	**/
-	static function getwinpos(?timeout:Float):Any;
+	@:luaDotMethod
+	function getwinpos(?timeout:Float):Any;
 	/**
 		```lua
 		function table.getwinposx()
@@ -12018,7 +10093,8 @@ package nvim;
 		 -1 if the information is not available.
 		 The value can be used with `:winpos`.
 	**/
-	static function getwinposx():Float;
+	@:luaDotMethod
+	function getwinposx():Float;
 	/**
 		```lua
 		function table.getwinposy()
@@ -12032,7 +10108,8 @@ package nvim;
 		 information is not available.
 		 The value can be used with `:winpos`.
 	**/
-	static function getwinposy():Float;
+	@:luaDotMethod
+	function getwinposy():Float;
 	/**
 		```lua
 		function table.getwinvar(winnr: integer, varname: string, def?: any)
@@ -12046,7 +10123,8 @@ package nvim;
 		   let list_is_on = getwinvar(2, '&list')
 		   echo "myvar = " .. getwinvar(1, 'myvar')
 	**/
-	static function getwinvar(winnr:Float, varname:String, ?def:Any):Any;
+	@:luaDotMethod
+	function getwinvar(winnr:Float, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.glob(expr: string, nosuf?: boolean, list?: boolean, alllinks?: boolean)
@@ -12090,7 +10168,8 @@ package nvim;
 		 See |expand()| for expanding special Vim variables.  See
 		 |system()| for getting the raw output of an external command.
 	**/
-	static function glob(expr:String, ?nosuf:Bool, ?list:Bool, ?alllinks:Bool):Any;
+	@:luaDotMethod
+	function glob(expr:String, ?nosuf:Bool, ?list:Bool, ?alllinks:Bool):Any;
 	/**
 		```lua
 		function table.glob2regpat(string: string)
@@ -12114,7 +10193,8 @@ package nvim;
 		 Note that the result depends on the system.  On MS-Windows
 		 a backslash usually means a path separator.
 	**/
-	static function glob2regpat(string:String):String;
+	@:luaDotMethod
+	function glob2regpat(string:String):String;
 	/**
 		```lua
 		function table.globpath(path: string, expr: string, nosuf?: boolean, list?: boolean, allinks?: boolean)
@@ -12157,7 +10237,8 @@ package nvim;
 		 <Upwards search and limiting the depth of "**" is not
 		 supported, thus using 'path' will not always work properly.
 	**/
-	static function globpath(path:String, expr:String, ?nosuf:Bool, ?list:Bool, ?allinks:Bool):Any;
+	@:luaDotMethod
+	function globpath(path:String, expr:String, ?nosuf:Bool, ?list:Bool, ?allinks:Bool):Any;
 	/**
 		```lua
 		function table.has(feature: string)
@@ -12241,28 +10322,11 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function has(feature:String):Float;
-	/**
-		```lua
-		function table.has_key(dict: table, key: string)
-		  -> 0|1
-		```
-		
-		---
-		
-		 The result is a Number, which is TRUE if |Dictionary| {dict}
-		 has an entry with key {key}.  FALSE otherwise. The {key}
-		 argument is a string.
-		
-		
-		```lua
-		return #1:
-		    | 0
-		    | 1
-		```
-	**/
+	@:luaDotMethod
+	function has(feature:String):Float;
 	@:native("has_key")
-	private static function __has_key(dict:lua.Table.AnyTable, key:String):Float;
+	@:luaDotMethod
+	private function __has_key(dict:lua.Table.AnyTable, key:String):Float;
 	/**
 		```lua
 		function table.has_key(dict: table, key: string)
@@ -12282,7 +10346,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	inline static function has_key(dict:lua.Table.AnyTable, key:String):Float {
+	@:luaDotMethod
+	inline function has_key(dict:lua.Table.AnyTable, key:String):Float {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __has_key(dict, key);
 		return result;
@@ -12318,7 +10383,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function haslocaldir(?winnr:Float, ?tabnr:Float):Float;
+	@:luaDotMethod
+	function haslocaldir(?winnr:Float, ?tabnr:Float):Float;
 	/**
 		```lua
 		function table.hasmapto(what: any, mode?: string, abbr?: boolean)
@@ -12364,7 +10430,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Float;
+	@:luaDotMethod
+	function hasmapto(what:Any, ?mode:String, ?abbr:Bool):Float;
 	/**
 		```lua
 		function table.highlightID(name: string)
@@ -12375,8 +10442,9 @@ package nvim;
 		
 		 Obsolete name for |hlID()|.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function highlightID(name:String):Any;
+	function highlightID(name:String):Any;
 	/**
 		```lua
 		function table.highlight_exists(name: string)
@@ -12387,8 +10455,9 @@ package nvim;
 		
 		 Obsolete name for |hlexists()|.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function highlight_exists(name:String):Any;
+	function highlight_exists(name:String):Any;
 	/**
 		```lua
 		function table.histadd(history: string, item: any)
@@ -12424,7 +10493,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function histadd(history:String, item:Any):Float;
+	@:luaDotMethod
+	function histadd(history:String, item:Any):Float;
 	/**
 		```lua
 		function table.histdel(history: string, item?: any)
@@ -12472,7 +10542,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function histdel(history:String, ?item:Any):Float;
+	@:luaDotMethod
+	function histdel(history:String, ?item:Any):Float;
 	/**
 		```lua
 		function table.histget(history: string, index?: string|integer)
@@ -12496,7 +10567,8 @@ package nvim;
 		   command -nargs=1 H execute histget("cmd", 0+<args>)
 		 <
 	**/
-	static function histget(history:String, ?index:haxe.extern.EitherType<Float, String>):String;
+	@:luaDotMethod
+	function histget(history:String, ?index:haxe.extern.EitherType<Float, String>):String;
 	/**
 		```lua
 		function table.histnr(history: string)
@@ -12513,7 +10585,8 @@ package nvim;
 		   let inp_index = histnr("expr")
 		 <
 	**/
-	static function histnr(history:String):Float;
+	@:luaDotMethod
+	function histnr(history:String):Float;
 	/**
 		```lua
 		function table.hlID(name: string)
@@ -12531,7 +10604,8 @@ package nvim;
 		   echo synIDattr(synIDtrans(hlID("Comment")), "bg")
 		 <
 	**/
-	static function hlID(name:String):Float;
+	@:luaDotMethod
+	function hlID(name:String):Float;
 	/**
 		```lua
 		function table.hlexists(name: string)
@@ -12553,7 +10627,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function hlexists(name:String):Float;
+	@:luaDotMethod
+	function hlexists(name:String):Float;
 	/**
 		```lua
 		function table.hostname()
@@ -12566,7 +10641,8 @@ package nvim;
 		 which Vim is currently running.  Machine names greater than
 		 256 characters long are truncated.
 	**/
-	static function hostname():String;
+	@:luaDotMethod
+	function hostname():String;
 	/**
 		```lua
 		function table.iconv(string: string, from: string, to: string)
@@ -12586,7 +10662,8 @@ package nvim;
 		 from/to UCS-2 is automatically changed to use UTF-8.  You
 		 cannot use UCS-2 in a string anyway, because of the NUL bytes.
 	**/
-	static function iconv(string:String, from:String, to:String):String;
+	@:luaDotMethod
+	function iconv(string:String, from:String, to:String):String;
 	/**
 		```lua
 		function table.id(expr: any)
@@ -12611,7 +10688,8 @@ package nvim;
 		 will not be equal to some other `id()`: new containers may
 		 reuse identifiers of the garbage-collected ones.
 	**/
-	static function id(expr:Any):String;
+	@:luaDotMethod
+	function id(expr:Any):String;
 	/**
 		```lua
 		function table.indent(lnum: string|integer)
@@ -12628,7 +10706,8 @@ package nvim;
 		
 		 To get or set indent of lines in a string, see |vim.text.indent()|.
 	**/
-	static function indent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function indent(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.index(object: any, expr: any, start?: integer, ic?: boolean)
@@ -12664,55 +10743,11 @@ package nvim;
 		   endif
 		 <
 	**/
-	static function index(object:Any, expr:Any, ?start:Float, ?ic:Bool):Float;
-	/**
-		```lua
-		function table.indexof(object: any, expr: any, opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Returns the index of an item in {object} where {expr} is
-		 v:true.  {object} must be a |List| or a |Blob|.
-		
-		 If {object} is a |List|, evaluate {expr} for each item in the
-		 List until the expression is v:true and return the index of
-		 this item.
-		
-		 If {object} is a |Blob| evaluate {expr} for each byte in the
-		 Blob until the expression is v:true and return the index of
-		 this byte.
-		
-		 {expr} must be a |string| or |Funcref|.
-		
-		 If {expr} is a |string|: If {object} is a |List|, inside
-		 {expr} |v:key| has the index of the current List item and
-		 |v:val| has the value of the item.  If {object} is a |Blob|,
-		 inside {expr} |v:key| has the index of the current byte and
-		 |v:val| has the byte value.
-		
-		 If {expr} is a |Funcref| it must take two arguments:
-		   1. the key or the index of the current item.
-		   2. the value of the current item.
-		 The function must return |TRUE| if the item is found and the
-		 search should stop.
-		
-		 The optional argument {opts} is a Dict and supports the
-		 following items:
-		     startidx  start evaluating {expr} at the item with this
-		     index; may be negative for an item relative to
-		     the end
-		 Returns -1 when {expr} evaluates to v:false for all the items.
-		 Example: >vim
-		   let l = [#{n: 10}, #{n: 20}, #{n: 30}]
-		   echo indexof(l, "v:val.n == 20")
-		   echo indexof(l, {i, v -> v.n == 30})
-		   echo indexof(l, "v:val.n == 20", #{startidx: 1})
-		 <
-	**/
+	@:luaDotMethod
+	function index(object:Any, expr:Any, ?start:Float, ?ic:Bool):Float;
 	@:native("indexof")
-	private static function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float;
+	@:luaDotMethod
+	private function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float;
 	/**
 		```lua
 		function table.indexof(object: any, expr: any, opts?: table)
@@ -12759,7 +10794,8 @@ package nvim;
 		   echo indexof(l, "v:val.n == 20", #{startidx: 1})
 		 <
 	**/
-	inline static function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float {
+	@:luaDotMethod
+	inline function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __indexof(object, expr, opts);
 		return result;
@@ -12889,7 +10925,8 @@ package nvim;
 		   endfunction
 		 <
 	**/
-	static function input(prompt:String, ?text:String, ?completion:String):String;
+	@:luaDotMethod
+	function input(prompt:String, ?text:String, ?completion:String):String;
 	/**
 		```lua
 		function table.inputdialog(...any)
@@ -12900,8 +10937,9 @@ package nvim;
 		
 		 Use |input()| instead.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function inputdialog(___:haxe.Rest<Any>):Any;
+	function inputdialog(___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function table.inputlist(textlist: string[])
@@ -12926,7 +10964,8 @@ package nvim;
 		   let color = inputlist(['Select color:', '1. red',
 		     \ '2. green', '3. blue'])
 	**/
-	static function inputlist(textlist:lua.Table<Int, String>):Any;
+	@:luaDotMethod
+	function inputlist(textlist:lua.Table<Int, String>):Any;
 	/**
 		```lua
 		function table.inputrestore()
@@ -12940,7 +10979,8 @@ package nvim;
 		 called.  Calling it more often is harmless though.
 		 Returns TRUE when there is nothing to restore, FALSE otherwise.
 	**/
-	static function inputrestore():Float;
+	@:luaDotMethod
+	function inputrestore():Float;
 	/**
 		```lua
 		function table.inputsave()
@@ -12956,7 +10996,8 @@ package nvim;
 		 many inputrestore() calls.
 		 Returns TRUE when out of memory, FALSE otherwise.
 	**/
-	static function inputsave():Float;
+	@:luaDotMethod
+	function inputsave():Float;
 	/**
 		```lua
 		function table.inputsecret(prompt: string, text?: string)
@@ -12975,7 +11016,8 @@ package nvim;
 		 typed on the command-line in response to the issued prompt.
 		 NOTE: Command-line completion is not supported.
 	**/
-	static function inputsecret(prompt:String, ?text:String):String;
+	@:luaDotMethod
+	function inputsecret(prompt:String, ?text:String):String;
 	/**
 		```lua
 		function table.insert(object: any, item: any, idx?: integer)
@@ -13000,7 +11042,8 @@ package nvim;
 		 Note that when {item} is a |List| it is inserted as a single
 		 item.  Use |extend()| to concatenate |Lists|.
 	**/
-	static function insert(object:Any, item:Any, ?idx:Float):Any;
+	@:luaDotMethod
+	function insert(object:Any, item:Any, ?idx:Float):Any;
 	/**
 		```lua
 		function table.interrupt()
@@ -13022,7 +11065,8 @@ package nvim;
 		 au BufWritePre * call s:check_typoname(expand('<amatch>'))
 		 <
 	**/
-	static function interrupt():Any;
+	@:luaDotMethod
+	function interrupt():Any;
 	/**
 		```lua
 		function table.invert(expr: integer)
@@ -13036,7 +11080,8 @@ package nvim;
 		   let bits = invert(bits)
 		 <
 	**/
-	static function invert(expr:Float):Float;
+	@:luaDotMethod
+	function invert(expr:Float):Float;
 	/**
 		```lua
 		function table.isabsolutepath(path: string)
@@ -13066,7 +11111,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function isabsolutepath(path:String):Float;
+	@:luaDotMethod
+	function isabsolutepath(path:String):Float;
 	/**
 		```lua
 		function table.isdirectory(directory: string)
@@ -13087,7 +11133,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function isdirectory(directory:String):Float;
+	@:luaDotMethod
+	function isdirectory(directory:String):Float;
 	/**
 		```lua
 		function table.isinf(expr: number)
@@ -13111,7 +11158,8 @@ package nvim;
 		    | -1
 		```
 	**/
-	static function isinf(expr:Float):Float;
+	@:luaDotMethod
+	function isinf(expr:Float):Float;
 	/**
 		```lua
 		function table.islocked(expr: any)
@@ -13140,7 +11188,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function islocked(expr:Any):Float;
+	@:luaDotMethod
+	function islocked(expr:Any):Float;
 	/**
 		```lua
 		function table.isnan(expr: number)
@@ -13160,30 +11209,11 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function isnan(expr:Float):Float;
-	/**
-		```lua
-		function table.items(dict: table)
-		  -> any
-		```
-		
-		---
-		
-		 Return a |List| with all the key-value pairs of {dict}.  Each
-		 |List| item is a list with two items: the key of a {dict}
-		 entry and the value of this entry.  The |List| is in arbitrary
-		 order.  Also see |keys()| and |values()|.
-		 Example: >vim
-		   for [key, value] in items(mydict)
-		      echo key .. ': ' .. value
-		   endfor
-		 <
-		 A List or a String argument is also supported.  In these
-		 cases, items() returns a List with the index and the value at
-		 the index.
-	**/
+	@:luaDotMethod
+	function isnan(expr:Float):Float;
 	@:native("items")
-	private static function __items(dict:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __items(dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.items(dict: table)
@@ -13205,7 +11235,8 @@ package nvim;
 		 cases, items() returns a List with the index and the value at
 		 the index.
 	**/
-	inline static function items(dict:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function items(dict:lua.Table.AnyTable):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __items(dict);
 		return result;
@@ -13220,8 +11251,9 @@ package nvim;
 		
 		 Obsolete name for |chanclose()|
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function jobclose(___:haxe.Rest<Any>):Any;
+	function jobclose(___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function table.jobpid(job: integer)
@@ -13232,7 +11264,8 @@ package nvim;
 		
 		 Return the PID (process id) of |job-id| {job}.
 	**/
-	static function jobpid(job:Float):Float;
+	@:luaDotMethod
+	function jobpid(job:Float):Float;
 	/**
 		```lua
 		function table.jobresize(job: integer, width: integer, height: integer)
@@ -13245,7 +11278,8 @@ package nvim;
 		 columns and {height} rows.
 		 Fails if the job was not started with `"pty":v:true`.
 	**/
-	static function jobresize(job:Float, width:Float, height:Float):Any;
+	@:luaDotMethod
+	function jobresize(job:Float, width:Float, height:Float):Any;
 	/**
 		```lua
 		function table.jobsend(...any)
@@ -13256,110 +11290,12 @@ package nvim;
 		
 		 Obsolete name for |chansend()|
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function jobsend(___:haxe.Rest<Any>):Any;
-	/**
-		```lua
-		function table.jobstart(cmd: string|string[], opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Note: Prefer |vim.system()| in Lua (unless using `rpc`, `pty`, or `term`).
-		
-		 Spawns {cmd} as a job.
-		 If {cmd} is a List it runs directly (no 'shell').
-		 If {cmd} is a String it runs in the 'shell', like this: >vim
-		   call jobstart(split(&shell) + split(&shellcmdflag) + ['{cmd}'])
-		 <(See |shell-unquoting| for details.)
-		
-		 Example: start a job and handle its output: >vim
-		   call jobstart(['nvim', '-h'], {'on_stdout':{j,d,e->append(line('.'),d)}})
-		 <
-		 Example: start a job in a |terminal| connected to the current buffer: >vim
-		   call jobstart(['nvim', '-h'], {'term':v:true})
-		 <
-		 Returns |job-id| on success, 0 on invalid arguments (or job
-		 table is full), -1 if {cmd}[0] or 'shell' is not executable.
-		 The returned job-id is a valid |channel-id| representing the
-		 job's stdio streams. Use |chansend()| (or |rpcnotify()| and
-		 |rpcrequest()| if "rpc" was enabled) to send data to stdin and
-		 |chanclose()| to close the streams without stopping the job.
-		
-		 See |job-control| and |RPC|.
-		
-		 NOTE: on Windows if {cmd} is a List:
-		   - cmd[0] must be an executable (not a "built-in"). If it is
-		     in $PATH it can be called by name, without an extension: >vim
-		       call jobstart(['ping', 'neovim.io'])
-		 <    If it is a full or partial path, extension is required: >vim
-		       call jobstart(['System32\ping.exe', 'neovim.io'])
-		 <  - {cmd} is collapsed to a string of quoted args as expected
-		     by CommandLineToArgvW https://msdn.microsoft.com/bb776391
-		     unless cmd[0] is some form of "cmd.exe".
-		
-		           *jobstart-env*
-		 The job environment is initialized as follows:
-		   $NVIM                is set to |v:servername| of the parent Nvim
-		   $NVIM_LISTEN_ADDRESS is unset
-		   $NVIM_LOG_FILE       is unset
-		   $VIM                 is unset
-		   $VIMRUNTIME          is unset
-		 You can set these with the `env` option.
-		
-		           *jobstart-options*
-		 {opts} is a dictionary with these keys:
-		   clear_env:  (boolean) `env` defines the job environment
-		         exactly, instead of merging current environment.
-		   cwd:        (string, default=|current-directory|) Working
-		         directory of the job.
-		   detach:     (boolean) Detach the job process: it will not be
-		         killed when Nvim exits. If the process exits
-		         before Nvim, `on_exit` will be invoked.
-		   env:        (dict) Map of environment variable name:value
-		         pairs extending (or replace with "clear_env")
-		         the current environment. |jobstart-env|
-		   height:     (number) Height of the `pty` terminal.
-		   |on_exit|:    (function) Callback invoked when the job exits.
-		   |on_stdout|:  (function) Callback invoked when the job emits
-		         stdout data.
-		   |on_stderr|:  (function) Callback invoked when the job emits
-		         stderr data.
-		   overlapped: (boolean) Sets FILE_FLAG_OVERLAPPED for the
-		         stdio passed to the child process. Only on
-		         MS-Windows; ignored on other platforms.
-		   pty:        (boolean) Connect the job to a new pseudo
-		         terminal, and its streams to the master file
-		         descriptor. `on_stdout` receives all output,
-		         `on_stderr` is ignored. |terminal-start|
-		   rpc:        (boolean) Use |msgpack-rpc| to communicate with
-		         the job over stdio. Then `on_stdout` is ignored,
-		         but `on_stderr` can still be used.
-		   stderr_buffered: (boolean) Collect data until EOF (stream closed)
-		         before invoking `on_stderr`. |channel-buffered|
-		   stdout_buffered: (boolean) Collect data until EOF (stream
-		         closed) before invoking `on_stdout`. |channel-buffered|
-		   stdin:      (string) Either "pipe" (default) to connect the
-		         job's stdin to a channel or "null" to disconnect
-		         stdin.
-		   term:      (boolean) Spawns {cmd} in a new pseudo-terminal session
-		           connected to the current (unmodified) buffer. Implies "pty".
-		           Default "height" and "width" are set to the current window
-		           dimensions. |jobstart()|. Defaults $TERM to "xterm-256color".
-		   width:      (number) Width of the `pty` terminal.
-		
-		 {opts} is passed as |self| dictionary to the callback; the
-		 caller may set other keys to pass application-specific data.
-		
-		 Returns:
-		   - |channel-id| on success
-		   - 0 on invalid arguments
-		   - -1 if {cmd}[0] is not executable.
-		 See also |job-control|, |channel|, |msgpack-rpc|.
-	**/
+	function jobsend(___:haxe.Rest<Any>):Any;
 	@:native("jobstart")
-	private static function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
+	@:luaDotMethod
+	private function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
 	/**
 		```lua
 		function table.jobstart(cmd: string|string[], opts?: table)
@@ -13460,7 +11396,8 @@ package nvim;
 		   - -1 if {cmd}[0] is not executable.
 		 See also |job-control|, |channel|, |msgpack-rpc|.
 	**/
-	inline static function jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
+	@:luaDotMethod
+	inline function jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __jobstart(cmd, opts);
 		return result;
@@ -13482,7 +11419,8 @@ package nvim;
 		 Returns 1 for valid job id, 0 for invalid id, including jobs have
 		 exited or stopped.
 	**/
-	static function jobstop(id:Float):Float;
+	@:luaDotMethod
+	function jobstop(id:Float):Float;
 	/**
 		```lua
 		function table.jobwait(jobs: integer[], timeout?: integer)
@@ -13511,7 +11449,8 @@ package nvim;
 		   -2 if the job was interrupted (by |CTRL-C|)
 		   -3 if the job-id is invalid
 	**/
-	static function jobwait(jobs:lua.Table<Int, Float>, ?timeout:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function jobwait(jobs:lua.Table<Int, Float>, ?timeout:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.join(list: any[], sep?: string)
@@ -13530,7 +11469,8 @@ package nvim;
 		 converted into a string like with |string()|.
 		 The opposite function is |split()|.
 	**/
-	static function join(list:lua.Table<Int, Any>, ?sep:String):String;
+	@:luaDotMethod
+	function join(list:lua.Table<Int, Any>, ?sep:String):String;
 	/**
 		```lua
 		function table.json_decode(expr: any)
@@ -13553,7 +11493,8 @@ package nvim;
 		 recommended and the only one required to be supported.
 		 Non-UTF-8 characters are an error.
 	**/
-	static function json_decode(expr:Any):Any;
+	@:luaDotMethod
+	function json_decode(expr:Any):Any;
 	/**
 		```lua
 		function table.json_encode(expr: any)
@@ -13573,20 +11514,11 @@ package nvim;
 		 or special escapes like "\t", other are dumped as-is.
 		 |Blob|s are converted to arrays of the individual bytes.
 	**/
-	static function json_encode(expr:Any):String;
-	/**
-		```lua
-		function table.keys(dict: table)
-		  -> string[]
-		```
-		
-		---
-		
-		 Return a |List| with all the keys of {dict}.  The |List| is in
-		 arbitrary order.  Also see |items()| and |values()|.
-	**/
+	@:luaDotMethod
+	function json_encode(expr:Any):String;
 	@:native("keys")
-	private static function __keys(dict:lua.Table.AnyTable):lua.Table<Int, String>;
+	@:luaDotMethod
+	private function __keys(dict:lua.Table.AnyTable):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.keys(dict: table)
@@ -13598,7 +11530,8 @@ package nvim;
 		 Return a |List| with all the keys of {dict}.  The |List| is in
 		 arbitrary order.  Also see |items()| and |values()|.
 	**/
-	inline static function keys(dict:lua.Table.AnyTable):lua.Table<Int, String> {
+	@:luaDotMethod
+	inline function keys(dict:lua.Table.AnyTable):lua.Table<Int, String> {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __keys(dict);
 		return result;
@@ -13617,7 +11550,8 @@ package nvim;
 		   echo keytrans(xx)
 		 <  <C-Home>
 	**/
-	static function keytrans(string:String):String;
+	@:luaDotMethod
+	function keytrans(string:String):String;
 	/**
 		```lua
 		function table.last_buffer_nr()
@@ -13628,8 +11562,9 @@ package nvim;
 		
 		 Obsolete name for bufnr("$").
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function last_buffer_nr():Any;
+	function last_buffer_nr():Any;
 	/**
 		```lua
 		function table.len(expr: any[])
@@ -13648,7 +11583,8 @@ package nvim;
 		 |Dictionary| is returned.
 		 Otherwise an error is given and returns zero.
 	**/
-	static function len(expr:lua.Table<Int, Any>):Float;
+	@:luaDotMethod
+	function len(expr:lua.Table<Int, Any>):Float;
 	/**
 		```lua
 		function table.libcall(libname: string, funcname: string, argument: any)
@@ -13698,7 +11634,8 @@ package nvim;
 		 Examples: >vim
 		   echo libcall("libc.so", "getenv", "HOME")
 	**/
-	static function libcall(libname:String, funcname:String, argument:Any):Any;
+	@:luaDotMethod
+	function libcall(libname:String, funcname:String, argument:Any):Any;
 	/**
 		```lua
 		function table.libcallnr(libname: string, funcname: string, argument: any)
@@ -13715,7 +11652,8 @@ package nvim;
 		   call libcallnr("libc.so", "sleep", 10)
 		 <
 	**/
-	static function libcallnr(libname:String, funcname:String, argument:Any):Any;
+	@:luaDotMethod
+	function libcallnr(libname:String, funcname:String, argument:Any):Any;
 	/**
 		```lua
 		function table.line(expr: string|integer[], winid?: integer)
@@ -13743,7 +11681,8 @@ package nvim;
 		 To jump to the last known position when opening a file see
 		 |last-position-jump|.
 	**/
-	static function line(expr:haxe.extern.EitherType<String, lua.Table<Int, Float>>, ?winid:Float):Float;
+	@:luaDotMethod
+	function line(expr:haxe.extern.EitherType<String, lua.Table<Int, Float>>, ?winid:Float):Float;
 	/**
 		```lua
 		function table.line2byte(lnum: string|integer)
@@ -13764,7 +11703,8 @@ package nvim;
 		 |getline()|.  When {lnum} is invalid -1 is returned.
 		 Also see |byte2line()|, |go| and |:goto|.
 	**/
-	static function line2byte(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function line2byte(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.lispindent(lnum: string|integer)
@@ -13779,7 +11719,8 @@ package nvim;
 		 relevant.  {lnum} is used just like in |getline()|.
 		 When {lnum} is invalid, -1 is returned.
 	**/
-	static function lispindent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function lispindent(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.list2blob(list: any[])
@@ -13797,7 +11738,8 @@ package nvim;
 		
 		 |blob2list()| does the opposite.
 	**/
-	static function list2blob(list:lua.Table<Int, Any>):String;
+	@:luaDotMethod
+	function list2blob(list:lua.Table<Int, Any>):String;
 	/**
 		```lua
 		function table.list2str(list: any[], utf8?: boolean)
@@ -13821,7 +11763,8 @@ package nvim;
 		 <
 		 Returns an empty string on error.
 	**/
-	static function list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
+	@:luaDotMethod
+	function list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
 	/**
 		```lua
 		function table.localtime()
@@ -13833,7 +11776,8 @@ package nvim;
 		 Return the current time, measured as seconds since 1st Jan
 		 1970.  See also |strftime()|, |strptime()| and |getftime()|.
 	**/
-	static function localtime():Float;
+	@:luaDotMethod
+	function localtime():Float;
 	/**
 		```lua
 		function table.log(expr: number)
@@ -13852,7 +11796,8 @@ package nvim;
 		   echo log(exp(5))
 		 <  5.0
 	**/
-	static function log(expr:Float):Float;
+	@:luaDotMethod
+	function log(expr:Float):Float;
 	/**
 		```lua
 		function table.log10(expr: number)
@@ -13870,13 +11815,14 @@ package nvim;
 		   echo log10(0.01)
 		 <  -2.0
 	**/
-	static function log10(expr:Float):Float;
+	@:luaDotMethod
+	function log10(expr:Float):Float;
 	/**
 		```lua
 		(global) table.luaeval: unknown
 		```
 	**/
-	static var luaeval : Dynamic;
+	var luaeval : Dynamic;
 	/**
 		```lua
 		function table.map(expr1: string|table|any[], expr2: string|function)
@@ -13938,7 +11884,8 @@ package nvim;
 		 When {expr2} is a Funcref errors inside a function are ignored,
 		 unless it was defined with the "abort" flag.
 	**/
-	static function map(expr1:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	@:luaDotMethod
+	function map(expr1:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr2:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.maparg(name: string, mode?: string, abbr?: boolean, dict?: false)
@@ -14039,7 +11986,8 @@ package nvim;
 		    | true
 		```
 	**/
-	static function maparg(name:String, ?mode:String, ?abbr:Bool, ?dict:Bool):String;
+	@:luaDotMethod
+	function maparg(name:String, ?mode:String, ?abbr:Bool, ?dict:Bool):String;
 	/**
 		```lua
 		function table.mapcheck(name: string, mode?: string, abbr?: boolean)
@@ -14080,7 +12028,8 @@ package nvim;
 		 <This avoids adding the "_vv" mapping when there already is a
 		 mapping for "_v" or for "_vvv".
 	**/
-	static function mapcheck(name:String, ?mode:String, ?abbr:Bool):Any;
+	@:luaDotMethod
+	function mapcheck(name:String, ?mode:String, ?abbr:Bool):Any;
 	/**
 		```lua
 		function table.maplist(abbr?: 0|1)
@@ -14127,7 +12076,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function maplist(?abbr:Float):lua.Table<Int, lua.Table.AnyTable>;
+	@:luaDotMethod
+	function maplist(?abbr:Float):lua.Table<Int, lua.Table.AnyTable>;
 	/**
 		```lua
 		function table.mapnew(expr1: any, expr2: any)
@@ -14141,60 +12091,11 @@ package nvim;
 		 unchanged.  Items can still be changed by {expr2}, if you
 		 don't want that use |deepcopy()| first.
 	**/
-	static function mapnew(expr1:Any, expr2:Any):Any;
-	/**
-		```lua
-		function table.mapset(mode: string, abbr?: boolean, dict?: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		```lua
-		function table.mapset(dict: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Restore a mapping from a dictionary, possibly returned by
-		 |maparg()| or |maplist()|.  A buffer mapping, when dict.buffer
-		 is true, is set on the current buffer; it is up to the caller
-		 to ensure that the intended buffer is the current buffer. This
-		 feature allows copying mappings from one buffer to another.
-		 The dict.mode value may restore a single mapping that covers
-		 more than one mode, like with mode values of '!', ' ', "nox",
-		 or 'v'. *E1276*
-		
-		 In the first form, {mode} and {abbr} should be the same as
-		 for the call to |maparg()|. *E460*
-		 {mode} is used to define the mode in which the mapping is set,
-		 not the "mode" entry in {dict}.
-		 Example for saving and restoring a mapping: >vim
-		   let save_map = maparg('K', 'n', 0, 1)
-		   nnoremap K somethingelse
-		   " ...
-		   call mapset('n', 0, save_map)
-		 <Note that if you are going to replace a map in several modes,
-		 e.g. with `:map!`, you need to save/restore the mapping for
-		 all of them, when they might differ.
-		
-		 In the second form, with {dict} as the only argument, mode
-		 and abbr are taken from the dict.
-		 Example: >vim
-		   let save_maps = maplist()->filter(
-		         \ {_, m -> m.lhs == 'K'})
-		   nnoremap K somethingelse
-		   cnoremap K somethingelse2
-		   " ...
-		   unmap K
-		   for d in save_maps
-		       call mapset(d)
-		   endfor
-		 <
-	**/
+	@:luaDotMethod
+	function mapnew(expr1:Any, expr2:Any):Any;
 	@:native("mapset")
-	private static function __mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
+	@:luaDotMethod
+	private function __mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function table.mapset(mode: string, abbr?: boolean, dict?: table<string, any>)
@@ -14246,7 +12147,8 @@ package nvim;
 		   endfor
 		 <
 	**/
-	inline static function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
+	@:luaDotMethod
+	inline function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __mapset(mode, abbr, dict);
 		return result;
@@ -14321,7 +12223,8 @@ package nvim;
 		 zero matches at the start instead of a number of matches
 		 further down in the text.
 	**/
-	static function match(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, pat:String, ?start:Float, ?count:Float):Any;
+	@:luaDotMethod
+	function match(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, pat:String, ?start:Float, ?count:Float):Any;
 	/**
 		```lua
 		function table.matchadd(group: string|integer, pattern: string, priority?: integer, id?: integer, dict?: string)
@@ -14387,7 +12290,8 @@ package nvim;
 		 available from |getmatches()|.  All matches can be deleted in
 		 one operation by |clearmatches()|.
 	**/
-	static function matchadd(group:haxe.extern.EitherType<Float, String>, pattern:String, ?priority:Float, ?id:Float, ?dict:String):Any;
+	@:luaDotMethod
+	function matchadd(group:haxe.extern.EitherType<Float, String>, pattern:String, ?priority:Float, ?id:Float, ?dict:String):Any;
 	/**
 		```lua
 		function table.matchaddpos(group: string|integer, pos: any[], priority?: integer, id?: integer, dict?: string)
@@ -14432,7 +12336,8 @@ package nvim;
 		 <Matches added by |matchaddpos()| are returned by
 		 |getmatches()|.
 	**/
-	static function matchaddpos(group:haxe.extern.EitherType<Float, String>, pos:lua.Table<Int, Any>, ?priority:Float, ?id:Float, ?dict:String):Any;
+	@:luaDotMethod
+	function matchaddpos(group:haxe.extern.EitherType<Float, String>, pos:lua.Table<Int, Any>, ?priority:Float, ?id:Float, ?dict:String):Any;
 	/**
 		```lua
 		function table.matcharg(nr: integer)
@@ -14452,60 +12357,11 @@ package nvim;
 		 Highlighting matches using the |:match| commands are limited
 		 to three matches. |matchadd()| does not have this limitation.
 	**/
-	static function matcharg(nr:Float):Any;
-	/**
-		```lua
-		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns the |List| of matches in lines from {lnum} to {end} in
-		 buffer {buf} where {pat} matches.
-		
-		 {lnum} and {end} can either be a line number or the string "$"
-		 to refer to the last line in {buf}.
-		
-		 The {dict} argument supports following items:
-		     submatches  include submatch information (|/\(|)
-		
-		 For each match, a |Dict| with the following items is returned:
-		     byteidx  starting byte index of the match
-		     lnum  line number where there is a match
-		     text  matched string
-		 Note that there can be multiple matches in a single line.
-		
-		 This function works only for loaded buffers. First call
-		 |bufload()| if needed.
-		
-		 See |match-pattern| for information about the effect of some
-		 option settings on the pattern.
-		
-		 When {buf} is not a valid buffer, the buffer is not loaded or
-		 {lnum} or {end} is not valid then an error is given and an
-		 empty |List| is returned.
-		
-		 Examples: >vim
-		     " Assuming line 3 in buffer 5 contains "a"
-		     echo matchbufline(5, '\<\k\+\>', 3, 3)
-		 <    `[{'lnum': 3, 'byteidx': 0, 'text': 'a'}]` >vim
-		     " Assuming line 4 in buffer 10 contains "tik tok"
-		     echo matchbufline(10, '\<\k\+\>', 1, 4)
-		 <    `[{'lnum': 4, 'byteidx': 0, 'text': 'tik'}, {'lnum': 4, 'byteidx': 4, 'text': 'tok'}]`
-		
-		 If {submatch} is present and is v:true, then submatches like
-		 "\1", "\2", etc. are also returned.  Example: >vim
-		     " Assuming line 2 in buffer 2 contains "acd"
-		     echo matchbufline(2, '\(a\)\?\(b\)\?\(c\)\?\(.*\)', 2, 2
-		         \ {'submatches': v:true})
-		 <    `[{'lnum': 2, 'byteidx': 0, 'text': 'acd', 'submatches': ['a', '', 'c', 'd', '', '', '', '', '']}]`
-		 The "submatches" List always contains 9 items.  If a submatch
-		 is not found, then an empty string is returned for that
-		 submatch.
-	**/
+	@:luaDotMethod
+	function matcharg(nr:Float):Any;
 	@:native("matchbufline")
-	private static function __matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
@@ -14557,7 +12413,8 @@ package nvim;
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	inline static function matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __matchbufline(buf, pat, lnum, end_, dict);
 		return result;
@@ -14577,7 +12434,8 @@ package nvim;
 		 If {win} is specified, use the window with this number or
 		 window ID instead of the current window.
 	**/
-	static function matchdelete(id:Float, ?win:Float):Any;
+	@:luaDotMethod
+	function matchdelete(id:Float, ?win:Float):Any;
 	/**
 		```lua
 		function table.matchend(expr: any, pat: string, start?: integer, count?: integer)
@@ -14604,79 +12462,11 @@ package nvim;
 		 <result is "-1".
 		 When {expr} is a |List| the result is equal to |match()|.
 	**/
-	static function matchend(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
-	/**
-		```lua
-		function table.matchfuzzy(list: any[], str: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 If {list} is a list of strings, then returns a |List| with all
-		 the strings in {list} that fuzzy match {str}. The strings in
-		 the returned list are sorted based on the matching score.
-		
-		 The optional {dict} argument always supports the following
-		 items:
-		     matchseq  When this item is present return only matches
-		     that contain the characters in {str} in the
-		     given sequence.
-		     limit  Maximum number of matches in {list} to be
-		     returned.  Zero means no limit.
-		
-		 If {list} is a list of dictionaries, then the optional {dict}
-		 argument supports the following additional items:
-		     key    Key of the item which is fuzzy matched against
-		     {str}. The value of this item should be a
-		     string.
-		     text_cb  |Funcref| that will be called for every item
-		     in {list} to get the text for fuzzy matching.
-		     This should accept a dictionary item as the
-		     argument and return the text for that item to
-		     use for fuzzy matching.
-		
-		 {str} is treated as a literal string and regular expression
-		 matching is NOT supported.  The maximum supported {str} length
-		 is 256.
-		
-		 When {str} has multiple words each separated by white space,
-		 then the list of strings that have all the words is returned.
-		
-		 If there are no matching strings or there is an error, then an
-		 empty list is returned. If length of {str} is greater than
-		 256, then returns an empty list.
-		
-		 When {limit} is given, matchfuzzy() will find up to this
-		 number of matches in {list} and return them in sorted order.
-		
-		 Refer to |fuzzy-matching| for more information about fuzzy
-		 matching strings.
-		
-		 Example: >vim
-		    echo matchfuzzy(["clay", "crow"], "cay")
-		 <results in ["clay"]. >vim
-		    echo getbufinfo()->map({_, v -> v.name})->matchfuzzy("ndl")
-		 <results in a list of buffer names fuzzy matching "ndl". >vim
-		    echo getbufinfo()->matchfuzzy("ndl", {'key' : 'name'})
-		 <results in a list of buffer information dicts with buffer
-		 names fuzzy matching "ndl". >vim
-		    echo getbufinfo()->matchfuzzy("spl",
-		         \ {'text_cb' : {v -> v.name}})
-		 <results in a list of buffer information dicts with buffer
-		 names fuzzy matching "spl". >vim
-		    echo v:oldfiles->matchfuzzy("test")
-		 <results in a list of file names fuzzy matching "test". >vim
-		    let l = readfile("buffer.c")->matchfuzzy("str")
-		 <results in a list of lines in "buffer.c" fuzzy matching "str". >vim
-		    echo ['one two', 'two one']->matchfuzzy('two one')
-		 <results in `['two one', 'one two']` . >vim
-		    echo ['one two', 'two one']->matchfuzzy('two one',
-		         \ {'matchseq': 1})
-		 <results in `['two one']`.
-	**/
+	@:luaDotMethod
+	function matchend(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
 	@:native("matchfuzzy")
-	private static function __matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchfuzzy(list: any[], str: string, dict?: table)
@@ -14747,42 +12537,15 @@ package nvim;
 		         \ {'matchseq': 1})
 		 <results in `['two one']`.
 	**/
-	inline static function matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __matchfuzzy(list, str, dict);
 		return result;
 	}
-	/**
-		```lua
-		function table.matchfuzzypos(list: any[], str: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Same as |matchfuzzy()|, but returns the list of matched
-		 strings, the list of character positions where characters
-		 in {str} matches and a list of matching scores.  You can
-		 use |byteidx()| to convert a character position to a byte
-		 position.
-		
-		 If {str} matches multiple times in a string, then only the
-		 positions for the best match is returned.
-		
-		 If there are no matching strings or there is an error, then a
-		 list with three empty list items is returned.
-		
-		 Example: >vim
-		   echo matchfuzzypos(['testing'], 'tsg')
-		 <results in [["testing"], [[0, 2, 6]], [99]] >vim
-		   echo matchfuzzypos(['clay', 'lacy'], 'la')
-		 <results in [["lacy", "clay"], [[0, 1], [1, 2]], [153, 133]] >vim
-		   echo [{'text': 'hello', 'id' : 10}]
-		     \ ->matchfuzzypos('ll', {'key' : 'text'})
-		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
-	**/
 	@:native("matchfuzzypos")
-	private static function __matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchfuzzypos(list: any[], str: string, dict?: table)
@@ -14812,7 +12575,8 @@ package nvim;
 		     \ ->matchfuzzypos('ll', {'key' : 'text'})
 		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
 	**/
-	inline static function matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __matchfuzzypos(list, str, dict);
 		return result;
@@ -14836,7 +12600,8 @@ package nvim;
 		
 		 You can pass in a List, but that is not very useful.
 	**/
-	static function matchlist(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	@:luaDotMethod
+	function matchlist(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
 	/**
 		```lua
 		function table.matchstr(expr: any, pat: string, start?: integer, count?: integer)
@@ -14857,49 +12622,11 @@ package nvim;
 		 When {expr} is a |List| then the matching item is returned.
 		 The type isn't changed, it's not necessarily a String.
 	**/
-	static function matchstr(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
-	/**
-		```lua
-		function table.matchstrlist(list: string[], pat: string, dict?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Returns the |List| of matches in {list} where {pat} matches.
-		 {list} is a |List| of strings.  {pat} is matched against each
-		 string in {list}.
-		
-		 The {dict} argument supports following items:
-		     submatches  include submatch information (|/\(|)
-		
-		 For each match, a |Dict| with the following items is returned:
-		     byteidx  starting byte index of the match.
-		     idx    index in {list} of the match.
-		     text  matched string
-		     submatches  a List of submatches.  Present only if
-		     "submatches" is set to v:true in {dict}.
-		
-		 See |match-pattern| for information about the effect of some
-		 option settings on the pattern.
-		
-		 Example: >vim
-		     echo matchstrlist(['tik tok'], '\<\k\+\>')
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'tik'}, {'idx': 0, 'byteidx': 4, 'text': 'tok'}]` >vim
-		     echo matchstrlist(['a', 'b'], '\<\k\+\>')
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'a'}, {'idx': 1, 'byteidx': 0, 'text': 'b'}]`
-		
-		 If "submatches" is present and is v:true, then submatches like
-		 "\1", "\2", etc. are also returned.  Example: >vim
-		     echo matchstrlist(['acd'], '\(a\)\?\(b\)\?\(c\)\?\(.*\)',
-		         \ #{submatches: v:true})
-		 <    `[{'idx': 0, 'byteidx': 0, 'text': 'acd', 'submatches': ['a', '', 'c', 'd', '', '', '', '', '']}]`
-		 The "submatches" List always contains 9 items.  If a submatch
-		 is not found, then an empty string is returned for that
-		 submatch.
-	**/
+	@:luaDotMethod
+	function matchstr(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
 	@:native("matchstrlist")
-	private static function __matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchstrlist(list: string[], pat: string, dict?: table)
@@ -14940,7 +12667,8 @@ package nvim;
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	inline static function matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __matchstrlist(list, pat, dict);
 		return result;
@@ -14970,7 +12698,8 @@ package nvim;
 		 <result is ["x", 1, 2, 3].
 		 The type isn't changed, it's not necessarily a String.
 	**/
-	static function matchstrpos(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	@:luaDotMethod
+	function matchstrpos(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
 	/**
 		```lua
 		function table.max(expr: any)
@@ -14988,7 +12717,8 @@ package nvim;
 		 items in {expr} cannot be used as a Number this results in
 		 an error.  An empty |List| or |Dictionary| results in zero.
 	**/
-	static function max(expr:Any):Float;
+	@:luaDotMethod
+	function max(expr:Any):Float;
 	/**
 		```lua
 		function table.menu_get(path: string, modes?: string)
@@ -15042,7 +12772,8 @@ package nvim;
 		   } ]
 		 <
 	**/
-	static function menu_get(path:String, ?modes:String):Any;
+	@:luaDotMethod
+	function menu_get(path:String, ?modes:String):Any;
 	/**
 		```lua
 		function table.menu_info(name: string, mode?: string)
@@ -15121,7 +12852,8 @@ package nvim;
 		   endfor
 		 <
 	**/
-	static function menu_info(name:String, ?mode:String):Any;
+	@:luaDotMethod
+	function menu_info(name:String, ?mode:String):Any;
 	/**
 		```lua
 		function table.min(expr: any)
@@ -15139,7 +12871,8 @@ package nvim;
 		 items in {expr} cannot be used as a Number this results in
 		 an error.  An empty |List| or |Dictionary| results in zero.
 	**/
-	static function min(expr:Any):Float;
+	@:luaDotMethod
+	function min(expr:Any):Float;
 	/**
 		```lua
 		function table.mkdir(name: string, flags?: string, prot?: string)
@@ -15186,7 +12919,8 @@ package nvim;
 		 successful or FALSE if the directory creation failed or partly
 		 failed.
 	**/
-	static function mkdir(name:String, ?flags:String, ?prot:String):Float;
+	@:luaDotMethod
+	function mkdir(name:String, ?flags:String, ?prot:String):Float;
 	/**
 		```lua
 		function table.mode(expr?: any)
@@ -15248,7 +12982,8 @@ package nvim;
 		 the leading character(s).
 		 Also see |visualmode()|.
 	**/
-	static function mode(?expr:Any):Any;
+	@:luaDotMethod
+	function mode(?expr:Any):Any;
 	/**
 		```lua
 		function table.msgpackdump(list: any, type?: any)
@@ -15275,7 +13010,8 @@ package nvim;
 		 4. Other strings and |Blob|s are always dumped as BIN strings.
 		 5. Points 3. and 4. do not apply to |msgpack-special-dict|s.
 	**/
-	static function msgpackdump(list:Any, ?type:Any):Any;
+	@:luaDotMethod
+	function msgpackdump(list:Any, ?type:Any):Any;
 	/**
 		```lua
 		function table.msgpackparse(data: any)
@@ -15351,7 +13087,8 @@ package nvim;
 		   representing extension type. Second is
 		   |readfile()|-style list of strings.
 	**/
-	static function msgpackparse(data:Any):Any;
+	@:luaDotMethod
+	function msgpackparse(data:Any):Any;
 	/**
 		```lua
 		function table.nextnonblank(lnum: string|integer)
@@ -15368,7 +13105,8 @@ package nvim;
 		 {lnum} is used like with |getline()|.
 		 See also |prevnonblank()|.
 	**/
-	static function nextnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function nextnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.nr2char(expr: integer, utf8?: boolean)
@@ -15391,1057 +13129,1058 @@ package nvim;
 		 characters.  nr2char(0) is a real NUL and terminates the
 		 string, thus results in an empty string.
 	**/
-	static function nr2char(expr:Float, ?utf8:Bool):String;
+	@:luaDotMethod
+	function nr2char(expr:Float, ?utf8:Bool):String;
 	/**
 		```lua
 		(global) table.nvim__buf_debug_extmarks: unknown
 		```
 	**/
-	static var nvim__buf_debug_extmarks : Dynamic;
+	var nvim__buf_debug_extmarks : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__buf_stats: unknown
 		```
 	**/
-	static var nvim__buf_stats : Dynamic;
+	var nvim__buf_stats : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__complete_set: unknown
 		```
 	**/
-	static var nvim__complete_set : Dynamic;
+	var nvim__complete_set : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__get_lib_dir: unknown
 		```
 	**/
-	static var nvim__get_lib_dir : Dynamic;
+	var nvim__get_lib_dir : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__get_runtime: unknown
 		```
 	**/
-	static var nvim__get_runtime : Dynamic;
+	var nvim__get_runtime : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__id: unknown
 		```
 	**/
-	static var nvim__id : Dynamic;
+	var nvim__id : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__id_array: unknown
 		```
 	**/
-	static var nvim__id_array : Dynamic;
+	var nvim__id_array : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__id_dict: unknown
 		```
 	**/
-	static var nvim__id_dict : Dynamic;
+	var nvim__id_dict : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__id_float: unknown
 		```
 	**/
-	static var nvim__id_float : Dynamic;
+	var nvim__id_float : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__inspect_cell: unknown
 		```
 	**/
-	static var nvim__inspect_cell : Dynamic;
+	var nvim__inspect_cell : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__invalidate_glyph_cache: unknown
 		```
 	**/
-	static var nvim__invalidate_glyph_cache : Dynamic;
+	var nvim__invalidate_glyph_cache : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__ns_get: unknown
 		```
 	**/
-	static var nvim__ns_get : Dynamic;
+	var nvim__ns_get : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__ns_set: unknown
 		```
 	**/
-	static var nvim__ns_set : Dynamic;
+	var nvim__ns_set : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__redraw: unknown
 		```
 	**/
-	static var nvim__redraw : Dynamic;
+	var nvim__redraw : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__runtime_inspect: unknown
 		```
 	**/
-	static var nvim__runtime_inspect : Dynamic;
+	var nvim__runtime_inspect : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__screenshot: unknown
 		```
 	**/
-	static var nvim__screenshot : Dynamic;
+	var nvim__screenshot : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__stats: unknown
 		```
 	**/
-	static var nvim__stats : Dynamic;
+	var nvim__stats : Dynamic;
 	/**
 		```lua
 		(global) table.nvim__unpack: unknown
 		```
 	**/
-	static var nvim__unpack : Dynamic;
+	var nvim__unpack : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_add_highlight: unknown
 		```
 	**/
-	static var nvim_buf_add_highlight : Dynamic;
+	var nvim_buf_add_highlight : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_attach: unknown
 		```
 	**/
-	static var nvim_buf_attach : Dynamic;
+	var nvim_buf_attach : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_clear_highlight: unknown
 		```
 	**/
-	static var nvim_buf_clear_highlight : Dynamic;
+	var nvim_buf_clear_highlight : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_clear_namespace: unknown
 		```
 	**/
-	static var nvim_buf_clear_namespace : Dynamic;
+	var nvim_buf_clear_namespace : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_create_user_command: unknown
 		```
 	**/
-	static var nvim_buf_create_user_command : Dynamic;
+	var nvim_buf_create_user_command : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_del_extmark: unknown
 		```
 	**/
-	static var nvim_buf_del_extmark : Dynamic;
+	var nvim_buf_del_extmark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_del_keymap: unknown
 		```
 	**/
-	static var nvim_buf_del_keymap : Dynamic;
+	var nvim_buf_del_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_del_mark: unknown
 		```
 	**/
-	static var nvim_buf_del_mark : Dynamic;
+	var nvim_buf_del_mark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_del_user_command: unknown
 		```
 	**/
-	static var nvim_buf_del_user_command : Dynamic;
+	var nvim_buf_del_user_command : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_del_var: unknown
 		```
 	**/
-	static var nvim_buf_del_var : Dynamic;
+	var nvim_buf_del_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_delete: unknown
 		```
 	**/
-	static var nvim_buf_delete : Dynamic;
+	var nvim_buf_delete : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_changedtick: unknown
 		```
 	**/
-	static var nvim_buf_get_changedtick : Dynamic;
+	var nvim_buf_get_changedtick : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_commands: unknown
 		```
 	**/
-	static var nvim_buf_get_commands : Dynamic;
+	var nvim_buf_get_commands : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_extmark_by_id: unknown
 		```
 	**/
-	static var nvim_buf_get_extmark_by_id : Dynamic;
+	var nvim_buf_get_extmark_by_id : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_extmarks: unknown
 		```
 	**/
-	static var nvim_buf_get_extmarks : Dynamic;
+	var nvim_buf_get_extmarks : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_keymap: unknown
 		```
 	**/
-	static var nvim_buf_get_keymap : Dynamic;
+	var nvim_buf_get_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_lines: unknown
 		```
 	**/
-	static var nvim_buf_get_lines : Dynamic;
+	var nvim_buf_get_lines : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_mark: unknown
 		```
 	**/
-	static var nvim_buf_get_mark : Dynamic;
+	var nvim_buf_get_mark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_name: unknown
 		```
 	**/
-	static var nvim_buf_get_name : Dynamic;
+	var nvim_buf_get_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_number: unknown
 		```
 	**/
-	static var nvim_buf_get_number : Dynamic;
+	var nvim_buf_get_number : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_offset: unknown
 		```
 	**/
-	static var nvim_buf_get_offset : Dynamic;
+	var nvim_buf_get_offset : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_option: unknown
 		```
 	**/
-	static var nvim_buf_get_option : Dynamic;
+	var nvim_buf_get_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_text: unknown
 		```
 	**/
-	static var nvim_buf_get_text : Dynamic;
+	var nvim_buf_get_text : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_get_var: unknown
 		```
 	**/
-	static var nvim_buf_get_var : Dynamic;
+	var nvim_buf_get_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_is_loaded: unknown
 		```
 	**/
-	static var nvim_buf_is_loaded : Dynamic;
+	var nvim_buf_is_loaded : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_is_valid: unknown
 		```
 	**/
-	static var nvim_buf_is_valid : Dynamic;
+	var nvim_buf_is_valid : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_line_count: unknown
 		```
 	**/
-	static var nvim_buf_line_count : Dynamic;
+	var nvim_buf_line_count : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_extmark: unknown
 		```
 	**/
-	static var nvim_buf_set_extmark : Dynamic;
+	var nvim_buf_set_extmark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_keymap: unknown
 		```
 	**/
-	static var nvim_buf_set_keymap : Dynamic;
+	var nvim_buf_set_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_lines: unknown
 		```
 	**/
-	static var nvim_buf_set_lines : Dynamic;
+	var nvim_buf_set_lines : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_mark: unknown
 		```
 	**/
-	static var nvim_buf_set_mark : Dynamic;
+	var nvim_buf_set_mark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_name: unknown
 		```
 	**/
-	static var nvim_buf_set_name : Dynamic;
+	var nvim_buf_set_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_option: unknown
 		```
 	**/
-	static var nvim_buf_set_option : Dynamic;
+	var nvim_buf_set_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_text: unknown
 		```
 	**/
-	static var nvim_buf_set_text : Dynamic;
+	var nvim_buf_set_text : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_var: unknown
 		```
 	**/
-	static var nvim_buf_set_var : Dynamic;
+	var nvim_buf_set_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_buf_set_virtual_text: unknown
 		```
 	**/
-	static var nvim_buf_set_virtual_text : Dynamic;
+	var nvim_buf_set_virtual_text : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_call_dict_function: unknown
 		```
 	**/
-	static var nvim_call_dict_function : Dynamic;
+	var nvim_call_dict_function : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_call_function: unknown
 		```
 	**/
-	static var nvim_call_function : Dynamic;
+	var nvim_call_function : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_clear_autocmds: unknown
 		```
 	**/
-	static var nvim_clear_autocmds : Dynamic;
+	var nvim_clear_autocmds : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_cmd: unknown
 		```
 	**/
-	static var nvim_cmd : Dynamic;
+	var nvim_cmd : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_command: unknown
 		```
 	**/
-	static var nvim_command : Dynamic;
+	var nvim_command : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_command_output: unknown
 		```
 	**/
-	static var nvim_command_output : Dynamic;
+	var nvim_command_output : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_create_augroup: unknown
 		```
 	**/
-	static var nvim_create_augroup : Dynamic;
+	var nvim_create_augroup : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_create_autocmd: unknown
 		```
 	**/
-	static var nvim_create_autocmd : Dynamic;
+	var nvim_create_autocmd : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_create_buf: unknown
 		```
 	**/
-	static var nvim_create_buf : Dynamic;
+	var nvim_create_buf : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_create_namespace: unknown
 		```
 	**/
-	static var nvim_create_namespace : Dynamic;
+	var nvim_create_namespace : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_create_user_command: unknown
 		```
 	**/
-	static var nvim_create_user_command : Dynamic;
+	var nvim_create_user_command : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_augroup_by_id: unknown
 		```
 	**/
-	static var nvim_del_augroup_by_id : Dynamic;
+	var nvim_del_augroup_by_id : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_augroup_by_name: unknown
 		```
 	**/
-	static var nvim_del_augroup_by_name : Dynamic;
+	var nvim_del_augroup_by_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_autocmd: unknown
 		```
 	**/
-	static var nvim_del_autocmd : Dynamic;
+	var nvim_del_autocmd : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_current_line: unknown
 		```
 	**/
-	static var nvim_del_current_line : Dynamic;
+	var nvim_del_current_line : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_keymap: unknown
 		```
 	**/
-	static var nvim_del_keymap : Dynamic;
+	var nvim_del_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_mark: unknown
 		```
 	**/
-	static var nvim_del_mark : Dynamic;
+	var nvim_del_mark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_user_command: unknown
 		```
 	**/
-	static var nvim_del_user_command : Dynamic;
+	var nvim_del_user_command : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_del_var: unknown
 		```
 	**/
-	static var nvim_del_var : Dynamic;
+	var nvim_del_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_echo: unknown
 		```
 	**/
-	static var nvim_echo : Dynamic;
+	var nvim_echo : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_err_write: unknown
 		```
 	**/
-	static var nvim_err_write : Dynamic;
+	var nvim_err_write : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_err_writeln: unknown
 		```
 	**/
-	static var nvim_err_writeln : Dynamic;
+	var nvim_err_writeln : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_eval: unknown
 		```
 	**/
-	static var nvim_eval : Dynamic;
+	var nvim_eval : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_eval_statusline: unknown
 		```
 	**/
-	static var nvim_eval_statusline : Dynamic;
+	var nvim_eval_statusline : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_exec: unknown
 		```
 	**/
-	static var nvim_exec : Dynamic;
+	var nvim_exec : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_exec2: unknown
 		```
 	**/
-	static var nvim_exec2 : Dynamic;
+	var nvim_exec2 : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_exec_autocmds: unknown
 		```
 	**/
-	static var nvim_exec_autocmds : Dynamic;
+	var nvim_exec_autocmds : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_feedkeys: unknown
 		```
 	**/
-	static var nvim_feedkeys : Dynamic;
+	var nvim_feedkeys : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_all_options_info: unknown
 		```
 	**/
-	static var nvim_get_all_options_info : Dynamic;
+	var nvim_get_all_options_info : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_autocmds: unknown
 		```
 	**/
-	static var nvim_get_autocmds : Dynamic;
+	var nvim_get_autocmds : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_chan_info: unknown
 		```
 	**/
-	static var nvim_get_chan_info : Dynamic;
+	var nvim_get_chan_info : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_color_by_name: unknown
 		```
 	**/
-	static var nvim_get_color_by_name : Dynamic;
+	var nvim_get_color_by_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_color_map: unknown
 		```
 	**/
-	static var nvim_get_color_map : Dynamic;
+	var nvim_get_color_map : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_commands: unknown
 		```
 	**/
-	static var nvim_get_commands : Dynamic;
+	var nvim_get_commands : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_context: unknown
 		```
 	**/
-	static var nvim_get_context : Dynamic;
+	var nvim_get_context : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_current_buf: unknown
 		```
 	**/
-	static var nvim_get_current_buf : Dynamic;
+	var nvim_get_current_buf : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_current_line: unknown
 		```
 	**/
-	static var nvim_get_current_line : Dynamic;
+	var nvim_get_current_line : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_current_tabpage: unknown
 		```
 	**/
-	static var nvim_get_current_tabpage : Dynamic;
+	var nvim_get_current_tabpage : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_current_win: unknown
 		```
 	**/
-	static var nvim_get_current_win : Dynamic;
+	var nvim_get_current_win : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_hl: unknown
 		```
 	**/
-	static var nvim_get_hl : Dynamic;
+	var nvim_get_hl : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_hl_by_id: unknown
 		```
 	**/
-	static var nvim_get_hl_by_id : Dynamic;
+	var nvim_get_hl_by_id : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_hl_by_name: unknown
 		```
 	**/
-	static var nvim_get_hl_by_name : Dynamic;
+	var nvim_get_hl_by_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_hl_id_by_name: unknown
 		```
 	**/
-	static var nvim_get_hl_id_by_name : Dynamic;
+	var nvim_get_hl_id_by_name : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_hl_ns: unknown
 		```
 	**/
-	static var nvim_get_hl_ns : Dynamic;
+	var nvim_get_hl_ns : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_keymap: unknown
 		```
 	**/
-	static var nvim_get_keymap : Dynamic;
+	var nvim_get_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_mark: unknown
 		```
 	**/
-	static var nvim_get_mark : Dynamic;
+	var nvim_get_mark : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_mode: unknown
 		```
 	**/
-	static var nvim_get_mode : Dynamic;
+	var nvim_get_mode : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_namespaces: unknown
 		```
 	**/
-	static var nvim_get_namespaces : Dynamic;
+	var nvim_get_namespaces : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_option: unknown
 		```
 	**/
-	static var nvim_get_option : Dynamic;
+	var nvim_get_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_option_info: unknown
 		```
 	**/
-	static var nvim_get_option_info : Dynamic;
+	var nvim_get_option_info : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_option_info2: unknown
 		```
 	**/
-	static var nvim_get_option_info2 : Dynamic;
+	var nvim_get_option_info2 : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_option_value: unknown
 		```
 	**/
-	static var nvim_get_option_value : Dynamic;
+	var nvim_get_option_value : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_proc: unknown
 		```
 	**/
-	static var nvim_get_proc : Dynamic;
+	var nvim_get_proc : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_proc_children: unknown
 		```
 	**/
-	static var nvim_get_proc_children : Dynamic;
+	var nvim_get_proc_children : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_runtime_file: unknown
 		```
 	**/
-	static var nvim_get_runtime_file : Dynamic;
+	var nvim_get_runtime_file : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_var: unknown
 		```
 	**/
-	static var nvim_get_var : Dynamic;
+	var nvim_get_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_get_vvar: unknown
 		```
 	**/
-	static var nvim_get_vvar : Dynamic;
+	var nvim_get_vvar : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_input: unknown
 		```
 	**/
-	static var nvim_input : Dynamic;
+	var nvim_input : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_input_mouse: unknown
 		```
 	**/
-	static var nvim_input_mouse : Dynamic;
+	var nvim_input_mouse : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_bufs: unknown
 		```
 	**/
-	static var nvim_list_bufs : Dynamic;
+	var nvim_list_bufs : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_chans: unknown
 		```
 	**/
-	static var nvim_list_chans : Dynamic;
+	var nvim_list_chans : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_runtime_paths: unknown
 		```
 	**/
-	static var nvim_list_runtime_paths : Dynamic;
+	var nvim_list_runtime_paths : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_tabpages: unknown
 		```
 	**/
-	static var nvim_list_tabpages : Dynamic;
+	var nvim_list_tabpages : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_uis: unknown
 		```
 	**/
-	static var nvim_list_uis : Dynamic;
+	var nvim_list_uis : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_list_wins: unknown
 		```
 	**/
-	static var nvim_list_wins : Dynamic;
+	var nvim_list_wins : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_load_context: unknown
 		```
 	**/
-	static var nvim_load_context : Dynamic;
+	var nvim_load_context : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_notify: unknown
 		```
 	**/
-	static var nvim_notify : Dynamic;
+	var nvim_notify : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_open_term: unknown
 		```
 	**/
-	static var nvim_open_term : Dynamic;
+	var nvim_open_term : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_open_win: unknown
 		```
 	**/
-	static var nvim_open_win : Dynamic;
+	var nvim_open_win : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_out_write: unknown
 		```
 	**/
-	static var nvim_out_write : Dynamic;
+	var nvim_out_write : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_parse_cmd: unknown
 		```
 	**/
-	static var nvim_parse_cmd : Dynamic;
+	var nvim_parse_cmd : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_parse_expression: unknown
 		```
 	**/
-	static var nvim_parse_expression : Dynamic;
+	var nvim_parse_expression : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_paste: unknown
 		```
 	**/
-	static var nvim_paste : Dynamic;
+	var nvim_paste : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_put: unknown
 		```
 	**/
-	static var nvim_put : Dynamic;
+	var nvim_put : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_replace_termcodes: unknown
 		```
 	**/
-	static var nvim_replace_termcodes : Dynamic;
+	var nvim_replace_termcodes : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_select_popupmenu_item: unknown
 		```
 	**/
-	static var nvim_select_popupmenu_item : Dynamic;
+	var nvim_select_popupmenu_item : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_current_buf: unknown
 		```
 	**/
-	static var nvim_set_current_buf : Dynamic;
+	var nvim_set_current_buf : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_current_dir: unknown
 		```
 	**/
-	static var nvim_set_current_dir : Dynamic;
+	var nvim_set_current_dir : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_current_line: unknown
 		```
 	**/
-	static var nvim_set_current_line : Dynamic;
+	var nvim_set_current_line : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_current_tabpage: unknown
 		```
 	**/
-	static var nvim_set_current_tabpage : Dynamic;
+	var nvim_set_current_tabpage : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_current_win: unknown
 		```
 	**/
-	static var nvim_set_current_win : Dynamic;
+	var nvim_set_current_win : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_hl: unknown
 		```
 	**/
-	static var nvim_set_hl : Dynamic;
+	var nvim_set_hl : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_hl_ns: unknown
 		```
 	**/
-	static var nvim_set_hl_ns : Dynamic;
+	var nvim_set_hl_ns : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_hl_ns_fast: unknown
 		```
 	**/
-	static var nvim_set_hl_ns_fast : Dynamic;
+	var nvim_set_hl_ns_fast : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_keymap: unknown
 		```
 	**/
-	static var nvim_set_keymap : Dynamic;
+	var nvim_set_keymap : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_option: unknown
 		```
 	**/
-	static var nvim_set_option : Dynamic;
+	var nvim_set_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_option_value: unknown
 		```
 	**/
-	static var nvim_set_option_value : Dynamic;
+	var nvim_set_option_value : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_var: unknown
 		```
 	**/
-	static var nvim_set_var : Dynamic;
+	var nvim_set_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_set_vvar: unknown
 		```
 	**/
-	static var nvim_set_vvar : Dynamic;
+	var nvim_set_vvar : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_strwidth: unknown
 		```
 	**/
-	static var nvim_strwidth : Dynamic;
+	var nvim_strwidth : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_del_var: unknown
 		```
 	**/
-	static var nvim_tabpage_del_var : Dynamic;
+	var nvim_tabpage_del_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_number: unknown
 		```
 	**/
-	static var nvim_tabpage_get_number : Dynamic;
+	var nvim_tabpage_get_number : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_var: unknown
 		```
 	**/
-	static var nvim_tabpage_get_var : Dynamic;
+	var nvim_tabpage_get_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_get_win: unknown
 		```
 	**/
-	static var nvim_tabpage_get_win : Dynamic;
+	var nvim_tabpage_get_win : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_is_valid: unknown
 		```
 	**/
-	static var nvim_tabpage_is_valid : Dynamic;
+	var nvim_tabpage_is_valid : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_list_wins: unknown
 		```
 	**/
-	static var nvim_tabpage_list_wins : Dynamic;
+	var nvim_tabpage_list_wins : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_set_var: unknown
 		```
 	**/
-	static var nvim_tabpage_set_var : Dynamic;
+	var nvim_tabpage_set_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_tabpage_set_win: unknown
 		```
 	**/
-	static var nvim_tabpage_set_win : Dynamic;
+	var nvim_tabpage_set_win : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_close: unknown
 		```
 	**/
-	static var nvim_win_close : Dynamic;
+	var nvim_win_close : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_del_var: unknown
 		```
 	**/
-	static var nvim_win_del_var : Dynamic;
+	var nvim_win_del_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_buf: unknown
 		```
 	**/
-	static var nvim_win_get_buf : Dynamic;
+	var nvim_win_get_buf : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_config: unknown
 		```
 	**/
-	static var nvim_win_get_config : Dynamic;
+	var nvim_win_get_config : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_cursor: unknown
 		```
 	**/
-	static var nvim_win_get_cursor : Dynamic;
+	var nvim_win_get_cursor : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_height: unknown
 		```
 	**/
-	static var nvim_win_get_height : Dynamic;
+	var nvim_win_get_height : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_number: unknown
 		```
 	**/
-	static var nvim_win_get_number : Dynamic;
+	var nvim_win_get_number : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_option: unknown
 		```
 	**/
-	static var nvim_win_get_option : Dynamic;
+	var nvim_win_get_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_position: unknown
 		```
 	**/
-	static var nvim_win_get_position : Dynamic;
+	var nvim_win_get_position : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_tabpage: unknown
 		```
 	**/
-	static var nvim_win_get_tabpage : Dynamic;
+	var nvim_win_get_tabpage : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_var: unknown
 		```
 	**/
-	static var nvim_win_get_var : Dynamic;
+	var nvim_win_get_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_get_width: unknown
 		```
 	**/
-	static var nvim_win_get_width : Dynamic;
+	var nvim_win_get_width : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_hide: unknown
 		```
 	**/
-	static var nvim_win_hide : Dynamic;
+	var nvim_win_hide : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_is_valid: unknown
 		```
 	**/
-	static var nvim_win_is_valid : Dynamic;
+	var nvim_win_is_valid : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_buf: unknown
 		```
 	**/
-	static var nvim_win_set_buf : Dynamic;
+	var nvim_win_set_buf : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_config: unknown
 		```
 	**/
-	static var nvim_win_set_config : Dynamic;
+	var nvim_win_set_config : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_cursor: unknown
 		```
 	**/
-	static var nvim_win_set_cursor : Dynamic;
+	var nvim_win_set_cursor : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_height: unknown
 		```
 	**/
-	static var nvim_win_set_height : Dynamic;
+	var nvim_win_set_height : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_hl_ns: unknown
 		```
 	**/
-	static var nvim_win_set_hl_ns : Dynamic;
+	var nvim_win_set_hl_ns : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_option: unknown
 		```
 	**/
-	static var nvim_win_set_option : Dynamic;
+	var nvim_win_set_option : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_var: unknown
 		```
 	**/
-	static var nvim_win_set_var : Dynamic;
+	var nvim_win_set_var : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_set_width: unknown
 		```
 	**/
-	static var nvim_win_set_width : Dynamic;
+	var nvim_win_set_width : Dynamic;
 	/**
 		```lua
 		(global) table.nvim_win_text_height: unknown
 		```
 	**/
-	static var nvim_win_text_height : Dynamic;
+	var nvim_win_text_height : Dynamic;
 	/**
 		```lua
 		function (expr: number, expr1: number)
@@ -16462,7 +14201,8 @@ package nvim;
 		 "|" is an operator or a command separator.
 		
 	**/
-	static function or(expr:Float, expr1:Float):Any;
+	@:luaDotMethod
+	function or(expr:Float, expr1:Float):Any;
 	/**
 		```lua
 		function table.pathshorten(path: string, len?: integer)
@@ -16484,7 +14224,8 @@ package nvim;
 		 It doesn't matter if the path exists or not.
 		 Returns an empty string on error.
 	**/
-	static function pathshorten(path:String, ?len:Float):String;
+	@:luaDotMethod
+	function pathshorten(path:String, ?len:Float):String;
 	/**
 		```lua
 		function table.perleval(expr: any)
@@ -16507,7 +14248,8 @@ package nvim;
 		   echo perleval('[1 .. 4]')
 		 <  [1, 2, 3, 4]
 	**/
-	static function perleval(expr:Any):Any;
+	@:luaDotMethod
+	function perleval(expr:Any):Any;
 	/**
 		```lua
 		function table.pow(x: number, y: number)
@@ -16527,7 +14269,8 @@ package nvim;
 		   echo pow(32, 0.20)
 		 <  2.0
 	**/
-	static function pow(x:Float, y:Float):Float;
+	@:luaDotMethod
+	function pow(x:Float, y:Float):Float;
 	/**
 		```lua
 		function table.prevnonblank(lnum: string|integer)
@@ -16544,7 +14287,8 @@ package nvim;
 		 {lnum} is used like with |getline()|.
 		 Also see |nextnonblank()|.
 	**/
-	static function prevnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
+	@:luaDotMethod
+	function prevnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
 	/**
 		```lua
 		function table.printf(fmt: string, expr1?: any)
@@ -16876,7 +14620,8 @@ package nvim;
 		 into this, copying the exact format string and parameters that
 		 were used.
 	**/
-	static function printf(fmt:String, ?expr1:Any):String;
+	@:luaDotMethod
+	function printf(fmt:String, ?expr1:Any):String;
 	/**
 		```lua
 		function table.prompt_getprompt(buf: string|integer)
@@ -16891,7 +14636,8 @@ package nvim;
 		 If the buffer doesn't exist or isn't a prompt buffer, an empty
 		 string is returned.
 	**/
-	static function prompt_getprompt(buf:haxe.extern.EitherType<Float, String>):Any;
+	@:luaDotMethod
+	function prompt_getprompt(buf:haxe.extern.EitherType<Float, String>):Any;
 	/**
 		```lua
 		function table.prompt_setcallback(buf: string|integer, expr: string|function)
@@ -16932,7 +14678,8 @@ package nvim;
 		    call prompt_setcallback(bufnr(), function('s:TextEntered'))
 		 <
 	**/
-	static function prompt_setcallback(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	@:luaDotMethod
+	function prompt_setcallback(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.prompt_setinterrupt(buf: string|integer, expr: string|function)
@@ -16949,7 +14696,8 @@ package nvim;
 		 mode.  Without setting a callback Vim will exit Insert mode,
 		 as in any buffer.
 	**/
-	static function prompt_setinterrupt(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	@:luaDotMethod
+	function prompt_setinterrupt(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.prompt_setprompt(buf: string|integer, text: string)
@@ -16965,7 +14713,8 @@ package nvim;
 		   call prompt_setprompt(bufnr(''), 'command: ')
 		 <
 	**/
-	static function prompt_setprompt(buf:haxe.extern.EitherType<Float, String>, text:String):Any;
+	@:luaDotMethod
+	function prompt_setprompt(buf:haxe.extern.EitherType<Float, String>, text:String):Any;
 	/**
 		```lua
 		function table.pum_getpos()
@@ -16986,7 +14735,8 @@ package nvim;
 		
 		 The values are the same as in |v:event| during |CompleteChanged|.
 	**/
-	static function pum_getpos():Any;
+	@:luaDotMethod
+	function pum_getpos():Any;
 	/**
 		```lua
 		function table.pumvisible()
@@ -17000,7 +14750,8 @@ package nvim;
 		 This can be used to avoid some things that would remove the
 		 popup menu.
 	**/
-	static function pumvisible():Any;
+	@:luaDotMethod
+	function pumvisible():Any;
 	/**
 		```lua
 		function table.py3eval(expr: any)
@@ -17018,7 +14769,8 @@ package nvim;
 		 Dictionaries are represented as Vim |Dictionary| type with
 		 keys converted to strings.
 	**/
-	static function py3eval(expr:Any):Any;
+	@:luaDotMethod
+	function py3eval(expr:Any):Any;
 	/**
 		```lua
 		function table.pyeval(expr: any)
@@ -17035,7 +14787,8 @@ package nvim;
 		 Dictionaries are represented as Vim |Dictionary| type,
 		 non-string keys result in error.
 	**/
-	static function pyeval(expr:Any):Any;
+	@:luaDotMethod
+	function pyeval(expr:Any):Any;
 	/**
 		```lua
 		function table.pyxeval(expr: any)
@@ -17049,7 +14802,8 @@ package nvim;
 		 Uses Python 2 or 3, see |python_x| and 'pyxversion'.
 		 See also: |pyeval()|, |py3eval()|
 	**/
-	static function pyxeval(expr:Any):Any;
+	@:luaDotMethod
+	function pyxeval(expr:Any):Any;
 	/**
 		```lua
 		function table.rand(expr?: number)
@@ -17073,7 +14827,8 @@ package nvim;
 		   echo rand(seed) % 16  " random number 0 - 15
 		 <
 	**/
-	static function rand(?expr:Float):Any;
+	@:luaDotMethod
+	function rand(?expr:Float):Any;
 	/**
 		```lua
 		function table.range(expr: any, max?: integer, stride?: integer)
@@ -17100,7 +14855,8 @@ package nvim;
 		   echo range(2, 0)  " error!
 		 <
 	**/
-	static function range(expr:Any, ?max:Float, ?stride:Float):Any;
+	@:luaDotMethod
+	function range(expr:Any, ?max:Float, ?stride:Float):Any;
 	/**
 		```lua
 		function table.readblob(fname: string, offset?: integer, size?: integer)
@@ -17132,7 +14888,8 @@ package nvim;
 		 is truncated.
 		 Also see |readfile()| and |writefile()|.
 	**/
-	static function readblob(fname:String, ?offset:Float, ?size:Float):Any;
+	@:luaDotMethod
+	function readblob(fname:String, ?offset:Float, ?size:Float):Any;
 	/**
 		```lua
 		function table.readdir(directory: string, expr?: integer)
@@ -17170,7 +14927,8 @@ package nvim;
 		 <
 		 Returns an empty List on error.
 	**/
-	static function readdir(directory:String, ?expr:Float):Any;
+	@:luaDotMethod
+	function readdir(directory:String, ?expr:Float):Any;
 	/**
 		```lua
 		function table.readfile(fname: string, type?: string, max?: integer)
@@ -17211,7 +14969,8 @@ package nvim;
 		 the result is an empty list.
 		 Also see |writefile()|.
 	**/
-	static function readfile(fname:String, ?type:String, ?max:Float):Any;
+	@:luaDotMethod
+	function readfile(fname:String, ?type:String, ?max:Float):Any;
 	/**
 		```lua
 		function table.reduce(object: any, func: fun(accumulator: <T>, current: any):any, initial?: any)
@@ -17237,7 +14996,8 @@ package nvim;
 		   echo reduce('xyz', { acc, val -> acc .. ',' .. val })
 		 <
 	**/
-	static function reduce<T>(object:Any, func:(accumulator:T, current:Any) -> Any, ?initial:Any):T;
+	@:luaDotMethod
+	function reduce<T>(object:Any, func:(accumulator:T, current:Any) -> Any, ?initial:Any):T;
 	/**
 		```lua
 		function table.reg_executing()
@@ -17250,7 +15010,8 @@ package nvim;
 		 Returns an empty string when no register is being executed.
 		 See |\@|.
 	**/
-	static function reg_executing():Any;
+	@:luaDotMethod
+	function reg_executing():Any;
 	/**
 		```lua
 		function table.reg_recorded()
@@ -17263,7 +15024,8 @@ package nvim;
 		 Returns an empty string when nothing was recorded yet.
 		 See |q| and |Q|.
 	**/
-	static function reg_recorded():Any;
+	@:luaDotMethod
+	function reg_recorded():Any;
 	/**
 		```lua
 		function table.reg_recording()
@@ -17275,7 +15037,8 @@ package nvim;
 		 Returns the single letter name of the register being recorded.
 		 Returns an empty string when not recording.  See |q|.
 	**/
-	static function reg_recording():Any;
+	@:luaDotMethod
+	function reg_recording():Any;
 	/**
 		```lua
 		function table.reltime()
@@ -17317,7 +15080,8 @@ package nvim;
 		
 		 Note: |localtime()| returns the current (non-relative) time.
 	**/
-	static function reltime():Any;
+	@:luaDotMethod
+	function reltime():Any;
 	/**
 		```lua
 		function table.reltimefloat(time: any)
@@ -17336,7 +15100,8 @@ package nvim;
 		 Also see |profiling|.
 		 If there is an error an empty string is returned
 	**/
-	static function reltimefloat(time:Any):Any;
+	@:luaDotMethod
+	function reltimefloat(time:Any):Any;
 	/**
 		```lua
 		function table.reltimestr(time: any)
@@ -17358,7 +15123,8 @@ package nvim;
 		 <Also see |profiling|.
 		 If there is an error an empty string is returned
 	**/
-	static function reltimestr(time:Any):Any;
+	@:luaDotMethod
+	function reltimestr(time:Any):Any;
 	/**
 		```lua
 		function table.remove(list: any, idx: integer)
@@ -17431,7 +15197,8 @@ package nvim;
 		 <If there is no {key} in {dict} this is an error.
 		 Returns zero on error.
 	**/
-	static function remove(list:Any, idx:Float):Any;
+	@:luaDotMethod
+	function remove(list:Any, idx:Float):Any;
 	/**
 		```lua
 		function table.rename(from: string, to: string)
@@ -17447,7 +15214,8 @@ package nvim;
 		 NOTE: If {to} exists it is overwritten without warning.
 		 This function is not available in the |sandbox|.
 	**/
-	static function rename(from:String, to:String):Float;
+	@:luaDotMethod
+	function rename(from:String, to:String):Float;
 	/**
 		```lua
 		function (expr: any, count: integer)
@@ -17466,7 +15234,8 @@ package nvim;
 		 <Results in ['a', 'b', 'a', 'b', 'a', 'b'].
 		
 	**/
-	static function repeat(expr:Any, count:Float):Any;
+	@:luaDotMethod
+	function repeat(expr:Any, count:Float):Any;
 	/**
 		```lua
 		function table.resolve(filename: string)
@@ -17487,7 +15256,8 @@ package nvim;
 		 current directory (provided the result is still a relative
 		 path name) and also keeps a trailing path separator.
 	**/
-	static function resolve(filename:String):String;
+	@:luaDotMethod
+	function resolve(filename:String):String;
 	/**
 		```lua
 		function table.reverse(object: <T>[])
@@ -17506,7 +15276,8 @@ package nvim;
 		   let revlist = reverse(copy(mylist))
 		 <
 	**/
-	static function reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
+	@:luaDotMethod
+	function reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.round(expr: number)
@@ -17528,7 +15299,8 @@ package nvim;
 		   echo round(-4.5)
 		 <  -5.0
 	**/
-	static function round(expr:Float):Float;
+	@:luaDotMethod
+	function round(expr:Float):Float;
 	/**
 		```lua
 		function table.rpcnotify(channel: integer, event: string, ...any)
@@ -17543,7 +15315,8 @@ package nvim;
 		   au VimLeave call rpcnotify(0, "leaving")
 		 <
 	**/
-	static function rpcnotify(channel:Float, event:String, ___:haxe.Rest<Any>):Float;
+	@:luaDotMethod
+	function rpcnotify(channel:Float, event:String, ___:haxe.Rest<Any>):Float;
 	/**
 		```lua
 		function table.rpcrequest(channel: integer, method: string, ...any)
@@ -17558,7 +15331,8 @@ package nvim;
 		   let result = rpcrequest(rpc_chan, "func", 1, 2, 3)
 		 <
 	**/
-	static function rpcrequest(channel:Float, method:String, ___:haxe.Rest<Any>):Any;
+	@:luaDotMethod
+	function rpcrequest(channel:Float, method:String, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function table.rpcstart(prog: string, argv?: any)
@@ -17573,8 +15347,9 @@ package nvim;
 		   let id = jobstart(['prog', 'arg1', 'arg2'], {'rpc': v:true})
 		 <
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function rpcstart(prog:String, ?argv:Any):Any;
+	function rpcstart(prog:String, ?argv:Any):Any;
 	/**
 		```lua
 		function table.rpcstop(...any)
@@ -17588,8 +15363,9 @@ package nvim;
 		 without stopping the job. Use chanclose(id) to close
 		 any socket.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	static function rpcstop(___:haxe.Rest<Any>):Any;
+	function rpcstop(___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function table.rubyeval(expr: any)
@@ -17607,7 +15383,8 @@ package nvim;
 		 Other objects are represented as strings resulted from their
 		 "Object#to_s" method.
 	**/
-	static function rubyeval(expr:Any):Any;
+	@:luaDotMethod
+	function rubyeval(expr:Any):Any;
 	/**
 		```lua
 		function table.screenattr(row: integer, col: integer)
@@ -17621,7 +15398,8 @@ package nvim;
 		 attribute at other positions.
 		 Returns -1 when row or col is out of range.
 	**/
-	static function screenattr(row:Float, col:Float):Float;
+	@:luaDotMethod
+	function screenattr(row:Float, col:Float):Float;
 	/**
 		```lua
 		function table.screenchar(row: integer, col: integer)
@@ -17639,7 +15417,8 @@ package nvim;
 		 This is mainly to be used for testing.
 		 Returns -1 when row or col is out of range.
 	**/
-	static function screenchar(row:Float, col:Float):Float;
+	@:luaDotMethod
+	function screenchar(row:Float, col:Float):Float;
 	/**
 		```lua
 		function table.screenchars(row: integer, col: integer)
@@ -17654,7 +15433,8 @@ package nvim;
 		 This is mainly to be used for testing.
 		 Returns an empty List when row or col is out of range.
 	**/
-	static function screenchars(row:Float, col:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function screenchars(row:Float, col:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.screencol()
@@ -17677,7 +15457,8 @@ package nvim;
 		   noremap GG <Cmd>echom screencol()<CR>
 		 <
 	**/
-	static function screencol():lua.Table<Int, Float>;
+	@:luaDotMethod
+	function screencol():lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.screenpos(winid: integer, lnum: integer, col: integer)
@@ -17709,7 +15490,8 @@ package nvim;
 		 first character is returned, {col} is not used.
 		 Returns an empty Dict if {winid} is invalid.
 	**/
-	static function screenpos(winid:Float, lnum:Float, col:Float):Any;
+	@:luaDotMethod
+	function screenpos(winid:Float, lnum:Float, col:Float):Any;
 	/**
 		```lua
 		function table.screenrow()
@@ -17725,7 +15507,8 @@ package nvim;
 		
 		 Note: Same restrictions as with |screencol()|.
 	**/
-	static function screenrow():Float;
+	@:luaDotMethod
+	function screenrow():Float;
 	/**
 		```lua
 		function table.screenstring(row: integer, col: integer)
@@ -17741,7 +15524,8 @@ package nvim;
 		 This is mainly to be used for testing.
 		 Returns an empty String when row or col is out of range.
 	**/
-	static function screenstring(row:Float, col:Float):String;
+	@:luaDotMethod
+	function screenstring(row:Float, col:Float):String;
 	/**
 		```lua
 		function table.search(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -17854,137 +15638,11 @@ package nvim;
 		 without the 'e' flag if the cursor is on the "f" of "if".
 		 The 'n' flag tells the function not to move the cursor.
 	**/
-	static function search(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Float;
-	/**
-		```lua
-		function table.searchcount(options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Get or update the last search count, like what is displayed
-		 without the "S" flag in 'shortmess'.  This works even if
-		 'shortmess' does contain the "S" flag.
-		
-		 This returns a |Dictionary|. The dictionary is empty if the
-		 previous pattern was not set and "pattern" was not specified.
-		
-		   key    type    meaning ~
-		   current  |Number|  current position of match;
-		         0 if the cursor position is
-		         before the first match
-		   exact_match  |Boolean|  1 if "current" is matched on
-		         "pos", otherwise 0
-		   total    |Number|  total count of matches found
-		   incomplete  |Number|  0: search was fully completed
-		         1: recomputing was timed out
-		         2: max count exceeded
-		
-		 For {options} see further down.
-		
-		 To get the last search count when |n| or |N| was pressed, call
-		 this function with `recompute: 0` . This sometimes returns
-		 wrong information because |n| and |N|'s maximum count is 99.
-		 If it exceeded 99 the result must be max count + 1 (100). If
-		 you want to get correct information, specify `recompute: 1`: >vim
-		
-		   " result == maxcount + 1 (100) when many matches
-		   let result = searchcount(#{recompute: 0})
-		
-		   " Below returns correct result (recompute defaults
-		   " to 1)
-		   let result = searchcount()
-		 <
-		 The function is useful to add the count to 'statusline': >vim
-		   function! LastSearchCount() abort
-		     let result = searchcount(#{recompute: 0})
-		     if empty(result)
-		       return ''
-		     endif
-		     if result.incomplete ==# 1     " timed out
-		       return printf(' /%s [?/??]', \@/)
-		     elseif result.incomplete ==# 2 " max count exceeded
-		       if result.total > result.maxcount &&
-		       \  result.current > result.maxcount
-		         return printf(' /%s [>%d/>%d]', \@/,
-		         \             result.current, result.total)
-		       elseif result.total > result.maxcount
-		         return printf(' /%s [%d/>%d]', \@/,
-		         \             result.current, result.total)
-		       endif
-		     endif
-		     return printf(' /%s [%d/%d]', \@/,
-		     \             result.current, result.total)
-		   endfunction
-		   let &statusline ..= '%{LastSearchCount()}'
-		
-		   " Or if you want to show the count only when
-		   " 'hlsearch' was on
-		   " let &statusline ..=
-		   " \   '%{v:hlsearch ? LastSearchCount() : ""}'
-		 <
-		 You can also update the search count, which can be useful in a
-		 |CursorMoved| or |CursorMovedI| autocommand: >vim
-		
-		   autocmd CursorMoved,CursorMovedI *
-		     \ let s:searchcount_timer = timer_start(
-		     \   200, function('s:update_searchcount'))
-		   function! s:update_searchcount(timer) abort
-		     if a:timer ==# s:searchcount_timer
-		       call searchcount(#{
-		       \ recompute: 1, maxcount: 0, timeout: 100})
-		       redrawstatus
-		     endif
-		   endfunction
-		 <
-		 This can also be used to count matched texts with specified
-		 pattern in the current buffer using "pattern":  >vim
-		
-		   " Count '\<foo\>' in this buffer
-		   " (Note that it also updates search count)
-		   let result = searchcount(#{pattern: '\<foo\>'})
-		
-		   " To restore old search count by old pattern,
-		   " search again
-		   call searchcount()
-		 <
-		 {options} must be a |Dictionary|. It can contain:
-		   key    type    meaning ~
-		   recompute  |Boolean|  if |TRUE|, recompute the count
-		         like |n| or |N| was executed.
-		         otherwise returns the last
-		         computed result (when |n| or
-		         |N| was used when "S" is not
-		         in 'shortmess', or this
-		         function was called).
-		         (default: |TRUE|)
-		   pattern  |String|  recompute if this was given
-		         and different with |\@/|.
-		         this works as same as the
-		         below command is executed
-		         before calling this function >vim
-		           let \@/ = pattern
-		 <        (default: |\@/|)
-		   timeout  |Number|  0 or negative number is no
-		         timeout. timeout milliseconds
-		         for recomputing the result
-		         (default: 0)
-		   maxcount  |Number|  0 or negative number is no
-		         limit. max count of matched
-		         text while recomputing the
-		         result.  if search exceeded
-		         total count, "total" value
-		         becomes `maxcount + 1`
-		         (default: 0)
-		   pos    |List|    `[lnum, col, off]` value
-		         when recomputing the result.
-		         this changes "current" result
-		         value. see |cursor()|, |getpos()|
-		         (default: cursor's position)
-	**/
+	@:luaDotMethod
+	function search(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Float;
 	@:native("searchcount")
-	private static function __searchcount(?options:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __searchcount(?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.searchcount(options?: table)
@@ -18113,7 +15771,8 @@ package nvim;
 		         value. see |cursor()|, |getpos()|
 		         (default: cursor's position)
 	**/
-	inline static function searchcount(?options:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function searchcount(?options:lua.Table.AnyTable):Any {
 		options = nvim.helper.Arg.pure(options);
 		final result = __searchcount(options);
 		return result;
@@ -18144,7 +15803,8 @@ package nvim;
 		   endif
 		 <
 	**/
-	static function searchdecl(name:String, ?global:Bool, ?thisblock:Bool):Any;
+	@:luaDotMethod
+	function searchdecl(name:String, ?global:Bool, ?thisblock:Bool):Any;
 	/**
 		```lua
 		function table.searchpair(start: string, middle: string, end_: string, flags?: string, skip?: string|function, stopline?: integer, timeout?: integer)
@@ -18237,7 +15897,8 @@ package nvim;
 		        \ 'synIDattr(synID(line("."), col("."), 0), "name") =~? "string"')
 		 <
 	**/
-	static function searchpair(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Float;
+	@:luaDotMethod
+	function searchpair(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Float;
 	/**
 		```lua
 		function table.searchpairpos(start: string, middle: string, end_: string, flags?: string, skip?: string|function, stopline?: integer, timeout?: integer)
@@ -18256,7 +15917,8 @@ package nvim;
 		 <
 		 See |match-parens| for a bigger and more useful example.
 	**/
-	static function searchpairpos(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Dynamic;
+	@:luaDotMethod
+	function searchpairpos(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Dynamic;
 	/**
 		```lua
 		function table.searchpos(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -18279,7 +15941,8 @@ package nvim;
 		 <In this example "submatch" is 2 when a lowercase letter is
 		 found |/\l|, 3 when an uppercase letter is found |/\u|.
 	**/
-	static function searchpos(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	@:luaDotMethod
+	function searchpos(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.serverlist()
@@ -18294,7 +15957,8 @@ package nvim;
 		   echo serverlist()
 		 <
 	**/
-	static function serverlist():lua.Table<Int, String>;
+	@:luaDotMethod
+	function serverlist():lua.Table<Int, String>;
 	/**
 		```lua
 		function table.serverstart(address?: string)
@@ -18336,7 +16000,8 @@ package nvim;
 		   echo serverstart('::1:12345')
 		 <
 	**/
-	static function serverstart(?address:String):String;
+	@:luaDotMethod
+	function serverstart(?address:String):String;
 	/**
 		```lua
 		function table.serverstop(address: string)
@@ -18350,7 +16015,8 @@ package nvim;
 		 If |v:servername| is stopped it is set to the next available
 		 address in |serverlist()|.
 	**/
-	static function serverstop(address:String):Float;
+	@:luaDotMethod
+	function serverstop(address:String):Float;
 	/**
 		```lua
 		function table.setbufline(buf: string|integer, lnum: integer, text: string|string[])
@@ -18383,7 +16049,8 @@ package nvim;
 		 If {buf} is not a valid buffer or {lnum} is not valid, an
 		 error message is given.
 	**/
-	static function setbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	@:luaDotMethod
+	function setbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
 	/**
 		```lua
 		function table.setbufvar(buf: string|integer, varname: string, val: any)
@@ -18405,7 +16072,8 @@ package nvim;
 		   call setbufvar("todo", "myvar", "foobar")
 		 <This function is not available in the |sandbox|.
 	**/
-	static function setbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, val:Any):Any;
+	@:luaDotMethod
+	function setbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.setcellwidths(list: any[])
@@ -18447,7 +16115,8 @@ package nvim;
 		 match with what Vim knows about each emoji.  If it doesn't
 		 look right you need to adjust the {list} argument.
 	**/
-	static function setcellwidths(list:lua.Table<Int, Any>):Any;
+	@:luaDotMethod
+	function setcellwidths(list:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function table.setcharpos(expr: string, list: integer[])
@@ -18466,7 +16135,8 @@ package nvim;
 		   call setpos('.', [0, 8, 4, 0])
 		 <positions the cursor on the second character '보'.
 	**/
-	static function setcharpos(expr:String, list:lua.Table<Int, Float>):Any;
+	@:luaDotMethod
+	function setcharpos(expr:String, list:lua.Table<Int, Float>):Any;
 	/**
 		```lua
 		function table.setcharsearch(dict: string)
@@ -18494,7 +16164,8 @@ package nvim;
 		   call setcharsearch(prevsearch)
 		 <Also see |getcharsearch()|.
 	**/
-	static function setcharsearch(dict:String):Any;
+	@:luaDotMethod
+	function setcharsearch(dict:String):Any;
 	/**
 		```lua
 		function table.setcmdline(str: string, pos?: integer)
@@ -18509,7 +16180,8 @@ package nvim;
 		 Returns 0 when successful, 1 when not editing the command
 		 line.
 	**/
-	static function setcmdline(str:String, ?pos:Float):Float;
+	@:luaDotMethod
+	function setcmdline(str:String, ?pos:Float):Float;
 	/**
 		```lua
 		function table.setcmdpos(pos: integer)
@@ -18532,7 +16204,8 @@ package nvim;
 		 Returns 0 when successful, 1 when not editing the command
 		 line.
 	**/
-	static function setcmdpos(pos:Float):Any;
+	@:luaDotMethod
+	function setcmdpos(pos:Float):Any;
 	/**
 		```lua
 		function table.setcursorcharpos(lnum: string|integer, col?: integer, off?: integer)
@@ -18558,7 +16231,8 @@ package nvim;
 		   call cursor(4, 3)
 		 <positions the cursor on the first character '여'.
 	**/
-	static function setcursorcharpos(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
+	@:luaDotMethod
+	function setcursorcharpos(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
 	/**
 		```lua
 		function table.setenv(name: string, val: string)
@@ -18573,7 +16247,8 @@ package nvim;
 		 <When {val} is |v:null| the environment variable is deleted.
 		 See also |expr-env|.
 	**/
-	static function setenv(name:String, val:String):Any;
+	@:luaDotMethod
+	function setenv(name:String, val:String):Any;
 	/**
 		```lua
 		function table.setfperm(fname: string, mode: string)
@@ -18598,7 +16273,8 @@ package nvim;
 		
 		 To read permissions see |getfperm()|.
 	**/
-	static function setfperm(fname:String, mode:String):Any;
+	@:luaDotMethod
+	function setfperm(fname:String, mode:String):Any;
 	/**
 		```lua
 		function table.setline(lnum: string|integer, text: any)
@@ -18634,32 +16310,11 @@ package nvim;
 		
 		 <Note: The '[ and '] marks are not set.
 	**/
-	static function setline(lnum:haxe.extern.EitherType<Float, String>, text:Any):Any;
-	/**
-		```lua
-		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Create or replace or add to the location list for window {nr}.
-		 {nr} can be the window number or the |window-ID|.
-		 When {nr} is zero the current window is used.
-		
-		 For a location list window, the displayed location list is
-		 modified.  For an invalid window number {nr}, -1 is returned.
-		 Otherwise, same as |setqflist()|.
-		 Also see |location-list|.
-		
-		 For {action} see |setqflist-action|.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 only the items listed in {what} are set. Refer to |setqflist()|
-		 for the list of supported keys in {what}.
-	**/
+	@:luaDotMethod
+	function setline(lnum:haxe.extern.EitherType<Float, String>, text:Any):Any;
 	@:native("setloclist")
-	private static function __setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
@@ -18683,7 +16338,8 @@ package nvim;
 		 only the items listed in {what} are set. Refer to |setqflist()|
 		 for the list of supported keys in {what}.
 	**/
-	inline static function setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
 		what = nvim.helper.Arg.pure(what);
 		final result = __setloclist(nr, list, action, what);
 		return result;
@@ -18703,7 +16359,8 @@ package nvim;
 		 If {win} is specified, use the window with this number or
 		 window ID instead of the current window.
 	**/
-	static function setmatches(list:Any, ?win:Float):Any;
+	@:luaDotMethod
+	function setmatches(list:Any, ?win:Float):Any;
 	/**
 		```lua
 		function table.setpos(expr: string, list: integer[])
@@ -18760,132 +16417,11 @@ package nvim;
 		 also set the preferred column.  Also see the "curswant" key in
 		 |winrestview()|.
 	**/
-	static function setpos(expr:String, list:lua.Table<Int, Float>):Any;
-	/**
-		```lua
-		function table.setqflist(list: vim.quickfix.entry[], action?: string, what?: vim.fn.setqflist.what)
-		  -> integer
-		```
-		
-		---
-		
-		 Create or replace or add to the quickfix list.
-		
-		 If the optional {what} dictionary argument is supplied, then
-		 only the items listed in {what} are set. The first {list}
-		 argument is ignored.  See below for the supported items in
-		 {what}.
-		           *setqflist-what*
-		 When {what} is not present, the items in {list} are used.  Each
-		 item must be a dictionary.  Non-dictionary items in {list} are
-		 ignored.  Each dictionary item can contain the following
-		 entries:
-		
-		     bufnr  buffer number; must be the number of a valid
-		     buffer
-		     filename  name of a file; only used when "bufnr" is not
-		     present or it is invalid.
-		     module  name of a module; if given it will be used in
-		     quickfix error window instead of the filename.
-		     lnum  line number in the file
-		     end_lnum  end of lines, if the item spans multiple lines
-		     pattern  search pattern used to locate the error
-		     col    column number
-		     vcol  when non-zero: "col" is visual column
-		     when zero: "col" is byte index
-		     end_col  end column, if the item spans multiple columns
-		     nr    error number
-		     text  description of the error
-		     type  single-character error type, 'E', 'W', etc.
-		     valid  recognized error message
-		     user_data
-		     custom data associated with the item, can be
-		     any type.
-		
-		 The "col", "vcol", "nr", "type" and "text" entries are
-		 optional.  Either "lnum" or "pattern" entry can be used to
-		 locate a matching error line.
-		 If the "filename" and "bufnr" entries are not present or
-		 neither the "lnum" or "pattern" entries are present, then the
-		 item will not be handled as an error line.
-		 If both "pattern" and "lnum" are present then "pattern" will
-		 be used.
-		 If the "valid" entry is not supplied, then the valid flag is
-		 set when "bufnr" is a valid buffer or "filename" exists.
-		 If you supply an empty {list}, the quickfix list will be
-		 cleared.
-		 Note that the list is not exactly the same as what
-		 |getqflist()| returns.
-		
-		 {action} values:    *setqflist-action* *E927*
-		 'a'  The items from {list} are added to the existing
-		   quickfix list. If there is no existing list, then a
-		   new list is created.
-		
-		 'r'  The items from the current quickfix list are replaced
-		   with the items from {list}.  This can also be used to
-		   clear the list: >vim
-		     call setqflist([], 'r')
-		 <
-		 'u'  Like 'r', but tries to preserve the current selection
-		   in the quickfix list.
-		 'f'  All the quickfix lists in the quickfix stack are
-		   freed.
-		
-		 If {action} is not present or is set to ' ', then a new list
-		 is created. The new quickfix list is added after the current
-		 quickfix list in the stack and all the following lists are
-		 freed. To add a new quickfix list at the end of the stack,
-		 set "nr" in {what} to "$".
-		
-		 The following items can be specified in dictionary {what}:
-		     context  quickfix list context. See |quickfix-context|
-		     efm    errorformat to use when parsing text from
-		     "lines". If this is not present, then the
-		     'errorformat' option value is used.
-		     See |quickfix-parse|
-		     id    quickfix list identifier |quickfix-ID|
-		     idx    index of the current entry in the quickfix
-		     list specified by "id" or "nr". If set to '$',
-		     then the last entry in the list is set as the
-		     current entry.  See |quickfix-index|
-		     items  list of quickfix entries. Same as the {list}
-		     argument.
-		     lines  use 'errorformat' to parse a list of lines and
-		     add the resulting entries to the quickfix list
-		     {nr} or {id}.  Only a |List| value is supported.
-		     See |quickfix-parse|
-		     nr    list number in the quickfix stack; zero
-		     means the current quickfix list and "$" means
-		     the last quickfix list.
-		     quickfixtextfunc
-		     function to get the text to display in the
-		     quickfix window.  The value can be the name of
-		     a function or a funcref or a lambda.  Refer to
-		     |quickfix-window-function| for an explanation
-		     of how to write the function and an example.
-		     title  quickfix list title text. See |quickfix-title|
-		 Unsupported keys in {what} are ignored.
-		 If the "nr" item is not present, then the current quickfix list
-		 is modified. When creating a new quickfix list, "nr" can be
-		 set to a value one greater than the quickfix stack size.
-		 When modifying a quickfix list, to guarantee that the correct
-		 list is modified, "id" should be used instead of "nr" to
-		 specify the list.
-		
-		 Examples (See also |setqflist-examples|): >vim
-		    call setqflist([], 'r', {'title': 'My search'})
-		    call setqflist([], 'r', {'nr': 2, 'title': 'Errors'})
-		    call setqflist([], 'a', {'id':qfid, 'lines':["F1:10:L10"]})
-		 <
-		 Returns zero for success, -1 for failure.
-		
-		 This function can be used to create a quickfix list
-		 independent of the 'errorformat' setting.  Use a command like
-		 `:cc 1` to jump to the first position.
-	**/
+	@:luaDotMethod
+	function setpos(expr:String, list:lua.Table<Int, Float>):Any;
 	@:native("setqflist")
-	private static function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float;
+	@:luaDotMethod
+	private function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float;
 	/**
 		```lua
 		function table.setqflist(list: vim.quickfix.entry[], action?: string, what?: vim.fn.setqflist.what)
@@ -19009,7 +16545,8 @@ package nvim;
 		 independent of the 'errorformat' setting.  Use a command like
 		 `:cc 1` to jump to the first position.
 	**/
-	inline static function setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float {
+	@:luaDotMethod
+	inline function setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float {
 		what = nvim.helper.Arg.pure(what);
 		final result = __setqflist(list, action, what);
 		return result;
@@ -19077,7 +16614,8 @@ package nvim;
 		 nothing: >vim
 		   call setreg('a', '', 'al')
 	**/
-	static function setreg(regname:String, value:Any, ?options:String):Any;
+	@:luaDotMethod
+	function setreg(regname:String, value:Any, ?options:String):Any;
 	/**
 		```lua
 		function table.settabvar(tabnr: integer, varname: string, val: any)
@@ -19093,7 +16631,8 @@ package nvim;
 		 Tabs are numbered starting with one.
 		 This function is not available in the |sandbox|.
 	**/
-	static function settabvar(tabnr:Float, varname:String, val:Any):Any;
+	@:luaDotMethod
+	function settabvar(tabnr:Float, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.settabwinvar(tabnr: integer, winnr: integer, varname: string, val: any)
@@ -19117,7 +16656,8 @@ package nvim;
 		   call settabwinvar(3, 2, "myvar", "foobar")
 		 <This function is not available in the |sandbox|.
 	**/
-	static function settabwinvar(tabnr:Float, winnr:Float, varname:String, val:Any):Any;
+	@:luaDotMethod
+	function settabwinvar(tabnr:Float, winnr:Float, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.settagstack(nr: integer, dict: any, action?: string)
@@ -19159,7 +16699,8 @@ package nvim;
 		   unlet stack
 		 <
 	**/
-	static function settagstack(nr:Float, dict:Any, ?action:String):Any;
+	@:luaDotMethod
+	function settagstack(nr:Float, dict:Any, ?action:String):Any;
 	/**
 		```lua
 		function table.setwinvar(nr: integer, varname: string, val: any)
@@ -19173,7 +16714,8 @@ package nvim;
 		   call setwinvar(1, "&list", 0)
 		   call setwinvar(2, "myvar", "foobar")
 	**/
-	static function setwinvar(nr:Float, varname:String, val:Any):Any;
+	@:luaDotMethod
+	function setwinvar(nr:Float, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.sha256(string: string)
@@ -19185,7 +16727,8 @@ package nvim;
 		 Returns a String with 64 hex characters, which is the SHA256
 		 checksum of {string}.
 	**/
-	static function sha256(string:String):String;
+	@:luaDotMethod
+	function sha256(string:String):String;
 	/**
 		```lua
 		function table.shellescape(string: string, special?: boolean)
@@ -19225,7 +16768,8 @@ package nvim;
 		     call system("chmod +w -- " .. shellescape(expand("%")))
 		 <See also |::S|.
 	**/
-	static function shellescape(string:String, ?special:Bool):String;
+	@:luaDotMethod
+	function shellescape(string:String, ?special:Bool):String;
 	/**
 		```lua
 		function table.shiftwidth(col?: integer)
@@ -19254,78 +16798,11 @@ package nvim;
 		 'vartabstop' feature. If no {col} argument is given, column 1
 		 will be assumed.
 	**/
-	static function shiftwidth(?col:Float):Float;
-	/**
-		```lua
-		function table.sign_define(name: string, dict?: vim.fn.sign_define.dict)
-		  -> -1|0
-		```
-		
-		---
-		
-		```lua
-		return #1:
-		    | 0
-		    | -1
-		```
-		
-		---
-		
-		```lua
-		function table.sign_define(list: vim.fn.sign_define.dict[])
-		  -> (-1|0)[]
-		```
-		
-		---
-		
-		 Define a new sign named {name} or modify the attributes of an
-		 existing sign.  This is similar to the |:sign-define| command.
-		
-		 Prefix {name} with a unique text to avoid name collisions.
-		 There is no {group} like with placing signs.
-		
-		 The {name} can be a String or a Number.  The optional {dict}
-		 argument specifies the sign attributes.  The following values
-		 are supported:
-		    icon    full path to the bitmap file for the sign.
-		    linehl  highlight group used for the whole line the
-		     sign is placed in.
-		    priority  default priority value of the sign
-		    numhl  highlight group used for the line number where
-		     the sign is placed.
-		    text    text that is displayed when there is no icon
-		     or the GUI is not being used.
-		    texthl  highlight group used for the text item
-		    culhl  highlight group used for the text item when
-		     the cursor is on the same line as the sign and
-		     'cursorline' is enabled.
-		
-		 If the sign named {name} already exists, then the attributes
-		 of the sign are updated.
-		
-		 The one argument {list} can be used to define a list of signs.
-		 Each list item is a dictionary with the above items in {dict}
-		 and a "name" item for the sign name.
-		
-		 Returns 0 on success and -1 on failure.  When the one argument
-		 {list} is used, then returns a List of values one for each
-		 defined sign.
-		
-		 Examples: >vim
-		   call sign_define("mySign", {
-		     \ "text" : "=>",
-		     \ "texthl" : "Error",
-		     \ "linehl" : "Search"})
-		   call sign_define([
-		     \ {'name' : 'sign1',
-		     \  'text' : '=>'},
-		     \ {'name' : 'sign2',
-		     \  'text' : '!!'}
-		     \ ])
-		 <
-	**/
+	@:luaDotMethod
+	function shiftwidth(?col:Float):Float;
 	@:native("sign_define")
-	private static function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
+	@:luaDotMethod
+	private function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
 	/**
 		```lua
 		function table.sign_define(name: string, dict?: vim.fn.sign_define.dict)
@@ -19395,7 +16872,8 @@ package nvim;
 		     \ ])
 		 <
 	**/
-	inline static function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
+	@:luaDotMethod
+	inline function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __sign_define(name, dict);
 		return result;
@@ -19444,77 +16922,11 @@ package nvim;
 		   echo sign_getdefined("mySign")
 		 <
 	**/
-	static function sign_getdefined(?name:String):lua.Table<Int, nvim.type.vim.fn.sign_getdefined.ret.Item>;
-	/**
-		```lua
-		function table.sign_getplaced(buf?: string|integer, dict?: vim.fn.sign_getplaced.dict)
-		  -> vim.fn.sign_getplaced.ret.item[]
-		```
-		
-		---
-		
-		 Return a list of signs placed in a buffer or all the buffers.
-		 This is similar to the |:sign-place-list| command.
-		
-		 If the optional buffer name {buf} is specified, then only the
-		 list of signs placed in that buffer is returned.  For the use
-		 of {buf}, see |bufname()|. The optional {dict} can contain
-		 the following entries:
-		    group  select only signs in this group
-		    id    select sign with this identifier
-		    lnum    select signs placed in this line. For the use
-		     of {lnum}, see |line()|.
-		 If {group} is "*", then signs in all the groups including the
-		 global group are returned. If {group} is not supplied or is an
-		 empty string, then only signs in the global group are
-		 returned.  If no arguments are supplied, then signs in the
-		 global group placed in all the buffers are returned.
-		 See |sign-group|.
-		
-		 Each list item in the returned value is a dictionary with the
-		 following entries:
-		   bufnr  number of the buffer with the sign
-		   signs  list of signs placed in {bufnr}. Each list
-		     item is a dictionary with the below listed
-		     entries
-		
-		 The dictionary for each sign contains the following entries:
-		   group   sign group. Set to '' for the global group.
-		   id   identifier of the sign
-		   lnum   line number where the sign is placed
-		   name   name of the defined sign
-		   priority sign priority
-		
-		 The returned signs in a buffer are ordered by their line
-		 number and priority.
-		
-		 Returns an empty list on failure or if there are no placed
-		 signs.
-		
-		 Examples: >vim
-		   " Get a List of signs placed in eval.c in the
-		   " global group
-		   echo sign_getplaced("eval.c")
-		
-		   " Get a List of signs in group 'g1' placed in eval.c
-		   echo sign_getplaced("eval.c", {'group' : 'g1'})
-		
-		   " Get a List of signs placed at line 10 in eval.c
-		   echo sign_getplaced("eval.c", {'lnum' : 10})
-		
-		   " Get sign with identifier 10 placed in a.py
-		   echo sign_getplaced("a.py", {'id' : 10})
-		
-		   " Get sign with id 20 in group 'g1' placed in a.py
-		   echo sign_getplaced("a.py", {'group' : 'g1',
-		           \  'id' : 20})
-		
-		   " Get a List of all the placed signs
-		   echo sign_getplaced()
-		 <
-	**/
+	@:luaDotMethod
+	function sign_getdefined(?name:String):lua.Table<Int, nvim.type.vim.fn.sign_getdefined.ret.Item>;
 	@:native("sign_getplaced")
-	private static function __sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
+	@:luaDotMethod
+	private function __sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
 	/**
 		```lua
 		function table.sign_getplaced(buf?: string|integer, dict?: vim.fn.sign_getplaced.dict)
@@ -19583,7 +16995,8 @@ package nvim;
 		   echo sign_getplaced()
 		 <
 	**/
-	inline static function sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item> {
+	@:luaDotMethod
+	inline function sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item> {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __sign_getplaced(buf, dict);
 		return result;
@@ -19611,65 +17024,11 @@ package nvim;
 		   call sign_jump(10, '', '')
 		 <
 	**/
-	static function sign_jump(id:Float, group:String, buf:haxe.extern.EitherType<Float, String>):Float;
-	/**
-		```lua
-		function table.sign_place(id: integer, group: string, name: string, buf: string|integer, dict?: vim.fn.sign_place.dict)
-		  -> integer
-		```
-		
-		---
-		
-		 Place the sign defined as {name} at line {lnum} in file or
-		 buffer {buf} and assign {id} and {group} to sign.  This is
-		 similar to the |:sign-place| command.
-		
-		 If the sign identifier {id} is zero, then a new identifier is
-		 allocated.  Otherwise the specified number is used. {group} is
-		 the sign group name. To use the global sign group, use an
-		 empty string.  {group} functions as a namespace for {id}, thus
-		 two groups can use the same IDs. Refer to |sign-identifier|
-		 and |sign-group| for more information.
-		
-		 {name} refers to a defined sign.
-		 {buf} refers to a buffer name or number. For the accepted
-		 values, see |bufname()|.
-		
-		 The optional {dict} argument supports the following entries:
-		   lnum    line number in the file or buffer
-		       {buf} where the sign is to be placed.
-		       For the accepted values, see |line()|.
-		   priority  priority of the sign. See
-		       |sign-priority| for more information.
-		
-		 If the optional {dict} is not specified, then it modifies the
-		 placed sign {id} in group {group} to use the defined sign
-		 {name}.
-		
-		 Returns the sign identifier on success and -1 on failure.
-		
-		 Examples: >vim
-		   " Place a sign named sign1 with id 5 at line 20 in
-		   " buffer json.c
-		   call sign_place(5, '', 'sign1', 'json.c',
-		           \ {'lnum' : 20})
-		
-		   " Updates sign 5 in buffer json.c to use sign2
-		   call sign_place(5, '', 'sign2', 'json.c')
-		
-		   " Place a sign named sign3 at line 30 in
-		   " buffer json.c with a new identifier
-		   let id = sign_place(0, '', 'sign3', 'json.c',
-		           \ {'lnum' : 30})
-		
-		   " Place a sign named sign4 with id 10 in group 'g3'
-		   " at line 40 in buffer json.c with priority 90
-		   call sign_place(10, 'g3', 'sign4', 'json.c',
-		       \ {'lnum' : 40, 'priority' : 90})
-		 <
-	**/
+	@:luaDotMethod
+	function sign_jump(id:Float, group:String, buf:haxe.extern.EitherType<Float, String>):Float;
 	@:native("sign_place")
-	private static function __sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float;
+	@:luaDotMethod
+	private function __sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float;
 	/**
 		```lua
 		function table.sign_place(id: integer, group: string, name: string, buf: string|integer, dict?: vim.fn.sign_place.dict)
@@ -19726,7 +17085,8 @@ package nvim;
 		       \ {'lnum' : 40, 'priority' : 90})
 		 <
 	**/
-	inline static function sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float {
+	@:luaDotMethod
+	inline function sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __sign_place(id, group, name, buf, dict);
 		return result;
@@ -19798,7 +17158,8 @@ package nvim;
 		     \ ])
 		 <
 	**/
-	static function sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.sign_undefine(name?: string)
@@ -19844,65 +17205,11 @@ package nvim;
 		   call sign_undefine()
 		 <
 	**/
-	static function sign_undefine(?name:String):Float;
-	/**
-		```lua
-		function table.sign_unplace(group: string, dict?: vim.fn.sign_unplace.dict)
-		  -> -1|0
-		```
-		
-		---
-		
-		 Remove a previously placed sign in one or more buffers.  This
-		 is similar to the |:sign-unplace| command.
-		
-		 {group} is the sign group name. To use the global sign group,
-		 use an empty string.  If {group} is set to "*", then all the
-		 groups including the global group are used.
-		 The signs in {group} are selected based on the entries in
-		 {dict}.  The following optional entries in {dict} are
-		 supported:
-		   buffer  buffer name or number. See |bufname()|.
-		   id  sign identifier
-		 If {dict} is not supplied, then all the signs in {group} are
-		 removed.
-		
-		 Returns 0 on success and -1 on failure.
-		
-		 Examples: >vim
-		   " Remove sign 10 from buffer a.vim
-		   call sign_unplace('', {'buffer' : "a.vim", 'id' : 10})
-		
-		   " Remove sign 20 in group 'g1' from buffer 3
-		   call sign_unplace('g1', {'buffer' : 3, 'id' : 20})
-		
-		   " Remove all the signs in group 'g2' from buffer 10
-		   call sign_unplace('g2', {'buffer' : 10})
-		
-		   " Remove sign 30 in group 'g3' from all the buffers
-		   call sign_unplace('g3', {'id' : 30})
-		
-		   " Remove all the signs placed in buffer 5
-		   call sign_unplace('*', {'buffer' : 5})
-		
-		   " Remove the signs in group 'g4' from all the buffers
-		   call sign_unplace('g4')
-		
-		   " Remove sign 40 from all the buffers
-		   call sign_unplace('*', {'id' : 40})
-		
-		   " Remove all the placed signs from all the buffers
-		   call sign_unplace('*')
-		
-		
-		```lua
-		return #1:
-		    | 0
-		    | -1
-		```
-	**/
+	@:luaDotMethod
+	function sign_undefine(?name:String):Float;
 	@:native("sign_unplace")
-	private static function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float;
+	@:luaDotMethod
+	private function __sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float;
 	/**
 		```lua
 		function table.sign_unplace(group: string, dict?: vim.fn.sign_unplace.dict)
@@ -19959,49 +17266,15 @@ package nvim;
 		    | -1
 		```
 	**/
-	inline static function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
+	@:luaDotMethod
+	inline function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __sign_unplace(group, dict);
 		return result;
 	}
-	/**
-		```lua
-		function table.sign_unplacelist(list: vim.fn.sign_unplacelist.list.item)
-		  -> (-1|0)[]
-		```
-		
-		---
-		
-		 Remove previously placed signs from one or more buffers.  This
-		 is similar to the |sign_unplace()| function.
-		
-		 The {list} argument specifies the List of signs to remove.
-		 Each list item is a dict with the following sign attributes:
-		     buffer  buffer name or number. For the accepted
-		     values, see |bufname()|. If not specified,
-		     then the specified sign is removed from all
-		     the buffers.
-		     group  sign group name. If not specified or set to an
-		     empty string, then the global sign group is
-		     used. If set to "*", then all the groups
-		     including the global group are used.
-		     id    sign identifier. If not specified, then all
-		     the signs in the specified group are removed.
-		
-		 Returns a List where an entry is set to 0 if the corresponding
-		 sign was successfully removed or -1 on failure.
-		
-		 Example: >vim
-		   " Remove sign with id 10 from buffer a.vim and sign
-		   " with id 20 from buffer b.vim
-		   call sign_unplacelist([
-		     \ {'id' : 10, 'buffer' : "a.vim"},
-		     \ {'id' : 20, 'buffer' : 'b.vim'},
-		     \ ])
-		 <
-	**/
 	@:native("sign_unplacelist")
-	private static function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float>;
+	@:luaDotMethod
+	private function __sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.sign_unplacelist(list: vim.fn.sign_unplacelist.list.item)
@@ -20038,7 +17311,8 @@ package nvim;
 		     \ ])
 		 <
 	**/
-	inline static function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float> {
+	@:luaDotMethod
+	inline function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float> {
 		list = nvim.helper.Arg.pure(list);
 		final result = __sign_unplacelist(list);
 		return result;
@@ -20067,7 +17341,8 @@ package nvim;
 		 directory.  In order to resolve all the involved symbolic
 		 links before simplifying the path name, use |resolve()|.
 	**/
-	static function simplify(filename:String):String;
+	@:luaDotMethod
+	function simplify(filename:String):String;
 	/**
 		```lua
 		function table.sin(expr: number)
@@ -20085,7 +17360,8 @@ package nvim;
 		   echo sin(-4.01)
 		 <  0.763301
 	**/
-	static function sin(expr:Float):Float;
+	@:luaDotMethod
+	function sin(expr:Float):Float;
 	/**
 		```lua
 		function table.sinh(expr: number)
@@ -20104,7 +17380,8 @@ package nvim;
 		   echo sinh(-0.9)
 		 <  -1.026517
 	**/
-	static function sinh(expr:Float):Any;
+	@:luaDotMethod
+	function sinh(expr:Float):Any;
 	/**
 		```lua
 		function table.slice(expr: any, start: integer, end_?: integer)
@@ -20122,41 +17399,11 @@ package nvim;
 		 When {end} is -1 the last item is omitted.
 		 Returns an empty value if {start} or {end} are invalid.
 	**/
-	static function slice(expr:Any, start:Float, ?end_:Float):Any;
-	/**
-		```lua
-		function table.sockconnect(mode: string, address: string, opts?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Connect a socket to an address. If {mode} is "pipe" then
-		 {address} should be the path of a local domain socket (on
-		 unix) or named pipe (on Windows). If {mode} is "tcp" then
-		 {address} should be of the form "host:port" where the host
-		 should be an ip address or host name, and port the port
-		 number.
-		
-		 For "pipe" mode, see |luv-pipe-handle|. For "tcp" mode, see
-		 |luv-tcp-handle|.
-		
-		 Returns a |channel| ID. Close the socket with |chanclose()|.
-		 Use |chansend()| to send data over a bytes socket, and
-		 |rpcrequest()| and |rpcnotify()| to communicate with a RPC
-		 socket.
-		
-		 {opts} is an optional dictionary with these keys:
-		   |on_data| : callback invoked when data was read from socket
-		   data_buffered : read socket data in |channel-buffered| mode.
-		   rpc     : If set, |msgpack-rpc| will be used to communicate
-		       over the socket.
-		 Returns:
-		   - The channel ID on success (greater than zero)
-		   - 0 on invalid arguments or connection failure.
-	**/
+	@:luaDotMethod
+	function slice(expr:Any, start:Float, ?end_:Float):Any;
 	@:native("sockconnect")
-	private static function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.sockconnect(mode: string, address: string, opts?: table)
@@ -20189,7 +17436,8 @@ package nvim;
 		   - The channel ID on success (greater than zero)
 		   - 0 on invalid arguments or connection failure.
 	**/
-	inline static function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __sockconnect(mode, address, opts);
 		return result;
@@ -20274,7 +17522,8 @@ package nvim;
 		   eval mylist->sort({i1, i2 -> i1 - i2})
 		 <
 	**/
-	static function sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
+	@:luaDotMethod
+	function sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.soundfold(word: string)
@@ -20290,7 +17539,8 @@ package nvim;
 		 This can be used for making spelling suggestions.  Note that
 		 the method can be quite slow.
 	**/
-	static function soundfold(word:String):String;
+	@:luaDotMethod
+	function soundfold(word:String):String;
 	/**
 		```lua
 		function table.spellbadword(sentence?: string)
@@ -20322,7 +17572,8 @@ package nvim;
 		 The spelling information for the current window and the value
 		 of 'spelllang' are used.
 	**/
-	static function spellbadword(?sentence:String):Any;
+	@:luaDotMethod
+	function spellbadword(?sentence:String):Any;
 	/**
 		```lua
 		function table.spellsuggest(word: string, max?: integer, capital?: boolean)
@@ -20351,7 +17602,8 @@ package nvim;
 		 The spelling information for the current window is used.  The
 		 values of 'spelllang' and 'spellsuggest' are used.
 	**/
-	static function spellsuggest(word:String, ?max:Float, ?capital:Bool):lua.Table<Int, String>;
+	@:luaDotMethod
+	function spellsuggest(word:String, ?max:Float, ?capital:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.split(string: string, pattern?: string, keepempty?: boolean)
@@ -20384,7 +17636,8 @@ package nvim;
 		   let items = split(line, ':', 1)
 		 <The opposite function is |join()|.
 	**/
-	static function split(string:String, ?pattern:String, ?keepempty:Bool):lua.Table<Int, String>;
+	@:luaDotMethod
+	function split(string:String, ?pattern:String, ?keepempty:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.sqrt(expr: number)
@@ -20405,7 +17658,8 @@ package nvim;
 		 <  str2float("nan")
 		 NaN may be different, it depends on system libraries.
 	**/
-	static function sqrt(expr:Float):Any;
+	@:luaDotMethod
+	function sqrt(expr:Float):Any;
 	/**
 		```lua
 		function table.srand(expr?: number)
@@ -20428,7 +17682,8 @@ package nvim;
 		   echo rand(seed)
 		 <
 	**/
-	static function srand(?expr:Float):Any;
+	@:luaDotMethod
+	function srand(?expr:Float):Any;
 	/**
 		```lua
 		function table.state(what?: string)
@@ -20466,37 +17721,11 @@ package nvim;
 		   recursiveness up to "ccc")
 		     s  screen has scrolled for messages
 	**/
-	static function state(?what:String):Any;
-	/**
-		```lua
-		function table.stdioopen(opts: table)
-		  -> any
-		```
-		
-		---
-		
-		 With |--headless| this opens stdin and stdout as a |channel|.
-		 May be called only once. See |channel-stdio|. stderr is not
-		 handled by this function, see |v:stderr|.
-		
-		 Close the stdio handles with |chanclose()|. Use |chansend()|
-		 to send data to stdout, and |rpcrequest()| and |rpcnotify()|
-		 to communicate over RPC.
-		
-		 {opts} is a dictionary with these keys:
-		   |on_stdin| : callback invoked when stdin is written to.
-		   on_print : callback invoked when Nvim needs to print a
-		        message, with the message (whose type is string)
-		        as sole argument.
-		   stdin_buffered : read stdin in |channel-buffered| mode.
-		   rpc      : If set, |msgpack-rpc| will be used to communicate
-		        over stdio
-		 Returns:
-		   - |channel-id| on success (value is always 1)
-		   - 0 on invalid arguments
-	**/
+	@:luaDotMethod
+	function state(?what:String):Any;
 	@:native("stdioopen")
-	private static function __stdioopen(opts:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __stdioopen(opts:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.stdioopen(opts: table)
@@ -20525,7 +17754,8 @@ package nvim;
 		   - |channel-id| on success (value is always 1)
 		   - 0 on invalid arguments
 	**/
-	inline static function stdioopen(opts:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function stdioopen(opts:lua.Table.AnyTable):Any {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __stdioopen(opts);
 		return result;
@@ -20608,7 +17838,8 @@ package nvim;
 		    | 'data_dirs'
 		```
 	**/
-	static function stdpath(what:String):haxe.extern.EitherType<String, lua.Table<Int, String>>;
+	@:luaDotMethod
+	function stdpath(what:String):haxe.extern.EitherType<String, lua.Table<Int, String>>;
 	/**
 		```lua
 		function table.str2float(string: string, quoted?: boolean)
@@ -20635,7 +17866,8 @@ package nvim;
 		 <
 		 Returns 0.0 if the conversion fails.
 	**/
-	static function str2float(string:String, ?quoted:Bool):Any;
+	@:luaDotMethod
+	function str2float(string:String, ?quoted:Bool):Any;
 	/**
 		```lua
 		function table.str2list(string: string, utf8?: boolean)
@@ -20656,7 +17888,8 @@ package nvim;
 		   echo str2list("á")    " returns [97, 769]
 		 <
 	**/
-	static function str2list(string:String, ?utf8:Bool):Any;
+	@:luaDotMethod
+	function str2list(string:String, ?utf8:Bool):Any;
 	/**
 		```lua
 		function table.str2nr(string: string, base?: integer)
@@ -20683,7 +17916,8 @@ package nvim;
 		
 		 Returns 0 if {string} is empty or on error.
 	**/
-	static function str2nr(string:String, ?base:Float):Any;
+	@:luaDotMethod
+	function str2nr(string:String, ?base:Float):Any;
 	/**
 		```lua
 		function table.strcharlen(string: string)
@@ -20701,7 +17935,8 @@ package nvim;
 		
 		 Also see |strlen()|, |strdisplaywidth()| and |strwidth()|.
 	**/
-	static function strcharlen(string:String):Any;
+	@:luaDotMethod
+	function strcharlen(string:String):Any;
 	/**
 		```lua
 		function table.strcharpart(src: string, start: integer, len?: integer, skipcc?: boolean)
@@ -20724,7 +17959,8 @@ package nvim;
 		
 		 Returns an empty string on error.
 	**/
-	static function strcharpart(src:String, start:Float, ?len:Float, ?skipcc:Bool):Any;
+	@:luaDotMethod
+	function strcharpart(src:String, start:Float, ?len:Float, ?skipcc:Bool):Any;
 	/**
 		```lua
 		function table.strchars(string: string, skipcc?: boolean)
@@ -20761,7 +17997,8 @@ package nvim;
 		     endif
 		 <
 	**/
-	static function strchars(string:String, ?skipcc:Bool):Float;
+	@:luaDotMethod
+	function strchars(string:String, ?skipcc:Bool):Float;
 	/**
 		```lua
 		function table.strdisplaywidth(string: string, col?: integer)
@@ -20783,7 +18020,8 @@ package nvim;
 		 Returns zero on error.
 		 Also see |strlen()|, |strwidth()| and |strchars()|.
 	**/
-	static function strdisplaywidth(string:String, ?col:Float):Float;
+	@:luaDotMethod
+	function strdisplaywidth(string:String, ?col:Float):Float;
 	/**
 		```lua
 		function table.strftime(format: string, time?: number)
@@ -20808,7 +18046,8 @@ package nvim;
 		   echo strftime("%c", getftime("file.c"))
 		            " Show mod time of file.c.
 	**/
-	static function strftime(format:String, ?time:Float):String;
+	@:luaDotMethod
+	function strftime(format:String, ?time:Float):String;
 	/**
 		```lua
 		function table.strgetchar(str: string, index: integer)
@@ -20825,7 +18064,8 @@ package nvim;
 		 Returns -1 if {index} is invalid.
 		 Also see |strcharpart()| and |strchars()|.
 	**/
-	static function strgetchar(str:String, index:Float):Float;
+	@:luaDotMethod
+	function strgetchar(str:String, index:Float):Float;
 	/**
 		```lua
 		function table.stridx(haystack: string, needle: string, start?: integer)
@@ -20852,7 +18092,8 @@ package nvim;
 		 stridx() works similar to the C function strstr().  When used
 		 with a single character it works similar to strchr().
 	**/
-	static function stridx(haystack:String, needle:String, ?start:Float):Float;
+	@:luaDotMethod
+	function stridx(haystack:String, needle:String, ?start:Float):Float;
 	/**
 		```lua
 		function table.string(expr: any)
@@ -20884,7 +18125,8 @@ package nvim;
 		 method.  Use |msgpackdump()| or |json_encode()| if you need to
 		 share data with other applications.
 	**/
-	static function string(expr:Any):String;
+	@:luaDotMethod
+	function string(expr:Any):String;
 	/**
 		```lua
 		function table.strlen(string: string)
@@ -20901,7 +18143,8 @@ package nvim;
 		 |strchars()|.
 		 Also see |len()|, |strdisplaywidth()| and |strwidth()|.
 	**/
-	static function strlen(string:String):Float;
+	@:luaDotMethod
+	function strlen(string:String):Float;
 	/**
 		```lua
 		function table.strpart(src: string, start: integer, len?: integer, chars?: 0|1)
@@ -20941,7 +18184,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function strpart(src:String, start:Float, ?len:Float, ?chars:Float):String;
+	@:luaDotMethod
+	function strpart(src:String, start:Float, ?len:Float, ?chars:Float):String;
 	/**
 		```lua
 		function table.strptime(format: string, timestring: string)
@@ -20973,7 +18217,8 @@ package nvim;
 		   echo strftime("%c", strptime("%Y%m%d%H%M%S", "19970427115355") + 3600)
 		 <  Sun Apr 27 12:53:55 1997
 	**/
-	static function strptime(format:String, timestring:String):Float;
+	@:luaDotMethod
+	function strptime(format:String, timestring:String):Float;
 	/**
 		```lua
 		function table.strridx(haystack: string, needle: string, start?: integer)
@@ -20999,7 +18244,8 @@ package nvim;
 		 When used with a single character it works similar to the C
 		 function strrchr().
 	**/
-	static function strridx(haystack:String, needle:String, ?start:Float):Float;
+	@:luaDotMethod
+	function strridx(haystack:String, needle:String, ?start:Float):Float;
 	/**
 		```lua
 		function table.strtrans(string: string)
@@ -21017,7 +18263,8 @@ package nvim;
 		
 		 Returns an empty string on error.
 	**/
-	static function strtrans(string:String):String;
+	@:luaDotMethod
+	function strtrans(string:String):String;
 	/**
 		```lua
 		function table.strutf16len(string: string, countcc?: 0|1)
@@ -21052,7 +18299,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function strutf16len(string:String, ?countcc:Float):Float;
+	@:luaDotMethod
+	function strutf16len(string:String, ?countcc:Float):Float;
 	/**
 		```lua
 		function table.strwidth(string: string)
@@ -21069,7 +18317,8 @@ package nvim;
 		 Returns zero on error.
 		 Also see |strlen()|, |strdisplaywidth()| and |strchars()|.
 	**/
-	static function strwidth(string:String):Float;
+	@:luaDotMethod
+	function strwidth(string:String):Float;
 	/**
 		```lua
 		function table.submatch(nr: integer, list?: any)
@@ -21112,7 +18361,8 @@ package nvim;
 		  -> string|string[]
 		```
 	**/
-	static function submatch(nr:Float, ?list:Void):String;
+	@:luaDotMethod
+	function submatch(nr:Float, ?list:Void):String;
 	/**
 		```lua
 		function table.substitute(string: string, pat: string, sub: string, flags: string)
@@ -21163,7 +18413,8 @@ package nvim;
 		
 		 <Returns an empty string on error.
 	**/
-	static function substitute(string:String, pat:String, sub:String, flags:String):String;
+	@:luaDotMethod
+	function substitute(string:String, pat:String, sub:String, flags:String):String;
 	/**
 		```lua
 		function table.swapfilelist()
@@ -21182,7 +18433,8 @@ package nvim;
 		   let swapfiles = swapfilelist()
 		   let &directory = save_dir
 	**/
-	static function swapfilelist():lua.Table<Int, String>;
+	@:luaDotMethod
+	function swapfilelist():lua.Table<Int, String>;
 	/**
 		```lua
 		function table.swapinfo(fname: string)
@@ -21208,7 +18460,8 @@ package nvim;
 		   Not a swap file: does not contain correct block ID
 		   Magic number mismatch: Info in first block is invalid
 	**/
-	static function swapinfo(fname:String):Any;
+	@:luaDotMethod
+	function swapinfo(fname:String):Any;
 	/**
 		```lua
 		function table.swapname(buf: string|integer)
@@ -21223,7 +18476,8 @@ package nvim;
 		 |:swapname| (unless there is no swap file).
 		 If buffer {buf} has no swap file, returns an empty string.
 	**/
-	static function swapname(buf:haxe.extern.EitherType<Float, String>):String;
+	@:luaDotMethod
+	function swapname(buf:haxe.extern.EitherType<Float, String>):String;
 	/**
 		```lua
 		function table.synID(lnum: string|integer, col: integer, trans: 0|1)
@@ -21264,7 +18518,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function synID(lnum:haxe.extern.EitherType<Float, String>, col:Float, trans:Float):Float;
+	@:luaDotMethod
+	function synID(lnum:haxe.extern.EitherType<Float, String>, col:Float, trans:Float):Float;
 	/**
 		```lua
 		function table.synIDattr(synID: integer, what: string, mode?: string)
@@ -21318,7 +18573,8 @@ package nvim;
 		   echo synID(line("."), col("."), 1)->synIDtrans()->synIDattr("fg")
 		 <
 	**/
-	static function synIDattr(synID:Float, what:String, ?mode:String):String;
+	@:luaDotMethod
+	function synIDattr(synID:Float, what:String, ?mode:String):String;
 	/**
 		```lua
 		function table.synIDtrans(synID: integer)
@@ -21334,7 +18590,8 @@ package nvim;
 		
 		 Returns zero on error.
 	**/
-	static function synIDtrans(synID:Float):Float;
+	@:luaDotMethod
+	function synIDtrans(synID:Float):Float;
 	/**
 		```lua
 		function table.synconcealed(lnum: string|integer, col: integer)
@@ -21371,7 +18628,8 @@ package nvim;
 		 since syntax and matching highlighting are two different
 		 mechanisms |syntax-vs-match|.
 	**/
-	static function synconcealed(lnum:haxe.extern.EitherType<Float, String>, col:Float):Dynamic;
+	@:luaDotMethod
+	function synconcealed(lnum:haxe.extern.EitherType<Float, String>, col:Float):Dynamic;
 	/**
 		```lua
 		function table.synstack(lnum: string|integer, col: integer)
@@ -21398,7 +18656,8 @@ package nvim;
 		 character in a line and the first column in an empty line are
 		 valid positions.
 	**/
-	static function synstack(lnum:haxe.extern.EitherType<Float, String>, col:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function synstack(lnum:haxe.extern.EitherType<Float, String>, col:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.system(cmd: string|string[], input?: string|integer|string[])
@@ -21455,7 +18714,8 @@ package nvim;
 		 <Unlike ":!cmd" there is no automatic check for changed files.
 		 Use |:checktime| to force a check.
 	**/
-	static function system(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>):String;
+	@:luaDotMethod
+	function system(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>):String;
 	/**
 		```lua
 		function table.systemlist(cmd: string|string[], input?: string|integer|string[], keepempty?: integer)
@@ -21477,7 +18737,8 @@ package nvim;
 		 <
 		 Returns an empty string on error.
 	**/
-	static function systemlist(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>, ?keepempty:Float):lua.Table<Int, String>;
+	@:luaDotMethod
+	function systemlist(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>, ?keepempty:Float):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.tabpagebuflist(arg?: integer)
@@ -21498,7 +18759,8 @@ package nvim;
 		   endfor
 		 <Note that a buffer may appear in more than one window.
 	**/
-	static function tabpagebuflist(?arg:Float):Any;
+	@:luaDotMethod
+	function tabpagebuflist(?arg:Float):Any;
 	/**
 		```lua
 		function table.tabpagenr(arg?: '#'|'$')
@@ -21527,7 +18789,8 @@ package nvim;
 		    | '#'
 		```
 	**/
-	static function tabpagenr(?arg:String):Float;
+	@:luaDotMethod
+	function tabpagenr(?arg:String):Float;
 	/**
 		```lua
 		function table.tabpagewinnr(tabarg: integer, arg?: '#'|'$')
@@ -21555,7 +18818,8 @@ package nvim;
 		    | '#'
 		```
 	**/
-	static function tabpagewinnr(tabarg:Float, ?arg:String):Float;
+	@:luaDotMethod
+	function tabpagewinnr(tabarg:Float, ?arg:String):Float;
 	/**
 		```lua
 		function table.tagfiles()
@@ -21567,7 +18831,8 @@ package nvim;
 		 Returns a |List| with the file names used to search for tags
 		 for the current buffer.  This is the 'tags' option expanded.
 	**/
-	static function tagfiles():lua.Table<Int, String>;
+	@:luaDotMethod
+	function tagfiles():lua.Table<Int, String>;
 	/**
 		```lua
 		function table.taglist(expr: any, filename?: string)
@@ -21618,7 +18883,8 @@ package nvim;
 		 located by Vim. Refer to |tags-file-format| for the format of
 		 the tags file generated by the different ctags tools.
 	**/
-	static function taglist(expr:Any, ?filename:String):Any;
+	@:luaDotMethod
+	function taglist(expr:Any, ?filename:String):Any;
 	/**
 		```lua
 		function table.tan(expr: number)
@@ -21637,7 +18903,8 @@ package nvim;
 		   echo tan(-4.01)
 		 <  -1.181502
 	**/
-	static function tan(expr:Float):Float;
+	@:luaDotMethod
+	function tan(expr:Float):Float;
 	/**
 		```lua
 		function table.tanh(expr: number)
@@ -21656,7 +18923,8 @@ package nvim;
 		   echo tanh(-1)
 		 <  -0.761594
 	**/
-	static function tanh(expr:Float):Float;
+	@:luaDotMethod
+	function tanh(expr:Float):Float;
 	/**
 		```lua
 		function table.tempname()
@@ -21672,19 +18940,11 @@ package nvim;
 		   exe "redir > " .. tmpfile
 		 <
 	**/
-	static function tempname():String;
-	/**
-		```lua
-		function table.termopen(cmd: string|string[], opts?: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Use |jobstart()| with `{term: v:true}` instead.
-	**/
+	@:luaDotMethod
+	function tempname():String;
 	@:native("termopen")
-	private static function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
+	@:luaDotMethod
+	private function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
 	/**
 		```lua
 		function table.termopen(cmd: string|string[], opts?: table)
@@ -21695,8 +18955,9 @@ package nvim;
 		
 		 Use |jobstart()| with `{term: v:true}` instead.
 	**/
+	@:luaDotMethod
 	@:deprecated
-	inline static function termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
+	inline function termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __termopen(cmd, opts);
 		return result;
@@ -21706,13 +18967,13 @@ package nvim;
 		(global) table.test_garbagecollect_now: unknown
 		```
 	**/
-	static var test_garbagecollect_now : Dynamic;
+	var test_garbagecollect_now : Dynamic;
 	/**
 		```lua
 		(global) table.test_write_list_log: unknown
 		```
 	**/
-	static var test_write_list_log : Dynamic;
+	var test_write_list_log : Dynamic;
 	/**
 		```lua
 		function table.timer_info(id?: integer)
@@ -21735,7 +18996,8 @@ package nvim;
 		         -1 means forever
 		     "callback"      the callback
 	**/
-	static function timer_info(?id:Float):Any;
+	@:luaDotMethod
+	function timer_info(?id:Float):Any;
 	/**
 		```lua
 		function table.timer_pause(timer: integer, paused: boolean)
@@ -21756,46 +19018,11 @@ package nvim;
 		 String, then the timer is paused, otherwise it is unpaused.
 		 See |non-zero-arg|.
 	**/
-	static function timer_pause(timer:Float, paused:Bool):Any;
-	/**
-		```lua
-		function table.timer_start(time: number, callback: string|function, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Create a timer and return the timer ID.
-		
-		 {time} is the waiting time in milliseconds. This is the
-		 minimum time before invoking the callback.  When the system is
-		 busy or Vim is not waiting for input the time will be longer.
-		 Zero can be used to execute the callback when Vim is back in
-		 the main loop.
-		
-		 {callback} is the function to call.  It can be the name of a
-		 function or a |Funcref|.  It is called with one argument, which
-		 is the timer ID.  The callback is only invoked when Vim is
-		 waiting for input.
-		
-		 {options} is a dictionary.  Supported entries:
-		    "repeat"  Number of times to repeat the callback.
-		     -1 means forever.  Default is 1.
-		     If the timer causes an error three times in a
-		     row the repeat is cancelled.
-		
-		 Returns -1 on error.
-		
-		 Example: >vim
-		   func MyHandler(timer)
-		     echo 'Handler called'
-		   endfunc
-		   let timer = timer_start(500, 'MyHandler',
-		     \ {'repeat': 3})
-		 <This invokes MyHandler() three times at 500 msec intervals.
-	**/
+	@:luaDotMethod
+	function timer_pause(timer:Float, paused:Bool):Any;
 	@:native("timer_start")
-	private static function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.timer_start(time: number, callback: string|function, options?: table)
@@ -21833,7 +19060,8 @@ package nvim;
 		     \ {'repeat': 3})
 		 <This invokes MyHandler() three times at 500 msec intervals.
 	**/
-	inline static function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
 		options = nvim.helper.Arg.pure(options);
 		final result = __timer_start(time, callback, options);
 		return result;
@@ -21850,7 +19078,8 @@ package nvim;
 		 {timer} is an ID returned by timer_start(), thus it must be a
 		 Number.  If {timer} does not exist there is no error.
 	**/
-	static function timer_stop(timer:Float):Any;
+	@:luaDotMethod
+	function timer_stop(timer:Float):Any;
 	/**
 		```lua
 		function table.timer_stopall()
@@ -21863,7 +19092,8 @@ package nvim;
 		 invoked.  Useful if some timers is misbehaving.  If there are
 		 no timers there is no error.
 	**/
-	static function timer_stopall():Any;
+	@:luaDotMethod
+	function timer_stopall():Any;
 	/**
 		```lua
 		function table.tolower(expr: string)
@@ -21876,7 +19106,8 @@ package nvim;
 		 characters turned into lowercase (just like applying |gu| to
 		 the string).  Returns an empty string on error.
 	**/
-	static function tolower(expr:String):String;
+	@:luaDotMethod
+	function tolower(expr:String):String;
 	/**
 		```lua
 		function table.toupper(expr: string)
@@ -21889,7 +19120,8 @@ package nvim;
 		 characters turned into uppercase (just like applying |gU| to
 		 the string).  Returns an empty string on error.
 	**/
-	static function toupper(expr:String):String;
+	@:luaDotMethod
+	function toupper(expr:String):String;
 	/**
 		```lua
 		function table.tr(src: string, fromstr: string, tostr: string)
@@ -21913,7 +19145,8 @@ package nvim;
 		   echo tr("<blob>", "<>", "{}")
 		 <returns "{blob}"
 	**/
-	static function tr(src:String, fromstr:String, tostr:String):String;
+	@:luaDotMethod
+	function tr(src:String, fromstr:String, tostr:String):String;
 	/**
 		```lua
 		function table.trim(text: string, mask?: string, dir?: 0|1|2)
@@ -21957,7 +19190,8 @@ package nvim;
 		    | 2
 		```
 	**/
-	static function trim(text:String, ?mask:String, ?dir:Float):String;
+	@:luaDotMethod
+	function trim(text:String, ?mask:String, ?dir:Float):String;
 	/**
 		```lua
 		function table.trunc(expr: number)
@@ -21978,7 +19212,8 @@ package nvim;
 		   echo trunc(4.0)
 		 <  4.0
 	**/
-	static function trunc(expr:Float):Float;
+	@:luaDotMethod
+	function trunc(expr:Float):Float;
 	/**
 		```lua
 		function table.type(expr: any)
@@ -22014,7 +19249,8 @@ package nvim;
 		   if exists('v:t_number') | endif
 		 <
 	**/
-	static function type(expr:Any):Float;
+	@:luaDotMethod
+	function type(expr:Any):Float;
 	/**
 		```lua
 		function table.undofile(name: string)
@@ -22033,7 +19269,8 @@ package nvim;
 		 buffer without a file name will not write an undo file.
 		 Useful in combination with |:wundo| and |:rundo|.
 	**/
-	static function undofile(name:String):String;
+	@:luaDotMethod
+	function undofile(name:String):String;
 	/**
 		```lua
 		function table.undotree(buf?: string|integer)
@@ -22085,7 +19322,8 @@ package nvim;
 		     blocks.  Each item may again have an "alt"
 		     item.
 	**/
-	static function undotree(?buf:haxe.extern.EitherType<Float, String>):nvim.type.vim.fn.undotree.Ret;
+	@:luaDotMethod
+	function undotree(?buf:haxe.extern.EitherType<Float, String>):nvim.type.vim.fn.undotree.Ret;
 	/**
 		```lua
 		function table.uniq(list: any, func?: any, dict?: any)
@@ -22109,7 +19347,8 @@ package nvim;
 		    | 0
 		```
 	**/
-	static function uniq(list:Any, ?func:Any, ?dict:Any):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	@:luaDotMethod
+	function uniq(list:Any, ?func:Any, ?dict:Any):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.utf16idx(string: string, idx: integer, countcc?: boolean, charidx?: boolean)
@@ -22145,7 +19384,8 @@ package nvim;
 		   echo utf16idx('a😊😊', 9)  " returns -1
 		 <
 	**/
-	static function utf16idx(string:String, idx:Float, ?countcc:Bool, ?charidx:Bool):Float;
+	@:luaDotMethod
+	function utf16idx(string:String, idx:Float, ?countcc:Bool, ?charidx:Bool):Float;
 	/**
 		```lua
 		function table.values(dict: any)
@@ -22158,7 +19398,8 @@ package nvim;
 		 in arbitrary order.  Also see |items()| and |keys()|.
 		 Returns zero if {dict} is not a |Dict|.
 	**/
-	static function values(dict:Any):Any;
+	@:luaDotMethod
+	function values(dict:Any):Any;
 	/**
 		```lua
 		function table.virtcol(expr: string|any[], list?: boolean, winid?: integer)
@@ -22214,7 +19455,8 @@ package nvim;
 		     echo max(map(range(1, line('$')), "virtcol([v:val, '$'])"))
 		 <
 	**/
-	static function virtcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?list:Bool, ?winid:Float):Any;
+	@:luaDotMethod
+	function virtcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?list:Bool, ?winid:Float):Any;
 	/**
 		```lua
 		function table.virtcol2col(winid: integer, lnum: integer, col: integer)
@@ -22244,7 +19486,8 @@ package nvim;
 		
 		 See also |screenpos()|, |virtcol()| and |col()|.
 	**/
-	static function virtcol2col(winid:Float, lnum:Float, col:Float):Float;
+	@:luaDotMethod
+	function virtcol2col(winid:Float, lnum:Float, col:Float):Float;
 	/**
 		```lua
 		function table.visualmode(expr?: boolean)
@@ -22270,7 +19513,8 @@ package nvim;
 		 a non-empty String, then the Visual mode will be cleared and
 		 the old value is returned.  See |non-zero-arg|.
 	**/
-	static function visualmode(?expr:Bool):String;
+	@:luaDotMethod
+	function visualmode(?expr:Bool):String;
 	/**
 		```lua
 		function table.wait(timeout: integer, condition: any, interval?: number)
@@ -22294,7 +19538,8 @@ package nvim;
 		   -2 if the function was interrupted (by |CTRL-C|)
 		   -3 if an error occurred
 	**/
-	static function wait(timeout:Float, condition:Any, ?interval:Float):Any;
+	@:luaDotMethod
+	function wait(timeout:Float, condition:Any, ?interval:Float):Any;
 	/**
 		```lua
 		function table.wildmenumode()
@@ -22313,7 +19558,8 @@ package nvim;
 		 <
 		 (Note: this needs the 'wildcharm' option set appropriately).
 	**/
-	static function wildmenumode():Any;
+	@:luaDotMethod
+	function wildmenumode():Any;
 	/**
 		```lua
 		function table.win_execute(id: integer, command: string, silent?: boolean)
@@ -22335,7 +19581,8 @@ package nvim;
 		 When window {id} does not exist then no error is given and
 		 an empty string is returned.
 	**/
-	static function win_execute(id:Float, command:String, ?silent:Bool):Any;
+	@:luaDotMethod
+	function win_execute(id:Float, command:String, ?silent:Bool):Any;
 	/**
 		```lua
 		function table.win_findbuf(bufnr: integer)
@@ -22347,7 +19594,8 @@ package nvim;
 		 Returns a |List| with |window-ID|s for windows that contain
 		 buffer {bufnr}.  When there is none the list is empty.
 	**/
-	static function win_findbuf(bufnr:Float):lua.Table<Int, Float>;
+	@:luaDotMethod
+	function win_findbuf(bufnr:Float):lua.Table<Int, Float>;
 	/**
 		```lua
 		function table.win_getid(win?: integer, tab?: integer)
@@ -22364,7 +19612,8 @@ package nvim;
 		 number {tab}.  The first tab has number one.
 		 Return zero if the window cannot be found.
 	**/
-	static function win_getid(?win:Float, ?tab:Float):Float;
+	@:luaDotMethod
+	function win_getid(?win:Float, ?tab:Float):Float;
 	/**
 		```lua
 		function table.win_gettype(nr?: integer)
@@ -22403,7 +19652,8 @@ package nvim;
 		    | 'unknown'
 		```
 	**/
-	static function win_gettype(?nr:Float):String;
+	@:luaDotMethod
+	function win_gettype(?nr:Float):String;
 	/**
 		```lua
 		function table.win_gotoid(expr: integer)
@@ -22423,7 +19673,8 @@ package nvim;
 		    | 1
 		```
 	**/
-	static function win_gotoid(expr:Float):Float;
+	@:luaDotMethod
+	function win_gotoid(expr:Float):Float;
 	/**
 		```lua
 		function table.win_id2tabwin(expr: integer)
@@ -22436,7 +19687,8 @@ package nvim;
 		 with ID {expr}: [tabnr, winnr].
 		 Return [0, 0] if the window cannot be found.
 	**/
-	static function win_id2tabwin(expr:Float):Any;
+	@:luaDotMethod
+	function win_id2tabwin(expr:Float):Any;
 	/**
 		```lua
 		function table.win_id2win(expr: integer)
@@ -22448,7 +19700,8 @@ package nvim;
 		 Return the window number of window with ID {expr}.
 		 Return 0 if the window cannot be found in the current tabpage.
 	**/
-	static function win_id2win(expr:Float):Float;
+	@:luaDotMethod
+	function win_id2win(expr:Float):Float;
 	/**
 		```lua
 		function table.win_move_separator(nr: integer, offset: integer)
@@ -22471,7 +19724,8 @@ package nvim;
 		 window, since it has no separator on the right.
 		 Only works for the current tab page. *E1308*
 	**/
-	static function win_move_separator(nr:Float, offset:Float):Any;
+	@:luaDotMethod
+	function win_move_separator(nr:Float, offset:Float):Any;
 	/**
 		```lua
 		function table.win_move_statusline(nr: integer, offset: integer)
@@ -22491,7 +19745,8 @@ package nvim;
 		 be found and FALSE otherwise.
 		 Only works for the current tab page.
 	**/
-	static function win_move_statusline(nr:Float, offset:Float):Any;
+	@:luaDotMethod
+	function win_move_statusline(nr:Float, offset:Float):Any;
 	/**
 		```lua
 		function table.win_screenpos(nr: integer)
@@ -22507,36 +19762,11 @@ package nvim;
 		 for the current window.
 		 Returns [0, 0] if the window cannot be found.
 	**/
-	static function win_screenpos(nr:Float):Any;
-	/**
-		```lua
-		function table.win_splitmove(nr: integer, target: integer, options?: table)
-		  -> any
-		```
-		
-		---
-		
-		 Temporarily switch to window {target}, then move window {nr}
-		 to a new split adjacent to {target}.
-		 Unlike commands such as |:split|, no new windows are created
-		 (the |window-ID| of window {nr} is unchanged after the move).
-		
-		 Both {nr} and {target} can be window numbers or |window-ID|s.
-		 Both must be in the current tab page.
-		
-		 Returns zero for success, non-zero for failure.
-		
-		 {options} is a |Dictionary| with the following optional entries:
-		   "vertical"  When TRUE, the split is created vertically,
-		     like with |:vsplit|.
-		   "rightbelow"  When TRUE, the split is made below or to the
-		     right (if vertical).  When FALSE, it is done
-		     above or to the left (if vertical).  When not
-		     present, the values of 'splitbelow' and
-		     'splitright' are used.
-	**/
+	@:luaDotMethod
+	function win_screenpos(nr:Float):Any;
 	@:native("win_splitmove")
-	private static function __win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any;
+	@:luaDotMethod
+	private function __win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.win_splitmove(nr: integer, target: integer, options?: table)
@@ -22564,7 +19794,8 @@ package nvim;
 		     present, the values of 'splitbelow' and
 		     'splitright' are used.
 	**/
-	inline static function win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any {
+	@:luaDotMethod
+	inline function win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any {
 		options = nvim.helper.Arg.pure(options);
 		final result = __win_splitmove(nr, target, options);
 		return result;
@@ -22587,7 +19818,8 @@ package nvim;
 		   echo "The file in the current window is " .. bufname(winbufnr(0))
 		 <
 	**/
-	static function winbufnr(nr:Float):Float;
+	@:luaDotMethod
+	function winbufnr(nr:Float):Float;
 	/**
 		```lua
 		function table.wincol()
@@ -22600,7 +19832,8 @@ package nvim;
 		 cursor in the window.  This is counting screen cells from the
 		 left side of the window.  The leftmost column is one.
 	**/
-	static function wincol():Float;
+	@:luaDotMethod
+	function wincol():Float;
 	/**
 		```lua
 		function table.windowsversion()
@@ -22614,7 +19847,8 @@ package nvim;
 		 Windows XP is "5.1".  For non-MS-Windows systems the result is
 		 an empty string.
 	**/
-	static function windowsversion():String;
+	@:luaDotMethod
+	function windowsversion():String;
 	/**
 		```lua
 		function table.winheight(nr: integer)
@@ -22632,7 +19866,8 @@ package nvim;
 		   echo "Current window has " .. winheight(0) .. " lines."
 		 <
 	**/
-	static function winheight(nr:Float):Float;
+	@:luaDotMethod
+	function winheight(nr:Float):Float;
 	/**
 		```lua
 		function table.winlayout(tabnr?: integer)
@@ -22677,7 +19912,8 @@ package nvim;
 		           ['leaf', 1001]]], ['leaf', 1000]]]
 		 <
 	**/
-	static function winlayout(?tabnr:Float):nvim.type.vim.fn.winlayout.Ret;
+	@:luaDotMethod
+	function winlayout(?tabnr:Float):nvim.type.vim.fn.winlayout.Ret;
 	/**
 		```lua
 		function table.winline()
@@ -22692,7 +19928,8 @@ package nvim;
 		 If the cursor was moved the view on the file will be updated
 		 first, this may cause a scroll.
 	**/
-	static function winline():Float;
+	@:luaDotMethod
+	function winline():Float;
 	/**
 		```lua
 		function table.winnr(arg?: string|integer)
@@ -22732,7 +19969,8 @@ package nvim;
 		   let wnum = winnr('3k')
 		 <
 	**/
-	static function winnr(?arg:haxe.extern.EitherType<String, Float>):Float;
+	@:luaDotMethod
+	function winnr(?arg:haxe.extern.EitherType<String, Float>):Float;
 	/**
 		```lua
 		function table.winrestcmd()
@@ -22751,32 +19989,11 @@ package nvim;
 		   exe cmd
 		 <
 	**/
-	static function winrestcmd():String;
-	/**
-		```lua
-		function table.winrestview(dict: vim.fn.winrestview.dict)
-		  -> any
-		```
-		
-		---
-		
-		 Uses the |Dictionary| returned by |winsaveview()| to restore
-		 the view of the current window.
-		 Note: The {dict} does not have to contain all values, that are
-		 returned by |winsaveview()|. If values are missing, those
-		 settings won't be restored. So you can use: >vim
-		     call winrestview({'curswant': 4})
-		 <
-		 This will only set the curswant value (the column the cursor
-		 wants to move on vertical movements) of the cursor to column 5
-		 (yes, that is 5), while all other settings will remain the
-		 same. This is useful, if you set the cursor position manually.
-		
-		 If you have changed the values the result is unpredictable.
-		 If the window size changed the result won't be the same.
-	**/
+	@:luaDotMethod
+	function winrestcmd():String;
 	@:native("winrestview")
-	private static function __winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any;
+	@:luaDotMethod
+	private function __winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any;
 	/**
 		```lua
 		function table.winrestview(dict: vim.fn.winrestview.dict)
@@ -22800,7 +20017,8 @@ package nvim;
 		 If you have changed the values the result is unpredictable.
 		 If the window size changed the result won't be the same.
 	**/
-	inline static function winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any {
+	@:luaDotMethod
+	inline function winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any {
 		dict = nvim.helper.Arg.pure(dict);
 		final result = __winrestview(dict);
 		return result;
@@ -22839,7 +20057,8 @@ package nvim;
 		   skipcol    columns skipped
 		 Note that no option values are saved.
 	**/
-	static function winsaveview():nvim.type.vim.fn.winsaveview.Ret;
+	@:luaDotMethod
+	function winsaveview():nvim.type.vim.fn.winsaveview.Ret;
 	/**
 		```lua
 		function table.winwidth(nr: integer)
@@ -22864,7 +20083,8 @@ package nvim;
 		 <
 		 To get the Nvim screen size, see the 'columns' option.
 	**/
-	static function winwidth(nr:Float):Float;
+	@:luaDotMethod
+	function winwidth(nr:Float):Float;
 	/**
 		```lua
 		function table.wordcount()
@@ -22893,7 +20113,8 @@ package nvim;
 		   visual_words    Number of words visually selected
 		       (only in Visual mode)
 	**/
-	static function wordcount():Any;
+	@:luaDotMethod
+	function wordcount():Any;
 	/**
 		```lua
 		function table.writefile(object: any, fname: string, flags?: string)
@@ -22948,7 +20169,8 @@ package nvim;
 		   call writefile(fl, "foocopy", "b")
 		 <
 	**/
-	static function writefile(object:Any, fname:String, ?flags:String):Any;
+	@:luaDotMethod
+	function writefile(object:Any, fname:String, ?flags:String):Any;
 	/**
 		```lua
 		function table.xor(expr: integer, expr1: integer)
@@ -22964,7 +20186,8 @@ package nvim;
 		   let bits = xor(bits, 0x80)
 		 <
 	**/
-	static function xor(expr:Float, expr1:Float):Float;
+	@:luaDotMethod
+	function xor(expr:Float, expr1:Float):Float;
 }
 
 /**
@@ -22989,13 +20212,13 @@ package nvim;
 	 print(vim.go.bar)     -- error: invalid key
 	 ```
 **/
-@:native("vim.go") extern class Go {
+extern class Go {
 	/**
 		```lua
 		(global) table.aleph: unknown
 		```
 	**/
-	static var aleph : Dynamic;
+	var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -23008,7 +20231,7 @@ package nvim;
 		 Insert mode, and don't know how to get out.  See 'revins'.
 		
 	**/
-	static var allowrevins : Bool;
+	var allowrevins : Bool;
 	/**
 		```lua
 		(global) table.ambiwidth: 'double'|'single'
@@ -23048,13 +20271,13 @@ package nvim;
 		 (https://www.unicode.org/reports/tr11).
 		
 	**/
-	static var ambiwidth : String;
+	var ambiwidth : String;
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
-	static var arabic : Dynamic;
+	var arabic : Dynamic;
 	/**
 		```lua
 		(global) table.arabicshape: boolean
@@ -23076,7 +20299,7 @@ package nvim;
 		 further details see `arabic.txt`.
 		
 	**/
-	static var arabicshape : Bool;
+	var arabicshape : Bool;
 	/**
 		```lua
 		(global) table.autochdir: boolean
@@ -23092,13 +20315,13 @@ package nvim;
 		 Note: When this option is on some plugins may not work.
 		
 	**/
-	static var autochdir : Bool;
+	var autochdir : Bool;
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
-	static var autoindent : Dynamic;
+	var autoindent : Dynamic;
 	/**
 		```lua
 		(global) table.autoread: boolean
@@ -23120,7 +20343,7 @@ package nvim;
 		
 		
 	**/
-	static var autoread : Bool;
+	var autoread : Bool;
 	/**
 		```lua
 		(global) table.autowrite: boolean
@@ -23144,7 +20367,7 @@ package nvim;
 		 Renaming the buffer with ":file {name}" may help avoid this.
 		
 	**/
-	static var autowrite : Bool;
+	var autowrite : Bool;
 	/**
 		```lua
 		(global) table.autowriteall: boolean
@@ -23158,7 +20381,7 @@ package nvim;
 		 been set.
 		
 	**/
-	static var autowriteall : Bool;
+	var autowriteall : Bool;
 	/**
 		```lua
 		(global) table.background: 'dark'|'light'
@@ -23193,7 +20416,7 @@ package nvim;
 		 the setting of the 'background' option.
 		
 	**/
-	static var background : String;
+	var background : String;
 	/**
 		```lua
 		(global) table.backspace: string
@@ -23216,7 +20439,7 @@ package nvim;
 		 the ways mentioned for the items above are possible.
 		
 	**/
-	static var backspace : String;
+	var backspace : String;
 	/**
 		```lua
 		(global) table.backup: boolean
@@ -23236,7 +20459,7 @@ package nvim;
 		 oldest version of a file.
 		
 	**/
-	static var backup : Bool;
+	var backup : Bool;
 	/**
 		```lua
 		(global) table.backupcopy: string
@@ -23308,7 +20531,7 @@ package nvim;
 		 again not rename the file.
 		
 	**/
-	static var backupcopy : String;
+	var backupcopy : String;
 	/**
 		```lua
 		(global) table.backupdir: string
@@ -23364,7 +20587,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var backupdir : String;
+	var backupdir : String;
 	/**
 		```lua
 		(global) table.backupext: string
@@ -23389,7 +20612,7 @@ package nvim;
 		 Use 'backupdir' to put the backup in a different directory.
 		
 	**/
-	static var backupext : String;
+	var backupext : String;
 	/**
 		```lua
 		(global) table.backupskip: string
@@ -23421,7 +20644,7 @@ package nvim;
 		 the newly created file).  Also see 'backupcopy' and `crontab`.
 		
 	**/
-	static var backupskip : String;
+	var backupskip : String;
 	/**
 		```lua
 		(global) table.belloff: string
@@ -23467,19 +20690,19 @@ package nvim;
 		 "error" keyword.
 		
 	**/
-	static var belloff : String;
+	var belloff : String;
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
-	static var binary : Dynamic;
+	var binary : Dynamic;
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
-	static var bomb : Dynamic;
+	var bomb : Dynamic;
 	/**
 		```lua
 		(global) table.breakat: string
@@ -23491,43 +20714,43 @@ package nvim;
 		 break if 'linebreak' is on.  Only works for ASCII characters.
 		
 	**/
-	static var breakat : String;
+	var breakat : String;
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
-	static var breakindent : Dynamic;
+	var breakindent : Dynamic;
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
-	static var breakindentopt : Dynamic;
+	var breakindentopt : Dynamic;
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
-	static var browsedir : Dynamic;
+	var browsedir : Dynamic;
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
-	static var bufhidden : Dynamic;
+	var bufhidden : Dynamic;
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
-	static var buflisted : Dynamic;
+	var buflisted : Dynamic;
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
-	static var buftype : Dynamic;
+	var buftype : Dynamic;
 	/**
 		```lua
 		(global) table.casemap: string
@@ -23546,7 +20769,7 @@ package nvim;
 		 		This probably only matters for Turkish.
 		
 	**/
-	static var casemap : String;
+	var casemap : String;
 	/**
 		```lua
 		(global) table.cdhome: boolean
@@ -23562,7 +20785,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var cdhome : Bool;
+	var cdhome : Bool;
 	/**
 		```lua
 		(global) table.cdpath: string
@@ -23590,7 +20813,7 @@ package nvim;
 		 (parts of 'cdpath' can be passed to the shell to expand file names).
 		
 	**/
-	static var cdpath : String;
+	var cdpath : String;
 	/**
 		```lua
 		(global) table.cedit: string
@@ -23612,13 +20835,13 @@ package nvim;
 		 See `cmdwin`.
 		
 	**/
-	static var cedit : String;
+	var cedit : String;
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
-	static var channel : Dynamic;
+	var channel : Dynamic;
 	/**
 		```lua
 		(global) table.charconvert: string
@@ -23677,37 +20900,37 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var charconvert : String;
+	var charconvert : String;
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
-	static var cindent : Dynamic;
+	var cindent : Dynamic;
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
-	static var cinkeys : Dynamic;
+	var cinkeys : Dynamic;
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
-	static var cinoptions : Dynamic;
+	var cinoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
-	static var cinscopedecls : Dynamic;
+	var cinscopedecls : Dynamic;
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
-	static var cinwords : Dynamic;
+	var cinwords : Dynamic;
 	/**
 		```lua
 		(global) table.clipboard: string = 'unnamedplus'
@@ -23739,7 +20962,7 @@ package nvim;
 		 		"*". See `clipboard`.
 		
 	**/
-	static var clipboard : String;
+	var clipboard : String;
 	/**
 		```lua
 		(global) table.cmdheight: integer
@@ -23762,7 +20985,7 @@ package nvim;
 		 from Nvim itself and plugins, will not be displayed.
 		
 	**/
-	static var cmdheight : Float;
+	var cmdheight : Float;
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -23773,13 +20996,13 @@ package nvim;
 		 Number of screen lines to use for the command-line window. `cmdwin`
 		
 	**/
-	static var cmdwinheight : Float;
+	var cmdwinheight : Float;
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
-	static var colorcolumn : Dynamic;
+	var colorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.columns: integer
@@ -23804,37 +21027,37 @@ package nvim;
 		 Minimum value is 12, maximum value is 10000.
 		
 	**/
-	static var columns : Float;
+	var columns : Float;
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
-	static var comments : Dynamic;
+	var comments : Dynamic;
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
-	static var commentstring : Dynamic;
+	var commentstring : Dynamic;
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
-	static var compatible : Dynamic;
+	var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
-	static var complete : Dynamic;
+	var complete : Dynamic;
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
-	static var completefunc : Dynamic;
+	var completefunc : Dynamic;
 	/**
 		```lua
 		(global) table.completeitemalign: string
@@ -23850,7 +21073,7 @@ package nvim;
 		 order.
 		
 	**/
-	static var completeitemalign : String;
+	var completeitemalign : String;
 	/**
 		```lua
 		(global) table.completeopt: string
@@ -23910,25 +21133,25 @@ package nvim;
 		 	    combination with "menu" or "menuone".
 		
 	**/
-	static var completeopt : String;
+	var completeopt : String;
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
-	static var completeslash : Dynamic;
+	var completeslash : Dynamic;
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
-	static var concealcursor : Dynamic;
+	var concealcursor : Dynamic;
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
-	static var conceallevel : Dynamic;
+	var conceallevel : Dynamic;
 	/**
 		```lua
 		(global) table.confirm: boolean = true
@@ -23951,13 +21174,13 @@ package nvim;
 		 if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 		 instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 	**/
-	static var confirm : Bool;
+	var confirm : Bool;
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
-	static var copyindent : Dynamic;
+	var copyindent : Dynamic;
 	/**
 		```lua
 		(global) table.cpoptions: string
@@ -24194,31 +21417,31 @@ package nvim;
 		 		whitespace following the word in the motion.
 		
 	**/
-	static var cpoptions : String;
+	var cpoptions : String;
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
-	static var cursorbind : Dynamic;
+	var cursorbind : Dynamic;
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
-	static var cursorcolumn : Dynamic;
+	var cursorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
-	static var cursorline : Dynamic;
+	var cursorline : Dynamic;
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
-	static var cursorlineopt : Dynamic;
+	var cursorlineopt : Dynamic;
 	/**
 		```lua
 		(global) table.debug: string
@@ -24238,7 +21461,7 @@ package nvim;
 		 'indentexpr'.
 		
 	**/
-	static var debug : String;
+	var debug : String;
 	/**
 		```lua
 		(global) table.define: string
@@ -24278,7 +21501,7 @@ package nvim;
 		
 		
 	**/
-	static var define : String;
+	var define : String;
 	/**
 		```lua
 		(global) table.delcombine: boolean
@@ -24297,7 +21520,7 @@ package nvim;
 		 to remove only the combining ones.
 		
 	**/
-	static var delcombine : Bool;
+	var delcombine : Bool;
 	/**
 		```lua
 		(global) table.dictionary: string
@@ -24329,13 +21552,13 @@ package nvim;
 		 Backticks cannot be used in this option for security reasons.
 		
 	**/
-	static var dictionary : String;
+	var dictionary : String;
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
-	static var diff : Dynamic;
+	var diff : Dynamic;
 	/**
 		```lua
 		(global) table.diffexpr: string
@@ -24349,7 +21572,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var diffexpr : String;
+	var diffexpr : String;
 	/**
 		```lua
 		(global) table.diffopt: string
@@ -24468,7 +21691,7 @@ package nvim;
 		
 		
 	**/
-	static var diffopt : String;
+	var diffopt : String;
 	/**
 		```lua
 		(global) table.digraph: boolean
@@ -24480,7 +21703,7 @@ package nvim;
 		 {char2}.  See `digraphs`.
 		
 	**/
-	static var digraph : Bool;
+	var digraph : Bool;
 	/**
 		```lua
 		(global) table.directory: string
@@ -24535,7 +21758,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var directory : String;
+	var directory : String;
 	/**
 		```lua
 		(global) table.display: string
@@ -24562,7 +21785,7 @@ package nvim;
 		 'fillchars'.  The character is highlighted with `hl-NonText`.
 		
 	**/
-	static var display : String;
+	var display : String;
 	/**
 		```lua
 		(global) table.eadirection: 'both'|'hor'|'ver'
@@ -24576,13 +21799,13 @@ package nvim;
 		 	both	width and height of windows is affected
 		
 	**/
-	static var eadirection : String;
+	var eadirection : String;
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
-	static var edcompatible : Dynamic;
+	var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -24600,7 +21823,7 @@ package nvim;
 		 function to change the behavior.
 		
 	**/
-	static var emoji : Bool;
+	var emoji : Bool;
 	/**
 		```lua
 		(global) table.encoding: string
@@ -24614,19 +21837,19 @@ package nvim;
 		 See 'fileencoding' to control file-content encoding.
 		
 	**/
-	static var encoding : String;
+	var encoding : String;
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
-	static var endoffile : Dynamic;
+	var endoffile : Dynamic;
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
-	static var endofline : Dynamic;
+	var endofline : Dynamic;
 	/**
 		```lua
 		(global) table.equalalways: boolean
@@ -24650,7 +21873,7 @@ package nvim;
 		 the future).
 		
 	**/
-	static var equalalways : Bool;
+	var equalalways : Bool;
 	/**
 		```lua
 		(global) table.equalprg: string
@@ -24667,7 +21890,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var equalprg : String;
+	var equalprg : String;
 	/**
 		```lua
 		(global) table.errorbells: boolean
@@ -24682,7 +21905,7 @@ package nvim;
 		 or do nothing. See 'belloff' to finetune when to ring the bell.
 		
 	**/
-	static var errorbells : Bool;
+	var errorbells : Bool;
 	/**
 		```lua
 		(global) table.errorfile: string
@@ -24700,7 +21923,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var errorfile : String;
+	var errorfile : String;
 	/**
 		```lua
 		(global) table.errorformat: string
@@ -24712,7 +21935,7 @@ package nvim;
 		 (see `errorformat`).
 		
 	**/
-	static var errorformat : String;
+	var errorformat : String;
 	/**
 		```lua
 		(global) table.eventignore: string
@@ -24731,19 +21954,19 @@ package nvim;
 		
 		
 	**/
-	static var eventignore : String;
+	var eventignore : String;
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
-	static var eventignorewin : Dynamic;
+	var eventignorewin : Dynamic;
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
-	static var expandtab : Dynamic;
+	var expandtab : Dynamic;
 	/**
 		```lua
 		(global) table.exrc: boolean
@@ -24775,13 +21998,13 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var exrc : Bool;
+	var exrc : Bool;
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
-	static var fileencoding : Dynamic;
+	var fileencoding : Dynamic;
 	/**
 		```lua
 		(global) table.fileencodings: string
@@ -24843,13 +22066,13 @@ package nvim;
 		 is read.
 		
 	**/
-	static var fileencodings : String;
+	var fileencodings : String;
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
-	static var fileformat : Dynamic;
+	var fileformat : Dynamic;
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -24904,7 +22127,7 @@ package nvim;
 		 Also see `file-formats`.
 		
 	**/
-	static var fileformats : String;
+	var fileformats : String;
 	/**
 		```lua
 		(global) table.fileignorecase: boolean
@@ -24916,13 +22139,13 @@ package nvim;
 		 See 'wildignorecase' for only ignoring case when doing completion.
 		
 	**/
-	static var fileignorecase : Bool;
+	var fileignorecase : Bool;
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
-	static var filetype : Dynamic;
+	var filetype : Dynamic;
 	/**
 		```lua
 		(global) table.fillchars: string
@@ -24994,7 +22217,7 @@ package nvim;
 		   lastline	NonText			`hl-NonText`
 		
 	**/
-	static var fillchars : String;
+	var fillchars : String;
 	/**
 		```lua
 		(global) table.findfunc: string
@@ -25051,13 +22274,13 @@ package nvim;
 		
 		
 	**/
-	static var findfunc : String;
+	var findfunc : String;
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
-	static var fixendofline : Dynamic;
+	var fixendofline : Dynamic;
 	/**
 		```lua
 		(global) table.foldclose: string
@@ -25070,37 +22293,37 @@ package nvim;
 		 automatically close when moving out of them.
 		
 	**/
-	static var foldclose : String;
+	var foldclose : String;
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
-	static var foldcolumn : Dynamic;
+	var foldcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
-	static var foldenable : Dynamic;
+	var foldenable : Dynamic;
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
-	static var foldexpr : Dynamic;
+	var foldexpr : Dynamic;
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
-	static var foldignore : Dynamic;
+	var foldignore : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
-	static var foldlevel : Dynamic;
+	var foldlevel : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -25119,31 +22342,31 @@ package nvim;
 		 When the value is negative, it is not used.
 		
 	**/
-	static var foldlevelstart : Float;
+	var foldlevelstart : Float;
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
-	static var foldmarker : Dynamic;
+	var foldmarker : Dynamic;
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
-	static var foldmethod : Dynamic;
+	var foldmethod : Dynamic;
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
-	static var foldminlines : Dynamic;
+	var foldminlines : Dynamic;
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
-	static var foldnestmax : Dynamic;
+	var foldnestmax : Dynamic;
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -25183,31 +22406,31 @@ package nvim;
 		 set the 'foldclose' option to "all".
 		
 	**/
-	static var foldopen : String;
+	var foldopen : String;
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
-	static var foldtext : Dynamic;
+	var foldtext : Dynamic;
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
-	static var formatexpr : Dynamic;
+	var formatexpr : Dynamic;
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
-	static var formatlistpat : Dynamic;
+	var formatlistpat : Dynamic;
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
-	static var formatoptions : Dynamic;
+	var formatoptions : Dynamic;
 	/**
 		```lua
 		(global) table.formatprg: string
@@ -25228,7 +22451,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var formatprg : String;
+	var formatprg : String;
 	/**
 		```lua
 		(global) table.fsync: boolean
@@ -25252,7 +22475,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var fsync : Bool;
+	var fsync : Bool;
 	/**
 		```lua
 		(global) table.gdefault: boolean
@@ -25275,7 +22498,7 @@ package nvim;
 		 opposite effect of that documented in `:s_g`.
 		
 	**/
-	static var gdefault : Bool;
+	var gdefault : Bool;
 	/**
 		```lua
 		(global) table.grepformat: string = '%f:%l:%c:%m'
@@ -25290,7 +22513,7 @@ package nvim;
 		 If ripgrep ('grepprg') is available, this option defaults to `%f:%l:%c:%m`.
 		
 	**/
-	static var grepformat : String;
+	var grepformat : String;
 	/**
 		```lua
 		(global) table.grepprg: string = 'rg --vimgrep -uu '
@@ -25326,7 +22549,7 @@ package nvim;
 		 An `OptionSet` autocmd can be used to set it up to match automatically.
 		
 	**/
-	static var grepprg : String;
+	var grepprg : String;
 	/**
 		```lua
 		(global) table.guicursor: string
@@ -25431,7 +22654,7 @@ package nvim;
 		
 		
 	**/
-	static var guicursor : String;
+	var guicursor : String;
 	/**
 		```lua
 		(global) table.guifont: string
@@ -25510,7 +22733,7 @@ package nvim;
 		
 		
 	**/
-	static var guifont : String;
+	var guifont : String;
 	/**
 		```lua
 		(global) table.guifontwide: string
@@ -25527,25 +22750,25 @@ package nvim;
 		 attempt to set 'guifontwide' to a matching double-width font.
 		
 	**/
-	static var guifontwide : String;
+	var guifontwide : String;
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
-	static var guioptions : Dynamic;
+	var guioptions : Dynamic;
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
-	static var guitablabel : Dynamic;
+	var guitablabel : Dynamic;
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
-	static var guitabtooltip : Dynamic;
+	var guitabtooltip : Dynamic;
 	/**
 		```lua
 		(global) table.helpfile: string
@@ -25564,7 +22787,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var helpfile : String;
+	var helpfile : String;
 	/**
 		```lua
 		(global) table.helpheight: integer
@@ -25579,7 +22802,7 @@ package nvim;
 		 set to 'helpheight'.  Set to zero to disable.
 		
 	**/
-	static var helpheight : Float;
+	var helpheight : Float;
 	/**
 		```lua
 		(global) table.helplang: string
@@ -25604,7 +22827,7 @@ package nvim;
 		 See `help-translated`.
 		
 	**/
-	static var helplang : String;
+	var helplang : String;
 	/**
 		```lua
 		(global) table.hidden: boolean
@@ -25628,13 +22851,13 @@ package nvim;
 		 'hidden' is set for one command with ":hide {command}" `:hide`.
 		
 	**/
-	static var hidden : Bool;
+	var hidden : Bool;
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
-	static var highlight : Dynamic;
+	var highlight : Dynamic;
 	/**
 		```lua
 		(global) table.history: integer
@@ -25649,19 +22872,19 @@ package nvim;
 		 The maximum value is 10000.
 		
 	**/
-	static var history : Float;
+	var history : Float;
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
-	static var hkmap : Dynamic;
+	var hkmap : Dynamic;
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
-	static var hkmapp : Dynamic;
+	var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -25690,7 +22913,7 @@ package nvim;
 		 with the 'h' flag in 'shada' `shada-h`.
 		
 	**/
-	static var hlsearch : Bool;
+	var hlsearch : Bool;
 	/**
 		```lua
 		(global) table.icon: boolean
@@ -25705,7 +22928,7 @@ package nvim;
 		 Only works if the terminal supports setting window icons.
 		
 	**/
-	static var icon : Bool;
+	var icon : Bool;
 	/**
 		```lua
 		(global) table.iconstring: string
@@ -25722,7 +22945,7 @@ package nvim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	static var iconstring : String;
+	var iconstring : String;
 	/**
 		```lua
 		(global) table.ignorecase: boolean = true
@@ -25741,31 +22964,31 @@ package nvim;
 		
 		 Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 	**/
-	static var ignorecase : Bool;
+	var ignorecase : Bool;
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
-	static var imcmdline : Dynamic;
+	var imcmdline : Dynamic;
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
-	static var imdisable : Dynamic;
+	var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
-	static var iminsert : Dynamic;
+	var iminsert : Dynamic;
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
-	static var imsearch : Dynamic;
+	var imsearch : Dynamic;
 	/**
 		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
@@ -25788,7 +23011,7 @@ package nvim;
 		 `Command-line-mode` is done.
 		
 	**/
-	static var inccommand : String;
+	var inccommand : String;
 	/**
 		```lua
 		(global) table.include: string
@@ -25808,13 +23031,13 @@ package nvim;
 		 See `option-backslash` about including spaces and backslashes.
 		
 	**/
-	static var include : String;
+	var include : String;
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
-	static var includeexpr : Dynamic;
+	var includeexpr : Dynamic;
 	/**
 		```lua
 		(global) table.incsearch: boolean
@@ -25858,31 +23081,31 @@ package nvim;
 		 match, excluding the characters that were already typed.
 		
 	**/
-	static var incsearch : Bool;
+	var incsearch : Bool;
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
-	static var indentexpr : Dynamic;
+	var indentexpr : Dynamic;
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
-	static var indentkeys : Dynamic;
+	var indentkeys : Dynamic;
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
-	static var infercase : Dynamic;
+	var infercase : Dynamic;
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
-	static var insertmode : Dynamic;
+	var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: string
@@ -25937,7 +23160,7 @@ package nvim;
 		 See `option-backslash` about including spaces and backslashes.
 		
 	**/
-	static var isfname : String;
+	var isfname : String;
 	/**
 		```lua
 		(global) table.isident: string
@@ -25956,13 +23179,13 @@ package nvim;
 		 change 'iskeyword' instead.
 		
 	**/
-	static var isident : String;
+	var isident : String;
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
-	static var iskeyword : Dynamic;
+	var iskeyword : Dynamic;
 	/**
 		```lua
 		(global) table.isprint: string
@@ -25998,7 +23221,7 @@ package nvim;
 		 There is no option to specify these characters.
 		
 	**/
-	static var isprint : String;
+	var isprint : String;
 	/**
 		```lua
 		(global) table.joinspaces: boolean
@@ -26010,7 +23233,7 @@ package nvim;
 		 Otherwise only one space is inserted.
 		
 	**/
-	static var joinspaces : Bool;
+	var joinspaces : Bool;
 	/**
 		```lua
 		(global) table.jumpoptions: string
@@ -26033,13 +23256,13 @@ package nvim;
 		 		EXPERIMENTAL: this flag may change in the future.
 		
 	**/
-	static var jumpoptions : String;
+	var jumpoptions : String;
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
-	static var keymap : Dynamic;
+	var keymap : Dynamic;
 	/**
 		```lua
 		(global) table.keymodel: string
@@ -26057,7 +23280,7 @@ package nvim;
 		 <PageUp> and <PageDown>.
 		
 	**/
-	static var keymodel : String;
+	var keymodel : String;
 	/**
 		```lua
 		(global) table.keywordprg: string
@@ -26084,7 +23307,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var keywordprg : String;
+	var keywordprg : String;
 	/**
 		```lua
 		(global) table.langmap: string
@@ -26139,7 +23362,7 @@ package nvim;
 		 Use a mapping to avoid having to type it each time!
 		
 	**/
-	static var langmap : String;
+	var langmap : String;
 	/**
 		```lua
 		(global) table.langmenu: string
@@ -26179,13 +23402,13 @@ package nvim;
 		 Warning: This deletes all menus that you defined yourself!
 		
 	**/
-	static var langmenu : String;
+	var langmenu : String;
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
-	static var langnoremap : Dynamic;
+	var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: boolean
@@ -26198,7 +23421,7 @@ package nvim;
 		 sure this option is off.
 		
 	**/
-	static var langremap : Bool;
+	var langremap : Bool;
 	/**
 		```lua
 		(global) table.laststatus: integer
@@ -26216,7 +23439,7 @@ package nvim;
 		 windows, but it takes another screen line. `status-line`
 		
 	**/
-	static var laststatus : Float;
+	var laststatus : Float;
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -26233,13 +23456,13 @@ package nvim;
 		 flickering or cause a slowdown.
 		
 	**/
-	static var lazyredraw : Bool;
+	var lazyredraw : Bool;
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
-	static var linebreak : Dynamic;
+	var linebreak : Dynamic;
 	/**
 		```lua
 		(global) table.lines: integer
@@ -26262,7 +23485,7 @@ package nvim;
 		 Minimum value is 2, maximum value is 1000.
 		
 	**/
-	static var lines : Float;
+	var lines : Float;
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -26280,19 +23503,19 @@ package nvim;
 		 though!
 		
 	**/
-	static var linespace : Float;
+	var linespace : Float;
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
-	static var lisp : Dynamic;
+	var lisp : Dynamic;
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
-	static var lispoptions : Dynamic;
+	var lispoptions : Dynamic;
 	/**
 		```lua
 		(global) table.lispwords: string
@@ -26304,13 +23527,13 @@ package nvim;
 		 enabled with the `'lisp'` option.
 		
 	**/
-	static var lispwords : String;
+	var lispwords : String;
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
-	static var list : Dynamic;
+	var list : Dynamic;
 	/**
 		```lua
 		(global) table.listchars: string
@@ -26435,7 +23658,7 @@ package nvim;
 		 "lead" and "trail".
 		
 	**/
-	static var listchars : String;
+	var listchars : String;
 	/**
 		```lua
 		(global) table.loadplugins: boolean
@@ -26450,7 +23673,7 @@ package nvim;
 		 reset this option. `-u` `--noplugin`
 		
 	**/
-	static var loadplugins : Bool;
+	var loadplugins : Bool;
 	/**
 		```lua
 		(global) table.magic: boolean
@@ -26467,7 +23690,7 @@ package nvim;
 		 when you want to `/\M`.
 		
 	**/
-	static var magic : Bool;
+	var magic : Bool;
 	/**
 		```lua
 		(global) table.makeef: string
@@ -26488,7 +23711,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var makeef : String;
+	var makeef : String;
 	/**
 		```lua
 		(global) table.makeencoding: string
@@ -26512,7 +23735,7 @@ package nvim;
 		
 		
 	**/
-	static var makeencoding : String;
+	var makeencoding : String;
 	/**
 		```lua
 		(global) table.makeprg: string
@@ -26543,13 +23766,13 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var makeprg : String;
+	var makeprg : String;
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
-	static var matchpairs : Dynamic;
+	var matchpairs : Dynamic;
 	/**
 		```lua
 		(global) table.matchtime: integer
@@ -26562,13 +23785,13 @@ package nvim;
 		 set a time.  This is to be compatible with Nvi.
 		
 	**/
-	static var matchtime : Float;
+	var matchtime : Float;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
-	static var maxcombine : Dynamic;
+	var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: integer
@@ -26586,7 +23809,7 @@ package nvim;
 		 Also used for maximum depth of callback functions.
 		
 	**/
-	static var maxfuncdepth : Float;
+	var maxfuncdepth : Float;
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -26601,7 +23824,7 @@ package nvim;
 		 `key-mapping`.
 		
 	**/
-	static var maxmapdepth : Float;
+	var maxmapdepth : Float;
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -26623,7 +23846,7 @@ package nvim;
 		 which case you get an "Out of memory" error instead.
 		
 	**/
-	static var maxmempattern : Float;
+	var maxmempattern : Float;
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -26636,7 +23859,7 @@ package nvim;
 		 option has no direct effect, the menu must be refreshed first.
 		
 	**/
-	static var menuitems : Float;
+	var menuitems : Float;
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -26664,7 +23887,7 @@ package nvim;
 		 		This item must always be present.
 		
 	**/
-	static var messagesopt : String;
+	var messagesopt : String;
 	/**
 		```lua
 		(global) table.mkspellmem: string
@@ -26714,13 +23937,13 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var mkspellmem : String;
+	var mkspellmem : String;
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
-	static var modeline : Dynamic;
+	var modeline : Dynamic;
 	/**
 		```lua
 		(global) table.modelineexpr: boolean
@@ -26735,7 +23958,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var modelineexpr : Bool;
+	var modelineexpr : Bool;
 	/**
 		```lua
 		(global) table.modelines: integer
@@ -26749,19 +23972,19 @@ package nvim;
 		
 		
 	**/
-	static var modelines : Float;
+	var modelines : Float;
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
-	static var modifiable : Dynamic;
+	var modifiable : Dynamic;
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
-	static var modified : Dynamic;
+	var modified : Dynamic;
 	/**
 		```lua
 		(global) table.more: boolean
@@ -26774,7 +23997,7 @@ package nvim;
 		 listing continues until finished.
 		
 	**/
-	static var more : Bool;
+	var more : Bool;
 	/**
 		```lua
 		(global) table.mouse: string
@@ -26823,7 +24046,7 @@ package nvim;
 		 'selectmode'	whether to start Select mode or Visual mode
 		
 	**/
-	static var mouse : String;
+	var mouse : String;
 	/**
 		```lua
 		(global) table.mousefocus: boolean
@@ -26838,7 +24061,7 @@ package nvim;
 		 a pointer transit may activate a window unintentionally.
 		
 	**/
-	static var mousefocus : Bool;
+	var mousefocus : Bool;
 	/**
 		```lua
 		(global) table.mousehide: boolean
@@ -26851,7 +24074,7 @@ package nvim;
 		 The mouse pointer is restored when the mouse is moved.
 		
 	**/
-	static var mousehide : Bool;
+	var mousehide : Bool;
 	/**
 		```lua
 		(global) table.mousemodel: 'extend'|'popup'|'popup_setpos'
@@ -26911,7 +24134,7 @@ package nvim;
 		     "g<RightMouse>" is "<C-RightMouse>	("CTRL-T")
 		
 	**/
-	static var mousemodel : String;
+	var mousemodel : String;
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -26926,7 +24149,7 @@ package nvim;
 		 when the mouse is moved.
 		
 	**/
-	static var mousemoveevent : Bool;
+	var mousemoveevent : Bool;
 	/**
 		```lua
 		(global) table.mousescroll: string
@@ -26956,13 +24179,13 @@ package nvim;
 		 scroll 2 columns at a time when scrolling horizontally.
 		
 	**/
-	static var mousescroll : String;
+	var mousescroll : String;
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
-	static var mouseshape : Dynamic;
+	var mouseshape : Dynamic;
 	/**
 		```lua
 		(global) table.mousetime: integer
@@ -26974,37 +24197,37 @@ package nvim;
 		 second click to be recognized as a multi click.
 		
 	**/
-	static var mousetime : Float;
+	var mousetime : Float;
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
-	static var nrformats : Dynamic;
+	var nrformats : Dynamic;
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
-	static var number : Dynamic;
+	var number : Dynamic;
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
-	static var numberwidth : Dynamic;
+	var numberwidth : Dynamic;
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
-	static var omnifunc : Dynamic;
+	var omnifunc : Dynamic;
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
-	static var opendevice : Dynamic;
+	var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._buf'.space_above"|"v:lua.require'vim._buf'.space_below"|"v:lua.require'vim._comment'.operator"
@@ -27025,7 +24248,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var operatorfunc : String;
+	var operatorfunc : String;
 	/**
 		```lua
 		(global) table.packpath: string
@@ -27039,7 +24262,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var packpath : String;
+	var packpath : String;
 	/**
 		```lua
 		(global) table.paragraphs: string
@@ -27051,19 +24274,19 @@ package nvim;
 		 of two letters (see `object-motions`).
 		
 	**/
-	static var paragraphs : String;
+	var paragraphs : String;
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
-	static var paste : Dynamic;
+	var paste : Dynamic;
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
-	static var pastetoggle : Dynamic;
+	var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -27077,7 +24300,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var patchexpr : String;
+	var patchexpr : String;
 	/**
 		```lua
 		(global) table.patchmode: string
@@ -27103,7 +24326,7 @@ package nvim;
 		 Only normal file name characters can be used, `/\*?[|<>` are illegal.
 		
 	**/
-	static var patchmode : String;
+	var patchmode : String;
 	/**
 		```lua
 		(global) table.path: string
@@ -27190,13 +24413,13 @@ package nvim;
 		 this doesn't work when $INCL contains a comma or white space.
 		
 	**/
-	static var path : String;
+	var path : String;
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
-	static var preserveindent : Dynamic;
+	var preserveindent : Dynamic;
 	/**
 		```lua
 		(global) table.previewheight: integer
@@ -27208,19 +24431,19 @@ package nvim;
 		 commands.  Used for `CTRL-W_}` when no count is given.
 		
 	**/
-	static var previewheight : Float;
+	var previewheight : Float;
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
-	static var previewwindow : Dynamic;
+	var previewwindow : Dynamic;
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
-	static var prompt : Dynamic;
+	var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -27245,7 +24468,7 @@ package nvim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	static var pumblend : Float;
+	var pumblend : Float;
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -27257,7 +24480,7 @@ package nvim;
 		 (`ins-completion-menu`). Zero means "use available screen space".
 		
 	**/
-	static var pumheight : Float;
+	var pumheight : Float;
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -27270,7 +24493,7 @@ package nvim;
 		 nudged to fit on the screen.
 		
 	**/
-	static var pumwidth : Float;
+	var pumwidth : Float;
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -27286,7 +24509,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var pyxversion : Float;
+	var pyxversion : Float;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -27307,19 +24530,19 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var quickfixtextfunc : String;
+	var quickfixtextfunc : String;
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
-	static var quoteescape : Dynamic;
+	var quoteescape : Dynamic;
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
-	static var readonly : Dynamic;
+	var readonly : Dynamic;
 	/**
 		```lua
 		(global) table.redrawdebug: string
@@ -27359,7 +24582,7 @@ package nvim;
 		 		they are unchanged from the already displayed state.
 		
 	**/
-	static var redrawdebug : String;
+	var redrawdebug : String;
 	/**
 		```lua
 		(global) table.redrawtime: integer
@@ -27378,7 +24601,7 @@ package nvim;
 		 pattern.
 		
 	**/
-	static var redrawtime : Float;
+	var redrawtime : Float;
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -27400,19 +24623,19 @@ package nvim;
 		 a complex pattern with long text.
 		
 	**/
-	static var regexpengine : Float;
+	var regexpengine : Float;
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
-	static var relativenumber : Dynamic;
+	var relativenumber : Dynamic;
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
-	static var remap : Dynamic;
+	var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: integer
@@ -27427,7 +24650,7 @@ package nvim;
 		 instead of the number of lines.
 		
 	**/
-	static var report : Float;
+	var report : Float;
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -27440,19 +24663,19 @@ package nvim;
 		 command in Insert mode, when 'allowrevins' is set.
 		
 	**/
-	static var revins : Bool;
+	var revins : Bool;
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
-	static var rightleft : Dynamic;
+	var rightleft : Dynamic;
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
-	static var rightleftcmd : Dynamic;
+	var rightleftcmd : Dynamic;
 	/**
 		```lua
 		(global) table.ruler: boolean
@@ -27484,7 +24707,7 @@ package nvim;
 		 you are, use "g CTRL-G" `g_CTRL-G`.
 		
 	**/
-	static var ruler : Bool;
+	var ruler : Bool;
 	/**
 		```lua
 		(global) table.rulerformat: string
@@ -27507,7 +24730,7 @@ package nvim;
 		
 		
 	**/
-	static var rulerformat : String;
+	var rulerformat : String;
 	/**
 		```lua
 		(global) table.runtimepath: string
@@ -27587,25 +24810,25 @@ package nvim;
 		 With `--clean` the home directory entries are not included.
 		
 	**/
-	static var runtimepath : String;
+	var runtimepath : String;
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
-	static var scroll : Dynamic;
+	var scroll : Dynamic;
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
-	static var scrollback : Dynamic;
+	var scrollback : Dynamic;
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
-	static var scrollbind : Dynamic;
+	var scrollbind : Dynamic;
 	/**
 		```lua
 		(global) table.scrolljump: integer
@@ -27621,7 +24844,7 @@ package nvim;
 		 height.
 		
 	**/
-	static var scrolljump : Float;
+	var scrolljump : Float;
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -27648,7 +24871,7 @@ package nvim;
 		
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
-	static var scrolloff : Float;
+	var scrolloff : Float;
 	/**
 		```lua
 		(global) table.scrollopt: string
@@ -27685,7 +24908,7 @@ package nvim;
 		 even when "ver" isn't there.
 		
 	**/
-	static var scrollopt : String;
+	var scrollopt : String;
 	/**
 		```lua
 		(global) table.sections: string
@@ -27698,13 +24921,13 @@ package nvim;
 		 at the nroff macros ".SH", ".NH", ".H", ".HU", ".nh" and ".sh".
 		
 	**/
-	static var sections : String;
+	var sections : String;
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
-	static var secure : Dynamic;
+	var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -27738,7 +24961,7 @@ package nvim;
 		   you cannot visually select an empty region).
 		
 	**/
-	static var selection : String;
+	var selection : String;
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -27755,7 +24978,7 @@ package nvim;
 		 See `Select-mode`.
 		
 	**/
-	static var selectmode : String;
+	var selectmode : String;
 	/**
 		```lua
 		(global) table.sessionoptions: string
@@ -27802,7 +25025,7 @@ package nvim;
 		 the session.
 		
 	**/
-	static var sessionoptions : String;
+	var sessionoptions : String;
 	/**
 		```lua
 		(global) table.shada: string
@@ -27925,7 +25148,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shada : String;
+	var shada : String;
 	/**
 		```lua
 		(global) table.shadafile: string
@@ -27941,7 +25164,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shadafile : String;
+	var shadafile : String;
 	/**
 		```lua
 		(global) table.shell: string
@@ -28004,7 +25227,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shell : String;
+	var shell : String;
 	/**
 		```lua
 		(global) table.shellcmdflag: string
@@ -28025,7 +25248,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellcmdflag : String;
+	var shellcmdflag : String;
 	/**
 		```lua
 		(global) table.shellpipe: string
@@ -28063,7 +25286,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellpipe : String;
+	var shellpipe : String;
 	/**
 		```lua
 		(global) table.shellquote: string
@@ -28084,7 +25307,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellquote : String;
+	var shellquote : String;
 	/**
 		```lua
 		(global) table.shellredir: string
@@ -28115,7 +25338,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellredir : String;
+	var shellredir : String;
 	/**
 		```lua
 		(global) table.shellslash: boolean
@@ -28140,7 +25363,7 @@ package nvim;
 		 Also see 'completeslash'.
 		
 	**/
-	static var shellslash : Bool;
+	var shellslash : Bool;
 	/**
 		```lua
 		(global) table.shelltemp: boolean
@@ -28160,7 +25383,7 @@ package nvim;
 		 `system()` does not respect this option, it always uses pipes.
 		
 	**/
-	static var shelltemp : Bool;
+	var shelltemp : Bool;
 	/**
 		```lua
 		(global) table.shellxescape: string
@@ -28175,7 +25398,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellxescape : String;
+	var shellxescape : String;
 	/**
 		```lua
 		(global) table.shellxquote: string
@@ -28194,7 +25417,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellxquote : String;
+	var shellxquote : String;
 	/**
 		```lua
 		(global) table.shiftround: boolean
@@ -28207,13 +25430,13 @@ package nvim;
 		 a multiple of 'shiftwidth' (this is Vi compatible).
 		
 	**/
-	static var shiftround : Bool;
+	var shiftround : Bool;
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
-	static var shiftwidth : Dynamic;
+	var shiftwidth : Dynamic;
 	/**
 		```lua
 		(global) table.shortmess: string
@@ -28278,7 +25501,7 @@ package nvim;
 		     shm=at	Abbreviation, and truncate message when necessary.
 		
 	**/
-	static var shortmess : String;
+	var shortmess : String;
 	/**
 		```lua
 		(global) table.showbreak: string
@@ -28309,7 +25532,7 @@ package nvim;
 		
 		
 	**/
-	static var showbreak : String;
+	var showbreak : String;
 	/**
 		```lua
 		(global) table.showcmd: boolean
@@ -28330,7 +25553,7 @@ package nvim;
 		 'showcmdloc' option, useful when 'cmdheight' is 0.
 		
 	**/
-	static var showcmd : Bool;
+	var showcmd : Bool;
 	/**
 		```lua
 		(global) table.showcmdloc: 'last'|'statusline'|'tabline'
@@ -28351,7 +25574,7 @@ package nvim;
 		 displayed in a convenient location.
 		
 	**/
-	static var showcmdloc : String;
+	var showcmdloc : String;
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -28369,7 +25592,7 @@ package nvim;
 		 match the typed text.
 		
 	**/
-	static var showfulltag : Bool;
+	var showfulltag : Bool;
 	/**
 		```lua
 		(global) table.showmatch: boolean
@@ -28394,7 +25617,7 @@ package nvim;
 		 Note: Use of the short form is rated PG.
 		
 	**/
-	static var showmatch : Bool;
+	var showmatch : Bool;
 	/**
 		```lua
 		(global) table.showmode: boolean
@@ -28407,7 +25630,7 @@ package nvim;
 		 The option has no effect when 'cmdheight' is zero.
 		
 	**/
-	static var showmode : Bool;
+	var showmode : Bool;
 	/**
 		```lua
 		(global) table.showtabline: integer
@@ -28425,7 +25648,7 @@ package nvim;
 		 See `tab-page` for more information about tab pages.
 		
 	**/
-	static var showtabline : Float;
+	var showtabline : Float;
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -28440,7 +25663,7 @@ package nvim;
 		 for "zh" and "zl" commands.
 		
 	**/
-	static var sidescroll : Float;
+	var sidescroll : Float;
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -28476,13 +25699,13 @@ package nvim;
 		
 		
 	**/
-	static var sidescrolloff : Float;
+	var sidescrolloff : Float;
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
-	static var signcolumn : Dynamic;
+	var signcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.smartcase: boolean = true
@@ -28498,13 +25721,13 @@ package nvim;
 		 recalling the search pattern from history and hitting <Enter>.
 		
 	**/
-	static var smartcase : Bool;
+	var smartcase : Bool;
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
-	static var smartindent : Dynamic;
+	var smartindent : Dynamic;
 	/**
 		```lua
 		(global) table.smarttab: boolean
@@ -28524,49 +25747,49 @@ package nvim;
 		 number of spaces is minimized by using <Tab>s.
 		
 	**/
-	static var smarttab : Bool;
+	var smarttab : Bool;
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
-	static var smoothscroll : Dynamic;
+	var smoothscroll : Dynamic;
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
-	static var softtabstop : Dynamic;
+	var softtabstop : Dynamic;
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
-	static var spell : Dynamic;
+	var spell : Dynamic;
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
-	static var spellcapcheck : Dynamic;
+	var spellcapcheck : Dynamic;
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
-	static var spellfile : Dynamic;
+	var spellfile : Dynamic;
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
-	static var spelllang : Dynamic;
+	var spelllang : Dynamic;
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
-	static var spelloptions : Dynamic;
+	var spelloptions : Dynamic;
 	/**
 		```lua
 		(global) table.spellsuggest: string
@@ -28644,7 +25867,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var spellsuggest : String;
+	var spellsuggest : String;
 	/**
 		```lua
 		(global) table.splitbelow: boolean
@@ -28656,7 +25879,7 @@ package nvim;
 		 one. `:split`
 		
 	**/
-	static var splitbelow : Bool;
+	var splitbelow : Bool;
 	/**
 		```lua
 		(global) table.splitkeep: 'cursor'|'screen'|'topline'
@@ -28678,7 +25901,7 @@ package nvim;
 		 be kept on the same screen line when 'wrap' is enabled.
 		
 	**/
-	static var splitkeep : String;
+	var splitkeep : String;
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -28690,7 +25913,7 @@ package nvim;
 		 current one. `:vsplit`
 		
 	**/
-	static var splitright : Bool;
+	var splitright : Bool;
 	/**
 		```lua
 		(global) table.startofline: boolean
@@ -28711,13 +25934,13 @@ package nvim;
 		 where it was the last time the buffer was edited.
 		
 	**/
-	static var startofline : Bool;
+	var startofline : Bool;
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
-	static var statuscolumn : Dynamic;
+	var statuscolumn : Dynamic;
 	/**
 		```lua
 		(global) table.statusline: string
@@ -28967,7 +26190,7 @@ package nvim;
 		
 		
 	**/
-	static var statusline : String;
+	var statusline : String;
 	/**
 		```lua
 		(global) table.suffixes: string
@@ -28987,19 +26210,19 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var suffixes : String;
+	var suffixes : String;
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
-	static var suffixesadd : Dynamic;
+	var suffixesadd : Dynamic;
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
-	static var swapfile : Dynamic;
+	var swapfile : Dynamic;
 	/**
 		```lua
 		(global) table.switchbuf: string
@@ -29036,19 +26259,19 @@ package nvim;
 		 applied to the split window.
 		
 	**/
-	static var switchbuf : String;
+	var switchbuf : String;
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
-	static var synmaxcol : Dynamic;
+	var synmaxcol : Dynamic;
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
-	static var syntax : Dynamic;
+	var syntax : Dynamic;
 	/**
 		```lua
 		(global) table.tabclose: string
@@ -29067,7 +26290,7 @@ package nvim;
 		 		others.
 		
 	**/
-	static var tabclose : String;
+	var tabclose : String;
 	/**
 		```lua
 		(global) table.tabline: string
@@ -29097,7 +26320,7 @@ package nvim;
 		 are invisible and you can't jump to their windows.
 		
 	**/
-	static var tabline : String;
+	var tabline : String;
 	/**
 		```lua
 		(global) table.tabpagemax: integer
@@ -29109,13 +26332,13 @@ package nvim;
 		 argument or the ":tab all" command. `tabpage`
 		
 	**/
-	static var tabpagemax : Float;
+	var tabpagemax : Float;
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
-	static var tabstop : Dynamic;
+	var tabstop : Dynamic;
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -29175,7 +26398,7 @@ package nvim;
 		 command-line completion and ":help").
 		
 	**/
-	static var tagbsearch : Bool;
+	var tagbsearch : Bool;
 	/**
 		```lua
 		(global) table.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -29192,13 +26415,13 @@ package nvim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	static var tagcase : String;
+	var tagcase : String;
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
-	static var tagfunc : Dynamic;
+	var tagfunc : Dynamic;
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -29209,7 +26432,7 @@ package nvim;
 		 If non-zero, tags are significant up to this number of characters.
 		
 	**/
-	static var taglength : Float;
+	var taglength : Float;
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -29221,7 +26444,7 @@ package nvim;
 		 tags file are relative to the directory where the tags file is.
 		
 	**/
-	static var tagrelative : Bool;
+	var tagrelative : Bool;
 	/**
 		```lua
 		(global) table.tags: string
@@ -29248,7 +26471,7 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var tags : String;
+	var tags : String;
 	/**
 		```lua
 		(global) table.tagstack: boolean
@@ -29265,7 +26488,7 @@ package nvim;
 		 mapping which should not change the tagstack.
 		
 	**/
-	static var tagstack : Bool;
+	var tagstack : Bool;
 	/**
 		```lua
 		(global) table.termbidi: boolean
@@ -29283,13 +26506,13 @@ package nvim;
 		 For further details see `arabic.txt`.
 		
 	**/
-	static var termbidi : Bool;
+	var termbidi : Bool;
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
-	static var termencoding : Dynamic;
+	var termencoding : Dynamic;
 	/**
 		```lua
 		(global) table.termguicolors: boolean
@@ -29306,7 +26529,7 @@ package nvim;
 		 (unless explicitly disabled by the user).
 		
 	**/
-	static var termguicolors : Bool;
+	var termguicolors : Bool;
 	/**
 		```lua
 		(global) table.termpastefilter: string
@@ -29334,7 +26557,7 @@ package nvim;
 		    C1	    Control characters 0x80...0x9F
 		
 	**/
-	static var termpastefilter : String;
+	var termpastefilter : String;
 	/**
 		```lua
 		(global) table.termsync: boolean
@@ -29348,19 +26571,19 @@ package nvim;
 		 when the terminal updates faster than Nvim can redraw.
 		
 	**/
-	static var termsync : Bool;
+	var termsync : Bool;
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
-	static var terse : Dynamic;
+	var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
-	static var textwidth : Dynamic;
+	var textwidth : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -29384,7 +26607,7 @@ package nvim;
 		 reasons.
 		
 	**/
-	static var thesaurus : String;
+	var thesaurus : String;
 	/**
 		```lua
 		(global) table.thesaurusfunc: string
@@ -29401,7 +26624,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var thesaurusfunc : String;
+	var thesaurusfunc : String;
 	/**
 		```lua
 		(global) table.tildeop: boolean
@@ -29412,7 +26635,7 @@ package nvim;
 		 When on: The tilde command "~" behaves like an operator.
 		
 	**/
-	static var tildeop : Bool;
+	var tildeop : Bool;
 	/**
 		```lua
 		(global) table.timeout: boolean
@@ -29426,7 +26649,7 @@ package nvim;
 		 for any key that can follow <c-f> in a mapping.
 		
 	**/
-	static var timeout : Bool;
+	var timeout : Bool;
 	/**
 		```lua
 		(global) table.timeoutlen: integer
@@ -29437,7 +26660,7 @@ package nvim;
 		 Time in milliseconds to wait for a mapped sequence to complete.
 		
 	**/
-	static var timeoutlen : Float;
+	var timeoutlen : Float;
 	/**
 		```lua
 		(global) table.title: boolean
@@ -29458,7 +26681,7 @@ package nvim;
 		 	- Nvim		the server name `v:servername` or "Nvim"
 		
 	**/
-	static var title : Bool;
+	var title : Bool;
 	/**
 		```lua
 		(global) table.titlelen: integer
@@ -29477,7 +26700,7 @@ package nvim;
 		 'titlelen' is also used for the 'titlestring' option.
 		
 	**/
-	static var titlelen : Float;
+	var titlelen : Float;
 	/**
 		```lua
 		(global) table.titleold: string
@@ -29491,7 +26714,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var titleold : String;
+	var titleold : String;
 	/**
 		```lua
 		(global) table.titlestring: string
@@ -29535,7 +26758,7 @@ package nvim;
 		 to be garbled (e.g., when it contains a CR or NL character).
 		
 	**/
-	static var titlestring : String;
+	var titlestring : String;
 	/**
 		```lua
 		(global) table.ttimeout: boolean
@@ -29556,7 +26779,7 @@ package nvim;
 		 Nvim will wait for the next character to arrive after an <Esc>.
 		
 	**/
-	static var ttimeout : Bool;
+	var ttimeout : Bool;
 	/**
 		```lua
 		(global) table.ttimeoutlen: integer
@@ -29569,13 +26792,13 @@ package nvim;
 		 been typed.
 		
 	**/
-	static var ttimeoutlen : Float;
+	var ttimeoutlen : Float;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
-	static var ttyfast : Dynamic;
+	var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: string
@@ -29605,13 +26828,13 @@ package nvim;
 		 means).
 		
 	**/
-	static var undodir : String;
+	var undodir : String;
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
-	static var undofile : Dynamic;
+	var undofile : Dynamic;
 	/**
 		```lua
 		(global) table.undolevels: integer
@@ -29644,7 +26867,7 @@ package nvim;
 		 Also see `clear-undo`.
 		
 	**/
-	static var undolevels : Float;
+	var undolevels : Float;
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -29665,7 +26888,7 @@ package nvim;
 		 this option to a lower value if you run out of memory.
 		
 	**/
-	static var undoreload : Float;
+	var undoreload : Float;
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -29686,7 +26909,7 @@ package nvim;
 		 or "nowrite".
 		
 	**/
-	static var updatecount : Float;
+	var updatecount : Float;
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -29699,19 +26922,19 @@ package nvim;
 		 `CursorHold` autocommand event.
 		
 	**/
-	static var updatetime : Float;
+	var updatetime : Float;
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
-	static var varsofttabstop : Dynamic;
+	var varsofttabstop : Dynamic;
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
-	static var vartabstop : Dynamic;
+	var vartabstop : Dynamic;
 	/**
 		```lua
 		(global) table.verbose: integer
@@ -29747,7 +26970,7 @@ package nvim;
 		 If 'verbosefile' is set then the verbose messages are not displayed.
 		
 	**/
-	static var verbose : Float;
+	var verbose : Float;
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -29766,7 +26989,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var verbosefile : String;
+	var verbosefile : String;
 	/**
 		```lua
 		(global) table.viewdir: string
@@ -29779,7 +27002,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var viewdir : String;
+	var viewdir : String;
 	/**
 		```lua
 		(global) table.viewoptions: string
@@ -29801,7 +27024,7 @@ package nvim;
 		    unix		`deprecated` Always enabled. Uses "\n" line endings.
 		
 	**/
-	static var viewoptions : String;
+	var viewoptions : String;
 	/**
 		```lua
 		(global) table.virtualedit: string
@@ -29837,7 +27060,7 @@ package nvim;
 		 When combined with other words, "none" is ignored.
 		
 	**/
-	static var virtualedit : String;
+	var virtualedit : String;
 	/**
 		```lua
 		(global) table.visualbell: boolean
@@ -29848,7 +27071,7 @@ package nvim;
 		 Use visual bell instead of beeping.  Also see 'errorbells'.
 		
 	**/
-	static var visualbell : Bool;
+	var visualbell : Bool;
 	/**
 		```lua
 		(global) table.warn: boolean
@@ -29860,7 +27083,7 @@ package nvim;
 		 has been changed.
 		
 	**/
-	static var warn : Bool;
+	var warn : Bool;
 	/**
 		```lua
 		(global) table.whichwrap: string
@@ -29899,7 +27122,7 @@ package nvim;
 		 makes "dl", "cl", "yl" etc. work normally.
 		
 	**/
-	static var whichwrap : String;
+	var whichwrap : String;
 	/**
 		```lua
 		(global) table.wildchar: integer
@@ -29928,7 +27151,7 @@ package nvim;
 		
 		
 	**/
-	static var wildchar : Float;
+	var wildchar : Float;
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -29949,7 +27172,7 @@ package nvim;
 		 Then after typing :ss you can use CTRL-P & CTRL-N.
 		
 	**/
-	static var wildcharm : Float;
+	var wildcharm : Float;
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -29973,7 +27196,7 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var wildignore : String;
+	var wildignore : String;
 	/**
 		```lua
 		(global) table.wildignorecase: boolean
@@ -29987,7 +27210,7 @@ package nvim;
 		 happens when there are special characters.
 		
 	**/
-	static var wildignorecase : Bool;
+	var wildignorecase : Bool;
 	/**
 		```lua
 		(global) table.wildmenu: boolean
@@ -30037,7 +27260,7 @@ package nvim;
 		 `hl-WildMenu` highlights the current match.
 		
 	**/
-	static var wildmenu : Bool;
+	var wildmenu : Bool;
 	/**
 		```lua
 		(global) table.wildmode: string
@@ -30118,7 +27341,7 @@ package nvim;
 		 More info here: `cmdline-completion`.
 		
 	**/
-	static var wildmode : String;
+	var wildmode : String;
 	/**
 		```lua
 		(global) table.wildoptions: string
@@ -30145,7 +27368,7 @@ package nvim;
 		 			f	function
 		
 	**/
-	static var wildoptions : String;
+	var wildoptions : String;
 	/**
 		```lua
 		(global) table.winaltkeys: 'menu'|'no'|'yes'
@@ -30170,7 +27393,7 @@ package nvim;
 		 This option is not used for <F10>; on Win32.
 		
 	**/
-	static var winaltkeys : String;
+	var winaltkeys : String;
 	/**
 		```lua
 		(global) table.winbar: string
@@ -30193,13 +27416,13 @@ package nvim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	static var winbar : String;
+	var winbar : String;
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
-	static var winblend : Dynamic;
+	var winblend : Dynamic;
 	/**
 		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
@@ -30218,7 +27441,7 @@ package nvim;
 		 - "solid": Adds padding by a single whitespace cell.
 		
 	**/
-	static var winborder : String;
+	var winborder : String;
 	/**
 		```lua
 		(global) table.window: integer
@@ -30237,25 +27460,25 @@ package nvim;
 		 'lines' for that.
 		
 	**/
-	static var window : Float;
+	var window : Float;
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
-	static var winfixbuf : Dynamic;
+	var winfixbuf : Dynamic;
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
-	static var winfixheight : Dynamic;
+	var winfixheight : Dynamic;
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
-	static var winfixwidth : Dynamic;
+	var winfixwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winheight: integer
@@ -30284,13 +27507,13 @@ package nvim;
 		 the minimal height for other windows.
 		
 	**/
-	static var winheight : Float;
+	var winheight : Float;
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
-	static var winhighlight : Dynamic;
+	var winhighlight : Dynamic;
 	/**
 		```lua
 		(global) table.winminheight: integer
@@ -30309,7 +27532,7 @@ package nvim;
 		 windows.  A value of 0 to 3 is reasonable.
 		
 	**/
-	static var winminheight : Float;
+	var winminheight : Float;
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -30329,7 +27552,7 @@ package nvim;
 		 windows.  A value of 0 to 12 is reasonable.
 		
 	**/
-	static var winminwidth : Float;
+	var winminwidth : Float;
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -30348,19 +27571,19 @@ package nvim;
 		 the minimal width for other windows.
 		
 	**/
-	static var winwidth : Float;
+	var winwidth : Float;
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
-	static var wrap : Dynamic;
+	var wrap : Dynamic;
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
-	static var wrapmargin : Dynamic;
+	var wrapmargin : Dynamic;
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -30372,7 +27595,7 @@ package nvim;
 		 `[s`, searching for spelling mistakes.
 		
 	**/
-	static var wrapscan : Bool;
+	var wrapscan : Bool;
 	/**
 		```lua
 		(global) table.write: boolean
@@ -30387,7 +27610,7 @@ package nvim;
 		 writing a temporary file.
 		
 	**/
-	static var write : Bool;
+	var write : Bool;
 	/**
 		```lua
 		(global) table.writeany: boolean
@@ -30398,7 +27621,7 @@ package nvim;
 		 Allows writing to any file with no need for "!" override.
 		
 	**/
-	static var writeany : Bool;
+	var writeany : Bool;
 	/**
 		```lua
 		(global) table.writebackup: boolean
@@ -30420,7 +27643,7 @@ package nvim;
 		 file renamed (and a new file is written).
 		
 	**/
-	static var writebackup : Bool;
+	var writebackup : Bool;
 	/**
 		```lua
 		(global) table.writedelay: integer
@@ -30432,7 +27655,7 @@ package nvim;
 		 The number of milliseconds to wait after each line or each flush
 		
 	**/
-	static var writedelay : Float;
+	var writedelay : Float;
 }
 
 /**
@@ -30440,40 +27663,10 @@ package nvim;
 	(global) vim.json: table
 	```
 **/
-@:native("vim.json") extern class Json {
-	/**
-		```lua
-		function vim.json.decode(str: string, opts?: table<string, any>)
-		  -> any
-		```
-		
-		---
-		
-		 Decodes (or "unpacks") the JSON-encoded {str} to a Lua object.
-		
-		 - Decodes JSON "null" as |vim.NIL| (controllable by {opts}, see below).
-		 - Decodes empty object as |vim.empty_dict()|.
-		 - Decodes empty array as `{}` (empty Lua table).
-		
-		 Example:
-		
-		 ```lua
-		 vim.print(vim.json.decode('{"bar":[],"foo":{},"zub":null}'))
-		 -- { bar = {}, foo = vim.empty_dict(), zub = vim.NIL }
-		 ```
-		
-		@*param* `str` — Stringified JSON data.
-		
-		@*param* `opts` — Options table with keys:
-		
-		                               - luanil: (table) Table with keys:
-		                                 - object: (boolean) When true, converts `null` in JSON objects
-		                                   to Lua `nil` instead of |vim.NIL|.
-		                                 - array: (boolean) When true, converts `null` in JSON arrays
-		                                   to Lua `nil` instead of |vim.NIL|.
-	**/
+extern class Json {
 	@:native("decode")
-	private static function __decode(str:String, ?opts:lua.Table<String, Any>):Any;
+	@:luaDotMethod
+	private function __decode(str:String, ?opts:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.json.decode(str: string, opts?: table<string, any>)
@@ -30505,28 +27698,15 @@ package nvim;
 		                                 - array: (boolean) When true, converts `null` in JSON arrays
 		                                   to Lua `nil` instead of |vim.NIL|.
 	**/
-	inline static function decode(str:String, ?opts:lua.Table<String, Any>):Any {
+	@:luaDotMethod
+	inline function decode(str:String, ?opts:lua.Table<String, Any>):Any {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __decode(str, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.json.encode(obj: any, opts?: table<string, any>)
-		  -> string
-		```
-		
-		---
-		
-		 Encodes (or "packs") Lua object {obj} as JSON in a Lua string.
-		
-		@*param* `opts` — Options table with keys:
-		
-		                                 - escape_slash: (boolean) (default false) Escape slash
-		                                   characters "/" in string values.
-	**/
 	@:native("encode")
-	private static function __encode(obj:Any, ?opts:lua.Table<String, Any>):String;
+	@:luaDotMethod
+	private function __encode(obj:Any, ?opts:lua.Table<String, Any>):String;
 	/**
 		```lua
 		function vim.json.encode(obj: any, opts?: table<string, any>)
@@ -30542,7 +27722,8 @@ package nvim;
 		                                 - escape_slash: (boolean) (default false) Escape slash
 		                                   characters "/" in string values.
 	**/
-	inline static function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
+	@:luaDotMethod
+	inline function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
 		opts = nvim.helper.Arg.pure(opts);
 		final result = __encode(obj, opts);
 		return result;
@@ -30553,7 +27734,7 @@ package nvim;
 		```
 	**/
 	@:native("new")
-	static var new_ : Dynamic;
+	var new_ : Dynamic;
 }
 
 /**
@@ -30561,13 +27742,13 @@ package nvim;
 	(global) vim.log.levels: enum vim.log.levels
 	```
 **/
-@:native("vim.log.levels") extern class Levels {
-	static var DEBUG : nvim.type.vim.log.Levels;
-	static var ERROR : nvim.type.vim.log.Levels;
-	static var INFO : nvim.type.vim.log.Levels;
-	static var OFF : nvim.type.vim.log.Levels;
-	static var TRACE : nvim.type.vim.log.Levels;
-	static var WARN : nvim.type.vim.log.Levels;
+extern class Levels {
+	var DEBUG : nvim.type.vim.log.Levels;
+	var ERROR : nvim.type.vim.log.Levels;
+	var INFO : nvim.type.vim.log.Levels;
+	var OFF : nvim.type.vim.log.Levels;
+	var TRACE : nvim.type.vim.log.Levels;
+	var WARN : nvim.type.vim.log.Levels;
 }
 
 /**
@@ -30579,8 +27760,13 @@ package nvim;
 	
 	 @nodoc
 **/
-@:native("vim.log") extern class Log {
-
+extern class Log {
+	/**
+		```lua
+		(global) vim.log.levels: enum vim.log.levels
+		```
+	**/
+	var levels : Levels;
 }
 
 /**
@@ -30588,7 +27774,7 @@ package nvim;
 	(global) vim.lpeg: table
 	```
 **/
-@:native("vim.lpeg") extern class Lpeg {
+extern class Lpeg {
 	/**
 		```lua
 		function vim.lpeg.B(pattern: boolean|string|integer|table|vim.lpeg.Pattern)
@@ -30601,7 +27787,8 @@ package nvim;
 		 Pattern `patt` must match only strings with some fixed length, and it cannot contain captures.
 		 Like the `and` predicate, this pattern never consumes any input, independently of success or failure.
 	**/
-	static function B(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, lua.Table.AnyTable>>>>):nvim.type.vim.lpeg.Pattern;
+	@:luaDotMethod
+	function B(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, lua.Table.AnyTable>>>>):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.C(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -30628,7 +27815,8 @@ package nvim;
 		 assert(c == 'c')
 		 ```
 	**/
-	static function C(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function C(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Carg(n: integer)
@@ -30640,7 +27828,8 @@ package nvim;
 		 Creates an argument capture. This pattern matches the empty string and produces the value given as the
 		 nth extra argument given in the call to `lpeg.match`.
 	**/
-	static function Carg(n:Float):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Carg(n:Float):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cb(name: any)
@@ -30656,7 +27845,8 @@ package nvim;
 		 In the same way that LPeg does not specify when it evaluates captures, it does not specify whether it reuses
 		 values previously produced by the group or re-evaluates them.
 	**/
-	static function Cb(name:Any):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cb(name:Any):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cc(...any)
@@ -30667,7 +27857,8 @@ package nvim;
 		
 		 Creates a constant capture. This pattern matches the empty string and produces all given values as its captured values.
 	**/
-	static function Cc(___:haxe.Rest<Any>):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cc(___:haxe.Rest<Any>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cf(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, func: fun(acc: any, newvalue: any))
@@ -30695,7 +27886,8 @@ package nvim;
 		 assert(sum:match('10,30,43') == 83)
 		 ```
 	**/
-	static function Cf(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, func:() -> Dynamic):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cf(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, func:() -> Dynamic):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cg(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, name?: string)
@@ -30708,7 +27900,8 @@ package nvim;
 		 The group may be anonymous (if no name is given) or named with the given name (which
 		 can be any non-nil Lua value).
 	**/
-	static function Cg(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, ?name:String):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cg(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, ?name:String):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cmt(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, fn: fun(s: string, i: integer, ...any):(position: boolean|integer, ...any))
@@ -30727,7 +27920,8 @@ package nvim;
 		 (so, to return true is equivalent to return `i`). If the call returns `false`, `nil`, or no value, the match fails.
 		 Any extra values returned by the function become the values produced by the capture.
 	**/
-	static function Cmt(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, fn:Dynamic):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cmt(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, fn:Dynamic):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cp()
@@ -30749,7 +27943,8 @@ package nvim;
 		 assert(match_end == 12)
 		 ```
 	**/
-	static function Cp():nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cp():nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cs(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -30775,7 +27970,8 @@ package nvim;
 		 assert(gsub('Hello, xxx!', 'xxx', 'World') == 'Hello, World!')
 		 ```
 	**/
-	static function Cs(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Cs(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Ct(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -30789,7 +27985,8 @@ package nvim;
 		 Moreover, for each named capture group created by `patt`, the first value of the group is put into
 		 the table with the group name as its key. The captured value is only the table.
 	**/
-	static function Ct(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	@:luaDotMethod
+	function Ct(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.P(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -30810,7 +28007,8 @@ package nvim;
 		 * If the argument is a table, it is interpreted as a grammar (see Grammars).
 		 * If the argument is a function, returns a pattern equivalent to a match-time capture over the empty string.
 	**/
-	static function P(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Pattern;
+	@:luaDotMethod
+	function P(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.R(...string)
@@ -30831,7 +28029,8 @@ package nvim;
 		 assert(pattern:match('hello') == 6)
 		 ```
 	**/
-	static function R(___:haxe.Rest<String>):nvim.type.vim.lpeg.Pattern;
+	@:luaDotMethod
+	function R(___:haxe.Rest<String>):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.S(string: string)
@@ -30845,7 +28044,8 @@ package nvim;
 		 (that is, a string of length 1), then `lpeg.P(s)` is equivalent to `lpeg.S(s)` which is equivalent to
 		 `lpeg.R(s..s)`. Note also that both `lpeg.S('')` and `lpeg.R()` are patterns that always fail.
 	**/
-	static function S(string:String):nvim.type.vim.lpeg.Pattern;
+	@:luaDotMethod
+	function S(string:String):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.V(v: boolean|string|number|function|table|lightuserdata|thread|userdata)
@@ -30865,41 +28065,11 @@ package nvim;
 		 assert(b:match('(') == nil)
 		 ```
 	**/
-	static function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):nvim.type.vim.lpeg.Pattern;
-	/**
-		```lua
-		function vim.lpeg.locale(tab?: table)
-		  -> vim.lpeg.Locale
-		```
-		
-		---
-		
-		 Returns a table with patterns for matching some character classes according to the current locale.
-		 The table has fields named `alnum`, `alpha`, `cntrl`, `digit`, `graph`, `lower`, `print`, `punct`,
-		 `space`, `upper`, and `xdigit`, each one containing a correspondent pattern. Each pattern matches
-		 any single character that belongs to its class.
-		 If called with an argument `table`, then it creates those fields inside the given table and returns
-		 that table.
-		
-		 Example:
-		
-		 ```lua
-		 lpeg.locale(lpeg)
-		 local space = lpeg.space ^ 0
-		 local name = lpeg.C(lpeg.alpha ^ 1) * space
-		 local sep = lpeg.S(',;') * space
-		 local pair = lpeg.Cg(name * '=' * space * name) * sep ^ -1
-		 local list = lpeg.Cf(lpeg.Ct('') * pair ^ 0, rawset)
-		 local t = list:match('a=b, c = hi; next = pi')
-		 assert(t.a == 'b')
-		 assert(t.c == 'hi')
-		 assert(t.next == 'pi')
-		 local locale = lpeg.locale()
-		 assert(type(locale.digit) == 'userdata')
-		 ```
-	**/
+	@:luaDotMethod
+	function V(v:haxe.extern.EitherType<Bool, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<haxe.Constraints.Function, haxe.extern.EitherType<lua.Table.AnyTable, lua.UserData>>>>>):nvim.type.vim.lpeg.Pattern;
 	@:native("locale")
-	private static function __locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
+	@:luaDotMethod
+	private function __locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale;
 	/**
 		```lua
 		function vim.lpeg.locale(tab?: table)
@@ -30932,7 +28102,8 @@ package nvim;
 		 assert(type(locale.digit) == 'userdata')
 		 ```
 	**/
-	inline static function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
+	@:luaDotMethod
+	inline function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
 		tab = nvim.helper.Arg.pure(tab);
 		final result = __locale(tab);
 		return result;
@@ -30963,19 +28134,20 @@ package nvim;
 		 assert(pattern:match('1 hello') == nil)
 		 ```
 	**/
-	static function match(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Float, ___:haxe.Rest<Any>):Any;
+	@:luaDotMethod
+	function match(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Float, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		(global) vim.lpeg.pcode: unknown
 		```
 	**/
-	static var pcode : Dynamic;
+	var pcode : Dynamic;
 	/**
 		```lua
 		(global) vim.lpeg.ptree: unknown
 		```
 	**/
-	static var ptree : Dynamic;
+	var ptree : Dynamic;
 	/**
 		```lua
 		function vim.lpeg.setmaxstack(max: integer)
@@ -30989,7 +28161,8 @@ package nvim;
 		 your pattern to avoid the need for extra space. Nevertheless, a few useful patterns may overflow.
 		 Also, with recursive grammars, subjects with deep recursion may also need larger limits.
 	**/
-	static function setmaxstack(max:Float):Dynamic;
+	@:luaDotMethod
+	function setmaxstack(max:Float):Dynamic;
 	/**
 		```lua
 		function vim.lpeg.type(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -31006,13 +28179,14 @@ package nvim;
 		    | "pattern"
 		```
 	**/
-	static function type(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):Null<String>;
+	@:luaDotMethod
+	function type(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):Null<String>;
 	/**
 		```lua
 		(global) vim.lpeg.utfR: unknown
 		```
 	**/
-	static var utfR : Dynamic;
+	var utfR : Dynamic;
 	/**
 		```lua
 		function vim.lpeg.version()
@@ -31023,7 +28197,8 @@ package nvim;
 		
 		 Returns a string with the running version of LPeg.
 	**/
-	static function version():String;
+	@:luaDotMethod
+	function version():String;
 }
 
 /**
@@ -31044,13 +28219,13 @@ package nvim;
 	 print(vim.o.foo)     -- error: invalid key
 	 ```
 **/
-@:native("vim.o") extern class O {
+extern class O {
 	/**
 		```lua
 		(global) table.aleph: unknown
 		```
 	**/
-	static var aleph : Dynamic;
+	var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: boolean
@@ -31063,7 +28238,7 @@ package nvim;
 		 Insert mode, and don't know how to get out.  See 'revins'.
 		
 	**/
-	static var allowrevins : Bool;
+	var allowrevins : Bool;
 	/**
 		```lua
 		(global) table.ambiwidth: 'double'|'single'
@@ -31103,7 +28278,7 @@ package nvim;
 		 (https://www.unicode.org/reports/tr11).
 		
 	**/
-	static var ambiwidth : String;
+	var ambiwidth : String;
 	/**
 		```lua
 		(global) table.arabic: boolean
@@ -31127,7 +28302,7 @@ package nvim;
 		 Also see `arabic.txt`.
 		
 	**/
-	static var arabic : Bool;
+	var arabic : Bool;
 	/**
 		```lua
 		(global) table.arabicshape: boolean
@@ -31149,7 +28324,7 @@ package nvim;
 		 further details see `arabic.txt`.
 		
 	**/
-	static var arabicshape : Bool;
+	var arabicshape : Bool;
 	/**
 		```lua
 		(global) table.autochdir: boolean
@@ -31165,7 +28340,7 @@ package nvim;
 		 Note: When this option is on some plugins may not work.
 		
 	**/
-	static var autochdir : Bool;
+	var autochdir : Bool;
 	/**
 		```lua
 		(global) table.autoindent: boolean
@@ -31186,7 +28361,7 @@ package nvim;
 		 a different way.
 		
 	**/
-	static var autoindent : Bool;
+	var autoindent : Bool;
 	/**
 		```lua
 		(global) table.autoread: boolean
@@ -31208,7 +28383,7 @@ package nvim;
 		
 		
 	**/
-	static var autoread : Bool;
+	var autoread : Bool;
 	/**
 		```lua
 		(global) table.autowrite: boolean
@@ -31232,7 +28407,7 @@ package nvim;
 		 Renaming the buffer with ":file {name}" may help avoid this.
 		
 	**/
-	static var autowrite : Bool;
+	var autowrite : Bool;
 	/**
 		```lua
 		(global) table.autowriteall: boolean
@@ -31246,7 +28421,7 @@ package nvim;
 		 been set.
 		
 	**/
-	static var autowriteall : Bool;
+	var autowriteall : Bool;
 	/**
 		```lua
 		(global) table.background: 'dark'|'light'
@@ -31281,7 +28456,7 @@ package nvim;
 		 the setting of the 'background' option.
 		
 	**/
-	static var background : String;
+	var background : String;
 	/**
 		```lua
 		(global) table.backspace: string
@@ -31304,7 +28479,7 @@ package nvim;
 		 the ways mentioned for the items above are possible.
 		
 	**/
-	static var backspace : String;
+	var backspace : String;
 	/**
 		```lua
 		(global) table.backup: boolean
@@ -31324,7 +28499,7 @@ package nvim;
 		 oldest version of a file.
 		
 	**/
-	static var backup : Bool;
+	var backup : Bool;
 	/**
 		```lua
 		(global) table.backupcopy: string
@@ -31396,7 +28571,7 @@ package nvim;
 		 again not rename the file.
 		
 	**/
-	static var backupcopy : String;
+	var backupcopy : String;
 	/**
 		```lua
 		(global) table.backupdir: string
@@ -31452,7 +28627,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var backupdir : String;
+	var backupdir : String;
 	/**
 		```lua
 		(global) table.backupext: string
@@ -31477,7 +28652,7 @@ package nvim;
 		 Use 'backupdir' to put the backup in a different directory.
 		
 	**/
-	static var backupext : String;
+	var backupext : String;
 	/**
 		```lua
 		(global) table.backupskip: string
@@ -31509,7 +28684,7 @@ package nvim;
 		 the newly created file).  Also see 'backupcopy' and `crontab`.
 		
 	**/
-	static var backupskip : String;
+	var backupskip : String;
 	/**
 		```lua
 		(global) table.belloff: string
@@ -31555,7 +28730,7 @@ package nvim;
 		 "error" keyword.
 		
 	**/
-	static var belloff : String;
+	var belloff : String;
 	/**
 		```lua
 		(global) table.binary: boolean
@@ -31591,7 +28766,7 @@ package nvim;
 		 the 'endofline' option.
 		
 	**/
-	static var binary : Bool;
+	var binary : Bool;
 	/**
 		```lua
 		(global) table.bomb: boolean
@@ -31616,7 +28791,7 @@ package nvim;
 		 will be restored when writing the file.
 		
 	**/
-	static var bomb : Bool;
+	var bomb : Bool;
 	/**
 		```lua
 		(global) table.breakat: string
@@ -31628,7 +28803,7 @@ package nvim;
 		 break if 'linebreak' is on.  Only works for ASCII characters.
 		
 	**/
-	static var breakat : String;
+	var breakat : String;
 	/**
 		```lua
 		(global) table.breakindent: boolean
@@ -31641,7 +28816,7 @@ package nvim;
 		 of text.
 		
 	**/
-	static var breakindent : Bool;
+	var breakindent : Bool;
 	/**
 		```lua
 		(global) table.breakindentopt: string
@@ -31678,13 +28853,13 @@ package nvim;
 		 		    (default: off)
 		
 	**/
-	static var breakindentopt : String;
+	var breakindentopt : String;
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
-	static var browsedir : Dynamic;
+	var browsedir : Dynamic;
 	/**
 		```lua
 		(global) table.bufhidden: ''|'delete'|'hide'|'unload'|'wipe'
@@ -31713,7 +28888,7 @@ package nvim;
 		 special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	static var bufhidden : String;
+	var bufhidden : String;
 	/**
 		```lua
 		(global) table.buflisted: boolean
@@ -31728,7 +28903,7 @@ package nvim;
 		 But not when moving to a buffer with ":buffer".
 		
 	**/
-	static var buflisted : Bool;
+	var buflisted : Bool;
 	/**
 		```lua
 		(global) table.buftype: ''|'acwrite'|'help'|'nofile'|'nowrite'|'prompt'|'quickfix'|'terminal'
@@ -31782,7 +28957,7 @@ package nvim;
 		 `FileWriteCmd` or `FileAppendCmd` autocommands.
 		
 	**/
-	static var buftype : String;
+	var buftype : String;
 	/**
 		```lua
 		(global) table.casemap: string
@@ -31801,7 +28976,7 @@ package nvim;
 		 		This probably only matters for Turkish.
 		
 	**/
-	static var casemap : String;
+	var casemap : String;
 	/**
 		```lua
 		(global) table.cdhome: boolean
@@ -31817,7 +28992,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var cdhome : Bool;
+	var cdhome : Bool;
 	/**
 		```lua
 		(global) table.cdpath: string
@@ -31845,7 +29020,7 @@ package nvim;
 		 (parts of 'cdpath' can be passed to the shell to expand file names).
 		
 	**/
-	static var cdpath : String;
+	var cdpath : String;
 	/**
 		```lua
 		(global) table.cedit: string
@@ -31867,7 +29042,7 @@ package nvim;
 		 See `cmdwin`.
 		
 	**/
-	static var cedit : String;
+	var cedit : String;
 	/**
 		```lua
 		(global) table.channel: integer
@@ -31880,7 +29055,7 @@ package nvim;
 		 Read-only.
 		
 	**/
-	static var channel : Float;
+	var channel : Float;
 	/**
 		```lua
 		(global) table.charconvert: string
@@ -31939,7 +29114,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var charconvert : String;
+	var charconvert : String;
 	/**
 		```lua
 		(global) table.cindent: boolean
@@ -31959,7 +29134,7 @@ package nvim;
 		 option or 'indentexpr'.
 		
 	**/
-	static var cindent : Bool;
+	var cindent : Bool;
 	/**
 		```lua
 		(global) table.cinkeys: string
@@ -31974,7 +29149,7 @@ package nvim;
 		 See `C-indenting`.
 		
 	**/
-	static var cinkeys : String;
+	var cinkeys : String;
 	/**
 		```lua
 		(global) table.cinoptions: string
@@ -31987,7 +29162,7 @@ package nvim;
 		 `C-indenting` for info on C indenting in general.
 		
 	**/
-	static var cinoptions : String;
+	var cinoptions : String;
 	/**
 		```lua
 		(global) table.cinscopedecls: string
@@ -32005,7 +29180,7 @@ package nvim;
 		
 		
 	**/
-	static var cinscopedecls : String;
+	var cinscopedecls : String;
 	/**
 		```lua
 		(global) table.cinwords: string
@@ -32021,7 +29196,7 @@ package nvim;
 		 "if,If,IF".
 		
 	**/
-	static var cinwords : String;
+	var cinwords : String;
 	/**
 		```lua
 		(global) table.clipboard: string = 'unnamedplus'
@@ -32053,7 +29228,7 @@ package nvim;
 		 		"*". See `clipboard`.
 		
 	**/
-	static var clipboard : String;
+	var clipboard : String;
 	/**
 		```lua
 		(global) table.cmdheight: integer
@@ -32076,7 +29251,7 @@ package nvim;
 		 from Nvim itself and plugins, will not be displayed.
 		
 	**/
-	static var cmdheight : Float;
+	var cmdheight : Float;
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -32087,7 +29262,7 @@ package nvim;
 		 Number of screen lines to use for the command-line window. `cmdwin`
 		
 	**/
-	static var cmdwinheight : Float;
+	var cmdwinheight : Float;
 	/**
 		```lua
 		(global) table.colorcolumn: string
@@ -32112,7 +29287,7 @@ package nvim;
 		 A maximum of 256 columns are highlighted.
 		
 	**/
-	static var colorcolumn : String;
+	var colorcolumn : String;
 	/**
 		```lua
 		(global) table.columns: integer
@@ -32137,7 +29312,7 @@ package nvim;
 		 Minimum value is 12, maximum value is 10000.
 		
 	**/
-	static var columns : Float;
+	var columns : Float;
 	/**
 		```lua
 		(global) table.comments: string
@@ -32150,7 +29325,7 @@ package nvim;
 		 insert a space.
 		
 	**/
-	static var comments : String;
+	var comments : String;
 	/**
 		```lua
 		(global) table.commentstring: string
@@ -32163,13 +29338,13 @@ package nvim;
 		 Used for `commenting` and to add markers for folding, see `fold-marker`.
 		
 	**/
-	static var commentstring : String;
+	var commentstring : String;
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
-	static var compatible : Dynamic;
+	var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: string
@@ -32214,7 +29389,7 @@ package nvim;
 		 `i_CTRL-X_CTRL-I`, tags `i_CTRL-X_CTRL-]` and normal expansions).
 		
 	**/
-	static var complete : String;
+	var complete : String;
 	/**
 		```lua
 		(global) table.completefunc: string
@@ -32232,7 +29407,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var completefunc : String;
+	var completefunc : String;
 	/**
 		```lua
 		(global) table.completeitemalign: string
@@ -32248,7 +29423,7 @@ package nvim;
 		 order.
 		
 	**/
-	static var completeitemalign : String;
+	var completeitemalign : String;
 	/**
 		```lua
 		(global) table.completeopt: string
@@ -32308,7 +29483,7 @@ package nvim;
 		 	    combination with "menu" or "menuone".
 		
 	**/
-	static var completeopt : String;
+	var completeopt : String;
 	/**
 		```lua
 		(global) table.completeslash: ''|'backslash'|'slash'
@@ -32329,7 +29504,7 @@ package nvim;
 		 command line completion the global value is used.
 		
 	**/
-	static var completeslash : String;
+	var completeslash : String;
 	/**
 		```lua
 		(global) table.concealcursor: string
@@ -32354,7 +29529,7 @@ package nvim;
 		 displayed.  E.g., when moving vertically it may change column.
 		
 	**/
-	static var concealcursor : String;
+	var concealcursor : String;
 	/**
 		```lua
 		(global) table.conceallevel: integer
@@ -32382,7 +29557,7 @@ package nvim;
 		 option.
 		
 	**/
-	static var conceallevel : Float;
+	var conceallevel : Float;
 	/**
 		```lua
 		(global) table.confirm: boolean = true
@@ -32405,7 +29580,7 @@ package nvim;
 		 if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 		 instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
 	**/
-	static var confirm : Bool;
+	var confirm : Bool;
 	/**
 		```lua
 		(global) table.copyindent: boolean
@@ -32424,7 +29599,7 @@ package nvim;
 		 See 'preserveindent'.
 		
 	**/
-	static var copyindent : Bool;
+	var copyindent : Bool;
 	/**
 		```lua
 		(global) table.cpoptions: string
@@ -32661,7 +29836,7 @@ package nvim;
 		 		whitespace following the word in the motion.
 		
 	**/
-	static var cpoptions : String;
+	var cpoptions : String;
 	/**
 		```lua
 		(global) table.cursorbind: boolean
@@ -32678,7 +29853,7 @@ package nvim;
 		 taken into account.
 		
 	**/
-	static var cursorbind : Bool;
+	var cursorbind : Bool;
 	/**
 		```lua
 		(global) table.cursorcolumn: boolean
@@ -32699,7 +29874,7 @@ package nvim;
 		
 		
 	**/
-	static var cursorcolumn : Bool;
+	var cursorcolumn : Bool;
 	/**
 		```lua
 		(global) table.cursorline: boolean = true
@@ -32717,7 +29892,7 @@ package nvim;
 		 easier to see the selected text.
 		
 	**/
-	static var cursorline : Bool;
+	var cursorline : Bool;
 	/**
 		```lua
 		(global) table.cursorlineopt: string
@@ -32740,7 +29915,7 @@ package nvim;
 		 "line" and "screenline" cannot be used together.
 		
 	**/
-	static var cursorlineopt : String;
+	var cursorlineopt : String;
 	/**
 		```lua
 		(global) table.debug: string
@@ -32760,7 +29935,7 @@ package nvim;
 		 'indentexpr'.
 		
 	**/
-	static var debug : String;
+	var debug : String;
 	/**
 		```lua
 		(global) table.define: string
@@ -32800,7 +29975,7 @@ package nvim;
 		
 		
 	**/
-	static var define : String;
+	var define : String;
 	/**
 		```lua
 		(global) table.delcombine: boolean
@@ -32819,7 +29994,7 @@ package nvim;
 		 to remove only the combining ones.
 		
 	**/
-	static var delcombine : Bool;
+	var delcombine : Bool;
 	/**
 		```lua
 		(global) table.dictionary: string
@@ -32851,7 +30026,7 @@ package nvim;
 		 Backticks cannot be used in this option for security reasons.
 		
 	**/
-	static var dictionary : String;
+	var dictionary : String;
 	/**
 		```lua
 		(global) table.diff: boolean
@@ -32863,7 +30038,7 @@ package nvim;
 		 between files.  See `diff-mode`.
 		
 	**/
-	static var diff : Bool;
+	var diff : Bool;
 	/**
 		```lua
 		(global) table.diffexpr: string
@@ -32877,7 +30052,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var diffexpr : String;
+	var diffexpr : String;
 	/**
 		```lua
 		(global) table.diffopt: string
@@ -32996,7 +30171,7 @@ package nvim;
 		
 		
 	**/
-	static var diffopt : String;
+	var diffopt : String;
 	/**
 		```lua
 		(global) table.digraph: boolean
@@ -33008,7 +30183,7 @@ package nvim;
 		 {char2}.  See `digraphs`.
 		
 	**/
-	static var digraph : Bool;
+	var digraph : Bool;
 	/**
 		```lua
 		(global) table.directory: string
@@ -33063,7 +30238,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var directory : String;
+	var directory : String;
 	/**
 		```lua
 		(global) table.display: string
@@ -33090,7 +30265,7 @@ package nvim;
 		 'fillchars'.  The character is highlighted with `hl-NonText`.
 		
 	**/
-	static var display : String;
+	var display : String;
 	/**
 		```lua
 		(global) table.eadirection: 'both'|'hor'|'ver'
@@ -33104,13 +30279,13 @@ package nvim;
 		 	both	width and height of windows is affected
 		
 	**/
-	static var eadirection : String;
+	var eadirection : String;
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
-	static var edcompatible : Dynamic;
+	var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: boolean
@@ -33128,7 +30303,7 @@ package nvim;
 		 function to change the behavior.
 		
 	**/
-	static var emoji : Bool;
+	var emoji : Bool;
 	/**
 		```lua
 		(global) table.encoding: string
@@ -33142,7 +30317,7 @@ package nvim;
 		 See 'fileencoding' to control file-content encoding.
 		
 	**/
-	static var encoding : String;
+	var encoding : String;
 	/**
 		```lua
 		(global) table.endoffile: boolean
@@ -33158,7 +30333,7 @@ package nvim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	static var endoffile : Bool;
+	var endoffile : Bool;
 	/**
 		```lua
 		(global) table.endofline: boolean
@@ -33180,7 +30355,7 @@ package nvim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	static var endofline : Bool;
+	var endofline : Bool;
 	/**
 		```lua
 		(global) table.equalalways: boolean
@@ -33204,7 +30379,7 @@ package nvim;
 		 the future).
 		
 	**/
-	static var equalalways : Bool;
+	var equalalways : Bool;
 	/**
 		```lua
 		(global) table.equalprg: string
@@ -33221,7 +30396,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var equalprg : String;
+	var equalprg : String;
 	/**
 		```lua
 		(global) table.errorbells: boolean
@@ -33236,7 +30411,7 @@ package nvim;
 		 or do nothing. See 'belloff' to finetune when to ring the bell.
 		
 	**/
-	static var errorbells : Bool;
+	var errorbells : Bool;
 	/**
 		```lua
 		(global) table.errorfile: string
@@ -33254,7 +30429,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var errorfile : String;
+	var errorfile : String;
 	/**
 		```lua
 		(global) table.errorformat: string
@@ -33266,7 +30441,7 @@ package nvim;
 		 (see `errorformat`).
 		
 	**/
-	static var errorformat : String;
+	var errorformat : String;
 	/**
 		```lua
 		(global) table.eventignore: string
@@ -33285,7 +30460,7 @@ package nvim;
 		
 		
 	**/
-	static var eventignore : String;
+	var eventignore : String;
 	/**
 		```lua
 		(global) table.eventignorewin: string
@@ -33298,7 +30473,7 @@ package nvim;
 		 ignored indefinitely without affecting the global 'eventignore'.
 		
 	**/
-	static var eventignorewin : String;
+	var eventignorewin : String;
 	/**
 		```lua
 		(global) table.expandtab: boolean
@@ -33312,7 +30487,7 @@ package nvim;
 		 on, use CTRL-V<Tab>.  See also `:retab` and `ins-expandtab`.
 		
 	**/
-	static var expandtab : Bool;
+	var expandtab : Bool;
 	/**
 		```lua
 		(global) table.exrc: boolean
@@ -33344,7 +30519,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var exrc : Bool;
+	var exrc : Bool;
 	/**
 		```lua
 		(global) table.fileencoding: string
@@ -33391,7 +30566,7 @@ package nvim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	static var fileencoding : String;
+	var fileencoding : String;
 	/**
 		```lua
 		(global) table.fileencodings: string
@@ -33453,7 +30628,7 @@ package nvim;
 		 is read.
 		
 	**/
-	static var fileencodings : String;
+	var fileencodings : String;
 	/**
 		```lua
 		(global) table.fileformat: 'dos'|'mac'|'unix'
@@ -33478,7 +30653,7 @@ package nvim;
 		 This option cannot be changed when 'modifiable' is off.
 		
 	**/
-	static var fileformat : String;
+	var fileformat : String;
 	/**
 		```lua
 		(global) table.fileformats: string
@@ -33533,7 +30708,7 @@ package nvim;
 		 Also see `file-formats`.
 		
 	**/
-	static var fileformats : String;
+	var fileformats : String;
 	/**
 		```lua
 		(global) table.fileignorecase: boolean
@@ -33545,7 +30720,7 @@ package nvim;
 		 See 'wildignorecase' for only ignoring case when doing completion.
 		
 	**/
-	static var fileignorecase : Bool;
+	var fileignorecase : Bool;
 	/**
 		```lua
 		(global) table.filetype: string
@@ -33578,7 +30753,7 @@ package nvim;
 		 Only alphanumeric characters, '-' and '_' can be used.
 		
 	**/
-	static var filetype : String;
+	var filetype : String;
 	/**
 		```lua
 		(global) table.fillchars: string
@@ -33650,7 +30825,7 @@ package nvim;
 		   lastline	NonText			`hl-NonText`
 		
 	**/
-	static var fillchars : String;
+	var fillchars : String;
 	/**
 		```lua
 		(global) table.findfunc: string
@@ -33707,7 +30882,7 @@ package nvim;
 		
 		
 	**/
-	static var findfunc : String;
+	var findfunc : String;
 	/**
 		```lua
 		(global) table.fixendofline: boolean
@@ -33724,7 +30899,7 @@ package nvim;
 		 See `eol-and-eof` for example settings.
 		
 	**/
-	static var fixendofline : Bool;
+	var fixendofline : Bool;
 	/**
 		```lua
 		(global) table.foldclose: string
@@ -33737,7 +30912,7 @@ package nvim;
 		 automatically close when moving out of them.
 		
 	**/
-	static var foldclose : String;
+	var foldclose : String;
 	/**
 		```lua
 		(global) table.foldcolumn: '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'
@@ -33754,7 +30929,7 @@ package nvim;
 		 See `folding`.
 		
 	**/
-	static var foldcolumn : String;
+	var foldcolumn : String;
 	/**
 		```lua
 		(global) table.foldenable: boolean
@@ -33771,7 +30946,7 @@ package nvim;
 		 See `folding`.
 		
 	**/
-	static var foldenable : Bool;
+	var foldenable : Bool;
 	/**
 		```lua
 		(global) table.foldexpr: string
@@ -33793,7 +30968,7 @@ package nvim;
 		 evaluating 'foldexpr' `textlock`.
 		
 	**/
-	static var foldexpr : String;
+	var foldexpr : String;
 	/**
 		```lua
 		(global) table.foldignore: string
@@ -33807,7 +30982,7 @@ package nvim;
 		 The default "#" works well for C programs.  See `fold-indent`.
 		
 	**/
-	static var foldignore : String;
+	var foldignore : String;
 	/**
 		```lua
 		(global) table.foldlevel: integer
@@ -33822,7 +30997,7 @@ package nvim;
 		 See `fold-foldlevel`.
 		
 	**/
-	static var foldlevel : Float;
+	var foldlevel : Float;
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -33841,7 +31016,7 @@ package nvim;
 		 When the value is negative, it is not used.
 		
 	**/
-	static var foldlevelstart : Float;
+	var foldlevelstart : Float;
 	/**
 		```lua
 		(global) table.foldmarker: string
@@ -33855,7 +31030,7 @@ package nvim;
 		 See `fold-marker`.
 		
 	**/
-	static var foldmarker : String;
+	var foldmarker : String;
 	/**
 		```lua
 		(global) table.foldmethod: 'diff'|'expr'|'indent'|'manual'|'marker'|'syntax'
@@ -33872,7 +31047,7 @@ package nvim;
 		 `fold-diff`	diff	    Fold text that is not changed.
 		
 	**/
-	static var foldmethod : String;
+	var foldmethod : String;
 	/**
 		```lua
 		(global) table.foldminlines: integer
@@ -33889,7 +31064,7 @@ package nvim;
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	static var foldminlines : Float;
+	var foldminlines : Float;
 	/**
 		```lua
 		(global) table.foldnestmax: integer
@@ -33902,7 +31077,7 @@ package nvim;
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	static var foldnestmax : Float;
+	var foldnestmax : Float;
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -33942,7 +31117,7 @@ package nvim;
 		 set the 'foldclose' option to "all".
 		
 	**/
-	static var foldopen : String;
+	var foldopen : String;
 	/**
 		```lua
 		(global) table.foldtext: string
@@ -33966,7 +31141,7 @@ package nvim;
 		 is displayed normally with highlighting and no line wrapping.
 		
 	**/
-	static var foldtext : String;
+	var foldtext : String;
 	/**
 		```lua
 		(global) table.formatexpr: string
@@ -34022,7 +31197,7 @@ package nvim;
 		 NOTE: This option is set to "" when 'compatible' is set.
 		
 	**/
-	static var formatexpr : String;
+	var formatexpr : String;
 	/**
 		```lua
 		(global) table.formatlistpat: string
@@ -34041,7 +31216,7 @@ package nvim;
 		 character and white space.
 		
 	**/
-	static var formatlistpat : String;
+	var formatlistpat : String;
 	/**
 		```lua
 		(global) table.formatoptions: string
@@ -34057,7 +31232,7 @@ package nvim;
 		 "+=" and "-=" feature of ":set" `add-option-flags`.
 		
 	**/
-	static var formatoptions : String;
+	var formatoptions : String;
 	/**
 		```lua
 		(global) table.formatprg: string
@@ -34078,7 +31253,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var formatprg : String;
+	var formatprg : String;
 	/**
 		```lua
 		(global) table.fsync: boolean
@@ -34102,7 +31277,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var fsync : Bool;
+	var fsync : Bool;
 	/**
 		```lua
 		(global) table.gdefault: boolean
@@ -34125,7 +31300,7 @@ package nvim;
 		 opposite effect of that documented in `:s_g`.
 		
 	**/
-	static var gdefault : Bool;
+	var gdefault : Bool;
 	/**
 		```lua
 		(global) table.grepformat: string = '%f:%l:%c:%m'
@@ -34140,7 +31315,7 @@ package nvim;
 		 If ripgrep ('grepprg') is available, this option defaults to `%f:%l:%c:%m`.
 		
 	**/
-	static var grepformat : String;
+	var grepformat : String;
 	/**
 		```lua
 		(global) table.grepprg: string = 'rg --vimgrep -uu '
@@ -34176,7 +31351,7 @@ package nvim;
 		 An `OptionSet` autocmd can be used to set it up to match automatically.
 		
 	**/
-	static var grepprg : String;
+	var grepprg : String;
 	/**
 		```lua
 		(global) table.guicursor: string
@@ -34281,7 +31456,7 @@ package nvim;
 		
 		
 	**/
-	static var guicursor : String;
+	var guicursor : String;
 	/**
 		```lua
 		(global) table.guifont: string
@@ -34360,7 +31535,7 @@ package nvim;
 		
 		
 	**/
-	static var guifont : String;
+	var guifont : String;
 	/**
 		```lua
 		(global) table.guifontwide: string
@@ -34377,25 +31552,25 @@ package nvim;
 		 attempt to set 'guifontwide' to a matching double-width font.
 		
 	**/
-	static var guifontwide : String;
+	var guifontwide : String;
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
-	static var guioptions : Dynamic;
+	var guioptions : Dynamic;
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
-	static var guitablabel : Dynamic;
+	var guitablabel : Dynamic;
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
-	static var guitabtooltip : Dynamic;
+	var guitabtooltip : Dynamic;
 	/**
 		```lua
 		(global) table.helpfile: string
@@ -34414,7 +31589,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var helpfile : String;
+	var helpfile : String;
 	/**
 		```lua
 		(global) table.helpheight: integer
@@ -34429,7 +31604,7 @@ package nvim;
 		 set to 'helpheight'.  Set to zero to disable.
 		
 	**/
-	static var helpheight : Float;
+	var helpheight : Float;
 	/**
 		```lua
 		(global) table.helplang: string
@@ -34454,7 +31629,7 @@ package nvim;
 		 See `help-translated`.
 		
 	**/
-	static var helplang : String;
+	var helplang : String;
 	/**
 		```lua
 		(global) table.hidden: boolean
@@ -34478,13 +31653,13 @@ package nvim;
 		 'hidden' is set for one command with ":hide {command}" `:hide`.
 		
 	**/
-	static var hidden : Bool;
+	var hidden : Bool;
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
-	static var highlight : Dynamic;
+	var highlight : Dynamic;
 	/**
 		```lua
 		(global) table.history: integer
@@ -34499,19 +31674,19 @@ package nvim;
 		 The maximum value is 10000.
 		
 	**/
-	static var history : Float;
+	var history : Float;
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
-	static var hkmap : Dynamic;
+	var hkmap : Dynamic;
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
-	static var hkmapp : Dynamic;
+	var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: boolean
@@ -34540,7 +31715,7 @@ package nvim;
 		 with the 'h' flag in 'shada' `shada-h`.
 		
 	**/
-	static var hlsearch : Bool;
+	var hlsearch : Bool;
 	/**
 		```lua
 		(global) table.icon: boolean
@@ -34555,7 +31730,7 @@ package nvim;
 		 Only works if the terminal supports setting window icons.
 		
 	**/
-	static var icon : Bool;
+	var icon : Bool;
 	/**
 		```lua
 		(global) table.iconstring: string
@@ -34572,7 +31747,7 @@ package nvim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	static var iconstring : String;
+	var iconstring : String;
 	/**
 		```lua
 		(global) table.ignorecase: boolean = true
@@ -34591,19 +31766,19 @@ package nvim;
 		
 		 Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 	**/
-	static var ignorecase : Bool;
+	var ignorecase : Bool;
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
-	static var imcmdline : Dynamic;
+	var imcmdline : Dynamic;
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
-	static var imdisable : Dynamic;
+	var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: integer
@@ -34630,7 +31805,7 @@ package nvim;
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	static var iminsert : Float;
+	var iminsert : Float;
 	/**
 		```lua
 		(global) table.imsearch: integer
@@ -34651,7 +31826,7 @@ package nvim;
 		 option to a valid keymap name.
 		
 	**/
-	static var imsearch : Float;
+	var imsearch : Float;
 	/**
 		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
@@ -34674,7 +31849,7 @@ package nvim;
 		 `Command-line-mode` is done.
 		
 	**/
-	static var inccommand : String;
+	var inccommand : String;
 	/**
 		```lua
 		(global) table.include: string
@@ -34694,7 +31869,7 @@ package nvim;
 		 See `option-backslash` about including spaces and backslashes.
 		
 	**/
-	static var include : String;
+	var include : String;
 	/**
 		```lua
 		(global) table.includeexpr: string
@@ -34742,7 +31917,7 @@ package nvim;
 		 evaluating 'includeexpr' `textlock`.
 		
 	**/
-	static var includeexpr : String;
+	var includeexpr : String;
 	/**
 		```lua
 		(global) table.incsearch: boolean
@@ -34786,7 +31961,7 @@ package nvim;
 		 match, excluding the characters that were already typed.
 		
 	**/
-	static var incsearch : Bool;
+	var incsearch : Bool;
 	/**
 		```lua
 		(global) table.indentexpr: string
@@ -34842,7 +32017,7 @@ package nvim;
 		 evaluating 'indentexpr' `textlock`.
 		
 	**/
-	static var indentexpr : String;
+	var indentexpr : String;
 	/**
 		```lua
 		(global) table.indentkeys: string
@@ -34856,7 +32031,7 @@ package nvim;
 		 See `C-indenting` and `indent-expression`.
 		
 	**/
-	static var indentkeys : String;
+	var indentkeys : String;
 	/**
 		```lua
 		(global) table.infercase: boolean
@@ -34874,13 +32049,13 @@ package nvim;
 		 With 'noinfercase' the match is used as-is.
 		
 	**/
-	static var infercase : Bool;
+	var infercase : Bool;
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
-	static var insertmode : Dynamic;
+	var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: string
@@ -34935,7 +32110,7 @@ package nvim;
 		 See `option-backslash` about including spaces and backslashes.
 		
 	**/
-	static var isfname : String;
+	var isfname : String;
 	/**
 		```lua
 		(global) table.isident: string
@@ -34954,7 +32129,7 @@ package nvim;
 		 change 'iskeyword' instead.
 		
 	**/
-	static var isident : String;
+	var isident : String;
 	/**
 		```lua
 		(global) table.iskeyword: string
@@ -34976,7 +32151,7 @@ package nvim;
 		 uses `:syn-iskeyword`.
 		
 	**/
-	static var iskeyword : String;
+	var iskeyword : String;
 	/**
 		```lua
 		(global) table.isprint: string
@@ -35012,7 +32187,7 @@ package nvim;
 		 There is no option to specify these characters.
 		
 	**/
-	static var isprint : String;
+	var isprint : String;
 	/**
 		```lua
 		(global) table.joinspaces: boolean
@@ -35024,7 +32199,7 @@ package nvim;
 		 Otherwise only one space is inserted.
 		
 	**/
-	static var joinspaces : Bool;
+	var joinspaces : Bool;
 	/**
 		```lua
 		(global) table.jumpoptions: string
@@ -35047,7 +32222,7 @@ package nvim;
 		 		EXPERIMENTAL: this flag may change in the future.
 		
 	**/
-	static var jumpoptions : String;
+	var jumpoptions : String;
 	/**
 		```lua
 		(global) table.keymap: string
@@ -35062,7 +32237,7 @@ package nvim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	static var keymap : String;
+	var keymap : String;
 	/**
 		```lua
 		(global) table.keymodel: string
@@ -35080,7 +32255,7 @@ package nvim;
 		 <PageUp> and <PageDown>.
 		
 	**/
-	static var keymodel : String;
+	var keymodel : String;
 	/**
 		```lua
 		(global) table.keywordprg: string
@@ -35107,7 +32282,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var keywordprg : String;
+	var keywordprg : String;
 	/**
 		```lua
 		(global) table.langmap: string
@@ -35162,7 +32337,7 @@ package nvim;
 		 Use a mapping to avoid having to type it each time!
 		
 	**/
-	static var langmap : String;
+	var langmap : String;
 	/**
 		```lua
 		(global) table.langmenu: string
@@ -35202,13 +32377,13 @@ package nvim;
 		 Warning: This deletes all menus that you defined yourself!
 		
 	**/
-	static var langmenu : String;
+	var langmenu : String;
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
-	static var langnoremap : Dynamic;
+	var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: boolean
@@ -35221,7 +32396,7 @@ package nvim;
 		 sure this option is off.
 		
 	**/
-	static var langremap : Bool;
+	var langremap : Bool;
 	/**
 		```lua
 		(global) table.laststatus: integer
@@ -35239,7 +32414,7 @@ package nvim;
 		 windows, but it takes another screen line. `status-line`
 		
 	**/
-	static var laststatus : Float;
+	var laststatus : Float;
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -35256,7 +32431,7 @@ package nvim;
 		 flickering or cause a slowdown.
 		
 	**/
-	static var lazyredraw : Bool;
+	var lazyredraw : Bool;
 	/**
 		```lua
 		(global) table.linebreak: boolean
@@ -35275,7 +32450,7 @@ package nvim;
 		 with the right amount of white space.
 		
 	**/
-	static var linebreak : Bool;
+	var linebreak : Bool;
 	/**
 		```lua
 		(global) table.lines: integer
@@ -35298,7 +32473,7 @@ package nvim;
 		 Minimum value is 2, maximum value is 1000.
 		
 	**/
-	static var lines : Float;
+	var lines : Float;
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -35316,7 +32491,7 @@ package nvim;
 		 though!
 		
 	**/
-	static var linespace : Float;
+	var linespace : Float;
 	/**
 		```lua
 		(global) table.lisp: boolean
@@ -35334,7 +32509,7 @@ package nvim;
 		 calling an external program if 'equalprg' is empty.
 		
 	**/
-	static var lisp : Bool;
+	var lisp : Bool;
 	/**
 		```lua
 		(global) table.lispoptions: string
@@ -35351,7 +32526,7 @@ package nvim;
 		 lines, otherwise the first line is not indented (Vi-compatible).
 		
 	**/
-	static var lispoptions : String;
+	var lispoptions : String;
 	/**
 		```lua
 		(global) table.lispwords: string
@@ -35363,7 +32538,7 @@ package nvim;
 		 enabled with the `'lisp'` option.
 		
 	**/
-	static var lispwords : String;
+	var lispwords : String;
 	/**
 		```lua
 		(global) table.list: boolean = true
@@ -35396,7 +32571,7 @@ package nvim;
 		 changing the way tabs are displayed.
 		
 	**/
-	static var list : Bool;
+	var list : Bool;
 	/**
 		```lua
 		(global) table.listchars: string
@@ -35521,7 +32696,7 @@ package nvim;
 		 "lead" and "trail".
 		
 	**/
-	static var listchars : String;
+	var listchars : String;
 	/**
 		```lua
 		(global) table.loadplugins: boolean
@@ -35536,7 +32711,7 @@ package nvim;
 		 reset this option. `-u` `--noplugin`
 		
 	**/
-	static var loadplugins : Bool;
+	var loadplugins : Bool;
 	/**
 		```lua
 		(global) table.magic: boolean
@@ -35553,7 +32728,7 @@ package nvim;
 		 when you want to `/\M`.
 		
 	**/
-	static var magic : Bool;
+	var magic : Bool;
 	/**
 		```lua
 		(global) table.makeef: string
@@ -35574,7 +32749,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var makeef : String;
+	var makeef : String;
 	/**
 		```lua
 		(global) table.makeencoding: string
@@ -35598,7 +32773,7 @@ package nvim;
 		
 		
 	**/
-	static var makeencoding : String;
+	var makeencoding : String;
 	/**
 		```lua
 		(global) table.makeprg: string
@@ -35629,7 +32804,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var makeprg : String;
+	var makeprg : String;
 	/**
 		```lua
 		(global) table.matchpairs: string
@@ -35658,7 +32833,7 @@ package nvim;
 		 the $VIMRUNTIME/plugin directory. `add-local-help`
 		
 	**/
-	static var matchpairs : String;
+	var matchpairs : String;
 	/**
 		```lua
 		(global) table.matchtime: integer
@@ -35671,13 +32846,13 @@ package nvim;
 		 set a time.  This is to be compatible with Nvi.
 		
 	**/
-	static var matchtime : Float;
+	var matchtime : Float;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
-	static var maxcombine : Dynamic;
+	var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: integer
@@ -35695,7 +32870,7 @@ package nvim;
 		 Also used for maximum depth of callback functions.
 		
 	**/
-	static var maxfuncdepth : Float;
+	var maxfuncdepth : Float;
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -35710,7 +32885,7 @@ package nvim;
 		 `key-mapping`.
 		
 	**/
-	static var maxmapdepth : Float;
+	var maxmapdepth : Float;
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -35732,7 +32907,7 @@ package nvim;
 		 which case you get an "Out of memory" error instead.
 		
 	**/
-	static var maxmempattern : Float;
+	var maxmempattern : Float;
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -35745,7 +32920,7 @@ package nvim;
 		 option has no direct effect, the menu must be refreshed first.
 		
 	**/
-	static var menuitems : Float;
+	var menuitems : Float;
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -35773,7 +32948,7 @@ package nvim;
 		 		This item must always be present.
 		
 	**/
-	static var messagesopt : String;
+	var messagesopt : String;
 	/**
 		```lua
 		(global) table.mkspellmem: string
@@ -35823,7 +32998,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var mkspellmem : String;
+	var mkspellmem : String;
 	/**
 		```lua
 		(global) table.modeline: boolean
@@ -35836,7 +33011,7 @@ package nvim;
 		 no lines are checked.  See `modeline`.
 		
 	**/
-	static var modeline : Bool;
+	var modeline : Bool;
 	/**
 		```lua
 		(global) table.modelineexpr: boolean
@@ -35851,7 +33026,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var modelineexpr : Bool;
+	var modelineexpr : Bool;
 	/**
 		```lua
 		(global) table.modelines: integer
@@ -35865,7 +33040,7 @@ package nvim;
 		
 		
 	**/
-	static var modelines : Float;
+	var modelines : Float;
 	/**
 		```lua
 		(global) table.modifiable: boolean
@@ -35878,7 +33053,7 @@ package nvim;
 		 Can be reset on startup with the `-M` command line argument.
 		
 	**/
-	static var modifiable : Bool;
+	var modifiable : Bool;
 	/**
 		```lua
 		(global) table.modified: boolean
@@ -35909,7 +33084,7 @@ package nvim;
 		 when using "rA" on an "A".
 		
 	**/
-	static var modified : Bool;
+	var modified : Bool;
 	/**
 		```lua
 		(global) table.more: boolean
@@ -35922,7 +33097,7 @@ package nvim;
 		 listing continues until finished.
 		
 	**/
-	static var more : Bool;
+	var more : Bool;
 	/**
 		```lua
 		(global) table.mouse: string
@@ -35971,7 +33146,7 @@ package nvim;
 		 'selectmode'	whether to start Select mode or Visual mode
 		
 	**/
-	static var mouse : String;
+	var mouse : String;
 	/**
 		```lua
 		(global) table.mousefocus: boolean
@@ -35986,7 +33161,7 @@ package nvim;
 		 a pointer transit may activate a window unintentionally.
 		
 	**/
-	static var mousefocus : Bool;
+	var mousefocus : Bool;
 	/**
 		```lua
 		(global) table.mousehide: boolean
@@ -35999,7 +33174,7 @@ package nvim;
 		 The mouse pointer is restored when the mouse is moved.
 		
 	**/
-	static var mousehide : Bool;
+	var mousehide : Bool;
 	/**
 		```lua
 		(global) table.mousemodel: 'extend'|'popup'|'popup_setpos'
@@ -36059,7 +33234,7 @@ package nvim;
 		     "g<RightMouse>" is "<C-RightMouse>	("CTRL-T")
 		
 	**/
-	static var mousemodel : String;
+	var mousemodel : String;
 	/**
 		```lua
 		(global) table.mousemoveevent: boolean
@@ -36074,7 +33249,7 @@ package nvim;
 		 when the mouse is moved.
 		
 	**/
-	static var mousemoveevent : Bool;
+	var mousemoveevent : Bool;
 	/**
 		```lua
 		(global) table.mousescroll: string
@@ -36104,13 +33279,13 @@ package nvim;
 		 scroll 2 columns at a time when scrolling horizontally.
 		
 	**/
-	static var mousescroll : String;
+	var mousescroll : String;
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
-	static var mouseshape : Dynamic;
+	var mouseshape : Dynamic;
 	/**
 		```lua
 		(global) table.mousetime: integer
@@ -36122,7 +33297,7 @@ package nvim;
 		 second click to be recognized as a multi click.
 		
 	**/
-	static var mousetime : Float;
+	var mousetime : Float;
 	/**
 		```lua
 		(global) table.nrformats: string
@@ -36172,7 +33347,7 @@ package nvim;
 		 recognized as octal or hex.
 		
 	**/
-	static var nrformats : String;
+	var nrformats : String;
 	/**
 		```lua
 		(global) table.number: boolean = true
@@ -36208,7 +33383,7 @@ package nvim;
 		
 		
 	**/
-	static var number : Bool;
+	var number : Bool;
 	/**
 		```lua
 		(global) table.numberwidth: integer
@@ -36228,7 +33403,7 @@ package nvim;
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	static var numberwidth : Float;
+	var numberwidth : Float;
 	/**
 		```lua
 		(global) table.omnifunc: string
@@ -36248,13 +33423,13 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var omnifunc : String;
+	var omnifunc : String;
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
-	static var opendevice : Dynamic;
+	var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: string = "v:lua.require'vim._comment'.operator"
@@ -36271,7 +33446,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var operatorfunc : String;
+	var operatorfunc : String;
 	/**
 		```lua
 		(global) table.packpath: string
@@ -36285,7 +33460,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var packpath : String;
+	var packpath : String;
 	/**
 		```lua
 		(global) table.paragraphs: string
@@ -36297,19 +33472,19 @@ package nvim;
 		 of two letters (see `object-motions`).
 		
 	**/
-	static var paragraphs : String;
+	var paragraphs : String;
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
-	static var paste : Dynamic;
+	var paste : Dynamic;
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
-	static var pastetoggle : Dynamic;
+	var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: string
@@ -36323,7 +33498,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var patchexpr : String;
+	var patchexpr : String;
 	/**
 		```lua
 		(global) table.patchmode: string
@@ -36349,7 +33524,7 @@ package nvim;
 		 Only normal file name characters can be used, `/\*?[|<>` are illegal.
 		
 	**/
-	static var patchmode : String;
+	var patchmode : String;
 	/**
 		```lua
 		(global) table.path: string
@@ -36436,7 +33611,7 @@ package nvim;
 		 this doesn't work when $INCL contains a comma or white space.
 		
 	**/
-	static var path : String;
+	var path : String;
 	/**
 		```lua
 		(global) table.preserveindent: boolean
@@ -36458,7 +33633,7 @@ package nvim;
 		 Use `:retab` to clean up white space.
 		
 	**/
-	static var preserveindent : Bool;
+	var preserveindent : Bool;
 	/**
 		```lua
 		(global) table.previewheight: integer
@@ -36470,7 +33645,7 @@ package nvim;
 		 commands.  Used for `CTRL-W_}` when no count is given.
 		
 	**/
-	static var previewheight : Float;
+	var previewheight : Float;
 	/**
 		```lua
 		(global) table.previewwindow: boolean
@@ -36483,13 +33658,13 @@ package nvim;
 		 `:ptag`, `:pedit`, etc.
 		
 	**/
-	static var previewwindow : Bool;
+	var previewwindow : Bool;
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
-	static var prompt : Dynamic;
+	var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: integer
@@ -36514,7 +33689,7 @@ package nvim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	static var pumblend : Float;
+	var pumblend : Float;
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -36526,7 +33701,7 @@ package nvim;
 		 (`ins-completion-menu`). Zero means "use available screen space".
 		
 	**/
-	static var pumheight : Float;
+	var pumheight : Float;
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -36539,7 +33714,7 @@ package nvim;
 		 nudged to fit on the screen.
 		
 	**/
-	static var pumwidth : Float;
+	var pumwidth : Float;
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -36555,7 +33730,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var pyxversion : Float;
+	var pyxversion : Float;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -36576,7 +33751,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var quickfixtextfunc : String;
+	var quickfixtextfunc : String;
 	/**
 		```lua
 		(global) table.quoteescape: string
@@ -36591,7 +33766,7 @@ package nvim;
 		 text "foo\"bar\\" considered to be one string.
 		
 	**/
-	static var quoteescape : String;
+	var quoteescape : String;
 	/**
 		```lua
 		(global) table.readonly: boolean
@@ -36609,7 +33784,7 @@ package nvim;
 		 See 'modifiable' for disallowing changes to the buffer.
 		
 	**/
-	static var readonly : Bool;
+	var readonly : Bool;
 	/**
 		```lua
 		(global) table.redrawdebug: string
@@ -36649,7 +33824,7 @@ package nvim;
 		 		they are unchanged from the already displayed state.
 		
 	**/
-	static var redrawdebug : String;
+	var redrawdebug : String;
 	/**
 		```lua
 		(global) table.redrawtime: integer
@@ -36668,7 +33843,7 @@ package nvim;
 		 pattern.
 		
 	**/
-	static var redrawtime : Float;
+	var redrawtime : Float;
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -36690,7 +33865,7 @@ package nvim;
 		 a complex pattern with long text.
 		
 	**/
-	static var regexpengine : Float;
+	var regexpengine : Float;
 	/**
 		```lua
 		(global) table.relativenumber: boolean = true
@@ -36722,13 +33897,13 @@ package nvim;
 		 options.
 		
 	**/
-	static var relativenumber : Bool;
+	var relativenumber : Bool;
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
-	static var remap : Dynamic;
+	var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: integer
@@ -36743,7 +33918,7 @@ package nvim;
 		 instead of the number of lines.
 		
 	**/
-	static var report : Float;
+	var report : Float;
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -36756,7 +33931,7 @@ package nvim;
 		 command in Insert mode, when 'allowrevins' is set.
 		
 	**/
-	static var revins : Bool;
+	var revins : Bool;
 	/**
 		```lua
 		(global) table.rightleft: boolean
@@ -36775,7 +33950,7 @@ package nvim;
 		 in different windows).  Also see `rileft.txt`.
 		
 	**/
-	static var rightleft : Bool;
+	var rightleft : Bool;
 	/**
 		```lua
 		(global) table.rightleftcmd: string
@@ -36792,7 +33967,7 @@ package nvim;
 		 The 'rightleft' option must be set for 'rightleftcmd' to take effect.
 		
 	**/
-	static var rightleftcmd : String;
+	var rightleftcmd : String;
 	/**
 		```lua
 		(global) table.ruler: boolean
@@ -36824,7 +33999,7 @@ package nvim;
 		 you are, use "g CTRL-G" `g_CTRL-G`.
 		
 	**/
-	static var ruler : Bool;
+	var ruler : Bool;
 	/**
 		```lua
 		(global) table.rulerformat: string
@@ -36847,7 +34022,7 @@ package nvim;
 		
 		
 	**/
-	static var rulerformat : String;
+	var rulerformat : String;
 	/**
 		```lua
 		(global) table.runtimepath: string
@@ -36927,7 +34102,7 @@ package nvim;
 		 With `--clean` the home directory entries are not included.
 		
 	**/
-	static var runtimepath : String;
+	var runtimepath : String;
 	/**
 		```lua
 		(global) table.scroll: integer
@@ -36944,7 +34119,7 @@ package nvim;
 		 height with ":set scroll=0".
 		
 	**/
-	static var scroll : Float;
+	var scroll : Float;
 	/**
 		```lua
 		(global) table.scrollback: integer
@@ -36961,7 +34136,7 @@ package nvim;
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	static var scrollback : Float;
+	var scrollback : Float;
 	/**
 		```lua
 		(global) table.scrollbind: boolean
@@ -36980,7 +34155,7 @@ package nvim;
 		 with scroll-binding, but ":split file" does not.
 		
 	**/
-	static var scrollbind : Bool;
+	var scrollbind : Bool;
 	/**
 		```lua
 		(global) table.scrolljump: integer
@@ -36996,7 +34171,7 @@ package nvim;
 		 height.
 		
 	**/
-	static var scrolljump : Float;
+	var scrolljump : Float;
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -37023,7 +34198,7 @@ package nvim;
 		
 		 Minimal number of screen lines to keep above and below the cursor.
 	**/
-	static var scrolloff : Float;
+	var scrolloff : Float;
 	/**
 		```lua
 		(global) table.scrollopt: string
@@ -37060,7 +34235,7 @@ package nvim;
 		 even when "ver" isn't there.
 		
 	**/
-	static var scrollopt : String;
+	var scrollopt : String;
 	/**
 		```lua
 		(global) table.sections: string
@@ -37073,13 +34248,13 @@ package nvim;
 		 at the nroff macros ".SH", ".NH", ".H", ".HU", ".nh" and ".sh".
 		
 	**/
-	static var sections : String;
+	var sections : String;
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
-	static var secure : Dynamic;
+	var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: 'exclusive'|'inclusive'|'old'
@@ -37113,7 +34288,7 @@ package nvim;
 		   you cannot visually select an empty region).
 		
 	**/
-	static var selection : String;
+	var selection : String;
 	/**
 		```lua
 		(global) table.selectmode: string
@@ -37130,7 +34305,7 @@ package nvim;
 		 See `Select-mode`.
 		
 	**/
-	static var selectmode : String;
+	var selectmode : String;
 	/**
 		```lua
 		(global) table.sessionoptions: string
@@ -37177,7 +34352,7 @@ package nvim;
 		 the session.
 		
 	**/
-	static var sessionoptions : String;
+	var sessionoptions : String;
 	/**
 		```lua
 		(global) table.shada: string
@@ -37300,7 +34475,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shada : String;
+	var shada : String;
 	/**
 		```lua
 		(global) table.shadafile: string
@@ -37316,7 +34491,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shadafile : String;
+	var shadafile : String;
 	/**
 		```lua
 		(global) table.shell: string
@@ -37379,7 +34554,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shell : String;
+	var shell : String;
 	/**
 		```lua
 		(global) table.shellcmdflag: string
@@ -37400,7 +34575,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellcmdflag : String;
+	var shellcmdflag : String;
 	/**
 		```lua
 		(global) table.shellpipe: string
@@ -37438,7 +34613,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellpipe : String;
+	var shellpipe : String;
 	/**
 		```lua
 		(global) table.shellquote: string
@@ -37459,7 +34634,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellquote : String;
+	var shellquote : String;
 	/**
 		```lua
 		(global) table.shellredir: string
@@ -37490,7 +34665,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellredir : String;
+	var shellredir : String;
 	/**
 		```lua
 		(global) table.shellslash: boolean
@@ -37515,7 +34690,7 @@ package nvim;
 		 Also see 'completeslash'.
 		
 	**/
-	static var shellslash : Bool;
+	var shellslash : Bool;
 	/**
 		```lua
 		(global) table.shelltemp: boolean
@@ -37535,7 +34710,7 @@ package nvim;
 		 `system()` does not respect this option, it always uses pipes.
 		
 	**/
-	static var shelltemp : Bool;
+	var shelltemp : Bool;
 	/**
 		```lua
 		(global) table.shellxescape: string
@@ -37550,7 +34725,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellxescape : String;
+	var shellxescape : String;
 	/**
 		```lua
 		(global) table.shellxquote: string
@@ -37569,7 +34744,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var shellxquote : String;
+	var shellxquote : String;
 	/**
 		```lua
 		(global) table.shiftround: boolean
@@ -37582,7 +34757,7 @@ package nvim;
 		 a multiple of 'shiftwidth' (this is Vi compatible).
 		
 	**/
-	static var shiftround : Bool;
+	var shiftround : Bool;
 	/**
 		```lua
 		(global) table.shiftwidth: integer
@@ -37596,7 +34771,7 @@ package nvim;
 		 function to get the effective shiftwidth value.
 		
 	**/
-	static var shiftwidth : Float;
+	var shiftwidth : Float;
 	/**
 		```lua
 		(global) table.shortmess: string
@@ -37661,7 +34836,7 @@ package nvim;
 		     shm=at	Abbreviation, and truncate message when necessary.
 		
 	**/
-	static var shortmess : String;
+	var shortmess : String;
 	/**
 		```lua
 		(global) table.showbreak: string
@@ -37692,7 +34867,7 @@ package nvim;
 		
 		
 	**/
-	static var showbreak : String;
+	var showbreak : String;
 	/**
 		```lua
 		(global) table.showcmd: boolean
@@ -37713,7 +34888,7 @@ package nvim;
 		 'showcmdloc' option, useful when 'cmdheight' is 0.
 		
 	**/
-	static var showcmd : Bool;
+	var showcmd : Bool;
 	/**
 		```lua
 		(global) table.showcmdloc: 'last'|'statusline'|'tabline'
@@ -37734,7 +34909,7 @@ package nvim;
 		 displayed in a convenient location.
 		
 	**/
-	static var showcmdloc : String;
+	var showcmdloc : String;
 	/**
 		```lua
 		(global) table.showfulltag: boolean
@@ -37752,7 +34927,7 @@ package nvim;
 		 match the typed text.
 		
 	**/
-	static var showfulltag : Bool;
+	var showfulltag : Bool;
 	/**
 		```lua
 		(global) table.showmatch: boolean
@@ -37777,7 +34952,7 @@ package nvim;
 		 Note: Use of the short form is rated PG.
 		
 	**/
-	static var showmatch : Bool;
+	var showmatch : Bool;
 	/**
 		```lua
 		(global) table.showmode: boolean
@@ -37790,7 +34965,7 @@ package nvim;
 		 The option has no effect when 'cmdheight' is zero.
 		
 	**/
-	static var showmode : Bool;
+	var showmode : Bool;
 	/**
 		```lua
 		(global) table.showtabline: integer
@@ -37808,7 +34983,7 @@ package nvim;
 		 See `tab-page` for more information about tab pages.
 		
 	**/
-	static var showtabline : Float;
+	var showtabline : Float;
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -37823,7 +34998,7 @@ package nvim;
 		 for "zh" and "zl" commands.
 		
 	**/
-	static var sidescroll : Float;
+	var sidescroll : Float;
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -37859,7 +35034,7 @@ package nvim;
 		
 		
 	**/
-	static var sidescrolloff : Float;
+	var sidescrolloff : Float;
 	/**
 		```lua
 		(global) table.signcolumn: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -37885,7 +35060,7 @@ package nvim;
 		 		column is not present, then behaves like "auto".
 		
 	**/
-	static var signcolumn : String;
+	var signcolumn : String;
 	/**
 		```lua
 		(global) table.smartcase: boolean = true
@@ -37901,7 +35076,7 @@ package nvim;
 		 recalling the search pattern from history and hitting <Enter>.
 		
 	**/
-	static var smartcase : Bool;
+	var smartcase : Bool;
 	/**
 		```lua
 		(global) table.smartindent: boolean
@@ -37930,7 +35105,7 @@ package nvim;
 		 right.
 		
 	**/
-	static var smartindent : Bool;
+	var smartindent : Bool;
 	/**
 		```lua
 		(global) table.smarttab: boolean
@@ -37950,7 +35125,7 @@ package nvim;
 		 number of spaces is minimized by using <Tab>s.
 		
 	**/
-	static var smarttab : Bool;
+	var smarttab : Bool;
 	/**
 		```lua
 		(global) table.smoothscroll: boolean
@@ -37967,7 +35142,7 @@ package nvim;
 		 NOTE: partly implemented, doesn't work yet for `gj` and `gk`.
 		
 	**/
-	static var smoothscroll : Bool;
+	var smoothscroll : Bool;
 	/**
 		```lua
 		(global) table.softtabstop: integer
@@ -37992,7 +35167,7 @@ package nvim;
 		 to anything other than an empty string.
 		
 	**/
-	static var softtabstop : Float;
+	var softtabstop : Float;
 	/**
 		```lua
 		(global) table.spell: boolean
@@ -38004,7 +35179,7 @@ package nvim;
 		 The languages are specified with 'spelllang'.
 		
 	**/
-	static var spell : Bool;
+	var spell : Bool;
 	/**
 		```lua
 		(global) table.spellcapcheck: string
@@ -38023,7 +35198,7 @@ package nvim;
 		 `set-spc-auto`.
 		
 	**/
-	static var spellcapcheck : String;
+	var spellcapcheck : String;
 	/**
 		```lua
 		(global) table.spellfile: string
@@ -38054,7 +35229,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var spellfile : String;
+	var spellfile : String;
 	/**
 		```lua
 		(global) table.spelllang: string
@@ -38103,7 +35278,7 @@ package nvim;
 		 not a dash.  Also see `set-spc-auto`.
 		
 	**/
-	static var spelllang : String;
+	var spelllang : String;
 	/**
 		```lua
 		(global) table.spelloptions: string
@@ -38122,7 +35297,7 @@ package nvim;
 		 		this case.
 		
 	**/
-	static var spelloptions : String;
+	var spelloptions : String;
 	/**
 		```lua
 		(global) table.spellsuggest: string
@@ -38200,7 +35375,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var spellsuggest : String;
+	var spellsuggest : String;
 	/**
 		```lua
 		(global) table.splitbelow: boolean
@@ -38212,7 +35387,7 @@ package nvim;
 		 one. `:split`
 		
 	**/
-	static var splitbelow : Bool;
+	var splitbelow : Bool;
 	/**
 		```lua
 		(global) table.splitkeep: 'cursor'|'screen'|'topline'
@@ -38234,7 +35409,7 @@ package nvim;
 		 be kept on the same screen line when 'wrap' is enabled.
 		
 	**/
-	static var splitkeep : String;
+	var splitkeep : String;
 	/**
 		```lua
 		(global) table.splitright: boolean
@@ -38246,7 +35421,7 @@ package nvim;
 		 current one. `:vsplit`
 		
 	**/
-	static var splitright : Bool;
+	var splitright : Bool;
 	/**
 		```lua
 		(global) table.startofline: boolean
@@ -38267,7 +35442,7 @@ package nvim;
 		 where it was the last time the buffer was edited.
 		
 	**/
-	static var startofline : Bool;
+	var startofline : Bool;
 	/**
 		```lua
 		(global) table.statuscolumn: string
@@ -38331,7 +35506,7 @@ package nvim;
 		 an expensive expression can negatively affect render performance.
 		
 	**/
-	static var statuscolumn : String;
+	var statuscolumn : String;
 	/**
 		```lua
 		(global) table.statusline: string
@@ -38581,7 +35756,7 @@ package nvim;
 		
 		
 	**/
-	static var statusline : String;
+	var statusline : String;
 	/**
 		```lua
 		(global) table.suffixes: string
@@ -38601,7 +35776,7 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var suffixes : String;
+	var suffixes : String;
 	/**
 		```lua
 		(global) table.suffixesadd: string
@@ -38618,7 +35793,7 @@ package nvim;
 		
 		
 	**/
-	static var suffixesadd : String;
+	var suffixesadd : String;
 	/**
 		```lua
 		(global) table.swapfile: boolean
@@ -38646,7 +35821,7 @@ package nvim;
 		 specify special kinds of buffers.   See `special-buffers`.
 		
 	**/
-	static var swapfile : Bool;
+	var swapfile : Bool;
 	/**
 		```lua
 		(global) table.switchbuf: string
@@ -38683,7 +35858,7 @@ package nvim;
 		 applied to the split window.
 		
 	**/
-	static var switchbuf : String;
+	var switchbuf : String;
 	/**
 		```lua
 		(global) table.synmaxcol: integer
@@ -38699,7 +35874,7 @@ package nvim;
 		 Set to zero to remove the limit.
 		
 	**/
-	static var synmaxcol : Float;
+	var synmaxcol : Float;
 	/**
 		```lua
 		(global) table.syntax: string
@@ -38740,7 +35915,7 @@ package nvim;
 		 Only alphanumeric characters, '.', '-' and '_' can be used.
 		
 	**/
-	static var syntax : String;
+	var syntax : String;
 	/**
 		```lua
 		(global) table.tabclose: string
@@ -38759,7 +35934,7 @@ package nvim;
 		 		others.
 		
 	**/
-	static var tabclose : String;
+	var tabclose : String;
 	/**
 		```lua
 		(global) table.tabline: string
@@ -38789,7 +35964,7 @@ package nvim;
 		 are invisible and you can't jump to their windows.
 		
 	**/
-	static var tabline : String;
+	var tabline : String;
 	/**
 		```lua
 		(global) table.tabpagemax: integer
@@ -38801,7 +35976,7 @@ package nvim;
 		 argument or the ":tab all" command. `tabpage`
 		
 	**/
-	static var tabpagemax : Float;
+	var tabpagemax : Float;
 	/**
 		```lua
 		(global) table.tabstop: integer
@@ -38850,7 +36025,7 @@ package nvim;
 		 anything other than an empty string.
 		
 	**/
-	static var tabstop : Float;
+	var tabstop : Float;
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -38910,7 +36085,7 @@ package nvim;
 		 command-line completion and ":help").
 		
 	**/
-	static var tagbsearch : Bool;
+	var tagbsearch : Bool;
 	/**
 		```lua
 		(global) table.tagcase: 'followic'|'followscs'|'ignore'|'match'|'smart'
@@ -38927,7 +36102,7 @@ package nvim;
 		    smart	Ignore case unless an upper case letter is used
 		
 	**/
-	static var tagcase : String;
+	var tagcase : String;
 	/**
 		```lua
 		(global) table.tagfunc: string
@@ -38945,7 +36120,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var tagfunc : String;
+	var tagfunc : String;
 	/**
 		```lua
 		(global) table.taglength: integer
@@ -38956,7 +36131,7 @@ package nvim;
 		 If non-zero, tags are significant up to this number of characters.
 		
 	**/
-	static var taglength : Float;
+	var taglength : Float;
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -38968,7 +36143,7 @@ package nvim;
 		 tags file are relative to the directory where the tags file is.
 		
 	**/
-	static var tagrelative : Bool;
+	var tagrelative : Bool;
 	/**
 		```lua
 		(global) table.tags: string
@@ -38995,7 +36170,7 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var tags : String;
+	var tags : String;
 	/**
 		```lua
 		(global) table.tagstack: boolean
@@ -39012,7 +36187,7 @@ package nvim;
 		 mapping which should not change the tagstack.
 		
 	**/
-	static var tagstack : Bool;
+	var tagstack : Bool;
 	/**
 		```lua
 		(global) table.termbidi: boolean
@@ -39030,13 +36205,13 @@ package nvim;
 		 For further details see `arabic.txt`.
 		
 	**/
-	static var termbidi : Bool;
+	var termbidi : Bool;
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
-	static var termencoding : Dynamic;
+	var termencoding : Dynamic;
 	/**
 		```lua
 		(global) table.termguicolors: boolean
@@ -39053,7 +36228,7 @@ package nvim;
 		 (unless explicitly disabled by the user).
 		
 	**/
-	static var termguicolors : Bool;
+	var termguicolors : Bool;
 	/**
 		```lua
 		(global) table.termpastefilter: string
@@ -39081,7 +36256,7 @@ package nvim;
 		    C1	    Control characters 0x80...0x9F
 		
 	**/
-	static var termpastefilter : String;
+	var termpastefilter : String;
 	/**
 		```lua
 		(global) table.termsync: boolean
@@ -39095,13 +36270,13 @@ package nvim;
 		 when the terminal updates faster than Nvim can redraw.
 		
 	**/
-	static var termsync : Bool;
+	var termsync : Bool;
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
-	static var terse : Dynamic;
+	var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: integer
@@ -39117,7 +36292,7 @@ package nvim;
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	static var textwidth : Float;
+	var textwidth : Float;
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -39141,7 +36316,7 @@ package nvim;
 		 reasons.
 		
 	**/
-	static var thesaurus : String;
+	var thesaurus : String;
 	/**
 		```lua
 		(global) table.thesaurusfunc: string
@@ -39158,7 +36333,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var thesaurusfunc : String;
+	var thesaurusfunc : String;
 	/**
 		```lua
 		(global) table.tildeop: boolean
@@ -39169,7 +36344,7 @@ package nvim;
 		 When on: The tilde command "~" behaves like an operator.
 		
 	**/
-	static var tildeop : Bool;
+	var tildeop : Bool;
 	/**
 		```lua
 		(global) table.timeout: boolean
@@ -39183,7 +36358,7 @@ package nvim;
 		 for any key that can follow <c-f> in a mapping.
 		
 	**/
-	static var timeout : Bool;
+	var timeout : Bool;
 	/**
 		```lua
 		(global) table.timeoutlen: integer
@@ -39194,7 +36369,7 @@ package nvim;
 		 Time in milliseconds to wait for a mapped sequence to complete.
 		
 	**/
-	static var timeoutlen : Float;
+	var timeoutlen : Float;
 	/**
 		```lua
 		(global) table.title: boolean
@@ -39215,7 +36390,7 @@ package nvim;
 		 	- Nvim		the server name `v:servername` or "Nvim"
 		
 	**/
-	static var title : Bool;
+	var title : Bool;
 	/**
 		```lua
 		(global) table.titlelen: integer
@@ -39234,7 +36409,7 @@ package nvim;
 		 'titlelen' is also used for the 'titlestring' option.
 		
 	**/
-	static var titlelen : Float;
+	var titlelen : Float;
 	/**
 		```lua
 		(global) table.titleold: string
@@ -39248,7 +36423,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var titleold : String;
+	var titleold : String;
 	/**
 		```lua
 		(global) table.titlestring: string
@@ -39292,7 +36467,7 @@ package nvim;
 		 to be garbled (e.g., when it contains a CR or NL character).
 		
 	**/
-	static var titlestring : String;
+	var titlestring : String;
 	/**
 		```lua
 		(global) table.ttimeout: boolean
@@ -39313,7 +36488,7 @@ package nvim;
 		 Nvim will wait for the next character to arrive after an <Esc>.
 		
 	**/
-	static var ttimeout : Bool;
+	var ttimeout : Bool;
 	/**
 		```lua
 		(global) table.ttimeoutlen: integer
@@ -39326,13 +36501,13 @@ package nvim;
 		 been typed.
 		
 	**/
-	static var ttimeoutlen : Float;
+	var ttimeoutlen : Float;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
-	static var ttyfast : Dynamic;
+	var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: string
@@ -39362,7 +36537,7 @@ package nvim;
 		 means).
 		
 	**/
-	static var undodir : String;
+	var undodir : String;
 	/**
 		```lua
 		(global) table.undofile: boolean
@@ -39380,7 +36555,7 @@ package nvim;
 		 When 'undofile' is turned off the undo file is NOT deleted.
 		
 	**/
-	static var undofile : Bool;
+	var undofile : Bool;
 	/**
 		```lua
 		(global) table.undolevels: integer
@@ -39413,7 +36588,7 @@ package nvim;
 		 Also see `clear-undo`.
 		
 	**/
-	static var undolevels : Float;
+	var undolevels : Float;
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -39434,7 +36609,7 @@ package nvim;
 		 this option to a lower value if you run out of memory.
 		
 	**/
-	static var undoreload : Float;
+	var undoreload : Float;
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -39455,7 +36630,7 @@ package nvim;
 		 or "nowrite".
 		
 	**/
-	static var updatecount : Float;
+	var updatecount : Float;
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -39468,7 +36643,7 @@ package nvim;
 		 `CursorHold` autocommand event.
 		
 	**/
-	static var updatetime : Float;
+	var updatetime : Float;
 	/**
 		```lua
 		(global) table.varsofttabstop: string
@@ -39496,7 +36671,7 @@ package nvim;
 		 'varsofttabstop' is set.
 		
 	**/
-	static var varsofttabstop : String;
+	var varsofttabstop : String;
 	/**
 		```lua
 		(global) table.vartabstop: string
@@ -39518,7 +36693,7 @@ package nvim;
 		 is set.
 		
 	**/
-	static var vartabstop : String;
+	var vartabstop : String;
 	/**
 		```lua
 		(global) table.verbose: integer
@@ -39554,7 +36729,7 @@ package nvim;
 		 If 'verbosefile' is set then the verbose messages are not displayed.
 		
 	**/
-	static var verbose : Float;
+	var verbose : Float;
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -39573,7 +36748,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var verbosefile : String;
+	var verbosefile : String;
 	/**
 		```lua
 		(global) table.viewdir: string
@@ -39586,7 +36761,7 @@ package nvim;
 		 security reasons.
 		
 	**/
-	static var viewdir : String;
+	var viewdir : String;
 	/**
 		```lua
 		(global) table.viewoptions: string
@@ -39608,7 +36783,7 @@ package nvim;
 		    unix		`deprecated` Always enabled. Uses "\n" line endings.
 		
 	**/
-	static var viewoptions : String;
+	var viewoptions : String;
 	/**
 		```lua
 		(global) table.virtualedit: string
@@ -39644,7 +36819,7 @@ package nvim;
 		 When combined with other words, "none" is ignored.
 		
 	**/
-	static var virtualedit : String;
+	var virtualedit : String;
 	/**
 		```lua
 		(global) table.visualbell: boolean
@@ -39655,7 +36830,7 @@ package nvim;
 		 Use visual bell instead of beeping.  Also see 'errorbells'.
 		
 	**/
-	static var visualbell : Bool;
+	var visualbell : Bool;
 	/**
 		```lua
 		(global) table.warn: boolean
@@ -39667,7 +36842,7 @@ package nvim;
 		 has been changed.
 		
 	**/
-	static var warn : Bool;
+	var warn : Bool;
 	/**
 		```lua
 		(global) table.whichwrap: string
@@ -39706,7 +36881,7 @@ package nvim;
 		 makes "dl", "cl", "yl" etc. work normally.
 		
 	**/
-	static var whichwrap : String;
+	var whichwrap : String;
 	/**
 		```lua
 		(global) table.wildchar: integer
@@ -39735,7 +36910,7 @@ package nvim;
 		
 		
 	**/
-	static var wildchar : Float;
+	var wildchar : Float;
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -39756,7 +36931,7 @@ package nvim;
 		 Then after typing :ss you can use CTRL-P & CTRL-N.
 		
 	**/
-	static var wildcharm : Float;
+	var wildcharm : Float;
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -39780,7 +36955,7 @@ package nvim;
 		 uses another default.
 		
 	**/
-	static var wildignore : String;
+	var wildignore : String;
 	/**
 		```lua
 		(global) table.wildignorecase: boolean
@@ -39794,7 +36969,7 @@ package nvim;
 		 happens when there are special characters.
 		
 	**/
-	static var wildignorecase : Bool;
+	var wildignorecase : Bool;
 	/**
 		```lua
 		(global) table.wildmenu: boolean
@@ -39844,7 +37019,7 @@ package nvim;
 		 `hl-WildMenu` highlights the current match.
 		
 	**/
-	static var wildmenu : Bool;
+	var wildmenu : Bool;
 	/**
 		```lua
 		(global) table.wildmode: string
@@ -39925,7 +37100,7 @@ package nvim;
 		 More info here: `cmdline-completion`.
 		
 	**/
-	static var wildmode : String;
+	var wildmode : String;
 	/**
 		```lua
 		(global) table.wildoptions: string
@@ -39952,7 +37127,7 @@ package nvim;
 		 			f	function
 		
 	**/
-	static var wildoptions : String;
+	var wildoptions : String;
 	/**
 		```lua
 		(global) table.winaltkeys: 'menu'|'no'|'yes'
@@ -39977,7 +37152,7 @@ package nvim;
 		 This option is not used for <F10>; on Win32.
 		
 	**/
-	static var winaltkeys : String;
+	var winaltkeys : String;
 	/**
 		```lua
 		(global) table.winbar: string
@@ -40000,7 +37175,7 @@ package nvim;
 		 This option cannot be set in a modeline when 'modelineexpr' is off.
 		
 	**/
-	static var winbar : String;
+	var winbar : String;
 	/**
 		```lua
 		(global) table.winblend: integer
@@ -40015,7 +37190,7 @@ package nvim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	static var winblend : Float;
+	var winblend : Float;
 	/**
 		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
@@ -40034,7 +37209,7 @@ package nvim;
 		 - "solid": Adds padding by a single whitespace cell.
 		
 	**/
-	static var winborder : String;
+	var winborder : String;
 	/**
 		```lua
 		(global) table.window: integer
@@ -40053,7 +37228,7 @@ package nvim;
 		 'lines' for that.
 		
 	**/
-	static var window : Float;
+	var window : Float;
 	/**
 		```lua
 		(global) table.winfixbuf: boolean
@@ -40068,7 +37243,7 @@ package nvim;
 		 command has a "!" modifier, it can force switching buffers.
 		
 	**/
-	static var winfixbuf : Bool;
+	var winfixbuf : Bool;
 	/**
 		```lua
 		(global) table.winfixheight: boolean
@@ -40082,7 +37257,7 @@ package nvim;
 		 The height may be changed anyway when running out of room.
 		
 	**/
-	static var winfixheight : Bool;
+	var winfixheight : Bool;
 	/**
 		```lua
 		(global) table.winfixwidth: boolean
@@ -40095,7 +37270,7 @@ package nvim;
 		 The width may be changed anyway when running out of room.
 		
 	**/
-	static var winfixwidth : Bool;
+	var winfixwidth : Bool;
 	/**
 		```lua
 		(global) table.winheight: integer
@@ -40124,7 +37299,7 @@ package nvim;
 		 the minimal height for other windows.
 		
 	**/
-	static var winheight : Float;
+	var winheight : Float;
 	/**
 		```lua
 		(global) table.winhighlight: string
@@ -40154,7 +37329,7 @@ package nvim;
 		
 		
 	**/
-	static var winhighlight : String;
+	var winhighlight : String;
 	/**
 		```lua
 		(global) table.winminheight: integer
@@ -40173,7 +37348,7 @@ package nvim;
 		 windows.  A value of 0 to 3 is reasonable.
 		
 	**/
-	static var winminheight : Float;
+	var winminheight : Float;
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -40193,7 +37368,7 @@ package nvim;
 		 windows.  A value of 0 to 12 is reasonable.
 		
 	**/
-	static var winminwidth : Float;
+	var winminwidth : Float;
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -40212,7 +37387,7 @@ package nvim;
 		 the minimal width for other windows.
 		
 	**/
-	static var winwidth : Float;
+	var winwidth : Float;
 	/**
 		```lua
 		(global) table.wrap: boolean
@@ -40240,7 +37415,7 @@ package nvim;
 		 on.
 		
 	**/
-	static var wrap : Bool;
+	var wrap : Bool;
 	/**
 		```lua
 		(global) table.wrapmargin: integer
@@ -40257,7 +37432,7 @@ package nvim;
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	static var wrapmargin : Float;
+	var wrapmargin : Float;
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -40269,7 +37444,7 @@ package nvim;
 		 `[s`, searching for spelling mistakes.
 		
 	**/
-	static var wrapscan : Bool;
+	var wrapscan : Bool;
 	/**
 		```lua
 		(global) table.write: boolean
@@ -40284,7 +37459,7 @@ package nvim;
 		 writing a temporary file.
 		
 	**/
-	static var write : Bool;
+	var write : Bool;
 	/**
 		```lua
 		(global) table.writeany: boolean
@@ -40295,7 +37470,7 @@ package nvim;
 		 Allows writing to any file with no need for "!" override.
 		
 	**/
-	static var writeany : Bool;
+	var writeany : Bool;
 	/**
 		```lua
 		(global) table.writebackup: boolean
@@ -40317,7 +37492,7 @@ package nvim;
 		 file renamed (and a new file is written).
 		
 	**/
-	static var writebackup : Bool;
+	var writebackup : Bool;
 	/**
 		```lua
 		(global) table.writedelay: integer
@@ -40329,7 +37504,7 @@ package nvim;
 		 The number of milliseconds to wait after each line or each flush
 		
 	**/
-	static var writedelay : Float;
+	var writedelay : Float;
 }
 
 /**
@@ -40341,2185 +37516,2185 @@ package nvim;
 	
 	 @nodoc
 **/
-@:native("vim.opt") extern class Opt {
+extern class Opt {
 	/**
 		```lua
 		(global) table.aleph: unknown
 		```
 	**/
-	static var aleph : Dynamic;
+	var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
-	static var allowrevins : Dynamic;
+	var allowrevins : Dynamic;
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
-	static var ambiwidth : Dynamic;
+	var ambiwidth : Dynamic;
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
-	static var arabic : Dynamic;
+	var arabic : Dynamic;
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
-	static var arabicshape : Dynamic;
+	var arabicshape : Dynamic;
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
-	static var autochdir : Dynamic;
+	var autochdir : Dynamic;
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
-	static var autoindent : Dynamic;
+	var autoindent : Dynamic;
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
-	static var autoread : Dynamic;
+	var autoread : Dynamic;
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
-	static var autowrite : Dynamic;
+	var autowrite : Dynamic;
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
-	static var autowriteall : Dynamic;
+	var autowriteall : Dynamic;
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
-	static var background : Dynamic;
+	var background : Dynamic;
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
-	static var backspace : Dynamic;
+	var backspace : Dynamic;
 	/**
 		```lua
 		(global) table.backup: boolean = false
 		```
 	**/
-	static var backup : Bool;
+	var backup : Bool;
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
-	static var backupcopy : Dynamic;
+	var backupcopy : Dynamic;
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
-	static var backupdir : Dynamic;
+	var backupdir : Dynamic;
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
-	static var backupext : Dynamic;
+	var backupext : Dynamic;
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
-	static var backupskip : Dynamic;
+	var backupskip : Dynamic;
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
-	static var belloff : Dynamic;
+	var belloff : Dynamic;
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
-	static var binary : Dynamic;
+	var binary : Dynamic;
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
-	static var bomb : Dynamic;
+	var bomb : Dynamic;
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
-	static var breakat : Dynamic;
+	var breakat : Dynamic;
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
-	static var breakindent : Dynamic;
+	var breakindent : Dynamic;
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
-	static var breakindentopt : Dynamic;
+	var breakindentopt : Dynamic;
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
-	static var browsedir : Dynamic;
+	var browsedir : Dynamic;
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
-	static var bufhidden : Dynamic;
+	var bufhidden : Dynamic;
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
-	static var buflisted : Dynamic;
+	var buflisted : Dynamic;
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
-	static var buftype : Dynamic;
+	var buftype : Dynamic;
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
-	static var casemap : Dynamic;
+	var casemap : Dynamic;
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
-	static var cdhome : Dynamic;
+	var cdhome : Dynamic;
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
-	static var cdpath : Dynamic;
+	var cdpath : Dynamic;
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
-	static var cedit : Dynamic;
+	var cedit : Dynamic;
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
-	static var channel : Dynamic;
+	var channel : Dynamic;
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
-	static var charconvert : Dynamic;
+	var charconvert : Dynamic;
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
-	static var cindent : Dynamic;
+	var cindent : Dynamic;
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
-	static var cinkeys : Dynamic;
+	var cinkeys : Dynamic;
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
-	static var cinoptions : Dynamic;
+	var cinoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
-	static var cinscopedecls : Dynamic;
+	var cinscopedecls : Dynamic;
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
-	static var cinwords : Dynamic;
+	var cinwords : Dynamic;
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
-	static var clipboard : Dynamic;
+	var clipboard : Dynamic;
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
-	static var cmdheight : Dynamic;
+	var cmdheight : Dynamic;
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
-	static var cmdwinheight : Dynamic;
+	var cmdwinheight : Dynamic;
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
-	static var colorcolumn : Dynamic;
+	var colorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
-	static var columns : Dynamic;
+	var columns : Dynamic;
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
-	static var comments : Dynamic;
+	var comments : Dynamic;
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
-	static var commentstring : Dynamic;
+	var commentstring : Dynamic;
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
-	static var compatible : Dynamic;
+	var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
-	static var complete : Dynamic;
+	var complete : Dynamic;
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
-	static var completefunc : Dynamic;
+	var completefunc : Dynamic;
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
-	static var completeitemalign : Dynamic;
+	var completeitemalign : Dynamic;
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
-	static var completeopt : Dynamic;
+	var completeopt : Dynamic;
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
-	static var completeslash : Dynamic;
+	var completeslash : Dynamic;
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
-	static var concealcursor : Dynamic;
+	var concealcursor : Dynamic;
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
-	static var conceallevel : Dynamic;
+	var conceallevel : Dynamic;
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
-	static var confirm : Dynamic;
+	var confirm : Dynamic;
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
-	static var copyindent : Dynamic;
+	var copyindent : Dynamic;
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
-	static var cpoptions : Dynamic;
+	var cpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
-	static var cursorbind : Dynamic;
+	var cursorbind : Dynamic;
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
-	static var cursorcolumn : Dynamic;
+	var cursorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
-	static var cursorline : Dynamic;
+	var cursorline : Dynamic;
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
-	static var cursorlineopt : Dynamic;
+	var cursorlineopt : Dynamic;
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
-	static var debug : Dynamic;
+	var debug : Dynamic;
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
-	static var define : Dynamic;
+	var define : Dynamic;
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
-	static var delcombine : Dynamic;
+	var delcombine : Dynamic;
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
-	static var dictionary : Dynamic;
+	var dictionary : Dynamic;
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
-	static var diff : Dynamic;
+	var diff : Dynamic;
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
-	static var diffexpr : Dynamic;
+	var diffexpr : Dynamic;
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
-	static var diffopt : Dynamic;
+	var diffopt : Dynamic;
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
-	static var digraph : Dynamic;
+	var digraph : Dynamic;
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
-	static var directory : Dynamic;
+	var directory : Dynamic;
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
-	static var display : Dynamic;
+	var display : Dynamic;
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
-	static var eadirection : Dynamic;
+	var eadirection : Dynamic;
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
-	static var edcompatible : Dynamic;
+	var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
-	static var emoji : Dynamic;
+	var emoji : Dynamic;
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
-	static var encoding : Dynamic;
+	var encoding : Dynamic;
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
-	static var endoffile : Dynamic;
+	var endoffile : Dynamic;
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
-	static var endofline : Dynamic;
+	var endofline : Dynamic;
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
-	static var equalalways : Dynamic;
+	var equalalways : Dynamic;
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
-	static var equalprg : Dynamic;
+	var equalprg : Dynamic;
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
-	static var errorbells : Dynamic;
+	var errorbells : Dynamic;
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
-	static var errorfile : Dynamic;
+	var errorfile : Dynamic;
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
-	static var errorformat : Dynamic;
+	var errorformat : Dynamic;
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
-	static var eventignore : Dynamic;
+	var eventignore : Dynamic;
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
-	static var eventignorewin : Dynamic;
+	var eventignorewin : Dynamic;
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
-	static var expandtab : Dynamic;
+	var expandtab : Dynamic;
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
-	static var exrc : Dynamic;
+	var exrc : Dynamic;
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
-	static var fileencoding : Dynamic;
+	var fileencoding : Dynamic;
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
-	static var fileencodings : Dynamic;
+	var fileencodings : Dynamic;
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
-	static var fileformat : Dynamic;
+	var fileformat : Dynamic;
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
-	static var fileformats : Dynamic;
+	var fileformats : Dynamic;
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
-	static var fileignorecase : Dynamic;
+	var fileignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
-	static var filetype : Dynamic;
+	var filetype : Dynamic;
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
-	static var fillchars : Dynamic;
+	var fillchars : Dynamic;
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
-	static var findfunc : Dynamic;
+	var findfunc : Dynamic;
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
-	static var fixendofline : Dynamic;
+	var fixendofline : Dynamic;
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
-	static var foldclose : Dynamic;
+	var foldclose : Dynamic;
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
-	static var foldcolumn : Dynamic;
+	var foldcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
-	static var foldenable : Dynamic;
+	var foldenable : Dynamic;
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
-	static var foldexpr : Dynamic;
+	var foldexpr : Dynamic;
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
-	static var foldignore : Dynamic;
+	var foldignore : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
-	static var foldlevel : Dynamic;
+	var foldlevel : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
-	static var foldlevelstart : Dynamic;
+	var foldlevelstart : Dynamic;
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
-	static var foldmarker : Dynamic;
+	var foldmarker : Dynamic;
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
-	static var foldmethod : Dynamic;
+	var foldmethod : Dynamic;
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
-	static var foldminlines : Dynamic;
+	var foldminlines : Dynamic;
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
-	static var foldnestmax : Dynamic;
+	var foldnestmax : Dynamic;
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
-	static var foldopen : Dynamic;
+	var foldopen : Dynamic;
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
-	static var foldtext : Dynamic;
+	var foldtext : Dynamic;
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
-	static var formatexpr : Dynamic;
+	var formatexpr : Dynamic;
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
-	static var formatlistpat : Dynamic;
+	var formatlistpat : Dynamic;
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
-	static var formatoptions : Dynamic;
+	var formatoptions : Dynamic;
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
-	static var formatprg : Dynamic;
+	var formatprg : Dynamic;
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
-	static var fsync : Dynamic;
+	var fsync : Dynamic;
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
-	static var gdefault : Dynamic;
+	var gdefault : Dynamic;
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
-	static var grepformat : Dynamic;
+	var grepformat : Dynamic;
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
-	static var grepprg : Dynamic;
+	var grepprg : Dynamic;
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
-	static var guicursor : Dynamic;
+	var guicursor : Dynamic;
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
-	static var guifont : Dynamic;
+	var guifont : Dynamic;
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
-	static var guifontwide : Dynamic;
+	var guifontwide : Dynamic;
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
-	static var guioptions : Dynamic;
+	var guioptions : Dynamic;
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
-	static var guitablabel : Dynamic;
+	var guitablabel : Dynamic;
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
-	static var guitabtooltip : Dynamic;
+	var guitabtooltip : Dynamic;
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
-	static var helpfile : Dynamic;
+	var helpfile : Dynamic;
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
-	static var helpheight : Dynamic;
+	var helpheight : Dynamic;
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
-	static var helplang : Dynamic;
+	var helplang : Dynamic;
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
-	static var hidden : Dynamic;
+	var hidden : Dynamic;
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
-	static var highlight : Dynamic;
+	var highlight : Dynamic;
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
-	static var history : Dynamic;
+	var history : Dynamic;
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
-	static var hkmap : Dynamic;
+	var hkmap : Dynamic;
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
-	static var hkmapp : Dynamic;
+	var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
-	static var hlsearch : Dynamic;
+	var hlsearch : Dynamic;
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
-	static var icon : Dynamic;
+	var icon : Dynamic;
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
-	static var iconstring : Dynamic;
+	var iconstring : Dynamic;
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
-	static var ignorecase : Dynamic;
+	var ignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
-	static var imcmdline : Dynamic;
+	var imcmdline : Dynamic;
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
-	static var imdisable : Dynamic;
+	var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
-	static var iminsert : Dynamic;
+	var iminsert : Dynamic;
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
-	static var imsearch : Dynamic;
+	var imsearch : Dynamic;
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
-	static var inccommand : Dynamic;
+	var inccommand : Dynamic;
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
-	static var include : Dynamic;
+	var include : Dynamic;
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
-	static var includeexpr : Dynamic;
+	var includeexpr : Dynamic;
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
-	static var incsearch : Dynamic;
+	var incsearch : Dynamic;
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
-	static var indentexpr : Dynamic;
+	var indentexpr : Dynamic;
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
-	static var indentkeys : Dynamic;
+	var indentkeys : Dynamic;
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
-	static var infercase : Dynamic;
+	var infercase : Dynamic;
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
-	static var insertmode : Dynamic;
+	var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
-	static var isfname : Dynamic;
+	var isfname : Dynamic;
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
-	static var isident : Dynamic;
+	var isident : Dynamic;
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
-	static var iskeyword : Dynamic;
+	var iskeyword : Dynamic;
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
-	static var isprint : Dynamic;
+	var isprint : Dynamic;
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
-	static var joinspaces : Dynamic;
+	var joinspaces : Dynamic;
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
-	static var jumpoptions : Dynamic;
+	var jumpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
-	static var keymap : Dynamic;
+	var keymap : Dynamic;
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
-	static var keymodel : Dynamic;
+	var keymodel : Dynamic;
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
-	static var keywordprg : Dynamic;
+	var keywordprg : Dynamic;
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
-	static var langmap : Dynamic;
+	var langmap : Dynamic;
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
-	static var langmenu : Dynamic;
+	var langmenu : Dynamic;
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
-	static var langnoremap : Dynamic;
+	var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
-	static var langremap : Dynamic;
+	var langremap : Dynamic;
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
-	static var laststatus : Dynamic;
+	var laststatus : Dynamic;
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
-	static var lazyredraw : Dynamic;
+	var lazyredraw : Dynamic;
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
-	static var linebreak : Dynamic;
+	var linebreak : Dynamic;
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
-	static var lines : Dynamic;
+	var lines : Dynamic;
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
-	static var linespace : Dynamic;
+	var linespace : Dynamic;
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
-	static var lisp : Dynamic;
+	var lisp : Dynamic;
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
-	static var lispoptions : Dynamic;
+	var lispoptions : Dynamic;
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
-	static var lispwords : Dynamic;
+	var lispwords : Dynamic;
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
-	static var list : Dynamic;
+	var list : Dynamic;
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
-	static var listchars : Dynamic;
+	var listchars : Dynamic;
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
-	static var loadplugins : Dynamic;
+	var loadplugins : Dynamic;
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
-	static var magic : Dynamic;
+	var magic : Dynamic;
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
-	static var makeef : Dynamic;
+	var makeef : Dynamic;
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
-	static var makeencoding : Dynamic;
+	var makeencoding : Dynamic;
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
-	static var makeprg : Dynamic;
+	var makeprg : Dynamic;
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
-	static var matchpairs : Dynamic;
+	var matchpairs : Dynamic;
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
-	static var matchtime : Dynamic;
+	var matchtime : Dynamic;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
-	static var maxcombine : Dynamic;
+	var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
-	static var maxfuncdepth : Dynamic;
+	var maxfuncdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
-	static var maxmapdepth : Dynamic;
+	var maxmapdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
-	static var maxmempattern : Dynamic;
+	var maxmempattern : Dynamic;
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
-	static var menuitems : Dynamic;
+	var menuitems : Dynamic;
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
-	static var messagesopt : Dynamic;
+	var messagesopt : Dynamic;
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
-	static var mkspellmem : Dynamic;
+	var mkspellmem : Dynamic;
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
-	static var modeline : Dynamic;
+	var modeline : Dynamic;
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
-	static var modelineexpr : Dynamic;
+	var modelineexpr : Dynamic;
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
-	static var modelines : Dynamic;
+	var modelines : Dynamic;
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
-	static var modifiable : Dynamic;
+	var modifiable : Dynamic;
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
-	static var modified : Dynamic;
+	var modified : Dynamic;
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
-	static var more : Dynamic;
+	var more : Dynamic;
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
-	static var mouse : Dynamic;
+	var mouse : Dynamic;
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
-	static var mousefocus : Dynamic;
+	var mousefocus : Dynamic;
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
-	static var mousehide : Dynamic;
+	var mousehide : Dynamic;
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
-	static var mousemodel : Dynamic;
+	var mousemodel : Dynamic;
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
-	static var mousemoveevent : Dynamic;
+	var mousemoveevent : Dynamic;
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
-	static var mousescroll : Dynamic;
+	var mousescroll : Dynamic;
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
-	static var mouseshape : Dynamic;
+	var mouseshape : Dynamic;
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
-	static var mousetime : Dynamic;
+	var mousetime : Dynamic;
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
-	static var nrformats : Dynamic;
+	var nrformats : Dynamic;
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
-	static var number : Dynamic;
+	var number : Dynamic;
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
-	static var numberwidth : Dynamic;
+	var numberwidth : Dynamic;
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
-	static var omnifunc : Dynamic;
+	var omnifunc : Dynamic;
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
-	static var opendevice : Dynamic;
+	var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
-	static var operatorfunc : Dynamic;
+	var operatorfunc : Dynamic;
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
-	static var packpath : Dynamic;
+	var packpath : Dynamic;
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
-	static var paragraphs : Dynamic;
+	var paragraphs : Dynamic;
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
-	static var paste : Dynamic;
+	var paste : Dynamic;
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
-	static var pastetoggle : Dynamic;
+	var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
-	static var patchexpr : Dynamic;
+	var patchexpr : Dynamic;
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
-	static var patchmode : Dynamic;
+	var patchmode : Dynamic;
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
-	static var path : Dynamic;
+	var path : Dynamic;
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
-	static var preserveindent : Dynamic;
+	var preserveindent : Dynamic;
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
-	static var previewheight : Dynamic;
+	var previewheight : Dynamic;
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
-	static var previewwindow : Dynamic;
+	var previewwindow : Dynamic;
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
-	static var prompt : Dynamic;
+	var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
-	static var pumblend : Dynamic;
+	var pumblend : Dynamic;
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
-	static var pumheight : Dynamic;
+	var pumheight : Dynamic;
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
-	static var pumwidth : Dynamic;
+	var pumwidth : Dynamic;
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
-	static var pyxversion : Dynamic;
+	var pyxversion : Dynamic;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
-	static var quickfixtextfunc : Dynamic;
+	var quickfixtextfunc : Dynamic;
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
-	static var quoteescape : Dynamic;
+	var quoteescape : Dynamic;
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
-	static var readonly : Dynamic;
+	var readonly : Dynamic;
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
-	static var redrawdebug : Dynamic;
+	var redrawdebug : Dynamic;
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
-	static var redrawtime : Dynamic;
+	var redrawtime : Dynamic;
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
-	static var regexpengine : Dynamic;
+	var regexpengine : Dynamic;
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
-	static var relativenumber : Dynamic;
+	var relativenumber : Dynamic;
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
-	static var remap : Dynamic;
+	var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
-	static var report : Dynamic;
+	var report : Dynamic;
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
-	static var revins : Dynamic;
+	var revins : Dynamic;
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
-	static var rightleft : Dynamic;
+	var rightleft : Dynamic;
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
-	static var rightleftcmd : Dynamic;
+	var rightleftcmd : Dynamic;
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
-	static var ruler : Dynamic;
+	var ruler : Dynamic;
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
-	static var rulerformat : Dynamic;
+	var rulerformat : Dynamic;
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
-	static var runtimepath : Dynamic;
+	var runtimepath : Dynamic;
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
-	static var scroll : Dynamic;
+	var scroll : Dynamic;
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
-	static var scrollback : Dynamic;
+	var scrollback : Dynamic;
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
-	static var scrollbind : Dynamic;
+	var scrollbind : Dynamic;
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
-	static var scrolljump : Dynamic;
+	var scrolljump : Dynamic;
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
-	static var scrolloff : Dynamic;
+	var scrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
-	static var scrollopt : Dynamic;
+	var scrollopt : Dynamic;
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
-	static var sections : Dynamic;
+	var sections : Dynamic;
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
-	static var secure : Dynamic;
+	var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
-	static var selection : Dynamic;
+	var selection : Dynamic;
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
-	static var selectmode : Dynamic;
+	var selectmode : Dynamic;
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
-	static var sessionoptions : Dynamic;
+	var sessionoptions : Dynamic;
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
-	static var shada : Dynamic;
+	var shada : Dynamic;
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
-	static var shadafile : Dynamic;
+	var shadafile : Dynamic;
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
-	static var shell : Dynamic;
+	var shell : Dynamic;
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
-	static var shellcmdflag : Dynamic;
+	var shellcmdflag : Dynamic;
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
-	static var shellpipe : Dynamic;
+	var shellpipe : Dynamic;
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
-	static var shellquote : Dynamic;
+	var shellquote : Dynamic;
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
-	static var shellredir : Dynamic;
+	var shellredir : Dynamic;
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
-	static var shellslash : Dynamic;
+	var shellslash : Dynamic;
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
-	static var shelltemp : Dynamic;
+	var shelltemp : Dynamic;
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
-	static var shellxescape : Dynamic;
+	var shellxescape : Dynamic;
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
-	static var shellxquote : Dynamic;
+	var shellxquote : Dynamic;
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
-	static var shiftround : Dynamic;
+	var shiftround : Dynamic;
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
-	static var shiftwidth : Dynamic;
+	var shiftwidth : Dynamic;
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
-	static var shortmess : Dynamic;
+	var shortmess : Dynamic;
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
-	static var showbreak : Dynamic;
+	var showbreak : Dynamic;
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
-	static var showcmd : Dynamic;
+	var showcmd : Dynamic;
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
-	static var showcmdloc : Dynamic;
+	var showcmdloc : Dynamic;
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
-	static var showfulltag : Dynamic;
+	var showfulltag : Dynamic;
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
-	static var showmatch : Dynamic;
+	var showmatch : Dynamic;
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
-	static var showmode : Dynamic;
+	var showmode : Dynamic;
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
-	static var showtabline : Dynamic;
+	var showtabline : Dynamic;
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
-	static var sidescroll : Dynamic;
+	var sidescroll : Dynamic;
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
-	static var sidescrolloff : Dynamic;
+	var sidescrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
-	static var signcolumn : Dynamic;
+	var signcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
-	static var smartcase : Dynamic;
+	var smartcase : Dynamic;
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
-	static var smartindent : Dynamic;
+	var smartindent : Dynamic;
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
-	static var smarttab : Dynamic;
+	var smarttab : Dynamic;
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
-	static var smoothscroll : Dynamic;
+	var smoothscroll : Dynamic;
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
-	static var softtabstop : Dynamic;
+	var softtabstop : Dynamic;
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
-	static var spell : Dynamic;
+	var spell : Dynamic;
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
-	static var spellcapcheck : Dynamic;
+	var spellcapcheck : Dynamic;
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
-	static var spellfile : Dynamic;
+	var spellfile : Dynamic;
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
-	static var spelllang : Dynamic;
+	var spelllang : Dynamic;
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
-	static var spelloptions : Dynamic;
+	var spelloptions : Dynamic;
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
-	static var spellsuggest : Dynamic;
+	var spellsuggest : Dynamic;
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
-	static var splitbelow : Dynamic;
+	var splitbelow : Dynamic;
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
-	static var splitkeep : Dynamic;
+	var splitkeep : Dynamic;
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
-	static var splitright : Dynamic;
+	var splitright : Dynamic;
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
-	static var startofline : Dynamic;
+	var startofline : Dynamic;
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
-	static var statuscolumn : Dynamic;
+	var statuscolumn : Dynamic;
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
-	static var statusline : Dynamic;
+	var statusline : Dynamic;
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
-	static var suffixes : Dynamic;
+	var suffixes : Dynamic;
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
-	static var suffixesadd : Dynamic;
+	var suffixesadd : Dynamic;
 	/**
 		```lua
 		(global) table.swapfile: boolean = false
 		```
 	**/
-	static var swapfile : Bool;
+	var swapfile : Bool;
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
-	static var switchbuf : Dynamic;
+	var switchbuf : Dynamic;
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
-	static var synmaxcol : Dynamic;
+	var synmaxcol : Dynamic;
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
-	static var syntax : Dynamic;
+	var syntax : Dynamic;
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
-	static var tabclose : Dynamic;
+	var tabclose : Dynamic;
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
-	static var tabline : Dynamic;
+	var tabline : Dynamic;
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
-	static var tabpagemax : Dynamic;
+	var tabpagemax : Dynamic;
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
-	static var tabstop : Dynamic;
+	var tabstop : Dynamic;
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
-	static var tagbsearch : Dynamic;
+	var tagbsearch : Dynamic;
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
-	static var tagcase : Dynamic;
+	var tagcase : Dynamic;
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
-	static var tagfunc : Dynamic;
+	var tagfunc : Dynamic;
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
-	static var taglength : Dynamic;
+	var taglength : Dynamic;
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
-	static var tagrelative : Dynamic;
+	var tagrelative : Dynamic;
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
-	static var tags : Dynamic;
+	var tags : Dynamic;
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
-	static var tagstack : Dynamic;
+	var tagstack : Dynamic;
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
-	static var termbidi : Dynamic;
+	var termbidi : Dynamic;
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
-	static var termencoding : Dynamic;
+	var termencoding : Dynamic;
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
-	static var termguicolors : Dynamic;
+	var termguicolors : Dynamic;
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
-	static var termpastefilter : Dynamic;
+	var termpastefilter : Dynamic;
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
-	static var termsync : Dynamic;
+	var termsync : Dynamic;
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
-	static var terse : Dynamic;
+	var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
-	static var textwidth : Dynamic;
+	var textwidth : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
-	static var thesaurus : Dynamic;
+	var thesaurus : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
-	static var thesaurusfunc : Dynamic;
+	var thesaurusfunc : Dynamic;
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
-	static var tildeop : Dynamic;
+	var tildeop : Dynamic;
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
-	static var timeout : Dynamic;
+	var timeout : Dynamic;
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
-	static var timeoutlen : Dynamic;
+	var timeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
-	static var title : Dynamic;
+	var title : Dynamic;
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
-	static var titlelen : Dynamic;
+	var titlelen : Dynamic;
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
-	static var titleold : Dynamic;
+	var titleold : Dynamic;
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
-	static var titlestring : Dynamic;
+	var titlestring : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
-	static var ttimeout : Dynamic;
+	var ttimeout : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
-	static var ttimeoutlen : Dynamic;
+	var ttimeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
-	static var ttyfast : Dynamic;
+	var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
-	static var undodir : Dynamic;
+	var undodir : Dynamic;
 	/**
 		```lua
 		(global) table.undofile: boolean = false
 		```
 	**/
-	static var undofile : Bool;
+	var undofile : Bool;
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
-	static var undolevels : Dynamic;
+	var undolevels : Dynamic;
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
-	static var undoreload : Dynamic;
+	var undoreload : Dynamic;
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
-	static var updatecount : Dynamic;
+	var updatecount : Dynamic;
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
-	static var updatetime : Dynamic;
+	var updatetime : Dynamic;
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
-	static var varsofttabstop : Dynamic;
+	var varsofttabstop : Dynamic;
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
-	static var vartabstop : Dynamic;
+	var vartabstop : Dynamic;
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
-	static var verbose : Dynamic;
+	var verbose : Dynamic;
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
-	static var verbosefile : Dynamic;
+	var verbosefile : Dynamic;
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
-	static var viewdir : Dynamic;
+	var viewdir : Dynamic;
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
-	static var viewoptions : Dynamic;
+	var viewoptions : Dynamic;
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
-	static var virtualedit : Dynamic;
+	var virtualedit : Dynamic;
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
-	static var visualbell : Dynamic;
+	var visualbell : Dynamic;
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
-	static var warn : Dynamic;
+	var warn : Dynamic;
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
-	static var whichwrap : Dynamic;
+	var whichwrap : Dynamic;
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
-	static var wildchar : Dynamic;
+	var wildchar : Dynamic;
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
-	static var wildcharm : Dynamic;
+	var wildcharm : Dynamic;
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
-	static var wildignore : Dynamic;
+	var wildignore : Dynamic;
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
-	static var wildignorecase : Dynamic;
+	var wildignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
-	static var wildmenu : Dynamic;
+	var wildmenu : Dynamic;
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
-	static var wildmode : Dynamic;
+	var wildmode : Dynamic;
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
-	static var wildoptions : Dynamic;
+	var wildoptions : Dynamic;
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
-	static var winaltkeys : Dynamic;
+	var winaltkeys : Dynamic;
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
-	static var winbar : Dynamic;
+	var winbar : Dynamic;
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
-	static var winblend : Dynamic;
+	var winblend : Dynamic;
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
-	static var winborder : Dynamic;
+	var winborder : Dynamic;
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
-	static var window : Dynamic;
+	var window : Dynamic;
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
-	static var winfixbuf : Dynamic;
+	var winfixbuf : Dynamic;
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
-	static var winfixheight : Dynamic;
+	var winfixheight : Dynamic;
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
-	static var winfixwidth : Dynamic;
+	var winfixwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
-	static var winheight : Dynamic;
+	var winheight : Dynamic;
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
-	static var winhighlight : Dynamic;
+	var winhighlight : Dynamic;
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
-	static var winminheight : Dynamic;
+	var winminheight : Dynamic;
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
-	static var winminwidth : Dynamic;
+	var winminwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
-	static var winwidth : Dynamic;
+	var winwidth : Dynamic;
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
-	static var wrap : Dynamic;
+	var wrap : Dynamic;
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
-	static var wrapmargin : Dynamic;
+	var wrapmargin : Dynamic;
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
-	static var wrapscan : Dynamic;
+	var wrapscan : Dynamic;
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
-	static var write : Dynamic;
+	var write : Dynamic;
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
-	static var writeany : Dynamic;
+	var writeany : Dynamic;
 	/**
 		```lua
 		(global) table.writebackup: boolean = false
 		```
 	**/
-	static var writebackup : Bool;
+	var writebackup : Bool;
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
-	static var writedelay : Dynamic;
+	var writedelay : Dynamic;
 }
 
 /**
@@ -42531,2185 +39706,2185 @@ package nvim;
 	
 	 @nodoc
 **/
-@:native("vim.opt_global") extern class OptGlobal {
+extern class OptGlobal {
 	/**
 		```lua
 		(global) table.aleph: unknown
 		```
 	**/
-	static var aleph : Dynamic;
+	var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
-	static var allowrevins : Dynamic;
+	var allowrevins : Dynamic;
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
-	static var ambiwidth : Dynamic;
+	var ambiwidth : Dynamic;
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
-	static var arabic : Dynamic;
+	var arabic : Dynamic;
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
-	static var arabicshape : Dynamic;
+	var arabicshape : Dynamic;
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
-	static var autochdir : Dynamic;
+	var autochdir : Dynamic;
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
-	static var autoindent : Dynamic;
+	var autoindent : Dynamic;
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
-	static var autoread : Dynamic;
+	var autoread : Dynamic;
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
-	static var autowrite : Dynamic;
+	var autowrite : Dynamic;
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
-	static var autowriteall : Dynamic;
+	var autowriteall : Dynamic;
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
-	static var background : Dynamic;
+	var background : Dynamic;
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
-	static var backspace : Dynamic;
+	var backspace : Dynamic;
 	/**
 		```lua
 		(global) table.backup: unknown
 		```
 	**/
-	static var backup : Dynamic;
+	var backup : Dynamic;
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
-	static var backupcopy : Dynamic;
+	var backupcopy : Dynamic;
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
-	static var backupdir : Dynamic;
+	var backupdir : Dynamic;
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
-	static var backupext : Dynamic;
+	var backupext : Dynamic;
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
-	static var backupskip : Dynamic;
+	var backupskip : Dynamic;
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
-	static var belloff : Dynamic;
+	var belloff : Dynamic;
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
-	static var binary : Dynamic;
+	var binary : Dynamic;
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
-	static var bomb : Dynamic;
+	var bomb : Dynamic;
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
-	static var breakat : Dynamic;
+	var breakat : Dynamic;
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
-	static var breakindent : Dynamic;
+	var breakindent : Dynamic;
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
-	static var breakindentopt : Dynamic;
+	var breakindentopt : Dynamic;
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
-	static var browsedir : Dynamic;
+	var browsedir : Dynamic;
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
-	static var bufhidden : Dynamic;
+	var bufhidden : Dynamic;
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
-	static var buflisted : Dynamic;
+	var buflisted : Dynamic;
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
-	static var buftype : Dynamic;
+	var buftype : Dynamic;
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
-	static var casemap : Dynamic;
+	var casemap : Dynamic;
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
-	static var cdhome : Dynamic;
+	var cdhome : Dynamic;
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
-	static var cdpath : Dynamic;
+	var cdpath : Dynamic;
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
-	static var cedit : Dynamic;
+	var cedit : Dynamic;
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
-	static var channel : Dynamic;
+	var channel : Dynamic;
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
-	static var charconvert : Dynamic;
+	var charconvert : Dynamic;
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
-	static var cindent : Dynamic;
+	var cindent : Dynamic;
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
-	static var cinkeys : Dynamic;
+	var cinkeys : Dynamic;
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
-	static var cinoptions : Dynamic;
+	var cinoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
-	static var cinscopedecls : Dynamic;
+	var cinscopedecls : Dynamic;
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
-	static var cinwords : Dynamic;
+	var cinwords : Dynamic;
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
-	static var clipboard : Dynamic;
+	var clipboard : Dynamic;
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
-	static var cmdheight : Dynamic;
+	var cmdheight : Dynamic;
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
-	static var cmdwinheight : Dynamic;
+	var cmdwinheight : Dynamic;
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
-	static var colorcolumn : Dynamic;
+	var colorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
-	static var columns : Dynamic;
+	var columns : Dynamic;
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
-	static var comments : Dynamic;
+	var comments : Dynamic;
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
-	static var commentstring : Dynamic;
+	var commentstring : Dynamic;
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
-	static var compatible : Dynamic;
+	var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
-	static var complete : Dynamic;
+	var complete : Dynamic;
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
-	static var completefunc : Dynamic;
+	var completefunc : Dynamic;
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
-	static var completeitemalign : Dynamic;
+	var completeitemalign : Dynamic;
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
-	static var completeopt : Dynamic;
+	var completeopt : Dynamic;
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
-	static var completeslash : Dynamic;
+	var completeslash : Dynamic;
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
-	static var concealcursor : Dynamic;
+	var concealcursor : Dynamic;
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
-	static var conceallevel : Dynamic;
+	var conceallevel : Dynamic;
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
-	static var confirm : Dynamic;
+	var confirm : Dynamic;
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
-	static var copyindent : Dynamic;
+	var copyindent : Dynamic;
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
-	static var cpoptions : Dynamic;
+	var cpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
-	static var cursorbind : Dynamic;
+	var cursorbind : Dynamic;
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
-	static var cursorcolumn : Dynamic;
+	var cursorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
-	static var cursorline : Dynamic;
+	var cursorline : Dynamic;
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
-	static var cursorlineopt : Dynamic;
+	var cursorlineopt : Dynamic;
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
-	static var debug : Dynamic;
+	var debug : Dynamic;
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
-	static var define : Dynamic;
+	var define : Dynamic;
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
-	static var delcombine : Dynamic;
+	var delcombine : Dynamic;
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
-	static var dictionary : Dynamic;
+	var dictionary : Dynamic;
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
-	static var diff : Dynamic;
+	var diff : Dynamic;
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
-	static var diffexpr : Dynamic;
+	var diffexpr : Dynamic;
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
-	static var diffopt : Dynamic;
+	var diffopt : Dynamic;
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
-	static var digraph : Dynamic;
+	var digraph : Dynamic;
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
-	static var directory : Dynamic;
+	var directory : Dynamic;
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
-	static var display : Dynamic;
+	var display : Dynamic;
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
-	static var eadirection : Dynamic;
+	var eadirection : Dynamic;
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
-	static var edcompatible : Dynamic;
+	var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
-	static var emoji : Dynamic;
+	var emoji : Dynamic;
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
-	static var encoding : Dynamic;
+	var encoding : Dynamic;
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
-	static var endoffile : Dynamic;
+	var endoffile : Dynamic;
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
-	static var endofline : Dynamic;
+	var endofline : Dynamic;
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
-	static var equalalways : Dynamic;
+	var equalalways : Dynamic;
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
-	static var equalprg : Dynamic;
+	var equalprg : Dynamic;
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
-	static var errorbells : Dynamic;
+	var errorbells : Dynamic;
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
-	static var errorfile : Dynamic;
+	var errorfile : Dynamic;
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
-	static var errorformat : Dynamic;
+	var errorformat : Dynamic;
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
-	static var eventignore : Dynamic;
+	var eventignore : Dynamic;
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
-	static var eventignorewin : Dynamic;
+	var eventignorewin : Dynamic;
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
-	static var expandtab : Dynamic;
+	var expandtab : Dynamic;
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
-	static var exrc : Dynamic;
+	var exrc : Dynamic;
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
-	static var fileencoding : Dynamic;
+	var fileencoding : Dynamic;
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
-	static var fileencodings : Dynamic;
+	var fileencodings : Dynamic;
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
-	static var fileformat : Dynamic;
+	var fileformat : Dynamic;
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
-	static var fileformats : Dynamic;
+	var fileformats : Dynamic;
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
-	static var fileignorecase : Dynamic;
+	var fileignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
-	static var filetype : Dynamic;
+	var filetype : Dynamic;
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
-	static var fillchars : Dynamic;
+	var fillchars : Dynamic;
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
-	static var findfunc : Dynamic;
+	var findfunc : Dynamic;
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
-	static var fixendofline : Dynamic;
+	var fixendofline : Dynamic;
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
-	static var foldclose : Dynamic;
+	var foldclose : Dynamic;
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
-	static var foldcolumn : Dynamic;
+	var foldcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
-	static var foldenable : Dynamic;
+	var foldenable : Dynamic;
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
-	static var foldexpr : Dynamic;
+	var foldexpr : Dynamic;
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
-	static var foldignore : Dynamic;
+	var foldignore : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
-	static var foldlevel : Dynamic;
+	var foldlevel : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
-	static var foldlevelstart : Dynamic;
+	var foldlevelstart : Dynamic;
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
-	static var foldmarker : Dynamic;
+	var foldmarker : Dynamic;
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
-	static var foldmethod : Dynamic;
+	var foldmethod : Dynamic;
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
-	static var foldminlines : Dynamic;
+	var foldminlines : Dynamic;
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
-	static var foldnestmax : Dynamic;
+	var foldnestmax : Dynamic;
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
-	static var foldopen : Dynamic;
+	var foldopen : Dynamic;
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
-	static var foldtext : Dynamic;
+	var foldtext : Dynamic;
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
-	static var formatexpr : Dynamic;
+	var formatexpr : Dynamic;
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
-	static var formatlistpat : Dynamic;
+	var formatlistpat : Dynamic;
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
-	static var formatoptions : Dynamic;
+	var formatoptions : Dynamic;
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
-	static var formatprg : Dynamic;
+	var formatprg : Dynamic;
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
-	static var fsync : Dynamic;
+	var fsync : Dynamic;
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
-	static var gdefault : Dynamic;
+	var gdefault : Dynamic;
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
-	static var grepformat : Dynamic;
+	var grepformat : Dynamic;
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
-	static var grepprg : Dynamic;
+	var grepprg : Dynamic;
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
-	static var guicursor : Dynamic;
+	var guicursor : Dynamic;
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
-	static var guifont : Dynamic;
+	var guifont : Dynamic;
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
-	static var guifontwide : Dynamic;
+	var guifontwide : Dynamic;
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
-	static var guioptions : Dynamic;
+	var guioptions : Dynamic;
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
-	static var guitablabel : Dynamic;
+	var guitablabel : Dynamic;
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
-	static var guitabtooltip : Dynamic;
+	var guitabtooltip : Dynamic;
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
-	static var helpfile : Dynamic;
+	var helpfile : Dynamic;
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
-	static var helpheight : Dynamic;
+	var helpheight : Dynamic;
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
-	static var helplang : Dynamic;
+	var helplang : Dynamic;
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
-	static var hidden : Dynamic;
+	var hidden : Dynamic;
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
-	static var highlight : Dynamic;
+	var highlight : Dynamic;
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
-	static var history : Dynamic;
+	var history : Dynamic;
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
-	static var hkmap : Dynamic;
+	var hkmap : Dynamic;
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
-	static var hkmapp : Dynamic;
+	var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
-	static var hlsearch : Dynamic;
+	var hlsearch : Dynamic;
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
-	static var icon : Dynamic;
+	var icon : Dynamic;
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
-	static var iconstring : Dynamic;
+	var iconstring : Dynamic;
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
-	static var ignorecase : Dynamic;
+	var ignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
-	static var imcmdline : Dynamic;
+	var imcmdline : Dynamic;
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
-	static var imdisable : Dynamic;
+	var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
-	static var iminsert : Dynamic;
+	var iminsert : Dynamic;
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
-	static var imsearch : Dynamic;
+	var imsearch : Dynamic;
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
-	static var inccommand : Dynamic;
+	var inccommand : Dynamic;
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
-	static var include : Dynamic;
+	var include : Dynamic;
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
-	static var includeexpr : Dynamic;
+	var includeexpr : Dynamic;
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
-	static var incsearch : Dynamic;
+	var incsearch : Dynamic;
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
-	static var indentexpr : Dynamic;
+	var indentexpr : Dynamic;
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
-	static var indentkeys : Dynamic;
+	var indentkeys : Dynamic;
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
-	static var infercase : Dynamic;
+	var infercase : Dynamic;
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
-	static var insertmode : Dynamic;
+	var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
-	static var isfname : Dynamic;
+	var isfname : Dynamic;
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
-	static var isident : Dynamic;
+	var isident : Dynamic;
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
-	static var iskeyword : Dynamic;
+	var iskeyword : Dynamic;
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
-	static var isprint : Dynamic;
+	var isprint : Dynamic;
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
-	static var joinspaces : Dynamic;
+	var joinspaces : Dynamic;
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
-	static var jumpoptions : Dynamic;
+	var jumpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
-	static var keymap : Dynamic;
+	var keymap : Dynamic;
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
-	static var keymodel : Dynamic;
+	var keymodel : Dynamic;
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
-	static var keywordprg : Dynamic;
+	var keywordprg : Dynamic;
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
-	static var langmap : Dynamic;
+	var langmap : Dynamic;
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
-	static var langmenu : Dynamic;
+	var langmenu : Dynamic;
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
-	static var langnoremap : Dynamic;
+	var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
-	static var langremap : Dynamic;
+	var langremap : Dynamic;
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
-	static var laststatus : Dynamic;
+	var laststatus : Dynamic;
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
-	static var lazyredraw : Dynamic;
+	var lazyredraw : Dynamic;
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
-	static var linebreak : Dynamic;
+	var linebreak : Dynamic;
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
-	static var lines : Dynamic;
+	var lines : Dynamic;
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
-	static var linespace : Dynamic;
+	var linespace : Dynamic;
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
-	static var lisp : Dynamic;
+	var lisp : Dynamic;
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
-	static var lispoptions : Dynamic;
+	var lispoptions : Dynamic;
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
-	static var lispwords : Dynamic;
+	var lispwords : Dynamic;
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
-	static var list : Dynamic;
+	var list : Dynamic;
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
-	static var listchars : Dynamic;
+	var listchars : Dynamic;
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
-	static var loadplugins : Dynamic;
+	var loadplugins : Dynamic;
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
-	static var magic : Dynamic;
+	var magic : Dynamic;
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
-	static var makeef : Dynamic;
+	var makeef : Dynamic;
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
-	static var makeencoding : Dynamic;
+	var makeencoding : Dynamic;
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
-	static var makeprg : Dynamic;
+	var makeprg : Dynamic;
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
-	static var matchpairs : Dynamic;
+	var matchpairs : Dynamic;
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
-	static var matchtime : Dynamic;
+	var matchtime : Dynamic;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
-	static var maxcombine : Dynamic;
+	var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
-	static var maxfuncdepth : Dynamic;
+	var maxfuncdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
-	static var maxmapdepth : Dynamic;
+	var maxmapdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
-	static var maxmempattern : Dynamic;
+	var maxmempattern : Dynamic;
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
-	static var menuitems : Dynamic;
+	var menuitems : Dynamic;
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
-	static var messagesopt : Dynamic;
+	var messagesopt : Dynamic;
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
-	static var mkspellmem : Dynamic;
+	var mkspellmem : Dynamic;
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
-	static var modeline : Dynamic;
+	var modeline : Dynamic;
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
-	static var modelineexpr : Dynamic;
+	var modelineexpr : Dynamic;
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
-	static var modelines : Dynamic;
+	var modelines : Dynamic;
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
-	static var modifiable : Dynamic;
+	var modifiable : Dynamic;
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
-	static var modified : Dynamic;
+	var modified : Dynamic;
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
-	static var more : Dynamic;
+	var more : Dynamic;
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
-	static var mouse : Dynamic;
+	var mouse : Dynamic;
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
-	static var mousefocus : Dynamic;
+	var mousefocus : Dynamic;
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
-	static var mousehide : Dynamic;
+	var mousehide : Dynamic;
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
-	static var mousemodel : Dynamic;
+	var mousemodel : Dynamic;
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
-	static var mousemoveevent : Dynamic;
+	var mousemoveevent : Dynamic;
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
-	static var mousescroll : Dynamic;
+	var mousescroll : Dynamic;
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
-	static var mouseshape : Dynamic;
+	var mouseshape : Dynamic;
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
-	static var mousetime : Dynamic;
+	var mousetime : Dynamic;
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
-	static var nrformats : Dynamic;
+	var nrformats : Dynamic;
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
-	static var number : Dynamic;
+	var number : Dynamic;
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
-	static var numberwidth : Dynamic;
+	var numberwidth : Dynamic;
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
-	static var omnifunc : Dynamic;
+	var omnifunc : Dynamic;
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
-	static var opendevice : Dynamic;
+	var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
-	static var operatorfunc : Dynamic;
+	var operatorfunc : Dynamic;
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
-	static var packpath : Dynamic;
+	var packpath : Dynamic;
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
-	static var paragraphs : Dynamic;
+	var paragraphs : Dynamic;
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
-	static var paste : Dynamic;
+	var paste : Dynamic;
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
-	static var pastetoggle : Dynamic;
+	var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
-	static var patchexpr : Dynamic;
+	var patchexpr : Dynamic;
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
-	static var patchmode : Dynamic;
+	var patchmode : Dynamic;
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
-	static var path : Dynamic;
+	var path : Dynamic;
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
-	static var preserveindent : Dynamic;
+	var preserveindent : Dynamic;
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
-	static var previewheight : Dynamic;
+	var previewheight : Dynamic;
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
-	static var previewwindow : Dynamic;
+	var previewwindow : Dynamic;
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
-	static var prompt : Dynamic;
+	var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
-	static var pumblend : Dynamic;
+	var pumblend : Dynamic;
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
-	static var pumheight : Dynamic;
+	var pumheight : Dynamic;
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
-	static var pumwidth : Dynamic;
+	var pumwidth : Dynamic;
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
-	static var pyxversion : Dynamic;
+	var pyxversion : Dynamic;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
-	static var quickfixtextfunc : Dynamic;
+	var quickfixtextfunc : Dynamic;
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
-	static var quoteescape : Dynamic;
+	var quoteescape : Dynamic;
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
-	static var readonly : Dynamic;
+	var readonly : Dynamic;
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
-	static var redrawdebug : Dynamic;
+	var redrawdebug : Dynamic;
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
-	static var redrawtime : Dynamic;
+	var redrawtime : Dynamic;
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
-	static var regexpengine : Dynamic;
+	var regexpengine : Dynamic;
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
-	static var relativenumber : Dynamic;
+	var relativenumber : Dynamic;
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
-	static var remap : Dynamic;
+	var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
-	static var report : Dynamic;
+	var report : Dynamic;
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
-	static var revins : Dynamic;
+	var revins : Dynamic;
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
-	static var rightleft : Dynamic;
+	var rightleft : Dynamic;
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
-	static var rightleftcmd : Dynamic;
+	var rightleftcmd : Dynamic;
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
-	static var ruler : Dynamic;
+	var ruler : Dynamic;
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
-	static var rulerformat : Dynamic;
+	var rulerformat : Dynamic;
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
-	static var runtimepath : Dynamic;
+	var runtimepath : Dynamic;
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
-	static var scroll : Dynamic;
+	var scroll : Dynamic;
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
-	static var scrollback : Dynamic;
+	var scrollback : Dynamic;
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
-	static var scrollbind : Dynamic;
+	var scrollbind : Dynamic;
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
-	static var scrolljump : Dynamic;
+	var scrolljump : Dynamic;
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
-	static var scrolloff : Dynamic;
+	var scrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
-	static var scrollopt : Dynamic;
+	var scrollopt : Dynamic;
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
-	static var sections : Dynamic;
+	var sections : Dynamic;
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
-	static var secure : Dynamic;
+	var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
-	static var selection : Dynamic;
+	var selection : Dynamic;
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
-	static var selectmode : Dynamic;
+	var selectmode : Dynamic;
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
-	static var sessionoptions : Dynamic;
+	var sessionoptions : Dynamic;
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
-	static var shada : Dynamic;
+	var shada : Dynamic;
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
-	static var shadafile : Dynamic;
+	var shadafile : Dynamic;
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
-	static var shell : Dynamic;
+	var shell : Dynamic;
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
-	static var shellcmdflag : Dynamic;
+	var shellcmdflag : Dynamic;
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
-	static var shellpipe : Dynamic;
+	var shellpipe : Dynamic;
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
-	static var shellquote : Dynamic;
+	var shellquote : Dynamic;
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
-	static var shellredir : Dynamic;
+	var shellredir : Dynamic;
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
-	static var shellslash : Dynamic;
+	var shellslash : Dynamic;
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
-	static var shelltemp : Dynamic;
+	var shelltemp : Dynamic;
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
-	static var shellxescape : Dynamic;
+	var shellxescape : Dynamic;
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
-	static var shellxquote : Dynamic;
+	var shellxquote : Dynamic;
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
-	static var shiftround : Dynamic;
+	var shiftround : Dynamic;
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
-	static var shiftwidth : Dynamic;
+	var shiftwidth : Dynamic;
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
-	static var shortmess : Dynamic;
+	var shortmess : Dynamic;
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
-	static var showbreak : Dynamic;
+	var showbreak : Dynamic;
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
-	static var showcmd : Dynamic;
+	var showcmd : Dynamic;
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
-	static var showcmdloc : Dynamic;
+	var showcmdloc : Dynamic;
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
-	static var showfulltag : Dynamic;
+	var showfulltag : Dynamic;
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
-	static var showmatch : Dynamic;
+	var showmatch : Dynamic;
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
-	static var showmode : Dynamic;
+	var showmode : Dynamic;
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
-	static var showtabline : Dynamic;
+	var showtabline : Dynamic;
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
-	static var sidescroll : Dynamic;
+	var sidescroll : Dynamic;
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
-	static var sidescrolloff : Dynamic;
+	var sidescrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
-	static var signcolumn : Dynamic;
+	var signcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
-	static var smartcase : Dynamic;
+	var smartcase : Dynamic;
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
-	static var smartindent : Dynamic;
+	var smartindent : Dynamic;
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
-	static var smarttab : Dynamic;
+	var smarttab : Dynamic;
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
-	static var smoothscroll : Dynamic;
+	var smoothscroll : Dynamic;
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
-	static var softtabstop : Dynamic;
+	var softtabstop : Dynamic;
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
-	static var spell : Dynamic;
+	var spell : Dynamic;
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
-	static var spellcapcheck : Dynamic;
+	var spellcapcheck : Dynamic;
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
-	static var spellfile : Dynamic;
+	var spellfile : Dynamic;
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
-	static var spelllang : Dynamic;
+	var spelllang : Dynamic;
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
-	static var spelloptions : Dynamic;
+	var spelloptions : Dynamic;
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
-	static var spellsuggest : Dynamic;
+	var spellsuggest : Dynamic;
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
-	static var splitbelow : Dynamic;
+	var splitbelow : Dynamic;
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
-	static var splitkeep : Dynamic;
+	var splitkeep : Dynamic;
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
-	static var splitright : Dynamic;
+	var splitright : Dynamic;
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
-	static var startofline : Dynamic;
+	var startofline : Dynamic;
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
-	static var statuscolumn : Dynamic;
+	var statuscolumn : Dynamic;
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
-	static var statusline : Dynamic;
+	var statusline : Dynamic;
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
-	static var suffixes : Dynamic;
+	var suffixes : Dynamic;
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
-	static var suffixesadd : Dynamic;
+	var suffixesadd : Dynamic;
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
-	static var swapfile : Dynamic;
+	var swapfile : Dynamic;
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
-	static var switchbuf : Dynamic;
+	var switchbuf : Dynamic;
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
-	static var synmaxcol : Dynamic;
+	var synmaxcol : Dynamic;
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
-	static var syntax : Dynamic;
+	var syntax : Dynamic;
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
-	static var tabclose : Dynamic;
+	var tabclose : Dynamic;
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
-	static var tabline : Dynamic;
+	var tabline : Dynamic;
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
-	static var tabpagemax : Dynamic;
+	var tabpagemax : Dynamic;
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
-	static var tabstop : Dynamic;
+	var tabstop : Dynamic;
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
-	static var tagbsearch : Dynamic;
+	var tagbsearch : Dynamic;
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
-	static var tagcase : Dynamic;
+	var tagcase : Dynamic;
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
-	static var tagfunc : Dynamic;
+	var tagfunc : Dynamic;
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
-	static var taglength : Dynamic;
+	var taglength : Dynamic;
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
-	static var tagrelative : Dynamic;
+	var tagrelative : Dynamic;
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
-	static var tags : Dynamic;
+	var tags : Dynamic;
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
-	static var tagstack : Dynamic;
+	var tagstack : Dynamic;
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
-	static var termbidi : Dynamic;
+	var termbidi : Dynamic;
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
-	static var termencoding : Dynamic;
+	var termencoding : Dynamic;
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
-	static var termguicolors : Dynamic;
+	var termguicolors : Dynamic;
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
-	static var termpastefilter : Dynamic;
+	var termpastefilter : Dynamic;
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
-	static var termsync : Dynamic;
+	var termsync : Dynamic;
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
-	static var terse : Dynamic;
+	var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
-	static var textwidth : Dynamic;
+	var textwidth : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
-	static var thesaurus : Dynamic;
+	var thesaurus : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
-	static var thesaurusfunc : Dynamic;
+	var thesaurusfunc : Dynamic;
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
-	static var tildeop : Dynamic;
+	var tildeop : Dynamic;
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
-	static var timeout : Dynamic;
+	var timeout : Dynamic;
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
-	static var timeoutlen : Dynamic;
+	var timeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
-	static var title : Dynamic;
+	var title : Dynamic;
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
-	static var titlelen : Dynamic;
+	var titlelen : Dynamic;
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
-	static var titleold : Dynamic;
+	var titleold : Dynamic;
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
-	static var titlestring : Dynamic;
+	var titlestring : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
-	static var ttimeout : Dynamic;
+	var ttimeout : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
-	static var ttimeoutlen : Dynamic;
+	var ttimeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
-	static var ttyfast : Dynamic;
+	var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
-	static var undodir : Dynamic;
+	var undodir : Dynamic;
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
-	static var undofile : Dynamic;
+	var undofile : Dynamic;
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
-	static var undolevels : Dynamic;
+	var undolevels : Dynamic;
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
-	static var undoreload : Dynamic;
+	var undoreload : Dynamic;
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
-	static var updatecount : Dynamic;
+	var updatecount : Dynamic;
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
-	static var updatetime : Dynamic;
+	var updatetime : Dynamic;
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
-	static var varsofttabstop : Dynamic;
+	var varsofttabstop : Dynamic;
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
-	static var vartabstop : Dynamic;
+	var vartabstop : Dynamic;
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
-	static var verbose : Dynamic;
+	var verbose : Dynamic;
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
-	static var verbosefile : Dynamic;
+	var verbosefile : Dynamic;
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
-	static var viewdir : Dynamic;
+	var viewdir : Dynamic;
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
-	static var viewoptions : Dynamic;
+	var viewoptions : Dynamic;
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
-	static var virtualedit : Dynamic;
+	var virtualedit : Dynamic;
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
-	static var visualbell : Dynamic;
+	var visualbell : Dynamic;
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
-	static var warn : Dynamic;
+	var warn : Dynamic;
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
-	static var whichwrap : Dynamic;
+	var whichwrap : Dynamic;
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
-	static var wildchar : Dynamic;
+	var wildchar : Dynamic;
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
-	static var wildcharm : Dynamic;
+	var wildcharm : Dynamic;
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
-	static var wildignore : Dynamic;
+	var wildignore : Dynamic;
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
-	static var wildignorecase : Dynamic;
+	var wildignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
-	static var wildmenu : Dynamic;
+	var wildmenu : Dynamic;
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
-	static var wildmode : Dynamic;
+	var wildmode : Dynamic;
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
-	static var wildoptions : Dynamic;
+	var wildoptions : Dynamic;
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
-	static var winaltkeys : Dynamic;
+	var winaltkeys : Dynamic;
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
-	static var winbar : Dynamic;
+	var winbar : Dynamic;
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
-	static var winblend : Dynamic;
+	var winblend : Dynamic;
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
-	static var winborder : Dynamic;
+	var winborder : Dynamic;
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
-	static var window : Dynamic;
+	var window : Dynamic;
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
-	static var winfixbuf : Dynamic;
+	var winfixbuf : Dynamic;
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
-	static var winfixheight : Dynamic;
+	var winfixheight : Dynamic;
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
-	static var winfixwidth : Dynamic;
+	var winfixwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
-	static var winheight : Dynamic;
+	var winheight : Dynamic;
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
-	static var winhighlight : Dynamic;
+	var winhighlight : Dynamic;
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
-	static var winminheight : Dynamic;
+	var winminheight : Dynamic;
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
-	static var winminwidth : Dynamic;
+	var winminwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
-	static var winwidth : Dynamic;
+	var winwidth : Dynamic;
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
-	static var wrap : Dynamic;
+	var wrap : Dynamic;
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
-	static var wrapmargin : Dynamic;
+	var wrapmargin : Dynamic;
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
-	static var wrapscan : Dynamic;
+	var wrapscan : Dynamic;
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
-	static var write : Dynamic;
+	var write : Dynamic;
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
-	static var writeany : Dynamic;
+	var writeany : Dynamic;
 	/**
 		```lua
 		(global) table.writebackup: unknown
 		```
 	**/
-	static var writebackup : Dynamic;
+	var writebackup : Dynamic;
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
-	static var writedelay : Dynamic;
+	var writedelay : Dynamic;
 }
 
 /**
@@ -44721,2185 +41896,2185 @@ package nvim;
 	
 	 @nodoc
 **/
-@:native("vim.opt_local") extern class OptLocal {
+extern class OptLocal {
 	/**
 		```lua
 		(global) table.aleph: unknown
 		```
 	**/
-	static var aleph : Dynamic;
+	var aleph : Dynamic;
 	/**
 		```lua
 		(global) table.allowrevins: unknown
 		```
 	**/
-	static var allowrevins : Dynamic;
+	var allowrevins : Dynamic;
 	/**
 		```lua
 		(global) table.ambiwidth: unknown
 		```
 	**/
-	static var ambiwidth : Dynamic;
+	var ambiwidth : Dynamic;
 	/**
 		```lua
 		(global) table.arabic: unknown
 		```
 	**/
-	static var arabic : Dynamic;
+	var arabic : Dynamic;
 	/**
 		```lua
 		(global) table.arabicshape: unknown
 		```
 	**/
-	static var arabicshape : Dynamic;
+	var arabicshape : Dynamic;
 	/**
 		```lua
 		(global) table.autochdir: unknown
 		```
 	**/
-	static var autochdir : Dynamic;
+	var autochdir : Dynamic;
 	/**
 		```lua
 		(global) table.autoindent: unknown
 		```
 	**/
-	static var autoindent : Dynamic;
+	var autoindent : Dynamic;
 	/**
 		```lua
 		(global) table.autoread: unknown
 		```
 	**/
-	static var autoread : Dynamic;
+	var autoread : Dynamic;
 	/**
 		```lua
 		(global) table.autowrite: unknown
 		```
 	**/
-	static var autowrite : Dynamic;
+	var autowrite : Dynamic;
 	/**
 		```lua
 		(global) table.autowriteall: unknown
 		```
 	**/
-	static var autowriteall : Dynamic;
+	var autowriteall : Dynamic;
 	/**
 		```lua
 		(global) table.background: unknown
 		```
 	**/
-	static var background : Dynamic;
+	var background : Dynamic;
 	/**
 		```lua
 		(global) table.backspace: unknown
 		```
 	**/
-	static var backspace : Dynamic;
+	var backspace : Dynamic;
 	/**
 		```lua
 		(global) table.backup: unknown
 		```
 	**/
-	static var backup : Dynamic;
+	var backup : Dynamic;
 	/**
 		```lua
 		(global) table.backupcopy: unknown
 		```
 	**/
-	static var backupcopy : Dynamic;
+	var backupcopy : Dynamic;
 	/**
 		```lua
 		(global) table.backupdir: unknown
 		```
 	**/
-	static var backupdir : Dynamic;
+	var backupdir : Dynamic;
 	/**
 		```lua
 		(global) table.backupext: unknown
 		```
 	**/
-	static var backupext : Dynamic;
+	var backupext : Dynamic;
 	/**
 		```lua
 		(global) table.backupskip: unknown
 		```
 	**/
-	static var backupskip : Dynamic;
+	var backupskip : Dynamic;
 	/**
 		```lua
 		(global) table.belloff: unknown
 		```
 	**/
-	static var belloff : Dynamic;
+	var belloff : Dynamic;
 	/**
 		```lua
 		(global) table.binary: unknown
 		```
 	**/
-	static var binary : Dynamic;
+	var binary : Dynamic;
 	/**
 		```lua
 		(global) table.bomb: unknown
 		```
 	**/
-	static var bomb : Dynamic;
+	var bomb : Dynamic;
 	/**
 		```lua
 		(global) table.breakat: unknown
 		```
 	**/
-	static var breakat : Dynamic;
+	var breakat : Dynamic;
 	/**
 		```lua
 		(global) table.breakindent: unknown
 		```
 	**/
-	static var breakindent : Dynamic;
+	var breakindent : Dynamic;
 	/**
 		```lua
 		(global) table.breakindentopt: unknown
 		```
 	**/
-	static var breakindentopt : Dynamic;
+	var breakindentopt : Dynamic;
 	/**
 		```lua
 		(global) table.browsedir: unknown
 		```
 	**/
-	static var browsedir : Dynamic;
+	var browsedir : Dynamic;
 	/**
 		```lua
 		(global) table.bufhidden: unknown
 		```
 	**/
-	static var bufhidden : Dynamic;
+	var bufhidden : Dynamic;
 	/**
 		```lua
 		(global) table.buflisted: unknown
 		```
 	**/
-	static var buflisted : Dynamic;
+	var buflisted : Dynamic;
 	/**
 		```lua
 		(global) table.buftype: unknown
 		```
 	**/
-	static var buftype : Dynamic;
+	var buftype : Dynamic;
 	/**
 		```lua
 		(global) table.casemap: unknown
 		```
 	**/
-	static var casemap : Dynamic;
+	var casemap : Dynamic;
 	/**
 		```lua
 		(global) table.cdhome: unknown
 		```
 	**/
-	static var cdhome : Dynamic;
+	var cdhome : Dynamic;
 	/**
 		```lua
 		(global) table.cdpath: unknown
 		```
 	**/
-	static var cdpath : Dynamic;
+	var cdpath : Dynamic;
 	/**
 		```lua
 		(global) table.cedit: unknown
 		```
 	**/
-	static var cedit : Dynamic;
+	var cedit : Dynamic;
 	/**
 		```lua
 		(global) table.channel: unknown
 		```
 	**/
-	static var channel : Dynamic;
+	var channel : Dynamic;
 	/**
 		```lua
 		(global) table.charconvert: unknown
 		```
 	**/
-	static var charconvert : Dynamic;
+	var charconvert : Dynamic;
 	/**
 		```lua
 		(global) table.cindent: unknown
 		```
 	**/
-	static var cindent : Dynamic;
+	var cindent : Dynamic;
 	/**
 		```lua
 		(global) table.cinkeys: unknown
 		```
 	**/
-	static var cinkeys : Dynamic;
+	var cinkeys : Dynamic;
 	/**
 		```lua
 		(global) table.cinoptions: unknown
 		```
 	**/
-	static var cinoptions : Dynamic;
+	var cinoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cinscopedecls: unknown
 		```
 	**/
-	static var cinscopedecls : Dynamic;
+	var cinscopedecls : Dynamic;
 	/**
 		```lua
 		(global) table.cinwords: unknown
 		```
 	**/
-	static var cinwords : Dynamic;
+	var cinwords : Dynamic;
 	/**
 		```lua
 		(global) table.clipboard: unknown
 		```
 	**/
-	static var clipboard : Dynamic;
+	var clipboard : Dynamic;
 	/**
 		```lua
 		(global) table.cmdheight: unknown
 		```
 	**/
-	static var cmdheight : Dynamic;
+	var cmdheight : Dynamic;
 	/**
 		```lua
 		(global) table.cmdwinheight: unknown
 		```
 	**/
-	static var cmdwinheight : Dynamic;
+	var cmdwinheight : Dynamic;
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
 		```
 	**/
-	static var colorcolumn : Dynamic;
+	var colorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.columns: unknown
 		```
 	**/
-	static var columns : Dynamic;
+	var columns : Dynamic;
 	/**
 		```lua
 		(global) table.comments: unknown
 		```
 	**/
-	static var comments : Dynamic;
+	var comments : Dynamic;
 	/**
 		```lua
 		(global) table.commentstring: unknown
 		```
 	**/
-	static var commentstring : Dynamic;
+	var commentstring : Dynamic;
 	/**
 		```lua
 		(global) table.compatible: unknown
 		```
 	**/
-	static var compatible : Dynamic;
+	var compatible : Dynamic;
 	/**
 		```lua
 		(global) table.complete: unknown
 		```
 	**/
-	static var complete : Dynamic;
+	var complete : Dynamic;
 	/**
 		```lua
 		(global) table.completefunc: unknown
 		```
 	**/
-	static var completefunc : Dynamic;
+	var completefunc : Dynamic;
 	/**
 		```lua
 		(global) table.completeitemalign: unknown
 		```
 	**/
-	static var completeitemalign : Dynamic;
+	var completeitemalign : Dynamic;
 	/**
 		```lua
 		(global) table.completeopt: unknown
 		```
 	**/
-	static var completeopt : Dynamic;
+	var completeopt : Dynamic;
 	/**
 		```lua
 		(global) table.completeslash: unknown
 		```
 	**/
-	static var completeslash : Dynamic;
+	var completeslash : Dynamic;
 	/**
 		```lua
 		(global) table.concealcursor: unknown
 		```
 	**/
-	static var concealcursor : Dynamic;
+	var concealcursor : Dynamic;
 	/**
 		```lua
 		(global) table.conceallevel: unknown
 		```
 	**/
-	static var conceallevel : Dynamic;
+	var conceallevel : Dynamic;
 	/**
 		```lua
 		(global) table.confirm: unknown
 		```
 	**/
-	static var confirm : Dynamic;
+	var confirm : Dynamic;
 	/**
 		```lua
 		(global) table.copyindent: unknown
 		```
 	**/
-	static var copyindent : Dynamic;
+	var copyindent : Dynamic;
 	/**
 		```lua
 		(global) table.cpoptions: unknown
 		```
 	**/
-	static var cpoptions : Dynamic;
+	var cpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.cursorbind: unknown
 		```
 	**/
-	static var cursorbind : Dynamic;
+	var cursorbind : Dynamic;
 	/**
 		```lua
 		(global) table.cursorcolumn: unknown
 		```
 	**/
-	static var cursorcolumn : Dynamic;
+	var cursorcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.cursorline: unknown
 		```
 	**/
-	static var cursorline : Dynamic;
+	var cursorline : Dynamic;
 	/**
 		```lua
 		(global) table.cursorlineopt: unknown
 		```
 	**/
-	static var cursorlineopt : Dynamic;
+	var cursorlineopt : Dynamic;
 	/**
 		```lua
 		(global) table.debug: unknown
 		```
 	**/
-	static var debug : Dynamic;
+	var debug : Dynamic;
 	/**
 		```lua
 		(global) table.define: unknown
 		```
 	**/
-	static var define : Dynamic;
+	var define : Dynamic;
 	/**
 		```lua
 		(global) table.delcombine: unknown
 		```
 	**/
-	static var delcombine : Dynamic;
+	var delcombine : Dynamic;
 	/**
 		```lua
 		(global) table.dictionary: unknown
 		```
 	**/
-	static var dictionary : Dynamic;
+	var dictionary : Dynamic;
 	/**
 		```lua
 		(global) table.diff: unknown
 		```
 	**/
-	static var diff : Dynamic;
+	var diff : Dynamic;
 	/**
 		```lua
 		(global) table.diffexpr: unknown
 		```
 	**/
-	static var diffexpr : Dynamic;
+	var diffexpr : Dynamic;
 	/**
 		```lua
 		(global) table.diffopt: unknown
 		```
 	**/
-	static var diffopt : Dynamic;
+	var diffopt : Dynamic;
 	/**
 		```lua
 		(global) table.digraph: unknown
 		```
 	**/
-	static var digraph : Dynamic;
+	var digraph : Dynamic;
 	/**
 		```lua
 		(global) table.directory: unknown
 		```
 	**/
-	static var directory : Dynamic;
+	var directory : Dynamic;
 	/**
 		```lua
 		(global) table.display: unknown
 		```
 	**/
-	static var display : Dynamic;
+	var display : Dynamic;
 	/**
 		```lua
 		(global) table.eadirection: unknown
 		```
 	**/
-	static var eadirection : Dynamic;
+	var eadirection : Dynamic;
 	/**
 		```lua
 		(global) table.edcompatible: unknown
 		```
 	**/
-	static var edcompatible : Dynamic;
+	var edcompatible : Dynamic;
 	/**
 		```lua
 		(global) table.emoji: unknown
 		```
 	**/
-	static var emoji : Dynamic;
+	var emoji : Dynamic;
 	/**
 		```lua
 		(global) table.encoding: unknown
 		```
 	**/
-	static var encoding : Dynamic;
+	var encoding : Dynamic;
 	/**
 		```lua
 		(global) table.endoffile: unknown
 		```
 	**/
-	static var endoffile : Dynamic;
+	var endoffile : Dynamic;
 	/**
 		```lua
 		(global) table.endofline: unknown
 		```
 	**/
-	static var endofline : Dynamic;
+	var endofline : Dynamic;
 	/**
 		```lua
 		(global) table.equalalways: unknown
 		```
 	**/
-	static var equalalways : Dynamic;
+	var equalalways : Dynamic;
 	/**
 		```lua
 		(global) table.equalprg: unknown
 		```
 	**/
-	static var equalprg : Dynamic;
+	var equalprg : Dynamic;
 	/**
 		```lua
 		(global) table.errorbells: unknown
 		```
 	**/
-	static var errorbells : Dynamic;
+	var errorbells : Dynamic;
 	/**
 		```lua
 		(global) table.errorfile: unknown
 		```
 	**/
-	static var errorfile : Dynamic;
+	var errorfile : Dynamic;
 	/**
 		```lua
 		(global) table.errorformat: unknown
 		```
 	**/
-	static var errorformat : Dynamic;
+	var errorformat : Dynamic;
 	/**
 		```lua
 		(global) table.eventignore: unknown
 		```
 	**/
-	static var eventignore : Dynamic;
+	var eventignore : Dynamic;
 	/**
 		```lua
 		(global) table.eventignorewin: unknown
 		```
 	**/
-	static var eventignorewin : Dynamic;
+	var eventignorewin : Dynamic;
 	/**
 		```lua
 		(global) table.expandtab: unknown
 		```
 	**/
-	static var expandtab : Dynamic;
+	var expandtab : Dynamic;
 	/**
 		```lua
 		(global) table.exrc: unknown
 		```
 	**/
-	static var exrc : Dynamic;
+	var exrc : Dynamic;
 	/**
 		```lua
 		(global) table.fileencoding: unknown
 		```
 	**/
-	static var fileencoding : Dynamic;
+	var fileencoding : Dynamic;
 	/**
 		```lua
 		(global) table.fileencodings: unknown
 		```
 	**/
-	static var fileencodings : Dynamic;
+	var fileencodings : Dynamic;
 	/**
 		```lua
 		(global) table.fileformat: unknown
 		```
 	**/
-	static var fileformat : Dynamic;
+	var fileformat : Dynamic;
 	/**
 		```lua
 		(global) table.fileformats: unknown
 		```
 	**/
-	static var fileformats : Dynamic;
+	var fileformats : Dynamic;
 	/**
 		```lua
 		(global) table.fileignorecase: unknown
 		```
 	**/
-	static var fileignorecase : Dynamic;
+	var fileignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.filetype: unknown
 		```
 	**/
-	static var filetype : Dynamic;
+	var filetype : Dynamic;
 	/**
 		```lua
 		(global) table.fillchars: unknown
 		```
 	**/
-	static var fillchars : Dynamic;
+	var fillchars : Dynamic;
 	/**
 		```lua
 		(global) table.findfunc: unknown
 		```
 	**/
-	static var findfunc : Dynamic;
+	var findfunc : Dynamic;
 	/**
 		```lua
 		(global) table.fixendofline: unknown
 		```
 	**/
-	static var fixendofline : Dynamic;
+	var fixendofline : Dynamic;
 	/**
 		```lua
 		(global) table.foldclose: unknown
 		```
 	**/
-	static var foldclose : Dynamic;
+	var foldclose : Dynamic;
 	/**
 		```lua
 		(global) table.foldcolumn: unknown
 		```
 	**/
-	static var foldcolumn : Dynamic;
+	var foldcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.foldenable: unknown
 		```
 	**/
-	static var foldenable : Dynamic;
+	var foldenable : Dynamic;
 	/**
 		```lua
 		(global) table.foldexpr: unknown
 		```
 	**/
-	static var foldexpr : Dynamic;
+	var foldexpr : Dynamic;
 	/**
 		```lua
 		(global) table.foldignore: unknown
 		```
 	**/
-	static var foldignore : Dynamic;
+	var foldignore : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevel: unknown
 		```
 	**/
-	static var foldlevel : Dynamic;
+	var foldlevel : Dynamic;
 	/**
 		```lua
 		(global) table.foldlevelstart: unknown
 		```
 	**/
-	static var foldlevelstart : Dynamic;
+	var foldlevelstart : Dynamic;
 	/**
 		```lua
 		(global) table.foldmarker: unknown
 		```
 	**/
-	static var foldmarker : Dynamic;
+	var foldmarker : Dynamic;
 	/**
 		```lua
 		(global) table.foldmethod: unknown
 		```
 	**/
-	static var foldmethod : Dynamic;
+	var foldmethod : Dynamic;
 	/**
 		```lua
 		(global) table.foldminlines: unknown
 		```
 	**/
-	static var foldminlines : Dynamic;
+	var foldminlines : Dynamic;
 	/**
 		```lua
 		(global) table.foldnestmax: unknown
 		```
 	**/
-	static var foldnestmax : Dynamic;
+	var foldnestmax : Dynamic;
 	/**
 		```lua
 		(global) table.foldopen: unknown
 		```
 	**/
-	static var foldopen : Dynamic;
+	var foldopen : Dynamic;
 	/**
 		```lua
 		(global) table.foldtext: unknown
 		```
 	**/
-	static var foldtext : Dynamic;
+	var foldtext : Dynamic;
 	/**
 		```lua
 		(global) table.formatexpr: unknown
 		```
 	**/
-	static var formatexpr : Dynamic;
+	var formatexpr : Dynamic;
 	/**
 		```lua
 		(global) table.formatlistpat: unknown
 		```
 	**/
-	static var formatlistpat : Dynamic;
+	var formatlistpat : Dynamic;
 	/**
 		```lua
 		(global) table.formatoptions: unknown
 		```
 	**/
-	static var formatoptions : Dynamic;
+	var formatoptions : Dynamic;
 	/**
 		```lua
 		(global) table.formatprg: unknown
 		```
 	**/
-	static var formatprg : Dynamic;
+	var formatprg : Dynamic;
 	/**
 		```lua
 		(global) table.fsync: unknown
 		```
 	**/
-	static var fsync : Dynamic;
+	var fsync : Dynamic;
 	/**
 		```lua
 		(global) table.gdefault: unknown
 		```
 	**/
-	static var gdefault : Dynamic;
+	var gdefault : Dynamic;
 	/**
 		```lua
 		(global) table.grepformat: unknown
 		```
 	**/
-	static var grepformat : Dynamic;
+	var grepformat : Dynamic;
 	/**
 		```lua
 		(global) table.grepprg: unknown
 		```
 	**/
-	static var grepprg : Dynamic;
+	var grepprg : Dynamic;
 	/**
 		```lua
 		(global) table.guicursor: unknown
 		```
 	**/
-	static var guicursor : Dynamic;
+	var guicursor : Dynamic;
 	/**
 		```lua
 		(global) table.guifont: unknown
 		```
 	**/
-	static var guifont : Dynamic;
+	var guifont : Dynamic;
 	/**
 		```lua
 		(global) table.guifontwide: unknown
 		```
 	**/
-	static var guifontwide : Dynamic;
+	var guifontwide : Dynamic;
 	/**
 		```lua
 		(global) table.guioptions: unknown
 		```
 	**/
-	static var guioptions : Dynamic;
+	var guioptions : Dynamic;
 	/**
 		```lua
 		(global) table.guitablabel: unknown
 		```
 	**/
-	static var guitablabel : Dynamic;
+	var guitablabel : Dynamic;
 	/**
 		```lua
 		(global) table.guitabtooltip: unknown
 		```
 	**/
-	static var guitabtooltip : Dynamic;
+	var guitabtooltip : Dynamic;
 	/**
 		```lua
 		(global) table.helpfile: unknown
 		```
 	**/
-	static var helpfile : Dynamic;
+	var helpfile : Dynamic;
 	/**
 		```lua
 		(global) table.helpheight: unknown
 		```
 	**/
-	static var helpheight : Dynamic;
+	var helpheight : Dynamic;
 	/**
 		```lua
 		(global) table.helplang: unknown
 		```
 	**/
-	static var helplang : Dynamic;
+	var helplang : Dynamic;
 	/**
 		```lua
 		(global) table.hidden: unknown
 		```
 	**/
-	static var hidden : Dynamic;
+	var hidden : Dynamic;
 	/**
 		```lua
 		(global) table.highlight: unknown
 		```
 	**/
-	static var highlight : Dynamic;
+	var highlight : Dynamic;
 	/**
 		```lua
 		(global) table.history: unknown
 		```
 	**/
-	static var history : Dynamic;
+	var history : Dynamic;
 	/**
 		```lua
 		(global) table.hkmap: unknown
 		```
 	**/
-	static var hkmap : Dynamic;
+	var hkmap : Dynamic;
 	/**
 		```lua
 		(global) table.hkmapp: unknown
 		```
 	**/
-	static var hkmapp : Dynamic;
+	var hkmapp : Dynamic;
 	/**
 		```lua
 		(global) table.hlsearch: unknown
 		```
 	**/
-	static var hlsearch : Dynamic;
+	var hlsearch : Dynamic;
 	/**
 		```lua
 		(global) table.icon: unknown
 		```
 	**/
-	static var icon : Dynamic;
+	var icon : Dynamic;
 	/**
 		```lua
 		(global) table.iconstring: unknown
 		```
 	**/
-	static var iconstring : Dynamic;
+	var iconstring : Dynamic;
 	/**
 		```lua
 		(global) table.ignorecase: unknown
 		```
 	**/
-	static var ignorecase : Dynamic;
+	var ignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.imcmdline: unknown
 		```
 	**/
-	static var imcmdline : Dynamic;
+	var imcmdline : Dynamic;
 	/**
 		```lua
 		(global) table.imdisable: unknown
 		```
 	**/
-	static var imdisable : Dynamic;
+	var imdisable : Dynamic;
 	/**
 		```lua
 		(global) table.iminsert: unknown
 		```
 	**/
-	static var iminsert : Dynamic;
+	var iminsert : Dynamic;
 	/**
 		```lua
 		(global) table.imsearch: unknown
 		```
 	**/
-	static var imsearch : Dynamic;
+	var imsearch : Dynamic;
 	/**
 		```lua
 		(global) table.inccommand: unknown
 		```
 	**/
-	static var inccommand : Dynamic;
+	var inccommand : Dynamic;
 	/**
 		```lua
 		(global) table.include: unknown
 		```
 	**/
-	static var include : Dynamic;
+	var include : Dynamic;
 	/**
 		```lua
 		(global) table.includeexpr: unknown
 		```
 	**/
-	static var includeexpr : Dynamic;
+	var includeexpr : Dynamic;
 	/**
 		```lua
 		(global) table.incsearch: unknown
 		```
 	**/
-	static var incsearch : Dynamic;
+	var incsearch : Dynamic;
 	/**
 		```lua
 		(global) table.indentexpr: unknown
 		```
 	**/
-	static var indentexpr : Dynamic;
+	var indentexpr : Dynamic;
 	/**
 		```lua
 		(global) table.indentkeys: unknown
 		```
 	**/
-	static var indentkeys : Dynamic;
+	var indentkeys : Dynamic;
 	/**
 		```lua
 		(global) table.infercase: unknown
 		```
 	**/
-	static var infercase : Dynamic;
+	var infercase : Dynamic;
 	/**
 		```lua
 		(global) table.insertmode: unknown
 		```
 	**/
-	static var insertmode : Dynamic;
+	var insertmode : Dynamic;
 	/**
 		```lua
 		(global) table.isfname: unknown
 		```
 	**/
-	static var isfname : Dynamic;
+	var isfname : Dynamic;
 	/**
 		```lua
 		(global) table.isident: unknown
 		```
 	**/
-	static var isident : Dynamic;
+	var isident : Dynamic;
 	/**
 		```lua
 		(global) table.iskeyword: unknown
 		```
 	**/
-	static var iskeyword : Dynamic;
+	var iskeyword : Dynamic;
 	/**
 		```lua
 		(global) table.isprint: unknown
 		```
 	**/
-	static var isprint : Dynamic;
+	var isprint : Dynamic;
 	/**
 		```lua
 		(global) table.joinspaces: unknown
 		```
 	**/
-	static var joinspaces : Dynamic;
+	var joinspaces : Dynamic;
 	/**
 		```lua
 		(global) table.jumpoptions: unknown
 		```
 	**/
-	static var jumpoptions : Dynamic;
+	var jumpoptions : Dynamic;
 	/**
 		```lua
 		(global) table.keymap: unknown
 		```
 	**/
-	static var keymap : Dynamic;
+	var keymap : Dynamic;
 	/**
 		```lua
 		(global) table.keymodel: unknown
 		```
 	**/
-	static var keymodel : Dynamic;
+	var keymodel : Dynamic;
 	/**
 		```lua
 		(global) table.keywordprg: unknown
 		```
 	**/
-	static var keywordprg : Dynamic;
+	var keywordprg : Dynamic;
 	/**
 		```lua
 		(global) table.langmap: unknown
 		```
 	**/
-	static var langmap : Dynamic;
+	var langmap : Dynamic;
 	/**
 		```lua
 		(global) table.langmenu: unknown
 		```
 	**/
-	static var langmenu : Dynamic;
+	var langmenu : Dynamic;
 	/**
 		```lua
 		(global) table.langnoremap: unknown
 		```
 	**/
-	static var langnoremap : Dynamic;
+	var langnoremap : Dynamic;
 	/**
 		```lua
 		(global) table.langremap: unknown
 		```
 	**/
-	static var langremap : Dynamic;
+	var langremap : Dynamic;
 	/**
 		```lua
 		(global) table.laststatus: unknown
 		```
 	**/
-	static var laststatus : Dynamic;
+	var laststatus : Dynamic;
 	/**
 		```lua
 		(global) table.lazyredraw: unknown
 		```
 	**/
-	static var lazyredraw : Dynamic;
+	var lazyredraw : Dynamic;
 	/**
 		```lua
 		(global) table.linebreak: unknown
 		```
 	**/
-	static var linebreak : Dynamic;
+	var linebreak : Dynamic;
 	/**
 		```lua
 		(global) table.lines: unknown
 		```
 	**/
-	static var lines : Dynamic;
+	var lines : Dynamic;
 	/**
 		```lua
 		(global) table.linespace: unknown
 		```
 	**/
-	static var linespace : Dynamic;
+	var linespace : Dynamic;
 	/**
 		```lua
 		(global) table.lisp: unknown
 		```
 	**/
-	static var lisp : Dynamic;
+	var lisp : Dynamic;
 	/**
 		```lua
 		(global) table.lispoptions: unknown
 		```
 	**/
-	static var lispoptions : Dynamic;
+	var lispoptions : Dynamic;
 	/**
 		```lua
 		(global) table.lispwords: unknown
 		```
 	**/
-	static var lispwords : Dynamic;
+	var lispwords : Dynamic;
 	/**
 		```lua
 		(global) table.list: unknown
 		```
 	**/
-	static var list : Dynamic;
+	var list : Dynamic;
 	/**
 		```lua
 		(global) table.listchars: unknown
 		```
 	**/
-	static var listchars : Dynamic;
+	var listchars : Dynamic;
 	/**
 		```lua
 		(global) table.loadplugins: unknown
 		```
 	**/
-	static var loadplugins : Dynamic;
+	var loadplugins : Dynamic;
 	/**
 		```lua
 		(global) table.magic: unknown
 		```
 	**/
-	static var magic : Dynamic;
+	var magic : Dynamic;
 	/**
 		```lua
 		(global) table.makeef: unknown
 		```
 	**/
-	static var makeef : Dynamic;
+	var makeef : Dynamic;
 	/**
 		```lua
 		(global) table.makeencoding: unknown
 		```
 	**/
-	static var makeencoding : Dynamic;
+	var makeencoding : Dynamic;
 	/**
 		```lua
 		(global) table.makeprg: unknown
 		```
 	**/
-	static var makeprg : Dynamic;
+	var makeprg : Dynamic;
 	/**
 		```lua
 		(global) table.matchpairs: unknown
 		```
 	**/
-	static var matchpairs : Dynamic;
+	var matchpairs : Dynamic;
 	/**
 		```lua
 		(global) table.matchtime: unknown
 		```
 	**/
-	static var matchtime : Dynamic;
+	var matchtime : Dynamic;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
 		```
 	**/
-	static var maxcombine : Dynamic;
+	var maxcombine : Dynamic;
 	/**
 		```lua
 		(global) table.maxfuncdepth: unknown
 		```
 	**/
-	static var maxfuncdepth : Dynamic;
+	var maxfuncdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmapdepth: unknown
 		```
 	**/
-	static var maxmapdepth : Dynamic;
+	var maxmapdepth : Dynamic;
 	/**
 		```lua
 		(global) table.maxmempattern: unknown
 		```
 	**/
-	static var maxmempattern : Dynamic;
+	var maxmempattern : Dynamic;
 	/**
 		```lua
 		(global) table.menuitems: unknown
 		```
 	**/
-	static var menuitems : Dynamic;
+	var menuitems : Dynamic;
 	/**
 		```lua
 		(global) table.messagesopt: unknown
 		```
 	**/
-	static var messagesopt : Dynamic;
+	var messagesopt : Dynamic;
 	/**
 		```lua
 		(global) table.mkspellmem: unknown
 		```
 	**/
-	static var mkspellmem : Dynamic;
+	var mkspellmem : Dynamic;
 	/**
 		```lua
 		(global) table.modeline: unknown
 		```
 	**/
-	static var modeline : Dynamic;
+	var modeline : Dynamic;
 	/**
 		```lua
 		(global) table.modelineexpr: unknown
 		```
 	**/
-	static var modelineexpr : Dynamic;
+	var modelineexpr : Dynamic;
 	/**
 		```lua
 		(global) table.modelines: unknown
 		```
 	**/
-	static var modelines : Dynamic;
+	var modelines : Dynamic;
 	/**
 		```lua
 		(global) table.modifiable: unknown
 		```
 	**/
-	static var modifiable : Dynamic;
+	var modifiable : Dynamic;
 	/**
 		```lua
 		(global) table.modified: unknown
 		```
 	**/
-	static var modified : Dynamic;
+	var modified : Dynamic;
 	/**
 		```lua
 		(global) table.more: unknown
 		```
 	**/
-	static var more : Dynamic;
+	var more : Dynamic;
 	/**
 		```lua
 		(global) table.mouse: unknown
 		```
 	**/
-	static var mouse : Dynamic;
+	var mouse : Dynamic;
 	/**
 		```lua
 		(global) table.mousefocus: unknown
 		```
 	**/
-	static var mousefocus : Dynamic;
+	var mousefocus : Dynamic;
 	/**
 		```lua
 		(global) table.mousehide: unknown
 		```
 	**/
-	static var mousehide : Dynamic;
+	var mousehide : Dynamic;
 	/**
 		```lua
 		(global) table.mousemodel: unknown
 		```
 	**/
-	static var mousemodel : Dynamic;
+	var mousemodel : Dynamic;
 	/**
 		```lua
 		(global) table.mousemoveevent: unknown
 		```
 	**/
-	static var mousemoveevent : Dynamic;
+	var mousemoveevent : Dynamic;
 	/**
 		```lua
 		(global) table.mousescroll: unknown
 		```
 	**/
-	static var mousescroll : Dynamic;
+	var mousescroll : Dynamic;
 	/**
 		```lua
 		(global) table.mouseshape: unknown
 		```
 	**/
-	static var mouseshape : Dynamic;
+	var mouseshape : Dynamic;
 	/**
 		```lua
 		(global) table.mousetime: unknown
 		```
 	**/
-	static var mousetime : Dynamic;
+	var mousetime : Dynamic;
 	/**
 		```lua
 		(global) table.nrformats: unknown
 		```
 	**/
-	static var nrformats : Dynamic;
+	var nrformats : Dynamic;
 	/**
 		```lua
 		(global) table.number: unknown
 		```
 	**/
-	static var number : Dynamic;
+	var number : Dynamic;
 	/**
 		```lua
 		(global) table.numberwidth: unknown
 		```
 	**/
-	static var numberwidth : Dynamic;
+	var numberwidth : Dynamic;
 	/**
 		```lua
 		(global) table.omnifunc: unknown
 		```
 	**/
-	static var omnifunc : Dynamic;
+	var omnifunc : Dynamic;
 	/**
 		```lua
 		(global) table.opendevice: unknown
 		```
 	**/
-	static var opendevice : Dynamic;
+	var opendevice : Dynamic;
 	/**
 		```lua
 		(global) table.operatorfunc: unknown
 		```
 	**/
-	static var operatorfunc : Dynamic;
+	var operatorfunc : Dynamic;
 	/**
 		```lua
 		(global) table.packpath: unknown
 		```
 	**/
-	static var packpath : Dynamic;
+	var packpath : Dynamic;
 	/**
 		```lua
 		(global) table.paragraphs: unknown
 		```
 	**/
-	static var paragraphs : Dynamic;
+	var paragraphs : Dynamic;
 	/**
 		```lua
 		(global) table.paste: unknown
 		```
 	**/
-	static var paste : Dynamic;
+	var paste : Dynamic;
 	/**
 		```lua
 		(global) table.pastetoggle: unknown
 		```
 	**/
-	static var pastetoggle : Dynamic;
+	var pastetoggle : Dynamic;
 	/**
 		```lua
 		(global) table.patchexpr: unknown
 		```
 	**/
-	static var patchexpr : Dynamic;
+	var patchexpr : Dynamic;
 	/**
 		```lua
 		(global) table.patchmode: unknown
 		```
 	**/
-	static var patchmode : Dynamic;
+	var patchmode : Dynamic;
 	/**
 		```lua
 		(global) table.path: unknown
 		```
 	**/
-	static var path : Dynamic;
+	var path : Dynamic;
 	/**
 		```lua
 		(global) table.preserveindent: unknown
 		```
 	**/
-	static var preserveindent : Dynamic;
+	var preserveindent : Dynamic;
 	/**
 		```lua
 		(global) table.previewheight: unknown
 		```
 	**/
-	static var previewheight : Dynamic;
+	var previewheight : Dynamic;
 	/**
 		```lua
 		(global) table.previewwindow: unknown
 		```
 	**/
-	static var previewwindow : Dynamic;
+	var previewwindow : Dynamic;
 	/**
 		```lua
 		(global) table.prompt: unknown
 		```
 	**/
-	static var prompt : Dynamic;
+	var prompt : Dynamic;
 	/**
 		```lua
 		(global) table.pumblend: unknown
 		```
 	**/
-	static var pumblend : Dynamic;
+	var pumblend : Dynamic;
 	/**
 		```lua
 		(global) table.pumheight: unknown
 		```
 	**/
-	static var pumheight : Dynamic;
+	var pumheight : Dynamic;
 	/**
 		```lua
 		(global) table.pumwidth: unknown
 		```
 	**/
-	static var pumwidth : Dynamic;
+	var pumwidth : Dynamic;
 	/**
 		```lua
 		(global) table.pyxversion: unknown
 		```
 	**/
-	static var pyxversion : Dynamic;
+	var pyxversion : Dynamic;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: unknown
 		```
 	**/
-	static var quickfixtextfunc : Dynamic;
+	var quickfixtextfunc : Dynamic;
 	/**
 		```lua
 		(global) table.quoteescape: unknown
 		```
 	**/
-	static var quoteescape : Dynamic;
+	var quoteescape : Dynamic;
 	/**
 		```lua
 		(global) table.readonly: unknown
 		```
 	**/
-	static var readonly : Dynamic;
+	var readonly : Dynamic;
 	/**
 		```lua
 		(global) table.redrawdebug: unknown
 		```
 	**/
-	static var redrawdebug : Dynamic;
+	var redrawdebug : Dynamic;
 	/**
 		```lua
 		(global) table.redrawtime: unknown
 		```
 	**/
-	static var redrawtime : Dynamic;
+	var redrawtime : Dynamic;
 	/**
 		```lua
 		(global) table.regexpengine: unknown
 		```
 	**/
-	static var regexpengine : Dynamic;
+	var regexpengine : Dynamic;
 	/**
 		```lua
 		(global) table.relativenumber: unknown
 		```
 	**/
-	static var relativenumber : Dynamic;
+	var relativenumber : Dynamic;
 	/**
 		```lua
 		(global) table.remap: unknown
 		```
 	**/
-	static var remap : Dynamic;
+	var remap : Dynamic;
 	/**
 		```lua
 		(global) table.report: unknown
 		```
 	**/
-	static var report : Dynamic;
+	var report : Dynamic;
 	/**
 		```lua
 		(global) table.revins: unknown
 		```
 	**/
-	static var revins : Dynamic;
+	var revins : Dynamic;
 	/**
 		```lua
 		(global) table.rightleft: unknown
 		```
 	**/
-	static var rightleft : Dynamic;
+	var rightleft : Dynamic;
 	/**
 		```lua
 		(global) table.rightleftcmd: unknown
 		```
 	**/
-	static var rightleftcmd : Dynamic;
+	var rightleftcmd : Dynamic;
 	/**
 		```lua
 		(global) table.ruler: unknown
 		```
 	**/
-	static var ruler : Dynamic;
+	var ruler : Dynamic;
 	/**
 		```lua
 		(global) table.rulerformat: unknown
 		```
 	**/
-	static var rulerformat : Dynamic;
+	var rulerformat : Dynamic;
 	/**
 		```lua
 		(global) table.runtimepath: unknown
 		```
 	**/
-	static var runtimepath : Dynamic;
+	var runtimepath : Dynamic;
 	/**
 		```lua
 		(global) table.scroll: unknown
 		```
 	**/
-	static var scroll : Dynamic;
+	var scroll : Dynamic;
 	/**
 		```lua
 		(global) table.scrollback: unknown
 		```
 	**/
-	static var scrollback : Dynamic;
+	var scrollback : Dynamic;
 	/**
 		```lua
 		(global) table.scrollbind: unknown
 		```
 	**/
-	static var scrollbind : Dynamic;
+	var scrollbind : Dynamic;
 	/**
 		```lua
 		(global) table.scrolljump: unknown
 		```
 	**/
-	static var scrolljump : Dynamic;
+	var scrolljump : Dynamic;
 	/**
 		```lua
 		(global) table.scrolloff: unknown
 		```
 	**/
-	static var scrolloff : Dynamic;
+	var scrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.scrollopt: unknown
 		```
 	**/
-	static var scrollopt : Dynamic;
+	var scrollopt : Dynamic;
 	/**
 		```lua
 		(global) table.sections: unknown
 		```
 	**/
-	static var sections : Dynamic;
+	var sections : Dynamic;
 	/**
 		```lua
 		(global) table.secure: unknown
 		```
 	**/
-	static var secure : Dynamic;
+	var secure : Dynamic;
 	/**
 		```lua
 		(global) table.selection: unknown
 		```
 	**/
-	static var selection : Dynamic;
+	var selection : Dynamic;
 	/**
 		```lua
 		(global) table.selectmode: unknown
 		```
 	**/
-	static var selectmode : Dynamic;
+	var selectmode : Dynamic;
 	/**
 		```lua
 		(global) table.sessionoptions: unknown
 		```
 	**/
-	static var sessionoptions : Dynamic;
+	var sessionoptions : Dynamic;
 	/**
 		```lua
 		(global) table.shada: unknown
 		```
 	**/
-	static var shada : Dynamic;
+	var shada : Dynamic;
 	/**
 		```lua
 		(global) table.shadafile: unknown
 		```
 	**/
-	static var shadafile : Dynamic;
+	var shadafile : Dynamic;
 	/**
 		```lua
 		(global) table.shell: unknown
 		```
 	**/
-	static var shell : Dynamic;
+	var shell : Dynamic;
 	/**
 		```lua
 		(global) table.shellcmdflag: unknown
 		```
 	**/
-	static var shellcmdflag : Dynamic;
+	var shellcmdflag : Dynamic;
 	/**
 		```lua
 		(global) table.shellpipe: unknown
 		```
 	**/
-	static var shellpipe : Dynamic;
+	var shellpipe : Dynamic;
 	/**
 		```lua
 		(global) table.shellquote: unknown
 		```
 	**/
-	static var shellquote : Dynamic;
+	var shellquote : Dynamic;
 	/**
 		```lua
 		(global) table.shellredir: unknown
 		```
 	**/
-	static var shellredir : Dynamic;
+	var shellredir : Dynamic;
 	/**
 		```lua
 		(global) table.shellslash: unknown
 		```
 	**/
-	static var shellslash : Dynamic;
+	var shellslash : Dynamic;
 	/**
 		```lua
 		(global) table.shelltemp: unknown
 		```
 	**/
-	static var shelltemp : Dynamic;
+	var shelltemp : Dynamic;
 	/**
 		```lua
 		(global) table.shellxescape: unknown
 		```
 	**/
-	static var shellxescape : Dynamic;
+	var shellxescape : Dynamic;
 	/**
 		```lua
 		(global) table.shellxquote: unknown
 		```
 	**/
-	static var shellxquote : Dynamic;
+	var shellxquote : Dynamic;
 	/**
 		```lua
 		(global) table.shiftround: unknown
 		```
 	**/
-	static var shiftround : Dynamic;
+	var shiftround : Dynamic;
 	/**
 		```lua
 		(global) table.shiftwidth: unknown
 		```
 	**/
-	static var shiftwidth : Dynamic;
+	var shiftwidth : Dynamic;
 	/**
 		```lua
 		(global) table.shortmess: unknown
 		```
 	**/
-	static var shortmess : Dynamic;
+	var shortmess : Dynamic;
 	/**
 		```lua
 		(global) table.showbreak: unknown
 		```
 	**/
-	static var showbreak : Dynamic;
+	var showbreak : Dynamic;
 	/**
 		```lua
 		(global) table.showcmd: unknown
 		```
 	**/
-	static var showcmd : Dynamic;
+	var showcmd : Dynamic;
 	/**
 		```lua
 		(global) table.showcmdloc: unknown
 		```
 	**/
-	static var showcmdloc : Dynamic;
+	var showcmdloc : Dynamic;
 	/**
 		```lua
 		(global) table.showfulltag: unknown
 		```
 	**/
-	static var showfulltag : Dynamic;
+	var showfulltag : Dynamic;
 	/**
 		```lua
 		(global) table.showmatch: unknown
 		```
 	**/
-	static var showmatch : Dynamic;
+	var showmatch : Dynamic;
 	/**
 		```lua
 		(global) table.showmode: unknown
 		```
 	**/
-	static var showmode : Dynamic;
+	var showmode : Dynamic;
 	/**
 		```lua
 		(global) table.showtabline: unknown
 		```
 	**/
-	static var showtabline : Dynamic;
+	var showtabline : Dynamic;
 	/**
 		```lua
 		(global) table.sidescroll: unknown
 		```
 	**/
-	static var sidescroll : Dynamic;
+	var sidescroll : Dynamic;
 	/**
 		```lua
 		(global) table.sidescrolloff: unknown
 		```
 	**/
-	static var sidescrolloff : Dynamic;
+	var sidescrolloff : Dynamic;
 	/**
 		```lua
 		(global) table.signcolumn: unknown
 		```
 	**/
-	static var signcolumn : Dynamic;
+	var signcolumn : Dynamic;
 	/**
 		```lua
 		(global) table.smartcase: unknown
 		```
 	**/
-	static var smartcase : Dynamic;
+	var smartcase : Dynamic;
 	/**
 		```lua
 		(global) table.smartindent: unknown
 		```
 	**/
-	static var smartindent : Dynamic;
+	var smartindent : Dynamic;
 	/**
 		```lua
 		(global) table.smarttab: unknown
 		```
 	**/
-	static var smarttab : Dynamic;
+	var smarttab : Dynamic;
 	/**
 		```lua
 		(global) table.smoothscroll: unknown
 		```
 	**/
-	static var smoothscroll : Dynamic;
+	var smoothscroll : Dynamic;
 	/**
 		```lua
 		(global) table.softtabstop: unknown
 		```
 	**/
-	static var softtabstop : Dynamic;
+	var softtabstop : Dynamic;
 	/**
 		```lua
 		(global) table.spell: unknown
 		```
 	**/
-	static var spell : Dynamic;
+	var spell : Dynamic;
 	/**
 		```lua
 		(global) table.spellcapcheck: unknown
 		```
 	**/
-	static var spellcapcheck : Dynamic;
+	var spellcapcheck : Dynamic;
 	/**
 		```lua
 		(global) table.spellfile: unknown
 		```
 	**/
-	static var spellfile : Dynamic;
+	var spellfile : Dynamic;
 	/**
 		```lua
 		(global) table.spelllang: unknown
 		```
 	**/
-	static var spelllang : Dynamic;
+	var spelllang : Dynamic;
 	/**
 		```lua
 		(global) table.spelloptions: unknown
 		```
 	**/
-	static var spelloptions : Dynamic;
+	var spelloptions : Dynamic;
 	/**
 		```lua
 		(global) table.spellsuggest: unknown
 		```
 	**/
-	static var spellsuggest : Dynamic;
+	var spellsuggest : Dynamic;
 	/**
 		```lua
 		(global) table.splitbelow: unknown
 		```
 	**/
-	static var splitbelow : Dynamic;
+	var splitbelow : Dynamic;
 	/**
 		```lua
 		(global) table.splitkeep: unknown
 		```
 	**/
-	static var splitkeep : Dynamic;
+	var splitkeep : Dynamic;
 	/**
 		```lua
 		(global) table.splitright: unknown
 		```
 	**/
-	static var splitright : Dynamic;
+	var splitright : Dynamic;
 	/**
 		```lua
 		(global) table.startofline: unknown
 		```
 	**/
-	static var startofline : Dynamic;
+	var startofline : Dynamic;
 	/**
 		```lua
 		(global) table.statuscolumn: unknown
 		```
 	**/
-	static var statuscolumn : Dynamic;
+	var statuscolumn : Dynamic;
 	/**
 		```lua
 		(global) table.statusline: unknown
 		```
 	**/
-	static var statusline : Dynamic;
+	var statusline : Dynamic;
 	/**
 		```lua
 		(global) table.suffixes: unknown
 		```
 	**/
-	static var suffixes : Dynamic;
+	var suffixes : Dynamic;
 	/**
 		```lua
 		(global) table.suffixesadd: unknown
 		```
 	**/
-	static var suffixesadd : Dynamic;
+	var suffixesadd : Dynamic;
 	/**
 		```lua
 		(global) table.swapfile: unknown
 		```
 	**/
-	static var swapfile : Dynamic;
+	var swapfile : Dynamic;
 	/**
 		```lua
 		(global) table.switchbuf: unknown
 		```
 	**/
-	static var switchbuf : Dynamic;
+	var switchbuf : Dynamic;
 	/**
 		```lua
 		(global) table.synmaxcol: unknown
 		```
 	**/
-	static var synmaxcol : Dynamic;
+	var synmaxcol : Dynamic;
 	/**
 		```lua
 		(global) table.syntax: unknown
 		```
 	**/
-	static var syntax : Dynamic;
+	var syntax : Dynamic;
 	/**
 		```lua
 		(global) table.tabclose: unknown
 		```
 	**/
-	static var tabclose : Dynamic;
+	var tabclose : Dynamic;
 	/**
 		```lua
 		(global) table.tabline: unknown
 		```
 	**/
-	static var tabline : Dynamic;
+	var tabline : Dynamic;
 	/**
 		```lua
 		(global) table.tabpagemax: unknown
 		```
 	**/
-	static var tabpagemax : Dynamic;
+	var tabpagemax : Dynamic;
 	/**
 		```lua
 		(global) table.tabstop: unknown
 		```
 	**/
-	static var tabstop : Dynamic;
+	var tabstop : Dynamic;
 	/**
 		```lua
 		(global) table.tagbsearch: unknown
 		```
 	**/
-	static var tagbsearch : Dynamic;
+	var tagbsearch : Dynamic;
 	/**
 		```lua
 		(global) table.tagcase: unknown
 		```
 	**/
-	static var tagcase : Dynamic;
+	var tagcase : Dynamic;
 	/**
 		```lua
 		(global) table.tagfunc: unknown
 		```
 	**/
-	static var tagfunc : Dynamic;
+	var tagfunc : Dynamic;
 	/**
 		```lua
 		(global) table.taglength: unknown
 		```
 	**/
-	static var taglength : Dynamic;
+	var taglength : Dynamic;
 	/**
 		```lua
 		(global) table.tagrelative: unknown
 		```
 	**/
-	static var tagrelative : Dynamic;
+	var tagrelative : Dynamic;
 	/**
 		```lua
 		(global) table.tags: unknown
 		```
 	**/
-	static var tags : Dynamic;
+	var tags : Dynamic;
 	/**
 		```lua
 		(global) table.tagstack: unknown
 		```
 	**/
-	static var tagstack : Dynamic;
+	var tagstack : Dynamic;
 	/**
 		```lua
 		(global) table.termbidi: unknown
 		```
 	**/
-	static var termbidi : Dynamic;
+	var termbidi : Dynamic;
 	/**
 		```lua
 		(global) table.termencoding: unknown
 		```
 	**/
-	static var termencoding : Dynamic;
+	var termencoding : Dynamic;
 	/**
 		```lua
 		(global) table.termguicolors: unknown
 		```
 	**/
-	static var termguicolors : Dynamic;
+	var termguicolors : Dynamic;
 	/**
 		```lua
 		(global) table.termpastefilter: unknown
 		```
 	**/
-	static var termpastefilter : Dynamic;
+	var termpastefilter : Dynamic;
 	/**
 		```lua
 		(global) table.termsync: unknown
 		```
 	**/
-	static var termsync : Dynamic;
+	var termsync : Dynamic;
 	/**
 		```lua
 		(global) table.terse: unknown
 		```
 	**/
-	static var terse : Dynamic;
+	var terse : Dynamic;
 	/**
 		```lua
 		(global) table.textwidth: unknown
 		```
 	**/
-	static var textwidth : Dynamic;
+	var textwidth : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurus: unknown
 		```
 	**/
-	static var thesaurus : Dynamic;
+	var thesaurus : Dynamic;
 	/**
 		```lua
 		(global) table.thesaurusfunc: unknown
 		```
 	**/
-	static var thesaurusfunc : Dynamic;
+	var thesaurusfunc : Dynamic;
 	/**
 		```lua
 		(global) table.tildeop: unknown
 		```
 	**/
-	static var tildeop : Dynamic;
+	var tildeop : Dynamic;
 	/**
 		```lua
 		(global) table.timeout: unknown
 		```
 	**/
-	static var timeout : Dynamic;
+	var timeout : Dynamic;
 	/**
 		```lua
 		(global) table.timeoutlen: unknown
 		```
 	**/
-	static var timeoutlen : Dynamic;
+	var timeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.title: unknown
 		```
 	**/
-	static var title : Dynamic;
+	var title : Dynamic;
 	/**
 		```lua
 		(global) table.titlelen: unknown
 		```
 	**/
-	static var titlelen : Dynamic;
+	var titlelen : Dynamic;
 	/**
 		```lua
 		(global) table.titleold: unknown
 		```
 	**/
-	static var titleold : Dynamic;
+	var titleold : Dynamic;
 	/**
 		```lua
 		(global) table.titlestring: unknown
 		```
 	**/
-	static var titlestring : Dynamic;
+	var titlestring : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeout: unknown
 		```
 	**/
-	static var ttimeout : Dynamic;
+	var ttimeout : Dynamic;
 	/**
 		```lua
 		(global) table.ttimeoutlen: unknown
 		```
 	**/
-	static var ttimeoutlen : Dynamic;
+	var ttimeoutlen : Dynamic;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
 		```
 	**/
-	static var ttyfast : Dynamic;
+	var ttyfast : Dynamic;
 	/**
 		```lua
 		(global) table.undodir: unknown
 		```
 	**/
-	static var undodir : Dynamic;
+	var undodir : Dynamic;
 	/**
 		```lua
 		(global) table.undofile: unknown
 		```
 	**/
-	static var undofile : Dynamic;
+	var undofile : Dynamic;
 	/**
 		```lua
 		(global) table.undolevels: unknown
 		```
 	**/
-	static var undolevels : Dynamic;
+	var undolevels : Dynamic;
 	/**
 		```lua
 		(global) table.undoreload: unknown
 		```
 	**/
-	static var undoreload : Dynamic;
+	var undoreload : Dynamic;
 	/**
 		```lua
 		(global) table.updatecount: unknown
 		```
 	**/
-	static var updatecount : Dynamic;
+	var updatecount : Dynamic;
 	/**
 		```lua
 		(global) table.updatetime: unknown
 		```
 	**/
-	static var updatetime : Dynamic;
+	var updatetime : Dynamic;
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
 		```
 	**/
-	static var varsofttabstop : Dynamic;
+	var varsofttabstop : Dynamic;
 	/**
 		```lua
 		(global) table.vartabstop: unknown
 		```
 	**/
-	static var vartabstop : Dynamic;
+	var vartabstop : Dynamic;
 	/**
 		```lua
 		(global) table.verbose: unknown
 		```
 	**/
-	static var verbose : Dynamic;
+	var verbose : Dynamic;
 	/**
 		```lua
 		(global) table.verbosefile: unknown
 		```
 	**/
-	static var verbosefile : Dynamic;
+	var verbosefile : Dynamic;
 	/**
 		```lua
 		(global) table.viewdir: unknown
 		```
 	**/
-	static var viewdir : Dynamic;
+	var viewdir : Dynamic;
 	/**
 		```lua
 		(global) table.viewoptions: unknown
 		```
 	**/
-	static var viewoptions : Dynamic;
+	var viewoptions : Dynamic;
 	/**
 		```lua
 		(global) table.virtualedit: unknown
 		```
 	**/
-	static var virtualedit : Dynamic;
+	var virtualedit : Dynamic;
 	/**
 		```lua
 		(global) table.visualbell: unknown
 		```
 	**/
-	static var visualbell : Dynamic;
+	var visualbell : Dynamic;
 	/**
 		```lua
 		(global) table.warn: unknown
 		```
 	**/
-	static var warn : Dynamic;
+	var warn : Dynamic;
 	/**
 		```lua
 		(global) table.whichwrap: unknown
 		```
 	**/
-	static var whichwrap : Dynamic;
+	var whichwrap : Dynamic;
 	/**
 		```lua
 		(global) table.wildchar: unknown
 		```
 	**/
-	static var wildchar : Dynamic;
+	var wildchar : Dynamic;
 	/**
 		```lua
 		(global) table.wildcharm: unknown
 		```
 	**/
-	static var wildcharm : Dynamic;
+	var wildcharm : Dynamic;
 	/**
 		```lua
 		(global) table.wildignore: unknown
 		```
 	**/
-	static var wildignore : Dynamic;
+	var wildignore : Dynamic;
 	/**
 		```lua
 		(global) table.wildignorecase: unknown
 		```
 	**/
-	static var wildignorecase : Dynamic;
+	var wildignorecase : Dynamic;
 	/**
 		```lua
 		(global) table.wildmenu: unknown
 		```
 	**/
-	static var wildmenu : Dynamic;
+	var wildmenu : Dynamic;
 	/**
 		```lua
 		(global) table.wildmode: unknown
 		```
 	**/
-	static var wildmode : Dynamic;
+	var wildmode : Dynamic;
 	/**
 		```lua
 		(global) table.wildoptions: unknown
 		```
 	**/
-	static var wildoptions : Dynamic;
+	var wildoptions : Dynamic;
 	/**
 		```lua
 		(global) table.winaltkeys: unknown
 		```
 	**/
-	static var winaltkeys : Dynamic;
+	var winaltkeys : Dynamic;
 	/**
 		```lua
 		(global) table.winbar: unknown
 		```
 	**/
-	static var winbar : Dynamic;
+	var winbar : Dynamic;
 	/**
 		```lua
 		(global) table.winblend: unknown
 		```
 	**/
-	static var winblend : Dynamic;
+	var winblend : Dynamic;
 	/**
 		```lua
 		(global) table.winborder: unknown
 		```
 	**/
-	static var winborder : Dynamic;
+	var winborder : Dynamic;
 	/**
 		```lua
 		(global) table.window: unknown
 		```
 	**/
-	static var window : Dynamic;
+	var window : Dynamic;
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
 		```
 	**/
-	static var winfixbuf : Dynamic;
+	var winfixbuf : Dynamic;
 	/**
 		```lua
 		(global) table.winfixheight: unknown
 		```
 	**/
-	static var winfixheight : Dynamic;
+	var winfixheight : Dynamic;
 	/**
 		```lua
 		(global) table.winfixwidth: unknown
 		```
 	**/
-	static var winfixwidth : Dynamic;
+	var winfixwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winheight: unknown
 		```
 	**/
-	static var winheight : Dynamic;
+	var winheight : Dynamic;
 	/**
 		```lua
 		(global) table.winhighlight: unknown
 		```
 	**/
-	static var winhighlight : Dynamic;
+	var winhighlight : Dynamic;
 	/**
 		```lua
 		(global) table.winminheight: unknown
 		```
 	**/
-	static var winminheight : Dynamic;
+	var winminheight : Dynamic;
 	/**
 		```lua
 		(global) table.winminwidth: unknown
 		```
 	**/
-	static var winminwidth : Dynamic;
+	var winminwidth : Dynamic;
 	/**
 		```lua
 		(global) table.winwidth: unknown
 		```
 	**/
-	static var winwidth : Dynamic;
+	var winwidth : Dynamic;
 	/**
 		```lua
 		(global) table.wrap: unknown
 		```
 	**/
-	static var wrap : Dynamic;
+	var wrap : Dynamic;
 	/**
 		```lua
 		(global) table.wrapmargin: unknown
 		```
 	**/
-	static var wrapmargin : Dynamic;
+	var wrapmargin : Dynamic;
 	/**
 		```lua
 		(global) table.wrapscan: unknown
 		```
 	**/
-	static var wrapscan : Dynamic;
+	var wrapscan : Dynamic;
 	/**
 		```lua
 		(global) table.write: unknown
 		```
 	**/
-	static var write : Dynamic;
+	var write : Dynamic;
 	/**
 		```lua
 		(global) table.writeany: unknown
 		```
 	**/
-	static var writeany : Dynamic;
+	var writeany : Dynamic;
 	/**
 		```lua
 		(global) table.writebackup: unknown
 		```
 	**/
-	static var writebackup : Dynamic;
+	var writebackup : Dynamic;
 	/**
 		```lua
 		(global) table.writedelay: unknown
 		```
 	**/
-	static var writedelay : Dynamic;
+	var writedelay : Dynamic;
 }
 
 @:native("vim") extern class Vim {
@@ -46917,10 +44092,22 @@ package nvim;
 	static var NIL : nvim.type.vim.NIL;
 	/**
 		```lua
+		(global) vim.api: table
+		```
+	**/
+	static var api : Api;
+	/**
+		```lua
 		(global) vim.b: vim.var_accessor
 		```
 	**/
 	static var b : nvim.type.vim.VarAccessor;
+	/**
+		```lua
+		(global) vim.base64: unknown
+		```
+	**/
+	static var base64 : Base64;
 	/**
 		```lua
 		(global) vim.bo: table|vim.bo
@@ -47129,40 +44316,6 @@ package nvim;
 		```
 	**/
 	static var diagnostic : nvim.module.vim.Diagnostic;
-	/**
-		```lua
-		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
-		  -> (string|integer[][])?
-		```
-		
-		---
-		
-		 Run diff on strings {a} and {b}. Any indices returned by this function,
-		 either directly or via callback arguments, are 1-based.
-		
-		 Examples:
-		
-		 ```lua
-		 vim.diff('a\n', 'b\nc\n')
-		 -- =>
-		 -- @@ -1 +1,2 @@
-		 -- -a
-		 -- +b
-		 -- +c
-		
-		 vim.diff('a\n', 'b\nc\n', {result_type = 'indices'})
-		 -- =>
-		 -- {
-		 --   {1, 1, 1, 2}
-		 -- }
-		 ```
-		
-		@*param* `a` — First string to compare
-		
-		@*param* `b` — Second string to compare
-		
-		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
-	**/
 	@:native("diff")
 	private static function __diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Float>>>>;
 	/**
@@ -47245,10 +44398,39 @@ package nvim;
 	static function endswith(s:String, suffix:String):Bool;
 	/**
 		```lua
+		(global) vim.env: table
+		```
+		
+		---
+		
+		 Environment variables defined in the editor session.
+		 See |expand-env| and |:let-environment| for the Vimscript behavior.
+		 Invalid or unset key returns `nil`.
+		
+		 Example:
+		
+		 ```lua
+		 vim.env.FOO = 'bar'
+		 print(vim.env.TERM)
+		 ```
+	**/
+	static var env : Env;
+	/**
+		```lua
 		(global) vim.filetype: table
 		```
 	**/
 	static var filetype : nvim.module.vim.Filetype;
+	/**
+		```lua
+		(global) vim.fn: table
+		```
+		
+		---
+		
+		 vim.fn.{func}(...)
+	**/
+	static var fn : Fn;
 	/**
 		```lua
 		(global) vim.fs: table
@@ -47282,48 +44464,27 @@ package nvim;
 	static var glob : nvim.module.vim.Glob;
 	/**
 		```lua
-		function vim.gsplit(s: string, sep: string, opts?: vim.gsplit.Opts)
-		  -> fun():string?
+		(global) vim.go: table
 		```
 		
 		---
 		
-		 Gets an |iterator| that splits a string at each instance of a separator, in "lazy" fashion
-		 (as opposed to |vim.split()| which is "eager").
+		 Get or set global |options|. Like `:setglobal`. Invalid key is
+		 an error.
+		
+		 Note: this is different from |vim.o| because this accesses the global
+		 option value and thus is mostly useful for use with |global-local|
+		 options.
 		
 		 Example:
 		
 		 ```lua
-		 for s in vim.gsplit(':aa::b:', ':', {plain=true}) do
-		   print(s)
-		 end
+		 vim.go.cmdheight = 4
+		 print(vim.go.columns)
+		 print(vim.go.bar)     -- error: invalid key
 		 ```
-		
-		 If you want to also inspect the separator itself (instead of discarding it), use
-		 |string.gmatch()|. Example:
-		
-		 ```lua
-		 for word, num in ('foo111bar222'):gmatch('([^0-9]*)(%d*)') do
-		   print(('word: %s num: %s'):format(word, num))
-		 end
-		 ```
-		
-		 @see |string.gmatch()|
-		 @see |vim.split()|
-		 @see |lua-pattern|s
-		
-		@*param* `s` — String to split
-		
-		@*param* `sep` — Separator or pattern
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — : Iterator over the split components
-		
-		See:
-		  * ~https~ ://www.lua.org/pil/20.2.html
-		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
+	static var go : Go;
 	@:native("gsplit")
 	private static function __gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String>;
 	/**
@@ -47436,26 +44597,6 @@ package nvim;
 		 to other restrictions such as |textlock|).
 	**/
 	static function in_fast_event():Dynamic;
-	/**
-		```lua
-		(global) vim.inspect: fun(x: any, opts?: vim.inspect.Opts):string
-		```
-		
-		---
-		
-		 Gets a human-readable representation of the given object.
-		
-		See:
-		  * ~https~ ://github.com/kikito/inspect.lua
-		  * ~https~ ://github.com/mpeterv/vinspect
-		
-		---
-		
-		```lua
-		function (x: any, opts?: vim.inspect.Opts)
-		  -> string
-		```
-	**/
 	@:native("inspect")
 	private static function __inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String;
 	/**
@@ -47483,36 +44624,6 @@ package nvim;
 		final result = __inspect(x, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.inspect_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
-		  -> { treesitter: table, syntax: table, extmarks: table, semantic_tokens: table, buffer: integer, col: integer, row: integer }
-		```
-		
-		---
-		
-		Get all the items at a given buffer position.
-		
-		Can also be pretty-printed with `:Inspect!`. [:Inspect!](file:///usr/local/share/nvim/runtime/lua/vim)
-		
-		@*param* `bufnr` — defaults to the current buffer
-		
-		@*param* `row` — row to inspect, 0-based. Defaults to the row of the current cursor
-		
-		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
-		
-		@*param* `filter` — Table with key-value pairs to filter the items
-		
-		@*return* — (table) a table with the following key-value pairs. Items are in "traversal order":
-		
-		               - treesitter: a list of treesitter captures
-		               - syntax: a list of syntax groups
-		               - semantic_tokens: a list of semantic tokens
-		               - extmarks: a list of extmarks
-		               - buffer: the buffer used to get the items
-		               - row: the row used to get the items
-		               - col: the col used to get the items
-	**/
 	@:native("inspect_pos")
 	private static function __inspect_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Float; var col : Float; var row : Float; };
 	/**
@@ -47571,26 +44682,6 @@ package nvim;
 		```
 	**/
 	static var is_thread : Dynamic;
-	/**
-		```lua
-		function vim.isarray(t?: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Tests if `t` is an "array": a table indexed _only_ by integers (potentially non-contiguous).
-		
-		 If the indexes start from 1 and are contiguous then the array is also a list. |vim.islist()|
-		
-		 Empty table `{}` is an array, unless it was created by |vim.empty_dict()| or returned as
-		 a dict-like |API| or Vimscript result, for example from |rpcrequest()| or |vim.fn|.
-		
-		
-		@*return* — `true` if array-like table, else `false`.
-		
-		See: ~https~ ://github.com/openresty/luajit2#tableisarray
-	**/
 	@:native("isarray")
 	private static function __isarray(?t:lua.Table.AnyTable):Bool;
 	/**
@@ -47618,23 +44709,6 @@ package nvim;
 		final result = __isarray(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.islist(t?: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Tests if `t` is a "list": a table indexed _only_ by contiguous integers starting from 1 (what
-		 |lua-length| calls a "regular array").
-		
-		 Empty table `{}` is a list, unless it was created by |vim.empty_dict()| or returned as
-		 a dict-like |API| or Vimscript result, for example from |rpcrequest()| or |vim.fn|.
-		
-		
-		@*return* — `true` if list-like table, else `false`.
-	**/
 	@:native("islist")
 	private static function __islist(?t:lua.Table.AnyTable):Bool;
 	/**
@@ -47667,6 +44741,12 @@ package nvim;
 	static var iter : nvim.type.IterMod;
 	/**
 		```lua
+		(global) vim.json: table
+		```
+	**/
+	static var json : Json;
+	/**
+		```lua
 		function vim.keycode(str: string)
 		  -> string
 		```
@@ -47693,23 +44773,6 @@ package nvim;
 		```
 	**/
 	static var keymap : nvim.module.vim.Keymap;
-	/**
-		```lua
-		function vim.list_contains(t: table, value: any)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a list-like table (integer keys without gaps) contains `value`.
-		
-		
-		@*param* `t` — Table to check (must be list-like, not validated)
-		
-		@*param* `value` — Value to compare
-		
-		@*return* — `true` if `t` contains `value`
-	**/
 	@:native("list_contains")
 	private static function __list_contains(t:lua.Table.AnyTable, value:Any):Bool;
 	/**
@@ -47734,27 +44797,6 @@ package nvim;
 		final result = __list_contains(t, value);
 		return result;
 	}
-	/**
-		```lua
-		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
-		  -> dst: <T:table>
-		```
-		
-		---
-		
-		 Extends a list-like table with the values of another list-like table.
-		
-		 NOTE: This mutates dst!
-		
-		
-		@*param* `dst` — List which will be modified and appended to
-		
-		@*param* `src` — List from which values will be inserted
-		
-		@*param* `start` — Start index on src. Defaults to 1
-		
-		@*param* `finish` — Final index on src. Defaults to `#src`
-	**/
 	@:native("list_extend")
 	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Float>, ?finish:Null<Float>):T;
 	/**
@@ -47808,6 +44850,16 @@ package nvim;
 		```
 	**/
 	static var loader : nvim.module.vim.Loader;
+	/**
+		```lua
+		(global) vim.log: table
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	static var log : Log;
 	/**
 		```lua
 		(global) vim.loop: uv
@@ -48017,6 +45069,12 @@ package nvim;
 	static var loop : nvim.type.Uv;
 	/**
 		```lua
+		(global) vim.lpeg: table
+		```
+	**/
+	static var lpeg : Lpeg;
+	/**
+		```lua
 		(global) vim.lsp: table
 		```
 	**/
@@ -48093,6 +45151,25 @@ package nvim;
 	static function notify_once(msg:String, ?level:Null<Float>, ?opts:Null<lua.Table.AnyTable>):Bool;
 	/**
 		```lua
+		(global) vim.o: table
+		```
+		
+		---
+		
+		 Get or set |options|. Works like `:set`, so buffer/window-scoped options target the current
+		 buffer/window. Invalid key is an error.
+		
+		 Example:
+		
+		 ```lua
+		 vim.o.cmdheight = 4
+		 print(vim.o.columns)
+		 print(vim.o.foo)     -- error: invalid key
+		 ```
+	**/
+	static var o : O;
+	/**
+		```lua
 		function vim.on_key(fn: fun(key: string, typed: string):string?|nil, ns_id?: integer, opts?: table)
 		  -> Namespace: integer
 		```
@@ -48130,6 +45207,36 @@ package nvim;
 		if on_key() is called without arguments.
 	**/
 	static function on_key(?fn:Null<(key:String, typed:String) -> Null<String>>, ?ns_id:Null<Float>, ?opts:Null<lua.Table.AnyTable>):Float;
+	/**
+		```lua
+		(global) vim.opt: table
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	static var opt : Opt;
+	/**
+		```lua
+		(global) vim.opt_global: table
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	static var opt_global : OptGlobal;
+	/**
+		```lua
+		(global) vim.opt_local: table
+		```
+		
+		---
+		
+		 @nodoc
+	**/
+	static var opt_local : OptLocal;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -48372,30 +45479,6 @@ package nvim;
 		```
 	**/
 	static var secure : nvim.module.vim.Secure;
-	/**
-		```lua
-		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
-		```
-		
-		---
-		
-		Show all the items at a given buffer position.
-		
-		Can also be shown with `:Inspect`. [:Inspect](file:///usr/local/share/nvim/runtime/lua/vim)
-		
-		Example: To bind this function to the vim-scriptease
-		inspired `zS` in Normal mode:
-		
-		```lua
-		vim.keymap.set('n', 'zS', vim.show_pos)
-		```
-		
-		@*param* `bufnr` — defaults to the current buffer
-		
-		@*param* `row` — row to inspect, 0-based. Defaults to the row of the current cursor
-		
-		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
-	**/
 	@:native("show_pos")
 	private static function __show_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):Dynamic;
 	/**
@@ -48433,26 +45516,6 @@ package nvim;
 		```
 	**/
 	static var snippet : nvim.module.vim.Snippet;
-	/**
-		```lua
-		function vim.spairs(t: <T:table>)
-		  -> fun(table: table<<K>, <V>>, index?: <K>):<K>, <V>
-		  2. <T:table>
-		```
-		
-		---
-		
-		 Enumerates key-value pairs of a table, ordered by key.
-		
-		
-		@*param* `t` — Dict-like table
-		
-		@*return* — |for-in| iterator over sorted keys and their values
-		
-		@*return*
-		
-		See: ~Based~ on https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("spairs")
 	private static function __spairs<T:(lua.Table.AnyTable), K, V>(t:T):nvim.helper.Multireturn<() -> nvim.helper.Multireturn<K, V, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>, T, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
@@ -48485,35 +45548,6 @@ package nvim;
 		```
 	**/
 	static var spell : Dynamic;
-	/**
-		```lua
-		function vim.split(s: string, sep: string, opts?: vim.gsplit.Opts)
-		  -> string[]
-		```
-		
-		---
-		
-		 Splits a string at each instance of a separator and returns the result as a table (unlike
-		 |vim.gsplit()|).
-		
-		 Examples:
-		
-		 ```lua
-		 split(":aa::b:", ":")                   --> {'','aa','','b',''}
-		 split("axaby", "ab?")                   --> {'','x','y'}
-		 split("x*yz*o", "*", {plain=true})      --> {'x','yz','o'}
-		 split("|x|y|z|", "|", {trimempty=true}) --> {'x', 'y', 'z'}
-		 ```
-		
-		
-		@*param* `s` — String to split
-		
-		@*param* `sep` — Separator or pattern
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — : List of split components
-	**/
 	@:native("split")
 	private static function __split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):lua.Table<Int, String>;
 	/**
@@ -48790,22 +45824,6 @@ package nvim;
 		```
 	**/
 	static var t : nvim.type.vim.VarAccessor;
-	/**
-		```lua
-		function vim.tbl_add_reverse_lookup(o: table)
-		  -> o: table
-		```
-		
-		---
-		
-		 Add the reverse lookup values to an existing table.
-		 For example:
-		 `tbl_add_reverse_lookup { A = 1 } == { [1] = 'A', A = 1 }`
-		
-		 Note that this *modifies* the input.
-		
-		@*param* `o` — Table to add the reverse to
-	**/
 	@:native("tbl_add_reverse_lookup")
 	private static function __tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
@@ -48830,35 +45848,6 @@ package nvim;
 		final result = __tbl_add_reverse_lookup(o);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_contains(t: table, value: any, opts?: vim.tbl_contains.Opts)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a table contains a given value, specified either directly or via
-		 a predicate that is checked for each value.
-		
-		 Example:
-		
-		 ```lua
-		 vim.tbl_contains({ 'a', { 'b', 'c' } }, function(v)
-		   return vim.deep_equal(v, { 'b', 'c' })
-		 end, { predicate = true })
-		 -- true
-		 ```
-		
-		
-		@*param* `t` — Table to check
-		
-		@*param* `value` — Value to compare or predicate function reference
-		
-		@*param* `opts` — Keyword arguments |kwargs|:
-		
-		@*return* — `true` if `t` contains `value`
-	**/
 	@:native("tbl_contains")
 	private static function __tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool;
 	/**
@@ -48896,27 +45885,6 @@ package nvim;
 		final result = __tbl_contains(t, value, opts);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_count(t: table)
-		  -> integer
-		```
-		
-		---
-		
-		 Counts the number of non-nil values in table `t`.
-		
-		 ```lua
-		 vim.tbl_count({ a=1, b=2 })  --> 2
-		 vim.tbl_count({ 1, 2 })      --> 2
-		 ```
-		
-		@*param* `t` — Table
-		
-		@*return* — : Number of non-nil values in table
-		
-		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
-	**/
 	@:native("tbl_count")
 	private static function __tbl_count(t:lua.Table.AnyTable):Float;
 	/**
@@ -49008,22 +45976,6 @@ package nvim;
 		```
 	**/
 	static function tbl_extend(behavior:String, ___:haxe.Rest<lua.Table.AnyTable>):lua.Table.AnyTable;
-	/**
-		```lua
-		function vim.tbl_filter(func: fun(value: <T>):boolean, t: table<any, <T>>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Filter a table using a predicate function
-		
-		@*param* `func` — (function) Function
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : Table of filtered values
-	**/
 	@:native("tbl_filter")
 	private static function __tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):lua.Table<Int, T>;
 	/**
@@ -49047,24 +45999,6 @@ package nvim;
 		final result = __tbl_filter(func, t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_flatten(t: table)
-		  -> Flattened: table
-		```
-		
-		---
-		
-		 Creates a copy of a list-like table such that any nested tables are
-		 "unrolled" and appended to the result.
-		
-		
-		@*param* `t` — List-like table
-		
-		@*return* `Flattened` — copy of the given list-like table
-		
-		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_flatten")
 	private static function __tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
@@ -49091,30 +46025,6 @@ package nvim;
 		final result = __tbl_flatten(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_get(o: table, ...any)
-		  -> any
-		```
-		
-		---
-		
-		 Index into a table (first argument) via string keys passed as subsequent arguments.
-		 Return `nil` if the key does not exist.
-		
-		 Examples:
-		
-		 ```lua
-		 vim.tbl_get({ key = { nested_key = true }}, 'key', 'nested_key') == true
-		 vim.tbl_get({ key = {}}, 'key', 'nested_key') == nil
-		 ```
-		
-		@*param* `o` — Table to index
-		
-		@*param* `...` — Optional keys (0 or more, variadic) via which to index the table
-		
-		@*return* — Nested value indexed by key (if it exists), else nil
-	**/
 	@:native("tbl_get")
 	private static function __tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any;
 	/**
@@ -49146,23 +46056,6 @@ package nvim;
 		final result = __tbl_get(o, ...___);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_isempty(t: table)
-		  -> boolean
-		```
-		
-		---
-		
-		 Checks if a table is empty.
-		
-		
-		@*param* `t` — Table to check
-		
-		@*return* — `true` if `t` is empty
-		
-		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_isempty")
 	private static function __tbl_isempty(t:lua.Table.AnyTable):Bool;
 	/**
@@ -49195,24 +46088,6 @@ package nvim;
 	**/
 	@:deprecated
 	static function tbl_islist(t:Dynamic):Dynamic;
-	/**
-		```lua
-		function vim.tbl_keys(t: table<<T>, any>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Return a list of all keys used in a table.
-		 However, the order of the return table of keys is not guaranteed.
-		
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : List of keys
-		
-		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
-	**/
 	@:native("tbl_keys")
 	private static function __tbl_keys<T>(t:lua.Table<T, Any>):lua.Table<Int, T>;
 	/**
@@ -49238,22 +46113,6 @@ package nvim;
 		final result = __tbl_keys(t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_map(func: fun(value: <T>):any, t: table<any, <T>>)
-		  -> table
-		```
-		
-		---
-		
-		 Apply a function to all values of a table.
-		
-		@*param* `func` — Function
-		
-		@*param* `t` — Table
-		
-		@*return* — : Table of transformed values
-	**/
 	@:native("tbl_map")
 	private static function __tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable;
 	/**
@@ -49277,21 +46136,6 @@ package nvim;
 		final result = __tbl_map(func, t);
 		return result;
 	}
-	/**
-		```lua
-		function vim.tbl_values(t: table<any, <T>>)
-		  -> <T>[]
-		```
-		
-		---
-		
-		 Return a list of all values used in a table.
-		 However, the order of the return table of values is not guaranteed.
-		
-		@*param* `t` — (table) Table
-		
-		@*return* — : List of values
-	**/
 	@:native("tbl_values")
 	private static function __tbl_values<T>(t:lua.Table<Any, T>):lua.Table<Int, T>;
 	/**
@@ -49361,53 +46205,6 @@ package nvim;
 		```
 	**/
 	static var ui : nvim.module.vim.Ui;
-	/**
-		```lua
-		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
-		```
-		
-		---
-		
-		 Subscribe to |ui-events|, similar to |nvim_ui_attach()| but receive events in a Lua callback.
-		 Used to implement screen elements like popupmenu or message handling in Lua.
-		
-		 {options} is a dict with one or more `ext_…` |ui-option|s set to true to enable events for
-		 the respective UI element.
-		
-		 {callback} receives event name plus additional parameters. See |ui-popupmenu|
-		 and the sections below for event format for respective events.
-		
-		 Callbacks for `msg_show` events are executed in |api-fast| context; showing
-		 the message should be scheduled.
-		
-		 Excessive errors inside the callback will result in forced detachment.
-		
-		 WARNING: This api is considered experimental.  Usability will vary for
-		 different screen elements. In particular `ext_messages` behavior is subject
-		 to further changes and usability improvements.  This is expected to be
-		 used to handle messages when setting 'cmdheight' to zero (which is
-		 likewise experimental).
-		
-		 Example (stub for a |ui-popupmenu| implementation):
-		
-		 ```lua
-		 ns = vim.api.nvim_create_namespace('my_fancy_pum')
-		
-		 vim.ui_attach(ns, {ext_popupmenu=true}, function(event, ...)
-		   if event == 'popupmenu_show' then
-		     local items, selected, row, col, grid = ...
-		     print('display pum ', #items)
-		   elseif event == 'popupmenu_select' then
-		     local selected = ...
-		     print('selected', selected)
-		   elseif event == 'popupmenu_hide' then
-		     print('FIN')
-		   end
-		 end)
-		 ```
-		
-		 @since 0
-	**/
 	@:native("ui_attach")
 	private static function __ui_attach(ns:Float, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
 	/**
@@ -49736,124 +46533,6 @@ package nvim;
 		```
 	**/
 	static var val_idx : Dynamic;
-	/**
-		```lua
-		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
-		```
-		
-		---
-		
-		 Validate function arguments.
-		
-		 This function has two valid forms:
-		
-		 1. `vim.validate(name, value, validator[, optional][, message])`
-		
-		     Validates that argument {name} with value {value} satisfies
-		     {validator}. If {optional} is given and is `true`, then {value} may be
-		     `nil`. If {message} is given, then it is used as the expected type in the
-		     error message.
-		
-		     Example:
-		
-		     ```lua
-		       function vim.startswith(s, prefix)
-		         vim.validate('s', s, 'string')
-		         vim.validate('prefix', prefix, 'string')
-		         -- ...
-		       end
-		     ```
-		
-		 2. `vim.validate(spec)` (deprecated)
-		     where `spec` is of type
-		    `table<string,[value:any, validator: vim.validate.Validator, optional_or_msg? : boolean|string]>)`
-		
-		     Validates a argument specification.
-		     Specs are evaluated in alphanumeric order, until the first failure.
-		
-		     Example:
-		
-		     ```lua
-		       function user.new(name, age, hobbies)
-		         vim.validate{
-		           name={name, 'string'},
-		           age={age, 'number'},
-		           hobbies={hobbies, 'table'},
-		         }
-		         -- ...
-		       end
-		     ```
-		
-		 Examples with explicit argument values (can be run directly):
-		
-		 ```lua
-		 vim.validate('arg1', {'foo'}, 'table')
-		    --> NOP (success)
-		 vim.validate('arg2', 'foo', 'string')
-		    --> NOP (success)
-		
-		 vim.validate('arg1', 1, 'table')
-		    --> error('arg1: expected table, got number')
-		
-		 vim.validate('arg1', 3, function(a) return (a % 2) == 0 end, 'even number')
-		    --> error('arg1: expected even number, got 3')
-		 ```
-		
-		 If multiple types are valid they can be given as a list.
-		
-		 ```lua
-		 vim.validate('arg1', {'foo'}, {'table', 'string'})
-		 vim.validate('arg2', 'foo', {'table', 'string'})
-		 -- NOP (success)
-		
-		 vim.validate('arg1', 1, {'string', 'table'})
-		 -- error('arg1: expected string|table, got number')
-		 ```
-		
-		 @note `validator` set to a value returned by |lua-type()| provides the
-		 best performance.
-		
-		@*param* `name` — Argument name
-		
-		@*param* `value` — Argument value
-		
-		   - (`string|string[]`): Any value that can be returned from |lua-type()| in addition to
-		     `'callable'`: `'boolean'`, `'callable'`, `'function'`, `'nil'`, `'number'`, `'string'`, `'table'`,
-		     `'thread'`, `'userdata'`.
-		   - (`fun(val:any): boolean, string?`) A function that returns a boolean and an optional
-		     string message.
-		
-		@*param* `optional` — Argument is optional (may be omitted)
-		
-		@*param* `message` — message when validation fails
-		
-		---
-		
-		```lua
-		validator:
-		    | "nil"
-		    | "number"
-		    | "string"
-		    | "boolean"
-		    | "table"
-		    | "function"
-		    | "thread"
-		    | "userdata"
-		    | 'callable'
-		```
-		
-		---
-		
-		```lua
-		function vim.validate(name: string, val: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, message: string)
-		```
-		
-		---
-		
-		```lua
-		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
-		```
-	**/
 	@:native("validate")
 	@:overload(function (name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String) : Dynamic {})
 	private static function __validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic;
@@ -49975,9 +46654,132 @@ package nvim;
 		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
 		```
 	**/
-	inline static function validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic {
+	overload inline static function validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic {
 		validator = nvim.helper.Arg.pure(validator);
 		final result = __validate(name, value, validator, optional, message);
+		return result;
+	}
+	/**
+		```lua
+		function vim.validate(name: string, value: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, optional?: boolean, message?: string)
+		```
+		
+		---
+		
+		 Validate function arguments.
+		
+		 This function has two valid forms:
+		
+		 1. `vim.validate(name, value, validator[, optional][, message])`
+		
+		     Validates that argument {name} with value {value} satisfies
+		     {validator}. If {optional} is given and is `true`, then {value} may be
+		     `nil`. If {message} is given, then it is used as the expected type in the
+		     error message.
+		
+		     Example:
+		
+		     ```lua
+		       function vim.startswith(s, prefix)
+		         vim.validate('s', s, 'string')
+		         vim.validate('prefix', prefix, 'string')
+		         -- ...
+		       end
+		     ```
+		
+		 2. `vim.validate(spec)` (deprecated)
+		     where `spec` is of type
+		    `table<string,[value:any, validator: vim.validate.Validator, optional_or_msg? : boolean|string]>)`
+		
+		     Validates a argument specification.
+		     Specs are evaluated in alphanumeric order, until the first failure.
+		
+		     Example:
+		
+		     ```lua
+		       function user.new(name, age, hobbies)
+		         vim.validate{
+		           name={name, 'string'},
+		           age={age, 'number'},
+		           hobbies={hobbies, 'table'},
+		         }
+		         -- ...
+		       end
+		     ```
+		
+		 Examples with explicit argument values (can be run directly):
+		
+		 ```lua
+		 vim.validate('arg1', {'foo'}, 'table')
+		    --> NOP (success)
+		 vim.validate('arg2', 'foo', 'string')
+		    --> NOP (success)
+		
+		 vim.validate('arg1', 1, 'table')
+		    --> error('arg1: expected table, got number')
+		
+		 vim.validate('arg1', 3, function(a) return (a % 2) == 0 end, 'even number')
+		    --> error('arg1: expected even number, got 3')
+		 ```
+		
+		 If multiple types are valid they can be given as a list.
+		
+		 ```lua
+		 vim.validate('arg1', {'foo'}, {'table', 'string'})
+		 vim.validate('arg2', 'foo', {'table', 'string'})
+		 -- NOP (success)
+		
+		 vim.validate('arg1', 1, {'string', 'table'})
+		 -- error('arg1: expected string|table, got number')
+		 ```
+		
+		 @note `validator` set to a value returned by |lua-type()| provides the
+		 best performance.
+		
+		@*param* `name` — Argument name
+		
+		@*param* `value` — Argument value
+		
+		   - (`string|string[]`): Any value that can be returned from |lua-type()| in addition to
+		     `'callable'`: `'boolean'`, `'callable'`, `'function'`, `'nil'`, `'number'`, `'string'`, `'table'`,
+		     `'thread'`, `'userdata'`.
+		   - (`fun(val:any): boolean, string?`) A function that returns a boolean and an optional
+		     string message.
+		
+		@*param* `optional` — Argument is optional (may be omitted)
+		
+		@*param* `message` — message when validation fails
+		
+		---
+		
+		```lua
+		validator:
+		    | "nil"
+		    | "number"
+		    | "string"
+		    | "boolean"
+		    | "table"
+		    | "function"
+		    | "thread"
+		    | "userdata"
+		    | 'callable'
+		```
+		
+		---
+		
+		```lua
+		function vim.validate(name: string, val: any, validator: "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable')[]|fun(v: any):boolean, string?, message: string)
+		```
+		
+		---
+		
+		```lua
+		function vim.validate(spec: table<string, [any, "boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'callable'|("boolean"|"function"|"nil"|"number"|"string"|"table"|"thread"|"userdata"|'c...(too long)...|string] })
+		```
+	**/
+	overload inline static function validate(name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String):Dynamic {
+		validator = nvim.helper.Arg.pure(validator);
+		final result = __validate(name, val, validator, message);
 		return result;
 	}
 	/**

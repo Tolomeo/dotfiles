@@ -210,7 +210,6 @@ __nvim_helper_Arg = _hx_e()
 __nvim_type_vim_api_keyset_EchoOpts = _hx_e()
 __nvim_type_vim_api_keyset_UserCommand = _hx_e()
 __nvim_type_vim_api_keyset_create_user_command_CommandArgs = _hx_e()
-__nvim_type_vim_keymap_set_Opts = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -565,13 +564,14 @@ end
 _hx_exports["Macro"] = Macro
 Macro.yank = function() 
   local registerName = vim.fn.input("Please specify a register to yank from: ");
+  local _this = vim.api;
   local chunks = ({});
   local opts = __nvim_type_vim_api_keyset_EchoOpts.new(nil, nil);
   opts = __nvim_helper_Arg.pure(opts);
-  vim.api.nvim_echo(chunks, false, opts);
+  _this.nvim_echo(chunks, false, opts);
   vim.schedule(function() 
     if (registerName == "") then 
-      vim.notify("Invalid register name", vim.log.levels.ERROR);
+      vim.notify("Invalid register name, fuck you", vim.log.levels.ERROR);
       do return nil end;
     end;
     do return Macro.yankRegister(registerName) end;
@@ -594,9 +594,10 @@ Macro.yankRegister = function(registerName)
 end
 Macro.prototype = _hx_e();
 Macro.prototype.setup = function(self) 
+  local _this = vim.api;
   local opts = __nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil);
   opts = __nvim_helper_Arg.pure(opts);
-  vim.api.nvim_create_user_command("YankMacro", function(args) 
+  _this.nvim_create_user_command("YankMacro", function(args) 
     local length = nil;
     local tab = __lua_PairTools.copy(args.fargs);
     local length = length;
@@ -620,15 +621,6 @@ Macro.prototype.setup = function(self)
     elseif (_g1) == 1 then 
       Macro.yankRegister(_g[0]);else
     vim.notify(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g)), vim.log.levels.ERROR); end;
-  end, opts);
-  local _this = vim.keymap;
-  local opts = nil;
-  opts = __nvim_helper_Arg.pure(opts);
-  _this.set("n", "8", function() 
-    local chunks = ({});
-    local opts = __nvim_type_vim_api_keyset_EchoOpts.new(nil, nil);
-    opts = __nvim_helper_Arg.pure(opts);
-    do return vim.api.nvim_echo(chunks, false, opts) end;
   end, opts);
 end
 Macro.__super__ = Module
@@ -967,8 +959,6 @@ __nvim_type_vim_api_keyset_create_user_command_CommandArgs.super = function(self
   self.reg = reg;
   self.smods = smods;
 end
-
-__nvim_type_vim_keymap_set_Opts.new = {}
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -999,7 +989,7 @@ end;
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
-  Macro.config = _hx_o({__fields__={escapeCharacters=true},escapeCharacters=_hx_tab_array({[0]="\"", "'", "v"}, 3)});
+  Macro.config = _hx_o({__fields__={escapeCharacters=true},escapeCharacters=_hx_tab_array({[0]="\"", "'"}, 2)});
   
   
 end

@@ -49,6 +49,12 @@ package nvim.type.vim.api.keyset;
 	extern public var count : Null<Float>;
 	/**
 		```lua
+		(field) vim.api.keyset.parse_cmd.magic: { bar: boolean, file: boolean }
+		```
+	**/
+	extern public var magic : Magic;
+	/**
+		```lua
 		(field) vim.api.keyset.parse_cmd.mods: vim.api.keyset.parse_cmd.mods
 		```
 	**/

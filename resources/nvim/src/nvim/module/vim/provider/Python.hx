@@ -9,19 +9,6 @@ extern class Python {
 	**/
 	@:luaDotMethod
 	function call(method:Dynamic, args:Dynamic):Dynamic;
-	/**
-		```lua
-		function M.detect_by_module(module: string)
-		  -> path: string?
-		  2. error: string?
-		```
-		
-		---
-		
-		@*return* `path` — to detected python, if any; nil if not found
-		
-		@*return* `error` — message if python can't be detected by {module}; nil if success
-	**/
 	@:native("detect_by_module")
 	@:luaDotMethod
 	private function __detect_by_module(module:String):nvim.helper.Multireturn<Null<String>, Null<String>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
