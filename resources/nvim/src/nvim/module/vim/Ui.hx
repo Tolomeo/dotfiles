@@ -89,12 +89,10 @@ extern class Ui {
 		
 		@*return* — Error message on failure, or nil on success.
 	**/
-	@:luaDotMethod
 	inline function open(path:String, ?opt:{ @:optional
 	var cmd : Null<lua.Table<Int, String>>; }):nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>> {
 		opt = nvim.helper.Arg.pure(opt);
-		final result = __open(path, opt);
-		return new nvim.helper.Multireturn.Return2<Null<nvim.type.vim.SystemObj>, Null<String>>(result._0, result._1);
+		return __open(path, opt);
 	}
 	@:native("select")
 	@:luaDotMethod
@@ -143,10 +141,8 @@ extern class Ui {
 		               `idx` is the 1-based index of `item` within `items`.
 		               `nil` if the user aborted the dialog.
 	**/
-	@:luaDotMethod
 	inline function select<T>(items:lua.Table<Int, T>, opts:lua.Table.AnyTable, on_choice:(?item:Null<T>, ?idx:Null<Float>) -> Dynamic):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __select(items, opts, on_choice);
-		return result;
+		return __select(items, opts, on_choice);
 	}
 }

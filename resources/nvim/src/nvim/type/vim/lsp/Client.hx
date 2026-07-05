@@ -124,11 +124,9 @@ package nvim.type.vim.lsp;
 		
 		 @nodoc
 	**/
-	@:luaDotMethod
 	inline public function create(config:nvim.type.vim.lsp.ClientConfig):Null<nvim.type.vim.lsp.Client> {
 		config = nvim.helper.Arg.pure(config);
-		final result = __create(config);
-		return result;
+		return __create(config);
 	}
 	/**
 		```lua
@@ -456,8 +454,7 @@ package nvim.type.vim.lsp;
 		command = nvim.helper.Arg.pure(command);
 		context = nvim.helper.Arg.pure(context);
 		handler = nvim.helper.Arg.pure(handler);
-		final result = __exec_cmd(command, context, handler);
-		return result;
+		return __exec_cmd(command, context, handler);
 	}
 	/**
 		```lua
@@ -553,8 +550,7 @@ package nvim.type.vim.lsp;
 	inline public function request(method:String, ?params:lua.Table.AnyTable, ?handler:nvim.type.lsp.Handler, ?bufnr:Float):nvim.helper.Multireturn.Return2<Bool, Null<Float>> {
 		params = nvim.helper.Arg.pure(params);
 		handler = nvim.helper.Arg.pure(handler);
-		final result = __request(method, params, handler, bufnr);
-		return new nvim.helper.Multireturn.Return2<Bool, Null<Float>>(result._0, result._1);
+		return __request(method, params, handler, bufnr);
 	}
 	@:native("request_sync")
 	private extern function __request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Float>, ?bufnr:Float):nvim.helper.Multireturn<Null<{ @:optional
@@ -594,8 +590,7 @@ package nvim.type.vim.lsp;
 	inline public function request_sync(method:String, params:lua.Table.AnyTable, ?timeout_ms:Null<Float>, ?bufnr:Float):nvim.helper.Multireturn.Return2<Null<{ @:optional
 	var err : Null<nvim.type.lsp.ResponseError>; var result : Any; }>, Null<String>> {
 		params = nvim.helper.Arg.pure(params);
-		final result = __request_sync(method, params, timeout_ms, bufnr);
-		return new nvim.helper.Multireturn.Return2<Null<{ ?err:Null<nvim.type.lsp.ResponseError>, result:Any }>, Null<String>>(result._0, result._1);
+		return __request_sync(method, params, timeout_ms, bufnr);
 	}
 	/**
 		```lua

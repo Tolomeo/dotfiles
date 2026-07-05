@@ -55,8 +55,7 @@ package nvim.type.vim.treesitter;
 	**/
 	inline public function _subtract_time(thread_state:nvim.type.ParserThreadState, time:Float):Dynamic {
 		thread_state = nvim.helper.Arg.pure(thread_state);
-		final result = ___subtract_time(thread_state, time);
-		return result;
+		return ___subtract_time(thread_state, time);
 	}
 	/**
 		```lua
@@ -83,8 +82,7 @@ package nvim.type.vim.treesitter;
 	**/
 	inline public function contains(range:nvim.type.Range4):Bool {
 		range = nvim.helper.Arg.pure(range);
-		final result = __contains(range);
-		return result;
+		return __contains(range);
 	}
 	/**
 		```lua
@@ -184,8 +182,7 @@ package nvim.type.vim.treesitter;
 	**/
 	inline public function language_for_range(range:nvim.type.Range4):nvim.type.vim.treesitter.LanguageTree {
 		range = nvim.helper.Arg.pure(range);
-		final result = __language_for_range(range);
-		return result;
+		return __language_for_range(range);
 	}
 	@:native("named_node_for_range")
 	private extern function __named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
@@ -202,8 +199,7 @@ package nvim.type.vim.treesitter;
 	inline public function named_node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode> {
 		range = nvim.helper.Arg.pure(range);
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __named_node_for_range(range, opts);
-		return result;
+		return __named_node_for_range(range, opts);
 	}
 	@:native("node_for_range")
 	private extern function __node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode>;
@@ -220,8 +216,7 @@ package nvim.type.vim.treesitter;
 	inline public function node_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSNode> {
 		range = nvim.helper.Arg.pure(range);
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __node_for_range(range, opts);
-		return result;
+		return __node_for_range(range, opts);
 	}
 	/**
 		```lua
@@ -295,8 +290,7 @@ package nvim.type.vim.treesitter;
 	**/
 	inline public function register_cbs(cbs:lua.Table<nvim.type.TSCallbackNameOn, haxe.Constraints.Function>, ?recursive:Bool):Dynamic {
 		cbs = nvim.helper.Arg.pure(cbs);
-		final result = __register_cbs(cbs, recursive);
-		return result;
+		return __register_cbs(cbs, recursive);
 	}
 	/**
 		```lua
@@ -324,8 +318,7 @@ package nvim.type.vim.treesitter;
 	inline public function tree_for_range(range:nvim.type.Range4, ?opts:nvim.type.vim.treesitter.languagetree.tree_for_range.Opts):Null<nvim.type.TSTree> {
 		range = nvim.helper.Arg.pure(range);
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __tree_for_range(range, opts);
-		return result;
+		return __tree_for_range(range, opts);
 	}
 	/**
 		```lua

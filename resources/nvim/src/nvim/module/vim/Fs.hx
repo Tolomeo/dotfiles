@@ -61,11 +61,9 @@ extern class Fs {
 		        "type" is one of the following:
 		        "file", "directory", "link", "fifo", "socket", "char", "block", "unknown".
 	**/
-	@:luaDotMethod
 	inline function dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_ {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __dir(path, opts);
-		return result;
+		return __dir(path, opts);
 	}
 	/**
 		```lua
@@ -134,11 +132,9 @@ extern class Fs {
 		
 		@*return* — Normalized paths |vim.fs.normalize()| of all matching items
 	**/
-	@:luaDotMethod
 	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):lua.Table<Int, String> {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __find(names, opts);
-		return result;
+		return __find(names, opts);
 	}
 	/**
 		```lua
@@ -202,11 +198,9 @@ extern class Fs {
 		
 		@*return* — : Normalized path
 	**/
-	@:luaDotMethod
 	inline function normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __normalize(path, opts);
-		return result;
+		return __normalize(path, opts);
 	}
 	@:native("parents")
 	@:luaDotMethod
@@ -247,10 +241,8 @@ extern class Fs {
 		
 		@*return*
 	**/
-	@:luaDotMethod
 	inline function parents(start:String):nvim.helper.Multireturn.Return3<() -> Null<String>, nvim.helper.Nothing, Null<String>> {
-		final result = __parents(start);
-		return new nvim.helper.Multireturn.Return3<() -> Null<String>, nvim.helper.Nothing, Null<String>>(result._0, result._1, result._2);
+		return __parents(start);
 	}
 	/**
 		```lua
@@ -288,11 +280,9 @@ extern class Fs {
 		
 		@*param* `path` — Path to remove
 	**/
-	@:luaDotMethod
 	inline function rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __rm(path, opts);
-		return result;
+		return __rm(path, opts);
 	}
 	/**
 		```lua

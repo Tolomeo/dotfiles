@@ -117,8 +117,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function again():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __again();
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __again();
 	}
 	/**
 		```lua
@@ -252,8 +251,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function fileno():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __fileno();
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __fileno();
 	}
 	/**
 		```lua
@@ -294,8 +292,7 @@ package nvim.type.uv;
 		 and the libuv enum integer for the handle's type (`uv_handle_type`).
 	**/
 	inline public function get_type():nvim.helper.Multireturn.Return2<String, Float> {
-		final result = __get_type();
-		return new nvim.helper.Multireturn.Return2<String, Float>(result._0, result._1);
+		return __get_type();
 	}
 	@:native("has_ref")
 	private extern function __has_ref():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -399,8 +396,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function has_ref():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __has_ref();
-		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __has_ref();
 	}
 	@:native("is_active")
 	private extern function __is_active():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -512,8 +508,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function is_active():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __is_active();
-		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __is_active();
 	}
 	@:native("is_closing")
 	private extern function __is_closing():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -620,8 +615,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function is_closing():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __is_closing();
-		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __is_closing();
 	}
 	@:native("recv_buffer_size")
 	private extern function __recv_buffer_size(size:Float):nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -758,8 +752,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function recv_buffer_size(size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __recv_buffer_size(size);
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __recv_buffer_size(size);
 	}
 	/**
 		```lua
@@ -905,8 +898,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function send_buffer_size(size:Float):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __send_buffer_size(size);
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __send_buffer_size(size);
 	}
 	/**
 		```lua
@@ -1033,8 +1025,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function start(timeout:Float, repeat_:Float, callback:haxe.Constraints.Function):nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __start(timeout, repeat_, callback);
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __start(timeout, repeat_, callback);
 	}
 	@:native("stop")
 	private extern function __stop():nvim.helper.Multireturn<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -1141,8 +1132,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function stop():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __stop();
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __stop();
 	}
 	/**
 		```lua

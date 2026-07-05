@@ -69,10 +69,8 @@ package nvim.type.vim.lsp.rpc;
 		  2. integer?
 		```
 	**/
-	@:luaDotMethod
 	inline public function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn.Return2<Bool, Null<Float>> {
-		final result = __request(method, params, callback, notify_reply_callback);
-		return new nvim.helper.Multireturn.Return2<Bool, Null<Float>>(result._0, result._1);
+		return __request(method, params, callback, notify_reply_callback);
 	}
 	/**
 		```lua

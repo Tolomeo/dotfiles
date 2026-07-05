@@ -75,8 +75,7 @@ package nvim.type;
 	**/
 	inline public function child_with_descendant(descendant:nvim.type.TSNode):Null<nvim.type.TSNode> {
 		descendant = nvim.helper.Arg.pure(descendant);
-		final result = __child_with_descendant(descendant);
-		return result;
+		return __child_with_descendant(descendant);
 	}
 	/**
 		```lua
@@ -118,8 +117,7 @@ package nvim.type;
 	**/
 	inline public function equal(node:nvim.type.TSNode):Bool {
 		node = nvim.helper.Arg.pure(node);
-		final result = __equal(node);
-		return result;
+		return __equal(node);
 	}
 	/**
 		```lua

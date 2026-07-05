@@ -97,11 +97,9 @@ extern class Filetype {
 		
 		@*param* `filetypes` — A table containing new filetype maps (see example).
 	**/
-	@:luaDotMethod
 	inline function add(filetypes:nvim.type.vim.filetype.add.Filetypes):Dynamic {
 		filetypes = nvim.helper.Arg.pure(filetypes);
-		final result = __add(filetypes);
-		return result;
+		return __add(filetypes);
 	}
 	/**
 		```lua
@@ -187,10 +185,8 @@ extern class Filetype {
 		                     filetype specific buffer variables). The function accepts a buffer number as
 		                     its only argument.
 	**/
-	@:luaDotMethod
 	inline function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>> {
 		args = nvim.helper.Arg.pure(args);
-		final result = __match(args);
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>>(result._0, result._1);
+		return __match(args);
 	}
 }

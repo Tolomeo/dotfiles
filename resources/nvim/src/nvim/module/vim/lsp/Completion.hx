@@ -33,11 +33,9 @@ extern class Completion {
 		
 		@*param* `bufnr` — Buffer handle, or 0 for the current buffer
 	**/
-	@:luaDotMethod
 	inline function enable(enable:Bool, client_id:Float, bufnr:Float, ?opts:nvim.type.vim.lsp.completion.BufferOpts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __enable(enable, client_id, bufnr, opts);
-		return result;
+		return __enable(enable, client_id, bufnr, opts);
 	}
 	@:native("get")
 	@:luaDotMethod
@@ -65,10 +63,8 @@ extern class Completion {
 		 end)
 		 ```
 	**/
-	@:luaDotMethod
 	inline function get(?opts:nvim.type.vim.lsp.completion.get.Opts):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __get(opts);
-		return result;
+		return __get(opts);
 	}
 }

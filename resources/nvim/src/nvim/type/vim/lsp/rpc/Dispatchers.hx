@@ -28,11 +28,9 @@ package nvim.type.vim.lsp.rpc;
 		function (method: string, params: table)
 		```
 	**/
-	@:luaDotMethod
 	inline public function notification(method:String, params:lua.Table.AnyTable):Dynamic {
 		params = nvim.helper.Arg.pure(params);
-		final result = __notification(method, params);
-		return result;
+		return __notification(method, params);
 	}
 	/**
 		```lua
@@ -76,10 +74,8 @@ package nvim.type.vim.lsp.rpc;
 		  2. (lsp.ResponseError)?
 		```
 	**/
-	@:luaDotMethod
 	inline public function server_request(method:String, params:lua.Table.AnyTable):nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>> {
 		params = nvim.helper.Arg.pure(params);
-		final result = __server_request(method, params);
-		return new nvim.helper.Multireturn.Return2<Null<Any>, Null<nvim.type.lsp.ResponseError>>(result._0, result._1);
+		return __server_request(method, params);
 	}
 }

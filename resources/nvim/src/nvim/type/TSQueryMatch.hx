@@ -30,7 +30,6 @@ package nvim.type;
 		```
 	**/
 	inline public function info():nvim.helper.Multireturn.Return2<Float, Float> {
-		final result = __info();
-		return new nvim.helper.Multireturn.Return2<Float, Float>(result._0, result._1);
+		return __info();
 	}
 }

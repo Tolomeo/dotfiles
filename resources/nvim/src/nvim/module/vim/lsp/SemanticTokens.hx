@@ -76,12 +76,10 @@ extern class SemanticTokens {
 		
 		@*param* `opts` — Optional parameters:
 	**/
-	@:luaDotMethod
 	inline function highlight_token(token:lua.Table.AnyTable, bufnr:Float, client_id:Float, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic {
 		token = nvim.helper.Arg.pure(token);
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __highlight_token(token, bufnr, client_id, hl_group, opts);
-		return result;
+		return __highlight_token(token, bufnr, client_id, hl_group, opts);
 	}
 	@:native("start")
 	@:luaDotMethod
@@ -115,11 +113,9 @@ extern class SemanticTokens {
 		  - debounce (integer, default: 200): Debounce token requests
 		        to the server by the given number in milliseconds
 	**/
-	@:luaDotMethod
 	inline function start(bufnr:Float, client_id:Float, ?opts:lua.Table.AnyTable):Dynamic {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __start(bufnr, client_id, opts);
-		return result;
+		return __start(bufnr, client_id, opts);
 	}
 	/**
 		```lua

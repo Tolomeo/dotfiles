@@ -25,10 +25,8 @@ extern class Python {
 		
 		@*return* `error` — message if python can't be detected by {module}; nil if success
 	**/
-	@:luaDotMethod
 	inline function detect_by_module(module:String):nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
-		final result = __detect_by_module(module);
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<String>>(result._0, result._1);
+		return __detect_by_module(module);
 	}
 	/**
 		```lua

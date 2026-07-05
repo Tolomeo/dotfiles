@@ -113,8 +113,7 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function cancel():nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __cancel();
-		return new nvim.helper.Multireturn.Return3<Null<Float>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __cancel();
 	}
 	@:native("get_type")
 	private extern function __get_type():nvim.helper.Multireturn<String, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -131,7 +130,6 @@ package nvim.type.uv;
 		 and the libuv enum integer for the request's type (`uv_req_type`).
 	**/
 	inline public function get_type():nvim.helper.Multireturn.Return2<String, Float> {
-		final result = __get_type();
-		return new nvim.helper.Multireturn.Return2<String, Float>(result._0, result._1);
+		return __get_type();
 	}
 }

@@ -25,10 +25,8 @@ extern class Perl {
 		
 		@*return* `error` — message if perl can't be detected; nil if success
 	**/
-	@:luaDotMethod
 	inline function detect():nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
-		final result = __detect();
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<String>>(result._0, result._1);
+		return __detect();
 	}
 	/**
 		```lua

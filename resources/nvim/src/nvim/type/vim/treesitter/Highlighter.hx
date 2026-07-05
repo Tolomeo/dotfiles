@@ -84,11 +84,9 @@ package nvim.type.vim.treesitter;
 		
 		@*return* `Created` — highlighter object
 	**/
-	@:luaDotMethod
 	inline public function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter {
 		tree = nvim.helper.Arg.pure(tree);
-		final result = __new_(tree, opts);
-		return result;
+		return __new_(tree, opts);
 	}
 	/**
 		```lua

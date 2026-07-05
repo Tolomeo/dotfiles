@@ -1338,10 +1338,8 @@ package nvim.type.vim.lsp;
 		
 		@*return* — : Normalized table of capabilities
 	**/
-	@:luaDotMethod
 	inline public function resolve_capabilities(server_capabilities:lua.Table.AnyTable):Null<nvim.type.lsp.ServerCapabilities> {
 		server_capabilities = nvim.helper.Arg.pure(server_capabilities);
-		final result = __resolve_capabilities(server_capabilities);
-		return result;
+		return __resolve_capabilities(server_capabilities);
 	}
 }

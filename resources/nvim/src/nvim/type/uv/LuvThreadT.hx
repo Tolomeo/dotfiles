@@ -26,8 +26,7 @@ package nvim.type.uv;
 	**/
 	inline public function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
 		other_thread = nvim.helper.Arg.pure(other_thread);
-		final result = __equal(other_thread);
-		return result;
+		return __equal(other_thread);
 	}
 	@:native("join")
 	private extern function __join():nvim.helper.Multireturn<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -131,7 +130,6 @@ package nvim.type.uv;
 		```
 	**/
 	inline public function join():nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>> {
-		final result = __join();
-		return new nvim.helper.Multireturn.Return3<Null<Bool>, Null<nvim.type.uv.error.Message>, Null<nvim.type.uv.error.Name>>(result._0, result._1, result._2);
+		return __join();
 	}
 }

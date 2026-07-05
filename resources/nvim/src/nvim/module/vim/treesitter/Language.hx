@@ -31,11 +31,9 @@ extern class Language {
 		
 		@*return* `Error` — if parser cannot be loaded
 	**/
-	@:luaDotMethod
 	inline function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __add(lang, opts);
-		return new nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>>(result._0, result._1);
+		return __add(lang, opts);
 	}
 	/**
 		```lua

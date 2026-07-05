@@ -21,10 +21,8 @@ extern class Text {
 		
 		@*return* — : Error message, if any
 	**/
-	@:luaDotMethod
 	inline function hexdecode(enc:String):nvim.helper.Multireturn.Return2<Null<String>, Null<String>> {
-		final result = __hexdecode(enc);
-		return new nvim.helper.Multireturn.Return2<Null<String>, Null<String>>(result._0, result._1);
+		return __hexdecode(enc);
 	}
 	/**
 		```lua
@@ -90,11 +88,9 @@ extern class Text {
 		
 		@*return* — Indent size _before_ modification.
 	**/
-	@:luaDotMethod
 	inline function indent(size:Float, text:String, ?opts:{ @:optional
 	var expandtab : Null<Float>; }):nvim.helper.Multireturn.Return2<String, Float> {
 		opts = nvim.helper.Arg.pure(opts);
-		final result = __indent(size, text, opts);
-		return new nvim.helper.Multireturn.Return2<String, Float>(result._0, result._1);
+		return __indent(size, text, opts);
 	}
 }
