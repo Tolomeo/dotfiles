@@ -207,6 +207,8 @@ __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
 __nvim_helper_Arg = _hx_e()
+__nvim_helper__Multireturn_Return3_Impl_ = _hx_e()
+__nvim_helper_Nothing = _hx_e()
 __nvim_type_vim_api_keyset_EchoOpts = _hx_e()
 __nvim_type_vim_api_keyset_UserCommand = _hx_e()
 __nvim_type_vim_api_keyset_create_user_command_CommandArgs = _hx_e()
@@ -571,7 +573,7 @@ Macro.yank = function()
   _this.nvim_echo(chunks, false, opts);
   vim.schedule(function() 
     if (registerName == "") then 
-      vim.notify("Invalid register name, fuck you", vim.log.levels.ERROR);
+      vim.notify("Invalid register name", vim.log.levels.ERROR);
       do return nil end;
     end;
     do return Macro.yankRegister(registerName) end;
@@ -620,8 +622,10 @@ Macro.prototype.setup = function(self)
       Macro.yank();
     elseif (_g1) == 1 then 
       Macro.yankRegister(_g[0]);else
-    vim.notify(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g)), vim.log.levels.ERROR); end;
+    vim.notify(Std.string(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument only"), vim.log.levels.ERROR); end;
   end, opts);
+  local _hx_1_this1__0, _hx_1_this1__1, _hx_1_this1__2, _hx_1_this1__3, _hx_1_this1__4, _hx_1_this1__5 = vim.fs.parents(".");
+  vim.print((__nvim_helper__Multireturn_Return3_Impl_.get__0(_hx_tab_array({[0]=_hx_1_this1__0, _hx_1_this1__1, _hx_1_this1__2}, 3)))());
 end
 Macro.__super__ = Module
 setmetatable(Macro.prototype,{__index=Module.prototype})
@@ -909,6 +913,12 @@ __nvim_helper_Arg.pure = function(obj)
     do return obj end;
   end;
 end
+
+__nvim_helper__Multireturn_Return3_Impl_.new = {}
+__nvim_helper__Multireturn_Return3_Impl_.get__0 = function(this1) 
+  do return this1[0] end;
+end
+
 
 __nvim_type_vim_api_keyset_EchoOpts.new = function(err,verbose) 
   local self = _hx_new()

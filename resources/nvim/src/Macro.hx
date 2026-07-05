@@ -76,8 +76,11 @@ class Macro extends Module {
 			case arguments:
 				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', Vim.log.levels.ERROR);
 		}, {nargs: "*"});
-		/* Vim.keymap.set("n", "8", () -> {
-			Api.nvim_echo(Table.create(), false, {});
-		}); */
+
+		// final parents = Vim.fs.parents(".");
+
+		// Vim.print(parents._0());
+		/* Vim.print(parents.get__1());
+		Vim.print(parents.get__2()); */
 	}
 }
