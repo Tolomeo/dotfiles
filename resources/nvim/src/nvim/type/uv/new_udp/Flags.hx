@@ -59,5 +59,5 @@ package nvim.type.uv.new_udp;
 		default `1`
 	**/
 	@:optional
-	extern public var mmsgs : Null<Float>;
+	extern public var mmsgs : Null<Int>;
 }

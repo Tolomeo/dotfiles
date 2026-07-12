@@ -231,7 +231,7 @@ package nvim.type.vim;
 		 option.
 		
 	**/
-	extern public var cole : Float;
+	extern public var cole : Int;
 	/**
 		```lua
 		(field) vim.wo.colorcolumn: string
@@ -309,7 +309,7 @@ package nvim.type.vim;
 		 option.
 		
 	**/
-	extern public var conceallevel : Float;
+	extern public var conceallevel : Int;
 	/**
 		```lua
 		(field) vim.wo.crb: boolean
@@ -645,7 +645,7 @@ package nvim.type.vim;
 		 See `fold-foldlevel`.
 		
 	**/
-	extern public var fdl : Float;
+	extern public var fdl : Int;
 	/**
 		```lua
 		(field) vim.wo.fdm: 'diff'|'expr'|'indent'|'manual'|'marker'|'syntax'
@@ -675,7 +675,7 @@ package nvim.type.vim;
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	extern public var fdn : Float;
+	extern public var fdn : Int;
 	/**
 		```lua
 		(field) vim.wo.fdt: string
@@ -805,7 +805,7 @@ package nvim.type.vim;
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	extern public var fml : Float;
+	extern public var fml : Int;
 	/**
 		```lua
 		(field) vim.wo.fmr: string
@@ -904,7 +904,7 @@ package nvim.type.vim;
 		 See `fold-foldlevel`.
 		
 	**/
-	extern public var foldlevel : Float;
+	extern public var foldlevel : Int;
 	/**
 		```lua
 		(field) vim.wo.foldmarker: string
@@ -952,7 +952,7 @@ package nvim.type.vim;
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	extern public var foldminlines : Float;
+	extern public var foldminlines : Int;
 	/**
 		```lua
 		(field) vim.wo.foldnestmax: integer
@@ -965,7 +965,7 @@ package nvim.type.vim;
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	extern public var foldnestmax : Float;
+	extern public var foldnestmax : Int;
 	/**
 		```lua
 		(field) vim.wo.foldtext: string
@@ -1408,7 +1408,7 @@ package nvim.type.vim;
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	extern public var numberwidth : Float;
+	extern public var numberwidth : Int;
 	/**
 		```lua
 		(field) vim.wo.nuw: integer
@@ -1428,7 +1428,7 @@ package nvim.type.vim;
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	extern public var nuw : Float;
+	extern public var nuw : Int;
 	/**
 		```lua
 		(field) vim.wo.previewwindow: boolean
@@ -1683,7 +1683,7 @@ package nvim.type.vim;
 		 height with ":set scroll=0".
 		
 	**/
-	extern public var scr : Float;
+	extern public var scr : Int;
 	/**
 		```lua
 		(field) vim.wo.scroll: integer
@@ -1700,7 +1700,7 @@ package nvim.type.vim;
 		 height with ":set scroll=0".
 		
 	**/
-	extern public var scroll : Float;
+	extern public var scroll : Int;
 	/**
 		```lua
 		(field) vim.wo.scrollbind: boolean
@@ -1813,7 +1813,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern public var sidescrolloff : Float;
+	extern public var sidescrolloff : Int;
 	/**
 		```lua
 		(field) vim.wo.signcolumn: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -1875,7 +1875,7 @@ package nvim.type.vim;
 		
 		
 	**/
-	extern public var siso : Float;
+	extern public var siso : Int;
 	/**
 		```lua
 		(field) vim.wo.smoothscroll: boolean
@@ -2751,7 +2751,7 @@ package nvim.type.vim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	extern public var winbl : Float;
+	extern public var winbl : Int;
 	/**
 		```lua
 		(field) vim.wo.winblend: integer
@@ -2766,7 +2766,7 @@ package nvim.type.vim;
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	extern public var winblend : Float;
+	extern public var winblend : Int;
 	/**
 		```lua
 		(field) vim.wo.winfixbuf: boolean

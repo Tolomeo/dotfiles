@@ -11,7 +11,7 @@ package nvim.type.vim.fn.sign_getplaced.ret;
 		(field) vim.fn.sign_getplaced.ret.item.bufnr: integer
 		```
 	**/
-	extern public var bufnr : Float;
+	extern public var bufnr : Int;
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.ret.item.signs: vim.fn.sign[]

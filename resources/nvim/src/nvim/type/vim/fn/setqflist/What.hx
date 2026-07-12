@@ -44,7 +44,7 @@ package nvim.type.vim.fn.setqflist;
 		 quickfix list identifier |quickfix-ID|
 	**/
 	@:optional
-	extern public var id : Null<Float>;
+	extern public var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.idx: integer?
@@ -58,7 +58,7 @@ package nvim.type.vim.fn.setqflist;
 		 current entry. See |quickfix-index|
 	**/
 	@:optional
-	extern public var idx : Null<Float>;
+	extern public var idx : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.items: vim.quickfix.entry[]?
@@ -100,7 +100,7 @@ package nvim.type.vim.fn.setqflist;
 		 the last quickfix list.
 	**/
 	@:optional
-	extern public var nr : Null<Float>;
+	extern public var nr : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.setqflist.what.quickfixtextfunc: function?

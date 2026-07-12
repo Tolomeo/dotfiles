@@ -10,7 +10,7 @@ extern class Rpc {
 		
 		 @nodoc
 	**/
-	var client_errors : haxe.extern.EitherType<lua.Table<String, Float>, lua.Table<Float, String>>;
+	var client_errors : haxe.extern.EitherType<lua.Table<String, Int>, lua.Table<Int, String>>;
 	/**
 		```lua
 		function M.connect(host_or_path: string, port?: integer)
@@ -33,7 +33,7 @@ extern class Rpc {
 		@*param* `port` — TCP port to connect to. If absent the first argument must be a pipe
 	**/
 	@:luaDotMethod
-	function connect(host_or_path:String, ?port:Null<Float>):(dispatchers:nvim.type.vim.lsp.rpc.Dispatchers) -> nvim.type.vim.lsp.rpc.PublicClient;
+	function connect(host_or_path:String, ?port:Null<Int>):(dispatchers:nvim.type.vim.lsp.rpc.Dispatchers) -> nvim.type.vim.lsp.rpc.PublicClient;
 	/**
 		```lua
 		function M.create_read_loop(handle_body: fun(body: string), on_exit?: fun(), on_error: fun(err: any))
@@ -60,7 +60,7 @@ extern class Rpc {
 		@*return* `error_message` — The formatted error message
 	**/
 	inline function format_rpc_error(err:lua.Table.AnyTable):String {
-		err = nvim.helper.Arg.pure(err);
+		final err:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = err;
 		return __format_rpc_error(err);
 	}
 	/**
@@ -83,7 +83,7 @@ extern class Rpc {
 		See: [lsp.ErrorCodes](file:///usr/local/share/nvim/runtime/lua/vim/lsp/_meta/protocol.lua#5231#10) See `vim.lsp.protocol.ErrorCodes`
 	**/
 	@:luaDotMethod
-	function rpc_response_error(code:Float, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
+	function rpc_response_error(code:Int, ?message:String, ?data:Any):nvim.type.lsp.ResponseError;
 	@:native("start")
 	@:luaDotMethod
 	private function __start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient;
@@ -101,9 +101,10 @@ extern class Rpc {
 		
 		@*param* `cmd` — Command to start the LSP server.
 	**/
-	inline function start(cmd:lua.Table<Int, String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient {
-		dispatchers = nvim.helper.Arg.pure(dispatchers);
-		extra_spawn_params = nvim.helper.Arg.pure(extra_spawn_params);
+	inline function start(cmd:Array<String>, ?dispatchers:nvim.type.vim.lsp.rpc.Dispatchers, ?extra_spawn_params:nvim.type.vim.lsp.rpc.ExtraSpawnParams):nvim.type.vim.lsp.rpc.PublicClient {
+		final cmd:nvim.helper.Native.LuaArray<String> = cmd;
+		final dispatchers:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.rpc.Dispatchers> = dispatchers;
+		final extra_spawn_params:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.rpc.ExtraSpawnParams> = extra_spawn_params;
 		return __start(cmd, dispatchers, extra_spawn_params);
 	}
 }

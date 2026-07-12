@@ -11,7 +11,7 @@ package nvim.type.uv.os_get_passwd;
 		(field) uv.os_get_passwd.info.gid: integer
 		```
 	**/
-	extern public var gid : Float;
+	extern public var gid : Int;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.homedir: string
@@ -29,7 +29,7 @@ package nvim.type.uv.os_get_passwd;
 		(field) uv.os_get_passwd.info.uid: integer
 		```
 	**/
-	extern public var uid : Float;
+	extern public var uid : Int;
 	/**
 		```lua
 		(field) uv.os_get_passwd.info.username: string

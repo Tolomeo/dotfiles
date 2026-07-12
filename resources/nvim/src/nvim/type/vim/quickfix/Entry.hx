@@ -16,7 +16,7 @@ package nvim.type.vim.quickfix;
 		 buffer number; must be the number of a valid buffer
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.col: integer?
@@ -28,7 +28,7 @@ package nvim.type.vim.quickfix;
 		 column number
 	**/
 	@:optional
-	extern public var col : Null<Float>;
+	extern public var col : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_col: integer?
@@ -40,7 +40,7 @@ package nvim.type.vim.quickfix;
 		 end column, if the item spans multiple columns
 	**/
 	@:optional
-	extern public var end_col : Null<Float>;
+	extern public var end_col : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.end_lnum: integer?
@@ -52,7 +52,7 @@ package nvim.type.vim.quickfix;
 		 end of lines, if the item spans multiple lines
 	**/
 	@:optional
-	extern public var end_lnum : Null<Float>;
+	extern public var end_lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.filename: string?
@@ -77,7 +77,7 @@ package nvim.type.vim.quickfix;
 		 line number in the file
 	**/
 	@:optional
-	extern public var lnum : Null<Float>;
+	extern public var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.module: string?
@@ -102,7 +102,7 @@ package nvim.type.vim.quickfix;
 		 error number
 	**/
 	@:optional
-	extern public var nr : Null<Float>;
+	extern public var nr : Null<Int>;
 	/**
 		```lua
 		(field) vim.quickfix.entry.pattern: string?
@@ -176,5 +176,5 @@ package nvim.type.vim.quickfix;
 		 when zero: "col" is byte index
 	**/
 	@:optional
-	extern public var vcol : Null<Float>;
+	extern public var vcol : Null<Int>;
 }

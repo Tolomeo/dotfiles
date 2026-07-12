@@ -18,7 +18,7 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern public var hide : Null<(namespace:Float, bufnr:Float) -> Dynamic>;
+	extern public var hide : Null<(namespace:Int, bufnr:Int) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.diagnostic.Handler.show: fun(namespace: integer, bufnr: integer, diagnostics: vim.Diagnostic[], opts?: vim.diagnostic.OptsResolved)?
@@ -31,5 +31,5 @@ package nvim.type.vim.diagnostic;
 		```
 	**/
 	@:optional
-	extern public var show : Null<(namespace:Float, bufnr:Float, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
+	extern public var show : Null<(namespace:Int, bufnr:Int, diagnostics:lua.Table<Int, nvim.type.vim.Diagnostic>, opts:nvim.type.vim.diagnostic.OptsResolved) -> Dynamic>;
 }

@@ -62,7 +62,7 @@ extern class Fs {
 		        "file", "directory", "link", "fifo", "socket", "char", "block", "unknown".
 	**/
 	inline function dir(path:String, ?opts:nvim.type.vim.fs.dir.Opts):nvim.type.Iterator_ {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.dir.Opts> = opts;
 		return __dir(path, opts);
 	}
 	/**
@@ -133,7 +133,7 @@ extern class Fs {
 		@*return* — Normalized paths |vim.fs.normalize()| of all matching items
 	**/
 	inline function find(names:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>, ?opts:nvim.type.vim.fs.find.Opts):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.find.Opts> = opts;
 		return __find(names, opts);
 	}
 	/**
@@ -199,7 +199,7 @@ extern class Fs {
 		@*return* — : Normalized path
 	**/
 	inline function normalize(path:String, ?opts:nvim.type.vim.fs.normalize.Opts):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.normalize.Opts> = opts;
 		return __normalize(path, opts);
 	}
 	@:native("parents")
@@ -281,7 +281,7 @@ extern class Fs {
 		@*param* `path` — Path to remove
 	**/
 	inline function rm(path:String, ?opts:nvim.type.vim.fs.rm.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.fs.rm.Opts> = opts;
 		return __rm(path, opts);
 	}
 	/**
@@ -333,5 +333,5 @@ extern class Fs {
 		                   found.
 	**/
 	@:luaDotMethod
-	function root(source:haxe.extern.EitherType<Float, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
+	function root(source:haxe.extern.EitherType<Int, String>, marker:haxe.extern.EitherType<lua.Table<Int, haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, (name:String, path:String) -> Bool>>>, haxe.extern.EitherType<String, (name:String, path:String) -> Bool>>):Null<String>;
 }

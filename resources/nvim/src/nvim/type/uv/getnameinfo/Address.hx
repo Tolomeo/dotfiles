@@ -16,7 +16,7 @@ package nvim.type.uv.getnameinfo;
 		(field) uv.getnameinfo.address.family: string|integer
 		```
 	**/
-	extern public var family : haxe.extern.EitherType<String, Float>;
+	extern public var family : haxe.extern.EitherType<String, Int>;
 	/**
 		```lua
 		(field) uv.getnameinfo.address.ip: string
@@ -28,5 +28,5 @@ package nvim.type.uv.getnameinfo;
 		(field) uv.getnameinfo.address.port: integer
 		```
 	**/
-	extern public var port : Float;
+	extern public var port : Int;
 }

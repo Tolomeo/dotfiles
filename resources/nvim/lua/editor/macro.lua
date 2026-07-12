@@ -206,9 +206,9 @@ local StringTools = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
-__nvim_helper_Arg = _hx_e()
-__nvim_helper__Multireturn_Return3_Impl_ = _hx_e()
-__nvim_helper_Nothing = _hx_e()
+__nvim_helper__Native_LuaArray_Impl_ = _hx_e()
+__nvim_helper__Native_LuaObject_Impl_ = _hx_e()
+__nvim_helper__Native_Native_Fields_ = _hx_e()
 __nvim_type_vim_api_keyset_EchoOpts = _hx_e()
 __nvim_type_vim_api_keyset_UserCommand = _hx_e()
 __nvim_type_vim_api_keyset_create_user_command_CommandArgs = _hx_e()
@@ -566,11 +566,8 @@ end
 _hx_exports["Macro"] = Macro
 Macro.yank = function() 
   local registerName = vim.fn.input("Please specify a register to yank from: ");
-  local _this = vim.api;
-  local chunks = ({});
   local opts = __nvim_type_vim_api_keyset_EchoOpts.new(nil, nil);
-  opts = __nvim_helper_Arg.pure(opts);
-  _this.nvim_echo(chunks, false, opts);
+  vim.api.nvim_echo(__nvim_helper__Native_LuaArray_Impl_.toTableArray(__nvim_helper__Native_LuaArray_Impl_.fromArray(_hx_tab_array({}, 0))), false, __nvim_helper__Native_LuaObject_Impl_.toTableObject(opts));
   vim.schedule(function() 
     if (registerName == "") then 
       vim.notify("Invalid register name", vim.log.levels.ERROR);
@@ -596,10 +593,7 @@ Macro.yankRegister = function(registerName)
 end
 Macro.prototype = _hx_e();
 Macro.prototype.setup = function(self) 
-  local _this = vim.api;
-  local opts = __nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil);
-  opts = __nvim_helper_Arg.pure(opts);
-  _this.nvim_create_user_command("YankMacro", function(args) 
+  vim.api.nvim_create_user_command("YankMacro", function(args) 
     local length = nil;
     local tab = __lua_PairTools.copy(args.fargs);
     local length = length;
@@ -623,9 +617,7 @@ Macro.prototype.setup = function(self)
     elseif (_g1) == 1 then 
       Macro.yankRegister(_g[0]);else
     vim.notify(Std.string(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument only"), vim.log.levels.ERROR); end;
-  end, opts);
-  local _hx_1_this1__0, _hx_1_this1__1, _hx_1_this1__2, _hx_1_this1__3, _hx_1_this1__4, _hx_1_this1__5 = vim.fs.parents(".");
-  vim.print((__nvim_helper__Multireturn_Return3_Impl_.get__0(_hx_tab_array({[0]=_hx_1_this1__0, _hx_1_this1__1, _hx_1_this1__2}, 3)))());
+  end, __nvim_helper__Native_LuaObject_Impl_.toTableObject(__nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil)));
 end
 Macro.__super__ = Module
 setmetatable(Macro.prototype,{__index=Module.prototype})
@@ -897,28 +889,63 @@ __haxe_iterators_ArrayKeyValueIterator.super = function(self,array)
 end
 
 __lua_PairTools.new = {}
+__lua_PairTools.ipairsEach = function(table,func) 
+  for i,v in _G.ipairs(table) do func(i,v) end;
+end
+__lua_PairTools.pairsEach = function(table,func) 
+  for k,v in _G.pairs(table) do func(k,v) end;
+end
 __lua_PairTools.copy = function(table1) 
   local ret = ({});
   for k,v in _G.pairs(table1) do ret[k] = v end;
   do return ret end;
 end
 
-__nvim_helper_Arg.new = {}
-__nvim_helper_Arg.pure = function(obj) 
-  if (_G.type(obj) == "table") then 
-    obj.__fields__ = nil;
-    _G.setmetatable(obj, nil);
-    do return obj end;
-  else
-    do return obj end;
+__nvim_helper__Native_LuaArray_Impl_.new = {}
+__nvim_helper__Native_LuaArray_Impl_.fromArray = function(arr) 
+  local ret = ({});
+  local _g = 0;
+  local _g1 = arr.length;
+  while (_g < _g1) do 
+    _g = _g + 1;
+    local idx = _g - 1;
+    ret[idx + 1] = arr[idx];
   end;
+  do return ret end;
+end
+__nvim_helper__Native_LuaArray_Impl_.toTableArray = function(this1) 
+  do return __nvim_helper__Native_Native_Fields_.native(this1) end;
 end
 
-__nvim_helper__Multireturn_Return3_Impl_.new = {}
-__nvim_helper__Multireturn_Return3_Impl_.get__0 = function(this1) 
-  do return this1[0] end;
+__nvim_helper__Native_LuaObject_Impl_.new = {}
+__nvim_helper__Native_LuaObject_Impl_.toTableObject = function(this1) 
+  do return __nvim_helper__Native_Native_Fields_.native(this1) end;
 end
 
+__nvim_helper__Native_Native_Fields_.new = {}
+__nvim_helper__Native_Native_Fields_.nativeTable = function(tableValue) 
+  local tab = ({});
+  __lua_PairTools.ipairsEach(tableValue, function(i,t) 
+    _G.table.insert(tab, __nvim_helper__Native_Native_Fields_.native(t));
+  end);
+  __lua_PairTools.pairsEach(tableValue, function(k,t) 
+    if (_hx_tab_array({[0]="__fields__", "length"}, 2):contains(k)) then 
+      do return end;
+    end;
+    if (k == 0) then 
+      _G.table.insert(tab, 1, t);
+      do return end;
+    end;
+    tab[k] = __nvim_helper__Native_Native_Fields_.native(t);
+  end);
+  do return tab end;
+end
+__nvim_helper__Native_Native_Fields_.native = function(value) 
+  if (_G.type(value) == "table") then 
+    do return __nvim_helper__Native_Native_Fields_.nativeTable(value) end;
+  end;
+  do return value end;
+end
 
 __nvim_type_vim_api_keyset_EchoOpts.new = function(err,verbose) 
   local self = _hx_new()

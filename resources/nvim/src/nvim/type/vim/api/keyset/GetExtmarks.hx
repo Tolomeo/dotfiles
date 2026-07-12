@@ -26,7 +26,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var limit : Null<Float>;
+	extern public var limit : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_extmarks.overlap: boolean?

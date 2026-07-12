@@ -61,7 +61,7 @@ package nvim.type.vim.treesitter;
 		(field) vim.treesitter.highlighter.bufnr: integer
 		```
 	**/
-	extern public var bufnr : Float;
+	extern public var bufnr : Int;
 	@:luaDotMethod
 	@:native("new")
 	private extern function __new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter;
@@ -85,7 +85,7 @@ package nvim.type.vim.treesitter;
 		@*return* `Created` — highlighter object
 	**/
 	inline public function new_(tree:nvim.type.vim.treesitter.LanguageTree, ?opts:Null<lua.Table.AnyTable>):nvim.type.vim.treesitter.Highlighter {
-		tree = nvim.helper.Arg.pure(tree);
+		final tree:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.LanguageTree> = tree;
 		return __new_(tree, opts);
 	}
 	/**

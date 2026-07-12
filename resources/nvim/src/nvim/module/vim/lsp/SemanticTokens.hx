@@ -18,7 +18,7 @@ extern class SemanticTokens {
 		       buffer if 0
 	**/
 	@:luaDotMethod
-	function force_refresh(?bufnr:Null<Float>):Dynamic;
+	function force_refresh(?bufnr:Null<Int>):Dynamic;
 	/**
 		```lua
 		function M.get_at_pos(bufnr: integer|nil, row: integer|nil, col: integer|nil)
@@ -48,10 +48,10 @@ extern class SemanticTokens {
 		        - client_id (integer)
 	**/
 	@:luaDotMethod
-	function get_at_pos(?bufnr:Null<Float>, ?row:Null<Float>, ?col:Null<Float>):Null<lua.Table<Int, nvim.type.STTokenRangeInspect>>;
+	function get_at_pos(?bufnr:Null<Int>, ?row:Null<Int>, ?col:Null<Int>):Null<lua.Table<Int, nvim.type.STTokenRangeInspect>>;
 	@:native("highlight_token")
 	@:luaDotMethod
-	private function __highlight_token(token:lua.Table.AnyTable, bufnr:Float, client_id:Float, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic;
+	private function __highlight_token(token:lua.Table.AnyTable, bufnr:Int, client_id:Int, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic;
 	/**
 		```lua
 		function M.highlight_token(token: table, bufnr: integer, client_id: integer, hl_group: string, opts?: vim.lsp.semantic_tokens.highlight_token.Opts)
@@ -76,14 +76,14 @@ extern class SemanticTokens {
 		
 		@*param* `opts` — Optional parameters:
 	**/
-	inline function highlight_token(token:lua.Table.AnyTable, bufnr:Float, client_id:Float, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic {
-		token = nvim.helper.Arg.pure(token);
-		opts = nvim.helper.Arg.pure(opts);
+	inline function highlight_token(token:lua.Table.AnyTable, bufnr:Int, client_id:Int, hl_group:String, ?opts:nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts):Dynamic {
+		final token:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = token;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.semantic_tokens.highlight_token.Opts> = opts;
 		return __highlight_token(token, bufnr, client_id, hl_group, opts);
 	}
 	@:native("start")
 	@:luaDotMethod
-	private function __start(bufnr:Float, client_id:Float, ?opts:lua.Table.AnyTable):Dynamic;
+	private function __start(bufnr:Int, client_id:Int, ?opts:lua.Table.AnyTable):Dynamic;
 	/**
 		```lua
 		function M.start(bufnr: integer, client_id: integer, opts?: table)
@@ -113,8 +113,8 @@ extern class SemanticTokens {
 		  - debounce (integer, default: 200): Debounce token requests
 		        to the server by the given number in milliseconds
 	**/
-	inline function start(bufnr:Float, client_id:Float, ?opts:lua.Table.AnyTable):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function start(bufnr:Int, client_id:Int, ?opts:lua.Table.AnyTable):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __start(bufnr, client_id, opts);
 	}
 	/**
@@ -136,5 +136,5 @@ extern class SemanticTokens {
 		@*param* `client_id` — The ID of the |vim.lsp.Client|
 	**/
 	@:luaDotMethod
-	function stop(bufnr:Float, client_id:Float):Dynamic;
+	function stop(bufnr:Int, client_id:Int):Dynamic;
 }

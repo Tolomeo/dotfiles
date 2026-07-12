@@ -12,7 +12,7 @@ extern class BufVersions {
 extern class Util {
 	@:native("apply_text_document_edit")
 	@:luaDotMethod
-	private function __apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Float, ?position_encoding:String):Dynamic;
+	private function __apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic;
 	/**
 		```lua
 		function M.apply_text_document_edit(text_document_edit: lsp.TextDocumentEdit, index?: integer, position_encoding?: 'utf-16'|'utf-32'|'utf-8')
@@ -34,10 +34,13 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentEdit
 	**/
-	inline function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Float, ?position_encoding:String):Dynamic {
-		text_document_edit = nvim.helper.Arg.pure(text_document_edit);
+	inline function apply_text_document_edit(text_document_edit:nvim.type.lsp.TextDocumentEdit, ?index:Int, ?position_encoding:String):Dynamic {
+		final text_document_edit:nvim.helper.Native.LuaObject<nvim.type.lsp.TextDocumentEdit> = text_document_edit;
 		return __apply_text_document_edit(text_document_edit, index, position_encoding);
 	}
+	@:native("apply_text_edits")
+	@:luaDotMethod
+	private function __apply_text_edits(text_edits:lua.Table<Int, nvim.type.lsp.TextEdit>, bufnr:Int, position_encoding:String):Dynamic;
 	/**
 		```lua
 		function M.apply_text_edits(text_edits: lsp.TextEdit[], bufnr: integer, position_encoding: 'utf-16'|'utf-32'|'utf-8')
@@ -58,8 +61,10 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textEdit
 	**/
-	@:luaDotMethod
-	function apply_text_edits(text_edits:lua.Table<Int, nvim.type.lsp.TextEdit>, bufnr:Float, position_encoding:String):Dynamic;
+	inline function apply_text_edits(text_edits:Array<nvim.type.lsp.TextEdit>, bufnr:Int, position_encoding:String):Dynamic {
+		final text_edits:nvim.helper.Native.LuaArray<nvim.type.lsp.TextEdit> = text_edits;
+		return __apply_text_edits(text_edits, bufnr, position_encoding);
+	}
 	@:native("apply_workspace_edit")
 	@:luaDotMethod
 	private function __apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic;
@@ -84,7 +89,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#workspace_applyEdit
 	**/
 	inline function apply_workspace_edit(workspace_edit:nvim.type.lsp.WorkspaceEdit, position_encoding:String):Dynamic {
-		workspace_edit = nvim.helper.Arg.pure(workspace_edit);
+		final workspace_edit:nvim.helper.Native.LuaObject<nvim.type.lsp.WorkspaceEdit> = workspace_edit;
 		return __apply_workspace_edit(workspace_edit, position_encoding);
 	}
 	/**
@@ -99,7 +104,10 @@ extern class Util {
 		@*param* `bufnr` — Buffer id
 	**/
 	@:luaDotMethod
-	function buf_clear_references(?bufnr:Null<Float>):Dynamic;
+	function buf_clear_references(?bufnr:Null<Int>):Dynamic;
+	@:native("buf_highlight_references")
+	@:luaDotMethod
+	private function __buf_highlight_references(bufnr:Int, references:lua.Table<Int, nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic;
 	/**
 		```lua
 		function M.buf_highlight_references(bufnr: integer, references: lsp.DocumentHighlight[], position_encoding: 'utf-16'|'utf-32'|'utf-8')
@@ -122,8 +130,10 @@ extern class Util {
 		
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specification/#textDocumentContentChangeEvent
 	**/
-	@:luaDotMethod
-	function buf_highlight_references(bufnr:Float, references:lua.Table<Int, nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic;
+	inline function buf_highlight_references(bufnr:Int, references:Array<nvim.type.lsp.DocumentHighlight>, position_encoding:String):Dynamic {
+		final references:nvim.helper.Native.LuaArray<nvim.type.lsp.DocumentHighlight> = references;
+		return __buf_highlight_references(bufnr, references, position_encoding);
+	}
 	/**
 		```lua
 		(global) vim.lsp.util.buf_versions: table<integer, integer>
@@ -158,7 +168,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function character_offset(buf:Float, row:Float, col:Float, ?offset_encoding:String):Float;
+	function character_offset(buf:Int, row:Int, col:Int, ?offset_encoding:String):Int;
 	/**
 		```lua
 		function M.convert_input_to_markdown_lines(input: string|lsp.MarkedStringWithLanguage|lsp.MarkupContent|string|lsp.MarkedStringWithLanguage[], contents?: string[])
@@ -210,7 +220,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_signatureHelp
 	**/
 	inline function convert_signature_help_to_markdown_lines(signature_help:nvim.type.lsp.SignatureHelp, ?ft:Null<String>, ?triggers:Null<lua.Table<Int, String>>):nvim.helper.Multireturn.Return2<Null<lua.Table<Int, String>>, Null<nvim.type.Range4>> {
-		signature_help = nvim.helper.Arg.pure(signature_help);
+		final signature_help:nvim.helper.Native.LuaObject<nvim.type.lsp.SignatureHelp> = signature_help;
 		return __convert_signature_help_to_markdown_lines(signature_help, ft, triggers);
 	}
 	/**
@@ -228,7 +238,7 @@ extern class Util {
 		@*return* `indentation` — size
 	**/
 	@:luaDotMethod
-	function get_effective_tabstop(?bufnr:Null<Float>):Float;
+	function get_effective_tabstop(?bufnr:Null<Int>):Int;
 	/**
 		```lua
 		function M.jump_to_location(location: lsp.Location|lsp.LocationLink, position_encoding?: 'utf-16'|'utf-32'|'utf-8', reuse_win?: boolean)
@@ -304,12 +314,12 @@ extern class Util {
 	**/
 	@:deprecated
 	inline function lookup_section(settings:lua.Table.AnyTable, section:String):haxe.extern.EitherType<lua.Table.AnyTable, haxe.extern.EitherType<String, nvim.type.vim.NIL>> {
-		settings = nvim.helper.Arg.pure(settings);
+		final settings:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = settings;
 		return __lookup_section(settings, section);
 	}
 	@:native("make_floating_popup_options")
 	@:luaDotMethod
-	private function __make_floating_popup_options(width:Float, height:Float, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig;
+	private function __make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig;
 	/**
 		```lua
 		function M.make_floating_popup_options(width: integer, height: integer, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -325,8 +335,8 @@ extern class Util {
 		
 		@*param* `height` — window height (in character cells)
 	**/
-	inline function make_floating_popup_options(width:Float, height:Float, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function make_floating_popup_options(width:Int, height:Int, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.type.vim.api.keyset.WinConfig {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.util.open_floating_preview.Opts> = opts;
 		return __make_floating_popup_options(width, height, opts);
 	}
 	/**
@@ -374,7 +384,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function make_given_range_params(start_pos:Dynamic, end_pos:Dynamic, bufnr:Null<Float>, position_encoding:String):{ var textDocument : { var uri : nvim.type.lsp.DocumentUri; }; var range : nvim.type.lsp.Range; };
+	function make_given_range_params(start_pos:Dynamic, end_pos:Dynamic, bufnr:Null<Int>, position_encoding:String):{ var textDocument : { var uri : nvim.type.lsp.DocumentUri; }; var range : nvim.type.lsp.Range; };
 	/**
 		```lua
 		function M.make_position_params(window?: integer, position_encoding: 'utf-16'|'utf-32'|'utf-8')
@@ -397,7 +407,7 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentPositionParams
 	**/
 	@:luaDotMethod
-	function make_position_params(window:Null<Float>, position_encoding:String):nvim.type.lsp.TextDocumentPositionParams;
+	function make_position_params(window:Null<Int>, position_encoding:String):nvim.type.lsp.TextDocumentPositionParams;
 	/**
 		```lua
 		function M.make_range_params(window?: integer, position_encoding: "utf-16"|"utf-32"|"utf-8")
@@ -421,7 +431,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function make_range_params(window:Null<Float>, position_encoding:String):{ var textDocument : { var uri : nvim.type.lsp.DocumentUri; }; var range : nvim.type.lsp.Range; };
+	function make_range_params(window:Null<Int>, position_encoding:String):{ var textDocument : { var uri : nvim.type.lsp.DocumentUri; }; var range : nvim.type.lsp.Range; };
 	/**
 		```lua
 		function M.make_text_document_params(bufnr?: integer)
@@ -437,7 +447,10 @@ extern class Util {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocumentIdentifier
 	**/
 	@:luaDotMethod
-	function make_text_document_params(?bufnr:Null<Float>):nvim.type.lsp.TextDocumentIdentifier;
+	function make_text_document_params(?bufnr:Null<Int>):nvim.type.lsp.TextDocumentIdentifier;
+	@:native("make_workspace_params")
+	@:luaDotMethod
+	private function __make_workspace_params(added:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>, removed:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent;
 	/**
 		```lua
 		function M.make_workspace_params(added: lsp.WorkspaceFolder[], removed: lsp.WorkspaceFolder[])
@@ -448,11 +461,14 @@ extern class Util {
 		
 		 Create the workspace params
 	**/
-	@:luaDotMethod
-	function make_workspace_params(added:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>, removed:lua.Table<Int, nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent;
+	inline function make_workspace_params(added:Array<nvim.type.lsp.WorkspaceFolder>, removed:Array<nvim.type.lsp.WorkspaceFolder>):nvim.type.lsp.WorkspaceFoldersChangeEvent {
+		final added:nvim.helper.Native.LuaArray<nvim.type.lsp.WorkspaceFolder> = added;
+		final removed:nvim.helper.Native.LuaArray<nvim.type.lsp.WorkspaceFolder> = removed;
+		return __make_workspace_params(added, removed);
+	}
 	@:native("open_floating_preview")
 	@:luaDotMethod
-	private function __open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Float, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Int, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.open_floating_preview(contents: table, syntax: string, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -477,14 +493,14 @@ extern class Util {
 		
 		@*return* `winid` — of newly created float window preview window
 	**/
-	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Float, Float> {
-		contents = nvim.helper.Arg.pure(contents);
-		opts = nvim.helper.Arg.pure(opts);
+	inline function open_floating_preview(contents:lua.Table.AnyTable, syntax:String, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Int, Int> {
+		final contents:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = contents;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.util.open_floating_preview.Opts> = opts;
 		return __open_floating_preview(contents, syntax, opts);
 	}
 	@:native("preview_location")
 	@:luaDotMethod
-	private function __preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Float>, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.preview_location(location: lsp.Location|lsp.LocationLink, opts?: vim.lsp.util.open_floating_preview.Opts)
@@ -504,8 +520,8 @@ extern class Util {
 		
 		@*return* `window` — id of float window
 	**/
-	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function preview_location(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?opts:nvim.type.vim.lsp.util.open_floating_preview.Opts):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.util.open_floating_preview.Opts> = opts;
 		return __preview_location(location, opts);
 	}
 	@:native("rename")
@@ -529,9 +545,12 @@ extern class Util {
 		@*param* `opts` — Options:
 	**/
 	inline function rename(old_fname:String, new_fname:String, ?opts:nvim.type.vim.lsp.util.rename.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.util.rename.Opts> = opts;
 		return __rename(old_fname, new_fname, opts);
 	}
+	@:native("set_lines")
+	@:luaDotMethod
+	private function __set_lines(lines:lua.Table<Int, String>, A:Dynamic, B:Dynamic, new_lines:lua.Table<Int, String>):lua.Table<Int, String>;
 	/**
 		```lua
 		function M.set_lines(lines: string[], A: [integer, integer], B: [integer, integer], new_lines: string[])
@@ -554,9 +573,12 @@ extern class Util {
 		
 		@*return* `The` — modified {lines} object
 	**/
-	@:luaDotMethod
 	@:deprecated
-	function set_lines(lines:lua.Table<Int, String>, A:Dynamic, B:Dynamic, new_lines:lua.Table<Int, String>):lua.Table<Int, String>;
+	inline function set_lines(lines:Array<String>, A:Dynamic, B:Dynamic, new_lines:Array<String>):lua.Table<Int, String> {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		final new_lines:nvim.helper.Native.LuaArray<String> = new_lines;
+		return __set_lines(lines, A, B, new_lines);
+	}
 	@:native("show_document")
 	@:luaDotMethod
 	private function __show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool;
@@ -580,12 +602,12 @@ extern class Util {
 		```
 	**/
 	inline function show_document(location:haxe.extern.EitherType<nvim.type.lsp.Location, nvim.type.lsp.LocationLink>, ?position_encoding:haxe.extern.EitherType<String, Null<String>>, ?opts:nvim.type.vim.lsp.util.show_document.Opts):Bool {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.util.show_document.Opts> = opts;
 		return __show_document(location, position_encoding, opts);
 	}
 	@:native("stylize_markdown")
 	@:luaDotMethod
-	private function __stylize_markdown(bufnr:Float, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
+	private function __stylize_markdown(bufnr:Int, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable;
 	/**
 		```lua
 		function M.stylize_markdown(bufnr: integer, contents: string[], opts?: table)
@@ -616,8 +638,9 @@ extern class Util {
 		
 		@*return* `stripped` — content
 	**/
-	inline function stylize_markdown(bufnr:Float, contents:lua.Table<Int, String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function stylize_markdown(bufnr:Int, contents:Array<String>, ?opts:lua.Table.AnyTable):lua.Table.AnyTable {
+		final contents:nvim.helper.Native.LuaArray<String> = contents;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __stylize_markdown(bufnr, contents, opts);
 	}
 	/**
@@ -646,7 +669,7 @@ extern class Util {
 		```
 	**/
 	@:luaDotMethod
-	function symbols_to_items(symbols:haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.DocumentSymbol>, lua.Table<Int, nvim.type.lsp.SymbolInformation>>, ?bufnr:Float, ?position_encoding:String):lua.Table<Int, nvim.type.vim.quickfix.Entry>;
+	function symbols_to_items(symbols:haxe.extern.EitherType<lua.Table<Int, nvim.type.lsp.DocumentSymbol>, lua.Table<Int, nvim.type.lsp.SymbolInformation>>, ?bufnr:Int, ?position_encoding:String):lua.Table<Int, nvim.type.vim.quickfix.Entry>;
 	@:native("trim_empty_lines")
 	@:luaDotMethod
 	private function __trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable;
@@ -666,9 +689,12 @@ extern class Util {
 	**/
 	@:deprecated
 	inline function trim_empty_lines(lines:lua.Table.AnyTable):lua.Table.AnyTable {
-		lines = nvim.helper.Arg.pure(lines);
+		final lines:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = lines;
 		return __trim_empty_lines(lines);
 	}
+	@:native("try_trim_markdown_code_blocks")
+	@:luaDotMethod
+	private function __try_trim_markdown_code_blocks(lines:lua.Table<Int, String>):String;
 	/**
 		```lua
 		function M.try_trim_markdown_code_blocks(lines: string[])
@@ -686,7 +712,9 @@ extern class Util {
 		
 		@*return* `filetype` — or "markdown" if it was unchanged.
 	**/
-	@:luaDotMethod
 	@:deprecated
-	function try_trim_markdown_code_blocks(lines:lua.Table<Int, String>):String;
+	inline function try_trim_markdown_code_blocks(lines:Array<String>):String {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		return __try_trim_markdown_code_blocks(lines);
+	}
 }

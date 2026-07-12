@@ -22,7 +22,7 @@ package nvim.type.vim.diagnostic.setqflist;
 		 Only add diagnostics from the given namespace.
 	**/
 	@:optional
-	extern public var namespace : Null<Float>;
+	extern public var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.setqflist.Opts.open: boolean?

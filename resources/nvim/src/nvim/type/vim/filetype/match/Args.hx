@@ -18,7 +18,7 @@ package nvim.type.vim.filetype.match;
 		 Buffer number to use for matching. Mutually exclusive with {contents}
 	**/
 	@:optional
-	extern public var buf : Null<Float>;
+	extern public var buf : Null<Int>;
 	/**
 		```lua
 		(field) vim.filetype.match.args.contents: string[]?

@@ -49,7 +49,7 @@ extern class Secure {
 		@*return* `msg` — full path if operation was successful, else error message
 	**/
 	inline function trust(opts:nvim.type.vim.trust.Opts):nvim.helper.Multireturn.Return2<Bool, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.trust.Opts> = opts;
 		return __trust(opts);
 	}
 }

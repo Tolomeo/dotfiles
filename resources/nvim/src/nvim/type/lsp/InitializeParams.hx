@@ -99,7 +99,7 @@ package nvim.type.lsp;
 		Is `null` if the process has not been started by another process.
 		If the parent process is not alive then the server should exit.
 	**/
-	extern public var processId : haxe.extern.EitherType<Float, nvim.type.lsp.Null>;
+	extern public var processId : haxe.extern.EitherType<Int, nvim.type.lsp.Null>;
 	/**
 		```lua
 		(field) lsp.InitializeParams.rootPath: (string|nil)?

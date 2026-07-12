@@ -11,11 +11,11 @@ package nvim.type.uv.pipe;
 		(field) uv.pipe.fds.read: integer
 		```
 	**/
-	extern public var read : Float;
+	extern public var read : Int;
 	/**
 		```lua
 		(field) uv.pipe.fds.write: integer
 		```
 	**/
-	extern public var write : Float;
+	extern public var write : Int;
 }

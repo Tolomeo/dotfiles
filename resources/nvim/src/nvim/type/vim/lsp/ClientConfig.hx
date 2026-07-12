@@ -158,7 +158,7 @@ package nvim.type.vim.lsp;
 		```
 	**/
 	@:optional
-	extern public var get_language_id : Null<(bufnr:Float, filetype:String) -> String>;
+	extern public var get_language_id : Null<(bufnr:Int, filetype:String) -> String>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.handlers: table<string, function>?
@@ -251,7 +251,7 @@ package nvim.type.vim.lsp;
 		```
 	**/
 	@:optional
-	extern public var on_error : Null<(code:Float, err:String) -> Dynamic>;
+	extern public var on_error : Null<(code:Int, err:String) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.lsp.ClientConfig.on_exit: elem_or_list<fun(code: integer, signal: integer, client_id: integer)>?

@@ -93,7 +93,7 @@ extern class Hl {
 	var priorities : Priorities;
 	@:native("range")
 	@:luaDotMethod
-	private function __range(bufnr:Float, ns:Float, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Float>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Float>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private function __range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Int>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		function M.range(bufnr: integer, ns: integer, higroup: string, start: string|integer[], finish: string|integer[], opts?: vim.hl.range.Opts)
@@ -123,8 +123,8 @@ extern class Hl {
 		
 		 nil is returned if timeout is not specified
 	**/
-	inline function range(bufnr:Float, ns:Float, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Float>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Float>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function range(bufnr:Int, ns:Int, higroup:String, start:haxe.extern.EitherType<lua.Table<Int, Int>, String>, finish:haxe.extern.EitherType<lua.Table<Int, Int>, String>, ?opts:nvim.type.vim.hl.range.Opts):nvim.helper.Multireturn.Return2<Null<nvim.type.uv.UvTimerT>, Null<() -> Dynamic>> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.hl.range.Opts> = opts;
 		return __range(bufnr, ns, higroup, start, finish, opts);
 	}
 }

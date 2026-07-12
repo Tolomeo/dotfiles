@@ -57,7 +57,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_buf : Null<(_:String, bufnr:Float, tick:Float) -> Dynamic>;
+	extern public var on_buf : Null<(_:String, bufnr:Int, tick:Int) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider.on_end: fun(_: "end", tick: integer)?
@@ -70,7 +70,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_end : Null<(_:String, tick:Float) -> Dynamic>;
+	extern public var on_end : Null<(_:String, tick:Int) -> Dynamic>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider.on_line: fun(_: "line", winid: integer, bufnr: integer, row: integer):boolean??
@@ -84,7 +84,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_line : Null<(_:String, winid:Float, bufnr:Float, row:Float) -> Null<Bool>>;
+	extern public var on_line : Null<(_:String, winid:Int, bufnr:Int, row:Int) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider.on_start: fun(_: "start", tick: integer):boolean??
@@ -98,7 +98,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_start : Null<(_:String, tick:Float) -> Null<Bool>>;
+	extern public var on_start : Null<(_:String, tick:Int) -> Null<Bool>>;
 	/**
 		```lua
 		(field) vim.api.keyset.set_decoration_provider.on_win: fun(_: "win", winid: integer, bufnr: integer, toprow: integer, botrow: integer):boolean??
@@ -112,5 +112,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_win : Null<(_:String, winid:Float, bufnr:Float, toprow:Float, botrow:Float) -> Null<Bool>>;
+	extern public var on_win : Null<(_:String, winid:Int, bufnr:Int, toprow:Int, botrow:Int) -> Null<Bool>>;
 }

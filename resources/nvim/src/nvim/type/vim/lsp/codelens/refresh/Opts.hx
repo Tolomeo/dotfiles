@@ -16,5 +16,5 @@ package nvim.type.vim.lsp.codelens.refresh;
 		filter by buffer. All buffers if nil, 0 for current buffer
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 }

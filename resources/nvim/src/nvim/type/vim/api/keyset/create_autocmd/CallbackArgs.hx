@@ -15,7 +15,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		expanded value of <abuf>
 	**/
-	extern public var buf : Float;
+	extern public var buf : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.data: any
@@ -57,7 +57,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		autocommand group id, if any
 	**/
 	@:optional
-	extern public var group : Null<Float>;
+	extern public var group : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.id: integer
@@ -67,7 +67,7 @@ package nvim.type.vim.api.keyset.create_autocmd;
 		
 		autocommand id
 	**/
-	extern public var id : Float;
+	extern public var id : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_autocmd.callback_args.match: string

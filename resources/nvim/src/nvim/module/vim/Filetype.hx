@@ -98,7 +98,7 @@ extern class Filetype {
 		@*param* `filetypes` — A table containing new filetype maps (see example).
 	**/
 	inline function add(filetypes:nvim.type.vim.filetype.add.Filetypes):Dynamic {
-		filetypes = nvim.helper.Arg.pure(filetypes);
+		final filetypes:nvim.helper.Native.LuaObject<nvim.type.vim.filetype.add.Filetypes> = filetypes;
 		return __add(filetypes);
 	}
 	/**
@@ -132,7 +132,7 @@ extern class Filetype {
 		@*return* — : Option value
 	**/
 	@:luaDotMethod
-	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Float>>;
+	function get_option(filetype:String, option:String):haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
 	@:native("match")
 	@:luaDotMethod
 	private function __match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn<Null<String>, Null<haxe.Constraints.Function>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
@@ -186,7 +186,7 @@ extern class Filetype {
 		                     its only argument.
 	**/
 	inline function match(args:nvim.type.vim.filetype.match.Args):nvim.helper.Multireturn.Return2<Null<String>, Null<haxe.Constraints.Function>> {
-		args = nvim.helper.Arg.pure(args);
+		final args:nvim.helper.Native.LuaObject<nvim.type.vim.filetype.match.Args> = args;
 		return __match(args);
 	}
 }

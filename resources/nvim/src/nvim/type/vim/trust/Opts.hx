@@ -30,7 +30,7 @@ package nvim.type.vim.trust;
 		 Buffer number to update. Mutually exclusive with {path}.
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.trust.opts.path: string?

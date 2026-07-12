@@ -16,5 +16,5 @@ package nvim.type.uv.new_thread;
 		(field) uv.new_thread.options.stack_size: integer
 		```
 	**/
-	extern public var stack_size : Float;
+	extern public var stack_size : Int;
 }

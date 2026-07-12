@@ -31,7 +31,7 @@ package nvim.type.vim.hl.range;
 		 (default: `vim.hl.priorities.user`)
 	**/
 	@:optional
-	extern public var priority : Null<Float>;
+	extern public var priority : Null<Int>;
 	/**
 		```lua
 		(field) vim.hl.range.Opts.regtype: string?
@@ -58,5 +58,5 @@ package nvim.type.vim.hl.range;
 		 (default: -1 no timeout)
 	**/
 	@:optional
-	extern public var timeout : Null<Float>;
+	extern public var timeout : Null<Int>;
 }

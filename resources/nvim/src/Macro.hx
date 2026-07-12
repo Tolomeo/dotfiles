@@ -37,11 +37,12 @@ class Macro extends Module {
 	static function yank() {
 		final registerName = Vim.fn.input('Please specify a register to yank from: ');
 
-		Vim.api.nvim_echo(Table.create(), false, {});
+		// Vim.api.nvim_echo([["g"]], false, {});
+		Vim.api.nvim_echo([], false, {});
 
 		Vim.schedule(() -> {
 			if (registerName == "") {
-				Vim.notify('Invalid register name', Vim.log.levels.ERROR);
+				Vim.notify('Invalid register name', cast Vim.log.levels.ERROR);
 				return null;
 			}
 
@@ -53,7 +54,7 @@ class Macro extends Module {
 		final registerContent = Vim.fn.getreg(registerName);
 
 		if (registerContent == "") {
-			Vim.notify('Invalid register content', Vim.log.levels.ERROR);
+			Vim.notify('Invalid register content', cast Vim.log.levels.ERROR);
 			return null;
 		}
 
@@ -65,7 +66,7 @@ class Macro extends Module {
 		Vim.fn.setreg('*', macroContent);
 		Vim.fn.setreg('"', macroContent);
 
-		Vim.notify('Yanked macro content from register ${registerName}', Vim.log.levels.INFO);
+		Vim.notify('Yanked macro content from register ${registerName}', cast Vim.log.levels.INFO);
 		return null;
 	}
 
@@ -74,13 +75,13 @@ class Macro extends Module {
 			case []: Macro.yank();
 			case [r]: Macro.yankRegister(r);
 			case arguments:
-				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', Vim.log.levels.ERROR);
+				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', cast Vim.log.levels.ERROR);
 		}, {nargs: "*"});
 
 		// final parents = Vim.fs.parents(".");
 
 		// Vim.print(parents._0());
 		/* Vim.print(parents.get__1());
-		Vim.print(parents.get__2()); */
+			Vim.print(parents.get__2()); */
 	}
 }

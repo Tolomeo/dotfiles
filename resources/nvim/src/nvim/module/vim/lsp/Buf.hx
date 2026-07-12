@@ -41,7 +41,7 @@ extern class Buf {
 		  * [vim.lsp.protocol.CodeActionTriggerKind](file:///usr/local/share/nvim/runtime/lua/vim/lsp/protocol.lua#301#2)
 	**/
 	inline function code_action(?opts:nvim.type.vim.lsp.buf.code_action.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.buf.code_action.Opts> = opts;
 		return __code_action(opts);
 	}
 	@:native("completion")
@@ -68,7 +68,7 @@ extern class Buf {
 	**/
 	@:deprecated
 	inline function completion(context:lua.Table.AnyTable):Dynamic {
-		context = nvim.helper.Arg.pure(context);
+		final context:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = context;
 		return __completion(context);
 	}
 	@:native("declaration")
@@ -85,7 +85,7 @@ extern class Buf {
 		 @note Many servers do not implement this method. Generally, see |vim.lsp.buf.definition()| instead.
 	**/
 	inline function declaration(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.LocationOpts> = opts;
 		return __declaration(opts);
 	}
 	@:native("definition")
@@ -101,7 +101,7 @@ extern class Buf {
 		 Jumps to the definition of the symbol under the cursor.
 	**/
 	inline function definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.LocationOpts> = opts;
 		return __definition(opts);
 	}
 	/**
@@ -142,7 +142,7 @@ extern class Buf {
 		 Lists all symbols in the current buffer in the |location-list|.
 	**/
 	inline function document_symbol(?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ListOpts> = opts;
 		return __document_symbol(opts);
 	}
 	@:native("execute_command")
@@ -160,7 +160,7 @@ extern class Buf {
 	**/
 	@:deprecated
 	inline function execute_command(command_params:nvim.type.lsp.ExecuteCommandParams):Dynamic {
-		command_params = nvim.helper.Arg.pure(command_params);
+		final command_params:nvim.helper.Native.LuaObject<nvim.type.lsp.ExecuteCommandParams> = command_params;
 		return __execute_command(command_params);
 	}
 	@:native("format")
@@ -177,7 +177,7 @@ extern class Buf {
 		 server clients.
 	**/
 	inline function format(?opts:nvim.type.vim.lsp.buf.format.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.buf.format.Opts> = opts;
 		return __format(opts);
 	}
 	@:native("hover")
@@ -209,7 +209,7 @@ extern class Buf {
 		 ```
 	**/
 	inline function hover(?config:nvim.type.vim.lsp.buf.hover.Opts):Dynamic {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.buf.hover.Opts> = config;
 		return __hover(config);
 	}
 	@:native("implementation")
@@ -226,7 +226,7 @@ extern class Buf {
 		 quickfix window.
 	**/
 	inline function implementation(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.LocationOpts> = opts;
 		return __implementation(opts);
 	}
 	/**
@@ -284,7 +284,7 @@ extern class Buf {
 		See: ~https~ ://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_references
 	**/
 	inline function references(?context:Null<nvim.type.lsp.ReferenceContext>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ListOpts> = opts;
 		return __references(context, opts);
 	}
 	/**
@@ -319,7 +319,7 @@ extern class Buf {
 		@*param* `opts` — Additional options:
 	**/
 	inline function rename(?new_name:Null<String>, ?opts:nvim.type.vim.lsp.buf.rename.Opts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.buf.rename.Opts> = opts;
 		return __rename(new_name, opts);
 	}
 	@:native("signature_help")
@@ -336,7 +336,7 @@ extern class Buf {
 		 floating window.
 	**/
 	inline function signature_help(?config:nvim.type.vim.lsp.buf.signature_help.Opts):Dynamic {
-		config = nvim.helper.Arg.pure(config);
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.buf.signature_help.Opts> = config;
 		return __signature_help(config);
 	}
 	@:native("type_definition")
@@ -352,7 +352,7 @@ extern class Buf {
 		 Jumps to the definition of the type of the symbol under the cursor.
 	**/
 	inline function type_definition(?opts:nvim.type.vim.lsp.LocationOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.LocationOpts> = opts;
 		return __type_definition(opts);
 	}
 	/**
@@ -393,7 +393,7 @@ extern class Buf {
 		@*param* `query` — optional
 	**/
 	inline function workspace_symbol(?query:Null<String>, ?opts:nvim.type.vim.lsp.ListOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.ListOpts> = opts;
 		return __workspace_symbol(query, opts);
 	}
 }

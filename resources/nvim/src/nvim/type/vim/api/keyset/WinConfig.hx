@@ -26,7 +26,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var bufpos : Null<lua.Table<Int, Float>>;
+	extern public var bufpos : Null<lua.Table<Int, Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.col: number?
@@ -75,7 +75,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var height : Null<Float>;
+	extern public var height : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.hide: boolean?
@@ -152,19 +152,19 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var width : Null<Float>;
+	extern public var width : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.win: integer?
 		```
 	**/
 	@:optional
-	extern public var win : Null<Float>;
+	extern public var win : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_config.zindex: integer?
 		```
 	**/
 	@:optional
-	extern public var zindex : Null<Float>;
+	extern public var zindex : Null<Int>;
 }

@@ -68,7 +68,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var lnum : Null<Float>;
+	extern public var lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.mode: string?
@@ -82,7 +82,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var mode_bits : Null<Float>;
+	extern public var mode_bits : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.noremap: (0|1)?
@@ -117,14 +117,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var scriptversion : Null<Float>;
+	extern public var scriptversion : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.sid: integer?
 		```
 	**/
 	@:optional
-	extern public var sid : Null<Float>;
+	extern public var sid : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_keymap.silent: (0|1)?

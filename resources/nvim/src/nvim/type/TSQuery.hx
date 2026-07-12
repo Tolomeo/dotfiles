@@ -51,7 +51,7 @@ package nvim.type;
 		 local tree = vim.treesitter.get_parser():parse()[1]
 		 ```
 	**/
-	extern public function disable_pattern(pattern_index:Float):Dynamic;
+	extern public function disable_pattern(pattern_index:Int):Dynamic;
 	/**
 		```lua
 		(method) TSQuery:inspect()

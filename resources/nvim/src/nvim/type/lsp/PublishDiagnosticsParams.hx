@@ -44,5 +44,5 @@ package nvim.type.lsp;
 		
 	**/
 	@:optional
-	extern public var version : Null<Float>;
+	extern public var version : Null<Int>;
 }

@@ -35,7 +35,7 @@ package nvim.type;
 		(field) TSLangInfo.abi_version: integer
 		```
 	**/
-	extern public var abi_version : Float;
+	extern public var abi_version : Int;
 	/**
 		```lua
 		(field) TSLangInfo.fields: string[]
@@ -62,7 +62,7 @@ package nvim.type;
 		(field) TSLangInfo.state_count: integer
 		```
 	**/
-	extern public var state_count : Float;
+	extern public var state_count : Int;
 	/**
 		```lua
 		(field) TSLangInfo.supertypes: table<string, string[]>

@@ -27,7 +27,7 @@ package nvim.type;
 		
 		 stylua: ignore
 	**/
-	extern public function edit(start_byte:Float, end_byte_old:Float, end_byte_new:Float, start_row:Float, start_col:Float, end_row_old:Float, end_col_old:Float, end_row_new:Float, end_col_new:Float):nvim.type.TSTree;
+	extern public function edit(start_byte:Int, end_byte_old:Int, end_byte_new:Int, start_row:Int, start_col:Int, end_row_old:Int, end_col_old:Int, end_row_new:Int, end_col_new:Int):nvim.type.TSTree;
 	/**
 		```lua
 		(method) TSTree:included_ranges(include_bytes: true)

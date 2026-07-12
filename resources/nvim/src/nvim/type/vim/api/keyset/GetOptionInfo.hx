@@ -24,7 +24,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:native("default")
-	extern public var default_ : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Float>>;
+	extern public var default_ : haxe.extern.EitherType<String, haxe.extern.EitherType<Bool, Int>>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.flaglist: boolean
@@ -42,19 +42,19 @@ package nvim.type.vim.api.keyset;
 		(field) vim.api.keyset.get_option_info.last_set_chan: integer
 		```
 	**/
-	extern public var last_set_chan : Float;
+	extern public var last_set_chan : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.last_set_linenr: integer
 		```
 	**/
-	extern public var last_set_linenr : Float;
+	extern public var last_set_linenr : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.last_set_sid: integer
 		```
 	**/
-	extern public var last_set_sid : Float;
+	extern public var last_set_sid : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.get_option_info.name: string

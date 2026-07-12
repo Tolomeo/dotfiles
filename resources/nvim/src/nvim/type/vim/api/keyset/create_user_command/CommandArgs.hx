@@ -38,7 +38,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		
 		 Any count supplied <count>
 	**/
-	extern public var count : Float;
+	extern public var count : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.fargs: string[]
@@ -61,7 +61,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		
 		 The starting line of the command range <line1>
 	**/
-	extern public var line1 : Float;
+	extern public var line1 : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.line2: integer
@@ -72,7 +72,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		
 		 The final line of the command range <line2>
 	**/
-	extern public var line2 : Float;
+	extern public var line2 : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.mods: string
@@ -114,7 +114,7 @@ package nvim.type.vim.api.keyset.create_user_command;
 		
 		 The number of items in the command range: 0, 1, or 2 <range>
 	**/
-	extern public var range : Float;
+	extern public var range : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.create_user_command.command_args.reg: string

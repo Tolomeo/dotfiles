@@ -36,5 +36,5 @@ package nvim.type.vim.lpeg;
 		 assert(pattern:match('1 hello') == nil)
 		 ```
 	**/
-	extern public function match(subject:String, ?init:Float, ___:haxe.Rest<Any>):Any;
+	extern public function match(subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
 }

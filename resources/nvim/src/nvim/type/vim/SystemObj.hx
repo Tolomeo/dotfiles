@@ -38,13 +38,13 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	extern public function kill(signal:haxe.extern.EitherType<Float, String>):Dynamic;
+	extern public function kill(signal:haxe.extern.EitherType<Int, String>):Dynamic;
 	/**
 		```lua
 		(field) vim.SystemObj.pid: integer
 		```
 	**/
-	extern public var pid : Float;
+	extern public var pid : Int;
 	/**
 		```lua
 		(field) vim.SystemObj.wait: fun(self: vim.SystemObj, timeout?: integer):vim.SystemCompleted
@@ -58,7 +58,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:luaDotMethod
-	extern public function wait(timeout:Float):nvim.type.vim.SystemCompleted;
+	extern public function wait(timeout:Int):nvim.type.vim.SystemCompleted;
 	/**
 		```lua
 		(field) vim.SystemObj.write: fun(self: vim.SystemObj, data?: string|string[])

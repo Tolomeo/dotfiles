@@ -68,7 +68,7 @@ extern class InlayHint {
 		 @since 12
 	**/
 	inline function is_enabled(?filter:nvim.type.vim.lsp.inlay_hint.enable.Filter):Bool {
-		filter = nvim.helper.Arg.pure(filter);
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim.lsp.inlay_hint.enable.Filter> = filter;
 		return __is_enabled(filter);
 	}
 	@:native("on_inlayhint")
@@ -85,7 +85,7 @@ extern class InlayHint {
 		 Store hints for a specific buffer and client
 	**/
 	inline private function on_inlayhint(err:Dynamic, result:Null<lua.Table<Int, nvim.type.lsp.InlayHint>>, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		ctx = nvim.helper.Arg.pure(ctx);
+		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_inlayhint(err, result, ctx);
 	}
 	@:native("on_refresh")
@@ -102,7 +102,7 @@ extern class InlayHint {
 		 |lsp-handler| for the method `workspace/inlayHint/refresh`
 	**/
 	inline private function on_refresh(err:Dynamic, _:Dynamic, ctx:nvim.type.lsp.HandlerContext):Dynamic {
-		ctx = nvim.helper.Arg.pure(ctx);
+		final ctx:nvim.helper.Native.LuaObject<nvim.type.lsp.HandlerContext> = ctx;
 		return __on_refresh(err, _, ctx);
 	}
 }

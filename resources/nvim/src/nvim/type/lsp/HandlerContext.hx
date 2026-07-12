@@ -12,13 +12,13 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) lsp.HandlerContext.client_id: integer
 		```
 	**/
-	extern public var client_id : Float;
+	extern public var client_id : Int;
 	/**
 		```lua
 		(field) lsp.HandlerContext.method: string
@@ -38,5 +38,5 @@ package nvim.type.lsp;
 		```
 	**/
 	@:optional
-	extern public var version : Null<Float>;
+	extern public var version : Null<Int>;
 }

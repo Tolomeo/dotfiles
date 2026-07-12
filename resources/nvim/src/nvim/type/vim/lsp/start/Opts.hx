@@ -30,7 +30,7 @@ package nvim.type.vim.lsp.start;
 		 Buffer handle to attach to if starting or re-using a client (0 for current).
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.start.Opts.reuse_client: (fun(client: vim.lsp.Client, config: vim.lsp.ClientConfig):boolean)?

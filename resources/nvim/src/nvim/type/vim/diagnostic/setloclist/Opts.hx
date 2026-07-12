@@ -22,7 +22,7 @@ package nvim.type.vim.diagnostic.setloclist;
 		 Only add diagnostics from the given namespace.
 	**/
 	@:optional
-	extern public var namespace : Null<Float>;
+	extern public var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.setloclist.Opts.open: boolean?
@@ -80,5 +80,5 @@ package nvim.type.vim.diagnostic.setloclist;
 		 (default: `0`)
 	**/
 	@:optional
-	extern public var winnr : Null<Float>;
+	extern public var winnr : Null<Int>;
 }

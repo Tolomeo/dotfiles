@@ -37,7 +37,7 @@ package nvim.type.vim.diff;
 		Context length
 	**/
 	@:optional
-	extern public var ctxlen : Null<Float>;
+	extern public var ctxlen : Null<Int>;
 	/**
 		```lua
 		(field) vim.diff.Opts.ignore_blank_lines: boolean?
@@ -114,7 +114,7 @@ package nvim.type.vim.diff;
 		Inter hunk context length
 	**/
 	@:optional
-	extern public var interhunkctxlen : Null<Float>;
+	extern public var interhunkctxlen : Null<Int>;
 	/**
 		```lua
 		(field) vim.diff.Opts.linematch: (boolean|integer)?
@@ -128,7 +128,7 @@ package nvim.type.vim.diff;
 		 Requires `result_type = indices`, ignored otherwise.
 	**/
 	@:optional
-	extern public var linematch : Null<haxe.extern.EitherType<Bool, Float>>;
+	extern public var linematch : Null<haxe.extern.EitherType<Bool, Int>>;
 	/**
 		```lua
 		(field) vim.diff.Opts.on_hunk: fun(start_a: integer, count_a: integer, start_b: integer, count_b: integer):integer??
@@ -154,7 +154,7 @@ package nvim.type.vim.diff;
 		```
 	**/
 	@:optional
-	extern public var on_hunk : Null<(start_a:Float, count_a:Float, start_b:Float, count_b:Float) -> Null<Float>>;
+	extern public var on_hunk : Null<(start_a:Int, count_a:Int, start_b:Int, count_b:Int) -> Null<Int>>;
 	/**
 		```lua
 		(field) vim.diff.Opts.result_type: ('indices'|'unified')?

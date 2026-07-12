@@ -1,4 +1,3 @@
-local fn = require("_shared.fn")
 local arr = require("_shared.array")
 local validator = require("_shared.validator")
 

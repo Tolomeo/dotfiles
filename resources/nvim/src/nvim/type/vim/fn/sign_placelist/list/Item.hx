@@ -11,7 +11,7 @@ package nvim.type.vim.fn.sign_placelist.list;
 		(field) vim.fn.sign_placelist.list.item.buffer: string|integer
 		```
 	**/
-	extern public var buffer : haxe.extern.EitherType<Float, String>;
+	extern public var buffer : haxe.extern.EitherType<Int, String>;
 	/**
 		```lua
 		(field) vim.fn.sign_placelist.list.item.group: string?
@@ -25,14 +25,14 @@ package nvim.type.vim.fn.sign_placelist.list;
 		```
 	**/
 	@:optional
-	extern public var id : Null<Float>;
+	extern public var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.sign_placelist.list.item.lnum: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var lnum : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var lnum : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.fn.sign_placelist.list.item.name: string
@@ -45,5 +45,5 @@ package nvim.type.vim.fn.sign_placelist.list;
 		```
 	**/
 	@:optional
-	extern public var priority : Null<Float>;
+	extern public var priority : Null<Int>;
 }

@@ -11,11 +11,11 @@ package nvim.type.uv.getrusage.result;
 		(field) uv.getrusage.result.time_t.sec: integer
 		```
 	**/
-	extern public var sec : Float;
+	extern public var sec : Int;
 	/**
 		```lua
 		(field) uv.getrusage.result.time_t.usec: integer
 		```
 	**/
-	extern public var usec : Float;
+	extern public var usec : Int;
 }

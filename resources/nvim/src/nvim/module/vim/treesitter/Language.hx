@@ -32,7 +32,7 @@ extern class Language {
 		@*return* `Error` — if parser cannot be loaded
 	**/
 	inline function add(lang:String, ?opts:nvim.type.vim.treesitter.language.add.Opts):nvim.helper.Multireturn.Return2<Null<Bool>, Null<String>> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.treesitter.language.add.Opts> = opts;
 		return __add(lang, opts);
 	}
 	/**

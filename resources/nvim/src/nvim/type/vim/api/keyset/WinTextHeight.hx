@@ -12,26 +12,26 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var end_row : Null<Float>;
+	extern public var end_row : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.end_vcol: integer?
 		```
 	**/
 	@:optional
-	extern public var end_vcol : Null<Float>;
+	extern public var end_vcol : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.start_row: integer?
 		```
 	**/
 	@:optional
-	extern public var start_row : Null<Float>;
+	extern public var start_row : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.win_text_height.start_vcol: integer?
 		```
 	**/
 	@:optional
-	extern public var start_vcol : Null<Float>;
+	extern public var start_vcol : Null<Int>;
 }

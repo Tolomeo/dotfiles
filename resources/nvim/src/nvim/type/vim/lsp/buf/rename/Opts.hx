@@ -17,7 +17,7 @@ package nvim.type.vim.lsp.buf.rename;
 		 (default: current buffer)
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.rename.Opts.filter: fun(client: vim.lsp.Client):boolean??

@@ -50,7 +50,7 @@ package nvim.type.vim.lsp.rpc;
 	extern public function notify(method:String, params:Any):Bool;
 	@:native("request")
 	@:luaDotMethod
-	private extern function __request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn<Bool, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(field) vim.lsp.rpc.PublicClient.request: fun(method: string, params?: table, callback: fun(err?: lsp.ResponseError, result: any), notify_reply_callback?: fun(message_id: integer)):boolean, integer?
@@ -69,7 +69,7 @@ package nvim.type.vim.lsp.rpc;
 		  2. integer?
 		```
 	**/
-	inline public function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Float) -> Dynamic):nvim.helper.Multireturn.Return2<Bool, Null<Float>> {
+	inline public function request(method:String, params:Null<lua.Table.AnyTable>, callback:(err:nvim.type.lsp.ResponseError, result:Any) -> Dynamic, notify_reply_callback:(message_id:Int) -> Dynamic):nvim.helper.Multireturn.Return2<Bool, Null<Int>> {
 		return __request(method, params, callback, notify_reply_callback);
 	}
 	/**

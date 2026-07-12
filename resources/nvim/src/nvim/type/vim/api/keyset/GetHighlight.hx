@@ -19,7 +19,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var id : Null<Float>;
+	extern public var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.get_highlight.link: boolean?

@@ -17,13 +17,13 @@ package nvim.type.vim.fn;
 		(field) vim.fn.sign.id: integer
 		```
 	**/
-	extern public var id : Float;
+	extern public var id : Int;
 	/**
 		```lua
 		(field) vim.fn.sign.lnum: integer
 		```
 	**/
-	extern public var lnum : Float;
+	extern public var lnum : Int;
 	/**
 		```lua
 		(field) vim.fn.sign.name: string
@@ -35,5 +35,5 @@ package nvim.type.vim.fn;
 		(field) vim.fn.sign.priority: integer
 		```
 	**/
-	extern public var priority : Float;
+	extern public var priority : Int;
 }

@@ -84,5 +84,5 @@ package nvim.type.vim;
 		Timeout in ms
 	**/
 	@:optional
-	extern public var timeout : Null<Float>;
+	extern public var timeout : Null<Int>;
 }

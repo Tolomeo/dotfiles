@@ -19,14 +19,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var background : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var background : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.bg: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var bg : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var bg : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.bg_indexed: boolean?
@@ -40,7 +40,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var blend : Null<Float>;
+	extern public var blend : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.bold: boolean?
@@ -54,21 +54,21 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var cterm : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var cterm : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.ctermbg: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var ctermbg : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var ctermbg : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.ctermfg: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var ctermfg : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var ctermfg : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.default: boolean?
@@ -90,7 +90,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var fg : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var fg : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.fg_indexed: boolean?
@@ -111,14 +111,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var foreground : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var foreground : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.global_link: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var global_link : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var global_link : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.italic: boolean?
@@ -132,7 +132,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var link : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var link : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.nocombine: boolean?
@@ -153,14 +153,14 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var sp : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var sp : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.special: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var special : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var special : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.highlight.standout: boolean?

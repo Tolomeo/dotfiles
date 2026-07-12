@@ -32,7 +32,7 @@ package nvim.type.vim.lsp.client;
 		 No debounce occurs if `nil`.
 		 (default: `150`)
 	**/
-	extern public var debounce_text_changes : Float;
+	extern public var debounce_text_changes : Int;
 	/**
 		```lua
 		(field) vim.lsp.Client.Flags.exit_timeout: integer|false
@@ -46,5 +46,5 @@ package nvim.type.vim.lsp.client;
 		 immediately after sending the "shutdown" request to the server.
 		 (default: `false`)
 	**/
-	extern public var exit_timeout : haxe.extern.EitherType<Float, Bool>;
+	extern public var exit_timeout : haxe.extern.EitherType<Int, Bool>;
 }

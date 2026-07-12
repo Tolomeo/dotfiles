@@ -80,7 +80,7 @@ package nvim.type.vim.diagnostic.opts;
 		```
 	**/
 	@:optional
-	extern public var prefix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic, i:Float, total:Float) -> String>>;
+	extern public var prefix : Null<haxe.extern.EitherType<String, (diagnostic:nvim.type.vim.Diagnostic, i:Int, total:Int) -> String>>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?
@@ -127,7 +127,7 @@ package nvim.type.vim.diagnostic.opts;
 		 Amount of empty spaces inserted at the beginning of the virtual text.
 	**/
 	@:optional
-	extern public var spacing : Null<Float>;
+	extern public var spacing : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.VirtualText.suffix: (string|fun(diagnostic: vim.Diagnostic):string)?
@@ -194,5 +194,5 @@ package nvim.type.vim.diagnostic.opts;
 		 See |nvim_buf_set_extmark()|.
 	**/
 	@:optional
-	extern public var virt_text_win_col : Null<Float>;
+	extern public var virt_text_win_col : Null<Int>;
 }

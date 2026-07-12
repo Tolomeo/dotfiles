@@ -25,7 +25,7 @@ package nvim.type.uv;
 		 equivalent to the `__eq` metamethod.
 	**/
 	inline public function equal(other_thread:nvim.type.uv.LuvThreadT):Bool {
-		other_thread = nvim.helper.Arg.pure(other_thread);
+		final other_thread:nvim.helper.Native.LuaObject<nvim.type.uv.LuvThreadT> = other_thread;
 		return __equal(other_thread);
 	}
 	@:native("join")

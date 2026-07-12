@@ -16,7 +16,7 @@ package nvim.type.vim.lsp.locationopts;
 		Subset of `ctx` from |lsp-handler|.
 	**/
 	@:optional
-	extern public var context : Null<{ var bufnr : Float; var method : String; }>;
+	extern public var context : Null<{ var bufnr : Int; var method : String; }>;
 	/**
 		```lua
 		(field) vim.lsp.LocationOpts.OnList.items: table[]

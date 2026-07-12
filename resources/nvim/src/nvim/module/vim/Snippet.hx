@@ -21,7 +21,7 @@ extern class Snippet {
 		 can be jumped in the given direction.
 	**/
 	inline function active(?filter:nvim.type.vim.snippet.ActiveFilter):Bool {
-		filter = nvim.helper.Arg.pure(filter);
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim.snippet.ActiveFilter> = filter;
 		return __active(filter);
 	}
 	/**
@@ -72,7 +72,7 @@ extern class Snippet {
 		```
 	**/
 	inline function jump(direction:nvim.type.vim.snippet.Direction):Dynamic {
-		direction = nvim.helper.Arg.pure(direction);
+		final direction:nvim.helper.Native.LuaObject<nvim.type.vim.snippet.Direction> = direction;
 		return __jump(direction);
 	}
 	/**

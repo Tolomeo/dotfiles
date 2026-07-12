@@ -31,7 +31,7 @@ package nvim.type.vim;
 		 Buffer number
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.Diagnostic.code: (string|integer)?
@@ -43,7 +43,7 @@ package nvim.type.vim;
 		 The diagnostic code
 	**/
 	@:optional
-	extern public var code : Null<haxe.extern.EitherType<String, Float>>;
+	extern public var code : Null<haxe.extern.EitherType<String, Int>>;
 	/**
 		```lua
 		(field) vim.Diagnostic.col: integer
@@ -54,7 +54,7 @@ package nvim.type.vim;
 		
 		 The starting column of the diagnostic (0-indexed)
 	**/
-	extern public var col : Float;
+	extern public var col : Int;
 	/**
 		```lua
 		(field) vim.Diagnostic.end_col: integer?
@@ -66,7 +66,7 @@ package nvim.type.vim;
 		 The final column of the diagnostic (0-indexed)
 	**/
 	@:optional
-	extern public var end_col : Null<Float>;
+	extern public var end_col : Null<Int>;
 	/**
 		```lua
 		(field) vim.Diagnostic.end_lnum: integer?
@@ -78,7 +78,7 @@ package nvim.type.vim;
 		 The final line of the diagnostic (0-indexed)
 	**/
 	@:optional
-	extern public var end_lnum : Null<Float>;
+	extern public var end_lnum : Null<Int>;
 	/**
 		```lua
 		(field) vim.Diagnostic.lnum: integer
@@ -89,7 +89,7 @@ package nvim.type.vim;
 		
 		 The starting line of the diagnostic (0-indexed)
 	**/
-	extern public var lnum : Float;
+	extern public var lnum : Int;
 	/**
 		```lua
 		(field) vim.Diagnostic.message: string
@@ -107,7 +107,7 @@ package nvim.type.vim;
 		```
 	**/
 	@:optional
-	extern public var namespace : Null<Float>;
+	extern public var namespace : Null<Int>;
 	/**
 		```lua
 		(field) vim.Diagnostic.severity: (vim.diagnostic.Severity)?

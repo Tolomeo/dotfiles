@@ -46,7 +46,7 @@ package nvim.type.vim.diagnostic.opts;
 		 (default: `10`)
 	**/
 	@:optional
-	extern public var priority : Null<Float>;
+	extern public var priority : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Opts.Signs.severity: (vim.diagnostic.Severity|vim.diagnostic.Severity[]|{ min: vim.diagnostic.Severity, max: vim.diagnostic.Severity })?

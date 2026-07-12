@@ -117,7 +117,7 @@ package nvim.type.vim.api.keyset.parse_cmd;
 		(field) vim.api.keyset.parse_cmd.mods.tab: integer
 		```
 	**/
-	extern public var tab : Float;
+	extern public var tab : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.unsilent: boolean
@@ -129,7 +129,7 @@ package nvim.type.vim.api.keyset.parse_cmd;
 		(field) vim.api.keyset.parse_cmd.mods.verbose: integer
 		```
 	**/
-	extern public var verbose : Float;
+	extern public var verbose : Int;
 	/**
 		```lua
 		(field) vim.api.keyset.parse_cmd.mods.vertical: boolean

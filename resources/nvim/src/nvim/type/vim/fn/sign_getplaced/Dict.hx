@@ -19,12 +19,12 @@ package nvim.type.vim.fn.sign_getplaced;
 		```
 	**/
 	@:optional
-	extern public var id : Null<Float>;
+	extern public var id : Null<Int>;
 	/**
 		```lua
 		(field) vim.fn.sign_getplaced.dict.lnum: (string|integer)?
 		```
 	**/
 	@:optional
-	extern public var lnum : Null<haxe.extern.EitherType<String, Float>>;
+	extern public var lnum : Null<haxe.extern.EitherType<String, Int>>;
 }

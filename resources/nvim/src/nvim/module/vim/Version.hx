@@ -35,7 +35,7 @@ extern class Version {
 		@*return* — -1 if `v1 < v2`, 0 if `v1 == v2`, 1 if `v1 > v2`.
 	**/
 	@:luaDotMethod
-	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Float;
+	function cmp(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Int;
 	/**
 		```lua
 		function M.eq(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)
@@ -72,6 +72,9 @@ extern class Version {
 	**/
 	@:luaDotMethod
 	function gt(v1:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>, v2:haxe.extern.EitherType<nvim.type.vim.Version, haxe.extern.EitherType<lua.Table<Int, Float>, String>>):Bool;
+	@:native("last")
+	@:luaDotMethod
+	private function __last<T:(nvim.type.vim.Version)>(versions:lua.Table<Int, T>):Null<T>;
 	/**
 		```lua
 		function M.last(versions: <T:vim.Version>[])
@@ -82,8 +85,10 @@ extern class Version {
 		
 		TODO: generalize this, move to func.lua
 	**/
-	@:luaDotMethod
-	function last<T:(nvim.type.vim.Version)>(versions:lua.Table<Int, T>):Null<T>;
+	inline function last<T:(nvim.type.vim.Version)>(versions:Array<T>):Null<T> {
+		final versions:nvim.helper.Native.LuaArray<T> = versions;
+		return __last(versions);
+	}
 	/**
 		```lua
 		function M.le(v1: string|number[]|vim.Version, v2: string|number[]|vim.Version)

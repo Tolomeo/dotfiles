@@ -13,7 +13,7 @@ extern class Api {
 		```
 	**/
 	@:luaDotMethod
-	function nvim__buf_debug_extmarks(buffer:Float, keys:Bool, dot:Bool):String;
+	function nvim__buf_debug_extmarks(buffer:Int, keys:Bool, dot:Bool):String;
 	/**
 		```lua
 		function vim.api.nvim__buf_stats(buffer: integer)
@@ -21,10 +21,10 @@ extern class Api {
 		```
 	**/
 	@:luaDotMethod
-	function nvim__buf_stats(buffer:Float):lua.Table<String, Any>;
+	function nvim__buf_stats(buffer:Int):lua.Table<String, Any>;
 	@:native("nvim__complete_set")
 	@:luaDotMethod
-	private function __nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
+	private function __nvim__complete_set(index:Int, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim__complete_set(index: integer, opts: vim.api.keyset.complete_set)
@@ -49,8 +49,8 @@ extern class Api {
 		 - winid: (number) floating window id
 		 - bufnr: (number) buffer id in floating window
 	**/
-	inline function nvim__complete_set(index:Float, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim__complete_set(index:Int, opts:nvim.type.vim.api.keyset.CompleteSet):lua.Table<String, Any> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CompleteSet> = opts;
 		return __nvim__complete_set(index, opts);
 	}
 	/**
@@ -82,8 +82,9 @@ extern class Api {
 		
 		@*return* — list of absolute paths to the found files
 	**/
-	inline function nvim__get_runtime(pat:lua.Table<Int, Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim__get_runtime(pat:Array<Any>, all:Bool, opts:nvim.type.vim.api.keyset.Runtime):lua.Table<Int, String> {
+		final pat:nvim.helper.Native.LuaArray<Any> = pat;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Runtime> = opts;
 		return __nvim__get_runtime(pat, all, opts);
 	}
 	/**
@@ -105,6 +106,9 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	function nvim__id(obj:Any):Any;
+	@:native("nvim__id_array")
+	@:luaDotMethod
+	private function __nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim__id_array(arr: any[])
@@ -122,8 +126,10 @@ extern class Api {
 		
 		@*return* — its argument.
 	**/
-	@:luaDotMethod
-	function nvim__id_array(arr:lua.Table<Int, Any>):lua.Table<Int, Any>;
+	inline function nvim__id_array(arr:Array<Any>):lua.Table<Int, Any> {
+		final arr:nvim.helper.Native.LuaArray<Any> = arr;
+		return __nvim__id_array(arr);
+	}
 	@:native("nvim__id_dict")
 	@:luaDotMethod
 	private function __nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any>;
@@ -145,7 +151,7 @@ extern class Api {
 		@*return* — its argument.
 	**/
 	inline function nvim__id_dict(dct:lua.Table<String, Any>):lua.Table<String, Any> {
-		dct = nvim.helper.Arg.pure(dct);
+		final dct:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dct;
 		return __nvim__id_dict(dct);
 	}
 	/**
@@ -178,7 +184,7 @@ extern class Api {
 		 NB: if your UI doesn't use hlstate, this will not return hlstate first time.
 	**/
 	@:luaDotMethod
-	function nvim__inspect_cell(grid:Float, row:Float, col:Float):lua.Table<Int, Any>;
+	function nvim__inspect_cell(grid:Int, row:Int, col:Int):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim__invalidate_glyph_cache()
@@ -208,10 +214,10 @@ extern class Api {
 		@*return* — Map defining the namespace properties, see |nvim__ns_set()|
 	**/
 	@:luaDotMethod
-	function nvim__ns_get(ns_id:Float):nvim.type.vim.api.keyset.NsOpts;
+	function nvim__ns_get(ns_id:Int):nvim.type.vim.api.keyset.NsOpts;
 	@:native("nvim__ns_set")
 	@:luaDotMethod
-	private function __nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
+	private function __nvim__ns_set(ns_id:Int, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim__ns_set(ns_id: integer, opts: vim.api.keyset.ns_opts)
@@ -229,8 +235,8 @@ extern class Api {
 		
 		 - wins: a list of windows to be scoped in
 	**/
-	inline function nvim__ns_set(ns_id:Float, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim__ns_set(ns_id:Int, opts:nvim.type.vim.api.keyset.NsOpts):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.NsOpts> = opts;
 		return __nvim__ns_set(ns_id, opts);
 	}
 	@:native("nvim__redraw")
@@ -272,7 +278,7 @@ extern class Api {
 		 - tabline: Redraw the 'tabline'.
 	**/
 	inline function nvim__redraw(opts:nvim.type.vim.api.keyset.Redraw):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Redraw> = opts;
 		return __nvim__redraw(opts);
 	}
 	/**
@@ -320,10 +326,10 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_buf_add_highlight(buffer:Float, ns_id:Float, hl_group:String, line:Float, col_start:Float, col_end:Float):Float;
+	function nvim_buf_add_highlight(buffer:Int, ns_id:Int, hl_group:String, line:Int, col_start:Int, col_end:Int):Int;
 	@:native("nvim_buf_attach")
 	@:luaDotMethod
-	private function __nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
+	private function __nvim_buf_attach(buffer:Int, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_attach(buffer: integer, send_buffer: boolean, opts: vim.api.keyset.buf_attach)
@@ -411,8 +417,8 @@ extern class Api {
 		 otherwise True. TODO: LUA_API_NO_EVAL
 		See: ~vim.api.nvim_buf_detach~
 	**/
-	inline function nvim_buf_attach(buffer:Float, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_attach(buffer:Int, send_buffer:Bool, opts:nvim.type.vim.api.keyset.BufAttach):Bool {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufAttach> = opts;
 		return __nvim_buf_attach(buffer, send_buffer, opts);
 	}
 	/**
@@ -444,7 +450,7 @@ extern class Api {
 		@*return* — Return value of function.
 	**/
 	@:luaDotMethod
-	function nvim_buf_call(buffer:Float, fun:haxe.Constraints.Function):Any;
+	function nvim_buf_call(buffer:Int, fun:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_highlight(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
@@ -452,7 +458,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_buf_clear_highlight(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
+	function nvim_buf_clear_highlight(buffer:Int, ns_id:Int, line_start:Int, line_end:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_clear_namespace(buffer: integer, ns_id: integer, line_start: integer, line_end: integer)
@@ -477,10 +483,10 @@ extern class Api {
 		 to end of buffer.
 	**/
 	@:luaDotMethod
-	function nvim_buf_clear_namespace(buffer:Float, ns_id:Float, line_start:Float, line_end:Float):Dynamic;
+	function nvim_buf_clear_namespace(buffer:Int, ns_id:Int, line_start:Int, line_end:Int):Dynamic;
 	@:native("nvim_buf_create_user_command")
 	@:luaDotMethod
-	private function __nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
+	private function __nvim_buf_create_user_command(buffer:Int, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_create_user_command(buffer: integer, name: string, command: any, opts: vim.api.keyset.user_command)
@@ -494,8 +500,8 @@ extern class Api {
 		
 		See: [vim.api.nvim_create_user_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1026#9)
 	**/
-	inline function nvim_buf_create_user_command(buffer:Float, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_create_user_command(buffer:Int, name:String, command:Any, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_buf_create_user_command(buffer, name, command, opts);
 	}
 	/**
@@ -517,7 +523,7 @@ extern class Api {
 		@*return* — true if the extmark was found, else false
 	**/
 	@:luaDotMethod
-	function nvim_buf_del_extmark(buffer:Float, ns_id:Float, id:Float):Bool;
+	function nvim_buf_del_extmark(buffer:Int, ns_id:Int, id:Int):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_keymap(buffer: integer, mode: string, lhs: string)
@@ -533,7 +539,7 @@ extern class Api {
 		See: [vim.api.nvim_del_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1063#9)
 	**/
 	@:luaDotMethod
-	function nvim_buf_del_keymap(buffer:Float, mode:String, lhs:String):Dynamic;
+	function nvim_buf_del_keymap(buffer:Int, mode:String, lhs:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_mark(buffer: integer, name: string)
@@ -559,7 +565,7 @@ extern class Api {
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
 	@:luaDotMethod
-	function nvim_buf_del_mark(buffer:Float, name:String):Bool;
+	function nvim_buf_del_mark(buffer:Int, name:String):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_user_command(buffer: integer, name: string)
@@ -577,7 +583,7 @@ extern class Api {
 		@*param* `name` — Name of the command to delete.
 	**/
 	@:luaDotMethod
-	function nvim_buf_del_user_command(buffer:Float, name:String):Dynamic;
+	function nvim_buf_del_user_command(buffer:Int, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_del_var(buffer: integer, name: string)
@@ -592,10 +598,10 @@ extern class Api {
 		@*param* `name` — Variable name
 	**/
 	@:luaDotMethod
-	function nvim_buf_del_var(buffer:Float, name:String):Dynamic;
+	function nvim_buf_del_var(buffer:Int, name:String):Dynamic;
 	@:native("nvim_buf_delete")
 	@:luaDotMethod
-	private function __nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
+	private function __nvim_buf_delete(buffer:Int, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_delete(buffer: integer, opts: vim.api.keyset.buf_delete)
@@ -612,8 +618,8 @@ extern class Api {
 		 - force:  Force deletion and ignore unsaved changes.
 		 - unload: Unloaded only, do not delete. See `:bunload`
 	**/
-	inline function nvim_buf_delete(buffer:Float, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_delete(buffer:Int, opts:nvim.type.vim.api.keyset.BufDelete):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.BufDelete> = opts;
 		return __nvim_buf_delete(buffer, opts);
 	}
 	/**
@@ -631,10 +637,10 @@ extern class Api {
 		@*return* — `b:changedtick` value.
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_changedtick(buffer:Float):Float;
+	function nvim_buf_get_changedtick(buffer:Int):Int;
 	@:native("nvim_buf_get_commands")
 	@:luaDotMethod
-	private function __nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
+	private function __nvim_buf_get_commands(buffer:Int, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_commands(buffer: integer, opts: vim.api.keyset.get_commands)
@@ -651,13 +657,13 @@ extern class Api {
 		
 		@*return* — Map of maps describing commands.
 	**/
-	inline function nvim_buf_get_commands(buffer:Float, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_get_commands(buffer:Int, opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_buf_get_commands(buffer, opts);
 	}
 	@:native("nvim_buf_get_extmark_by_id")
 	@:luaDotMethod
-	private function __nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
+	private function __nvim_buf_get_extmark_by_id(buffer:Int, ns_id:Int, id:Int, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmark_by_id(buffer: integer, ns_id: integer, id: integer, opts: vim.api.keyset.get_extmark)
@@ -683,13 +689,13 @@ extern class Api {
 		
 		 absent
 	**/
-	inline function nvim_buf_get_extmark_by_id(buffer:Float, ns_id:Float, id:Float, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_get_extmark_by_id(buffer:Int, ns_id:Int, id:Int, opts:nvim.type.vim.api.keyset.GetExtmark):nvim.type.vim.api.keyset.GetExtmarkItemById {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmark> = opts;
 		return __nvim_buf_get_extmark_by_id(buffer, ns_id, id, opts);
 	}
 	@:native("nvim_buf_get_extmarks")
 	@:luaDotMethod
-	private function __nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
+	private function __nvim_buf_get_extmarks(buffer:Int, ns_id:Int, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_extmarks(buffer: integer, ns_id: integer, start: any, end_: any, opts: vim.api.keyset.get_extmarks)
@@ -764,8 +770,8 @@ extern class Api {
 		
 		@*return* — List of `[extmark_id, row, col]` tuples in "traversal order".
 	**/
-	inline function nvim_buf_get_extmarks(buffer:Float, ns_id:Float, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_get_extmarks(buffer:Int, ns_id:Int, start:Any, end_:Any, opts:nvim.type.vim.api.keyset.GetExtmarks):lua.Table<Int, nvim.type.vim.api.keyset.GetExtmarkItem> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetExtmarks> = opts;
 		return __nvim_buf_get_extmarks(buffer, ns_id, start, end_, opts);
 	}
 	/**
@@ -787,7 +793,7 @@ extern class Api {
 		 The "buffer" key holds the associated buffer id.
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_keymap(buffer:Float, mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
+	function nvim_buf_get_keymap(buffer:Int, mode:String):lua.Table<Int, nvim.type.vim.api.keyset.GetKeymap>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean)
@@ -819,7 +825,7 @@ extern class Api {
 		See: [vim.api.nvim_buf_get_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#505#9)
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool):lua.Table<Int, String>;
+	function nvim_buf_get_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_mark(buffer: integer, name: string)
@@ -846,7 +852,7 @@ extern class Api {
 		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_mark(buffer:Float, name:String):lua.Table<Int, Float>;
+	function nvim_buf_get_mark(buffer:Int, name:String):lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_name(buffer: integer)
@@ -862,7 +868,7 @@ extern class Api {
 		@*return* — Buffer name
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_name(buffer:Float):String;
+	function nvim_buf_get_name(buffer:Int):String;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_number(buffer: integer)
@@ -871,7 +877,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_buf_get_number(buffer:Float):Float;
+	function nvim_buf_get_number(buffer:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_offset(buffer: integer, index: integer)
@@ -897,7 +903,7 @@ extern class Api {
 		@*return* — Integer byte offset, or -1 for unloaded buffer.
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_offset(buffer:Float, index:Float):Float;
+	function nvim_buf_get_offset(buffer:Int, index:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_option(buffer: integer, name: string)
@@ -906,10 +912,10 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_buf_get_option(buffer:Float, name:String):Any;
+	function nvim_buf_get_option(buffer:Int, name:String):Any;
 	@:native("nvim_buf_get_text")
 	@:luaDotMethod
-	private function __nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
+	private function __nvim_buf_get_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String>;
 	/**
 		```lua
 		function vim.api.nvim_buf_get_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, opts: vim.api.keyset.empty)
@@ -939,8 +945,8 @@ extern class Api {
 		
 		@*return* — Array of lines, or empty array for unloaded buffer.
 	**/
-	inline function nvim_buf_get_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_get_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, opts:nvim.type.vim.api.keyset.Empty):lua.Table<Int, String> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_get_text(buffer, start_row, start_col, end_row, end_col, opts);
 	}
 	/**
@@ -960,7 +966,7 @@ extern class Api {
 		@*return* — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_buf_get_var(buffer:Float, name:String):Any;
+	function nvim_buf_get_var(buffer:Int, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_buf_is_loaded(buffer: integer)
@@ -977,7 +983,7 @@ extern class Api {
 		@*return* — true if the buffer is valid and loaded, false otherwise.
 	**/
 	@:luaDotMethod
-	function nvim_buf_is_loaded(buffer:Float):Bool;
+	function nvim_buf_is_loaded(buffer:Int):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_is_valid(buffer: integer)
@@ -998,7 +1004,7 @@ extern class Api {
 		@*return* — true if the buffer is valid, false otherwise.
 	**/
 	@:luaDotMethod
-	function nvim_buf_is_valid(buffer:Float):Bool;
+	function nvim_buf_is_valid(buffer:Int):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_line_count(buffer: integer)
@@ -1014,10 +1020,10 @@ extern class Api {
 		@*return* — Line count, or 0 for unloaded buffer. |api-buffer|
 	**/
 	@:luaDotMethod
-	function nvim_buf_line_count(buffer:Float):Float;
+	function nvim_buf_line_count(buffer:Int):Int;
 	@:native("nvim_buf_set_extmark")
 	@:luaDotMethod
-	private function __nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float;
+	private function __nvim_buf_set_extmark(buffer:Int, ns_id:Int, line:Int, col:Int, opts:nvim.type.vim.api.keyset.SetExtmark):Int;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_extmark(buffer: integer, ns_id: integer, line: integer, col: integer, opts: vim.api.keyset.set_extmark)
@@ -1179,13 +1185,13 @@ extern class Api {
 		
 		@*return* — Id of the created/updated extmark
 	**/
-	inline function nvim_buf_set_extmark(buffer:Float, ns_id:Float, line:Float, col:Float, opts:nvim.type.vim.api.keyset.SetExtmark):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_set_extmark(buffer:Int, ns_id:Int, line:Int, col:Int, opts:nvim.type.vim.api.keyset.SetExtmark):Int {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetExtmark> = opts;
 		return __nvim_buf_set_extmark(buffer, ns_id, line, col, opts);
 	}
 	@:native("nvim_buf_set_keymap")
 	@:luaDotMethod
-	private function __nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
+	private function __nvim_buf_set_keymap(buffer:Int, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_keymap(buffer: integer, mode: string, lhs: string, rhs: string, opts: vim.api.keyset.keymap)
@@ -1200,10 +1206,13 @@ extern class Api {
 		
 		See: [vim.api.nvim_set_keymap](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#2239#9)
 	**/
-	inline function nvim_buf_set_keymap(buffer:Float, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_set_keymap(buffer:Int, mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts);
 	}
+	@:native("nvim_buf_set_lines")
+	@:luaDotMethod
+	private function __nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_lines(buffer: integer, start: integer, end_: integer, strict_indexing: boolean, replacement: string[])
@@ -1236,11 +1245,13 @@ extern class Api {
 		
 		See: [vim.api.nvim_buf_set_text](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#773#9)
 	**/
-	@:luaDotMethod
-	function nvim_buf_set_lines(buffer:Float, start:Float, end_:Float, strict_indexing:Bool, replacement:lua.Table<Int, String>):Dynamic;
+	inline function nvim_buf_set_lines(buffer:Int, start:Int, end_:Int, strict_indexing:Bool, replacement:Array<String>):Dynamic {
+		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
+		return __nvim_buf_set_lines(buffer, start, end_, strict_indexing, replacement);
+	}
 	@:native("nvim_buf_set_mark")
 	@:luaDotMethod
-	private function __nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool;
+	private function __nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_mark(buffer: integer, name: string, line: integer, col: integer, opts: vim.api.keyset.empty)
@@ -1274,8 +1285,8 @@ extern class Api {
 		  * [vim.api.nvim_buf_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#310#9)
 		  * [vim.api.nvim_buf_get_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#457#9)
 	**/
-	inline function nvim_buf_set_mark(buffer:Float, name:String, line:Float, col:Float, opts:nvim.type.vim.api.keyset.Empty):Bool {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_set_mark(buffer:Int, name:String, line:Int, col:Int, opts:nvim.type.vim.api.keyset.Empty):Bool {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_mark(buffer, name, line, col, opts);
 	}
 	/**
@@ -1292,7 +1303,7 @@ extern class Api {
 		@*param* `name` — Buffer name
 	**/
 	@:luaDotMethod
-	function nvim_buf_set_name(buffer:Float, name:String):Dynamic;
+	function nvim_buf_set_name(buffer:Int, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_option(buffer: integer, name: string, value: any)
@@ -1300,7 +1311,10 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_buf_set_option(buffer:Float, name:String, value:Any):Dynamic;
+	function nvim_buf_set_option(buffer:Int, name:String, value:Any):Dynamic;
+	@:native("nvim_buf_set_text")
+	@:luaDotMethod
+	private function __nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:lua.Table<Int, String>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_text(buffer: integer, start_row: integer, start_col: integer, end_row: integer, end_col: integer, replacement: string[])
@@ -1338,8 +1352,10 @@ extern class Api {
 		
 		@*param* `replacement` — Array of lines to use as replacement
 	**/
-	@:luaDotMethod
-	function nvim_buf_set_text(buffer:Float, start_row:Float, start_col:Float, end_row:Float, end_col:Float, replacement:lua.Table<Int, String>):Dynamic;
+	inline function nvim_buf_set_text(buffer:Int, start_row:Int, start_col:Int, end_row:Int, end_col:Int, replacement:Array<String>):Dynamic {
+		final replacement:nvim.helper.Native.LuaArray<String> = replacement;
+		return __nvim_buf_set_text(buffer, start_row, start_col, end_row, end_col, replacement);
+	}
 	/**
 		```lua
 		function vim.api.nvim_buf_set_var(buffer: integer, name: string, value: any)
@@ -1356,10 +1372,10 @@ extern class Api {
 		@*param* `value` — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_buf_set_var(buffer:Float, name:String, value:Any):Dynamic;
+	function nvim_buf_set_var(buffer:Int, name:String, value:Any):Dynamic;
 	@:native("nvim_buf_set_virtual_text")
 	@:luaDotMethod
-	private function __nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float;
+	private function __nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Int;
 	/**
 		```lua
 		function vim.api.nvim_buf_set_virtual_text(buffer: integer, src_id: integer, line: integer, chunks: any[], opts: vim.api.keyset.empty)
@@ -1367,10 +1383,14 @@ extern class Api {
 		```
 	**/
 	@:deprecated
-	inline function nvim_buf_set_virtual_text(buffer:Float, src_id:Float, line:Float, chunks:lua.Table<Int, Any>, opts:nvim.type.vim.api.keyset.Empty):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_buf_set_virtual_text(buffer:Int, src_id:Int, line:Int, chunks:Array<Any>, opts:nvim.type.vim.api.keyset.Empty):Int {
+		final chunks:nvim.helper.Native.LuaArray<Any> = chunks;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_buf_set_virtual_text(buffer, src_id, line, chunks, opts);
 	}
+	@:native("nvim_call_dict_function")
+	@:luaDotMethod
+	private function __nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_call_dict_function(dict: any, fn: string, args: any[])
@@ -1391,8 +1411,13 @@ extern class Api {
 		
 		@*return* — Result of the function call
 	**/
+	inline function nvim_call_dict_function(dict:Any, fn:String, args:Array<Any>):Any {
+		final args:nvim.helper.Native.LuaArray<Any> = args;
+		return __nvim_call_dict_function(dict, fn, args);
+	}
+	@:native("nvim_call_function")
 	@:luaDotMethod
-	function nvim_call_dict_function(dict:Any, fn:String, args:lua.Table<Int, Any>):Any;
+	private function __nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_call_function(fn: string, args: any[])
@@ -1411,8 +1436,10 @@ extern class Api {
 		
 		@*return* — Result of the function call
 	**/
-	@:luaDotMethod
-	function nvim_call_function(fn:String, args:lua.Table<Int, Any>):Any;
+	inline function nvim_call_function(fn:String, args:Array<Any>):Any {
+		final args:nvim.helper.Native.LuaArray<Any> = args;
+		return __nvim_call_function(fn, args);
+	}
 	/**
 		```lua
 		function vim.api.nvim_chan_send(chan: integer, data: string)
@@ -1435,7 +1462,7 @@ extern class Api {
 		@*param* `data` — data to write. 8-bit clean: can contain NUL bytes.
 	**/
 	@:luaDotMethod
-	function nvim_chan_send(chan:Float, data:String):Dynamic;
+	function nvim_chan_send(chan:Int, data:String):Dynamic;
 	@:native("nvim_clear_autocmds")
 	@:luaDotMethod
 	private function __nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic;
@@ -1469,7 +1496,7 @@ extern class Api {
 		     - NOTE: If not passed, will only delete autocmds *not* in any group.
 	**/
 	inline function nvim_clear_autocmds(opts:nvim.type.vim.api.keyset.ClearAutocmds):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ClearAutocmds> = opts;
 		return __nvim_clear_autocmds(opts);
 	}
 	@:native("nvim_cmd")
@@ -1513,8 +1540,8 @@ extern class Api {
 		  * [vim.api.nvim_command](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#878#9)
 	**/
 	inline function nvim_cmd(cmd:nvim.type.vim.api.keyset.Cmd, opts:nvim.type.vim.api.keyset.CmdOpts):String {
-		cmd = nvim.helper.Arg.pure(cmd);
-		opts = nvim.helper.Arg.pure(opts);
+		final cmd:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Cmd> = cmd;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CmdOpts> = opts;
 		return __nvim_cmd(cmd, opts);
 	}
 	/**
@@ -1550,7 +1577,7 @@ extern class Api {
 	function nvim_command_output(command:String):String;
 	@:native("nvim_create_augroup")
 	@:luaDotMethod
-	private function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float;
+	private function __nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Int;
 	/**
 		```lua
 		function vim.api.nvim_create_augroup(name: string, opts: vim.api.keyset.create_augroup)
@@ -1580,13 +1607,13 @@ extern class Api {
 		
 		@*return* — Integer id of the created group.
 	**/
-	inline function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_create_augroup(name:String, opts:nvim.type.vim.api.keyset.CreateAugroup):Int {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAugroup> = opts;
 		return __nvim_create_augroup(name, opts);
 	}
 	@:native("nvim_create_autocmd")
 	@:luaDotMethod
-	private function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float;
+	private function __nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Int;
 	/**
 		```lua
 		function vim.api.nvim_create_autocmd(event: any, opts: vim.api.keyset.create_autocmd)
@@ -1658,8 +1685,8 @@ extern class Api {
 		
 		See: [vim.api.nvim_del_autocmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1050#9)
 	**/
-	inline function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_create_autocmd(event:Any, opts:nvim.type.vim.api.keyset.CreateAutocmd):Int {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.CreateAutocmd> = opts;
 		return __nvim_create_autocmd(event, opts);
 	}
 	/**
@@ -1684,7 +1711,7 @@ extern class Api {
 		See: ~buf_open_scratch~
 	**/
 	@:luaDotMethod
-	function nvim_create_buf(listed:Bool, scratch:Bool):Float;
+	function nvim_create_buf(listed:Bool, scratch:Bool):Int;
 	/**
 		```lua
 		function vim.api.nvim_create_namespace(name: string)
@@ -1707,7 +1734,7 @@ extern class Api {
 		@*return* — Namespace id
 	**/
 	@:luaDotMethod
-	function nvim_create_namespace(name:String):Float;
+	function nvim_create_namespace(name:String):Int;
 	@:native("nvim_create_user_command")
 	@:luaDotMethod
 	private function __nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic;
@@ -1764,7 +1791,7 @@ extern class Api {
 		   - preview: (function) Preview callback for 'inccommand' `:command-preview`
 	**/
 	inline function nvim_create_user_command(name:String, command:haxe.extern.EitherType<String, (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> Dynamic>, opts:nvim.type.vim.api.keyset.UserCommand):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.UserCommand> = opts;
 		return __nvim_create_user_command(name, command, opts);
 	}
 	/**
@@ -1788,7 +1815,7 @@ extern class Api {
 		  * [vim.api.nvim_create_augroup](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#902#9)
 	**/
 	@:luaDotMethod
-	function nvim_del_augroup_by_id(id:Float):Dynamic;
+	function nvim_del_augroup_by_id(id:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_augroup_by_name(name: string)
@@ -1818,7 +1845,7 @@ extern class Api {
 		@*param* `id` — Integer Autocommand id returned by `nvim_create_autocmd()`
 	**/
 	@:luaDotMethod
-	function nvim_del_autocmd(id:Float):Dynamic;
+	function nvim_del_autocmd(id:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_del_current_line()
@@ -1923,8 +1950,9 @@ extern class Api {
 		 - verbose: Message is controlled by the 'verbose' option. Nvim invoked with `-V3log`
 		   will write the message to the "log" file instead of standard output.
 	**/
-	inline function nvim_echo(chunks:lua.Table<Int, Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_echo(chunks:Array<Any>, history:Bool, opts:nvim.type.vim.api.keyset.EchoOpts):Dynamic {
+		final chunks:nvim.helper.Native.LuaArray<Any> = chunks;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EchoOpts> = opts;
 		return __nvim_echo(chunks, history, opts);
 	}
 	/**
@@ -1992,7 +2020,7 @@ extern class Api {
 		     - groups: (array) Names of stacked highlight groups (highest priority last).
 	**/
 	inline function nvim_eval_statusline(str:String, opts:nvim.type.vim.api.keyset.EvalStatusline):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.EvalStatusline> = opts;
 		return __nvim_eval_statusline(str, opts);
 	}
 	/**
@@ -2045,7 +2073,7 @@ extern class Api {
 		  * [vim.api.nvim_cmd](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#868#9)
 	**/
 	inline function nvim_exec2(src:String, opts:nvim.type.vim.api.keyset.ExecOpts):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecOpts> = opts;
 		return __nvim_exec2(src, opts);
 	}
 	@:native("nvim_exec_autocmds")
@@ -2078,7 +2106,7 @@ extern class Api {
 		 `nvim_create_autocmd()` for details.
 	**/
 	inline function nvim_exec_autocmds(event:Any, opts:nvim.type.vim.api.keyset.ExecAutocmds):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.ExecAutocmds> = opts;
 		return __nvim_exec_autocmds(event, opts);
 	}
 	/**
@@ -2198,7 +2226,7 @@ extern class Api {
 		   If the autocommand is buffer local |autocmd-buffer-local|:
 	**/
 	inline function nvim_get_autocmds(opts:nvim.type.vim.api.keyset.GetAutocmds):lua.Table<Int, nvim.type.vim.api.keyset.get_autocmds.Ret> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetAutocmds> = opts;
 		return __nvim_get_autocmds(opts);
 	}
 	/**
@@ -2236,7 +2264,7 @@ extern class Api {
 		              by |nvim_set_client_info()|.
 	**/
 	@:luaDotMethod
-	function nvim_get_chan_info(chan:Float):lua.Table<String, Any>;
+	function nvim_get_chan_info(chan:Int):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_color_by_name(name: string)
@@ -2260,7 +2288,7 @@ extern class Api {
 		@*return* — 24-bit RGB value, or -1 for invalid argument.
 	**/
 	@:luaDotMethod
-	function nvim_get_color_by_name(name:String):Float;
+	function nvim_get_color_by_name(name:String):Int;
 	/**
 		```lua
 		function vim.api.nvim_get_color_map()
@@ -2277,7 +2305,7 @@ extern class Api {
 		@*return* — Map of color names and RGB values.
 	**/
 	@:luaDotMethod
-	function nvim_get_color_map():lua.Table<String, Float>;
+	function nvim_get_color_map():lua.Table<String, Int>;
 	@:native("nvim_get_commands")
 	@:luaDotMethod
 	private function __nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any>;
@@ -2303,7 +2331,7 @@ extern class Api {
 		See: [vim.api.nvim_get_all_options_info](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1219#9)
 	**/
 	inline function nvim_get_commands(opts:nvim.type.vim.api.keyset.GetCommands):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetCommands> = opts;
 		return __nvim_get_commands(opts);
 	}
 	@:native("nvim_get_context")
@@ -2327,7 +2355,7 @@ extern class Api {
 		@*return* — map of global |context|.
 	**/
 	inline function nvim_get_context(opts:nvim.type.vim.api.keyset.Context):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Context> = opts;
 		return __nvim_get_context(opts);
 	}
 	/**
@@ -2343,7 +2371,7 @@ extern class Api {
 		@*return* — Buffer id
 	**/
 	@:luaDotMethod
-	function nvim_get_current_buf():Float;
+	function nvim_get_current_buf():Int;
 	/**
 		```lua
 		function vim.api.nvim_get_current_line()
@@ -2371,7 +2399,7 @@ extern class Api {
 		@*return* — |tab-ID|
 	**/
 	@:luaDotMethod
-	function nvim_get_current_tabpage():Float;
+	function nvim_get_current_tabpage():Int;
 	/**
 		```lua
 		function vim.api.nvim_get_current_win()
@@ -2385,10 +2413,10 @@ extern class Api {
 		@*return* — |window-ID|
 	**/
 	@:luaDotMethod
-	function nvim_get_current_win():Float;
+	function nvim_get_current_win():Int;
 	@:native("nvim_get_hl")
 	@:luaDotMethod
-	private function __nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
+	private function __nvim_get_hl(ns_id:Int, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo;
 	/**
 		```lua
 		function vim.api.nvim_get_hl(ns_id: integer, opts: vim.api.keyset.get_highlight)
@@ -2419,8 +2447,8 @@ extern class Api {
 		
 		 or only a single highlight definition map if requested by name or id.
 	**/
-	inline function nvim_get_hl(ns_id:Float, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_get_hl(ns_id:Int, opts:nvim.type.vim.api.keyset.GetHighlight):nvim.type.vim.api.keyset.GetHlInfo {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetHighlight> = opts;
 		return __nvim_get_hl(ns_id, opts);
 	}
 	/**
@@ -2435,7 +2463,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_get_hl_by_id(hl_id:Float, rgb:Bool):lua.Table<String, Any>;
+	function nvim_get_hl_by_id(hl_id:Int, rgb:Bool):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_hl_by_name(name: string, rgb: boolean)
@@ -2462,10 +2490,10 @@ extern class Api {
 		 similar to `hlID()`, but allocates a new ID if not present.
 	**/
 	@:luaDotMethod
-	function nvim_get_hl_id_by_name(name:String):Float;
+	function nvim_get_hl_id_by_name(name:String):Int;
 	@:native("nvim_get_hl_ns")
 	@:luaDotMethod
-	private function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float;
+	private function __nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Int;
 	/**
 		```lua
 		function vim.api.nvim_get_hl_ns(opts: vim.api.keyset.get_ns)
@@ -2485,8 +2513,8 @@ extern class Api {
 		
 		@*return* — Namespace id, or -1
 	**/
-	inline function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_get_hl_ns(opts:nvim.type.vim.api.keyset.GetNs):Int {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.GetNs> = opts;
 		return __nvim_get_hl_ns(opts);
 	}
 	/**
@@ -2539,7 +2567,7 @@ extern class Api {
 		  * [vim.api.nvim_del_mark](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1074#9)
 	**/
 	inline function nvim_get_mark(name:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.GetMark {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_get_mark(name, opts);
 	}
 	/**
@@ -2570,7 +2598,7 @@ extern class Api {
 		@*return* — dict that maps from names to namespace ids.
 	**/
 	@:luaDotMethod
-	function nvim_get_namespaces():lua.Table<String, Float>;
+	function nvim_get_namespaces():lua.Table<String, Int>;
 	/**
 		```lua
 		function vim.api.nvim_get_option(name: string)
@@ -2637,7 +2665,7 @@ extern class Api {
 		@*return* — Option Information
 	**/
 	inline function nvim_get_option_info2(name:String, opts:nvim.type.vim.api.keyset.Option):nvim.type.vim.api.keyset.GetOptionInfo {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_info2(name, opts);
 	}
 	@:native("nvim_get_option_value")
@@ -2673,7 +2701,7 @@ extern class Api {
 		@*return* — Option value
 	**/
 	inline function nvim_get_option_value(name:String, opts:nvim.type.vim.api.keyset.Option):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_get_option_value(name, opts);
 	}
 	/**
@@ -2689,7 +2717,7 @@ extern class Api {
 		@*return* — Map of process properties, or NIL if process not found.
 	**/
 	@:luaDotMethod
-	function nvim_get_proc(pid:Float):Any;
+	function nvim_get_proc(pid:Int):Any;
 	/**
 		```lua
 		function vim.api.nvim_get_proc_children(pid: integer)
@@ -2703,7 +2731,7 @@ extern class Api {
 		@*return* — Array of child process ids, empty if process not found.
 	**/
 	@:luaDotMethod
-	function nvim_get_proc_children(pid:Float):lua.Table<Int, Any>;
+	function nvim_get_proc_children(pid:Int):lua.Table<Int, Any>;
 	/**
 		```lua
 		function vim.api.nvim_get_runtime_file(name: string, all: boolean)
@@ -2791,7 +2819,7 @@ extern class Api {
 		 requested if the buffer becomes full).
 	**/
 	@:luaDotMethod
-	function nvim_input(keys:String):Float;
+	function nvim_input(keys:String):Int;
 	/**
 		```lua
 		function vim.api.nvim_input_mouse(button: string, action: string, modifier: string, grid: integer, row: integer, col: integer)
@@ -2833,7 +2861,7 @@ extern class Api {
 		@*param* `col` — Mouse column-position (zero-based, like redraw events)
 	**/
 	@:luaDotMethod
-	function nvim_input_mouse(button:String, action:String, modifier:String, grid:Float, row:Float, col:Float):Dynamic;
+	function nvim_input_mouse(button:String, action:String, modifier:String, grid:Int, row:Int, col:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_list_bufs()
@@ -2850,7 +2878,7 @@ extern class Api {
 		@*return* — List of buffer ids
 	**/
 	@:luaDotMethod
-	function nvim_list_bufs():lua.Table<Int, Float>;
+	function nvim_list_bufs():lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_list_chans()
@@ -2894,7 +2922,7 @@ extern class Api {
 		@*return* — List of |tab-ID|s
 	**/
 	@:luaDotMethod
-	function nvim_list_tabpages():lua.Table<Int, Float>;
+	function nvim_list_tabpages():lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_list_uis()
@@ -2936,7 +2964,7 @@ extern class Api {
 		@*return* — List of |window-ID|s
 	**/
 	@:luaDotMethod
-	function nvim_list_wins():lua.Table<Int, Float>;
+	function nvim_list_wins():lua.Table<Int, Int>;
 	@:native("nvim_load_context")
 	@:luaDotMethod
 	private function __nvim_load_context(dict:lua.Table<String, Any>):Any;
@@ -2953,12 +2981,12 @@ extern class Api {
 		@*param* `dict` — `Context` map.
 	**/
 	inline function nvim_load_context(dict:lua.Table<String, Any>):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __nvim_load_context(dict);
 	}
 	@:native("nvim_notify")
 	@:luaDotMethod
-	private function __nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any;
+	private function __nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any;
 	/**
 		```lua
 		function vim.api.nvim_notify(msg: string, log_level: integer, opts: table<string, any>)
@@ -2966,13 +2994,13 @@ extern class Api {
 		```
 	**/
 	@:deprecated
-	inline function nvim_notify(msg:String, log_level:Float, opts:lua.Table<String, Any>):Any {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_notify(msg:String, log_level:Int, opts:lua.Table<String, Any>):Any {
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __nvim_notify(msg, log_level, opts);
 	}
 	@:native("nvim_open_term")
 	@:luaDotMethod
-	private function __nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float;
+	private function __nvim_open_term(buffer:Int, opts:nvim.type.vim.api.keyset.OpenTerm):Int;
 	/**
 		```lua
 		function vim.api.nvim_open_term(buffer: integer, opts: vim.api.keyset.open_term)
@@ -3019,13 +3047,13 @@ extern class Api {
 		
 		@*return* — Channel id, or 0 on error
 	**/
-	inline function nvim_open_term(buffer:Float, opts:nvim.type.vim.api.keyset.OpenTerm):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_open_term(buffer:Int, opts:nvim.type.vim.api.keyset.OpenTerm):Int {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.OpenTerm> = opts;
 		return __nvim_open_term(buffer, opts);
 	}
 	@:native("nvim_open_win")
 	@:luaDotMethod
-	private function __nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float;
+	private function __nvim_open_win(buffer:Int, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Int;
 	/**
 		```lua
 		function vim.api.nvim_open_win(buffer: integer, enter: boolean, config: vim.api.keyset.win_config)
@@ -3206,8 +3234,8 @@ extern class Api {
 		
 		@*return* — |window-ID|, or 0 on error
 	**/
-	inline function nvim_open_win(buffer:Float, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Float {
-		config = nvim.helper.Arg.pure(config);
+	inline function nvim_open_win(buffer:Int, enter:Bool, config:nvim.type.vim.api.keyset.WinConfig):Int {
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_open_win(buffer, enter, config);
 	}
 	/**
@@ -3290,7 +3318,7 @@ extern class Api {
 		       - "botright": |:botright|.
 	**/
 	inline function nvim_parse_cmd(str:String, opts:nvim.type.vim.api.keyset.Empty):nvim.type.vim.api.keyset.ParseCmd {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_parse_cmd(str, opts);
 	}
 	/**
@@ -3431,7 +3459,10 @@ extern class Api {
 		 - false: Client should cancel the paste.
 	**/
 	@:luaDotMethod
-	function nvim_paste(data:String, crlf:Bool, phase:Float):Bool;
+	function nvim_paste(data:String, crlf:Bool, phase:Int):Bool;
+	@:native("nvim_put")
+	@:luaDotMethod
+	private function __nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_put(lines: string[], type: string, after: boolean, follow: boolean)
@@ -3456,8 +3487,10 @@ extern class Api {
 		
 		@*param* `follow` — If true place cursor at end of inserted text.
 	**/
-	@:luaDotMethod
-	function nvim_put(lines:lua.Table<Int, String>, type:String, after:Bool, follow:Bool):Dynamic;
+	inline function nvim_put(lines:Array<String>, type:String, after:Bool, follow:Bool):Dynamic {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		return __nvim_put(lines, type, after, follow);
+	}
 	/**
 		```lua
 		function vim.api.nvim_replace_termcodes(str: string, from_part: boolean, do_lt: boolean, special: boolean)
@@ -3485,7 +3518,7 @@ extern class Api {
 	function nvim_replace_termcodes(str:String, from_part:Bool, do_lt:Bool, special:Bool):String;
 	@:native("nvim_select_popupmenu_item")
 	@:luaDotMethod
-	private function __nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
+	private function __nvim_select_popupmenu_item(item:Int, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_select_popupmenu_item(item: integer, insert: boolean, finish: boolean, opts: vim.api.keyset.empty)
@@ -3513,8 +3546,8 @@ extern class Api {
 		
 		@*param* `opts` — Optional parameters. Reserved for future use.
 	**/
-	inline function nvim_select_popupmenu_item(item:Float, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_select_popupmenu_item(item:Int, insert:Bool, finish:Bool, opts:nvim.type.vim.api.keyset.Empty):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Empty> = opts;
 		return __nvim_select_popupmenu_item(item, insert, finish, opts);
 	}
 	/**
@@ -3529,7 +3562,7 @@ extern class Api {
 		@*param* `buffer` — Buffer id
 	**/
 	@:luaDotMethod
-	function nvim_set_current_buf(buffer:Float):Dynamic;
+	function nvim_set_current_buf(buffer:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_dir(dir: string)
@@ -3568,7 +3601,7 @@ extern class Api {
 		@*param* `tabpage` — `tab-ID` to focus
 	**/
 	@:luaDotMethod
-	function nvim_set_current_tabpage(tabpage:Float):Dynamic;
+	function nvim_set_current_tabpage(tabpage:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_current_win(window: integer)
@@ -3581,10 +3614,10 @@ extern class Api {
 		@*param* `window` — `window-ID` to focus
 	**/
 	@:luaDotMethod
-	function nvim_set_current_win(window:Float):Dynamic;
+	function nvim_set_current_win(window:Int):Dynamic;
 	@:native("nvim_set_decoration_provider")
 	@:luaDotMethod
-	private function __nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
+	private function __nvim_set_decoration_provider(ns_id:Int, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_decoration_provider(ns_id: integer, opts: vim.api.keyset.set_decoration_provider)
@@ -3647,13 +3680,13 @@ extern class Api {
 		     ["end", tick]
 		   ```
 	**/
-	inline function nvim_set_decoration_provider(ns_id:Float, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_set_decoration_provider(ns_id:Int, opts:nvim.type.vim.api.keyset.SetDecorationProvider):Dynamic {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.SetDecorationProvider> = opts;
 		return __nvim_set_decoration_provider(ns_id, opts);
 	}
 	@:native("nvim_set_hl")
 	@:luaDotMethod
-	private function __nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
+	private function __nvim_set_hl(ns_id:Int, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_hl(ns_id: integer, name: string, val: vim.api.keyset.highlight)
@@ -3713,8 +3746,8 @@ extern class Api {
 		          documented above.
 		 - force: if true force update the highlight group when it exists.
 	**/
-	inline function nvim_set_hl(ns_id:Float, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
-		val = nvim.helper.Arg.pure(val);
+	inline function nvim_set_hl(ns_id:Int, name:String, val:nvim.type.vim.api.keyset.Highlight):Dynamic {
+		final val:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Highlight> = val;
 		return __nvim_set_hl(ns_id, name, val);
 	}
 	/**
@@ -3730,7 +3763,7 @@ extern class Api {
 		@*param* `ns_id` — the namespace to use
 	**/
 	@:luaDotMethod
-	function nvim_set_hl_ns(ns_id:Float):Dynamic;
+	function nvim_set_hl_ns(ns_id:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_set_hl_ns_fast(ns_id: integer)
@@ -3747,7 +3780,7 @@ extern class Api {
 		@*param* `ns_id` — the namespace to activate
 	**/
 	@:luaDotMethod
-	function nvim_set_hl_ns_fast(ns_id:Float):Dynamic;
+	function nvim_set_hl_ns_fast(ns_id:Int):Dynamic;
 	@:native("nvim_set_keymap")
 	@:luaDotMethod
 	private function __nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic;
@@ -3797,7 +3830,7 @@ extern class Api {
 		   "callback" is equivalent to returning an empty string.
 	**/
 	inline function nvim_set_keymap(mode:String, lhs:String, rhs:String, opts:nvim.type.vim.api.keyset.Keymap):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Keymap> = opts;
 		return __nvim_set_keymap(mode, lhs, rhs, opts);
 	}
 	/**
@@ -3836,7 +3869,7 @@ extern class Api {
 		 - buf: Buffer number. Used for setting buffer local option.
 	**/
 	inline function nvim_set_option_value(name:String, value:Any, opts:nvim.type.vim.api.keyset.Option):Dynamic {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.Option> = opts;
 		return __nvim_set_option_value(name, value, opts);
 	}
 	/**
@@ -3885,7 +3918,7 @@ extern class Api {
 		@*return* — Number of cells
 	**/
 	@:luaDotMethod
-	function nvim_strwidth(text:String):Float;
+	function nvim_strwidth(text:String):Int;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_del_var(tabpage: integer, name: string)
@@ -3900,7 +3933,7 @@ extern class Api {
 		@*param* `name` — Variable name
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_del_var(tabpage:Float, name:String):Dynamic;
+	function nvim_tabpage_del_var(tabpage:Int, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_number(tabpage: integer)
@@ -3916,7 +3949,7 @@ extern class Api {
 		@*return* — Tabpage number
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_get_number(tabpage:Float):Float;
+	function nvim_tabpage_get_number(tabpage:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_var(tabpage: integer, name: string)
@@ -3934,7 +3967,7 @@ extern class Api {
 		@*return* — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_get_var(tabpage:Float, name:String):Any;
+	function nvim_tabpage_get_var(tabpage:Int, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_get_win(tabpage: integer)
@@ -3950,7 +3983,7 @@ extern class Api {
 		@*return* — |window-ID|
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_get_win(tabpage:Float):Float;
+	function nvim_tabpage_get_win(tabpage:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_is_valid(tabpage: integer)
@@ -3966,7 +3999,7 @@ extern class Api {
 		@*return* — true if the tabpage is valid, false otherwise
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_is_valid(tabpage:Float):Bool;
+	function nvim_tabpage_is_valid(tabpage:Int):Bool;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_list_wins(tabpage: integer)
@@ -3982,7 +4015,7 @@ extern class Api {
 		@*return* — List of windows in `tabpage`
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_list_wins(tabpage:Float):lua.Table<Int, Float>;
+	function nvim_tabpage_list_wins(tabpage:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_var(tabpage: integer, name: string, value: any)
@@ -3999,7 +4032,7 @@ extern class Api {
 		@*param* `value` — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_set_var(tabpage:Float, name:String, value:Any):Dynamic;
+	function nvim_tabpage_set_var(tabpage:Int, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_tabpage_set_win(tabpage: integer, win: integer)
@@ -4014,7 +4047,7 @@ extern class Api {
 		@*param* `win` — `window-ID`, must already belong to {tabpage}
 	**/
 	@:luaDotMethod
-	function nvim_tabpage_set_win(tabpage:Float, win:Float):Dynamic;
+	function nvim_tabpage_set_win(tabpage:Int, win:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_call(window: integer, fun: function)
@@ -4039,7 +4072,7 @@ extern class Api {
 		See: [vim.api.nvim_buf_call](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#251#9)
 	**/
 	@:luaDotMethod
-	function nvim_win_call(window:Float, fun:haxe.Constraints.Function):Any;
+	function nvim_win_call(window:Int, fun:haxe.Constraints.Function):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_close(window: integer, force: boolean)
@@ -4057,7 +4090,7 @@ extern class Api {
 		 hidden, even if 'hidden' is not set.
 	**/
 	@:luaDotMethod
-	function nvim_win_close(window:Float, force:Bool):Dynamic;
+	function nvim_win_close(window:Int, force:Bool):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_del_var(window: integer, name: string)
@@ -4072,7 +4105,7 @@ extern class Api {
 		@*param* `name` — Variable name
 	**/
 	@:luaDotMethod
-	function nvim_win_del_var(window:Float, name:String):Dynamic;
+	function nvim_win_del_var(window:Int, name:String):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_get_buf(window: integer)
@@ -4088,7 +4121,7 @@ extern class Api {
 		@*return* — Buffer id
 	**/
 	@:luaDotMethod
-	function nvim_win_get_buf(window:Float):Float;
+	function nvim_win_get_buf(window:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_win_get_config(window: integer)
@@ -4108,7 +4141,7 @@ extern class Api {
 		@*return* — Map defining the window configuration, see |nvim_open_win()|
 	**/
 	@:luaDotMethod
-	function nvim_win_get_config(window:Float):nvim.type.vim.api.keyset.WinConfig;
+	function nvim_win_get_config(window:Int):nvim.type.vim.api.keyset.WinConfig;
 	/**
 		```lua
 		function vim.api.nvim_win_get_cursor(window: integer)
@@ -4129,7 +4162,7 @@ extern class Api {
 		@*return* — (row, col) tuple
 	**/
 	@:luaDotMethod
-	function nvim_win_get_cursor(window:Float):lua.Table<Int, Float>;
+	function nvim_win_get_cursor(window:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_win_get_height(window: integer)
@@ -4145,7 +4178,7 @@ extern class Api {
 		@*return* — Height as a count of rows
 	**/
 	@:luaDotMethod
-	function nvim_win_get_height(window:Float):Float;
+	function nvim_win_get_height(window:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_win_get_number(window: integer)
@@ -4161,7 +4194,7 @@ extern class Api {
 		@*return* — Window number
 	**/
 	@:luaDotMethod
-	function nvim_win_get_number(window:Float):Float;
+	function nvim_win_get_number(window:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_win_get_option(window: integer, name: string)
@@ -4170,7 +4203,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_win_get_option(window:Float, name:String):Any;
+	function nvim_win_get_option(window:Int, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_get_position(window: integer)
@@ -4186,7 +4219,7 @@ extern class Api {
 		@*return* — (row, col) tuple with the window position
 	**/
 	@:luaDotMethod
-	function nvim_win_get_position(window:Float):lua.Table<Int, Float>;
+	function nvim_win_get_position(window:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.api.nvim_win_get_tabpage(window: integer)
@@ -4202,7 +4235,7 @@ extern class Api {
 		@*return* — Tabpage that contains the window
 	**/
 	@:luaDotMethod
-	function nvim_win_get_tabpage(window:Float):Float;
+	function nvim_win_get_tabpage(window:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_win_get_var(window: integer, name: string)
@@ -4220,7 +4253,7 @@ extern class Api {
 		@*return* — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_win_get_var(window:Float, name:String):Any;
+	function nvim_win_get_var(window:Int, name:String):Any;
 	/**
 		```lua
 		function vim.api.nvim_win_get_width(window: integer)
@@ -4236,7 +4269,7 @@ extern class Api {
 		@*return* — Width as a count of columns
 	**/
 	@:luaDotMethod
-	function nvim_win_get_width(window:Float):Float;
+	function nvim_win_get_width(window:Int):Int;
 	/**
 		```lua
 		function vim.api.nvim_win_hide(window: integer)
@@ -4254,7 +4287,7 @@ extern class Api {
 		@*param* `window` — `window-ID`, or 0 for current window
 	**/
 	@:luaDotMethod
-	function nvim_win_hide(window:Float):Dynamic;
+	function nvim_win_hide(window:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_is_valid(window: integer)
@@ -4270,7 +4303,7 @@ extern class Api {
 		@*return* — true if the window is valid, false otherwise
 	**/
 	@:luaDotMethod
-	function nvim_win_is_valid(window:Float):Bool;
+	function nvim_win_is_valid(window:Int):Bool;
 	/**
 		```lua
 		function vim.api.nvim_win_set_buf(window: integer, buffer: integer)
@@ -4285,10 +4318,10 @@ extern class Api {
 		@*param* `buffer` — Buffer id
 	**/
 	@:luaDotMethod
-	function nvim_win_set_buf(window:Float, buffer:Float):Dynamic;
+	function nvim_win_set_buf(window:Int, buffer:Int):Dynamic;
 	@:native("nvim_win_set_config")
 	@:luaDotMethod
-	private function __nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
+	private function __nvim_win_set_config(window:Int, config:nvim.type.vim.api.keyset.WinConfig):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_config(window: integer, config: vim.api.keyset.win_config)
@@ -4310,10 +4343,13 @@ extern class Api {
 		 see `nvim_open_win()`
 		See: [vim.api.nvim_open_win](file:///usr/local/share/nvim/runtime/lua/vim/_meta/api.lua#1848#9)
 	**/
-	inline function nvim_win_set_config(window:Float, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
-		config = nvim.helper.Arg.pure(config);
+	inline function nvim_win_set_config(window:Int, config:nvim.type.vim.api.keyset.WinConfig):Dynamic {
+		final config:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinConfig> = config;
 		return __nvim_win_set_config(window, config);
 	}
+	@:native("nvim_win_set_cursor")
+	@:luaDotMethod
+	private function __nvim_win_set_cursor(window:Int, pos:lua.Table<Int, Int>):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_cursor(window: integer, pos: integer[])
@@ -4328,8 +4364,10 @@ extern class Api {
 		
 		@*param* `pos` — (row, col) tuple representing the new position
 	**/
-	@:luaDotMethod
-	function nvim_win_set_cursor(window:Float, pos:lua.Table<Int, Float>):Dynamic;
+	inline function nvim_win_set_cursor(window:Int, pos:Array<Int>):Dynamic {
+		final pos:nvim.helper.Native.LuaArray<Int> = pos;
+		return __nvim_win_set_cursor(window, pos);
+	}
 	/**
 		```lua
 		function vim.api.nvim_win_set_height(window: integer, height: integer)
@@ -4344,7 +4382,7 @@ extern class Api {
 		@*param* `height` — Height as a count of rows
 	**/
 	@:luaDotMethod
-	function nvim_win_set_height(window:Float, height:Float):Dynamic;
+	function nvim_win_set_height(window:Int, height:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_hl_ns(window: integer, ns_id: integer)
@@ -4361,7 +4399,7 @@ extern class Api {
 		@*param* `ns_id` — the namespace to use
 	**/
 	@:luaDotMethod
-	function nvim_win_set_hl_ns(window:Float, ns_id:Float):Dynamic;
+	function nvim_win_set_hl_ns(window:Int, ns_id:Int):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_option(window: integer, name: string, value: any)
@@ -4369,7 +4407,7 @@ extern class Api {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function nvim_win_set_option(window:Float, name:String, value:Any):Dynamic;
+	function nvim_win_set_option(window:Int, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_var(window: integer, name: string, value: any)
@@ -4386,7 +4424,7 @@ extern class Api {
 		@*param* `value` — Variable value
 	**/
 	@:luaDotMethod
-	function nvim_win_set_var(window:Float, name:String, value:Any):Dynamic;
+	function nvim_win_set_var(window:Int, name:String, value:Any):Dynamic;
 	/**
 		```lua
 		function vim.api.nvim_win_set_width(window: integer, width: integer)
@@ -4402,10 +4440,10 @@ extern class Api {
 		@*param* `width` — Width as a count of columns
 	**/
 	@:luaDotMethod
-	function nvim_win_set_width(window:Float, width:Float):Dynamic;
+	function nvim_win_set_width(window:Int, width:Int):Dynamic;
 	@:native("nvim_win_text_height")
 	@:luaDotMethod
-	private function __nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
+	private function __nvim_win_text_height(window:Int, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any>;
 	/**
 		```lua
 		function vim.api.nvim_win_text_height(window: integer, opts: vim.api.keyset.win_text_height)
@@ -4447,8 +4485,8 @@ extern class Api {
 		 - all: The total number of screen lines occupied by the range.
 		 - fill: The number of diff filler or virtual lines among them.
 	**/
-	inline function nvim_win_text_height(window:Float, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function nvim_win_text_height(window:Int, opts:nvim.type.vim.api.keyset.WinTextHeight):lua.Table<String, Any> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.api.keyset.WinTextHeight> = opts;
 		return __nvim_win_text_height(window, opts);
 	}
 }
@@ -4644,7 +4682,7 @@ extern class Fn {
 		
 	**/
 	@:luaDotMethod
-	function and(expr:Float, expr1:Float):Float;
+	function and(expr:Float, expr1:Float):Int;
 	/**
 		```lua
 		function table.api_info()
@@ -4691,7 +4729,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function append(lnum:haxe.extern.EitherType<Float, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	function append(lnum:haxe.extern.EitherType<Int, String>, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
 	/**
 		```lua
 		function table.appendbufline(buf: string|integer, lnum: integer, text: string)
@@ -4728,7 +4766,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function appendbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:String):Float;
+	function appendbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:String):Float;
 	/**
 		```lua
 		function table.argc(winid?: integer)
@@ -4747,7 +4785,7 @@ extern class Fn {
 		 Returns -1 if the {winid} argument is invalid.
 	**/
 	@:luaDotMethod
-	function argc(?winid:Float):Float;
+	function argc(?winid:Int):Int;
 	/**
 		```lua
 		function table.argidx()
@@ -4760,7 +4798,7 @@ extern class Fn {
 		 the first file.  argc() - 1 is the last one.  See |arglist|.
 	**/
 	@:luaDotMethod
-	function argidx():Float;
+	function argidx():Int;
 	/**
 		```lua
 		function table.arglistid(winnr?: integer, tabnr?: integer)
@@ -4781,7 +4819,7 @@ extern class Fn {
 		 {winnr} can be the window number or the |window-ID|.
 	**/
 	@:luaDotMethod
-	function arglistid(?winnr:Float, ?tabnr:Float):Float;
+	function arglistid(?winnr:Int, ?tabnr:Int):Int;
 	/**
 		```lua
 		function table.argv(nr?: integer, winid?: integer)
@@ -4809,7 +4847,7 @@ extern class Fn {
 		 argument is invalid.
 	**/
 	@:luaDotMethod
-	function argv(?nr:Float, ?winid:Float):haxe.extern.EitherType<String, lua.Table<Int, String>>;
+	function argv(?nr:Int, ?winid:Int):haxe.extern.EitherType<String, lua.Table<Int, String>>;
 	/**
 		```lua
 		function table.asin(expr: any)
@@ -4989,7 +5027,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Float, ?context:Any):Float;
+	function assert_fails(cmd:String, ?error:Any, ?msg:Any, ?lnum:Int, ?context:Any):Float;
 	/**
 		```lua
 		function table.assert_false(actual: any, msg?: any)
@@ -5320,7 +5358,7 @@ extern class Fn {
 		 <Returns 0 on error.
 	**/
 	@:luaDotMethod
-	function bufadd(name:String):Float;
+	function bufadd(name:String):Int;
 	/**
 		```lua
 		function table.bufexists(buf: any)
@@ -5404,7 +5442,7 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	@:deprecated
-	function buffer_number(___:haxe.Rest<Any>):Float;
+	function buffer_number(___:haxe.Rest<Any>):Int;
 	/**
 		```lua
 		function table.buflisted(buf: any)
@@ -5504,7 +5542,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function bufname(?buf:haxe.extern.EitherType<Float, String>):String;
+	function bufname(?buf:haxe.extern.EitherType<Int, String>):String;
 	/**
 		```lua
 		function table.bufnr(buf?: string|integer, create?: any)
@@ -5527,7 +5565,7 @@ extern class Fn {
 		 them.  Use bufexists() to test for the existence of a buffer.
 	**/
 	@:luaDotMethod
-	function bufnr(?buf:haxe.extern.EitherType<Float, String>, ?create:Any):Float;
+	function bufnr(?buf:haxe.extern.EitherType<Int, String>, ?create:Any):Int;
 	/**
 		```lua
 		function table.bufwinid(buf: any)
@@ -5547,7 +5585,7 @@ extern class Fn {
 		 finding more.
 	**/
 	@:luaDotMethod
-	function bufwinid(buf:Any):Float;
+	function bufwinid(buf:Any):Int;
 	/**
 		```lua
 		function table.bufwinnr(buf: any)
@@ -5567,7 +5605,7 @@ extern class Fn {
 		 |:wincmd|.
 	**/
 	@:luaDotMethod
-	function bufwinnr(buf:Any):Float;
+	function bufwinnr(buf:Any):Int;
 	/**
 		```lua
 		function table.byte2line(byte: any)
@@ -5586,7 +5624,7 @@ extern class Fn {
 		 Returns -1 if the {byte} value is invalid.
 	**/
 	@:luaDotMethod
-	function byte2line(byte:Any):Float;
+	function byte2line(byte:Any):Int;
 	/**
 		```lua
 		function table.byteidx(expr: any, nr: integer, utf16?: any)
@@ -5631,7 +5669,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function byteidx(expr:Any, nr:Float, ?utf16:Any):Float;
+	function byteidx(expr:Any, nr:Int, ?utf16:Any):Int;
 	/**
 		```lua
 		function table.byteidxcomp(expr: any, nr: integer, utf16?: any)
@@ -5651,7 +5689,7 @@ extern class Fn {
 		 one byte).
 	**/
 	@:luaDotMethod
-	function byteidxcomp(expr:Any, nr:Float, ?utf16:Any):Float;
+	function byteidxcomp(expr:Any, nr:Int, ?utf16:Any):Int;
 	/**
 		```lua
 		function table.call(func: any, arglist: any, dict?: any)
@@ -5718,7 +5756,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function chanclose(id:Float, ?stream:String):Float;
+	function chanclose(id:Int, ?stream:String):Float;
 	/**
 		```lua
 		function table.changenr()
@@ -5736,7 +5774,7 @@ extern class Fn {
 		 Returns 0 if the undo list is empty.
 	**/
 	@:luaDotMethod
-	function changenr():Float;
+	function changenr():Int;
 	/**
 		```lua
 		function table.chansend(id: number, data: string|string[])
@@ -5850,7 +5888,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function charcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
+	function charcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Int):Int;
 	/**
 		```lua
 		function table.charidx(string: string, idx: integer, countcc?: boolean, utf16?: boolean)
@@ -5893,7 +5931,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function charidx(string:String, idx:Float, ?countcc:Bool, ?utf16:Bool):Float;
+	function charidx(string:String, idx:Int, ?countcc:Bool, ?utf16:Bool):Int;
 	/**
 		```lua
 		function table.chdir(dir: string)
@@ -5943,7 +5981,7 @@ extern class Fn {
 		 To get or set indent of lines in a string, see |vim.text.indent()|.
 	**/
 	@:luaDotMethod
-	function cindent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function cindent(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.clearmatches(win?: integer)
@@ -5957,7 +5995,7 @@ extern class Fn {
 		 window ID instead of the current window.
 	**/
 	@:luaDotMethod
-	function clearmatches(?win:Float):Dynamic;
+	function clearmatches(?win:Int):Dynamic;
 	/**
 		```lua
 		function table.col(expr: string|any[], winid?: integer)
@@ -6005,7 +6043,10 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Float):Float;
+	function col(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?winid:Int):Int;
+	@:native("complete")
+	@:luaDotMethod
+	private function __complete(startcol:Int, matches:lua.Table<Int, Any>):Dynamic;
 	/**
 		```lua
 		function table.complete(startcol: integer, matches: any[])
@@ -6042,8 +6083,10 @@ extern class Fn {
 		 <This isn't very useful, but it shows how it works.  Note that
 		 an empty string is returned to avoid a zero being inserted.
 	**/
-	@:luaDotMethod
-	function complete(startcol:Float, matches:lua.Table<Int, Any>):Dynamic;
+	inline function complete(startcol:Int, matches:Array<Any>):Dynamic {
+		final matches:nvim.helper.Native.LuaArray<Any> = matches;
+		return __complete(startcol, matches);
+	}
 	/**
 		```lua
 		function table.complete_add(expr: any)
@@ -6094,6 +6137,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function complete_check():Float;
+	@:native("complete_info")
+	@:luaDotMethod
+	private function __complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
 	/**
 		```lua
 		function table.complete_info(what?: any[])
@@ -6168,8 +6214,10 @@ extern class Fn {
 		   call complete_info(['mode', 'pum_visible'])
 		 <
 	**/
-	@:luaDotMethod
-	function complete_info(?what:lua.Table<Int, Any>):lua.Table.AnyTable;
+	inline function complete_info(?what:Array<Any>):lua.Table.AnyTable {
+		final what:nvim.helper.Native.LuaArray<Any> = what;
+		return __complete_info(what);
+	}
 	/**
 		```lua
 		function table.confirm(msg: string, choices?: string, default?: integer, type?: string)
@@ -6230,7 +6278,7 @@ extern class Fn {
 		 the horizontal layout is always used.
 	**/
 	@:luaDotMethod
-	function confirm(msg:String, ?choices:String, ?default_:Float, ?type:String):Float;
+	function confirm(msg:String, ?choices:String, ?default_:Int, ?type:String):Int;
 	/**
 		```lua
 		function table.copy(expr: <T>)
@@ -6310,7 +6358,7 @@ extern class Fn {
 		 {expr} is an empty string.
 	**/
 	@:luaDotMethod
-	function count(comp:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr:Any, ?ic:Bool, ?start:Float):Float;
+	function count(comp:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table.AnyTable, lua.Table<Int, Any>>>, expr:Any, ?ic:Bool, ?start:Int):Int;
 	/**
 		```lua
 		function table.ctxget(index?: integer)
@@ -6324,7 +6372,7 @@ extern class Fn {
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
 	@:luaDotMethod
-	function ctxget(?index:Float):lua.Table.AnyTable;
+	function ctxget(?index:Int):lua.Table.AnyTable;
 	/**
 		```lua
 		function table.ctxpop()
@@ -6338,6 +6386,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function ctxpop():Any;
+	@:native("ctxpush")
+	@:luaDotMethod
+	private function __ctxpush(?types:lua.Table<Int, String>):Any;
 	/**
 		```lua
 		function table.ctxpush(types?: string[])
@@ -6352,11 +6403,13 @@ extern class Fn {
 		 which |context-types| to include in the pushed context.
 		 Otherwise, all context types are included.
 	**/
-	@:luaDotMethod
-	function ctxpush(?types:lua.Table<Int, String>):Any;
+	inline function ctxpush(?types:Array<String>):Any {
+		final types:nvim.helper.Native.LuaArray<String> = types;
+		return __ctxpush(types);
+	}
 	@:native("ctxset")
 	@:luaDotMethod
-	private function __ctxset(context:lua.Table.AnyTable, ?index:Float):Float;
+	private function __ctxset(context:lua.Table.AnyTable, ?index:Int):Int;
 	/**
 		```lua
 		function table.ctxset(context: table, index?: integer)
@@ -6370,8 +6423,8 @@ extern class Fn {
 		 {context} is a Dictionary with context data (|context-dict|).
 		 If {index} is not given, it is assumed to be 0 (i.e.: top).
 	**/
-	inline function ctxset(context:lua.Table.AnyTable, ?index:Float):Float {
-		context = nvim.helper.Arg.pure(context);
+	inline function ctxset(context:lua.Table.AnyTable, ?index:Int):Int {
+		final context:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = context;
 		return __ctxset(context, index);
 	}
 	/**
@@ -6433,7 +6486,7 @@ extern class Fn {
 		 Returns 0 when the position could be set, -1 otherwise.
 	**/
 	@:luaDotMethod
-	function cursor(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
+	function cursor(lnum:haxe.extern.EitherType<Int, String>, ?col:Int, ?off:Int):Any;
 	/**
 		```lua
 		function table.debugbreak(pid: integer)
@@ -6451,7 +6504,7 @@ extern class Fn {
 		 Otherwise returns |FALSE|.
 	**/
 	@:luaDotMethod
-	function debugbreak(pid:Float):Any;
+	function debugbreak(pid:Int):Any;
 	/**
 		```lua
 		function table.deepcopy(expr: <T>, noref?: boolean)
@@ -6508,7 +6561,7 @@ extern class Fn {
 		 or partly failed.
 	**/
 	@:luaDotMethod
-	function delete(fname:String, ?flags:String):Float;
+	function delete(fname:String, ?flags:String):Int;
 	/**
 		```lua
 		function table.deletebufline(buf: string|integer, first: string|integer, last?: string|integer)
@@ -6531,7 +6584,7 @@ extern class Fn {
 		 to refer to the last line in buffer {buf}.
 	**/
 	@:luaDotMethod
-	function deletebufline(buf:haxe.extern.EitherType<Float, String>, first:haxe.extern.EitherType<Float, String>, ?last:haxe.extern.EitherType<Float, String>):Any;
+	function deletebufline(buf:haxe.extern.EitherType<Int, String>, first:haxe.extern.EitherType<Int, String>, ?last:haxe.extern.EitherType<Int, String>):Any;
 	@:native("dictwatcheradd")
 	@:luaDotMethod
 	private function __dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any;
@@ -6583,7 +6636,7 @@ extern class Fn {
 		 validation and parsing logic.
 	**/
 	inline function dictwatcheradd(dict:lua.Table.AnyTable, pattern:String, callback:haxe.Constraints.Function):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __dictwatcheradd(dict, pattern, callback);
 	}
 	/**
@@ -6620,7 +6673,7 @@ extern class Fn {
 		 file.
 	**/
 	@:luaDotMethod
-	function did_filetype():Float;
+	function did_filetype():Int;
 	/**
 		```lua
 		function table.diff_filler(lnum: string|integer)
@@ -6638,7 +6691,7 @@ extern class Fn {
 		 Returns 0 if the current window is not in diff mode.
 	**/
 	@:luaDotMethod
-	function diff_filler(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function diff_filler(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.diff_hlID(lnum: string|integer, col: integer)
@@ -6658,7 +6711,7 @@ extern class Fn {
 		 syntax information about the highlighting.
 	**/
 	@:luaDotMethod
-	function diff_hlID(lnum:haxe.extern.EitherType<Float, String>, col:Float):Any;
+	function diff_hlID(lnum:haxe.extern.EitherType<Int, String>, col:Int):Any;
 	/**
 		```lua
 		function table.digraph_get(chars: string)
@@ -6738,7 +6791,7 @@ extern class Fn {
 	function digraph_set(chars:String, digraph:String):Any;
 	@:native("digraph_setlist")
 	@:luaDotMethod
-	private function __digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any;
+	private function __digraph_setlist(digraphlist:lua.Table<Int, lua.Table<Int, String>>):Any;
 	/**
 		```lua
 		function table.digraph_setlist(digraphlist: table<integer, string[]>)
@@ -6761,8 +6814,8 @@ extern class Fn {
 		 <Except that the function returns after the first error,
 		 following digraphs will not be added.
 	**/
-	inline function digraph_setlist(digraphlist:lua.Table<Float, lua.Table<Int, String>>):Any {
-		digraphlist = nvim.helper.Arg.pure(digraphlist);
+	inline function digraph_setlist(digraphlist:Array<lua.Table<Int, String>>):Any {
+		final digraphlist:nvim.helper.Native.LuaArray<lua.Table<Int, String>> = digraphlist;
 		return __digraph_setlist(digraphlist);
 	}
 	/**
@@ -6782,7 +6835,7 @@ extern class Fn {
 		 - A |Blob| is empty when its length is zero.
 	**/
 	@:luaDotMethod
-	function empty(expr:Any):Float;
+	function empty(expr:Any):Int;
 	/**
 		```lua
 		function table.environ()
@@ -7235,7 +7288,7 @@ extern class Fn {
 		 <
 	**/
 	inline function expandcmd(string:String, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __expandcmd(string, options);
 	}
 	@:native("extend")
@@ -7286,9 +7339,9 @@ extern class Fn {
 		 Returns {expr1}.  Returns 0 on error.
 	**/
 	inline function extend(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		expr1 = nvim.helper.Arg.pure(expr1);
-		expr2 = nvim.helper.Arg.pure(expr2);
-		expr3 = nvim.helper.Arg.pure(expr3);
+		final expr1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr1;
+		final expr2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr2;
+		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extend(expr1, expr2, expr3);
 	}
 	@:native("extendnew")
@@ -7307,9 +7360,9 @@ extern class Fn {
 		 unchanged.
 	**/
 	inline function extendnew(expr1:lua.Table.AnyTable, expr2:lua.Table.AnyTable, ?expr3:lua.Table.AnyTable):Any {
-		expr1 = nvim.helper.Arg.pure(expr1);
-		expr2 = nvim.helper.Arg.pure(expr2);
-		expr3 = nvim.helper.Arg.pure(expr3);
+		final expr1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr1;
+		final expr2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr2;
+		final expr3:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = expr3;
 		return __extendnew(expr1, expr2, expr3);
 	}
 	/**
@@ -7548,7 +7601,7 @@ extern class Fn {
 		 This is quite similar to the ex-command `:find`.
 	**/
 	@:luaDotMethod
-	function finddir(name:String, ?path:String, ?count:Float):Any;
+	function finddir(name:String, ?path:String, ?count:Int):Any;
 	/**
 		```lua
 		function table.findfile(name: string, path?: string, count?: any)
@@ -7566,6 +7619,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function findfile(name:String, ?path:String, ?count:Any):Any;
+	@:native("flatten")
+	@:luaDotMethod
+	private function __flatten(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.flatten(list: any[], maxdepth?: integer)
@@ -7598,8 +7654,13 @@ extern class Fn {
 		    | 0
 		```
 	**/
+	inline function flatten(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __flatten(list, maxdepth);
+	}
+	@:native("flattennew")
 	@:luaDotMethod
-	function flatten(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	private function __flattennew(list:lua.Table<Int, Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
 	/**
 		```lua
 		function table.flattennew(list: any[], maxdepth?: integer)
@@ -7616,8 +7677,10 @@ extern class Fn {
 		    | 0
 		```
 	**/
-	@:luaDotMethod
-	function flattennew(list:lua.Table<Int, Any>, ?maxdepth:Float):haxe.extern.EitherType<lua.Table<Int, Any>, Float>;
+	inline function flattennew(list:Array<Any>, ?maxdepth:Int):haxe.extern.EitherType<lua.Table<Int, Any>, Float> {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __flattennew(list, maxdepth);
+	}
 	/**
 		```lua
 		function table.float2nr(expr: number)
@@ -7763,7 +7826,7 @@ extern class Fn {
 		 line, "'m" mark m, etc.
 	**/
 	@:luaDotMethod
-	function foldclosed(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function foldclosed(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.foldclosedend(lnum: string|integer)
@@ -7779,7 +7842,7 @@ extern class Fn {
 		 line, "'m" mark m, etc.
 	**/
 	@:luaDotMethod
-	function foldclosedend(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function foldclosedend(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.foldlevel(lnum: string|integer)
@@ -7800,7 +7863,7 @@ extern class Fn {
 		 line, "'m" mark m, etc.
 	**/
 	@:luaDotMethod
-	function foldlevel(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function foldlevel(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.foldtext()
@@ -7844,7 +7907,7 @@ extern class Fn {
 		 Useful when exporting folded text, e.g., to HTML.
 	**/
 	@:luaDotMethod
-	function foldtextresult(lnum:haxe.extern.EitherType<Float, String>):String;
+	function foldtextresult(lnum:haxe.extern.EitherType<Int, String>):String;
 	/**
 		```lua
 		function table.foreach(expr1: string|table, expr2: string|function)
@@ -8059,6 +8122,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function garbagecollect(?atexit:Bool):Any;
+	@:native("get")
+	@:luaDotMethod
+	private function __get(list:lua.Table<Int, Any>, idx:Int, ?default_:Any):Any;
 	/**
 		```lua
 		function table.get(list: any[], idx: integer, default?: any)
@@ -8130,8 +8196,10 @@ extern class Fn {
 		
 		 Returns zero on error.
 	**/
-	@:luaDotMethod
-	function get(list:lua.Table<Int, Any>, idx:Float, ?default_:Any):Any;
+	inline function get(list:Array<Any>, idx:Int, ?default_:Any):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __get(list, idx, default_);
+	}
 	/**
 		```lua
 		function table.getbufinfo(buf?: string|integer)
@@ -8215,7 +8283,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getbufinfo(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, nvim.type.vim.fn.getbufinfo.ret.Item>;
+	function getbufinfo(?buf:haxe.extern.EitherType<Int, String>):lua.Table<Int, nvim.type.vim.fn.getbufinfo.ret.Item>;
 	/**
 		```lua
 		function table.getbufline(buf: string|integer, lnum: integer, end_?: integer)
@@ -8250,7 +8318,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, ?end_:Float):lua.Table<Int, String>;
+	function getbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, ?end_:Int):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.getbufoneline(buf: string|integer, lnum: integer)
@@ -8263,7 +8331,7 @@ extern class Fn {
 		 as a string.
 	**/
 	@:luaDotMethod
-	function getbufoneline(buf:haxe.extern.EitherType<Float, String>, lnum:Float):String;
+	function getbufoneline(buf:haxe.extern.EitherType<Int, String>, lnum:Int):String;
 	/**
 		```lua
 		function table.getbufvar(buf: string|integer, varname: string, def?: any)
@@ -8293,7 +8361,7 @@ extern class Fn {
 		   echo "todo myvar = " .. getbufvar("todo", "myvar")
 	**/
 	@:luaDotMethod
-	function getbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, ?def:Any):Any;
+	function getbufvar(buf:haxe.extern.EitherType<Int, String>, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.getcellwidths()
@@ -8333,10 +8401,10 @@ extern class Fn {
 		 buffers, it is set to the length of the list.
 	**/
 	@:luaDotMethod
-	function getchangelist(?buf:haxe.extern.EitherType<Float, String>):lua.Table<Int, lua.Table.AnyTable>;
+	function getchangelist(?buf:haxe.extern.EitherType<Int, String>):lua.Table<Int, lua.Table.AnyTable>;
 	@:native("getchar")
 	@:luaDotMethod
-	private function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String>;
+	private function __getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String>;
 	/**
 		```lua
 		function table.getchar(expr?: -1|0|1, opts?: table)
@@ -8446,8 +8514,8 @@ extern class Fn {
 		    | 1
 		```
 	**/
-	inline function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Float, String> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function getchar(?expr:Float, ?opts:lua.Table.AnyTable):haxe.extern.EitherType<Int, String> {
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getchar(expr, opts);
 	}
 	/**
@@ -8474,7 +8542,7 @@ extern class Fn {
 		 without a modifier.  Returns 0 if no modifiers are used.
 	**/
 	@:luaDotMethod
-	function getcharmod():Float;
+	function getcharmod():Int;
 	/**
 		```lua
 		function table.getcharpos(expr: string)
@@ -8497,7 +8565,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getcharpos(expr:String):lua.Table<Int, Float>;
+	function getcharpos(expr:String):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.getcharsearch()
@@ -8550,7 +8618,7 @@ extern class Fn {
 		```
 	**/
 	inline function getcharstr(?expr:Float, ?opts:lua.Table.AnyTable):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getcharstr(expr, opts);
 	}
 	/**
@@ -8625,7 +8693,7 @@ extern class Fn {
 		 |getcmdprompt()| and |setcmdline()|.
 	**/
 	@:luaDotMethod
-	function getcmdpos():Float;
+	function getcmdpos():Int;
 	/**
 		```lua
 		function table.getcmdprompt()
@@ -8661,7 +8729,7 @@ extern class Fn {
 		 |setcmdline()|.
 	**/
 	@:luaDotMethod
-	function getcmdscreenpos():Float;
+	function getcmdscreenpos():Int;
 	/**
 		```lua
 		function table.getcmdtype()
@@ -8837,7 +8905,7 @@ extern class Fn {
 		 |winrestview()| for restoring more state.
 	**/
 	@:luaDotMethod
-	function getcurpos(?winid:Float):Any;
+	function getcurpos(?winid:Int):Any;
 	/**
 		```lua
 		function table.getcursorcharpos(winid?: integer)
@@ -8856,7 +8924,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getcursorcharpos(?winid:Float):Any;
+	function getcursorcharpos(?winid:Int):Any;
 	/**
 		```lua
 		function table.getcwd(winnr?: integer, tabnr?: integer)
@@ -8881,7 +8949,7 @@ extern class Fn {
 		 Throw error if the arguments are invalid. |E5000| |E5001| |E5002|
 	**/
 	@:luaDotMethod
-	function getcwd(?winnr:Float, ?tabnr:Float):String;
+	function getcwd(?winnr:Int, ?tabnr:Int):String;
 	/**
 		```lua
 		function table.getenv(name: string)
@@ -8963,7 +9031,7 @@ extern class Fn {
 		 is returned.
 	**/
 	@:luaDotMethod
-	function getfsize(fname:String):Float;
+	function getfsize(fname:String):Int;
 	/**
 		```lua
 		function table.getftime(fname: string)
@@ -8979,7 +9047,7 @@ extern class Fn {
 		 If the file {fname} can't be found -1 is returned.
 	**/
 	@:luaDotMethod
-	function getftime(fname:String):Float;
+	function getftime(fname:String):Int;
 	/**
 		```lua
 		function table.getftype(fname: string)
@@ -9050,7 +9118,7 @@ extern class Fn {
 		   lnum    line number
 	**/
 	@:luaDotMethod
-	function getjumplist(?winnr:Float, ?tabnr:Float):nvim.type.vim.fn.getjumplist.Ret;
+	function getjumplist(?winnr:Int, ?tabnr:Int):nvim.type.vim.fn.getjumplist.Ret;
 	/**
 		```lua
 		function table.getline(lnum: string|integer, end_?: false)
@@ -9104,10 +9172,10 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function getline(lnum:haxe.extern.EitherType<Float, String>, ?end_:Null<Bool>):String;
+	function getline(lnum:haxe.extern.EitherType<Int, String>, ?end_:Null<Bool>):String;
 	@:native("getloclist")
 	@:luaDotMethod
-	private function __getloclist(nr:Float, ?what:lua.Table.AnyTable):Any;
+	private function __getloclist(nr:Int, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.getloclist(nr: integer, what?: table)
@@ -9147,8 +9215,8 @@ extern class Fn {
 		   echo getloclist(5, {'filewinid': 0})
 		 <
 	**/
-	inline function getloclist(nr:Float, ?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+	inline function getloclist(nr:Int, ?what:lua.Table.AnyTable):Any {
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getloclist(nr, what);
 	}
 	/**
@@ -9178,7 +9246,7 @@ extern class Fn {
 		 mark.
 	**/
 	@:luaDotMethod
-	function getmarklist(?buf:Null<Float>):lua.Table<Int, nvim.type.vim.fn.getmarklist.ret.Item>;
+	function getmarklist(?buf:Null<Int>):lua.Table<Int, nvim.type.vim.fn.getmarklist.ret.Item>;
 	/**
 		```lua
 		function table.getmatches(win?: integer)
@@ -9219,7 +9287,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getmatches(?win:Float):Any;
+	function getmatches(?win:Int):Any;
 	/**
 		```lua
 		function table.getmousepos()
@@ -9272,7 +9340,7 @@ extern class Fn {
 		 This is a unique number, until Vim exits.
 	**/
 	@:luaDotMethod
-	function getpid():Float;
+	function getpid():Int;
 	/**
 		```lua
 		function table.getpos(expr: string)
@@ -9340,7 +9408,7 @@ extern class Fn {
 		 Also see |getcharpos()|, |getcurpos()| and |setpos()|.
 	**/
 	@:luaDotMethod
-	function getpos(expr:String):lua.Table<Int, Float>;
+	function getpos(expr:String):lua.Table<Int, Int>;
 	@:native("getqflist")
 	@:luaDotMethod
 	private function __getqflist(?what:lua.Table.AnyTable):Any;
@@ -9456,7 +9524,7 @@ extern class Fn {
 		 <
 	**/
 	inline function getqflist(?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __getqflist(what);
 	}
 	/**
@@ -9610,14 +9678,14 @@ extern class Fn {
 		 <
 	**/
 	inline function getregion(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, String> {
-		pos1 = nvim.helper.Arg.pure(pos1);
-		pos2 = nvim.helper.Arg.pure(pos2);
-		opts = nvim.helper.Arg.pure(opts);
+		final pos1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos1;
+		final pos2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos2;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregion(pos1, pos2, opts);
 	}
 	@:native("getregionpos")
 	@:luaDotMethod
-	private function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>>;
+	private function __getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Int>>>;
 	/**
 		```lua
 		function table.getregionpos(pos1: table, pos2: table, opts?: table)
@@ -9657,10 +9725,10 @@ extern class Fn {
 		       value of 0 is used for both positions.
 		       (default: |FALSE|)
 	**/
-	inline function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Float>>> {
-		pos1 = nvim.helper.Arg.pure(pos1);
-		pos2 = nvim.helper.Arg.pure(pos2);
-		opts = nvim.helper.Arg.pure(opts);
+	inline function getregionpos(pos1:lua.Table.AnyTable, pos2:lua.Table.AnyTable, ?opts:lua.Table.AnyTable):lua.Table<Int, lua.Table<Int, lua.Table<Int, Int>>> {
+		final pos1:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos1;
+		final pos2:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = pos2;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getregionpos(pos1, pos2, opts);
 	}
 	/**
@@ -9731,7 +9799,7 @@ extern class Fn {
 		 <
 	**/
 	inline function getscriptinfo(?opts:lua.Table.AnyTable):lua.Table<Int, nvim.type.vim.fn.getscriptinfo.Ret> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __getscriptinfo(opts);
 	}
 	/**
@@ -9776,7 +9844,7 @@ extern class Fn {
 		   windows    List of |window-ID|s in the tab page.
 	**/
 	@:luaDotMethod
-	function gettabinfo(?tabnr:Float):Any;
+	function gettabinfo(?tabnr:Int):Any;
 	/**
 		```lua
 		function table.gettabvar(tabnr: integer, varname: string, def?: any)
@@ -9795,7 +9863,7 @@ extern class Fn {
 		 string is returned, there is no error message.
 	**/
 	@:luaDotMethod
-	function gettabvar(tabnr:Float, varname:String, ?def:Any):Any;
+	function gettabvar(tabnr:Int, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.gettabwinvar(tabnr: integer, winnr: integer, varname: string, def?: any)
@@ -9831,7 +9899,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function gettabwinvar(tabnr:Float, winnr:Float, varname:String, ?def:Any):Any;
+	function gettabwinvar(tabnr:Int, winnr:Int, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.gettagstack(winnr?: integer)
@@ -9868,7 +9936,7 @@ extern class Fn {
 		 See |tagstack| for more information about the tag stack.
 	**/
 	@:luaDotMethod
-	function gettagstack(?winnr:Float):Any;
+	function gettagstack(?winnr:Int):Any;
 	/**
 		```lua
 		function table.gettext(text: string)
@@ -9933,7 +10001,7 @@ extern class Fn {
 		       "row" from |win_screenpos()|
 	**/
 	@:luaDotMethod
-	function getwininfo(?winid:Float):lua.Table<Int, nvim.type.vim.fn.getwininfo.ret.Item>;
+	function getwininfo(?winid:Int):lua.Table<Int, nvim.type.vim.fn.getwininfo.ret.Item>;
 	/**
 		```lua
 		function table.getwinpos(timeout?: integer)
@@ -9963,7 +10031,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function getwinpos(?timeout:Float):Any;
+	function getwinpos(?timeout:Int):Any;
 	/**
 		```lua
 		function table.getwinposx()
@@ -9978,7 +10046,7 @@ extern class Fn {
 		 The value can be used with `:winpos`.
 	**/
 	@:luaDotMethod
-	function getwinposx():Float;
+	function getwinposx():Int;
 	/**
 		```lua
 		function table.getwinposy()
@@ -9993,7 +10061,7 @@ extern class Fn {
 		 The value can be used with `:winpos`.
 	**/
 	@:luaDotMethod
-	function getwinposy():Float;
+	function getwinposy():Int;
 	/**
 		```lua
 		function table.getwinvar(winnr: integer, varname: string, def?: any)
@@ -10008,7 +10076,7 @@ extern class Fn {
 		   echo "myvar = " .. getwinvar(1, 'myvar')
 	**/
 	@:luaDotMethod
-	function getwinvar(winnr:Float, varname:String, ?def:Any):Any;
+	function getwinvar(winnr:Int, varname:String, ?def:Any):Any;
 	/**
 		```lua
 		function table.glob(expr: string, nosuf?: boolean, list?: boolean, alllinks?: boolean)
@@ -10231,7 +10299,7 @@ extern class Fn {
 		```
 	**/
 	inline function has_key(dict:lua.Table.AnyTable, key:String):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __has_key(dict, key);
 	}
 	/**
@@ -10266,7 +10334,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function haslocaldir(?winnr:Float, ?tabnr:Float):Float;
+	function haslocaldir(?winnr:Int, ?tabnr:Int):Float;
 	/**
 		```lua
 		function table.hasmapto(what: any, mode?: string, abbr?: boolean)
@@ -10450,7 +10518,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function histget(history:String, ?index:haxe.extern.EitherType<Float, String>):String;
+	function histget(history:String, ?index:haxe.extern.EitherType<Int, String>):String;
 	/**
 		```lua
 		function table.histnr(history: string)
@@ -10468,7 +10536,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function histnr(history:String):Float;
+	function histnr(history:String):Int;
 	/**
 		```lua
 		function table.hlID(name: string)
@@ -10487,7 +10555,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function hlID(name:String):Float;
+	function hlID(name:String):Int;
 	/**
 		```lua
 		function table.hlexists(name: string)
@@ -10589,7 +10657,7 @@ extern class Fn {
 		 To get or set indent of lines in a string, see |vim.text.indent()|.
 	**/
 	@:luaDotMethod
-	function indent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function indent(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.index(object: any, expr: any, start?: integer, ic?: boolean)
@@ -10626,10 +10694,10 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function index(object:Any, expr:Any, ?start:Float, ?ic:Bool):Float;
+	function index(object:Any, expr:Any, ?start:Int, ?ic:Bool):Int;
 	@:native("indexof")
 	@:luaDotMethod
-	private function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float;
+	private function __indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.indexof(object: any, expr: any, opts?: table)
@@ -10676,8 +10744,8 @@ extern class Fn {
 		   echo indexof(l, "v:val.n == 20", #{startidx: 1})
 		 <
 	**/
-	inline function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function indexof(object:Any, expr:Any, ?opts:lua.Table.AnyTable):Int {
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __indexof(object, expr, opts);
 	}
 	/**
@@ -10820,6 +10888,9 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function inputdialog(___:haxe.Rest<Any>):Any;
+	@:native("inputlist")
+	@:luaDotMethod
+	private function __inputlist(textlist:lua.Table<Int, String>):Any;
 	/**
 		```lua
 		function table.inputlist(textlist: string[])
@@ -10844,8 +10915,10 @@ extern class Fn {
 		   let color = inputlist(['Select color:', '1. red',
 		     \ '2. green', '3. blue'])
 	**/
-	@:luaDotMethod
-	function inputlist(textlist:lua.Table<Int, String>):Any;
+	inline function inputlist(textlist:Array<String>):Any {
+		final textlist:nvim.helper.Native.LuaArray<String> = textlist;
+		return __inputlist(textlist);
+	}
 	/**
 		```lua
 		function table.inputrestore()
@@ -10860,7 +10933,7 @@ extern class Fn {
 		 Returns TRUE when there is nothing to restore, FALSE otherwise.
 	**/
 	@:luaDotMethod
-	function inputrestore():Float;
+	function inputrestore():Int;
 	/**
 		```lua
 		function table.inputsave()
@@ -10877,7 +10950,7 @@ extern class Fn {
 		 Returns TRUE when out of memory, FALSE otherwise.
 	**/
 	@:luaDotMethod
-	function inputsave():Float;
+	function inputsave():Int;
 	/**
 		```lua
 		function table.inputsecret(prompt: string, text?: string)
@@ -10923,7 +10996,7 @@ extern class Fn {
 		 item.  Use |extend()| to concatenate |Lists|.
 	**/
 	@:luaDotMethod
-	function insert(object:Any, item:Any, ?idx:Float):Any;
+	function insert(object:Any, item:Any, ?idx:Int):Any;
 	/**
 		```lua
 		function table.interrupt()
@@ -10961,7 +11034,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function invert(expr:Float):Float;
+	function invert(expr:Int):Int;
 	/**
 		```lua
 		function table.isabsolutepath(path: string)
@@ -11116,7 +11189,7 @@ extern class Fn {
 		 the index.
 	**/
 	inline function items(dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __items(dict);
 	}
 	/**
@@ -11143,7 +11216,7 @@ extern class Fn {
 		 Return the PID (process id) of |job-id| {job}.
 	**/
 	@:luaDotMethod
-	function jobpid(job:Float):Float;
+	function jobpid(job:Int):Int;
 	/**
 		```lua
 		function table.jobresize(job: integer, width: integer, height: integer)
@@ -11157,7 +11230,7 @@ extern class Fn {
 		 Fails if the job was not started with `"pty":v:true`.
 	**/
 	@:luaDotMethod
-	function jobresize(job:Float, width:Float, height:Float):Any;
+	function jobresize(job:Int, width:Int, height:Int):Any;
 	/**
 		```lua
 		function table.jobsend(...any)
@@ -11173,7 +11246,7 @@ extern class Fn {
 	function jobsend(___:haxe.Rest<Any>):Any;
 	@:native("jobstart")
 	@:luaDotMethod
-	private function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
+	private function __jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.jobstart(cmd: string|string[], opts?: table)
@@ -11274,8 +11347,8 @@ extern class Fn {
 		   - -1 if {cmd}[0] is not executable.
 		 See also |job-control|, |channel|, |msgpack-rpc|.
 	**/
-	inline function jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function jobstart(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int {
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __jobstart(cmd, opts);
 	}
 	/**
@@ -11296,7 +11369,10 @@ extern class Fn {
 		 exited or stopped.
 	**/
 	@:luaDotMethod
-	function jobstop(id:Float):Float;
+	function jobstop(id:Int):Int;
+	@:native("jobwait")
+	@:luaDotMethod
+	private function __jobwait(jobs:lua.Table<Int, Int>, ?timeout:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.jobwait(jobs: integer[], timeout?: integer)
@@ -11325,8 +11401,13 @@ extern class Fn {
 		   -2 if the job was interrupted (by |CTRL-C|)
 		   -3 if the job-id is invalid
 	**/
+	inline function jobwait(jobs:Array<Int>, ?timeout:Int):lua.Table<Int, Int> {
+		final jobs:nvim.helper.Native.LuaArray<Int> = jobs;
+		return __jobwait(jobs, timeout);
+	}
+	@:native("join")
 	@:luaDotMethod
-	function jobwait(jobs:lua.Table<Int, Float>, ?timeout:Float):lua.Table<Int, Float>;
+	private function __join(list:lua.Table<Int, Any>, ?sep:String):String;
 	/**
 		```lua
 		function table.join(list: any[], sep?: string)
@@ -11345,8 +11426,10 @@ extern class Fn {
 		 converted into a string like with |string()|.
 		 The opposite function is |split()|.
 	**/
-	@:luaDotMethod
-	function join(list:lua.Table<Int, Any>, ?sep:String):String;
+	inline function join(list:Array<Any>, ?sep:String):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __join(list, sep);
+	}
 	/**
 		```lua
 		function table.json_decode(expr: any)
@@ -11407,7 +11490,7 @@ extern class Fn {
 		 arbitrary order.  Also see |items()| and |values()|.
 	**/
 	inline function keys(dict:lua.Table.AnyTable):lua.Table<Int, String> {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __keys(dict);
 	}
 	/**
@@ -11439,6 +11522,9 @@ extern class Fn {
 	@:luaDotMethod
 	@:deprecated
 	function last_buffer_nr():Any;
+	@:native("len")
+	@:luaDotMethod
+	private function __len(expr:lua.Table<Int, Any>):Int;
 	/**
 		```lua
 		function table.len(expr: any[])
@@ -11457,8 +11543,10 @@ extern class Fn {
 		 |Dictionary| is returned.
 		 Otherwise an error is given and returns zero.
 	**/
-	@:luaDotMethod
-	function len(expr:lua.Table<Int, Any>):Float;
+	inline function len(expr:Array<Any>):Int {
+		final expr:nvim.helper.Native.LuaArray<Any> = expr;
+		return __len(expr);
+	}
 	/**
 		```lua
 		function table.libcall(libname: string, funcname: string, argument: any)
@@ -11556,7 +11644,7 @@ extern class Fn {
 		 |last-position-jump|.
 	**/
 	@:luaDotMethod
-	function line(expr:haxe.extern.EitherType<String, lua.Table<Int, Float>>, ?winid:Float):Float;
+	function line(expr:haxe.extern.EitherType<String, lua.Table<Int, Int>>, ?winid:Int):Int;
 	/**
 		```lua
 		function table.line2byte(lnum: string|integer)
@@ -11578,7 +11666,7 @@ extern class Fn {
 		 Also see |byte2line()|, |go| and |:goto|.
 	**/
 	@:luaDotMethod
-	function line2byte(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function line2byte(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.lispindent(lnum: string|integer)
@@ -11594,7 +11682,10 @@ extern class Fn {
 		 When {lnum} is invalid, -1 is returned.
 	**/
 	@:luaDotMethod
-	function lispindent(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function lispindent(lnum:haxe.extern.EitherType<Int, String>):Int;
+	@:native("list2blob")
+	@:luaDotMethod
+	private function __list2blob(list:lua.Table<Int, Any>):String;
 	/**
 		```lua
 		function table.list2blob(list: any[])
@@ -11612,8 +11703,13 @@ extern class Fn {
 		
 		 |blob2list()| does the opposite.
 	**/
+	inline function list2blob(list:Array<Any>):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __list2blob(list);
+	}
+	@:native("list2str")
 	@:luaDotMethod
-	function list2blob(list:lua.Table<Int, Any>):String;
+	private function __list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
 	/**
 		```lua
 		function table.list2str(list: any[], utf8?: boolean)
@@ -11637,8 +11733,10 @@ extern class Fn {
 		 <
 		 Returns an empty string on error.
 	**/
-	@:luaDotMethod
-	function list2str(list:lua.Table<Int, Any>, ?utf8:Bool):String;
+	inline function list2str(list:Array<Any>, ?utf8:Bool):String {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __list2str(list, utf8);
+	}
 	/**
 		```lua
 		function table.localtime()
@@ -11651,7 +11749,7 @@ extern class Fn {
 		 1970.  See also |strftime()|, |strptime()| and |getftime()|.
 	**/
 	@:luaDotMethod
-	function localtime():Float;
+	function localtime():Int;
 	/**
 		```lua
 		function table.log(expr: number)
@@ -12022,7 +12120,7 @@ extern class Fn {
 		 <
 	**/
 	inline function mapset(mode:String, ?abbr:Bool, ?dict:lua.Table<String, Any>):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = dict;
 		return __mapset(mode, abbr, dict);
 	}
 	/**
@@ -12096,7 +12194,7 @@ extern class Fn {
 		 further down in the text.
 	**/
 	@:luaDotMethod
-	function match(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, pat:String, ?start:Float, ?count:Float):Any;
+	function match(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, pat:String, ?start:Int, ?count:Int):Any;
 	/**
 		```lua
 		function table.matchadd(group: string|integer, pattern: string, priority?: integer, id?: integer, dict?: string)
@@ -12163,7 +12261,10 @@ extern class Fn {
 		 one operation by |clearmatches()|.
 	**/
 	@:luaDotMethod
-	function matchadd(group:haxe.extern.EitherType<Float, String>, pattern:String, ?priority:Float, ?id:Float, ?dict:String):Any;
+	function matchadd(group:haxe.extern.EitherType<Int, String>, pattern:String, ?priority:Int, ?id:Int, ?dict:String):Any;
+	@:native("matchaddpos")
+	@:luaDotMethod
+	private function __matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:lua.Table<Int, Any>, ?priority:Int, ?id:Int, ?dict:String):Any;
 	/**
 		```lua
 		function table.matchaddpos(group: string|integer, pos: any[], priority?: integer, id?: integer, dict?: string)
@@ -12208,8 +12309,10 @@ extern class Fn {
 		 <Matches added by |matchaddpos()| are returned by
 		 |getmatches()|.
 	**/
-	@:luaDotMethod
-	function matchaddpos(group:haxe.extern.EitherType<Float, String>, pos:lua.Table<Int, Any>, ?priority:Float, ?id:Float, ?dict:String):Any;
+	inline function matchaddpos(group:haxe.extern.EitherType<Int, String>, pos:Array<Any>, ?priority:Int, ?id:Int, ?dict:String):Any {
+		final pos:nvim.helper.Native.LuaArray<Any> = pos;
+		return __matchaddpos(group, pos, priority, id, dict);
+	}
 	/**
 		```lua
 		function table.matcharg(nr: integer)
@@ -12230,10 +12333,10 @@ extern class Fn {
 		 to three matches. |matchadd()| does not have this limitation.
 	**/
 	@:luaDotMethod
-	function matcharg(nr:Float):Any;
+	function matcharg(nr:Int):Any;
 	@:native("matchbufline")
 	@:luaDotMethod
-	private function __matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any;
+	private function __matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.matchbufline(buf: string|integer, pat: string, lnum: string|integer, end_: string|integer, dict?: table)
@@ -12285,8 +12388,8 @@ extern class Fn {
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	inline function matchbufline(buf:haxe.extern.EitherType<String, Float>, pat:String, lnum:haxe.extern.EitherType<String, Float>, end_:haxe.extern.EitherType<String, Float>, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchbufline(buf:haxe.extern.EitherType<String, Int>, pat:String, lnum:haxe.extern.EitherType<String, Int>, end_:haxe.extern.EitherType<String, Int>, ?dict:lua.Table.AnyTable):Any {
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchbufline(buf, pat, lnum, end_, dict);
 	}
 	/**
@@ -12305,7 +12408,7 @@ extern class Fn {
 		 window ID instead of the current window.
 	**/
 	@:luaDotMethod
-	function matchdelete(id:Float, ?win:Float):Any;
+	function matchdelete(id:Int, ?win:Int):Any;
 	/**
 		```lua
 		function table.matchend(expr: any, pat: string, start?: integer, count?: integer)
@@ -12333,7 +12436,7 @@ extern class Fn {
 		 When {expr} is a |List| the result is equal to |match()|.
 	**/
 	@:luaDotMethod
-	function matchend(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	function matchend(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
 	@:native("matchfuzzy")
 	@:luaDotMethod
 	private function __matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any;
@@ -12407,8 +12510,9 @@ extern class Fn {
 		         \ {'matchseq': 1})
 		 <results in `['two one']`.
 	**/
-	inline function matchfuzzy(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchfuzzy(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzy(list, str, dict);
 	}
 	@:native("matchfuzzypos")
@@ -12443,8 +12547,9 @@ extern class Fn {
 		     \ ->matchfuzzypos('ll', {'key' : 'text'})
 		 <results in `[[{"id": 10, "text": "hello"}], [[2, 3]], [127]]`
 	**/
-	inline function matchfuzzypos(list:lua.Table<Int, Any>, str:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchfuzzypos(list:Array<Any>, str:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchfuzzypos(list, str, dict);
 	}
 	/**
@@ -12467,7 +12572,7 @@ extern class Fn {
 		 You can pass in a List, but that is not very useful.
 	**/
 	@:luaDotMethod
-	function matchlist(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	function matchlist(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
 	/**
 		```lua
 		function table.matchstr(expr: any, pat: string, start?: integer, count?: integer)
@@ -12489,7 +12594,7 @@ extern class Fn {
 		 The type isn't changed, it's not necessarily a String.
 	**/
 	@:luaDotMethod
-	function matchstr(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	function matchstr(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
 	@:native("matchstrlist")
 	@:luaDotMethod
 	private function __matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any;
@@ -12533,8 +12638,9 @@ extern class Fn {
 		 is not found, then an empty string is returned for that
 		 submatch.
 	**/
-	inline function matchstrlist(list:lua.Table<Int, String>, pat:String, ?dict:lua.Table.AnyTable):Any {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function matchstrlist(list:Array<String>, pat:String, ?dict:lua.Table.AnyTable):Any {
+		final list:nvim.helper.Native.LuaArray<String> = list;
+		final dict:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = dict;
 		return __matchstrlist(list, pat, dict);
 	}
 	/**
@@ -12563,7 +12669,7 @@ extern class Fn {
 		 The type isn't changed, it's not necessarily a String.
 	**/
 	@:luaDotMethod
-	function matchstrpos(expr:Any, pat:String, ?start:Float, ?count:Float):Any;
+	function matchstrpos(expr:Any, pat:String, ?start:Int, ?count:Int):Any;
 	/**
 		```lua
 		function table.max(expr: any)
@@ -12784,7 +12890,7 @@ extern class Fn {
 		 failed.
 	**/
 	@:luaDotMethod
-	function mkdir(name:String, ?flags:String, ?prot:String):Float;
+	function mkdir(name:String, ?flags:String, ?prot:String):Int;
 	/**
 		```lua
 		function table.mode(expr?: any)
@@ -12970,7 +13076,7 @@ extern class Fn {
 		 See also |prevnonblank()|.
 	**/
 	@:luaDotMethod
-	function nextnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function nextnonblank(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.nr2char(expr: integer, utf8?: boolean)
@@ -12994,7 +13100,7 @@ extern class Fn {
 		 string, thus results in an empty string.
 	**/
 	@:luaDotMethod
-	function nr2char(expr:Float, ?utf8:Bool):String;
+	function nr2char(expr:Int, ?utf8:Bool):String;
 	/**
 		```lua
 		(global) table.nvim__buf_debug_extmarks: unknown
@@ -14089,7 +14195,7 @@ extern class Fn {
 		 Returns an empty string on error.
 	**/
 	@:luaDotMethod
-	function pathshorten(path:String, ?len:Float):String;
+	function pathshorten(path:String, ?len:Int):String;
 	/**
 		```lua
 		function table.perleval(expr: any)
@@ -14152,7 +14258,7 @@ extern class Fn {
 		 Also see |nextnonblank()|.
 	**/
 	@:luaDotMethod
-	function prevnonblank(lnum:haxe.extern.EitherType<Float, String>):Float;
+	function prevnonblank(lnum:haxe.extern.EitherType<Int, String>):Int;
 	/**
 		```lua
 		function table.printf(fmt: string, expr1?: any)
@@ -14501,7 +14607,7 @@ extern class Fn {
 		 string is returned.
 	**/
 	@:luaDotMethod
-	function prompt_getprompt(buf:haxe.extern.EitherType<Float, String>):Any;
+	function prompt_getprompt(buf:haxe.extern.EitherType<Int, String>):Any;
 	/**
 		```lua
 		function table.prompt_setcallback(buf: string|integer, expr: string|function)
@@ -14543,7 +14649,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function prompt_setcallback(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	function prompt_setcallback(buf:haxe.extern.EitherType<Int, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.prompt_setinterrupt(buf: string|integer, expr: string|function)
@@ -14561,7 +14667,7 @@ extern class Fn {
 		 as in any buffer.
 	**/
 	@:luaDotMethod
-	function prompt_setinterrupt(buf:haxe.extern.EitherType<Float, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	function prompt_setinterrupt(buf:haxe.extern.EitherType<Int, String>, expr:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.prompt_setprompt(buf: string|integer, text: string)
@@ -14578,7 +14684,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function prompt_setprompt(buf:haxe.extern.EitherType<Float, String>, text:String):Any;
+	function prompt_setprompt(buf:haxe.extern.EitherType<Int, String>, text:String):Any;
 	/**
 		```lua
 		function table.pum_getpos()
@@ -14720,7 +14826,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function range(expr:Any, ?max:Float, ?stride:Float):Any;
+	function range(expr:Any, ?max:Int, ?stride:Int):Any;
 	/**
 		```lua
 		function table.readblob(fname: string, offset?: integer, size?: integer)
@@ -14753,7 +14859,7 @@ extern class Fn {
 		 Also see |readfile()| and |writefile()|.
 	**/
 	@:luaDotMethod
-	function readblob(fname:String, ?offset:Float, ?size:Float):Any;
+	function readblob(fname:String, ?offset:Int, ?size:Int):Any;
 	/**
 		```lua
 		function table.readdir(directory: string, expr?: integer)
@@ -14792,7 +14898,7 @@ extern class Fn {
 		 Returns an empty List on error.
 	**/
 	@:luaDotMethod
-	function readdir(directory:String, ?expr:Float):Any;
+	function readdir(directory:String, ?expr:Int):Any;
 	/**
 		```lua
 		function table.readfile(fname: string, type?: string, max?: integer)
@@ -14834,7 +14940,7 @@ extern class Fn {
 		 Also see |writefile()|.
 	**/
 	@:luaDotMethod
-	function readfile(fname:String, ?type:String, ?max:Float):Any;
+	function readfile(fname:String, ?type:String, ?max:Int):Any;
 	/**
 		```lua
 		function table.reduce(object: any, func: fun(accumulator: <T>, current: any):any, initial?: any)
@@ -15062,7 +15168,7 @@ extern class Fn {
 		 Returns zero on error.
 	**/
 	@:luaDotMethod
-	function remove(list:Any, idx:Float):Any;
+	function remove(list:Any, idx:Int):Any;
 	/**
 		```lua
 		function table.rename(from: string, to: string)
@@ -15079,7 +15185,7 @@ extern class Fn {
 		 This function is not available in the |sandbox|.
 	**/
 	@:luaDotMethod
-	function rename(from:String, to:String):Float;
+	function rename(from:String, to:String):Int;
 	/**
 		```lua
 		function (expr: any, count: integer)
@@ -15099,7 +15205,7 @@ extern class Fn {
 		
 	**/
 	@:luaDotMethod
-	function repeat(expr:Any, count:Float):Any;
+	function repeat(expr:Any, count:Int):Any;
 	/**
 		```lua
 		function table.resolve(filename: string)
@@ -15122,6 +15228,9 @@ extern class Fn {
 	**/
 	@:luaDotMethod
 	function resolve(filename:String):String;
+	@:native("reverse")
+	@:luaDotMethod
+	private function __reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.reverse(object: <T>[])
@@ -15140,8 +15249,10 @@ extern class Fn {
 		   let revlist = reverse(copy(mylist))
 		 <
 	**/
-	@:luaDotMethod
-	function reverse<T>(object:lua.Table<Int, T>):lua.Table<Int, T>;
+	inline function reverse<T>(object:Array<T>):lua.Table<Int, T> {
+		final object:nvim.helper.Native.LuaArray<T> = object;
+		return __reverse(object);
+	}
 	/**
 		```lua
 		function table.round(expr: number)
@@ -15180,7 +15291,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function rpcnotify(channel:Float, event:String, ___:haxe.Rest<Any>):Float;
+	function rpcnotify(channel:Int, event:String, ___:haxe.Rest<Any>):Int;
 	/**
 		```lua
 		function table.rpcrequest(channel: integer, method: string, ...any)
@@ -15196,7 +15307,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function rpcrequest(channel:Float, method:String, ___:haxe.Rest<Any>):Any;
+	function rpcrequest(channel:Int, method:String, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		function table.rpcstart(prog: string, argv?: any)
@@ -15263,7 +15374,7 @@ extern class Fn {
 		 Returns -1 when row or col is out of range.
 	**/
 	@:luaDotMethod
-	function screenattr(row:Float, col:Float):Float;
+	function screenattr(row:Int, col:Int):Int;
 	/**
 		```lua
 		function table.screenchar(row: integer, col: integer)
@@ -15282,7 +15393,7 @@ extern class Fn {
 		 Returns -1 when row or col is out of range.
 	**/
 	@:luaDotMethod
-	function screenchar(row:Float, col:Float):Float;
+	function screenchar(row:Int, col:Int):Int;
 	/**
 		```lua
 		function table.screenchars(row: integer, col: integer)
@@ -15298,7 +15409,7 @@ extern class Fn {
 		 Returns an empty List when row or col is out of range.
 	**/
 	@:luaDotMethod
-	function screenchars(row:Float, col:Float):lua.Table<Int, Float>;
+	function screenchars(row:Int, col:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.screencol()
@@ -15322,7 +15433,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function screencol():lua.Table<Int, Float>;
+	function screencol():lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.screenpos(winid: integer, lnum: integer, col: integer)
@@ -15355,7 +15466,7 @@ extern class Fn {
 		 Returns an empty Dict if {winid} is invalid.
 	**/
 	@:luaDotMethod
-	function screenpos(winid:Float, lnum:Float, col:Float):Any;
+	function screenpos(winid:Int, lnum:Int, col:Int):Any;
 	/**
 		```lua
 		function table.screenrow()
@@ -15372,7 +15483,7 @@ extern class Fn {
 		 Note: Same restrictions as with |screencol()|.
 	**/
 	@:luaDotMethod
-	function screenrow():Float;
+	function screenrow():Int;
 	/**
 		```lua
 		function table.screenstring(row: integer, col: integer)
@@ -15389,7 +15500,7 @@ extern class Fn {
 		 Returns an empty String when row or col is out of range.
 	**/
 	@:luaDotMethod
-	function screenstring(row:Float, col:Float):String;
+	function screenstring(row:Int, col:Int):String;
 	/**
 		```lua
 		function table.search(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -15503,7 +15614,7 @@ extern class Fn {
 		 The 'n' flag tells the function not to move the cursor.
 	**/
 	@:luaDotMethod
-	function search(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Float;
+	function search(pattern:String, ?flags:String, ?stopline:Int, ?timeout:Int, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Int;
 	@:native("searchcount")
 	@:luaDotMethod
 	private function __searchcount(?options:lua.Table.AnyTable):Any;
@@ -15636,7 +15747,7 @@ extern class Fn {
 		         (default: cursor's position)
 	**/
 	inline function searchcount(?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __searchcount(options);
 	}
 	/**
@@ -15760,7 +15871,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function searchpair(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Float;
+	function searchpair(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Int, ?timeout:Int):Int;
 	/**
 		```lua
 		function table.searchpairpos(start: string, middle: string, end_: string, flags?: string, skip?: string|function, stopline?: integer, timeout?: integer)
@@ -15780,7 +15891,7 @@ extern class Fn {
 		 See |match-parens| for a bigger and more useful example.
 	**/
 	@:luaDotMethod
-	function searchpairpos(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Float, ?timeout:Float):Dynamic;
+	function searchpairpos(start:String, middle:String, end_:String, ?flags:String, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?stopline:Int, ?timeout:Int):Dynamic;
 	/**
 		```lua
 		function table.searchpos(pattern: string, flags?: string, stopline?: integer, timeout?: integer, skip?: string|function)
@@ -15804,7 +15915,7 @@ extern class Fn {
 		 found |/\l|, 3 when an uppercase letter is found |/\u|.
 	**/
 	@:luaDotMethod
-	function searchpos(pattern:String, ?flags:String, ?stopline:Float, ?timeout:Float, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
+	function searchpos(pattern:String, ?flags:String, ?stopline:Int, ?timeout:Int, ?skip:haxe.extern.EitherType<String, haxe.Constraints.Function>):Any;
 	/**
 		```lua
 		function table.serverlist()
@@ -15878,7 +15989,7 @@ extern class Fn {
 		 address in |serverlist()|.
 	**/
 	@:luaDotMethod
-	function serverstop(address:String):Float;
+	function serverstop(address:String):Int;
 	/**
 		```lua
 		function table.setbufline(buf: string|integer, lnum: integer, text: string|string[])
@@ -15912,7 +16023,7 @@ extern class Fn {
 		 error message is given.
 	**/
 	@:luaDotMethod
-	function setbufline(buf:haxe.extern.EitherType<Float, String>, lnum:Float, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Float;
+	function setbufline(buf:haxe.extern.EitherType<Int, String>, lnum:Int, text:haxe.extern.EitherType<String, lua.Table<Int, String>>):Int;
 	/**
 		```lua
 		function table.setbufvar(buf: string|integer, varname: string, val: any)
@@ -15935,7 +16046,10 @@ extern class Fn {
 		 <This function is not available in the |sandbox|.
 	**/
 	@:luaDotMethod
-	function setbufvar(buf:haxe.extern.EitherType<Float, String>, varname:String, val:Any):Any;
+	function setbufvar(buf:haxe.extern.EitherType<Int, String>, varname:String, val:Any):Any;
+	@:native("setcellwidths")
+	@:luaDotMethod
+	private function __setcellwidths(list:lua.Table<Int, Any>):Any;
 	/**
 		```lua
 		function table.setcellwidths(list: any[])
@@ -15977,8 +16091,13 @@ extern class Fn {
 		 match with what Vim knows about each emoji.  If it doesn't
 		 look right you need to adjust the {list} argument.
 	**/
+	inline function setcellwidths(list:Array<Any>):Any {
+		final list:nvim.helper.Native.LuaArray<Any> = list;
+		return __setcellwidths(list);
+	}
+	@:native("setcharpos")
 	@:luaDotMethod
-	function setcellwidths(list:lua.Table<Int, Any>):Any;
+	private function __setcharpos(expr:String, list:lua.Table<Int, Int>):Any;
 	/**
 		```lua
 		function table.setcharpos(expr: string, list: integer[])
@@ -15997,8 +16116,10 @@ extern class Fn {
 		   call setpos('.', [0, 8, 4, 0])
 		 <positions the cursor on the second character '보'.
 	**/
-	@:luaDotMethod
-	function setcharpos(expr:String, list:lua.Table<Int, Float>):Any;
+	inline function setcharpos(expr:String, list:Array<Int>):Any {
+		final list:nvim.helper.Native.LuaArray<Int> = list;
+		return __setcharpos(expr, list);
+	}
 	/**
 		```lua
 		function table.setcharsearch(dict: string)
@@ -16043,7 +16164,7 @@ extern class Fn {
 		 line.
 	**/
 	@:luaDotMethod
-	function setcmdline(str:String, ?pos:Float):Float;
+	function setcmdline(str:String, ?pos:Int):Int;
 	/**
 		```lua
 		function table.setcmdpos(pos: integer)
@@ -16067,7 +16188,7 @@ extern class Fn {
 		 line.
 	**/
 	@:luaDotMethod
-	function setcmdpos(pos:Float):Any;
+	function setcmdpos(pos:Int):Any;
 	/**
 		```lua
 		function table.setcursorcharpos(lnum: string|integer, col?: integer, off?: integer)
@@ -16094,7 +16215,7 @@ extern class Fn {
 		 <positions the cursor on the first character '여'.
 	**/
 	@:luaDotMethod
-	function setcursorcharpos(lnum:haxe.extern.EitherType<Float, String>, ?col:Float, ?off:Float):Any;
+	function setcursorcharpos(lnum:haxe.extern.EitherType<Int, String>, ?col:Int, ?off:Int):Any;
 	/**
 		```lua
 		function table.setenv(name: string, val: string)
@@ -16173,10 +16294,10 @@ extern class Fn {
 		 <Note: The '[ and '] marks are not set.
 	**/
 	@:luaDotMethod
-	function setline(lnum:haxe.extern.EitherType<Float, String>, text:Any):Any;
+	function setline(lnum:haxe.extern.EitherType<Int, String>, text:Any):Any;
 	@:native("setloclist")
 	@:luaDotMethod
-	private function __setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
+	private function __setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.setloclist(nr: integer, list: any, action?: string, what?: table)
@@ -16200,8 +16321,8 @@ extern class Fn {
 		 only the items listed in {what} are set. Refer to |setqflist()|
 		 for the list of supported keys in {what}.
 	**/
-	inline function setloclist(nr:Float, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
-		what = nvim.helper.Arg.pure(what);
+	inline function setloclist(nr:Int, list:Any, ?action:String, ?what:lua.Table.AnyTable):Any {
+		final what:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = what;
 		return __setloclist(nr, list, action, what);
 	}
 	/**
@@ -16220,7 +16341,10 @@ extern class Fn {
 		 window ID instead of the current window.
 	**/
 	@:luaDotMethod
-	function setmatches(list:Any, ?win:Float):Any;
+	function setmatches(list:Any, ?win:Int):Any;
+	@:native("setpos")
+	@:luaDotMethod
+	private function __setpos(expr:String, list:lua.Table<Int, Int>):Any;
 	/**
 		```lua
 		function table.setpos(expr: string, list: integer[])
@@ -16277,11 +16401,13 @@ extern class Fn {
 		 also set the preferred column.  Also see the "curswant" key in
 		 |winrestview()|.
 	**/
-	@:luaDotMethod
-	function setpos(expr:String, list:lua.Table<Int, Float>):Any;
+	inline function setpos(expr:String, list:Array<Int>):Any {
+		final list:nvim.helper.Native.LuaArray<Int> = list;
+		return __setpos(expr, list);
+	}
 	@:native("setqflist")
 	@:luaDotMethod
-	private function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float;
+	private function __setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int;
 	/**
 		```lua
 		function table.setqflist(list: vim.quickfix.entry[], action?: string, what?: vim.fn.setqflist.what)
@@ -16405,8 +16531,9 @@ extern class Fn {
 		 independent of the 'errorformat' setting.  Use a command like
 		 `:cc 1` to jump to the first position.
 	**/
-	inline function setqflist(list:lua.Table<Int, nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Float {
-		what = nvim.helper.Arg.pure(what);
+	inline function setqflist(list:Array<nvim.type.vim.quickfix.Entry>, ?action:String, ?what:nvim.type.vim.fn.setqflist.What):Int {
+		final list:nvim.helper.Native.LuaArray<nvim.type.vim.quickfix.Entry> = list;
+		final what:nvim.helper.Native.LuaObject<nvim.type.vim.fn.setqflist.What> = what;
 		return __setqflist(list, action, what);
 	}
 	/**
@@ -16490,7 +16617,7 @@ extern class Fn {
 		 This function is not available in the |sandbox|.
 	**/
 	@:luaDotMethod
-	function settabvar(tabnr:Float, varname:String, val:Any):Any;
+	function settabvar(tabnr:Int, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.settabwinvar(tabnr: integer, winnr: integer, varname: string, val: any)
@@ -16515,7 +16642,7 @@ extern class Fn {
 		 <This function is not available in the |sandbox|.
 	**/
 	@:luaDotMethod
-	function settabwinvar(tabnr:Float, winnr:Float, varname:String, val:Any):Any;
+	function settabwinvar(tabnr:Int, winnr:Int, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.settagstack(nr: integer, dict: any, action?: string)
@@ -16558,7 +16685,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function settagstack(nr:Float, dict:Any, ?action:String):Any;
+	function settagstack(nr:Int, dict:Any, ?action:String):Any;
 	/**
 		```lua
 		function table.setwinvar(nr: integer, varname: string, val: any)
@@ -16573,7 +16700,7 @@ extern class Fn {
 		   call setwinvar(2, "myvar", "foobar")
 	**/
 	@:luaDotMethod
-	function setwinvar(nr:Float, varname:String, val:Any):Any;
+	function setwinvar(nr:Int, varname:String, val:Any):Any;
 	/**
 		```lua
 		function table.sha256(string: string)
@@ -16657,7 +16784,7 @@ extern class Fn {
 		 will be assumed.
 	**/
 	@:luaDotMethod
-	function shiftwidth(?col:Float):Float;
+	function shiftwidth(?col:Int):Int;
 	@:native("sign_define")
 	@:luaDotMethod
 	private function __sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float;
@@ -16731,7 +16858,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_define(name:String, ?dict:nvim.type.vim.fn.sign_define.Dict):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_define.Dict> = dict;
 		return __sign_define(name, dict);
 	}
 	/**
@@ -16782,7 +16909,7 @@ extern class Fn {
 	function sign_getdefined(?name:String):lua.Table<Int, nvim.type.vim.fn.sign_getdefined.ret.Item>;
 	@:native("sign_getplaced")
 	@:luaDotMethod
-	private function __sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
+	private function __sign_getplaced(?buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item>;
 	/**
 		```lua
 		function table.sign_getplaced(buf?: string|integer, dict?: vim.fn.sign_getplaced.dict)
@@ -16851,8 +16978,8 @@ extern class Fn {
 		   echo sign_getplaced()
 		 <
 	**/
-	inline function sign_getplaced(?buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item> {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function sign_getplaced(?buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_getplaced.Dict):lua.Table<Int, nvim.type.vim.fn.sign_getplaced.ret.Item> {
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_getplaced.Dict> = dict;
 		return __sign_getplaced(buf, dict);
 	}
 	/**
@@ -16879,10 +17006,10 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function sign_jump(id:Float, group:String, buf:haxe.extern.EitherType<Float, String>):Float;
+	function sign_jump(id:Int, group:String, buf:haxe.extern.EitherType<Int, String>):Int;
 	@:native("sign_place")
 	@:luaDotMethod
-	private function __sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float;
+	private function __sign_place(id:Int, group:String, name:String, buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Int;
 	/**
 		```lua
 		function table.sign_place(id: integer, group: string, name: string, buf: string|integer, dict?: vim.fn.sign_place.dict)
@@ -16939,10 +17066,13 @@ extern class Fn {
 		       \ {'lnum' : 40, 'priority' : 90})
 		 <
 	**/
-	inline function sign_place(id:Float, group:String, name:String, buf:haxe.extern.EitherType<Float, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Float {
-		dict = nvim.helper.Arg.pure(dict);
+	inline function sign_place(id:Int, group:String, name:String, buf:haxe.extern.EitherType<Int, String>, ?dict:nvim.type.vim.fn.sign_place.Dict):Int {
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_place.Dict> = dict;
 		return __sign_place(id, group, name, buf, dict);
 	}
+	@:native("sign_placelist")
+	@:luaDotMethod
+	private function __sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.sign_placelist(list: vim.fn.sign_placelist.list.item[])
@@ -17010,8 +17140,10 @@ extern class Fn {
 		     \ ])
 		 <
 	**/
-	@:luaDotMethod
-	function sign_placelist(list:lua.Table<Int, nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Float>;
+	inline function sign_placelist(list:Array<nvim.type.vim.fn.sign_placelist.list.Item>):lua.Table<Int, Int> {
+		final list:nvim.helper.Native.LuaArray<nvim.type.vim.fn.sign_placelist.list.Item> = list;
+		return __sign_placelist(list);
+	}
 	/**
 		```lua
 		function table.sign_undefine(name?: string)
@@ -17119,7 +17251,7 @@ extern class Fn {
 		```
 	**/
 	inline function sign_unplace(group:String, ?dict:nvim.type.vim.fn.sign_unplace.Dict):Float {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplace.Dict> = dict;
 		return __sign_unplace(group, dict);
 	}
 	@:native("sign_unplacelist")
@@ -17162,7 +17294,7 @@ extern class Fn {
 		 <
 	**/
 	inline function sign_unplacelist(list:nvim.type.vim.fn.sign_unplacelist.list.Item):lua.Table<Int, Float> {
-		list = nvim.helper.Arg.pure(list);
+		final list:nvim.helper.Native.LuaObject<nvim.type.vim.fn.sign_unplacelist.list.Item> = list;
 		return __sign_unplacelist(list);
 	}
 	/**
@@ -17248,7 +17380,7 @@ extern class Fn {
 		 Returns an empty value if {start} or {end} are invalid.
 	**/
 	@:luaDotMethod
-	function slice(expr:Any, start:Float, ?end_:Float):Any;
+	function slice(expr:Any, start:Int, ?end_:Int):Any;
 	@:native("sockconnect")
 	@:luaDotMethod
 	private function __sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any;
@@ -17285,9 +17417,12 @@ extern class Fn {
 		   - 0 on invalid arguments or connection failure.
 	**/
 	inline function sockconnect(mode:String, address:String, ?opts:lua.Table.AnyTable):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __sockconnect(mode, address, opts);
 	}
+	@:native("sort")
+	@:luaDotMethod
+	private function __sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
 	/**
 		```lua
 		function table.sort(list: <T>[], how?: string|function, dict?: any)
@@ -17368,8 +17503,10 @@ extern class Fn {
 		   eval mylist->sort({i1, i2 -> i1 - i2})
 		 <
 	**/
-	@:luaDotMethod
-	function sort<T>(list:lua.Table<Int, T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T>;
+	inline function sort<T>(list:Array<T>, ?how:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?dict:Any):lua.Table<Int, T> {
+		final list:nvim.helper.Native.LuaArray<T> = list;
+		return __sort(list, how, dict);
+	}
 	/**
 		```lua
 		function table.soundfold(word: string)
@@ -17449,7 +17586,7 @@ extern class Fn {
 		 values of 'spelllang' and 'spellsuggest' are used.
 	**/
 	@:luaDotMethod
-	function spellsuggest(word:String, ?max:Float, ?capital:Bool):lua.Table<Int, String>;
+	function spellsuggest(word:String, ?max:Int, ?capital:Bool):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.split(string: string, pattern?: string, keepempty?: boolean)
@@ -17601,7 +17738,7 @@ extern class Fn {
 		   - 0 on invalid arguments
 	**/
 	inline function stdioopen(opts:lua.Table.AnyTable):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __stdioopen(opts);
 	}
 	/**
@@ -17761,7 +17898,7 @@ extern class Fn {
 		 Returns 0 if {string} is empty or on error.
 	**/
 	@:luaDotMethod
-	function str2nr(string:String, ?base:Float):Any;
+	function str2nr(string:String, ?base:Int):Any;
 	/**
 		```lua
 		function table.strcharlen(string: string)
@@ -17804,7 +17941,7 @@ extern class Fn {
 		 Returns an empty string on error.
 	**/
 	@:luaDotMethod
-	function strcharpart(src:String, start:Float, ?len:Float, ?skipcc:Bool):Any;
+	function strcharpart(src:String, start:Int, ?len:Int, ?skipcc:Bool):Any;
 	/**
 		```lua
 		function table.strchars(string: string, skipcc?: boolean)
@@ -17842,7 +17979,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function strchars(string:String, ?skipcc:Bool):Float;
+	function strchars(string:String, ?skipcc:Bool):Int;
 	/**
 		```lua
 		function table.strdisplaywidth(string: string, col?: integer)
@@ -17865,7 +18002,7 @@ extern class Fn {
 		 Also see |strlen()|, |strwidth()| and |strchars()|.
 	**/
 	@:luaDotMethod
-	function strdisplaywidth(string:String, ?col:Float):Float;
+	function strdisplaywidth(string:String, ?col:Int):Int;
 	/**
 		```lua
 		function table.strftime(format: string, time?: number)
@@ -17909,7 +18046,7 @@ extern class Fn {
 		 Also see |strcharpart()| and |strchars()|.
 	**/
 	@:luaDotMethod
-	function strgetchar(str:String, index:Float):Float;
+	function strgetchar(str:String, index:Int):Int;
 	/**
 		```lua
 		function table.stridx(haystack: string, needle: string, start?: integer)
@@ -17937,7 +18074,7 @@ extern class Fn {
 		 with a single character it works similar to strchr().
 	**/
 	@:luaDotMethod
-	function stridx(haystack:String, needle:String, ?start:Float):Float;
+	function stridx(haystack:String, needle:String, ?start:Int):Int;
 	/**
 		```lua
 		function table.string(expr: any)
@@ -17988,7 +18125,7 @@ extern class Fn {
 		 Also see |len()|, |strdisplaywidth()| and |strwidth()|.
 	**/
 	@:luaDotMethod
-	function strlen(string:String):Float;
+	function strlen(string:String):Int;
 	/**
 		```lua
 		function table.strpart(src: string, start: integer, len?: integer, chars?: 0|1)
@@ -18029,7 +18166,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function strpart(src:String, start:Float, ?len:Float, ?chars:Float):String;
+	function strpart(src:String, start:Int, ?len:Int, ?chars:Float):String;
 	/**
 		```lua
 		function table.strptime(format: string, timestring: string)
@@ -18062,7 +18199,7 @@ extern class Fn {
 		 <  Sun Apr 27 12:53:55 1997
 	**/
 	@:luaDotMethod
-	function strptime(format:String, timestring:String):Float;
+	function strptime(format:String, timestring:String):Int;
 	/**
 		```lua
 		function table.strridx(haystack: string, needle: string, start?: integer)
@@ -18089,7 +18226,7 @@ extern class Fn {
 		 function strrchr().
 	**/
 	@:luaDotMethod
-	function strridx(haystack:String, needle:String, ?start:Float):Float;
+	function strridx(haystack:String, needle:String, ?start:Int):Int;
 	/**
 		```lua
 		function table.strtrans(string: string)
@@ -18144,7 +18281,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function strutf16len(string:String, ?countcc:Float):Float;
+	function strutf16len(string:String, ?countcc:Float):Int;
 	/**
 		```lua
 		function table.strwidth(string: string)
@@ -18162,7 +18299,7 @@ extern class Fn {
 		 Also see |strlen()|, |strdisplaywidth()| and |strchars()|.
 	**/
 	@:luaDotMethod
-	function strwidth(string:String):Float;
+	function strwidth(string:String):Int;
 	/**
 		```lua
 		function table.submatch(nr: integer, list?: any)
@@ -18206,7 +18343,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function submatch(nr:Float, ?list:Void):String;
+	function submatch(nr:Int, ?list:Void):String;
 	/**
 		```lua
 		function table.substitute(string: string, pat: string, sub: string, flags: string)
@@ -18321,7 +18458,7 @@ extern class Fn {
 		 If buffer {buf} has no swap file, returns an empty string.
 	**/
 	@:luaDotMethod
-	function swapname(buf:haxe.extern.EitherType<Float, String>):String;
+	function swapname(buf:haxe.extern.EitherType<Int, String>):String;
 	/**
 		```lua
 		function table.synID(lnum: string|integer, col: integer, trans: 0|1)
@@ -18363,7 +18500,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function synID(lnum:haxe.extern.EitherType<Float, String>, col:Float, trans:Float):Float;
+	function synID(lnum:haxe.extern.EitherType<Int, String>, col:Int, trans:Float):Int;
 	/**
 		```lua
 		function table.synIDattr(synID: integer, what: string, mode?: string)
@@ -18418,7 +18555,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function synIDattr(synID:Float, what:String, ?mode:String):String;
+	function synIDattr(synID:Int, what:String, ?mode:String):String;
 	/**
 		```lua
 		function table.synIDtrans(synID: integer)
@@ -18435,7 +18572,7 @@ extern class Fn {
 		 Returns zero on error.
 	**/
 	@:luaDotMethod
-	function synIDtrans(synID:Float):Float;
+	function synIDtrans(synID:Int):Int;
 	/**
 		```lua
 		function table.synconcealed(lnum: string|integer, col: integer)
@@ -18473,7 +18610,7 @@ extern class Fn {
 		 mechanisms |syntax-vs-match|.
 	**/
 	@:luaDotMethod
-	function synconcealed(lnum:haxe.extern.EitherType<Float, String>, col:Float):Dynamic;
+	function synconcealed(lnum:haxe.extern.EitherType<Int, String>, col:Int):Dynamic;
 	/**
 		```lua
 		function table.synstack(lnum: string|integer, col: integer)
@@ -18501,7 +18638,7 @@ extern class Fn {
 		 valid positions.
 	**/
 	@:luaDotMethod
-	function synstack(lnum:haxe.extern.EitherType<Float, String>, col:Float):lua.Table<Int, Float>;
+	function synstack(lnum:haxe.extern.EitherType<Int, String>, col:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.system(cmd: string|string[], input?: string|integer|string[])
@@ -18559,7 +18696,7 @@ extern class Fn {
 		 Use |:checktime| to force a check.
 	**/
 	@:luaDotMethod
-	function system(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>):String;
+	function system(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Int>>):String;
 	/**
 		```lua
 		function table.systemlist(cmd: string|string[], input?: string|integer|string[], keepempty?: integer)
@@ -18582,7 +18719,7 @@ extern class Fn {
 		 Returns an empty string on error.
 	**/
 	@:luaDotMethod
-	function systemlist(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Float>>, ?keepempty:Float):lua.Table<Int, String>;
+	function systemlist(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?input:haxe.extern.EitherType<String, haxe.extern.EitherType<lua.Table<Int, String>, Int>>, ?keepempty:Int):lua.Table<Int, String>;
 	/**
 		```lua
 		function table.tabpagebuflist(arg?: integer)
@@ -18604,7 +18741,7 @@ extern class Fn {
 		 <Note that a buffer may appear in more than one window.
 	**/
 	@:luaDotMethod
-	function tabpagebuflist(?arg:Float):Any;
+	function tabpagebuflist(?arg:Int):Any;
 	/**
 		```lua
 		function table.tabpagenr(arg?: '#'|'$')
@@ -18634,7 +18771,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function tabpagenr(?arg:String):Float;
+	function tabpagenr(?arg:String):Int;
 	/**
 		```lua
 		function table.tabpagewinnr(tabarg: integer, arg?: '#'|'$')
@@ -18663,7 +18800,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function tabpagewinnr(tabarg:Float, ?arg:String):Float;
+	function tabpagewinnr(tabarg:Int, ?arg:String):Int;
 	/**
 		```lua
 		function table.tagfiles()
@@ -18788,7 +18925,7 @@ extern class Fn {
 	function tempname():String;
 	@:native("termopen")
 	@:luaDotMethod
-	private function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float;
+	private function __termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function table.termopen(cmd: string|string[], opts?: table)
@@ -18800,8 +18937,8 @@ extern class Fn {
 		 Use |jobstart()| with `{term: v:true}` instead.
 	**/
 	@:deprecated
-	inline function termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Float {
-		opts = nvim.helper.Arg.pure(opts);
+	inline function termopen(cmd:haxe.extern.EitherType<String, lua.Table<Int, String>>, ?opts:lua.Table.AnyTable):Int {
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __termopen(cmd, opts);
 	}
 	/**
@@ -18839,7 +18976,7 @@ extern class Fn {
 		     "callback"      the callback
 	**/
 	@:luaDotMethod
-	function timer_info(?id:Float):Any;
+	function timer_info(?id:Int):Any;
 	/**
 		```lua
 		function table.timer_pause(timer: integer, paused: boolean)
@@ -18861,7 +18998,7 @@ extern class Fn {
 		 See |non-zero-arg|.
 	**/
 	@:luaDotMethod
-	function timer_pause(timer:Float, paused:Bool):Any;
+	function timer_pause(timer:Int, paused:Bool):Any;
 	@:native("timer_start")
 	@:luaDotMethod
 	private function __timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any;
@@ -18903,7 +19040,7 @@ extern class Fn {
 		 <This invokes MyHandler() three times at 500 msec intervals.
 	**/
 	inline function timer_start(time:Float, callback:haxe.extern.EitherType<String, haxe.Constraints.Function>, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __timer_start(time, callback, options);
 	}
 	/**
@@ -18919,7 +19056,7 @@ extern class Fn {
 		 Number.  If {timer} does not exist there is no error.
 	**/
 	@:luaDotMethod
-	function timer_stop(timer:Float):Any;
+	function timer_stop(timer:Int):Any;
 	/**
 		```lua
 		function table.timer_stopall()
@@ -19053,7 +19190,7 @@ extern class Fn {
 		 <  4.0
 	**/
 	@:luaDotMethod
-	function trunc(expr:Float):Float;
+	function trunc(expr:Float):Int;
 	/**
 		```lua
 		function table.type(expr: any)
@@ -19090,7 +19227,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function type(expr:Any):Float;
+	function type(expr:Any):Int;
 	/**
 		```lua
 		function table.undofile(name: string)
@@ -19163,7 +19300,7 @@ extern class Fn {
 		     item.
 	**/
 	@:luaDotMethod
-	function undotree(?buf:haxe.extern.EitherType<Float, String>):nvim.type.vim.fn.undotree.Ret;
+	function undotree(?buf:haxe.extern.EitherType<Int, String>):nvim.type.vim.fn.undotree.Ret;
 	/**
 		```lua
 		function table.uniq(list: any, func?: any, dict?: any)
@@ -19225,7 +19362,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function utf16idx(string:String, idx:Float, ?countcc:Bool, ?charidx:Bool):Float;
+	function utf16idx(string:String, idx:Int, ?countcc:Bool, ?charidx:Bool):Int;
 	/**
 		```lua
 		function table.values(dict: any)
@@ -19296,7 +19433,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function virtcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?list:Bool, ?winid:Float):Any;
+	function virtcol(expr:haxe.extern.EitherType<String, lua.Table<Int, Any>>, ?list:Bool, ?winid:Int):Any;
 	/**
 		```lua
 		function table.virtcol2col(winid: integer, lnum: integer, col: integer)
@@ -19327,7 +19464,7 @@ extern class Fn {
 		 See also |screenpos()|, |virtcol()| and |col()|.
 	**/
 	@:luaDotMethod
-	function virtcol2col(winid:Float, lnum:Float, col:Float):Float;
+	function virtcol2col(winid:Int, lnum:Int, col:Int):Int;
 	/**
 		```lua
 		function table.visualmode(expr?: boolean)
@@ -19379,7 +19516,7 @@ extern class Fn {
 		   -3 if an error occurred
 	**/
 	@:luaDotMethod
-	function wait(timeout:Float, condition:Any, ?interval:Float):Any;
+	function wait(timeout:Int, condition:Any, ?interval:Float):Any;
 	/**
 		```lua
 		function table.wildmenumode()
@@ -19422,7 +19559,7 @@ extern class Fn {
 		 an empty string is returned.
 	**/
 	@:luaDotMethod
-	function win_execute(id:Float, command:String, ?silent:Bool):Any;
+	function win_execute(id:Int, command:String, ?silent:Bool):Any;
 	/**
 		```lua
 		function table.win_findbuf(bufnr: integer)
@@ -19435,7 +19572,7 @@ extern class Fn {
 		 buffer {bufnr}.  When there is none the list is empty.
 	**/
 	@:luaDotMethod
-	function win_findbuf(bufnr:Float):lua.Table<Int, Float>;
+	function win_findbuf(bufnr:Int):lua.Table<Int, Int>;
 	/**
 		```lua
 		function table.win_getid(win?: integer, tab?: integer)
@@ -19453,7 +19590,7 @@ extern class Fn {
 		 Return zero if the window cannot be found.
 	**/
 	@:luaDotMethod
-	function win_getid(?win:Float, ?tab:Float):Float;
+	function win_getid(?win:Int, ?tab:Int):Int;
 	/**
 		```lua
 		function table.win_gettype(nr?: integer)
@@ -19493,7 +19630,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function win_gettype(?nr:Float):String;
+	function win_gettype(?nr:Int):String;
 	/**
 		```lua
 		function table.win_gotoid(expr: integer)
@@ -19514,7 +19651,7 @@ extern class Fn {
 		```
 	**/
 	@:luaDotMethod
-	function win_gotoid(expr:Float):Float;
+	function win_gotoid(expr:Int):Float;
 	/**
 		```lua
 		function table.win_id2tabwin(expr: integer)
@@ -19528,7 +19665,7 @@ extern class Fn {
 		 Return [0, 0] if the window cannot be found.
 	**/
 	@:luaDotMethod
-	function win_id2tabwin(expr:Float):Any;
+	function win_id2tabwin(expr:Int):Any;
 	/**
 		```lua
 		function table.win_id2win(expr: integer)
@@ -19541,7 +19678,7 @@ extern class Fn {
 		 Return 0 if the window cannot be found in the current tabpage.
 	**/
 	@:luaDotMethod
-	function win_id2win(expr:Float):Float;
+	function win_id2win(expr:Int):Int;
 	/**
 		```lua
 		function table.win_move_separator(nr: integer, offset: integer)
@@ -19565,7 +19702,7 @@ extern class Fn {
 		 Only works for the current tab page. *E1308*
 	**/
 	@:luaDotMethod
-	function win_move_separator(nr:Float, offset:Float):Any;
+	function win_move_separator(nr:Int, offset:Int):Any;
 	/**
 		```lua
 		function table.win_move_statusline(nr: integer, offset: integer)
@@ -19586,7 +19723,7 @@ extern class Fn {
 		 Only works for the current tab page.
 	**/
 	@:luaDotMethod
-	function win_move_statusline(nr:Float, offset:Float):Any;
+	function win_move_statusline(nr:Int, offset:Int):Any;
 	/**
 		```lua
 		function table.win_screenpos(nr: integer)
@@ -19603,10 +19740,10 @@ extern class Fn {
 		 Returns [0, 0] if the window cannot be found.
 	**/
 	@:luaDotMethod
-	function win_screenpos(nr:Float):Any;
+	function win_screenpos(nr:Int):Any;
 	@:native("win_splitmove")
 	@:luaDotMethod
-	private function __win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any;
+	private function __win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any;
 	/**
 		```lua
 		function table.win_splitmove(nr: integer, target: integer, options?: table)
@@ -19634,8 +19771,8 @@ extern class Fn {
 		     present, the values of 'splitbelow' and
 		     'splitright' are used.
 	**/
-	inline function win_splitmove(nr:Float, target:Float, ?options:lua.Table.AnyTable):Any {
-		options = nvim.helper.Arg.pure(options);
+	inline function win_splitmove(nr:Int, target:Int, ?options:lua.Table.AnyTable):Any {
+		final options:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = options;
 		return __win_splitmove(nr, target, options);
 	}
 	/**
@@ -19657,7 +19794,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function winbufnr(nr:Float):Float;
+	function winbufnr(nr:Int):Int;
 	/**
 		```lua
 		function table.wincol()
@@ -19671,7 +19808,7 @@ extern class Fn {
 		 left side of the window.  The leftmost column is one.
 	**/
 	@:luaDotMethod
-	function wincol():Float;
+	function wincol():Int;
 	/**
 		```lua
 		function table.windowsversion()
@@ -19705,7 +19842,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function winheight(nr:Float):Float;
+	function winheight(nr:Int):Int;
 	/**
 		```lua
 		function table.winlayout(tabnr?: integer)
@@ -19751,7 +19888,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function winlayout(?tabnr:Float):nvim.type.vim.fn.winlayout.Ret;
+	function winlayout(?tabnr:Int):nvim.type.vim.fn.winlayout.Ret;
 	/**
 		```lua
 		function table.winline()
@@ -19767,7 +19904,7 @@ extern class Fn {
 		 first, this may cause a scroll.
 	**/
 	@:luaDotMethod
-	function winline():Float;
+	function winline():Int;
 	/**
 		```lua
 		function table.winnr(arg?: string|integer)
@@ -19808,7 +19945,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function winnr(?arg:haxe.extern.EitherType<String, Float>):Float;
+	function winnr(?arg:haxe.extern.EitherType<String, Int>):Int;
 	/**
 		```lua
 		function table.winrestcmd()
@@ -19856,7 +19993,7 @@ extern class Fn {
 		 If the window size changed the result won't be the same.
 	**/
 	inline function winrestview(dict:nvim.type.vim.fn.winrestview.Dict):Any {
-		dict = nvim.helper.Arg.pure(dict);
+		final dict:nvim.helper.Native.LuaObject<nvim.type.vim.fn.winrestview.Dict> = dict;
 		return __winrestview(dict);
 	}
 	/**
@@ -19920,7 +20057,7 @@ extern class Fn {
 		 To get the Nvim screen size, see the 'columns' option.
 	**/
 	@:luaDotMethod
-	function winwidth(nr:Float):Float;
+	function winwidth(nr:Int):Int;
 	/**
 		```lua
 		function table.wordcount()
@@ -20023,7 +20160,7 @@ extern class Fn {
 		 <
 	**/
 	@:luaDotMethod
-	function xor(expr:Float, expr1:Float):Float;
+	function xor(expr:Int, expr1:Int):Int;
 }
 
 /**
@@ -20821,7 +20958,7 @@ extern class Go {
 		 from Nvim itself and plugins, will not be displayed.
 		
 	**/
-	var cmdheight : Float;
+	var cmdheight : Int;
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -20832,7 +20969,7 @@ extern class Go {
 		 Number of screen lines to use for the command-line window. `cmdwin`
 		
 	**/
-	var cmdwinheight : Float;
+	var cmdwinheight : Int;
 	/**
 		```lua
 		(global) table.colorcolumn: unknown
@@ -20863,7 +21000,7 @@ extern class Go {
 		 Minimum value is 12, maximum value is 10000.
 		
 	**/
-	var columns : Float;
+	var columns : Int;
 	/**
 		```lua
 		(global) table.comments: unknown
@@ -22178,7 +22315,7 @@ extern class Go {
 		 When the value is negative, it is not used.
 		
 	**/
-	var foldlevelstart : Float;
+	var foldlevelstart : Int;
 	/**
 		```lua
 		(global) table.foldmarker: unknown
@@ -22638,7 +22775,7 @@ extern class Go {
 		 set to 'helpheight'.  Set to zero to disable.
 		
 	**/
-	var helpheight : Float;
+	var helpheight : Int;
 	/**
 		```lua
 		(global) table.helplang: string
@@ -22708,7 +22845,7 @@ extern class Go {
 		 The maximum value is 10000.
 		
 	**/
-	var history : Float;
+	var history : Int;
 	/**
 		```lua
 		(global) table.hkmap: unknown
@@ -23275,7 +23412,7 @@ extern class Go {
 		 windows, but it takes another screen line. `status-line`
 		
 	**/
-	var laststatus : Float;
+	var laststatus : Int;
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -23321,7 +23458,7 @@ extern class Go {
 		 Minimum value is 2, maximum value is 1000.
 		
 	**/
-	var lines : Float;
+	var lines : Int;
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -23339,7 +23476,7 @@ extern class Go {
 		 though!
 		
 	**/
-	var linespace : Float;
+	var linespace : Int;
 	/**
 		```lua
 		(global) table.lisp: unknown
@@ -23621,7 +23758,7 @@ extern class Go {
 		 set a time.  This is to be compatible with Nvi.
 		
 	**/
-	var matchtime : Float;
+	var matchtime : Int;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
@@ -23645,7 +23782,7 @@ extern class Go {
 		 Also used for maximum depth of callback functions.
 		
 	**/
-	var maxfuncdepth : Float;
+	var maxfuncdepth : Int;
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -23660,7 +23797,7 @@ extern class Go {
 		 `key-mapping`.
 		
 	**/
-	var maxmapdepth : Float;
+	var maxmapdepth : Int;
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -23682,7 +23819,7 @@ extern class Go {
 		 which case you get an "Out of memory" error instead.
 		
 	**/
-	var maxmempattern : Float;
+	var maxmempattern : Int;
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -23695,7 +23832,7 @@ extern class Go {
 		 option has no direct effect, the menu must be refreshed first.
 		
 	**/
-	var menuitems : Float;
+	var menuitems : Int;
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -23808,7 +23945,7 @@ extern class Go {
 		
 		
 	**/
-	var modelines : Float;
+	var modelines : Int;
 	/**
 		```lua
 		(global) table.modifiable: unknown
@@ -24033,7 +24170,7 @@ extern class Go {
 		 second click to be recognized as a multi click.
 		
 	**/
-	var mousetime : Float;
+	var mousetime : Int;
 	/**
 		```lua
 		(global) table.nrformats: unknown
@@ -24267,7 +24404,7 @@ extern class Go {
 		 commands.  Used for `CTRL-W_}` when no count is given.
 		
 	**/
-	var previewheight : Float;
+	var previewheight : Int;
 	/**
 		```lua
 		(global) table.previewwindow: unknown
@@ -24304,7 +24441,7 @@ extern class Go {
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	var pumblend : Float;
+	var pumblend : Int;
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -24316,7 +24453,7 @@ extern class Go {
 		 (`ins-completion-menu`). Zero means "use available screen space".
 		
 	**/
-	var pumheight : Float;
+	var pumheight : Int;
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -24329,7 +24466,7 @@ extern class Go {
 		 nudged to fit on the screen.
 		
 	**/
-	var pumwidth : Float;
+	var pumwidth : Int;
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -24345,7 +24482,7 @@ extern class Go {
 		 security reasons.
 		
 	**/
-	var pyxversion : Float;
+	var pyxversion : Int;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -24437,7 +24574,7 @@ extern class Go {
 		 pattern.
 		
 	**/
-	var redrawtime : Float;
+	var redrawtime : Int;
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -24459,7 +24596,7 @@ extern class Go {
 		 a complex pattern with long text.
 		
 	**/
-	var regexpengine : Float;
+	var regexpengine : Int;
 	/**
 		```lua
 		(global) table.relativenumber: unknown
@@ -24486,7 +24623,7 @@ extern class Go {
 		 instead of the number of lines.
 		
 	**/
-	var report : Float;
+	var report : Int;
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -24680,7 +24817,7 @@ extern class Go {
 		 height.
 		
 	**/
-	var scrolljump : Float;
+	var scrolljump : Int;
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -25484,7 +25621,7 @@ extern class Go {
 		 See `tab-page` for more information about tab pages.
 		
 	**/
-	var showtabline : Float;
+	var showtabline : Int;
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -25499,7 +25636,7 @@ extern class Go {
 		 for "zh" and "zl" commands.
 		
 	**/
-	var sidescroll : Float;
+	var sidescroll : Int;
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -25535,7 +25672,7 @@ extern class Go {
 		
 		
 	**/
-	var sidescrolloff : Float;
+	var sidescrolloff : Int;
 	/**
 		```lua
 		(global) table.signcolumn: unknown
@@ -26168,7 +26305,7 @@ extern class Go {
 		 argument or the ":tab all" command. `tabpage`
 		
 	**/
-	var tabpagemax : Float;
+	var tabpagemax : Int;
 	/**
 		```lua
 		(global) table.tabstop: unknown
@@ -26268,7 +26405,7 @@ extern class Go {
 		 If non-zero, tags are significant up to this number of characters.
 		
 	**/
-	var taglength : Float;
+	var taglength : Int;
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -26496,7 +26633,7 @@ extern class Go {
 		 Time in milliseconds to wait for a mapped sequence to complete.
 		
 	**/
-	var timeoutlen : Float;
+	var timeoutlen : Int;
 	/**
 		```lua
 		(global) table.title: boolean
@@ -26536,7 +26673,7 @@ extern class Go {
 		 'titlelen' is also used for the 'titlestring' option.
 		
 	**/
-	var titlelen : Float;
+	var titlelen : Int;
 	/**
 		```lua
 		(global) table.titleold: string
@@ -26628,7 +26765,7 @@ extern class Go {
 		 been typed.
 		
 	**/
-	var ttimeoutlen : Float;
+	var ttimeoutlen : Int;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
@@ -26703,7 +26840,7 @@ extern class Go {
 		 Also see `clear-undo`.
 		
 	**/
-	var undolevels : Float;
+	var undolevels : Int;
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -26724,7 +26861,7 @@ extern class Go {
 		 this option to a lower value if you run out of memory.
 		
 	**/
-	var undoreload : Float;
+	var undoreload : Int;
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -26745,7 +26882,7 @@ extern class Go {
 		 or "nowrite".
 		
 	**/
-	var updatecount : Float;
+	var updatecount : Int;
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -26758,7 +26895,7 @@ extern class Go {
 		 `CursorHold` autocommand event.
 		
 	**/
-	var updatetime : Float;
+	var updatetime : Int;
 	/**
 		```lua
 		(global) table.varsofttabstop: unknown
@@ -26806,7 +26943,7 @@ extern class Go {
 		 If 'verbosefile' is set then the verbose messages are not displayed.
 		
 	**/
-	var verbose : Float;
+	var verbose : Int;
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -26987,7 +27124,7 @@ extern class Go {
 		
 		
 	**/
-	var wildchar : Float;
+	var wildchar : Int;
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -27008,7 +27145,7 @@ extern class Go {
 		 Then after typing :ss you can use CTRL-P & CTRL-N.
 		
 	**/
-	var wildcharm : Float;
+	var wildcharm : Int;
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -27296,7 +27433,7 @@ extern class Go {
 		 'lines' for that.
 		
 	**/
-	var window : Float;
+	var window : Int;
 	/**
 		```lua
 		(global) table.winfixbuf: unknown
@@ -27343,7 +27480,7 @@ extern class Go {
 		 the minimal height for other windows.
 		
 	**/
-	var winheight : Float;
+	var winheight : Int;
 	/**
 		```lua
 		(global) table.winhighlight: unknown
@@ -27368,7 +27505,7 @@ extern class Go {
 		 windows.  A value of 0 to 3 is reasonable.
 		
 	**/
-	var winminheight : Float;
+	var winminheight : Int;
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -27388,7 +27525,7 @@ extern class Go {
 		 windows.  A value of 0 to 12 is reasonable.
 		
 	**/
-	var winminwidth : Float;
+	var winminwidth : Int;
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -27407,7 +27544,7 @@ extern class Go {
 		 the minimal width for other windows.
 		
 	**/
-	var winwidth : Float;
+	var winwidth : Int;
 	/**
 		```lua
 		(global) table.wrap: unknown
@@ -27491,7 +27628,7 @@ extern class Go {
 		 The number of milliseconds to wait after each line or each flush
 		
 	**/
-	var writedelay : Float;
+	var writedelay : Int;
 }
 
 /**
@@ -27535,7 +27672,7 @@ extern class Json {
 		                                   to Lua `nil` instead of |vim.NIL|.
 	**/
 	inline function decode(str:String, ?opts:lua.Table<String, Any>):Any {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __decode(str, opts);
 	}
 	@:native("encode")
@@ -27557,7 +27694,7 @@ extern class Json {
 		                                   characters "/" in string values.
 	**/
 	inline function encode(obj:Any, ?opts:lua.Table<String, Any>):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = opts;
 		return __encode(obj, opts);
 	}
 	/**
@@ -27620,7 +27757,7 @@ extern class Lpeg {
 		 Like the `and` predicate, this pattern never consumes any input, independently of success or failure.
 	**/
 	@:luaDotMethod
-	function B(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, lua.Table.AnyTable>>>>):nvim.type.vim.lpeg.Pattern;
+	function B(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, lua.Table.AnyTable>>>>):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.C(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27648,7 +27785,7 @@ extern class Lpeg {
 		 ```
 	**/
 	@:luaDotMethod
-	function C(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	function C(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Carg(n: integer)
@@ -27661,7 +27798,7 @@ extern class Lpeg {
 		 nth extra argument given in the call to `lpeg.match`.
 	**/
 	@:luaDotMethod
-	function Carg(n:Float):nvim.type.vim.lpeg.Capture;
+	function Carg(n:Int):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cb(name: any)
@@ -27719,7 +27856,7 @@ extern class Lpeg {
 		 ```
 	**/
 	@:luaDotMethod
-	function Cf(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, func:() -> Dynamic):nvim.type.vim.lpeg.Capture;
+	function Cf(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, func:() -> Dynamic):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cg(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, name?: string)
@@ -27733,7 +27870,7 @@ extern class Lpeg {
 		 can be any non-nil Lua value).
 	**/
 	@:luaDotMethod
-	function Cg(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, ?name:String):nvim.type.vim.lpeg.Capture;
+	function Cg(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, ?name:String):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cmt(patt: boolean|string|integer|function|table|vim.lpeg.Pattern, fn: fun(s: string, i: integer, ...any):(position: boolean|integer, ...any))
@@ -27753,7 +27890,7 @@ extern class Lpeg {
 		 Any extra values returned by the function become the values produced by the capture.
 	**/
 	@:luaDotMethod
-	function Cmt(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, fn:Dynamic):nvim.type.vim.lpeg.Capture;
+	function Cmt(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, fn:Dynamic):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Cp()
@@ -27803,7 +27940,7 @@ extern class Lpeg {
 		 ```
 	**/
 	@:luaDotMethod
-	function Cs(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	function Cs(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.Ct(patt: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27818,7 +27955,7 @@ extern class Lpeg {
 		 the table with the group name as its key. The captured value is only the table.
 	**/
 	@:luaDotMethod
-	function Ct(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
+	function Ct(patt:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Capture;
 	/**
 		```lua
 		function vim.lpeg.P(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -27840,7 +27977,7 @@ extern class Lpeg {
 		 * If the argument is a function, returns a pattern equivalent to a match-time capture over the empty string.
 	**/
 	@:luaDotMethod
-	function P(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Pattern;
+	function P(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):nvim.type.vim.lpeg.Pattern;
 	/**
 		```lua
 		function vim.lpeg.R(...string)
@@ -27935,7 +28072,7 @@ extern class Lpeg {
 		 ```
 	**/
 	inline function locale(?tab:lua.Table.AnyTable):nvim.type.vim.lpeg.Locale {
-		tab = nvim.helper.Arg.pure(tab);
+		final tab:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = tab;
 		return __locale(tab);
 	}
 	/**
@@ -27965,7 +28102,7 @@ extern class Lpeg {
 		 ```
 	**/
 	@:luaDotMethod
-	function match(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Float, ___:haxe.Rest<Any>):Any;
+	function match(pattern:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>, subject:String, ?init:Int, ___:haxe.Rest<Any>):Any;
 	/**
 		```lua
 		(global) vim.lpeg.pcode: unknown
@@ -27992,7 +28129,7 @@ extern class Lpeg {
 		 Also, with recursive grammars, subjects with deep recursion may also need larger limits.
 	**/
 	@:luaDotMethod
-	function setmaxstack(max:Float):Dynamic;
+	function setmaxstack(max:Int):Dynamic;
 	/**
 		```lua
 		function vim.lpeg.type(value: boolean|string|integer|function|table|vim.lpeg.Pattern)
@@ -28010,7 +28147,7 @@ extern class Lpeg {
 		```
 	**/
 	@:luaDotMethod
-	function type(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Float, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):Null<String>;
+	function type(value:haxe.extern.EitherType<nvim.type.vim.lpeg.Pattern, haxe.extern.EitherType<String, haxe.extern.EitherType<Int, haxe.extern.EitherType<Bool, haxe.extern.EitherType<lua.Table.AnyTable, haxe.Constraints.Function>>>>>):Null<String>;
 	/**
 		```lua
 		(global) vim.lpeg.utfR: unknown
@@ -28885,7 +29022,7 @@ extern class O {
 		 Read-only.
 		
 	**/
-	var channel : Float;
+	var channel : Int;
 	/**
 		```lua
 		(global) table.charconvert: string
@@ -29081,7 +29218,7 @@ extern class O {
 		 from Nvim itself and plugins, will not be displayed.
 		
 	**/
-	var cmdheight : Float;
+	var cmdheight : Int;
 	/**
 		```lua
 		(global) table.cmdwinheight: integer
@@ -29092,7 +29229,7 @@ extern class O {
 		 Number of screen lines to use for the command-line window. `cmdwin`
 		
 	**/
-	var cmdwinheight : Float;
+	var cmdwinheight : Int;
 	/**
 		```lua
 		(global) table.colorcolumn: string
@@ -29142,7 +29279,7 @@ extern class O {
 		 Minimum value is 12, maximum value is 10000.
 		
 	**/
-	var columns : Float;
+	var columns : Int;
 	/**
 		```lua
 		(global) table.comments: string
@@ -29387,7 +29524,7 @@ extern class O {
 		 option.
 		
 	**/
-	var conceallevel : Float;
+	var conceallevel : Int;
 	/**
 		```lua
 		(global) table.confirm: boolean = true
@@ -30827,7 +30964,7 @@ extern class O {
 		 See `fold-foldlevel`.
 		
 	**/
-	var foldlevel : Float;
+	var foldlevel : Int;
 	/**
 		```lua
 		(global) table.foldlevelstart: integer
@@ -30846,7 +30983,7 @@ extern class O {
 		 When the value is negative, it is not used.
 		
 	**/
-	var foldlevelstart : Float;
+	var foldlevelstart : Int;
 	/**
 		```lua
 		(global) table.foldmarker: string
@@ -30894,7 +31031,7 @@ extern class O {
 		 than 'foldminlines', a following "zc" may close a containing fold.
 		
 	**/
-	var foldminlines : Float;
+	var foldminlines : Int;
 	/**
 		```lua
 		(global) table.foldnestmax: integer
@@ -30907,7 +31044,7 @@ extern class O {
 		 than 20 doesn't work, because the internal limit is 20.
 		
 	**/
-	var foldnestmax : Float;
+	var foldnestmax : Int;
 	/**
 		```lua
 		(global) table.foldopen: string
@@ -31434,7 +31571,7 @@ extern class O {
 		 set to 'helpheight'.  Set to zero to disable.
 		
 	**/
-	var helpheight : Float;
+	var helpheight : Int;
 	/**
 		```lua
 		(global) table.helplang: string
@@ -31504,7 +31641,7 @@ extern class O {
 		 The maximum value is 10000.
 		
 	**/
-	var history : Float;
+	var history : Int;
 	/**
 		```lua
 		(global) table.hkmap: unknown
@@ -31635,7 +31772,7 @@ extern class O {
 		 It is also used for the argument of commands like "r" and "f".
 		
 	**/
-	var iminsert : Float;
+	var iminsert : Int;
 	/**
 		```lua
 		(global) table.imsearch: integer
@@ -31656,7 +31793,7 @@ extern class O {
 		 option to a valid keymap name.
 		
 	**/
-	var imsearch : Float;
+	var imsearch : Int;
 	/**
 		```lua
 		(global) table.inccommand: ''|'nosplit'|'split'
@@ -32244,7 +32381,7 @@ extern class O {
 		 windows, but it takes another screen line. `status-line`
 		
 	**/
-	var laststatus : Float;
+	var laststatus : Int;
 	/**
 		```lua
 		(global) table.lazyredraw: boolean
@@ -32303,7 +32440,7 @@ extern class O {
 		 Minimum value is 2, maximum value is 1000.
 		
 	**/
-	var lines : Float;
+	var lines : Int;
 	/**
 		```lua
 		(global) table.linespace: integer
@@ -32321,7 +32458,7 @@ extern class O {
 		 though!
 		
 	**/
-	var linespace : Float;
+	var linespace : Int;
 	/**
 		```lua
 		(global) table.lisp: boolean
@@ -32676,7 +32813,7 @@ extern class O {
 		 set a time.  This is to be compatible with Nvi.
 		
 	**/
-	var matchtime : Float;
+	var matchtime : Int;
 	/**
 		```lua
 		(global) table.maxcombine: unknown
@@ -32700,7 +32837,7 @@ extern class O {
 		 Also used for maximum depth of callback functions.
 		
 	**/
-	var maxfuncdepth : Float;
+	var maxfuncdepth : Int;
 	/**
 		```lua
 		(global) table.maxmapdepth: integer
@@ -32715,7 +32852,7 @@ extern class O {
 		 `key-mapping`.
 		
 	**/
-	var maxmapdepth : Float;
+	var maxmapdepth : Int;
 	/**
 		```lua
 		(global) table.maxmempattern: integer
@@ -32737,7 +32874,7 @@ extern class O {
 		 which case you get an "Out of memory" error instead.
 		
 	**/
-	var maxmempattern : Float;
+	var maxmempattern : Int;
 	/**
 		```lua
 		(global) table.menuitems: integer
@@ -32750,7 +32887,7 @@ extern class O {
 		 option has no direct effect, the menu must be refreshed first.
 		
 	**/
-	var menuitems : Float;
+	var menuitems : Int;
 	/**
 		```lua
 		(global) table.messagesopt: string
@@ -32870,7 +33007,7 @@ extern class O {
 		
 		
 	**/
-	var modelines : Float;
+	var modelines : Int;
 	/**
 		```lua
 		(global) table.modifiable: boolean
@@ -33127,7 +33264,7 @@ extern class O {
 		 second click to be recognized as a multi click.
 		
 	**/
-	var mousetime : Float;
+	var mousetime : Int;
 	/**
 		```lua
 		(global) table.nrformats: string
@@ -33233,7 +33370,7 @@ extern class O {
 		 The minimum value is 1, the maximum value is 20.
 		
 	**/
-	var numberwidth : Float;
+	var numberwidth : Int;
 	/**
 		```lua
 		(global) table.omnifunc: string
@@ -33475,7 +33612,7 @@ extern class O {
 		 commands.  Used for `CTRL-W_}` when no count is given.
 		
 	**/
-	var previewheight : Float;
+	var previewheight : Int;
 	/**
 		```lua
 		(global) table.previewwindow: boolean
@@ -33519,7 +33656,7 @@ extern class O {
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	var pumblend : Float;
+	var pumblend : Int;
 	/**
 		```lua
 		(global) table.pumheight: integer
@@ -33531,7 +33668,7 @@ extern class O {
 		 (`ins-completion-menu`). Zero means "use available screen space".
 		
 	**/
-	var pumheight : Float;
+	var pumheight : Int;
 	/**
 		```lua
 		(global) table.pumwidth: integer
@@ -33544,7 +33681,7 @@ extern class O {
 		 nudged to fit on the screen.
 		
 	**/
-	var pumwidth : Float;
+	var pumwidth : Int;
 	/**
 		```lua
 		(global) table.pyxversion: integer
@@ -33560,7 +33697,7 @@ extern class O {
 		 security reasons.
 		
 	**/
-	var pyxversion : Float;
+	var pyxversion : Int;
 	/**
 		```lua
 		(global) table.quickfixtextfunc: string
@@ -33673,7 +33810,7 @@ extern class O {
 		 pattern.
 		
 	**/
-	var redrawtime : Float;
+	var redrawtime : Int;
 	/**
 		```lua
 		(global) table.regexpengine: integer
@@ -33695,7 +33832,7 @@ extern class O {
 		 a complex pattern with long text.
 		
 	**/
-	var regexpengine : Float;
+	var regexpengine : Int;
 	/**
 		```lua
 		(global) table.relativenumber: boolean = true
@@ -33748,7 +33885,7 @@ extern class O {
 		 instead of the number of lines.
 		
 	**/
-	var report : Float;
+	var report : Int;
 	/**
 		```lua
 		(global) table.revins: boolean
@@ -33949,7 +34086,7 @@ extern class O {
 		 height with ":set scroll=0".
 		
 	**/
-	var scroll : Float;
+	var scroll : Int;
 	/**
 		```lua
 		(global) table.scrollback: integer
@@ -33966,7 +34103,7 @@ extern class O {
 		 reflown when the terminal buffer is resized horizontally.
 		
 	**/
-	var scrollback : Float;
+	var scrollback : Int;
 	/**
 		```lua
 		(global) table.scrollbind: boolean
@@ -34001,7 +34138,7 @@ extern class O {
 		 height.
 		
 	**/
-	var scrolljump : Float;
+	var scrolljump : Int;
 	/**
 		```lua
 		(global) table.scrolloff: integer = 10
@@ -34601,7 +34738,7 @@ extern class O {
 		 function to get the effective shiftwidth value.
 		
 	**/
-	var shiftwidth : Float;
+	var shiftwidth : Int;
 	/**
 		```lua
 		(global) table.shortmess: string
@@ -34813,7 +34950,7 @@ extern class O {
 		 See `tab-page` for more information about tab pages.
 		
 	**/
-	var showtabline : Float;
+	var showtabline : Int;
 	/**
 		```lua
 		(global) table.sidescroll: integer
@@ -34828,7 +34965,7 @@ extern class O {
 		 for "zh" and "zl" commands.
 		
 	**/
-	var sidescroll : Float;
+	var sidescroll : Int;
 	/**
 		```lua
 		(global) table.sidescrolloff: integer
@@ -34864,7 +35001,7 @@ extern class O {
 		
 		
 	**/
-	var sidescrolloff : Float;
+	var sidescrolloff : Int;
 	/**
 		```lua
 		(global) table.signcolumn: 'auto'|'auto:1'|'auto:2'|'auto:3'|'auto:4'|'auto:5'|'auto:6'|'auto:7'|'auto:8'|'auto:9'|'no'|'number'|'yes'|'yes:1'|'yes:2'|'yes:3'|'yes:4'|'yes:5'|'yes:6'|'yes:7'|'yes:8'|'yes:9'
@@ -34997,7 +35134,7 @@ extern class O {
 		 to anything other than an empty string.
 		
 	**/
-	var softtabstop : Float;
+	var softtabstop : Int;
 	/**
 		```lua
 		(global) table.spell: boolean
@@ -35704,7 +35841,7 @@ extern class O {
 		 Set to zero to remove the limit.
 		
 	**/
-	var synmaxcol : Float;
+	var synmaxcol : Int;
 	/**
 		```lua
 		(global) table.syntax: string
@@ -35806,7 +35943,7 @@ extern class O {
 		 argument or the ":tab all" command. `tabpage`
 		
 	**/
-	var tabpagemax : Float;
+	var tabpagemax : Int;
 	/**
 		```lua
 		(global) table.tabstop: integer
@@ -35855,7 +35992,7 @@ extern class O {
 		 anything other than an empty string.
 		
 	**/
-	var tabstop : Float;
+	var tabstop : Int;
 	/**
 		```lua
 		(global) table.tagbsearch: boolean
@@ -35961,7 +36098,7 @@ extern class O {
 		 If non-zero, tags are significant up to this number of characters.
 		
 	**/
-	var taglength : Float;
+	var taglength : Int;
 	/**
 		```lua
 		(global) table.tagrelative: boolean
@@ -36122,7 +36259,7 @@ extern class O {
 		 When 'formatexpr' is set it will be used to break the line.
 		
 	**/
-	var textwidth : Float;
+	var textwidth : Int;
 	/**
 		```lua
 		(global) table.thesaurus: string
@@ -36199,7 +36336,7 @@ extern class O {
 		 Time in milliseconds to wait for a mapped sequence to complete.
 		
 	**/
-	var timeoutlen : Float;
+	var timeoutlen : Int;
 	/**
 		```lua
 		(global) table.title: boolean
@@ -36239,7 +36376,7 @@ extern class O {
 		 'titlelen' is also used for the 'titlestring' option.
 		
 	**/
-	var titlelen : Float;
+	var titlelen : Int;
 	/**
 		```lua
 		(global) table.titleold: string
@@ -36331,7 +36468,7 @@ extern class O {
 		 been typed.
 		
 	**/
-	var ttimeoutlen : Float;
+	var ttimeoutlen : Int;
 	/**
 		```lua
 		(global) table.ttyfast: unknown
@@ -36418,7 +36555,7 @@ extern class O {
 		 Also see `clear-undo`.
 		
 	**/
-	var undolevels : Float;
+	var undolevels : Int;
 	/**
 		```lua
 		(global) table.undoreload: integer
@@ -36439,7 +36576,7 @@ extern class O {
 		 this option to a lower value if you run out of memory.
 		
 	**/
-	var undoreload : Float;
+	var undoreload : Int;
 	/**
 		```lua
 		(global) table.updatecount: integer
@@ -36460,7 +36597,7 @@ extern class O {
 		 or "nowrite".
 		
 	**/
-	var updatecount : Float;
+	var updatecount : Int;
 	/**
 		```lua
 		(global) table.updatetime: integer
@@ -36473,7 +36610,7 @@ extern class O {
 		 `CursorHold` autocommand event.
 		
 	**/
-	var updatetime : Float;
+	var updatetime : Int;
 	/**
 		```lua
 		(global) table.varsofttabstop: string
@@ -36559,7 +36696,7 @@ extern class O {
 		 If 'verbosefile' is set then the verbose messages are not displayed.
 		
 	**/
-	var verbose : Float;
+	var verbose : Int;
 	/**
 		```lua
 		(global) table.verbosefile: string
@@ -36740,7 +36877,7 @@ extern class O {
 		
 		
 	**/
-	var wildchar : Float;
+	var wildchar : Int;
 	/**
 		```lua
 		(global) table.wildcharm: integer
@@ -36761,7 +36898,7 @@ extern class O {
 		 Then after typing :ss you can use CTRL-P & CTRL-N.
 		
 	**/
-	var wildcharm : Float;
+	var wildcharm : Int;
 	/**
 		```lua
 		(global) table.wildignore: string
@@ -37020,7 +37157,7 @@ extern class O {
 		 UI-dependent. Works best with RGB colors. 'termguicolors'
 		
 	**/
-	var winblend : Float;
+	var winblend : Int;
 	/**
 		```lua
 		(global) table.winborder: ''|'bold'|'double'|'none'|'rounded'|'shadow'|'single'|'solid'
@@ -37058,7 +37195,7 @@ extern class O {
 		 'lines' for that.
 		
 	**/
-	var window : Float;
+	var window : Int;
 	/**
 		```lua
 		(global) table.winfixbuf: boolean
@@ -37129,7 +37266,7 @@ extern class O {
 		 the minimal height for other windows.
 		
 	**/
-	var winheight : Float;
+	var winheight : Int;
 	/**
 		```lua
 		(global) table.winhighlight: string
@@ -37178,7 +37315,7 @@ extern class O {
 		 windows.  A value of 0 to 3 is reasonable.
 		
 	**/
-	var winminheight : Float;
+	var winminheight : Int;
 	/**
 		```lua
 		(global) table.winminwidth: integer
@@ -37198,7 +37335,7 @@ extern class O {
 		 windows.  A value of 0 to 12 is reasonable.
 		
 	**/
-	var winminwidth : Float;
+	var winminwidth : Int;
 	/**
 		```lua
 		(global) table.winwidth: integer
@@ -37217,7 +37354,7 @@ extern class O {
 		 the minimal width for other windows.
 		
 	**/
-	var winwidth : Float;
+	var winwidth : Int;
 	/**
 		```lua
 		(global) table.wrap: boolean
@@ -37262,7 +37399,7 @@ extern class O {
 		 See also 'formatoptions' and `ins-textwidth`.
 		
 	**/
-	var wrapmargin : Float;
+	var wrapmargin : Int;
 	/**
 		```lua
 		(global) table.wrapscan: boolean
@@ -37334,7 +37471,7 @@ extern class O {
 		 The number of milliseconds to wait after each line or each flush
 		
 	**/
-	var writedelay : Float;
+	var writedelay : Int;
 }
 
 /**
@@ -44113,7 +44250,7 @@ extern class OptLocal {
 		
 		@*return* `timer` — luv timer object
 	**/
-	static function defer_fn(fn:haxe.Constraints.Function, timeout:Float):lua.Table.AnyTable;
+	static function defer_fn(fn:haxe.Constraints.Function, timeout:Int):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.deprecate(name: string, alternative: string|nil, version: string, plugin: string|nil, backtrace: boolean|nil)
@@ -44147,7 +44284,7 @@ extern class OptLocal {
 	**/
 	static var diagnostic : nvim.module.vim.Diagnostic;
 	@:native("diff")
-	private static function __diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Float>>>>;
+	private static function __diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Int>>>>;
 	/**
 		```lua
 		function vim.diff(a: string, b: string, opts?: vim.diff.Opts)
@@ -44182,8 +44319,8 @@ extern class OptLocal {
 		
 		     See {opts.result_type}. `nil` if {opts.on_hunk} is given.
 	**/
-	inline static function diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Float>>>> {
-		opts = nvim.helper.Arg.pure(opts);
+	inline static function diff(a:String, b:String, ?opts:nvim.type.vim.diff.Opts):haxe.extern.EitherType<String, Null<lua.Table<Int, lua.Table<Int, Int>>>> {
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.diff.Opts> = opts;
 		return __diff(a, b, opts);
 	}
 	/**
@@ -44361,7 +44498,7 @@ extern class OptLocal {
 		  * ~http~ ://lua-users.org/wiki/StringLibraryTutorial
 	**/
 	inline static function gsplit(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):() -> Null<String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __gsplit(s, sep, opts);
 	}
 	/**
@@ -44448,11 +44585,11 @@ extern class OptLocal {
 		```
 	**/
 	inline static function inspect(x:Any, opts:nvim.type.vim.inspect.Opts):String {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.inspect.Opts> = opts;
 		return __inspect(x, opts);
 	}
 	@:native("inspect_pos")
-	private static function __inspect_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Float; var col : Float; var row : Float; };
+	private static function __inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Int; var col : Int; var row : Int; };
 	/**
 		```lua
 		function vim.inspect_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
@@ -44483,8 +44620,8 @@ extern class OptLocal {
 		               - row: the row used to get the items
 		               - col: the col used to get the items
 	**/
-	inline static function inspect_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Float; var col : Float; var row : Float; } {
-		filter = nvim.helper.Arg.pure(filter);
+	inline static function inspect_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):{ var treesitter : lua.Table.AnyTable; var syntax : lua.Table.AnyTable; var extmarks : lua.Table.AnyTable; var semantic_tokens : lua.Table.AnyTable; var buffer : Int; var col : Int; var row : Int; } {
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __inspect_pos(bufnr, row, col, filter);
 	}
 	/**
@@ -44531,7 +44668,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/openresty/luajit2#tableisarray
 	**/
 	inline static function isarray(?t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __isarray(t);
 	}
 	@:native("islist")
@@ -44554,7 +44691,7 @@ extern class OptLocal {
 		@*return* — `true` if list-like table, else `false`.
 	**/
 	inline static function islist(?t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __islist(t);
 	}
 	/**
@@ -44617,11 +44754,11 @@ extern class OptLocal {
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function list_contains(t:lua.Table.AnyTable, value:Any):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __list_contains(t, value);
 	}
 	@:native("list_extend")
-	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Float>, ?finish:Null<Float>):T;
+	private static function __list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T;
 	/**
 		```lua
 		function vim.list_extend(dst: <T:table>, src: table, start?: integer, finish?: integer)
@@ -44643,10 +44780,12 @@ extern class OptLocal {
 		
 		@*param* `finish` — Final index on src. Defaults to `#src`
 	**/
-	inline static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Float>, ?finish:Null<Float>):T {
-		src = nvim.helper.Arg.pure(src);
+	inline static function list_extend<T:(lua.Table.AnyTable)>(dst:T, src:lua.Table.AnyTable, ?start:Null<Int>, ?finish:Null<Int>):T {
+		final src:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = src;
 		return __list_extend(dst, src, start, finish);
 	}
+	@:native("list_slice")
+	private static function __list_slice<T>(list:lua.Table<Int, T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T>;
 	/**
 		```lua
 		function vim.list_slice(list: <T>[], start: integer|nil, finish: integer|nil)
@@ -44665,7 +44804,10 @@ extern class OptLocal {
 		
 		@*return* `Copy` — of table sliced from start to finish (inclusive)
 	**/
-	static function list_slice<T>(list:lua.Table<Int, T>, ?start:Null<Float>, ?finish:Null<Float>):lua.Table<Int, T>;
+	inline static function list_slice<T>(list:Array<T>, ?start:Null<Int>, ?finish:Null<Int>):lua.Table<Int, T> {
+		final list:nvim.helper.Native.LuaArray<T> = list;
+		return __list_slice(list, start, finish);
+	}
 	/**
 		```lua
 		(global) vim.loader: table
@@ -44948,7 +45090,7 @@ extern class OptLocal {
 		
 		 luacheck: no unused args
 	**/
-	static function notify(msg:String, ?level:Null<Float>, ?opts:Null<lua.Table.AnyTable>):Dynamic;
+	static function notify(msg:String, ?level:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Dynamic;
 	/**
 		```lua
 		function vim.notify_once(msg: string, level: integer|nil, opts: table|nil)
@@ -44970,7 +45112,7 @@ extern class OptLocal {
 		
 		@*return* `true` — if message was displayed, else false
 	**/
-	static function notify_once(msg:String, ?level:Null<Float>, ?opts:Null<lua.Table.AnyTable>):Bool;
+	static function notify_once(msg:String, ?level:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Bool;
 	/**
 		```lua
 		(global) vim.o: table
@@ -45028,7 +45170,7 @@ extern class OptLocal {
 		
 		if on_key() is called without arguments.
 	**/
-	static function on_key(?fn:Null<(key:String, typed:String) -> Null<String>>, ?ns_id:Null<Float>, ?opts:Null<lua.Table.AnyTable>):Float;
+	static function on_key(?fn:Null<(key:String, typed:String) -> Null<String>>, ?ns_id:Null<Int>, ?opts:Null<lua.Table.AnyTable>):Int;
 	/**
 		```lua
 		(global) vim.opt: table
@@ -45059,6 +45201,8 @@ extern class OptLocal {
 		 @nodoc
 	**/
 	static var opt_local : OptLocal;
+	@:native("paste")
+	private static function __paste(lines:lua.Table<Int, String>, phase:Float):Bool;
 	/**
 		```lua
 		function vim.paste(lines: string[], phase: -1|1|2|3)
@@ -45106,7 +45250,10 @@ extern class OptLocal {
 		    | 3
 		```
 	**/
-	static function paste(lines:lua.Table<Int, String>, phase:Float):Bool;
+	inline static function paste(lines:Array<String>, phase:Float):Bool {
+		final lines:nvim.helper.Native.LuaArray<String> = lines;
+		return __paste(lines, phase);
+	}
 	/**
 		```lua
 		function vim.pesc(s: string)
@@ -45199,7 +45346,7 @@ extern class OptLocal {
 		whole lines are returned as `{startcol,endcol} = {0,-1}`.
 	**/
 	@:deprecated
-	static function region(bufnr:Float, pos1:haxe.extern.EitherType<lua.Table<Int, Float>, String>, pos2:haxe.extern.EitherType<lua.Table<Int, Float>, String>, regtype:Dynamic, inclusive:Bool):lua.Table.AnyTable;
+	static function region(bufnr:Int, pos1:haxe.extern.EitherType<lua.Table<Int, Int>, String>, pos2:haxe.extern.EitherType<lua.Table<Int, Int>, String>, regtype:Dynamic, inclusive:Bool):lua.Table.AnyTable;
 	/**
 		```lua
 		function vim.ringbuf(size: integer)
@@ -45234,7 +45381,7 @@ extern class OptLocal {
 		 - |Ringbuf:peek()|
 		 - |Ringbuf:clear()|
 	**/
-	static function ringbuf(size:Float):nvim.type.vim.Ringbuf;
+	static function ringbuf(size:Int):nvim.type.vim.Ringbuf;
 	/**
 		```lua
 		function vim.rpcnotify(channel: integer, method: string, ...any)
@@ -45247,7 +45394,7 @@ extern class OptLocal {
 		
 		 This function also works in a fast callback |lua-loop-callbacks|.
 	**/
-	static function rpcnotify(channel:Float, method:String, ___:haxe.Rest<Any>):Dynamic;
+	static function rpcnotify(channel:Int, method:String, ___:haxe.Rest<Any>):Dynamic;
 	/**
 		```lua
 		function vim.rpcrequest(channel: integer, method: string, ...any)
@@ -45261,7 +45408,7 @@ extern class OptLocal {
 		 Note: NIL values as part of the return value is represented as |vim.NIL|
 		 special value
 	**/
-	static function rpcrequest(channel:Float, method:String, ___:haxe.Rest<Any>):Dynamic;
+	static function rpcrequest(channel:Int, method:String, ___:haxe.Rest<Any>):Dynamic;
 	/**
 		```lua
 		function vim.schedule(fn: fun())
@@ -45302,7 +45449,7 @@ extern class OptLocal {
 	**/
 	static var secure : nvim.module.vim.Secure;
 	@:native("show_pos")
-	private static function __show_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):Dynamic;
+	private static function __show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):Dynamic;
 	/**
 		```lua
 		function vim.show_pos(bufnr?: integer, row?: integer, col?: integer, filter?: vim._inspector.Filter)
@@ -45327,8 +45474,8 @@ extern class OptLocal {
 		
 		@*param* `col` — col to inspect, 0-based. Defaults to the col of the current cursor
 	**/
-	inline static function show_pos(?bufnr:Float, ?row:Float, ?col:Float, ?filter:nvim.type.vim._inspector.Filter):Dynamic {
-		filter = nvim.helper.Arg.pure(filter);
+	inline static function show_pos(?bufnr:Int, ?row:Int, ?col:Int, ?filter:nvim.type.vim._inspector.Filter):Dynamic {
+		final filter:nvim.helper.Native.LuaObject<nvim.type.vim._inspector.Filter> = filter;
 		return __show_pos(bufnr, row, col, filter);
 	}
 	/**
@@ -45400,7 +45547,7 @@ extern class OptLocal {
 		@*return* — : List of split components
 	**/
 	inline static function split(s:String, sep:String, ?opts:nvim.type.vim.gsplit.Opts):lua.Table<Int, String> {
-		opts = nvim.helper.Arg.pure(opts);
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.gsplit.Opts> = opts;
 		return __split(s, sep, opts);
 	}
 	/**
@@ -45446,7 +45593,7 @@ extern class OptLocal {
 		    | "utf-32"
 		```
 	**/
-	static function str_byteindex(s:String, encoding:String, index:Float, ?strict_indexing:Bool):Float;
+	static function str_byteindex(s:String, encoding:String, index:Int, ?strict_indexing:Bool):Int;
 	/**
 		```lua
 		function vim.str_utf_end(str: string, index: integer)
@@ -45470,7 +45617,7 @@ extern class OptLocal {
 		 vim.str_utf_end('æ', 1)
 		 ```
 	**/
-	static function str_utf_end(str:String, index:Float):Float;
+	static function str_utf_end(str:String, index:Int):Int;
 	/**
 		```lua
 		function vim.str_utf_pos(str: string)
@@ -45483,7 +45630,7 @@ extern class OptLocal {
 		
 		 Embedded NUL bytes are treated as terminating the string.
 	**/
-	static function str_utf_pos(str:String):lua.Table<Int, Float>;
+	static function str_utf_pos(str:String):lua.Table<Int, Int>;
 	/**
 		```lua
 		function vim.str_utf_start(str: string, index: integer)
@@ -45509,7 +45656,7 @@ extern class OptLocal {
 		 vim.str_utf_start('æ', 2)
 		 ```
 	**/
-	static function str_utf_start(str:String, index:Float):Float;
+	static function str_utf_start(str:String, index:Int):Int;
 	/**
 		```lua
 		function vim.str_utfindex(s: string, encoding: "utf-16"|"utf-32"|"utf-8", index?: integer, strict_indexing?: boolean)
@@ -45536,7 +45683,7 @@ extern class OptLocal {
 		    | "utf-32"
 		```
 	**/
-	static function str_utfindex(s:String, encoding:String, ?index:Float, ?strict_indexing:Bool):Float;
+	static function str_utfindex(s:String, encoding:String, ?index:Int, ?strict_indexing:Bool):Int;
 	/**
 		```lua
 		function vim.stricmp(a: string, b: string)
@@ -45557,6 +45704,8 @@ extern class OptLocal {
 		```
 	**/
 	static function stricmp(a:String, b:String):Float;
+	@:native("system")
+	private static function __system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;
 	/**
 		```lua
 		function vim.system(cmd: string[], opts?: vim.SystemOpts, on_exit?: fun(out: vim.SystemCompleted))
@@ -45636,7 +45785,10 @@ extern class OptLocal {
 		   - write (fun(data: string|nil)) Requires `stdin=true`. Pass `nil` to close the stream.
 		   - is_closing (fun(): boolean)
 	**/
-	static function system(cmd:lua.Table<Int, String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj;
+	inline static function system(cmd:Array<String>, ?opts:Null<nvim.type.vim.SystemOpts>, ?on_exit:(out:nvim.type.vim.SystemCompleted) -> Dynamic):nvim.type.vim.SystemObj {
+		final cmd:nvim.helper.Native.LuaArray<String> = cmd;
+		return __system(cmd, opts, on_exit);
+	}
 	/**
 		```lua
 		(global) vim.t: vim.var_accessor
@@ -45663,7 +45815,7 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	inline static function tbl_add_reverse_lookup(o:lua.Table.AnyTable):lua.Table.AnyTable {
-		o = nvim.helper.Arg.pure(o);
+		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_add_reverse_lookup(o);
 	}
 	@:native("tbl_contains")
@@ -45698,12 +45850,12 @@ extern class OptLocal {
 		@*return* — `true` if `t` contains `value`
 	**/
 	inline static function tbl_contains(t:lua.Table.AnyTable, value:Any, ?opts:nvim.type.vim.tbl_contains.Opts):Bool {
-		t = nvim.helper.Arg.pure(t);
-		opts = nvim.helper.Arg.pure(opts);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
+		final opts:nvim.helper.Native.LuaObject<nvim.type.vim.tbl_contains.Opts> = opts;
 		return __tbl_contains(t, value, opts);
 	}
 	@:native("tbl_count")
-	private static function __tbl_count(t:lua.Table.AnyTable):Float;
+	private static function __tbl_count(t:lua.Table.AnyTable):Int;
 	/**
 		```lua
 		function vim.tbl_count(t: table)
@@ -45725,8 +45877,8 @@ extern class OptLocal {
 		
 		See: ~https~ ://github.com/Tieske/Penlight/blob/master/lua/pl/tablex.lua
 	**/
-	inline static function tbl_count(t:lua.Table.AnyTable):Float {
-		t = nvim.helper.Arg.pure(t);
+	inline static function tbl_count(t:lua.Table.AnyTable):Int {
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_count(t);
 	}
 	/**
@@ -45811,7 +45963,7 @@ extern class OptLocal {
 		@*return* — : Table of filtered values
 	**/
 	inline static function tbl_filter<T>(func:(value:T) -> Bool, t:lua.Table<Any, T>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_filter(func, t);
 	}
 	@:native("tbl_flatten")
@@ -45836,7 +45988,7 @@ extern class OptLocal {
 	**/
 	@:deprecated
 	inline static function tbl_flatten(t:lua.Table.AnyTable):lua.Table.AnyTable {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_flatten(t);
 	}
 	@:native("tbl_get")
@@ -45866,7 +46018,7 @@ extern class OptLocal {
 		@*return* — Nested value indexed by key (if it exists), else nil
 	**/
 	inline static function tbl_get(o:lua.Table.AnyTable, ___:haxe.Rest<Any>):Any {
-		o = nvim.helper.Arg.pure(o);
+		final o:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = o;
 		return __tbl_get(o, ...___);
 	}
 	@:native("tbl_isempty")
@@ -45889,7 +46041,7 @@ extern class OptLocal {
 		See: ~https~ ://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_isempty(t:lua.Table.AnyTable):Bool {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = t;
 		return __tbl_isempty(t);
 	}
 	/**
@@ -45921,7 +46073,7 @@ extern class OptLocal {
 		See: ~From~ https://github.com/premake/premake-core/blob/master/src/base/table.lua
 	**/
 	inline static function tbl_keys<T>(t:lua.Table<T, Any>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<T, Any>> = t;
 		return __tbl_keys(t);
 	}
 	@:native("tbl_map")
@@ -45943,7 +46095,7 @@ extern class OptLocal {
 		@*return* — : Table of transformed values
 	**/
 	inline static function tbl_map<T>(func:(value:T) -> Any, t:lua.Table<Any, T>):lua.Table.AnyTable {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_map(func, t);
 	}
 	@:native("tbl_values")
@@ -45964,7 +46116,7 @@ extern class OptLocal {
 		@*return* — : List of values
 	**/
 	inline static function tbl_values<T>(t:lua.Table<Any, T>):lua.Table<Int, T> {
-		t = nvim.helper.Arg.pure(t);
+		final t:nvim.helper.Native.LuaObject<lua.Table<Any, T>> = t;
 		return __tbl_values(t);
 	}
 	/**
@@ -46015,7 +46167,7 @@ extern class OptLocal {
 	**/
 	static var ui : nvim.module.vim.Ui;
 	@:native("ui_attach")
-	private static function __ui_attach(ns:Float, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
+	private static function __ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic;
 	/**
 		```lua
 		function vim.ui_attach(ns: integer, options: table<string, any>, callback: fun())
@@ -46063,8 +46215,8 @@ extern class OptLocal {
 		
 		 @since 0
 	**/
-	inline static function ui_attach(ns:Float, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic {
-		options = nvim.helper.Arg.pure(options);
+	inline static function ui_attach(ns:Int, options:lua.Table<String, Any>, callback:() -> Dynamic):Dynamic {
+		final options:nvim.helper.Native.LuaObject<lua.Table<String, Any>> = options;
 		return __ui_attach(ns, options, callback);
 	}
 	/**
@@ -46077,7 +46229,7 @@ extern class OptLocal {
 		 Detach a callback previously attached with |vim.ui_attach()| for the
 		 given namespace {ns}.
 	**/
-	static function ui_detach(ns:Float):Dynamic;
+	static function ui_detach(ns:Int):Dynamic;
 	/**
 		```lua
 		function M.uri_from_bufnr(bufnr: integer)
@@ -46088,7 +46240,7 @@ extern class OptLocal {
 		
 		Gets a URI from a bufnr.
 	**/
-	static function uri_from_bufnr(bufnr:Float):String;
+	static function uri_from_bufnr(bufnr:Int):String;
 	/**
 		```lua
 		function M.uri_from_fname(path: string)
@@ -46113,7 +46265,7 @@ extern class OptLocal {
 		Gets the buffer for a uri.
 		Creates a new unloaded buffer if no buffer for the uri already exists.
 	**/
-	static function uri_to_bufnr(uri:String):Float;
+	static function uri_to_bufnr(uri:String):Int;
 	/**
 		```lua
 		function M.uri_to_fname(uri: string)
@@ -46463,7 +46615,7 @@ extern class OptLocal {
 		```
 	**/
 	overload inline static function validate(name:String, value:Any, validator:nvim.type.vim.validate.Validator, ?optional:Bool, ?message:String):Dynamic {
-		validator = nvim.helper.Arg.pure(validator);
+		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, value, validator, optional, message);
 	}
 	/**
@@ -46585,7 +46737,7 @@ extern class OptLocal {
 		```
 	**/
 	overload inline static function validate(name:String, val:Any, validator:nvim.type.vim.validate.Validator, message:String):Dynamic {
-		validator = nvim.helper.Arg.pure(validator);
+		final validator:nvim.helper.Native.LuaObject<nvim.type.vim.validate.Validator> = validator;
 		return __validate(name, val, validator, message);
 	}
 	/**
@@ -46661,7 +46813,7 @@ extern class OptLocal {
 		    | -2
 		```
 	**/
-	static function wait(time:Float, ?callback:() -> Bool, ?interval:Float, ?fast_only:Bool):Bool;
+	static function wait(time:Int, ?callback:() -> Bool, ?interval:Int, ?fast_only:Bool):Bool;
 	/**
 		```lua
 		(global) vim.wo: table|vim.wo

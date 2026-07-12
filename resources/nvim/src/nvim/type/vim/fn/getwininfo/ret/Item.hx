@@ -20,55 +20,55 @@ package nvim.type.vim.fn.getwininfo.ret;
 		(field) vim.fn.getwininfo.ret.item.botline: integer
 		```
 	**/
-	extern public var botline : Float;
+	extern public var botline : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.bufnr: integer
 		```
 	**/
-	extern public var bufnr : Float;
+	extern public var bufnr : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.height: integer
 		```
 	**/
-	extern public var height : Float;
+	extern public var height : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.loclist: integer
 		```
 	**/
-	extern public var loclist : Float;
+	extern public var loclist : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.quickfix: integer
 		```
 	**/
-	extern public var quickfix : Float;
+	extern public var quickfix : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.tabnr: integer
 		```
 	**/
-	extern public var tabnr : Float;
+	extern public var tabnr : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.terminal: integer
 		```
 	**/
-	extern public var terminal : Float;
+	extern public var terminal : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.textoff: integer
 		```
 	**/
-	extern public var textoff : Float;
+	extern public var textoff : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.topline: integer
 		```
 	**/
-	extern public var topline : Float;
+	extern public var topline : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.variables: table<string, any>
@@ -80,35 +80,35 @@ package nvim.type.vim.fn.getwininfo.ret;
 		(field) vim.fn.getwininfo.ret.item.width: integer
 		```
 	**/
-	extern public var width : Float;
+	extern public var width : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.winbar: integer
 		```
 	**/
-	extern public var winbar : Float;
+	extern public var winbar : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.wincol: integer
 		```
 	**/
-	extern public var wincol : Float;
+	extern public var wincol : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.winid: integer
 		```
 	**/
-	extern public var winid : Float;
+	extern public var winid : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.winnr: integer
 		```
 	**/
-	extern public var winnr : Float;
+	extern public var winnr : Int;
 	/**
 		```lua
 		(field) vim.fn.getwininfo.ret.item.winrow: integer
 		```
 	**/
-	extern public var winrow : Float;
+	extern public var winrow : Int;
 }

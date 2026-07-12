@@ -40,7 +40,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var count : Null<Float>;
+	extern public var count : Null<Int>;
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.magic: table<string, any>?
@@ -61,7 +61,7 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var nargs : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var nargs : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) vim.api.keyset.cmd.nextcmd: string?

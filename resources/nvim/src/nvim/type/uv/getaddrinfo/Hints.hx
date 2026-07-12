@@ -45,7 +45,7 @@ package nvim.type.uv.getaddrinfo;
 		    | "packet"
 		```
 	**/
-	extern public var family : haxe.extern.EitherType<String, haxe.extern.EitherType<Float, nvim.type.uv.socket.Family>>;
+	extern public var family : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Family>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.numerichost: boolean
@@ -79,7 +79,7 @@ package nvim.type.uv.getaddrinfo;
 		    | "udp"
 		```
 	**/
-	extern public var protocol : haxe.extern.EitherType<String, haxe.extern.EitherType<Float, nvim.type.uv.socket.Protocol>>;
+	extern public var protocol : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Protocol>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.socktype: string|integer|"dgram"|"raw"|"rdm"|"seqpacket"|"stream"
@@ -96,7 +96,7 @@ package nvim.type.uv.getaddrinfo;
 		    | "seqpacket"
 		```
 	**/
-	extern public var socktype : haxe.extern.EitherType<String, haxe.extern.EitherType<Float, nvim.type.uv.socket.Type>>;
+	extern public var socktype : haxe.extern.EitherType<String, haxe.extern.EitherType<Int, nvim.type.uv.socket.Type>>;
 	/**
 		```lua
 		(field) uv.getaddrinfo.hints.v4mapped: boolean

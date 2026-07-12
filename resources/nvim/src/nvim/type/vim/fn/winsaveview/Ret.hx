@@ -11,47 +11,47 @@ package nvim.type.vim.fn.winsaveview;
 		(field) vim.fn.winsaveview.ret.col: integer
 		```
 	**/
-	extern public var col : Float;
+	extern public var col : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.coladd: integer
 		```
 	**/
-	extern public var coladd : Float;
+	extern public var coladd : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.curswant: integer
 		```
 	**/
-	extern public var curswant : Float;
+	extern public var curswant : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.leftcol: integer
 		```
 	**/
-	extern public var leftcol : Float;
+	extern public var leftcol : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.lnum: integer
 		```
 	**/
-	extern public var lnum : Float;
+	extern public var lnum : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.skipcol: integer
 		```
 	**/
-	extern public var skipcol : Float;
+	extern public var skipcol : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.topfill: integer
 		```
 	**/
-	extern public var topfill : Float;
+	extern public var topfill : Int;
 	/**
 		```lua
 		(field) vim.fn.winsaveview.ret.topline: integer
 		```
 	**/
-	extern public var topline : Float;
+	extern public var topline : Int;
 }

@@ -16,7 +16,7 @@ package nvim.type.vim.inspect;
 		```
 	**/
 	@:optional
-	extern public var depth : Null<Float>;
+	extern public var depth : Null<Int>;
 	/**
 		```lua
 		(field) vim.inspect.Opts.newline: string?

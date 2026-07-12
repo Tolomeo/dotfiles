@@ -11,41 +11,41 @@ package nvim.type.uv.fs_statfs;
 		(field) uv.fs_statfs.result.bavail: integer
 		```
 	**/
-	extern public var bavail : Float;
+	extern public var bavail : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.bfree: integer
 		```
 	**/
-	extern public var bfree : Float;
+	extern public var bfree : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.blocks: integer
 		```
 	**/
-	extern public var blocks : Float;
+	extern public var blocks : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.bsize: integer
 		```
 	**/
-	extern public var bsize : Float;
+	extern public var bsize : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.ffree: integer
 		```
 	**/
-	extern public var ffree : Float;
+	extern public var ffree : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.files: integer
 		```
 	**/
-	extern public var files : Float;
+	extern public var files : Int;
 	/**
 		```lua
 		(field) uv.fs_statfs.result.type: integer
 		```
 	**/
-	extern public var type : Float;
+	extern public var type : Int;
 }

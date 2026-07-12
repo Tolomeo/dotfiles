@@ -116,7 +116,7 @@ package nvim.type.uv;
 		return __cancel();
 	}
 	@:native("get_type")
-	private extern function __get_type():nvim.helper.Multireturn<String, Float, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __get_type():nvim.helper.Multireturn<String, Int, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) uv.uv_req_t:get_type()
@@ -129,7 +129,7 @@ package nvim.type.uv;
 		 Returns the name of the struct for a given request (e.g. `"fs"` for `uv_fs_t`)
 		 and the libuv enum integer for the request's type (`uv_req_type`).
 	**/
-	inline public function get_type():nvim.helper.Multireturn.Return2<String, Float> {
+	inline public function get_type():nvim.helper.Multireturn.Return2<String, Int> {
 		return __get_type();
 	}
 }

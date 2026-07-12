@@ -39,5 +39,5 @@ package nvim.type.uv.udp_recv_start.callback;
 		(field) uv.udp_recv_start.callback.addr.port: integer
 		```
 	**/
-	extern public var port : Float;
+	extern public var port : Int;
 }

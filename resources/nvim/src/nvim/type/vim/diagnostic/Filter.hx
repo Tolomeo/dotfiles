@@ -22,7 +22,7 @@ package nvim.type.vim.diagnostic;
 		 Buffer number, or 0 for current buffer, or `nil` for all buffers.
 	**/
 	@:optional
-	extern public var bufnr : Null<Float>;
+	extern public var bufnr : Null<Int>;
 	/**
 		```lua
 		(field) vim.diagnostic.Filter.ns_id: integer?
@@ -35,5 +35,5 @@ package nvim.type.vim.diagnostic;
 		 Diagnostic namespace, or `nil` for all.
 	**/
 	@:optional
-	extern public var ns_id : Null<Float>;
+	extern public var ns_id : Null<Int>;
 }

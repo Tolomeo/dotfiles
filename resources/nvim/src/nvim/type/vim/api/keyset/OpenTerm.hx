@@ -25,5 +25,5 @@ package nvim.type.vim.api.keyset;
 		```
 	**/
 	@:optional
-	extern public var on_input : Null<(_:String, term:Float, bufnr:Float, data:Any) -> Dynamic>;
+	extern public var on_input : Null<(_:String, term:Int, bufnr:Int, data:Any) -> Dynamic>;
 }

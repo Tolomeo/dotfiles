@@ -28,7 +28,7 @@ package nvim.type;
 		(field) STTokenRangeInspect.client_id: integer
 		```
 	**/
-	extern public var client_id : Float;
+	extern public var client_id : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.end_col: integer
@@ -38,7 +38,7 @@ package nvim.type;
 		
 		end column 0-based
 	**/
-	extern public var end_col : Float;
+	extern public var end_col : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.line: integer
@@ -48,7 +48,7 @@ package nvim.type;
 		
 		line number 0-based
 	**/
-	extern public var line : Float;
+	extern public var line : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.marked: boolean
@@ -78,7 +78,7 @@ package nvim.type;
 		
 		start column 0-based
 	**/
-	extern public var start_col : Float;
+	extern public var start_col : Int;
 	/**
 		```lua
 		(field) STTokenRangeInspect.type: string

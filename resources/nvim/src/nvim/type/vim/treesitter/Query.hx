@@ -94,7 +94,7 @@ package nvim.type.vim.treesitter;
 	**/
 	extern public function _process_patterns():Dynamic;
 	@:native("iter_captures")
-	private extern function __iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Float, String>, ?start:Float, ?stop:Float, ?opts:lua.Table.AnyTable):(?end_line:Null<Float>) -> nvim.helper.Multireturn<Float, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing>;
+	private extern function __iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_captures(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -147,13 +147,13 @@ package nvim.type.vim.treesitter;
 		
 		        capture id, capture node, metadata, match, tree
 	**/
-	inline public function iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Float, String>, ?start:Float, ?stop:Float, ?opts:lua.Table.AnyTable):(?end_line:Null<Float>) -> nvim.helper.Multireturn<Float, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing> {
-		node = nvim.helper.Arg.pure(node);
-		opts = nvim.helper.Arg.pure(opts);
+	inline public function iter_captures(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):(?end_line:Null<Int>) -> nvim.helper.Multireturn<Int, nvim.type.TSNode, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSQueryMatch, nvim.type.TSTree, nvim.helper.Nothing> {
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __iter_captures(node, source, start, stop, opts);
 	}
 	@:native("iter_matches")
-	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Float, String>, ?start:Float, ?stop:Float, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Float, lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) vim.treesitter.Query:iter_matches(node: TSNode, source: string|integer, start?: integer, stop?: integer, opts?: table)
@@ -205,9 +205,9 @@ package nvim.type.vim.treesitter;
 		
 		@*return* — : pattern id, match, metadata, tree
 	**/
-	inline public function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Float, String>, ?start:Float, ?stop:Float, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Float, lua.Table<Float, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing> {
-		node = nvim.helper.Arg.pure(node);
-		opts = nvim.helper.Arg.pure(opts);
+	inline public function iter_matches(node:nvim.type.TSNode, source:haxe.extern.EitherType<Int, String>, ?start:Int, ?stop:Int, ?opts:lua.Table.AnyTable):() -> nvim.helper.Multireturn<Int, lua.Table<Int, lua.Table<Int, nvim.type.TSNode>>, nvim.type.vim.treesitter.query.TSMetadata, nvim.type.TSTree, nvim.helper.Nothing, nvim.helper.Nothing> {
+		final node:nvim.helper.Native.LuaObject<nvim.type.TSNode> = node;
+		final opts:nvim.helper.Native.LuaObject<lua.Table.AnyTable> = opts;
 		return __iter_matches(node, source, start, stop, opts);
 	}
 }

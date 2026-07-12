@@ -22,7 +22,7 @@ package nvim.type.lsp;
 		The diagnostic's code, which usually appear in the user interface.
 	**/
 	@:optional
-	extern public var code : Null<haxe.extern.EitherType<Float, String>>;
+	extern public var code : Null<haxe.extern.EitherType<Int, String>>;
 	/**
 		```lua
 		(field) lsp.Diagnostic.codeDescription: (lsp.CodeDescription)?

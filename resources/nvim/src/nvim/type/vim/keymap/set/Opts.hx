@@ -26,7 +26,7 @@ package nvim.type.vim.keymap.set;
 		 Creates buffer-local mapping, `0` or `true` for current buffer.
 	**/
 	@:optional
-	extern public var buffer : Null<haxe.extern.EitherType<Float, Bool>>;
+	extern public var buffer : Null<haxe.extern.EitherType<Int, Bool>>;
 	/**
 		```lua
 		(field) vim.keymap.set.Opts.callback: function?

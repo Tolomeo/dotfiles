@@ -12,7 +12,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		```
 	**/
 	@:optional
-	extern public var _update_win : Null<Float>;
+	extern public var _update_win : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.anchor_bias: ('above'|'auto'|'below')?
@@ -104,7 +104,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Height of floating window
 	**/
 	@:optional
-	extern public var height : Null<Float>;
+	extern public var height : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.max_height: integer?
@@ -116,7 +116,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Maximal height of floating window
 	**/
 	@:optional
-	extern public var max_height : Null<Float>;
+	extern public var max_height : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.max_width: integer?
@@ -128,7 +128,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Maximal width of floating window
 	**/
 	@:optional
-	extern public var max_width : Null<Float>;
+	extern public var max_width : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.offset_x: integer?
@@ -140,7 +140,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 offset to add to `col`
 	**/
 	@:optional
-	extern public var offset_x : Null<Float>;
+	extern public var offset_x : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.offset_y: integer?
@@ -152,7 +152,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 offset to add to `row`
 	**/
 	@:optional
-	extern public var offset_y : Null<Float>;
+	extern public var offset_y : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.relative: ('cursor'|'editor'|'mouse')?
@@ -197,7 +197,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Width of floating window
 	**/
 	@:optional
-	extern public var width : Null<Float>;
+	extern public var width : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.wrap: boolean?
@@ -222,7 +222,7 @@ package nvim.type.vim.lsp.buf.signature_help;
 		 Character to wrap at for computing height when wrap is enabled
 	**/
 	@:optional
-	extern public var wrap_at : Null<Float>;
+	extern public var wrap_at : Null<Int>;
 	/**
 		```lua
 		(field) vim.lsp.buf.signature_help.Opts.zindex: integer?
@@ -233,5 +233,5 @@ package nvim.type.vim.lsp.buf.signature_help;
 		override `zindex`, defaults to 50
 	**/
 	@:optional
-	extern public var zindex : Null<Float>;
+	extern public var zindex : Null<Int>;
 }

@@ -11,7 +11,7 @@ package nvim.type.vim;
 **/
 @:structInit class Regex {
 	@:native("match_line")
-	private extern function __match_line(bufnr:Float, line_idx:Float, ?start:Float, ?end_:Float):nvim.helper.Multireturn<Null<Float>, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) vim.regex:match_line(bufnr: integer, line_idx: integer, start?: integer, end_?: integer)
@@ -29,11 +29,11 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index) relative to `start`, or `nil` if no match
 	**/
-	inline public function match_line(bufnr:Float, line_idx:Float, ?start:Float, ?end_:Float):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
+	inline public function match_line(bufnr:Int, line_idx:Int, ?start:Int, ?end_:Int):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		return __match_line(bufnr, line_idx, start, end_);
 	}
 	@:native("match_str")
-	private extern function __match_str(str:String):nvim.helper.Multireturn<Null<Float>, Null<Float>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
+	private extern function __match_str(str:String):nvim.helper.Multireturn<Null<Int>, Null<Int>, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing, nvim.helper.Nothing>;
 	/**
 		```lua
 		(method) vim.regex:match_str(str: string)
@@ -52,7 +52,7 @@ package nvim.type.vim;
 		
 		@*return* — match end (byte index), or `nil` if no match
 	**/
-	inline public function match_str(str:String):nvim.helper.Multireturn.Return2<Null<Float>, Null<Float>> {
+	inline public function match_str(str:String):nvim.helper.Multireturn.Return2<Null<Int>, Null<Int>> {
 		return __match_str(str);
 	}
 }
