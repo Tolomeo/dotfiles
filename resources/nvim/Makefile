@@ -4,9 +4,10 @@ SRC_RAW_DIR := $(SRC_DIR)/raw
 
 define HAXE
 	docker run --rm \
+		--volume /Users/diegofrattini/Projects/hxnvim:/Users/diegofrattini/Projects/hxnvim \
 		--volume "$(shell pwd)":/src \
 		--workdir /src \
-		haxe:4.2-alpine sh -c "$(strip $(1))"
+		haxe:4.2.5-bookworm sh -c "$(strip $(1))"
 endef
 
 all:
@@ -34,5 +35,6 @@ build: copy-raw
 .PHONY=install
 install:
 	@echo "Installing dependencies"
+	@$(call HAXE, haxelib git hxnvim https://github.com/Tolomeo/hxnvim.git main)
 	@$(call HAXE, haxelib newrepo || true && haxelib install --always build.hxml)
 	@$(MAKE) copy-raw

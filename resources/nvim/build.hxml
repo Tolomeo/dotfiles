@@ -15,6 +15,7 @@
 
 --each
 
+--library hxnvim
 --lua lua/editor/macro.lua
 Macro
 
