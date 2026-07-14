@@ -4,7 +4,6 @@ SRC_RAW_DIR := $(SRC_DIR)/raw
 
 define HAXE
 	docker run --rm \
-		--volume /Users/diegofrattini/Projects/hxnvim:/Users/diegofrattini/Projects/hxnvim \
 		--volume "$(shell pwd)":/src \
 		--workdir /src \
 		haxe:4.2.5-bookworm sh -c "$(strip $(1))"
