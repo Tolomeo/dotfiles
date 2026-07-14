@@ -56,9 +56,11 @@ local defaults = {
 		listchars = { eol = "↲", tab = "▸ ", trail = "·", space = "·", extends = "…", precedes = "…" },
 		-- 	Characters to fill the statuslines, vertical separators and special lines in the window
 		fillchars = "foldopen:▼,foldclose:►,eob:·",
+		-- Keeping the cursor vertically always in the middle
+		scrolloff = 999,
 		-- The minimal number of screen columns to keep to the left and to the right of the cursor
-		-- set to 1 to allow seeing EOL listchar without truncating the text
-		sidescrolloff = 1,
+		-- set to 2 to allow seeing EOL listchar without truncating the text
+		sidescrolloff = 2,
 		-- Cursor shape and blinking behaviours
 		guicursor = { "a:block-blinkon0", "v-ve-sm-o-r:block-blinkon1", "i-c-ci-cr:ver1-blinkon1" },
 		-- Folds
@@ -89,6 +91,8 @@ local defaults = {
 		winbar = "%=%f",
 		-- Disabling swap files
 		swapfile = false,
+		-- Allowing to go beyond the end of the line in visual block mode
+		virtualedit = "block"
 	},
 	g = {
 		loaded_2html_plugin = 1,

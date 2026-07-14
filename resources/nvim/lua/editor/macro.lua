@@ -196,6 +196,7 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 local Array = _hx_e()
+local IntIterator = _hx_e()
 local Lambda = _hx_e()
 local Module = _hx_e()
 local Macro = _hx_e()
@@ -525,6 +526,29 @@ Array.prototype.resize = function(self,len)
       self.length = len;
     end;
   end;
+end
+
+IntIterator.new = function(min,max) 
+  local self = _hx_new(IntIterator.prototype)
+  IntIterator.super(self,min,max)
+  return self
+end
+IntIterator.super = function(self,min,max) 
+  self.min = min;
+  self.max = max;
+end
+IntIterator.prototype = _hx_e();
+IntIterator.prototype.hasNext = function(self) 
+  do return self.min < self.max end
+end
+IntIterator.prototype.next = function(self) 
+  do return (function() 
+  local _hx_obj = self;
+  local _hx_fld = 'min';
+  local _ = _hx_obj[_hx_fld];
+  _hx_obj[_hx_fld] = _hx_obj[_hx_fld]  + 1;
+   return _;
+   end)() end
 end
 
 Lambda.new = {}
