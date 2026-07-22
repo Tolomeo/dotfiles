@@ -24,3 +24,6 @@ cask "love"
 brew "nb"
 cask "postman"
 cask "rectangle"
+cask "lm-studio"
+tap "charmbracelet/tap", trusted: { formula: "crush" }
+brew "crush"
