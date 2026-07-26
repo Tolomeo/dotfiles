@@ -4,3 +4,4 @@ using lua.Table;
 
 import nvim.Vim;
 import nvim.Vim.*;
+import lua.*;
