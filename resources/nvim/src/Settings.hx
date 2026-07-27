@@ -1,5 +1,5 @@
-final defaults = {
-	opt: {
+final defaults:Table<String, Dynamic> = Table.create(null, {
+	opt: Table.create(null, {
 		// asking for confirmation instead of just failing certain commands
 		confirm: true,
 		// Incremental live completion (note: this is now a default on master)
@@ -49,14 +49,14 @@ final defaults = {
 		clipboard: "unnamedplus",
 		// Invisible chars render
 		list: true,
-		listchars: {
+		listchars: Table.create(null, {
 			eol: "↲",
 			tab: "▸ ",
 			trail: "·",
 			space: "·",
 			"extends": "…",
 			precedes: "…"
-		},
+		}),
 		// Characters to fill the statuslines, vertical separators and special lines in the window
 		fillchars: "foldopen:▼,foldclose:►,eob:·",
 		// Keeping the cursor vertically always in the middle
@@ -65,7 +65,7 @@ final defaults = {
 		// set to 2 to allow seeing EOL listchar without truncating the text
 		sidescrolloff: 2,
 		// Cursor shape and blinking behaviours
-		guicursor: ["a:block-blinkon0", "v-ve-sm-o-r:block-blinkon1", "i-c-ci-cr:ver1-blinkon1"],
+		guicursor: Table.create(["a:block-blinkon0", "v-ve-sm-o-r:block-blinkon1", "i-c-ci-cr:ver1-blinkon1"]),
 		// Folds
 		foldenable: true,
 		foldmethod: "manual",
@@ -78,7 +78,7 @@ final defaults = {
 		splitright: true,
 		splitbelow: true,
 		// Mapping movements able to wrap on the next/previous line
-		whichwrap: {
+		whichwrap: Table.create(null, {
 			"b": true, // backspace
 			"s": true, // space
 			">": true, // right in normal and visual
@@ -87,17 +87,17 @@ final defaults = {
 			"[": true, // left in insert and replace
 			"h": true, // h
 			"l": true // l
-		},
+		}),
 		// Completion window behaviours
-		completeopt: ["menu", "menuone", "noselect"],
+		completeopt: Table.create(["menu", "menuone", "noselect"]),
 		// Winbar displaying current file path
 		winbar: "%=%f",
 		// Disabling swap files
 		swapfile: false,
 		// Allowing to go beyond the end of the line in visual block mode
 		virtualedit: "block"
-	},
-	g: {
+	}),
+	g: Table.create(null, {
 		loaded_2html_plugin: 1,
 		loaded_getscript: 1,
 		loaded_getscriptPlugin: 1,
@@ -117,7 +117,7 @@ final defaults = {
 		loaded_zip: 1,
 		loaded_zipPlugin: 1,
 		// Clipboard provider supporting wsl
-		clipboard: Vim.fn.has("wsl") == 1 ? {
+		clipboard: Vim.fn.has("wsl") == 1 ? Table.create(null, {
 			"name": "WslClipboard",
 			"copy": {
 				"+": "clip.exe",
@@ -128,9 +128,9 @@ final defaults = {
 				"*": "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"
 			},
 			"cache_enabled": 0
-		} : null
-	},
-	keymap: {
+		}) : null
+	}),
+	keymap: Table.create(null, {
 		"leader": " ",
 		// Buffers navigation
 		"buffer.next": "]<Tab>",
@@ -347,9 +347,9 @@ final defaults = {
 		"terminal.prev": "[t",
 		"terminal.open": "<leader>t",
 		"terminal.menu": "<leader>T"
-	},
-	config: {
-		"language": {},
+	}),
+	config: Table.create(null, {
+		"language": Table.create(null, {}),
 		"language.diagnostics.update_in_insert": false,
 		"language.diagnostics.severity_sort": true,
 		"theme.colorscheme": "edge",
@@ -358,10 +358,9 @@ final defaults = {
 		"icon.component.right": " ",
 		"icon.component.left": " ",
 		"terminal.jobs": []
-	}
-};
+	})
+});
 
-@:expose
 class Settings {
 	static function directory():String {
 		return Vim.fn.stdpath("config");
@@ -371,31 +370,44 @@ class Settings {
 		return Vim.fs.joinpath(Settings.directory(), "settings.json");
 	}
 
-	static function userSettings() {
+	static function userSettings():Table<String, Dynamic> {
 		final directory = Settings.directory();
 
 		if (Vim.fn.isdirectory(directory) == 0 && Vim.fn.mkdir(directory, "p") == 0) {
-			Vim.notify('Failed to create settings directory "${directory}"');
+			Vim.notify('Failed to create settings directory "${directory}"', Vim.log.levels.ERROR);
 		}
 
 		final file = Settings.file();
 
 		if (Vim.fn.filereadable(file) == 0 && Vim.fn.writefile(Table.create(["{}"]), file) == -1) {
-			Vim.notify('Failed to create settings file "${file}"');
+			Vim.notify('Failed to create settings file "${file}"', Vim.log.levels.ERROR);
 		}
 
-		final result = Lua.pcall(Vim.fn.readfile, file);
+		final result = Lua.pcall(() -> Vim.fn.readfile(file));
 
 		if (!result.status) {
-			Vim.notify('Failed to read settings file "${file}"');
+			Vim.notify('Failed to read settings file "${file}"', Vim.log.levels.ERROR);
 		}
 
 		final lines:Table<Int, String> = result.value;
 
-		return Vim.json.decode(lines.concat("\n"));
+		return Vim.json.decode(Table.concat(lines, "\n"), Table.create());
+	}
+
+	static public function init() {
+		final userSettings = Settings.userSettings();
+		final settings:Table<String, Dynamic> = Vim.tbl_deep_extend("force", defaults, Settings.userSettings());
+
+		PairTools.pairsEach(settings.opt, (name:String, value:Any) -> {
+			Reflect.setField(Vim.opt, name, value);
+		});
+
+		PairTools.pairsEach(settings.g, (name:String, value:Any) -> {
+			Reflect.setField(Vim.g, name, value);
+		});
 	}
 
 	static public function main() {
-		Vim.print(Settings.userSettings());
+		Settings.init();
 	}
 }
