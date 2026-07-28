@@ -197,17 +197,25 @@ local Enum = _hx_e();
 local _hx_exports = _hx_exports or {}
 local Array = _hx_e()
 local IntIterator = _hx_e()
+local Lambda = _hx_e()
+local Module = _hx_e()
+local Macro = _hx_e()
 local Math = _hx_e()
 local Settings = _hx_e()
 ___Settings_Settings_Fields_ = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local StringTools = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
+__nvim_helper__Native_LuaArray_Impl_ = _hx_e()
 __nvim_helper__Native_LuaObject_Impl_ = _hx_e()
 __nvim_helper__Native_Native_Fields_ = _hx_e()
 __nvim_type_vim_VarAccessor = _hx_e()
+__nvim_type_vim_api_keyset_EchoOpts = _hx_e()
+__nvim_type_vim_api_keyset_UserCommand = _hx_e()
+__nvim_type_vim_api_keyset_create_user_command_CommandArgs = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -546,6 +554,101 @@ IntIterator.prototype.next = function(self)
    end)() end
 end
 
+Lambda.new = {}
+Lambda.fold = function(it,f,first) 
+  local x = it:iterator();
+  while (x:hasNext()) do 
+    first = f(x:next(), first);
+  end;
+  do return first end;
+end
+
+Module.new = function(modules,plugins) 
+  local self = _hx_new(Module.prototype)
+  Module.super(self,modules,plugins)
+  return self
+end
+Module.super = function(self,modules,plugins) 
+  self.modules = modules;
+  self.plugins = plugins;
+end
+Module.prototype = _hx_e();
+Module.prototype.init = function(self) 
+  self:setup();
+end
+Module.prototype.setup = function(self) 
+end
+Module.prototype.list_plugins = function(self) 
+  do return self.plugins end
+end
+
+Macro.new = function() 
+  local self = _hx_new(Macro.prototype)
+  Macro.super(self)
+  return self
+end
+Macro.super = function(self) 
+  Module.super(self,_hx_tab_array({}, 0),_hx_tab_array({}, 0));
+end
+_hx_exports["Macro"] = Macro
+Macro.yank = function() 
+  local registerName = vim.fn.input("Please specify a register to yank from: ");
+  local opts = __nvim_type_vim_api_keyset_EchoOpts.new(nil, nil);
+  vim.api.nvim_echo(__nvim_helper__Native_LuaArray_Impl_.toTableArray(__nvim_helper__Native_LuaArray_Impl_.fromArray(_hx_tab_array({}, 0))), false, __nvim_helper__Native_LuaObject_Impl_.toTableObject(opts));
+  vim.schedule(function() 
+    if (registerName == "") then 
+      vim.notify("Invalid register name", vim.log.levels.ERROR);
+      do return nil end;
+    end;
+    do return Macro.yankRegister(registerName) end;
+  end);
+end
+Macro.yankRegister = function(registerName) 
+  local registerContent = vim.fn.getreg(registerName);
+  if (registerContent == "") then 
+    vim.notify("Invalid register content", vim.log.levels.ERROR);
+    do return nil end;
+  end;
+  local macroContent = Lambda.fold(Macro.config.escapeCharacters, function(character,content) 
+    do return StringTools.replace(content, character, Std.string("\\") .. Std.string(character)) end;
+  end, vim.fn.keytrans(registerContent));
+  vim.fn.setreg("+", macroContent);
+  vim.fn.setreg("*", macroContent);
+  vim.fn.setreg("\"", macroContent);
+  vim.notify(Std.string("Yanked macro content from register ") .. Std.string(registerName), vim.log.levels.INFO);
+  do return nil end;
+end
+Macro.prototype = _hx_e();
+Macro.prototype.setup = function(self) 
+  vim.api.nvim_create_user_command("YankMacro", function(args) 
+    local length = nil;
+    local tab = __lua_PairTools.copy(args.fargs);
+    local length = length;
+    local _g;
+    if (length == nil) then 
+      length = _hx_table.maxn(tab);
+      if (length > 0) then 
+        local head = tab[1];
+        _G.table.remove(tab, 1);
+        tab[0] = head;
+        _g = _hx_tab_array(tab, length);
+      else
+        _g = _hx_tab_array({}, 0);
+      end;
+    else
+      _g = _hx_tab_array(tab, length);
+    end;
+    local _g1 = _g.length;
+    if (_g1) == 0 then 
+      Macro.yank();
+    elseif (_g1) == 1 then 
+      Macro.yankRegister(_g[0]);else
+    vim.notify(Std.string(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument only"), vim.log.levels.ERROR); end;
+  end, __nvim_helper__Native_LuaObject_Impl_.toTableObject(__nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil)));
+end
+Macro.__super__ = Module
+setmetatable(Macro.prototype,{__index=Module.prototype})
+
 Math.new = {}
 Math.isNaN = function(f) 
   do return f ~= f end;
@@ -808,6 +911,32 @@ Std.int = function(x)
   end;
 end
 
+StringTools.new = {}
+StringTools.replace = function(s,sub,by) 
+  local idx = 1;
+  local ret = _hx_tab_array({}, 0);
+  while (idx ~= nil) do 
+    local newidx = 0;
+    if (#sub > 0) then 
+      newidx = _G.string.find(s, sub, idx, true);
+    else
+      if (idx >= #s) then 
+        newidx = nil;
+      else
+        newidx = idx + 1;
+      end;
+    end;
+    if (newidx ~= nil) then 
+      ret:push(_G.string.sub(s, idx, newidx - 1));
+      idx = newidx + #sub;
+    else
+      ret:push(_G.string.sub(s, idx, #s));
+      idx = nil;
+    end;
+  end;
+  do return ret:join(by) end;
+end
+
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -847,6 +976,27 @@ end
 __lua_PairTools.pairsEach = function(table,func) 
   for k,v in _G.pairs(table) do func(k,v) end;
 end
+__lua_PairTools.copy = function(table1) 
+  local ret = ({});
+  for k,v in _G.pairs(table1) do ret[k] = v end;
+  do return ret end;
+end
+
+__nvim_helper__Native_LuaArray_Impl_.new = {}
+__nvim_helper__Native_LuaArray_Impl_.fromArray = function(arr) 
+  local ret = ({});
+  local _g = 0;
+  local _g1 = arr.length;
+  while (_g < _g1) do 
+    _g = _g + 1;
+    local idx = _g - 1;
+    ret[idx + 1] = arr[idx];
+  end;
+  do return ret end;
+end
+__nvim_helper__Native_LuaArray_Impl_.toTableArray = function(this1) 
+  do return __nvim_helper__Native_Native_Fields_.native(this1) end;
+end
 
 __nvim_helper__Native_LuaObject_Impl_.new = {}
 __nvim_helper__Native_LuaObject_Impl_.toTableObject = function(this1) 
@@ -879,6 +1029,56 @@ __nvim_helper__Native_Native_Fields_.native = function(value)
 end
 
 __nvim_type_vim_VarAccessor.new = {}
+
+__nvim_type_vim_api_keyset_EchoOpts.new = function(err,verbose) 
+  local self = _hx_new()
+  __nvim_type_vim_api_keyset_EchoOpts.super(self,err,verbose)
+  return self
+end
+__nvim_type_vim_api_keyset_EchoOpts.super = function(self,err,verbose) 
+  self.err = err;
+  self.verbose = verbose;
+end
+
+__nvim_type_vim_api_keyset_UserCommand.new = function(addr,bang,bar,complete,count,desc,force,keepscript,nargs,preview,range,register) 
+  local self = _hx_new()
+  __nvim_type_vim_api_keyset_UserCommand.super(self,addr,bang,bar,complete,count,desc,force,keepscript,nargs,preview,range,register)
+  return self
+end
+__nvim_type_vim_api_keyset_UserCommand.super = function(self,addr,bang,bar,complete,count,desc,force,keepscript,nargs,preview,range,register) 
+  self.addr = addr;
+  self.bang = bang;
+  self.bar = bar;
+  self.complete = complete;
+  self.count = count;
+  self.desc = desc;
+  self.force = force;
+  self.keepscript = keepscript;
+  self.nargs = nargs;
+  self.preview = preview;
+  self.range = range;
+  self.register = register;
+end
+
+__nvim_type_vim_api_keyset_create_user_command_CommandArgs.new = function(args,bang,count,fargs,line1,line2,mods,name,nargs,range,reg,smods) 
+  local self = _hx_new()
+  __nvim_type_vim_api_keyset_create_user_command_CommandArgs.super(self,args,bang,count,fargs,line1,line2,mods,name,nargs,range,reg,smods)
+  return self
+end
+__nvim_type_vim_api_keyset_create_user_command_CommandArgs.super = function(self,args,bang,count,fargs,line1,line2,mods,name,nargs,range,reg,smods) 
+  self.args = args;
+  self.bang = bang;
+  self.count = count;
+  self.fargs = fargs;
+  self.line1 = line1;
+  self.line2 = line2;
+  self.mods = mods;
+  self.name = name;
+  self.nargs = nargs;
+  self.range = range;
+  self.reg = reg;
+  self.smods = smods;
+end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -909,6 +1109,8 @@ end;
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
+  Macro.config = _hx_o({__fields__={escapeCharacters=true},escapeCharacters=_hx_tab_array({[0]="\"", "'"}, 2)});
+  
   ___Settings_Settings_Fields_.defaults = ({opt = ({confirm = true, inccommand = "nosplit", hlsearch = true, cul = true, lazyredraw = true, cmdheight = 1, number = true, numberwidth = 5, hidden = true, backup = false, writebackup = false, mouse = "a", breakindent = true, undofile = true, ignorecase = true, smartcase = true, updatetime = 250, signcolumn = "yes", termguicolors = true, shiftwidth = 2, tabstop = 2, autoindent = true, smartindent = true, wrap = false, spell = false, spelllang = "en_gb", clipboard = "unnamedplus", list = true, listchars = ({eol = "↲", tab = "▸ ", trail = "·", space = "·", extends = "…", precedes = "…"}), fillchars = "foldopen:▼,foldclose:►,eob:·", scrolloff = 999, sidescrolloff = 2, guicursor = ({"a:block-blinkon0","v-ve-sm-o-r:block-blinkon1","i-c-ci-cr:ver1-blinkon1"}), foldenable = true, foldmethod = "manual", foldcolumn = "1", foldlevel = 99, foldlevelstart = 99, laststatus = 3, splitright = true, splitbelow = true, whichwrap = ({b = true, s = true, ['>'] = true, ['<'] = true, [']'] = true, ['['] = true, h = true, l = true}), completeopt = ({"menu","menuone","noselect"}), winbar = "%=%f", swapfile = false, virtualedit = "block"}), g = ({loaded_2html_plugin = 1, loaded_getscript = 1, loaded_getscriptPlugin = 1, loaded_gzip = 1, loaded_logipat = 1, loaded_netrw = 1, loaded_netrwPlugin = 1, loaded_netrwSettings = 1, loaded_netrwFileHandlers = 1, loaded_matchit = 1, loaded_tar = 1, loaded_tarPlugin = 1, loaded_rrhelper = 1, loaded_spellfile_plugin = 1, loaded_vimball = 1, loaded_vimballPlugin = 1, loaded_zip = 1, loaded_zipPlugin = 1, clipboard = (function() 
     local _hx_1
     if (vim.fn.has("wsl") == 1) then 
@@ -929,6 +1131,19 @@ _hx_funcToField = function(f)
     return f
   end
 end
+
+_hx_table = {}
+_hx_table.pack = _G.table.pack or function(...)
+    return {...}
+end
+_hx_table.unpack = _G.table.unpack or _G.unpack
+_hx_table.maxn = _G.table.maxn or function(t)
+  local maxn=0;
+  for i in pairs(t) do
+    maxn=type(i)=='number'and i>maxn and i or maxn
+  end
+  return maxn
+end;
 
 _hx_static_init();
 return _hx_exports

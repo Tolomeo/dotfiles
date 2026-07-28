@@ -1,3 +1,3 @@
-local settings = require("core.core");
+local core = require("core.core");
 
-return settings["settings"].get();
+return core["settings"].get();

@@ -16,13 +16,6 @@
 
 --library hxnvim
 
---each
-
---lua lua/editor/macro.lua
-Macro
-
---next 
-
 --lua lua/core/core.lua
 Settings
-
+Macro
