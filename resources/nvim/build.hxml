@@ -23,7 +23,6 @@ Macro
 
 --next 
 
---lua lua/settingsV2.lua
+--lua lua/core/core.lua
 Settings
-
 

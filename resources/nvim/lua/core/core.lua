@@ -199,6 +199,7 @@ local Array = _hx_e()
 local IntIterator = _hx_e()
 local Math = _hx_e()
 local Settings = _hx_e()
+___Settings_Settings_Fields_ = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
@@ -206,6 +207,7 @@ __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
 __nvim_helper__Native_LuaObject_Impl_ = _hx_e()
 __nvim_helper__Native_Native_Fields_ = _hx_e()
+__nvim_type_vim_VarAccessor = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -563,33 +565,59 @@ Math.min = function(a,b)
   end;
 end
 
-Settings.new = {}
-_hx_exports["Settings"] = Settings
+Settings.new = function() 
+  local self = _hx_new()
+  Settings.super(self)
+  return self
+end
+Settings.super = function(self) 
+  self.config = ({});
+  self.keymap = ({});
+  self.opt = _hx_funcToField(vim.opt);
+  self.g = _hx_funcToField(vim.g);
+  Settings.loadUserSettings();
+  local settings = vim.tbl_deep_extend("force", ___Settings_Settings_Fields_.defaults, Settings.loadUserSettings());
+  __lua_PairTools.pairsEach(settings.opt, function(name,value) 
+    vim.opt[name] = value;
+  end);
+  __lua_PairTools.pairsEach(settings.g, function(name,value) 
+    vim.g[name] = value;
+  end);
+  self.keymap = settings.keymap;
+  self.config = settings.config;
+end
+_hx_exports["settings"] = Settings
+Settings.get = function() 
+  if (Settings.instance == nil) then 
+    Settings.instance = Settings.new();
+  end;
+  do return Settings.instance end;
+end
 Settings.directory = function() 
   do return vim.fn.stdpath("config") end;
 end
 Settings.file = function() 
   do return vim.fs.joinpath(Settings.directory(), "settings.json") end;
 end
-Settings.userSettings = function() 
+Settings.loadUserSettings = function() 
   local directory = Settings.directory();
   if ((vim.fn.isdirectory(directory) == 0) and (vim.fn.mkdir(directory, "p") == 0)) then 
-    vim.notify(Std.string(Std.string("Failed to create settings directory \"") .. Std.string(directory)) .. Std.string("\""));
+    vim.notify(Std.string(Std.string("Failed to create settings directory \"") .. Std.string(directory)) .. Std.string("\""), vim.log.levels.ERROR);
   end;
   local file = Settings.file();
   if ((vim.fn.filereadable(file) == 0) and (vim.fn.writefile(({"{}"}), file) == -1)) then 
-    vim.notify(Std.string(Std.string("Failed to create settings file \"") .. Std.string(file)) .. Std.string("\""));
+    vim.notify(Std.string(Std.string("Failed to create settings file \"") .. Std.string(file)) .. Std.string("\""), vim.log.levels.ERROR);
   end;
-  local _hx_1_result_status, _hx_1_result_value = _G.pcall(_hx_bind(vim.fn,vim.fn.readfile), file);
+  local _hx_1_result_status, _hx_1_result_value = _G.pcall(function() 
+    do return vim.fn.readfile(file) end;
+  end);
   if (not _hx_1_result_status) then 
-    vim.notify(Std.string(Std.string("Failed to read settings file \"") .. Std.string(file)) .. Std.string("\""));
+    vim.notify(Std.string(Std.string("Failed to read settings file \"") .. Std.string(file)) .. Std.string("\""), vim.log.levels.ERROR);
   end;
-  local opts = nil;
-  do return vim.json.decode(_G.table.concat(_hx_1_result_value, "\n"), __nvim_helper__Native_LuaObject_Impl_.toTableObject(opts)) end;
+  do return vim.json.decode(_G.table.concat(_hx_1_result_value, "\n"), __nvim_helper__Native_LuaObject_Impl_.toTableObject(({}))) end;
 end
-Settings.main = function() 
-  vim.print(Settings.userSettings());
-end
+
+___Settings_Settings_Fields_.new = {}
 
 String.new = function(string) 
   local self = _hx_new(String.prototype)
@@ -849,6 +877,8 @@ __nvim_helper__Native_Native_Fields_.native = function(value)
   end;
   do return value end;
 end
+
+__nvim_type_vim_VarAccessor.new = {}
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -879,22 +909,25 @@ end;
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
+  ___Settings_Settings_Fields_.defaults = ({opt = ({confirm = true, inccommand = "nosplit", hlsearch = true, cul = true, lazyredraw = true, cmdheight = 1, number = true, numberwidth = 5, hidden = true, backup = false, writebackup = false, mouse = "a", breakindent = true, undofile = true, ignorecase = true, smartcase = true, updatetime = 250, signcolumn = "yes", termguicolors = true, shiftwidth = 2, tabstop = 2, autoindent = true, smartindent = true, wrap = false, spell = false, spelllang = "en_gb", clipboard = "unnamedplus", list = true, listchars = ({eol = "↲", tab = "▸ ", trail = "·", space = "·", extends = "…", precedes = "…"}), fillchars = "foldopen:▼,foldclose:►,eob:·", scrolloff = 999, sidescrolloff = 2, guicursor = ({"a:block-blinkon0","v-ve-sm-o-r:block-blinkon1","i-c-ci-cr:ver1-blinkon1"}), foldenable = true, foldmethod = "manual", foldcolumn = "1", foldlevel = 99, foldlevelstart = 99, laststatus = 3, splitright = true, splitbelow = true, whichwrap = ({b = true, s = true, ['>'] = true, ['<'] = true, [']'] = true, ['['] = true, h = true, l = true}), completeopt = ({"menu","menuone","noselect"}), winbar = "%=%f", swapfile = false, virtualedit = "block"}), g = ({loaded_2html_plugin = 1, loaded_getscript = 1, loaded_getscriptPlugin = 1, loaded_gzip = 1, loaded_logipat = 1, loaded_netrw = 1, loaded_netrwPlugin = 1, loaded_netrwSettings = 1, loaded_netrwFileHandlers = 1, loaded_matchit = 1, loaded_tar = 1, loaded_tarPlugin = 1, loaded_rrhelper = 1, loaded_spellfile_plugin = 1, loaded_vimball = 1, loaded_vimballPlugin = 1, loaded_zip = 1, loaded_zipPlugin = 1, clipboard = (function() 
+    local _hx_1
+    if (vim.fn.has("wsl") == 1) then 
+    _hx_1 = ({name = "WslClipboard", copy = _hx_o({__fields__={['+']=true,['*']=true},['+']="clip.exe",['*']="clip.exe"}), paste = _hx_o({__fields__={['+']=true,['*']=true},['+']="powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",['*']="powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"}), cache_enabled = 0}); else 
+    _hx_1 = nil; end
+    return _hx_1
+  end )()}), keymap = ({leader = " ", ['buffer.next'] = "]<Tab>", ['buffer.prev'] = "[<Tab>", ['buffer.save'] = "<leader>w", ['buffer.save.all'] = "<leader>W", ['buffer.close'] = "<leader>q", ['buffer.close.delete'] = "<leader>Q", ['buffer.cursor.prev'] = "<S-h>", ['buffer.cursor.prev.big'] = "<A-S-h>", ['buffer.cursor.next'] = "<S-l>", ['buffer.cursor.next.big'] = "<A-S-l>", ['buffer.cursor.above'] = "<S-k>", ['buffer.cursor.above.big'] = "<A-S-k>", ['buffer.cursor.below'] = "<S-j>", ['buffer.cursor.below.big'] = "<A-S-j>", ['buffer.line.indent'] = "<Tab>", ['buffer.line.outdent'] = "<S-Tab>", ['buffer.line.join'] = "<leader>j", ['buffer.line.bubble.up'] = "<A-j>", ['buffer.line.bubble.down'] = "<A-k>", ['buffer.line.duplicate.up'] = "<leader>P", ['buffer.line.duplicate.down'] = "<leader>p", ['buffer.line.new.up'] = "<leader>O", ['buffer.line.new.down'] = "<leader>o", ['buffer.line.comment'] = "<leader><space>", ['buffer.word.substitute'] = "<leader>S", ['buffer.word.substitute.line'] = "<leader>s", ['buffer.jump.out'] = "<C-S-o>", ['buffer.jump.in'] = "<C-o>", ['buffer.macro.repeat.last'] = "Q", ['buffer.select.all'] = "<leader>%", ['tab.next'] = "}<Tab>", ['tab.prev'] = "{<Tab>", ['dropdown.open'] = "<C-Space>", ['dropdown.item.next'] = "<C-j>", ['dropdown.item.prev'] = "<C-k>", ['dropdown.item.confirm'] = "<CR>", ['dropdown.scroll.up'] = "<C-u>", ['dropdown.scroll.down'] = "<C-f>", ['language.lsp.hover'] = "<leader>k", ['language.lsp.signature_help'] = "<C-k>", ['language.lsp.references'] = "<leader>gr", ['language.lsp.definition'] = "<leader>gd", ['language.lsp.declaration'] = "<leader>gD", ['language.lsp.type_definition'] = "<leader>gt", ['language.lsp.implementation'] = "<leader>gi", ['language.lsp.rename'] = "<leader>r", ['language.lsp.code_action'] = "<C-Space>", ['language.diagnostic.next'] = "]d", ['language.diagnostic.prev'] = "[d", ['language.diagnostic.open'] = "<leader>d", ['language.diagnostic.list'] = "<leader>D", ['language.format'] = "<leader>b", ['find.files'] = "<leader>E", ['find.projects'] = "<C-S-e>", ['find.text_in_buffer'] = "<leader>f", ['find.text_in_directory'] = "<leader>F", ['find.about_vim'] = "<leader>?", ['find.spelling_suggestions'] = "<C-z>", ['find.buffers'] = "<C-b>", ['find.todos'] = "<leader>/", ['list.open'] = "<leader>c", ['list.close'] = "<leader>C", ['list.next'] = "]c", ['list.prev'] = "[c", ['list.item.open.vertical'] = "<C-x>", ['list.item.open.horizontal'] = "<C-S-x>", ['list.item.open.tab'] = "<C-t>", ['list.item.open.preview'] = "<leader>c", ['list.item.prev.open.preview'] = "[c", ['list.item.next.open.preview'] = "]c", ['list.navigate.first'] = "[C", ['list.navigate.last'] = "]C", ['list.item.remove'] = "<leader>d", ['list.item.keep'] = "<leader>D", ['list.search'] = "<leader>f", ['git.blame'] = "<leader>hb", ['git.diff'] = "<leader>hd", ['git.hunk.preview'] = "<leader>h", ['git.hunk.next'] = "]h", ['git.hunk.prev'] = "[h", ['git.hunk.select'] = "<leader>hv", ['git.menu'] = "<leader>H", ['github.actions'] = "<leader>G", ['github.react.tada'] = "<space>rp", ['github.react.heart'] = "<space>rh", ['github.react.eyes'] = "<space>re", ['github.react.thumbs_up'] = "<space>r+", ['github.react.thumbs_down'] = "<space>r-", ['github.react.rocket'] = "<space>rr", ['github.react.laugh'] = "<space>rl", ['github.react.confused'] = "<space>rc", ['github.comment.add'] = "<space>ca", ['github.comment.delete'] = "<space>cd", ['github.comment.next'] = "]c", ['github.comment.previous'] = "[c", ['github.suggestion.add'] = "<space>sa", ['github.review.files.focus'] = "<space>e", ['github.review.thread.next'] = "]C", ['github.review.thread.previous'] = "[C", ['github.review.files.next'] = "j", ['github.review.files.previous'] = "k", ['github.review.files.next.select'] = "]q", ['github.review.files.previous.select'] = "[q", ['github.review.files.select'] = "<Cr>", ['github.review.files.viewed.toggle'] = "<leader>b", ['github.review.files.toggle'] = "<space>b", ['github.review.files.refresh'] = "R", ['github.review.submit.approve'] = "<C-a>", ['github.review.submit.comment'] = "<C-m>", ['github.review.submit.request_changes'] = "<C-r>", ['github.review.close'] = "<C-c>", ['github.pull.checkout'] = "<space>po", ['github.pull.changes.list'] = "<space>pf", ['github.pull.diff'] = "<space>pd", ['github.pull.commits.diff'] = "<space>pc", ['github.pull.reviewer.add'] = "<space>va", ['github.pull.reviewer.remove'] = "<space>vd", ['github.pull.close'] = "<space>ic", ['github.pull.reopen'] = "<space>io", ['github.pull.refresh'] = "<C-r>", ['github.pull.open.browser'] = "<C-b>", ['github.pull.copy.url'] = "<C-y>", ['github.pull.open.file'] = "gf", ['github.pull.assignee.add'] = "<space>aa", ['github.pull.assignee.remove'] = "<space>ad", ['github.pull.label.create'] = "<space>lc", ['github.pull.label.add'] = "<space>la", ['github.pull.label.remove'] = "<space>ld", ['project.tree.node.info'] = "<leader>k", ['project.tree.node.open.vertical'] = "<C-x>", ['project.tree.node.open.horizontal'] = "<C-S-x>", ['project.tree.node.open.tab'] = "<C-t>", ['project.tree.node.collapse'] = "h", ['project.tree.node.open'] = "l", ['project.tree.node.open.system'] = "O", ['project.tree.navigate.parent'] = "H", ['project.tree.navigate.sibling.first'] = "[", ['project.tree.navigate.sibling.last'] = "]", ['project.tree.fs.enter'] = "o", ['project.tree.fs.create'] = "a", ['project.tree.fs.remove'] = "d", ['project.tree.fs.trash'] = "D", ['project.tree.fs.rename'] = "r", ['project.tree.fs.rename.full'] = "R", ['project.tree.fs.copy.node'] = "c", ['project.tree.fs.cut'] = "C", ['project.tree.fs.paste'] = "p", ['project.tree.fs.copy.filename'] = "y", ['project.tree.fs.copy.path.relative'] = "Y", ['project.tree.fs.copy.path.absolute'] = "gy", ['project.tree.refresh'] = "<C-r>", ['project.tree.collapse.all'] = "gh", ['project.tree.root.parent'] = "gk", ['project.tree.help'] = "g?", ['project.tree.toggle.filter.custom'] = "u", ['project.tree.toggle.filter.gitignore'] = "i", ['project.tree.toggle.filter.dotfiles'] = ".", ['project.tree.actions'] = "<C-Space>", ['project.tree.search.node.content'] = "<leader>f", ['project.tree.search.node'] = "/", ['project.tree.close'] = "q", ['project.tree.toggle'] = "<leader>e", ['window.cursor.left'] = "<C-h>", ['window.cursor.down'] = "<C-j>", ['window.cursor.up'] = "<C-k>", ['window.cursor.right'] = "<C-l>", ['window.cursor.next'] = "<C-n>", ['window.cursor.prev'] = "<C-S-n>", ['window.swap.next'] = "<C-;>", ['window.shrink.horizontal'] = "<C-A-j>", ['window.shrink.vertical'] = "<C-A-h>", ['window.expand.vertical'] = "<C-A-l>", ['window.expand.horizontal'] = "<C-A-k>", ['window.fullwidth.bottom'] = "<C-S-j>", ['window.fullheight.left'] = "<C-S-h>", ['window.fullheight.right'] = "<C-S-l>", ['window.fullwidth.top'] = "<C-S-k>", ['window.equalize'] = "<C-=>", ['window.maximize'] = "<C-+>", ['window.split.horizontal'] = "<C-S-x>", ['window.split.vertical'] = "<C-x>", ['terminal.next'] = "]t", ['terminal.prev'] = "[t", ['terminal.open'] = "<leader>t", ['terminal.menu'] = "<leader>T"}), config = ({language = ({}), ['language.diagnostics.update_in_insert'] = false, ['language.diagnostics.severity_sort'] = true, ['theme.colorscheme'] = "edge", ['icon.section.right'] = " ▟", ['icon.section.left'] = "▙ ", ['icon.component.right'] = " ", ['icon.component.left'] = " ", ['terminal.jobs'] = _hx_tab_array({}, 0)})});
+  
   
 end
 
-_hx_bind = function(o,m)
-  if m == nil then return nil end;
-  local f;
-  if o._hx__closures == nil then
-    _G.rawset(o, '_hx__closures', {});
+_hx_funcToField = function(f)
+  if type(f) == 'function' then
+    return function(self,...)
+      return f(...)
+    end
   else
-    f = o._hx__closures[m];
+    return f
   end
-  if (f == nil) then
-    f = function(...) return m(o, ...) end;
-    o._hx__closures[m] = f;
-  end
-  return f;
 end
 
 _hx_static_init();

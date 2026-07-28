@@ -4,7 +4,7 @@ local fn = require("_shared.fn")
 local str = require("_shared.str")
 local arr = require("_shared.array")
 local map = require("_shared.map")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Format = Module:extend({
 	plugins = {

@@ -1,5 +1,5 @@
 local Module = require("_shared.module")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Color = Module:extend({
 	plugins = {

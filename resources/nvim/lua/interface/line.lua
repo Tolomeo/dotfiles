@@ -2,7 +2,7 @@ local Module = require("_shared.module")
 local key = require("_shared.key")
 local tb = require("_shared.tab")
 local validator = require("_shared.validator")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Line = Module:extend({
 	plugins = {

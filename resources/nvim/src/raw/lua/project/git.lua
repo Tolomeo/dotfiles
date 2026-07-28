@@ -2,7 +2,7 @@ local Module = require("_shared.module")
 local key = require("_shared.key")
 local fn = require("_shared.fn")
 local arr = require("_shared.array")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Git = Module:extend({
 	plugins = {

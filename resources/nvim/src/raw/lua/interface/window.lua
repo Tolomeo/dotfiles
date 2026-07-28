@@ -2,7 +2,7 @@ local Module = require("_shared.module")
 local au = require("_shared.au")
 local key = require("_shared.key")
 local validator = require("_shared.validator")
-local settings = require("settings")
+local settings = require("core.settings")
 local fn = require("_shared.fn")
 local tbl = require("_shared.table")
 

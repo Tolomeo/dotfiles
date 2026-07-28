@@ -1,4 +1,4 @@
-final defaults:Table<String, Dynamic> = Table.create(null, {
+final defaults:Table<String, Any> = Table.create(null, {
 	opt: Table.create(null, {
 		// asking for confirmation instead of just failing certain commands
 		confirm: true,
@@ -361,7 +361,18 @@ final defaults:Table<String, Dynamic> = Table.create(null, {
 	})
 });
 
+@:expose("settings")
 class Settings {
+	static var instance:Null<Settings> = null;
+
+	static public function get():Settings {
+		if (Settings.instance == null) {
+			Settings.instance = new Settings();
+		}
+
+		return Settings.instance;
+	}
+
 	static function directory():String {
 		return Vim.fn.stdpath("config");
 	}
@@ -370,7 +381,7 @@ class Settings {
 		return Vim.fs.joinpath(Settings.directory(), "settings.json");
 	}
 
-	static function userSettings():Table<String, Dynamic> {
+	static function loadUserSettings():Table<String, Dynamic> {
 		final directory = Settings.directory();
 
 		if (Vim.fn.isdirectory(directory) == 0 && Vim.fn.mkdir(directory, "p") == 0) {
@@ -394,9 +405,17 @@ class Settings {
 		return Vim.json.decode(Table.concat(lines, "\n"), Table.create());
 	}
 
-	static public function init() {
-		final userSettings = Settings.userSettings();
-		final settings:Table<String, Dynamic> = Vim.tbl_deep_extend("force", defaults, Settings.userSettings());
+	public var g = Vim.g;
+
+	public var opt = Vim.opt;
+
+	public var keymap:Table<String, String> = Table.create();
+
+	public var config:Table<String, Any> = Table.create();
+
+	function new() {
+		final userSettings = Settings.loadUserSettings();
+		final settings:Table<String, Any> = Vim.tbl_deep_extend("force", defaults, Settings.loadUserSettings());
 
 		PairTools.pairsEach(settings.opt, (name:String, value:Any) -> {
 			Reflect.setField(Vim.opt, name, value);
@@ -405,9 +424,8 @@ class Settings {
 		PairTools.pairsEach(settings.g, (name:String, value:Any) -> {
 			Reflect.setField(Vim.g, name, value);
 		});
-	}
 
-	static public function main() {
-		Settings.init();
+		this.keymap = settings.keymap;
+		this.config = settings.config;
 	}
 }
