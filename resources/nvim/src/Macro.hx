@@ -24,7 +24,7 @@ class Module {
 }
 
 @:keep
-@:expose
+@:expose("macro")
 class Macro extends Module {
 	private static final config = {
 		escapeCharacters: ["\"", "'"]

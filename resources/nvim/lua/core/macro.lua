@@ -1,3 +1,3 @@
 local core = require("core.core")
 
-return core["Macro"].new()
+return core["macro"].new()

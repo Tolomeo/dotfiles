@@ -590,7 +590,7 @@ end
 Macro.super = function(self) 
   Module.super(self,_hx_tab_array({}, 0),_hx_tab_array({}, 0));
 end
-_hx_exports["Macro"] = Macro
+_hx_exports["macro"] = Macro
 Macro.yank = function() 
   local registerName = vim.fn.input("Please specify a register to yank from: ");
   local opts = __nvim_type_vim_api_keyset_EchoOpts.new(nil, nil);
