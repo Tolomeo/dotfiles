@@ -6,7 +6,7 @@ local map = require("_shared.map")
 local tbl = require("_shared.table")
 local str = require("_shared.str")
 local arr = require("_shared.array")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Language = Module:extend({
 	plugins = {

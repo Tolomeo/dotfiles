@@ -8,7 +8,7 @@ local tb = require("_shared.tab")
 local pt = require("_shared.path")
 local arr = require("_shared.array")
 local str = require("_shared.str")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local nvim_cwd = pt.format({ vim.loop.cwd(), ":p" })
 

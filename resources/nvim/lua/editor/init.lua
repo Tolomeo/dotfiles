@@ -1,14 +1,14 @@
 local Module = require("_shared.module")
 local au = require("_shared.au")
 local key = require("_shared.key")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Editor = Module:extend({
 	modules = {
 		"editor.syntax",
 		"editor.language",
 		"editor.format",
-		{ "editor.macro", "Macro" },
+		"core.macro",
 	},
 	plugins = {
 		{ "romainl/vim-cool" },

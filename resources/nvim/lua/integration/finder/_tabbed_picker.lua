@@ -4,7 +4,7 @@ local fn = require("_shared.fn")
 local arr = require("_shared.array")
 local tbl = require("_shared.table")
 local validator = require("_shared.validator")
-local settings = require("settings")
+local settings = require("core.settings")
 
 ---@class Cfg.TabbedPicker.Tab
 ---@field prompt_title string

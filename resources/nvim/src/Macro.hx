@@ -24,7 +24,7 @@ class Module {
 }
 
 @:keep
-@:expose
+@:expose("macro")
 class Macro extends Module {
 	private static final config = {
 		escapeCharacters: ["\"", "'"]
@@ -71,7 +71,7 @@ class Macro extends Module {
 	}
 
 	override public function setup() {
-		Vim.api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (args.fargs.toArray()) {
+		Vim.api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
 			case []: Macro.yank();
 			case [r]: Macro.yankRegister(r);
 			case arguments:

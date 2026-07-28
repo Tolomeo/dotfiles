@@ -5,7 +5,7 @@ local arr = require("_shared.array")
 local str = require("_shared.str")
 local tb = require("_shared.tab")
 local key = require("_shared.key")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local Terminal = Module:extend({
 	plugins = {

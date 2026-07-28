@@ -3,7 +3,7 @@ local tbl = require("_shared.table")
 local map = require("_shared.map")
 local fs = require("_shared.fs")
 local key = require("_shared.key")
-local settings = require("settings")
+local settings = require("core.settings")
 
 local plugins_install_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local packages_install_path = vim.fn.stdpath("data") .. "/mason"
@@ -22,7 +22,6 @@ local Config = Module:extend({
 })
 
 function Config:setup()
-	settings:init()
 	-- setting leader key
 	key.map_leader(settings.keymap.leader)
 
