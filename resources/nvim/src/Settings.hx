@@ -119,14 +119,14 @@ final defaults:Table<String, Any> = Table.create(null, {
 		// Clipboard provider supporting wsl
 		clipboard: Vim.fn.has("wsl") == 1 ? Table.create(null, {
 			"name": "WslClipboard",
-			"copy": {
+			"copy": Table.create(null, {
 				"+": "clip.exe",
 				"*": "clip.exe"
-			},
-			"paste": {
+			}),
+			"paste": Table.create(null, {
 				"+": "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",
 				"*": "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))"
-			},
+			}),
 			"cache_enabled": 0
 		}) : null
 	}),
@@ -349,7 +349,7 @@ final defaults:Table<String, Any> = Table.create(null, {
 		"terminal.menu": "<leader>T"
 	}),
 	config: Table.create(null, {
-		"language": Table.create(null, {}),
+		"language": Table.create(),
 		"language.diagnostics.update_in_insert": false,
 		"language.diagnostics.severity_sort": true,
 		"theme.colorscheme": "edge",
