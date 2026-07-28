@@ -22,7 +22,6 @@ local Config = Module:extend({
 })
 
 function Config:setup()
-	-- settings:init()
 	-- setting leader key
 	key.map_leader(settings.keymap.leader)
 
