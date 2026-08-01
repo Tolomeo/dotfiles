@@ -1,3 +1,5 @@
+import common.Json;
+
 final defaults:Table<String, Any> = Table.create(null, {
 	opt: Table.create(null, {
 		// asking for confirmation instead of just failing certain commands
@@ -406,7 +408,7 @@ class Settings {
 
 		final lines:Table<Int, String> = result.value;
 
-		return Vim.json.decode(Table.concat(lines, "\n"), Table.create());
+		return Json.decode(Table.concat(lines, "\n"));
 	}
 
 	public var g = Vim.g;
@@ -444,9 +446,7 @@ class Settings {
 
 		final file = Settings.file();
 
-		final settings = Vim.json.encode(this.userSettings, Table.create());
-
-		Vim.print(settings);
+		final settings = Json.format(Json.encode(this.userSettings));
 
 		if (Vim.fn.filewritable(file) == 0 || Vim.fn.writefile(settings, file) == -1) {
 			Vim.notify('Failed to write settings file "${file}"', Vim.log.levels.ERROR);

@@ -207,6 +207,7 @@ ___Settings_Settings_Fields_ = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
 local StringTools = _hx_e()
+__common_Json = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
@@ -852,7 +853,7 @@ Settings.loadUserSettings = function()
   if (not _hx_1_result_status) then 
     vim.notify(Std.string(Std.string("Failed to read settings file \"") .. Std.string(file)) .. Std.string("\""), vim.log.levels.ERROR);
   end;
-  do return vim.json.decode(_G.table.concat(_hx_1_result_value, "\n"), __nvim_helper__Native_LuaObject_Impl_.toTableObject(({}))) end;
+  do return __common_Json.decode(_G.table.concat(_hx_1_result_value, "\n")) end;
 end
 Settings.prototype = _hx_e();
 Settings.prototype.setOpt = function(self,name,value) 
@@ -861,8 +862,7 @@ end
 Settings.prototype.saveConfig = function(self,name,config) 
   Reflect.setProperty(self.userSettings.config, name, config);
   local file = Settings.file();
-  local settings = vim.json.encode(self.userSettings, __nvim_helper__Native_LuaObject_Impl_.toTableObject(({})));
-  vim.print(settings);
+  local settings = __common_Json.format(__common_Json.encode(self.userSettings));
   if ((vim.fn.filewritable(file) == 0) or (vim.fn.writefile(settings, file) == -1)) then 
     vim.notify(Std.string(Std.string("Failed to write settings file \"") .. Std.string(file)) .. Std.string("\""), vim.log.levels.ERROR);
   end;
@@ -1084,6 +1084,76 @@ StringTools.replace = function(s,sub,by)
     end;
   end;
   do return ret:join(by) end;
+end
+
+__common_Json.new = {}
+__common_Json.decode = function(str) 
+  do return vim.json.decode(str, __nvim_helper__Native_LuaObject_Impl_.toTableObject(({}))) end;
+end
+__common_Json.encode = function(obj) 
+  do return vim.json.encode(obj, __nvim_helper__Native_LuaObject_Impl_.toTableObject(({}))) end;
+end
+__common_Json.format = function(str) 
+  local level = 0;
+  local out_b = ({});
+  local dquote = 0;
+  local _g = 0;
+  local _g1 = #str;
+  while (_g < _g1) do 
+    _g = _g + 1;
+    local i = _g - 1;
+    local c = _G.string.sub(str, i + 1, i + 1);
+    if ((c == "{") or (c == "[")) then 
+      _G.table.insert(out_b, Std.string(c));
+      _G.table.insert(out_b, "\n");
+      level = level + 1;
+      local _g = 0;
+      local _g1 = level;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        _G.table.insert(out_b, "  ");
+      end;
+    else
+      if ((c == "}") or (c == "]")) then 
+        level = level - 1;
+        _G.table.insert(out_b, "\n");
+        local _g = 0;
+        local _g1 = level;
+        while (_g < _g1) do 
+          _g = _g + 1;
+          _G.table.insert(out_b, "  ");
+        end;
+        _G.table.insert(out_b, Std.string(c));
+      else
+        if (c == ",") then 
+          _G.table.insert(out_b, Std.string(c));
+          _G.table.insert(out_b, "\n");
+          local _g = 0;
+          local _g1 = level;
+          while (_g < _g1) do 
+            _g = _g + 1;
+            _G.table.insert(out_b, "  ");
+          end;
+        else
+          if (c == ":") then 
+            if ((_G.math.fmod(dquote, 2)) == 1) then 
+              _G.table.insert(out_b, ":");
+            else
+              _G.table.insert(out_b, ": ");
+            end;
+          else
+            if (c == "\"") then 
+              dquote = dquote + 1;
+              _G.table.insert(out_b, "\"");
+            else
+              _G.table.insert(out_b, Std.string(c));
+            end;
+          end;
+        end;
+      end;
+    end;
+  end;
+  do return _G.table.concat(out_b) end;
 end
 
 __haxe_iterators_ArrayIterator.new = function(array) 
