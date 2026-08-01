@@ -349,6 +349,10 @@ final defaults:Table<String, Any> = Table.create(null, {
 		"terminal.menu": "<leader>T"
 	}),
 	config: Table.create(null, {
+		"macro": Table.create(null, {
+			escapeCharacters: Table.create(["\"", "'"]),
+			saved: Table.create([]),
+		}),
 		"language": Table.create(),
 		"language.diagnostics.update_in_insert": false,
 		"language.diagnostics.severity_sort": true,
@@ -409,16 +413,22 @@ class Settings {
 
 	public var opt = Vim.opt;
 
+	public function setOpt(name: String, value: Any) {
+		Reflect.setField(Vim.opt, name, value);
+	}
+
 	public var keymap:Table<String, String> = Table.create();
 
 	public var config:Table<String, Any> = Table.create();
 
+	private var userSettings:Table<String, Any>;
+
 	function new() {
-		final userSettings = Settings.loadUserSettings();
-		final settings:Table<String, Any> = Vim.tbl_deep_extend("force", defaults, Settings.loadUserSettings());
+		this.userSettings = Settings.loadUserSettings();
+		final settings:Table<String, Any> = Vim.tbl_deep_extend("force", defaults, this.userSettings);
 
 		PairTools.pairsEach(settings.opt, (name:String, value:Any) -> {
-			Reflect.setField(Vim.opt, name, value);
+			Reflect.setField(Vim.g, name, value);
 		});
 
 		PairTools.pairsEach(settings.g, (name:String, value:Any) -> {
@@ -427,5 +437,21 @@ class Settings {
 
 		this.keymap = settings.keymap;
 		this.config = settings.config;
+	}
+
+	public function saveConfig(name: String, config: Any) {
+		Reflect.setProperty(this.userSettings.config, name, config);
+
+		final file = Settings.file();
+
+		final settings = Vim.json.encode(this.userSettings, Table.create());
+
+		Vim.print(settings);
+
+		if (Vim.fn.filewritable(file) == 0 || Vim.fn.writefile(settings, file) == -1) {
+			Vim.notify('Failed to write settings file "${file}"', Vim.log.levels.ERROR);
+		}
+
+		Vim.notify('Settings file updated "${file}"', Vim.log.levels.INFO);
 	}
 }

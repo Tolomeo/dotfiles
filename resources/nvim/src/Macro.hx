@@ -1,13 +1,17 @@
+import Settings;
+
 typedef Plugins = Array<Any>;
 typedef Modules = Array<String>;
 typedef Setup = () -> Void;
 
 @:keepSub
-class Module {
+class Module<Config> {
+	final id: String;
 	final modules:Modules;
 	final plugins:Plugins;
 
-	function new(modules:Modules, plugins:Plugins) {
+	function new(id: String, modules:Modules, plugins:Plugins) {
+		this.id = id;
 		this.modules = modules;
 		this.plugins = plugins;
 	}
@@ -21,44 +25,53 @@ class Module {
 	public function list_plugins() {
 		return this.plugins;
 	}
+
+	function getConfig():Config {
+		return Reflect.getProperty(Settings.get().config, this.id);
+	}
+
+	function setConfig(config: Config) {
+		return Settings.get().saveConfig(this.id, config);
+	}
+}
+
+typedef MacroConfig = {
+	escapeCharacters: Table<Int, String>,
+	saved: Table<String, String>,
 }
 
 @:keep
 @:expose("macro")
-class Macro extends Module {
-	private static final config = {
-		escapeCharacters: ["\"", "'"]
-	}
-
+class Macro extends Module<MacroConfig> {
 	public function new() {
-		super([], []);
+		super("macro", [], []);
 	}
 
-	static function yank() {
+	function yank() {
 		final registerName = Vim.fn.input('Please specify a register to yank from: ');
 
-		// Vim.api.nvim_echo([["g"]], false, {});
 		Vim.api.nvim_echo([], false, {});
 
 		Vim.schedule(() -> {
 			if (registerName == "") {
-				Vim.notify('Invalid register name', cast Vim.log.levels.ERROR);
+				Vim.notify('Invalid register name', Vim.log.levels.ERROR);
 				return null;
 			}
 
-			Macro.yankRegister(registerName);
+			this.yankRegister(registerName);
 		});
 	}
 
-	static function yankRegister(registerName:String) {
+	function yankRegister(registerName:String) {
 		final registerContent = Vim.fn.getreg(registerName);
 
 		if (registerContent == "") {
-			Vim.notify('Invalid register content', cast Vim.log.levels.ERROR);
+			Vim.notify('Invalid register content', Vim.log.levels.ERROR);
 			return null;
 		}
 
-		final macroContent = Macro.config.escapeCharacters.fold((character:String, content:String) -> {
+		final escapeCharacters = this.getConfig().escapeCharacters;
+		final macroContent = Table.toArray(escapeCharacters).fold((character:String, content:String) -> {
 			return content.replace(character, '\\${character}');
 		}, Vim.fn.keytrans(registerContent));
 
@@ -66,16 +79,54 @@ class Macro extends Module {
 		Vim.fn.setreg('*', macroContent);
 		Vim.fn.setreg('"', macroContent);
 
-		Vim.notify('Yanked macro content from register ${registerName}', cast Vim.log.levels.INFO);
+		Vim.notify('Yanked macro content from register ${registerName}', Vim.log.levels.INFO);
+		return null;
+	}
+
+	function save() {
+		final register = Vim.fn.input('Please specify a register to save: ');
+		final label = Vim.fn.input('Please specify a label to use: ');
+
+		Vim.api.nvim_echo([], false, {});
+
+		Vim.schedule(() -> {
+			if (register == "") {
+				Vim.notify('Invalid register name', Vim.log.levels.ERROR);
+				return null;
+			}
+
+			this.saveRegister(register, label);
+		});
+	}
+
+	function saveRegister(register: String, label: String) {
+		final registerContent = Vim.fn.getreg(register);
+
+		if (registerContent == "") {
+			Vim.notify('Invalid register content', Vim.log.levels.ERROR);
+			return null;
+		}
+
+		final config = this.getConfig();
+		Reflect.setProperty(config.saved, label, registerContent);
+		this.setConfig(config);
+
 		return null;
 	}
 
 	override public function setup() {
 		Vim.api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
-			case []: Macro.yank();
-			case [r]: Macro.yankRegister(r);
+			case []: this.yank();
+			case [r]: this.yankRegister(r);
 			case arguments:
-				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', cast Vim.log.levels.ERROR);
+				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', Vim.log.levels.ERROR);
+		}, {nargs: "*"});
+
+		Vim.api.nvim_create_user_command("SaveMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
+			case []: this.save();
+			case [r, l]: this.saveRegister(r, l);
+			case arguments:
+				Vim.notify('Error saving macro: invalid number of arguments received ${arguments}, expected 2 arguments [register, label]', Vim.log.levels.ERROR);
 		}, {nargs: "*"});
 
 		// final parents = Vim.fs.parents(".");
