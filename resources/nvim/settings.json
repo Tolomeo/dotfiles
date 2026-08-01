@@ -1,7 +1,10 @@
 {
   "config": {
     "theme.colorscheme": "everforest",
-    "workspace.root": [".git", ".cfg"],
+    "workspace.root": [
+      ".git",
+      ".cfg"
+    ],
     "terminal.jobs": [
       {
         "command": "lazygit"
@@ -22,62 +25,139 @@
     ],
     "language": {
       "lua": {
-        "format": ["stylua"],
-        "server": ["lua_ls"]
-      },
-      "haxe": {
-        "filetype": {
-          "haxe": ["*.hx"]
-        },
-        "format": ["haxe-formatter"],
         "server": [
-          {
-            "name": "haxe_language_server",
-            "install": false
-          }
+          "lua_ls"
+        ],
+        "format": [
+          "stylua"
         ]
       },
-      "javascript,typescript,typescriptreact": {
-        "format": ["prettier"],
-        "server": ["ts_ls", "eslint"]
+      "markdown": {
+        "format": [
+          "prettier"
+        ]
       },
       "css,scss": {
-        "format": ["prettier"],
         "server": [
           {
             "name": "cssls",
             "settings": {
               "css": {
-                "validate": true,
                 "lint": {
                   "unknownAtRules": "ignore"
-                }
+                },
+                "validate": true
               }
             }
           },
-          { "name": "tailwindcss" }
+          {
+            "name": "tailwindcss"
+          }
+        ],
+        "format": [
+          "prettier"
         ]
       },
-      "html": {
-        "format": ["prettier"],
-        "server": ["html", "emmet_ls"]
+      "json": {
+        "server": [
+          {
+            "name": "jsonls",
+            "settings": {
+              "json": {
+                "validate": {
+                  "enable": true
+                },
+                "schemas": [
+                  {
+                    "url": "https: //raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+                    "fileMatch": [
+                      ".luarc.json",
+                      ".luarc.jsonc"
+                    ],
+                    "name": "Sumneko Lua Settings"
+                  },
+                  {
+                    "url": "https: //json.schemastore.org/package.json",
+                    "fileMatch": [
+                      "package.json"
+                    ],
+                    "description": "Node project's package file"
+                  },
+                  {
+                    "url": "http: //json.schemastore.org/tsconfig",
+                    "fileMatch": [
+                      "tsconfig.json",
+                      "tsconfig.*.json"
+                    ],
+                    "description": "TypeScript compiler configuration file"
+                  },
+                  {
+                    "url": "http: //json.schemastore.org/lerna",
+                    "fileMatch": [
+                      "lerna.json"
+                    ],
+                    "description": "Lerna config"
+                  },
+                  {
+                    "url": "http: //json.schemastore.org/lerna",
+                    "fileMatch": [
+                      ".babelrc.json",
+                      ".babelrc",
+                      "babel.config.json"
+                    ],
+                    "description": "Babel configuration"
+                  },
+                  {
+                    "url": "http: //json.schemastore.org/eslintrc",
+                    "fileMatch": [
+                      ".eslintrc.json",
+                      ".eslintrc"
+                    ],
+                    "description": "ESLint config"
+                  },
+                  {
+                    "url": "http: //json.schemastore.org/prettierrc",
+                    "fileMatch": [
+                      ".prettierrc",
+                      ".prettierrc.json",
+                      "prettier.config.json"
+                    ],
+                    "description": "Prettier config"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "format": [
+          "prettier"
+        ]
       },
-      "markdown": {
-        "format": ["prettier"]
-      },
-      "sh": {
-        "format": ["shfmt"],
-        "server": ["bashls"]
-      },
-      "dockerfile": {
-        "server": ["dockerls"]
+      "haxe": {
+        "filetype": {
+          "haxe": [
+            "*.hx"
+          ]
+        },
+        "server": [
+          {
+            "name": "haxe_language_server",
+            "install": false
+          }
+        ],
+        "format": [
+          "haxe-formatter"
+        ]
       },
       "go": {
-        "format": ["gopls"],
-        "server": ["gopls"]
+        "server": [
+          "gopls"
+        ],
+        "format": [
+          "gopls"
+        ]
       },
       "yaml": {
-        "format": ["prettier"],
         "server": [
           {
             "name": "yamlls",
@@ -91,72 +171,53 @@
             },
             "settings": {
               "schemas": {
-                "https://json.schemastore.org/github-workflow.json": "/.github/workflows/*"
+                "https: //json.schemastore.org/github-workflow.json": "/.github/workflows/*"
               }
             }
           }
+        ],
+        "format": [
+          "prettier"
         ]
       },
-      "json": {
-        "format": ["prettier"],
+      "html": {
         "server": [
-          {
-            "name": "jsonls",
-            "settings": {
-              "json": {
-                "schemas": [
-                  {
-                    "url": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-                    "name": "Sumneko Lua Settings",
-                    "fileMatch": [".luarc.json", ".luarc.jsonc"]
-                  },
-                  {
-                    "url": "https://json.schemastore.org/package.json",
-                    "description": "Node project's package file",
-                    "fileMatch": ["package.json"]
-                  },
-                  {
-                    "url": "http://json.schemastore.org/tsconfig",
-                    "description": "TypeScript compiler configuration file",
-                    "fileMatch": ["tsconfig.json", "tsconfig.*.json"]
-                  },
-                  {
-                    "url": "http://json.schemastore.org/lerna",
-                    "description": "Lerna config",
-                    "fileMatch": ["lerna.json"]
-                  },
-                  {
-                    "url": "http://json.schemastore.org/lerna",
-                    "description": "Babel configuration",
-                    "fileMatch": [
-                      ".babelrc.json",
-                      ".babelrc",
-                      "babel.config.json"
-                    ]
-                  },
-                  {
-                    "url": "http://json.schemastore.org/eslintrc",
-                    "description": "ESLint config",
-                    "fileMatch": [".eslintrc.json", ".eslintrc"]
-                  },
-                  {
-                    "url": "http://json.schemastore.org/prettierrc",
-                    "description": "Prettier config",
-                    "fileMatch": [
-                      ".prettierrc",
-                      ".prettierrc.json",
-                      "prettier.config.json"
-                    ]
-                  }
-                ],
-                "validate": {
-                  "enable": true
-                }
-              }
-            }
-          }
+          "html",
+          "emmet_ls"
+        ],
+        "format": [
+          "prettier"
         ]
+      },
+      "javascript,typescript,typescriptreact": {
+        "server": [
+          "ts_ls",
+          "eslint"
+        ],
+        "format": [
+          "prettier"
+        ]
+      },
+      "sh": {
+        "server": [
+          "bashls"
+        ],
+        "format": [
+          "shfmt"
+        ]
+      },
+      "dockerfile": {
+        "server": [
+          "dockerls"
+        ]
+      }
+    },
+    "macro": {
+      "escapeCharacters": [
+        "\"",
+        "'"
+      ],
+      "saved":{}
       }
     }
   }
-}
