@@ -208,6 +208,7 @@ local String = _hx_e()
 local Std = _hx_e()
 local StringTools = _hx_e()
 __common_Json = _hx_e()
+__common_Mode = _hx_e()
 __haxe_iterators_ArrayIterator = _hx_e()
 __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 __lua_PairTools = _hx_e()
@@ -216,6 +217,7 @@ __nvim_helper__Native_LuaObject_Impl_ = _hx_e()
 __nvim_helper__Native_Native_Fields_ = _hx_e()
 __nvim_type_vim_VarAccessor = _hx_e()
 __nvim_type_vim_api_keyset_EchoOpts = _hx_e()
+__nvim_type_vim_api_keyset_GetMode = _hx_e()
 __nvim_type_vim_api_keyset_UserCommand = _hx_e()
 __nvim_type_vim_api_keyset_create_user_command_CommandArgs = _hx_e()
 
@@ -671,6 +673,24 @@ Macro.prototype.saveRegister = function(self,register,label)
   self:setConfig(config);
   do return nil end
 end
+Macro.prototype.run = function(self) 
+  local _gthis = self;
+  local mcros = self:getConfig().saved;
+  local labels = Reflect.fields(mcros);
+  local opts = ({});
+  vim.ui.select(__nvim_helper__Native_LuaArray_Impl_.toTableArray(__nvim_helper__Native_LuaArray_Impl_.fromArray(labels)), __nvim_helper__Native_LuaObject_Impl_.toTableObject(opts), function(label,idx) 
+    if (label == nil) then 
+      do return nil end;
+    end;
+    local mcro = Reflect.getProperty(mcros, label);
+    do return _gthis:runMacro(mcro) end;
+  end);
+end
+Macro.prototype.runMacro = function(self,mcro) 
+  vim.cmd(({cmd = "normal", args = ({vim.api.nvim_replace_termcodes(mcro, true, true, true)})}));
+  __common_Mode.ensureNormal();
+  do return nil end
+end
 Macro.prototype.setup = function(self) 
   local _gthis = self;
   vim.api.nvim_create_user_command("YankMacro", function(args) 
@@ -696,7 +716,7 @@ Macro.prototype.setup = function(self)
       _gthis:yank();
     elseif (_g1) == 1 then 
       _gthis:yankRegister(_g[0]);else
-    vim.notify(Std.string(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument only"), vim.log.levels.ERROR); end;
+    vim.notify(Std.string(Std.string("Error yanking macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument <register>"), vim.log.levels.ERROR); end;
   end, __nvim_helper__Native_LuaObject_Impl_.toTableObject(__nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil)));
   vim.api.nvim_create_user_command("SaveMacro", function(args) 
     local length = nil;
@@ -721,7 +741,31 @@ Macro.prototype.setup = function(self)
       _gthis:save();
     elseif (_g1) == 2 then 
       _gthis:saveRegister(_g[0], _g[1]);else
-    vim.notify(Std.string(Std.string("Error saving macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 2 arguments [register, label]"), vim.log.levels.ERROR); end;
+    vim.notify(Std.string(Std.string("Error saving macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 2 arguments <register> <label>"), vim.log.levels.ERROR); end;
+  end, __nvim_helper__Native_LuaObject_Impl_.toTableObject(__nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil)));
+  vim.api.nvim_create_user_command("RunMacro", function(args) 
+    local length = nil;
+    local tab = __lua_PairTools.copy(args.fargs);
+    local length = length;
+    local _g;
+    if (length == nil) then 
+      length = _hx_table.maxn(tab);
+      if (length > 0) then 
+        local head = tab[1];
+        _G.table.remove(tab, 1);
+        tab[0] = head;
+        _g = _hx_tab_array(tab, length);
+      else
+        _g = _hx_tab_array({}, 0);
+      end;
+    else
+      _g = _hx_tab_array(tab, length);
+    end;
+    if (_g.length == 0) then 
+      _gthis:run();
+    else
+      vim.notify(Std.string(Std.string("Error saving macro: invalid number of arguments received ") .. Std.string(Std.string(_g))) .. Std.string(", expected 1 argument only <label>"), vim.log.levels.ERROR);
+    end;
   end, __nvim_helper__Native_LuaObject_Impl_.toTableObject(__nvim_type_vim_api_keyset_UserCommand.new(nil, nil, nil, nil, nil, nil, nil, nil, "*", nil, nil, nil)));
 end
 Macro.__super__ = Module
@@ -803,6 +847,22 @@ Reflect.callMethod = function(o,func,args)
     end;
   end;
 end
+Reflect.fields = function(o) 
+  local _hx_continue_1 = false;
+  while (true) do repeat 
+    if (_G.type(o) == "string") then 
+      o = String.prototype;
+      break;
+    else
+      do return _hx_field_arr(o) end;
+    end;until true
+    if _hx_continue_1 then 
+    _hx_continue_1 = false;
+    break;
+    end;
+    
+  end;
+end
 
 Settings.new = function() 
   local self = _hx_new(Settings.prototype)
@@ -816,11 +876,11 @@ Settings.super = function(self)
   self.g = _hx_funcToField(vim.g);
   self.userSettings = Settings.loadUserSettings();
   local settings = vim.tbl_deep_extend("force", ___Settings_Settings_Fields_.defaults, self.userSettings);
-  __lua_PairTools.pairsEach(settings.opt, function(name,value) 
-    vim.opt[name] = value;
-  end);
   __lua_PairTools.pairsEach(settings.g, function(name,value) 
     vim.g[name] = value;
+  end);
+  __lua_PairTools.pairsEach(settings.opt, function(name,value) 
+    vim.opt[name] = value;
   end);
   self.keymap = settings.keymap;
   self.config = settings.config;
@@ -1156,6 +1216,24 @@ __common_Json.format = function(str)
   do return _G.table.concat(out_b) end;
 end
 
+__common_Mode.new = {}
+__common_Mode.getCurrent = function() 
+  do return _G.string.lower(vim.api.nvim_get_mode().mode) end;
+end
+__common_Mode.exitInsert = function() 
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true);
+end
+__common_Mode.exitVisual = function() 
+  vim.api.nvim_command(Std.string("normal! ") .. Std.string(vim.api.nvim_replace_termcodes("<Esc>", true, false, true)));
+end
+__common_Mode.ensureNormal = function() 
+  local _g = __common_Mode.getCurrent();
+  if (_g) == "i" then 
+    __common_Mode.exitInsert();
+  elseif (_g) == "v" then 
+    __common_Mode.exitVisual(); end;
+end
+
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -1257,6 +1335,16 @@ end
 __nvim_type_vim_api_keyset_EchoOpts.super = function(self,err,verbose) 
   self.err = err;
   self.verbose = verbose;
+end
+
+__nvim_type_vim_api_keyset_GetMode.new = function(blocking,mode) 
+  local self = _hx_new()
+  __nvim_type_vim_api_keyset_GetMode.super(self,blocking,mode)
+  return self
+end
+__nvim_type_vim_api_keyset_GetMode.super = function(self,blocking,mode) 
+  self.blocking = blocking;
+  self.mode = mode;
 end
 
 __nvim_type_vim_api_keyset_UserCommand.new = function(addr,bang,bar,complete,count,desc,force,keepscript,nargs,preview,range,register) 

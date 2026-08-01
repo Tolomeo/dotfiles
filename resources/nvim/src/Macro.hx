@@ -1,4 +1,5 @@
 import Settings;
+import common.Mode;
 
 typedef Plugins = Array<Any>;
 typedef Modules = Array<String>;
@@ -114,19 +115,50 @@ class Macro extends Module<MacroConfig> {
 		return null;
 	}
 
+	function run() {
+		final mcros = this.getConfig().saved;
+		final labels = Reflect.fields(mcros);
+
+		Vim.ui.select(labels, Table.create(), (?label: Null<String>, ?idx: Null<Int>) -> {
+			if (label == null) {
+				return null;
+			}
+
+			final mcro = Reflect.getProperty(mcros, label);
+
+			return this.runMacro(mcro);
+		});
+	}
+
+	function runMacro(mcro: String) {
+		(Vim.cmd: (command:haxe.extern.EitherType<String, lua.Table.AnyTable>) -> Dynamic)(Table.create(null, {
+			cmd: "normal",
+			args: Table.create([Vim.api.nvim_replace_termcodes(mcro, true, true, true)])
+		}));
+		Mode.ensureNormal();
+		return null;
+	}
+
 	override public function setup() {
 		Vim.api.nvim_create_user_command("YankMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
 			case []: this.yank();
 			case [r]: this.yankRegister(r);
 			case arguments:
-				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument only', Vim.log.levels.ERROR);
+				Vim.notify('Error yanking macro: invalid number of arguments received ${arguments}, expected 1 argument <register>', Vim.log.levels.ERROR);
 		}, {nargs: "*"});
 
 		Vim.api.nvim_create_user_command("SaveMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
 			case []: this.save();
 			case [r, l]: this.saveRegister(r, l);
 			case arguments:
-				Vim.notify('Error saving macro: invalid number of arguments received ${arguments}, expected 2 arguments [register, label]', Vim.log.levels.ERROR);
+				Vim.notify('Error saving macro: invalid number of arguments received ${arguments}, expected 2 arguments <register> <label>', Vim.log.levels.ERROR);
+		}, {nargs: "*"});
+
+		Vim.api.nvim_create_user_command("RunMacro", (args:nvim.type.vim.api.keyset.create_user_command.CommandArgs) -> switch (Table.toArray(args.fargs)) {
+			case []: this.run();
+			// case [m]: this.runMacro(m);
+			case arguments:
+				Vim.notify('Error saving macro: invalid number of arguments received ${arguments}, expected 1 argument only <label>', Vim.log.levels.ERROR);
 		}, {nargs: "*"});
 
 		// final parents = Vim.fs.parents(".");
