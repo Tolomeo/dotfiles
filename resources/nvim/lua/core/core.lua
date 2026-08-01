@@ -817,7 +817,7 @@ Settings.super = function(self)
   self.userSettings = Settings.loadUserSettings();
   local settings = vim.tbl_deep_extend("force", ___Settings_Settings_Fields_.defaults, self.userSettings);
   __lua_PairTools.pairsEach(settings.opt, function(name,value) 
-    vim.g[name] = value;
+    vim.opt[name] = value;
   end);
   __lua_PairTools.pairsEach(settings.g, function(name,value) 
     vim.g[name] = value;

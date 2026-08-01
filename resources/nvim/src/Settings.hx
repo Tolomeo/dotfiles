@@ -430,7 +430,7 @@ class Settings {
 		final settings:Table<String, Any> = Vim.tbl_deep_extend("force", defaults, this.userSettings);
 
 		PairTools.pairsEach(settings.opt, (name:String, value:Any) -> {
-			Reflect.setField(Vim.g, name, value);
+			Reflect.setField(Vim.opt, name, value);
 		});
 
 		PairTools.pairsEach(settings.g, (name:String, value:Any) -> {
