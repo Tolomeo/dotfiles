@@ -1154,64 +1154,71 @@ __common_Json.encode = function(obj)
   do return vim.json.encode(obj, __nvim_helper__Native_LuaObject_Impl_.toTableObject(({}))) end;
 end
 __common_Json.format = function(str) 
-  local level = 0;
   local out_b = ({});
+  local level = 0;
   local dquote = 0;
   local _g = 0;
   local _g1 = #str;
-  while (_g < _g1) do 
+  local _hx_continue_1 = false;
+  while (_g < _g1) do repeat 
     _g = _g + 1;
     local i = _g - 1;
     local c = _G.string.sub(str, i + 1, i + 1);
-    if ((c == "{") or (c == "[")) then 
+    if ((_G.math.fmod(dquote, 2)) == 1) then 
+      local tmp;
+      if (c == "\"") then 
+        local index = i - 1;
+        tmp = _G.string.sub(str, index + 1, index + 1) ~= "\\";
+      else
+        tmp = false;
+      end;
+      if (tmp) then 
+        dquote = dquote + 1;
+      end;
+      _G.table.insert(out_b, Std.string(c));
+      break;
+    end;
+    if (c) == "\"" then 
+      dquote = dquote + 1;
+      _G.table.insert(out_b, Std.string(c));
+    elseif (c) == "," then 
       _G.table.insert(out_b, Std.string(c));
       _G.table.insert(out_b, "\n");
-      level = level + 1;
       local _g = 0;
       local _g1 = level;
       while (_g < _g1) do 
         _g = _g + 1;
         _G.table.insert(out_b, "  ");
       end;
-    else
-      if ((c == "}") or (c == "]")) then 
-        level = level - 1;
-        _G.table.insert(out_b, "\n");
-        local _g = 0;
-        local _g1 = level;
-        while (_g < _g1) do 
-          _g = _g + 1;
-          _G.table.insert(out_b, "  ");
-        end;
-        _G.table.insert(out_b, Std.string(c));
-      else
-        if (c == ",") then 
-          _G.table.insert(out_b, Std.string(c));
-          _G.table.insert(out_b, "\n");
-          local _g = 0;
-          local _g1 = level;
-          while (_g < _g1) do 
-            _g = _g + 1;
-            _G.table.insert(out_b, "  ");
-          end;
-        else
-          if (c == ":") then 
-            if ((_G.math.fmod(dquote, 2)) == 1) then 
-              _G.table.insert(out_b, ":");
-            else
-              _G.table.insert(out_b, ": ");
-            end;
-          else
-            if (c == "\"") then 
-              dquote = dquote + 1;
-              _G.table.insert(out_b, "\"");
-            else
-              _G.table.insert(out_b, Std.string(c));
-            end;
-          end;
-        end;
+    elseif (c) == ":" then 
+      _G.table.insert(out_b, Std.string(c));
+      _G.table.insert(out_b, " ");
+    elseif (c) == "[" or (c) == "{" then 
+      level = level + 1;
+      _G.table.insert(out_b, Std.string(c));
+      _G.table.insert(out_b, "\n");
+      local _g = 0;
+      local _g1 = level;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        _G.table.insert(out_b, "  ");
       end;
+    elseif (c) == "]" or (c) == "}" then 
+      level = level - 1;
+      _G.table.insert(out_b, "\n");
+      local _g = 0;
+      local _g1 = level;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        _G.table.insert(out_b, "  ");
+      end;
+      _G.table.insert(out_b, Std.string(c));else
+    _G.table.insert(out_b, Std.string(c)); end;until true
+    if _hx_continue_1 then 
+    _hx_continue_1 = false;
+    break;
     end;
+    
   end;
   do return _G.table.concat(out_b) end;
 end
