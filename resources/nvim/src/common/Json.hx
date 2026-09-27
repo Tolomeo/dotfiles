@@ -10,6 +10,7 @@ class Json {
 	}
 
 	// TODO: Better json format implementation?
+	// Support parameterised indent size
 	public static function format(str:String):String {
 		final out = new StringBuf();
 		var level = 0;
@@ -28,6 +29,9 @@ class Json {
 			}
 
 			switch (c) {
+				case '"':
+					dquote++;
+					out.add(c);
 				case "{", "[":
 					level++;
 					out.add(c);
@@ -48,9 +52,6 @@ class Json {
 				case ":":
 					out.add(c);
 					out.add(" ");
-				case '"':
-					dquote++;
-					out.add(c);
 				case _:
 					out.add(c);
 			}
