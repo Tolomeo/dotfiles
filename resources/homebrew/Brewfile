@@ -18,6 +18,11 @@ brew "yarn"
 brew "docker"
 cask "docker-desktop"
 brew "haxe"
+
+brew "pet"
+brew "yt-dlp"
+brew "ffmpeg"
+
 cask "kitty"
 cask "iterm2"
 cask "love"
